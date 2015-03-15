@@ -1,0 +1,3 @@
+<% if item.is_a?(Area) || item.is_a?(Politician) && item.approved? -%>
+  <%= render :partial => "#{action}", :locals => {:item => item } %>
+<% end -%>

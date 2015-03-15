@@ -1,0 +1,57 @@
+<div class="new">
+<div class="article with_form">
+  <%- form_tag send_email_site_path(:id => @document.id) do -%>
+  <%= hidden_field_tag :t, params[:t] %>
+  <div class="inner clearfix">
+    <div class="content">
+      <h1><% @title = t('documents.enviar_cosa_a_amigo', :what => @document.class.model_name.human) %></h1>
+      
+      <p>
+        <% if @document.is_a?(Photo) %>
+        <%= link_to h(@document.title), [@document.albums.first, @document] unless @document.albums.length == 0 %>
+        <% else %>
+        <%= link_to h(@document.title), @document %>
+        <% end %>
+      </p>
+      
+      <p><%= t('documents.intro_info_friend') %></p>
+      
+
+          <div class="field email">
+            <label for="sender_name">* <%= t('share.tu_nombre_completo') %></label>
+            <div class="input_field_n">
+              <%= text_field_tag :sender_name, params[:sender_name], :class => "mInput" %>
+            </div>
+          </div>
+          <div class="field email">
+            <label for="recipient_name">* <%= t('share.nombre_destinatario') %></label>
+            <div class="input_field_n">
+              <%= text_field_tag :recipient_name, params[:recipient_name], :class => "mInput" %>
+            </div>
+          </div>
+          <div class="field email">
+            <label for="recipient_email">* <%= t('share.email_destinatario') %></label>
+            <div class="input_field_n">
+              <%= text_field_tag :recipient_email, params[:recipient_email], :class => "mInput" %>
+            </div>
+            <p>* <%= t('campos_obligatorios') %></p>
+        
+        
+        
+     
+    </div>
+  </div>
+  <div class="bfooter">
+    <div class="separator"></div>
+    <div class="inner">
+      <div class="center">
+        <span id="register_spinner1" class="spinner"></span>
+        <button class="white_button pink center advance" type="submit">
+          <span>Enviar</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <%- end -%>
+</div>
+</div>

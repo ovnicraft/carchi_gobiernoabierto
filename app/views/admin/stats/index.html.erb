@@ -1,0 +1,101 @@
+<h1>Estadísticas</h1>
+
+<%= render :partial => "submenu" %>
+
+<p>
+  <b>IPs diferentes en los últimos 5 minutos:</b>
+  <%= @last_ips_counter %>
+</p>
+
+<% if @streaming_watchers.length >0 %>
+  <b>En este momento (<%= I18n.l(Time.zone.now, :format => :short) %>) hay <%= @streaming_watchers.length %> eventos en streaming
+  y éste es el número de personas que lo está viendo:</b>
+  <table>
+    <% @streaming_watchers.each do |code, counter| %>
+    <tr>
+    <th><%= code %>:</th> <td><%= counter %></td>
+    </tr>
+    <% end %>
+  </table>
+<% else %>
+  <p>En este momento no hay nada emitiéndose</p>
+<% end %>
+
+
+<p>
+  <%= form_tag admin_stats_path, :method => :get do %>
+  <!-- Filtrado para: 
+  <%= select_tag :dep_id, "<option value='0'>Todos los departamentos</option>" << options_for_select(Department.order("id").collect {|d| [d.name, d.id]}, :selected => @dep_id) %> -->
+  En las últimas
+  <%= select_tag :hours, options_for_select([['2 horas',2], ['4 horas', 4], ['12 horas', 12], ['24 horas', 24]], @hours) %>
+  <%= submit_tag "Cambiar" %>
+  <% end %>
+</p>
+
+<table class="stats_container">
+  <tr>
+    <td>
+      <table class="stats" cellspacing="0" cellpadding="0">
+        <tr class="title">
+          <th colspan="2">Últimos referers</th>
+        </tr>
+        <% @referers.each do |referer| %>
+        <tr>
+          <td><%= link_to_if referer[0].match('http'), short_url(referer[0]), referer[0], :rel => "external" %></td>
+          <td class="number">
+            <%= referer[1] %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </td>
+
+    <td>
+      <table class="stats" cellspacing="0" cellpadding="0">
+        <tr class="title">
+          <th colspan="2">Últimas 10 búsquedas en Google</th>
+        </tr>
+        <% @googles.each do |search_term| %>
+        <tr>
+          <td><%= search_term %></td>
+        </tr>
+        <% end %>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<table class="stats_container">
+  <tr>
+    <td>
+      <table class="stats" cellspacing="0" cellpadding="0">
+        <tr class="title">
+          <th colspan="2">Páginas más visitadas</th>
+        </tr>
+        <% @top_pages.each do |page|%>
+        <tr>
+          <td class="item">
+            <%= link_to_if page[0].match(/^\//), short_url(page[0]), page[0], :rel => "external" %>
+          </td>
+          <td class="number"><%= page[1] %></td>
+        </tr>
+        <% end %>
+      </table>
+    </td>
+    <td>
+      <table class="stats" cellspacing="0" cellpadding="0">
+        <tr class="title">
+          <th colspan="2">Páginas más comentadas</th>
+        </tr>
+        <%- @comments.each do |comment| -%>
+        <tr>
+          <td class="item">
+            <%= link_to comment.commentable.title, comment.commentable %>
+          </td>
+          <td class="number"><%= comment.count %></td>
+        </tr>
+        <%- end -%>
+      </table>
+    </td>
+  </tr>
+</table>

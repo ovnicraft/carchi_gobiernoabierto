@@ -1,0 +1,19 @@
+<%- old_locale = I18n.locale -%>
+<%- I18n.locale = @user.alerts_locale -%>
+
+<p>
+  <%= t('notifier.hola_user', :name => @user.name) %>,
+</p>
+
+<p>
+  <%= t('notifier.welcome', :name => Settings.site_name) %>
+</p>
+
+<p>
+  <%= t('notifier.welcome_journalist.registro_activado') %><br />
+  <%= t('notifier.welcome_journalist.ya_puedes_acceder', :site_name => Settings.site_name, link: login_url(locale: I18n.locale)) %>
+</p>
+
+<%= render partial: '/notifier/footer' %>
+
+<%- I18n.locale = old_locale -%>

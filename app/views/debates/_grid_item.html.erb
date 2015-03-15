@@ -1,0 +1,10 @@
+<div class='grid_item debate span4'>
+  <div class="image">
+    <%= link_to image_tag(debate.cover_image.n372.url), debate if debate.cover_image.present? %>
+  </div>
+  <div class="title">
+    <%= link_to debate.title, debate %>
+  </div>
+  <%= render_participation_result_percentage(debate) %>
+  <%= link_to_item_comments(debate.comments.count, debate) %>
+</div>

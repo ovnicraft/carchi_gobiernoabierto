@@ -1,0 +1,10 @@
+<% commentable = Proposal.find(notification.notifiable_id) %>
+
+<li class="item comment proposal">
+  <div class='item_thumbnail'>
+    <%= avatar commentable.author %>
+  </div>
+  <div class='item_content'>
+    <%=raw t('notifications.new_comment', :count => notification.counter, :commentable => link_to(commentable.title, proposal_path(commentable, :n_id => notification.id, :anchor => "acomments"))) %>
+  </div>
+</li>

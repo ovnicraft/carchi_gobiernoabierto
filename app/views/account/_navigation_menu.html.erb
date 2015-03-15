@@ -1,0 +1,19 @@
+<div class='nav_middle user_nav container' id='middle'>
+  <div class='row-fluid'>
+    <div class='span7 tabs_container'>
+      <ul class='nav nav-tabs nav_middle_tabs user_tabs'>
+        <li class="<%= account_navigation_menu_class('show') %>">
+          <%= link_to t("account.tu_irekia", :site_name => Settings.site_name).mb_chars.upcase.to_s,  account_path(:anchor => 'middle') %>
+        </li>
+        <% if Settings.optional_modules.proposals %>
+        <li class="<%= account_navigation_menu_class('proposals') %>">
+          <%= link_to t("account.your_proposals").mb_chars.upcase.to_s,  proposals_account_path(:anchor => 'middle') %>
+        </li>
+        <% end %>
+        <li class="<%= account_navigation_menu_class('followings') %>">
+          <%= link_to t("users.following").upcase, followings_account_path(:anchor => 'middle') %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

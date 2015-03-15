@@ -1,0 +1,33 @@
+<%= form_for @document, :as => :document, :url => admin_document_path(@document), :html => {:method => :put} do |f| -%>
+  <%= error_messages(f.object) %>
+
+  <%= hidden_field_tag 'lang', params[:lang] %>
+  <%= hidden_field_tag 'locale', params[:locale] unless !params[:locale]%>
+  <table class="admin">
+    <tr><td colspan="2"><%= submit_tag 'Guardar' %></td></tr>
+
+    <tr>
+      <th>Título en <%= locales[params[:lang].to_sym] %></th>
+      <td>
+        <%= f.text_field "title_#{params[:lang]}".to_sym, :size => 60 %>
+      </td>
+    </tr>
+
+    <tr>
+      <th colspan="2">Texto en <%= locales[params[:lang].to_sym] %></th>
+    </tr><tr>
+      <td colspan="2">
+        <%= f.text_area "body_#{params[:lang]}".to_sym, :size => "100x40" %>
+      </td>
+    </tr>
+
+    <%- if @document.new_record? -%>
+      <%= render :partial => "form_common", :locals => {:f => f} %>
+    <% else %>
+      <%= f.hidden_field :has_comments %>
+      <%= f.hidden_field :has_comments_with_photos %>
+    <%- end -%>
+
+    <tr><td colspan="2"><%= submit_tag 'Guardar' %></td></tr>
+  </table>
+<%- end -%>

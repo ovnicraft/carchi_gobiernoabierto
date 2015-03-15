@@ -1,0 +1,6 @@
+<% if @area.present? %>
+  <%= render :partial => 'areas/summary' %>
+  <%= render :partial => 'areas/navigation_menu' %>
+<% end %>
+
+<%= render :partial => '/politicians/politicians' %>

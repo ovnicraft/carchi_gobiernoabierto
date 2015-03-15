@@ -1,0 +1,17 @@
+<table class="comments" cellpadding="0" cellspacing="0" border="0">
+  <thead>
+  <tr>
+    <th width="5%"><%=t("admin.debates.id")%></th>
+    <th width="50%"><%=t("admin.debates.argumento")%></th>
+    <th width="10%"><%=t("admin.debates.nombre")%></th>
+    <th width="10%"><%=t("admin.debates.fecha")%></th>
+    <th width="10%"><%=t("admin.proposals.estado")%></th>
+    <th width="15%"><%=t("admin.debates.propuesta")%></th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <%= render :partial => '/admin/arguments/argument', :collection => @arguments %>
+
+  </tbody>
+</table>

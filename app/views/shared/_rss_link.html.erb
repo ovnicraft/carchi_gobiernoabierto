@@ -1,0 +1,9 @@
+<%- if item.has_comments? -%>
+  <% content_for :head do %>
+    <%= auto_discovery_link_tag :rss, {:controller => "comments", :action => "index", :locale => I18n.locale, :document_id => item.id, :format => 'rss'}, :title => t('comments.this_feed_title') %>
+  <% end %>
+
+  <div class='rss_links'>
+    <%= link_to t('comments.rss_comentarios'), news_comments_path(:news_id => item.id, :format => :rss), :class => "rss" %>
+  </div>
+<%- end -%>

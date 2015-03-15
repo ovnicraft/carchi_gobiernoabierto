@@ -1,0 +1,25 @@
+<%- if @video.errors[:video_path].present? -%>
+  $('find_video').replace('<%=j "<span id=\'find_video\' style=\'color:red\'>Directorio incorrecto.<br/> #{@video.errors[:video_path].join(', ')}</span>".html_safe %>');
+<%- else -%>
+  <%- logger.info "Buscando videos en #{File.join(Video::VIDEO_PATH, params[:video_path] + '*.flv')}" -%>
+  <%- found_videos = Video.flv_videos_in_dir(params[:video_path]) -%>
+  <%- if found_videos.length > 0 -%>
+    <% found_preview_photo = File.exists?(File.join(Video::VIDEO_PATH, params[:video_path] +".jpg")) %>
+    <%- if found_preview_photo       
+        to_insert = ". <span style='color:green'>Foto para el preview encontrada</span>"
+      else
+        to_insert = ". <span style='color:red'>Foto para el preview NO encontrada</span>"
+      end -%>
+    $('find_video').replace('<%=j "<span  id=\'find_video\' style=\'color:green\'>#{found_videos.length} videos encontrados</span>".html_safe %>');
+    $("find_video").insert({
+        bottom: "<%=j to_insert.html_safe %>"
+      });
+  <%- else -%>
+    <%- if File.exists?(File.join(Video::VIDEO_PATH, "#{params[:video_path]}.jpg"))
+      to_replace = "<span  id=\'find_video\' style='color:green'>1 imagen encontrada</span>"
+    else
+      to_replace = "<span  id=\'find_video\' style='color:red'>video NO encontrado</span>"
+    end -%>
+    $('find_video').replace('<%=j to_replace.html_safe %>');
+  <%- end -%>
+<%- end -%>

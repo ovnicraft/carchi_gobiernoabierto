@@ -1,0 +1,31 @@
+<%= render :partial => "submenu" %>
+
+<ul class="edit_links">
+  <li><%= link_to "Importar fotos", new_admin_photo_path, :class => "new" %></li>
+  <li><%= link_to "Nuevo album", new_admin_album_path, :class => "new" %></li>
+</ul>
+
+
+<h1>Fototeca</h1>
+
+<div style="clear:both; margin:1em 0px;">
+  <%= form_tag admin_albums_path, :method => :get do  %>
+  Búsqueda por título:
+    <%= text_field_tag :q %>
+    <%= submit_tag "Buscar" %>
+  <% end %>
+</div>
+
+<%= will_paginate @albums %>
+
+<table class="comments" cellspacing="0">
+  <tr>
+    <th><%= link_to_unless @sort_order.eql?("title"), "Título", admin_albums_path(params.merge(:sort => "title")) %></th>
+    <th><%= link_to_unless @sort_order.eql?("publish"), "Fecha de publicación", admin_albums_path(params.merge(:sort => "publish")) %></th>
+    <th>Páginas públicas</th>
+  </tr>
+
+  <%= render :partial => "album", :collection => @albums %>
+</table>
+
+<%= will_paginate @albums %>

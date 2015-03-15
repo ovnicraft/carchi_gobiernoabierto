@@ -1,0 +1,25 @@
+<h1>Modificar usuario</h1>
+
+<% if @documents_counter + @videos_counter + @comments_counter + @proposals_counter == 0 %>
+<ul class="edit_links delete_link">
+  <li><%= link_to "Eliminar usuario", admin_user_path(@user), :method => "delete", 
+    :confirm => "¿Estás seguro? Se eliminará por completo y no se puede deshacer.", :class => "delete" %>
+  </li>
+</ul>
+<% else %>
+  <p>
+    Este usuario no se puede eliminar porque tiene 
+    <%= "#{@documents_counter} noticias, páginas y eventos," if @documents_counter > 0 %>
+    <%= "#{@videos_counter} videos," if @videos_counter > 0 %>
+    <%= "#{@comments_counter} comentarios," if @comments_counter > 0 %>
+    <%= "#{@proposals_counter} noticias, páginas y eventos," if @proposals_counter > 0 %>
+  </p>
+  
+  <p>Si quieres, puedes cambiarle el estado a "vetado" para quitarle el acceso</p>
+<% end %>
+
+<%= form_for @user, :as => :user, :url => admin_user_path(@user), :html => { :method => :put, :multipart => true } do |f| -%>
+  <%= error_messages(f.object) %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+<% end -%>
+

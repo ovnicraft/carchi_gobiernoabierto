@@ -1,0 +1,18 @@
+<hr/>
+<h2><%= t('sadmin.news.directorio_multimedia') %>: <%= document.multimedia_path || "no tiene" %></h2>
+
+<%= render(:partial => "/admin/documents/multimedia/featured_video", :locals => {:document => document}) unless document.is_a?(Debate) %>
+
+<%- if document.has_videos? -%>
+  <%= render :partial => "/admin/documents/multimedia/flv_videos", :locals => {:document => document} unless document.is_a?(Debate) %>
+
+  <%= render :partial => "/admin/documents/multimedia/mpg_videos", :locals => {:document => document} %>
+<%- end -%>
+
+
+<%- if document.has_audios? -%>
+  <%= render :partial => '/admin/documents/multimedia/audio', :locals => {:document => document, :icon_class => 'section_icon'} %>
+<%- end %>
+
+<%= render :partial => "/admin/documents/multimedia/photos", :locals => {:document => document} %>
+

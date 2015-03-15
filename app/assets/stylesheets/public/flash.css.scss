@@ -1,0 +1,79 @@
+/* Estilo para las páginas con flash */
+
+div.text.flash {
+  float: center;
+}
+
+div.date_and_location {
+  display: none;
+}
+
+div.gradient-box {
+  padding-top: 0px;
+}
+ 
+div.flash_menu {
+  padding: 8px 0px;
+  overflow: hidden;
+  height: 100%;
+}
+
+div.flash_menu ul {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+div.flash_menu ul li {
+  float: left;
+  padding: 0px 14px;
+  border-right: solid 1px #e4e4e4;
+  font-family: arial, sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+div.flash_menu ul li.last_li {
+  border-right: none;
+}
+
+div.flash_menu ul li a {
+  color: #005b8c;
+  text-decoration: none;
+}
+
+div.flash_menu ul li.current_flash a {
+  color: #5CA4DA;
+}
+
+
+div.flash_box_outer, div.flash_box_inner {
+  overflow: hidden;
+  height: 100%;
+  text-align: center;
+}
+
+div.flash_box_outer {
+  background: url(image-path('f_bottom.gif')) repeat-x 0% 356px;
+}
+
+div.flash_box_inner {
+  background: url(image-path('f_top.gif')) repeat-x 0% 0%;
+}
+
+div.description {
+  padding: 0px;
+}
+
+div.video_false {
+  padding: 0px 0px 20px 0px;
+}
+
+/* Esconder la columna relacionados y quitar el margin del main_content */
+div.right_menu {
+  display: none;
+}
+
+body.right_menu div.main_content {
+  margin-right:0px;
+}

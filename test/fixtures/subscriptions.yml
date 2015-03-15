@@ -1,0 +1,41 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# one:
+#   user_id: 1
+#   department_id: 1
+# 
+# two:
+#   user_id: 1
+#   department_id: 1
+
+periodista4gv:
+    journalist: periodista
+    department: gobierno_vasco
+
+periodista4lehend:
+    journalist: periodista
+    department: lehendakaritza
+    
+periodista_con_alertas4lehend:
+    journalist: periodista_con_alertas
+    department: lehendakaritza
+
+periodista_con_alertas4gobvasco:
+    journalist: periodista_con_alertas
+    department: gobierno_vasco
+
+periodista_con_alertas_eu4lehend:
+    journalist: periodista_con_alertas_en_euskera
+    department: lehendakaritza
+    
+periodista_con_alertas_eu4interior:
+    journalist: periodista_con_alertas_en_euskera
+    department: interior
+
+periodista_sin_aprobar4gobierno_vasco:
+  journalist: periodista_sin_aprobar
+  department: gobierno_vasco
+
+periodista_educacion4educacion:
+  journalist: periodista_educacion
+  department: educacion

@@ -1,0 +1,21 @@
+
+<% if tree %>
+<div class='nav_column'>
+  <h4><%= tree.name %></h4>
+  <ul>                     
+    <% tree.categories.where("parent_id IS NULL").each do |category| %>
+      <li>
+        <%= link_to_category(category) %>
+        <% if category.children.length > 0 %>
+          <ul>       
+            <% category.children.each do |ccat| %>
+              <li><%= link_to_category(ccat) %></li>               
+            <% end %>
+          </ul>
+        <% end %>
+      </li>       
+    <% end %>
+    <%= block %>
+  </ul>
+</div>
+<% end %>

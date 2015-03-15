@@ -1,0 +1,26 @@
+<h2><%= t('news.related') %></h2>
+
+<% leading_news = @debate.leading_news %>
+<% other_news = @debate.related_news - [@debate.leading_news] %>
+<% if leading_news %>
+<ul>
+  <li><%= link_to leading_news.title, sadmin_news_path(leading_news) %></li>
+  <% other_news.each do |news| %>
+    <li><%= link_to news.title, sadmin_news_path(news) %></li>
+  <% end %>
+</ul>
+<% else %>
+<p>No hay noticias relacionadas.</p>
+<% end %>
+
+<div>
+  <%= link_to 'Ayuda', '#', :class => 'help_link' %>
+  <div class="help" style="display:none;">
+    Para asignar una noticia a la propuesta:
+    <ul>
+      <li>ir a la página de la noticia,</li> 
+      <li><b>añadir</b> a los tags de la noticia el <b>tag <%= @debate.hashtag %></b>.</li>
+    </ul>
+    <p>Para que una <b>noticia</b> sea la <b>destacada de la propuesta</b>, hay que añadir a la noticia el <b>tag <%= @debate.featured_tag_name_es %></b>. Esta noticia incorporará el visor del vídeo si tiene vídeos en su directorio multimedia.</p>
+  </div>  
+</div>

@@ -1,0 +1,9 @@
+<%= render :partial => '/admin/comments/tabs' %>
+
+<h2><%= t('admin.external.clients.datos') %></h2>
+
+<div>
+  <%= form_for @client, as: :client, :url => admin_external_client_path(@client), :html => {:method => :put} do |f| %>
+    <%= render :partial => 'form', :locals => {:f => f} %>
+  <% end %>    
+</div>

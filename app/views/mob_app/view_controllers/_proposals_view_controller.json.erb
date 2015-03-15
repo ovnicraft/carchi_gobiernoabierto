@@ -1,0 +1,56 @@
+<%- data = {
+  "unique_id" => unique_id,
+  "row_height" => 98,
+  "padding" => 4,
+  "image_size" => Floki::IMAGE_SIZE,
+  "title_lines" => Floki::TITLE_LINES,
+  "title_size" => Floki::TITLE_SIZE,
+  "title_color" => Floki::TITLE_COLOR,
+  "text_size" => Floki::TEXT_SIZE,
+  "text_color" => Floki::TEXT_COLOR,
+  "footer_alignment" => 1,
+  "back_normal_color" => Floki::BACK_COLOR,
+  "back_highlight_color" => Floki::BACK_HIGHLIGHT_COLOR,
+  "ttl" => 600,
+  "download_if_virgin" => true,
+  "allow_manual_reload" => true,
+  "navigation_changes_section" => true,
+  "empty_table_message" => 30015,
+  "creation_sequence_url" => url_for(:controller => "mob_app/iui", :action => "new", :what => 'proposal', :locale => '_LNG_', :format => :json, :only_path => false).gsub(/&amp;/, '&'),
+  "vote_params" => {
+    "post_vote_url" => url_for(:controller => "votes", :action => "create", :locale => '_LNG_', :format => :floki, :proposal_id => '_ITEM_ID_', :only_path => false),
+    "post_vote_choice" => [30001, 30002, 30003],
+    "post_vote_line_2" => 30004
+    },
+  "add_argument_params" => {
+    "post_argument_url" => url_for(:controller => "arguments", :action => "create", :locale => '_LNG_', :format => :floki, :proposal_id => '_ITEM_ID_', :only_path => false),
+    "post_argument_choice" => [30005, 30006, 30007],
+    "post_argument_title" => 30008,
+    "post_argument_line_1" => 30009,
+    "post_argument_char_limit" => 255
+    },
+  "comment_params" => {
+    "post_comment_url" => url_for(:controller => "comments", :action => "create", :locale => '_LNG_', :proposal_id => '_ITEM_ID_', :format => 'floki', :only_path => false).gsub(/&amp;/, '&'),
+    "post_comment_char_limit" => 0,
+    "post_comment_line_1" => 26,
+    "post_comment_title" => 28
+    }
+  }
+  
+  if data_options.present?
+    data.merge!(data_options)
+  end
+  
+-%>  
+
+{"id": <%= id %>, 
+"class_type": "News_view_controller",
+"sort_id": <%= sort_id %>, 
+"new_window": false, 
+"section_ids": [<%= section %>],
+"title": "<%= title %>", 
+"body": "<%= body %>",
+"url": "<%= url %>",
+"image": "<%= request.protocol + request.host_with_port + asset_path('floki/irekia_77_propuestas.png') %>",
+"data": <%=raw data.to_json %>
+}

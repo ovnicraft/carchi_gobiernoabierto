@@ -1,0 +1,1 @@
+$('#votes').replaceWith('<%= render(:partial => "/votes/votes_form", :locals => {:votable => @votable}).gsub(/\n/, '') %>')

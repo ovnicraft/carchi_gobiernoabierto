@@ -1,0 +1,96 @@
+h1 {
+  font-family: "AppleGothic";
+  font-size: 1.5em;
+  margin: 0em .3em 1em 0em !important;
+  padding: 0em 0em 0.5em 0em;
+  color: #0098EA;
+}
+
+h2 {
+  font-family: "AppleGothic";
+  font-size: 1.1em;
+  margin: 1em .1em 0em !important;
+  padding: 0em;
+  font-weight: normal;
+  color: #0098EA;
+}
+
+h3 {
+  font-family: "AppleGothic";
+  font-size: 0.9em;
+  margin: 1em .1em 0em !important;
+  padding: 0em;
+  font-weight: normal;
+  color: #eb9500;
+}
+
+h4 {
+  font-family: "AppleGothic";
+  font-size: 0.9em;
+  margin: 1em 0em 0em !important;
+  padding: 0em;
+  font-weight: normal;
+  color: #000;
+}
+
+h5 {
+  font-family: "AppleGothic";
+  font-size: 0.8em;
+  margin: 1em 0em 0em !important;
+  padding: 0em;
+  font-weight: normal;
+  color: #000;
+  font-style: italic;
+}
+
+ul, ol, dl {
+  font-size: 0.8em;
+  margin: .1em 0em 0em 0em !important;
+  line-height: 1.3em;
+}
+
+li {
+  margin: .3em 0em 0em 0em !important;
+}
+
+p {
+  color: #000000;
+  font-size: 0.9em;
+  margin: .6em 0em 0em 0em !important;
+  line-height: 1.3em;
+}
+dl.content {
+  /* border-top: solid 1px #cdcdcd; */
+  margin: 0px;
+  /* padding: 0px;*/
+  /* list-style: none; */
+}
+
+dl.content dd {
+  border-bottom: solid 1px #cdcdcd;
+  margin-left: 5.5em;
+  padding:  0.5em 0px 0.5em 0.2em;
+}
+
+dl.content dd a {
+  color: #000;
+  text-decoration: none;
+}
+
+dl.content dd a:hover {
+  background: #f8f8f8;
+}
+
+dl.content dt {
+  color: #999;
+  float:left;
+  padding:  0.5em 0px 0.5em 0px
+}
+
+div.footer {
+  margin-top: 1em;
+  border-top: solid 1px #999;
+  text-align: right;
+  color: #999;
+  font-size: 0.8em;
+}

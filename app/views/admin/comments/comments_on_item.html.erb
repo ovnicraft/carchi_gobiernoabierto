@@ -1,0 +1,41 @@
+<p>
+  <%= link_to "Ver página pública", @item, :target => 'new' %>
+</p>
+
+<% if @item.respond_to?(:external_items) && @item.external_items.present? %>
+<p>
+Páginas externas:
+<ul>
+  <% @item.external_items.each do |external_item| %>
+  <li><%= external_item.title %> 
+    [<%= link_to "ver en la web", external_item.url %> | 
+     <%= link_to "comentarios", comments_on_item_admin_external_comment_path(:id => external_item.id) %> ]</li>
+  <% end %>
+</ul>  
+</p>
+
+<% end %>
+
+<%= render :partial => 'comments_status' %>
+
+
+<%= render :partial => "submenu" %>
+
+<table class="comments" cellpadding="0" cellspacing="0" border="0">
+  <thead>
+    <tr>
+      <th width="5%">Id</th>
+      <th width="35%">Comentario</th>
+      <th width="15%">Nombre</th>
+      <th width="10%">Fecha</th>
+      <th width="10%">Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  <%= render :partial => 'comment_on_item', :collection => @comments %>
+  
+</tbody>  
+</table>
+
+<%= will_paginate @comments %>

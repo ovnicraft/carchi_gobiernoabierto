@@ -1,0 +1,18 @@
+<%= render :partial => 'tabs' %>
+
+<h1>Modificando comentario</h1>
+
+<%= form_for @comment, url: admin_comment_path(@comment), html: {method: :put} do |f| %>
+  <%= error_messages(f.object) %>
+
+  <%= hidden_field_tag :return_to, params[:return_to] %>
+  <p>
+    <b>Comentario</b>
+  </p>
+  <p>
+    <%= f.text_area :body, :size => "60x10" %>
+  </p>
+  <p>
+    <%= f.submit "Guardar" %>
+  </p>
+<% end %>

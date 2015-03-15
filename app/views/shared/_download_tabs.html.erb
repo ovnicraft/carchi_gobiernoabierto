@@ -1,0 +1,97 @@
+<%- if audios.present? || mpg_videos.present? || files.present? || photos.present? -%>
+  <div class='aside_module downloads'>
+    <div class='title'><span><%= t("shared.tabs.descargas") %></span></div>
+    <div class='content'>
+    <ul class="nav nav-tabs donotprint">
+      <li class="first <%= audios.present? ? 'active' : 'disabled' %>">
+        <a href="#tab-audio" data-toggle="tab"><%= t("shared.tabs.audio") %><span class='quantity'><%= " (#{audios.size})" %></span></a>
+      </li>
+      <li class="<%= audios.empty? && mpg_videos.present? ? 'active' : (mpg_videos.empty? ? 'disabled' : '') %>">
+        <a href="#tab-video" data-toggle="tab"><%= t("shared.tabs.video") %><span class='quantity'><%= " (#{mpg_videos.size})" %></span></a>
+      </li>
+      <li class="<%= audios.empty? && mpg_videos.empty? && photos.present? ? 'active' : (photos.empty? ? 'disabled' : '') %>">
+        <a href="#tab-photos" data-toggle="tab"><%= t("shared.tabs.photos") %><span class='quantity'><%= " (#{photos.size})" %></span></a>
+      </li>
+      <li class="last <%= audios.empty? && mpg_videos.empty? && photos.empty? && files.present? ? 'active' : (files.empty? ? 'disabled' : '') %>">
+        <a href="#tab-documents" data-toggle="tab"><%= t("shared.tabs.documents") %><span class='quantity'><%= " (#{files.size})" %></span></a>
+      </li>
+    </ul>
+
+    <div class="tab-content">
+      <div class="tab-pane <%= audios.present? ? 'active' : '' %>" id="tab-audio">
+        <% if audios.present? -%>
+          <ul class="playlist">
+            <% audios.map {|a| MultimediaFile.new(a)}.each do |mfile| -%>
+              <li class="clearfix">
+                <div class="icon"></div>
+                <a href="<%= mfile.url %>" alt="<%= mfile.name %>"><%= truncate(mfile.name, :length => 30) %></a>
+                <span class="footer"><%= link_to "#{t('descargar').downcase} (#{number_to_human_size(mfile.size)})", mfile.url, :class => 'inline-exclude' %></span>
+              </li>
+            <% end -%>
+          </ul>
+          <% if audios.size > 1 %>
+            <div class='set_zip donotprint'>
+              <div class='set_zip'></div>
+              <%= link_to t('documents.descargar_audios_zip'), send("compress_#{item.class.name.downcase}_url", :id => item.id, :w => 'audios'), :rel => 'nofollow' %>
+            </div>
+          <% end %>
+        <% end -%>
+      </div>
+
+      <div class="tab-pane <%= audios.empty? && mpg_videos.present? ? 'active' : '' %>" id="tab-video">
+        <% if mpg_videos.present? -%>
+          <ul>
+            <% mpg_videos.map {|a| MultimediaFile.new(a)}.each do |mfile| -%>
+              <li class="clearfix">
+                <div class="icon mpg"></div>
+                <a href="<%= mfile.url %>" alt="<%= mfile.name %>" class="download"><%= truncate(mfile.name, :length => 30) %></a>
+                <span class="footer"><%= number_to_human_size(mfile.size) %></span>
+              </li>
+            <% end %>
+          </ul>
+          <% if mpg_videos.size > 1 %>
+            <div class='set_zip donotprint'>
+              <div class='set_zip'></div>
+              <%= link_to t('documents.descargar_videos_mpg_zip'), send("compress_#{item.class.name.downcase}_url", :id => item.id, :w => 'videos_mpg'), :rel => 'nofollow' %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="tab-pane <%= audios.empty? && mpg_videos.empty? && photos.present? ? 'active' : '' %>" id="tab-photos">
+        <% if photos.present? -%>
+          <ul>
+            <% photos.map {|a| MultimediaFile.new(a)}.each do |mfile| -%>
+              <li class="clearfix">
+                <div class="icon photo"></div>
+                <a href="<%= mfile.url %>" alt="<%= mfile.name %>" class="download"><%= truncate(mfile.name, :length => 30) %></a>
+                <span class="footer"><%= number_to_human_size(mfile.size) %> (<%= mfile.file_type %>)</span>
+              </li>
+            <% end -%>
+          </ul>
+          <% if photos.size > 1 %>
+            <div class='set_zip donotprint'>
+              <div class='set_zip'></div>
+              <%= link_to t('documents.descargar_fotos_zip'), send("compress_#{item.class.name.downcase}_url", :id => item.id, :w => 'photos'), :rel => 'nofollow' %>
+            </div>
+          <% end %>
+        <% end -%>
+      </div>
+
+      <div class="tab-pane <%= audios.empty? && mpg_videos.empty? && photos.empty? && files.present? ? 'active' : '' %>" id="tab-documents">
+        <% if files.present? -%>
+          <ul>
+            <% files.map {|a| MultimediaFile.new(a)}.each do |mfile| -%>
+              <li class="clearfix">
+                <div class="icon pdf"></div>
+                <a href="<%= mfile.url %>" alt="<%= mfile.name %>"  class="download"><%= truncate(mfile.name, :length => 30) %></a>
+                <span class="footer"><%= number_to_human_size(mfile.size) %> (<%= mfile.file_type %>)</span>
+              </li>
+            <% end -%>
+          </ul>
+        <% end -%>
+      </div>
+    </div>
+  </div>
+  </div>
+<%- end -%>

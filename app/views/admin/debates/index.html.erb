@@ -1,0 +1,50 @@
+<div style="clear:both; margin:1em 0px;">
+  <% if can_create?("debates") %>
+  <ul class="edit_links">
+    <%= content_tag(:li, link_to(t("admin.debates.crear_propuesta"), new_admin_debate_path({:lang => "es"}), :class => "new")) %>      
+  </ul>
+  <% end %>
+</div>
+
+<div class="featured_hint">
+  <%=t("admin.debates.muestran_debates_destacados", :max_featured => Debate::MAX_FEATURED)%>
+  <%- diff = Debate.published.featured.count - Debate::MAX_FEATURED -%>
+  <%= content_tag(:span, "Sobran #{diff} debates destacados.", :class => "over_limit") if diff > 0 %>
+</div>
+
+
+
+<!-- <div style="clear:both; margin:1em 0px;">
+  <%= form_tag admin_debates_path, :method => :get do  %>
+  Búsqueda por título:
+    <%= text_field_tag :q %>
+    <%= submit_tag "Buscar" %>
+  <% end %>
+</div> -->
+
+<% unless @debates.empty? %>
+  <%= will_paginate @debates %>
+
+
+  <%= render :partial => "/admin/debates/menu" %>
+
+
+  <table class="comments" cellspacing="0">
+    <tr>
+      <th><%= link_to_unless @sort_order.eql?("title"),  t('sadmin.news.titulo'), admin_debates_path(params.merge(:sort => "title")) %></th>
+      <th><%= link_to_unless @sort_order.eql?("publish"),  t('sadmin.news.fecha_publicacion'), admin_debates_path(params.merge(:sort => "publish")) %></th>
+      <th><%= link_to_unless @sort_order.eql?("update"),  t('sadmin.news.ultima_actualizacion'), admin_debates_path(params.merge(:sort => "update")) %></th>
+      <th><%= t('sadmin.news.area') %></th>
+	  <th><%= t('admin.proposals.departamento') %></th>
+	  <th><%= t('admin.proposals.paginas_publicas') %></th>
+	  <th><%= t('admin.debates.fase') %></th>
+	  <th><%= t('sadmin.news.comentarios') %></th>
+    </tr>
+  
+    <%= render :partial => "debate_row", :collection => @debates %>
+
+  </table>
+
+
+  <%= will_paginate @debates %>
+<% end %>

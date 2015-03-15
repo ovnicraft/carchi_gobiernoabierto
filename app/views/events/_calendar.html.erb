@@ -1,0 +1,40 @@
+<% hide_month_name ||= false %>
+<% hide_day_names ||= true %>
+<% year = @year || Date.today.year %>
+<% month = @month || Date.today.month %>
+<% day = @day || Date.today.day %>
+<% today = Date.today %>
+<% month_events ||= Event.published.translated.month_events_by_day4cal(month, year) %>
+<% extra_params = {} %>
+<% target ||= :aside %>
+
+<div class='calendar calendar_container <%= 'aside_module' if target.eql?(:aside) %>'>
+  <div class="content">
+    <div class="clearfix">
+      <% calendar_params = {:hide_month_name => hide_month_name, :current_month => "%B %Y", :hide_day_names => hide_day_names} %>
+      <% if @context.present? -%>
+        <% extra_params = {"#{@context.class.to_s.downcase}_id".to_sym => @context.id, :anchor => 'middle'} %>
+      <% end -%>
+      <% if target.eql?(:aside) -%>
+        <% calendar_params.merge!(:previous_month =>  lambda { |date| link_to(raw("<span>#{t("events.mes_anterior")}</span>"), calendar_events_url(extra_params.merge(:year => date.year, :month => date.month) ), :class => 'change_month') },
+      :next_month => lambda { |date| link_to(raw("<span>#{t("events.mes_siguiente")}</span>"), calendar_events_url(extra_params.merge(:year => date.year, :month => date.month)), :class => 'change_month')}) %>
+      <% end -%>
+      <%= calendar_for(year, month, calendar_params) do |d| 
+          render_public_calendar_cell(d, month_events[d.month].nil? ? {} : month_events[d.month][d.mday], today.day) 
+      end %>
+    </div>
+  </div>  
+
+  <% if target.eql?(:aside) -%>
+    <div class='loading_overlay' style='display:none'>
+      <%= image_tag(asset_path('ajax-loader.gif')) %>
+    </div>
+
+    <script type='text/javascript'>
+      $(document).ready(function(){
+        calendarNavigation.init();
+      });
+    </script>
+  <% end -%>  
+
+</div>  

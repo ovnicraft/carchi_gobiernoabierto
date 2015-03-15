@@ -1,0 +1,39 @@
+<% show_form = false %>
+<% if @search_results.present? %>
+  <div class='title'><%= t('search.sigue_buscando')  %></div>
+
+  <!-- Busqueda libre -->
+  <div class='search_form' id='search_form'>
+    <%= render :partial => 'search/form', :locals => {:size => 35} %>
+  </div>  
+<% end %>
+
+<%- Elasticsearch::Base::FACET_FIELDS.each do |facet| -%>
+  <% attributes = Elasticsearch::Base::FACETS[facet] %>
+  <% if @search_facets[facet].present? && (!facet.eql?('month') || (facet.eql?('month') && !@criterio.title.match(/year:/).nil?)) %>
+    <% facets1 = @search_facets[facet][0..(attributes[:show][:no_facets] - 1)] %>
+    <% facets2 = @search_facets[facet] - facets1 %>
+    <div class='type_facets s_part'>
+      <h4>
+        <%= t("search.facets.#{facet}") %>
+        <% if Elasticsearch::Base::BOPV_FACETS.include?(facet) %>
+          <span><%= t('orders.solo_bopv') %></span>
+        <% end %>
+      </h4>
+      <ul>
+        <%= link_to_facets(facets1, facet) %>
+        <% if facets2.present? %>
+          <li class='hide_facets' id='<%= "hide_#{facet}_facets" %>'>
+            <%= link_to t('search.ver_mas'), "#", :onclick => "$('li.hidden_#{facet}_facet').fadeIn();$('li#hide_#{facet}_facets').toggle();$('li#show_#{facet}_facets').toggle();return false;", :class => 'link' %>
+          </li>
+          <%= link_to_facets(facets2, facet, "hidden_#{facet}_facet hidden_facet") %>
+          <li class='show_facets' id='<%= "show_#{facet}_facets" %>'>
+            <%= link_to t('ocultar'), "#", :onclick => "$('li.hidden_#{facet}_facet').hide();$('li#hide_#{facet}_facets').toggle();$('li#show_#{facet}_facets').toggle();return false;", :class => 'link' %>
+          </li>        
+        <% end %>  
+      </ul>
+    </div>
+
+  <% end %>
+<% end %>
+

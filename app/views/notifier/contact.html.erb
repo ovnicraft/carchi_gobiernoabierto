@@ -1,0 +1,14 @@
+<p>
+  <%= I18n.t('notifier.alguien_ha_dado', :name => Settings.site_name) %>
+</p>
+
+<p>
+  <%= User.human_attribute_name(:name) %>: <%= h @sender_name %><br/>
+  <%= User.human_attribute_name(:email) %>: <%= h @sender_email %>
+</p>
+
+<p>
+  <%= t('site.mensaje') %>:<br/>
+  <%= @message %>
+</p>
+

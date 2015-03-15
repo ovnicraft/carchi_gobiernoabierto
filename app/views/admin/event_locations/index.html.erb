@@ -1,0 +1,32 @@
+<%= render :partial => "/sadmin/events/submenu" %>
+
+<% @title = "Emplazamientos de sedes" %>
+
+  <ul class="edit_links">
+    <li class="add_user"><%= link_to "Añadir emplazamiento", new_admin_event_location_path, :class => "new" %></li>
+  </ul>
+
+Éstos son los emplazamientos predefinidos que habitualmente se usan al especificar el lugar en el que
+ocurrirá un evento. Los emplazamientos aquí definidos son sugeridos al usuario a la hora de crear un
+evento y evita tener que especificar las mismas coordenadas cada vez que se crea un evento.
+
+<table class="comments" cellspacing="0" cellpadding="2">
+  <tr>
+    <th>Nombre</th>
+    <th>Ciudad</th>
+    <th>Dirección</th>
+    <th>Coordenadas</th>
+  </tr>
+  
+<% @locations.each do |location| %>
+  <tr>
+    <td><%= link_to(h(location.place), admin_event_location_path(location)) %></td>
+    <td><%= h location.city %></td>
+    <td><%= h location.address %></td>
+    <td><%= location.coord.join(", ") %></td>
+  </tr>
+<% end %>
+</table>
+
+
+

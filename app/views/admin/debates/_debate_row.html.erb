@@ -1,0 +1,48 @@
+<% debate = debate_row %>
+<tr id="debate_<%= debate.id %>" class="<%= debate.current_stage %>">
+  <td>
+    <%= link_to h(debate.title), admin_debate_path(debate) %><br/>
+
+    <% if !debate.is_public? %>
+      <span class='draft_notice'><%= t('admin.debates.es_borrador')  %></span>
+    <% elsif debate.published? %>
+      <span class="published_notice">Publicado</span>
+    <% else %>
+      <span class="unpublished_notice">Se publicará el <%=  I18n.localize(debate.published_at, :format => :short) %></span>
+    <% end %>
+
+    <%= content_tag :span, t('sadmin.news.destacado'), :class => "destacado" if debate.featured %> 
+    <%= content_tag :span, t('sadmin.news.destacado_boletin'), :class => "destacado" if debate.featured_bulletin %> 
+  </td>
+  
+  <td><%= I18n.localize(debate.published_at, :format => :list) if debate.published_at %></td>
+  <td><%= I18n.localize(debate.updated_at, :format => :list) %></td>
+  <td>
+    <%= debate.area.name if debate.area %><br/>
+    <% official_comments = debate.comments.select("id, user_id").select {|c| c.user && c.user.is_official_commenter?}.size %>
+    <% if official_comments > 0 %>
+      <span class="official_comment">
+        <%= link_to "#{official_comments} comentario(s) oficial(es)", debate_path(debate), :target => "_blank" %>
+      </span>
+    <% end %>
+  </td>
+  <td><%= debate.organization ? debate.organization.name : '<span class="pending">pendiente de asignar</span>'%></td>
+  <td>
+    <ul class="language_versions">
+      <% for_every_locale do |code, lang| %>
+        <li class="translated_<%= debate.translated_to?(code.to_s) %>" title="<%= pretty_translated(debate, code) %>">
+          <%= link_to lang, debate_path(debate, :locale => code), :class => "public_link" %>
+        </li>
+      <% end %>
+    </ul>
+  </td>
+  
+  <td style="white-space:nowrap;" class="stage">
+    <%= debate.current_stage.nil? ? "" : t("debates.stage_#{debate.current_stage.label}") %>
+  </td>
+  
+  <td style="white-space:nowrap;">
+    <%= link_to_if can_create?("debates"), "#{debate.comments_count} comentarios", comments_on_item_admin_comment_path(:id => debate.id, :type => "Debate" ) %>
+  </td>
+
+</tr>

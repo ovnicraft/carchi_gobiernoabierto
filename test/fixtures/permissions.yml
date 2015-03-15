@@ -1,0 +1,66 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+can_edit_news:
+  user: miembro_que_modifica_noticias
+  module: news
+  action: edit
+
+can_create_news:
+  user: miembro_que_crea_noticias
+  module: news
+  action: create
+
+can_respond_officially:
+  user: comentador_oficial
+  module: comments
+  action: official
+  
+can_create_private_events:
+  user: creador_eventos_privadas
+  module: events
+  action: create_private
+
+can_create_irekia_events:
+  user: creador_eventos_irekia
+  module: events
+  action: create_irekia
+  
+can_administer_permissions:
+  user: superadmin
+  module: permissions
+  action: administer
+
+miembro_con_permisos_de_todo_tipo1:
+  user: miembro_con_permisos_de_todo_tipo
+  module: news
+  action: create
+
+miembro_con_permisos_de_todo_tipo2:
+  user: miembro_con_permisos_de_todo_tipo
+  module: comments
+  action: official
+
+miembro_con_permisos_de_todo_tipo3:
+  user: miembro_con_permisos_de_todo_tipo
+  module: events
+  action: create_irekia
+  
+exportador_de_noticias:
+  user: exportador_de_noticias
+  module: news
+  action: export
+
+evaluador_de_recomendaciones:
+  user: miembro_que_modifica_noticias
+  module: recommendations
+  action: rate
+
+politico_con_permisos_noticias:
+  user: politician_interior
+  module: news
+  action: create
+
+politico_con_permisos_agenda:
+  user: politician_lehendakaritza
+  module: events
+  action: create_irekia

@@ -1,0 +1,12 @@
+<div class="search_menu">
+  <ul>
+    <li <%= "class='active'" if params[:type].blank? || params[:type].eql?("all") %>>
+      <%= link_to t('todos'), params.merge(:type => "all") %>
+    </li>
+    <% taggable_modules.each do |type| %>
+      <li <%= "class='active'" if  params[:type].eql?(type.to_s) %>>
+        <%= link_to type.model_name.human(:count => "2").capitalize, params.merge(:type => type.to_s) %>
+      </li>
+    <% end %>
+  </ul>
+</div>

@@ -1,0 +1,11 @@
+<div class='menu_heading'><%= t('documents.consulta_departamentos') %></div>
+<ul class='nav-list departments'>
+  <% Area.ordered.each do |area| %>
+    <li><%= link_to area.name, area_news_url(:area_id => area.id, :anchor => 'middle') %></li>
+  <% end %>
+</ul>
+
+<ul class='nav-list departments'>
+  <li><%= link_to t('news.all'), news_index_url %></li>
+  <li><%= link_to t('site.newsletter'), bulletin_subscriptions_path %></li>
+</ul>

@@ -1,0 +1,11 @@
+<%= link_to a.file_file_name, a.file.url %>
+<% if can_edit?(doc.class.to_s.pluralize.downcase) %>
+  [<%= link_to t("sadmin.modificar"), edit_sadmin_attachment_path(a) %>, 
+   <%= link_to t("sadmin.eliminar"), sadmin_attachment_path(a), :method => :delete, :confirm => t('sadmin.estas_seguro') %>]
+<% end %>
+<br/>
+<blockquote>
+  <b><%= si_o_no(a.show_in_es) %></b>, <%= t("sadmin.se_muestra_#{a.show_in_es}", :where => t("castellano")) %><br/>
+  <b><%= si_o_no(a.show_in_eu) %></b>, <%= t("sadmin.se_muestra_#{a.show_in_eu}", :where => t("euskera")) %><br/>
+  <b><%= si_o_no(a.show_in_en) %></b>, <%= t("sadmin.se_muestra_#{a.show_in_en}", :where => t("ingles")) %>
+</blockquote>

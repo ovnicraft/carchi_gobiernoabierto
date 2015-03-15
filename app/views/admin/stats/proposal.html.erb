@@ -1,0 +1,62 @@
+<%= render 'submenu' %>
+
+<h2>Propuestas</h2>
+
+<%= form_tag proposal_admin_stats_path, :method => :get do %>
+  <%= render 'date_select' %>
+<% end %>
+<table class="stats" cellspacing="0" cellpadding="0">
+  <thead>
+    <tr class="title">
+      <th>Departamento</th>
+      <th class="number">Total</th>
+      <th class="number">Respuestas oficiales</th>
+      <th class="number">Tiempo medio de respuesta</th>
+      <th class="number">Sin contestar</th>
+      <th class="number">Comentarios<br/>(Original/Twitter)</th>
+      <th class="number">Argumentos(+/-)</th>
+      <th class="number">Votos(+/-)</th>
+    </tr>
+  </thead>
+  <% Department.active.each do |department| %>
+    <% department_finder = @counters_finder.where(["department_id=:department_id", {department_id: department.id}])%>
+    <tr>
+      <td><%= department.name %></td>
+      <td class="number"><%= number_with_delimiter department_finder.count %></td>
+      <td class="number"><%= number_with_delimiter department_finder.where("official_comments > 0").sum(:official_comments) %></td>
+      <td class="number"><%= humanize_seconds(department_finder.where("official_comments > 0").average(:answer_time_in_seconds)) %></td>
+      <td class="number"><%= number_with_delimiter department_finder.where("official_comments = 0").count %></td>
+      <td class="number">
+        <%= number_with_delimiter department_finder.sum(:user_comments)%><br/>
+        (<%= number_with_delimiter department_finder.sum(:not_twitter_comments)%>/<%= number_with_delimiter department_finder.sum(:twitter_comments)%>)
+      </td>
+      <td class="number">
+        <%= number_with_delimiter department_finder.sum(:arguments) %> 
+        (<%= number_with_delimiter department_finder.sum(:in_favor_arguments) %>/<%= number_with_delimiter department_finder.sum(:against_arguments) %>)
+      </td>
+      <td class="number">
+        <%= number_with_delimiter department_finder.sum(:votes) %> 
+        (<%= number_with_delimiter department_finder.sum(:positive_votes) %>/<%= number_with_delimiter department_finder.sum(:negative_votes) %>)
+      </td>
+    </tr>
+  <% end%>
+  <tr class="title">
+    <th>Totales</th>
+    <th class="number"><%= number_with_delimiter @counters_finder.count %></th>
+    <th class="number"><%= number_with_delimiter @counters_finder.where("official_comments > 0").sum(:official_comments) %></th>
+    <th class="number"><%= humanize_seconds @counters_finder.where("official_comments > 0").average(:answer_time_in_seconds) %></th>
+    <th class="number"><%= number_with_delimiter @counters_finder.where("official_comments = 0").count %></th>
+    <th class="number">
+      <%= number_with_delimiter @counters_finder.sum(:user_comments)%><br/>
+      (<%= number_with_delimiter @counters_finder.sum(:not_twitter_comments)%>/<%= number_with_delimiter @counters_finder.sum(:twitter_comments)%>)
+    </th>
+    <th class="number">
+      <%= number_with_delimiter @counters_finder.sum(:arguments) %> 
+      (<%= number_with_delimiter @counters_finder.sum(:in_favor_arguments) %>/<%= number_with_delimiter @counters_finder.sum(:against_arguments) %>)
+    </th>
+    <th class="number">
+      <%= number_with_delimiter @counters_finder.sum(:votes) %> 
+      (<%= number_with_delimiter @counters_finder.sum(:positive_votes) %>/<%= number_with_delimiter @counters_finder.sum(:negative_votes) %>)
+    </th>
+  </tr>
+</table>

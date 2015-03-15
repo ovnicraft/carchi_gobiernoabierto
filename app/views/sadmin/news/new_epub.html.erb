@@ -1,0 +1,56 @@
+<% @title = "Noticias para generar ePub" %>
+
+
+<% if @search_results.length > 300 %>
+  Por motivos técnicos, debes hacer una búsqueda con un máximo de 300 noticias.
+<% else %>
+
+<%= @search_results.length %> noticias.
+Elija las noticias que quiere incluir en el ePub
+
+<%= form_tag "create_epub" do %>
+
+  <table class="comments" cellspacing="0">
+    <tr>
+      <th>Noticia</th>
+      <th>Fecha de publicación</th>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <label class='checkbox'>
+          <%= check_box_tag :all_news, "", true %>
+          <%= t('todos') %>
+        </label>
+      </td>
+    </tr>
+    <% @search_results.each do |news| %>
+    <tr>
+      <td>
+        <%= check_box_tag "news_to_export[]", news.id, true %>
+        <%= link_to news.title, sadmin_news_path(news) %>
+      </td>
+      <td>
+        <%= I18n.localize(news.published_at, :format => :short) if news.published_at %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+  <%= submit_tag "Generar ePub" %>
+
+<% end %>
+
+<% end %>
+
+
+<script type="text/javascript" charset="utf-8">
+  
+  var checkboxes = $$(".comments input[type=checkbox]");
+  var cbControl = $("all_news");
+  
+  cbControl.observe("click", function(){
+    checkboxes.each(function(box){
+      box.checked = cbControl.checked;
+    });
+  });
+  
+</script>

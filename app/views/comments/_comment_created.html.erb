@@ -1,0 +1,18 @@
+<% if @comment.approved? %>
+  <li class="clearfix moderated" data-tracking="<%= @tracking_url %>">
+    <%= render :partial => 'comments/comment', :object => @comment %>
+  </li>  
+<% else %>
+  <li class='info'>
+    <% if @comment.spam? %>
+      <div class='alert alert-error'>
+        <strong><%= t('comments.sorry_marked_as_spam') %></strong>
+      </div>      
+    <% else %>
+      <div class='alert alert-info'>
+        <strong><%= t('comments.comment_sent') %></strong>
+        <%= @msg %>    
+      </div>
+    <% end %>
+  </li>  
+<% end %>

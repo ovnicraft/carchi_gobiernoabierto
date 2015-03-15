@@ -1,0 +1,10 @@
+<% if organizations.size > 0 %>
+  <div class='aside_module organizations'>
+    <div class='title'><span><%= t('debates.related_entities') %></span></div>
+    <div class='content'>
+      <ul class="std_list people">
+        <%= render :partial => '/organizations/list_item', :collection => organizations, :as => :organization %>
+      </ul>
+    </div>
+  </div> 
+<% end %>

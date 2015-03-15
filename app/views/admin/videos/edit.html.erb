@@ -1,0 +1,4 @@
+
+<%= form_for @video, :url => admin_video_path(@video), :html => {:method => :put} do |f| %>
+  <%= render :partial => "form", :locals => {:f => f} %>
+<% end %>

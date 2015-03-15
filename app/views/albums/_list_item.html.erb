@@ -1,0 +1,14 @@
+<% rank ||= nil %>
+
+<li class='item album'>
+  <div class='item_thumbnail'>
+    <%= image_tag(album.cover_photo.version(:n70)) if album.cover_photo %>
+  </div>
+  <div class='item_content'>
+    <%= render_date(album.created_at) %>
+    <div class='title'><%= link_to h(album.title), album_url(album, :criterio_id => @criterio) %></div>
+    <div class='area'><%= album.area_name %></div>
+    <%= "<span class='search_rank'>(#{rank})</span>" if logged_in? && !rank.nil? %>
+    <%= show_search_explanation(album) %>
+  </div>
+</li>

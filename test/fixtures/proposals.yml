@@ -1,0 +1,127 @@
+# Todas estas propuestas son del área de lehendakaritza
+<% if Settings.optional_modules.proposals %>
+draft_proposal:
+  name: Un visitante
+  email: visitante@efaber.net
+  title_es: Propuesta borrador
+  body_es: Propuesta borrador
+  status: aprobado
+  user: visitante
+  published_at:
+  body_es: "Mi propuesta"
+
+rejected_proposal:
+  name: Un visitante
+  email: visitante@efaber.net
+  title_es: Propuesta rechazada
+  body_es: Propuesta rechazada
+  status: rechazado
+  user: visitante
+  published_at:
+  body_es: "Mi propuesta"
+
+unapproved_proposal:
+  name: Un visitante
+  email: visitante@efaber.net
+  title_es: Propuesta sin aprobar
+  body_es: Propuesta sin aprobar
+  status: pendiente
+  user: visitante
+  published_at: <%= Time.zone.now - 2.days %>
+  body_es: "Mi propuesta"
+
+approved_and_published_proposal:
+  name: Un visitante
+  email: visitante@efaber.net
+  title_es: Propuesta aprobada
+  body_es: Propuesta aprobada
+  status: aprobado
+  user: visitante
+  published_at: <%= 2.hours.ago %>
+  body_es: "Mi propuesta"
+  department: interior
+
+featured_proposal:
+  name: Un visitante
+  email: visitante@efaber.net
+  title_es: Propuesta destacada
+  body_es: Propuesta destacada
+  status: aprobado
+  user: visitante
+  published_at: <%= Time.zone.now - 2.months %>
+  body_es: "Mi propuesta"
+  featured: true
+  department: lehendakaritza
+
+searchable_proposal:
+  name: Un visitante
+  email: visitante@efaber.net
+  title_es: Encuentra esta propuesta
+  body_es: Encuentra esta propuesta
+  status: aprobado
+  user: visitante
+  published_at: <%= Time.zone.now - 2.days %>
+
+unsearchable_proposal:
+  name: Un visitante
+  email: visitante@efaber.net
+  title_es: No encuentra esta propuesta
+  body_es: No Encuentra esta propuesta
+  status: pendiente
+  user: visitante
+  published_at:
+
+approved_and_published_proposal_in_basque:
+  name: Un visitante
+  email: visitante@efaber.net
+  title_eu: Proposamena euskaraz
+  body_eu: Proposamena euskaraz
+  status: aprobado
+  user: visitante
+  published_at: <%= Time.zone.now - 2.days %>
+  department: interior
+
+unpublished_proposal:
+  name: Un visitante
+  email: visitante@efaber.net
+  title_eu: Unpublished_proposal
+  body_eu: Proposamena euskaraz
+  status: aprobado
+  user: visitante
+  published_at: <%= 2.days.from_now %>
+
+# Todas estas propuestas son del área de lehendakaritza
+
+interior_proposal:
+  name: Un visitante
+  email: visitante@efaber.net
+  title_es: Propuesta aprobada
+  body_es: Propuesta aprobada
+  status: aprobado
+  user: visitante
+  published_at: <%= 2.hours.ago %>
+  body_es: "Mi propuesta"
+  department: interior
+
+governmental_proposal:
+  name: Un visitante
+  email: visitante@efaber.net
+  title_es: De gobierno
+  body_es: Propuesta aprobada
+  status: aprobado
+  user: visitante
+  published_at: <%= 2.hours.ago %>
+  body_es: "De gobierno"
+
+
+proposal_from_inactive_department:
+  name: Un visitante
+  email: visitante@efaber.net
+  title_es: Propuesta aprobada de departamento inactivo
+  body_es: Propuesta aprobada de departamento inactivo
+  status: aprobado
+  user: visitante
+  published_at: <%= 2.months.ago %>
+  body_es: "Mi propuesta"
+  department: lehendakaritza_ix_leg
+<% end %>

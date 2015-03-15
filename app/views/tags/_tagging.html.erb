@@ -1,0 +1,16 @@
+<%- taggable = tagging.taggable -%>
+<% if taggable.is_a?(News) %>
+  <%= render :partial => "/news/list_item", :locals => {:news => taggable, :target => "search"} %>
+<% elsif taggable.is_a?(Event) %>
+  <%= render :partial => "/events/list_item", :locals => {:event => taggable, :target => "search"} %>
+<% elsif taggable.is_a?(Page) %>
+  <%= render :partial => "/pages/list_item", :locals => {:page => taggable, :target => "search", :page => taggable} %>
+<% elsif taggable.is_a?(Proposal) %>
+  <%= render :partial => "/proposals/list_item", :locals => {:proposal => taggable, :target => "search"} %>
+<% elsif taggable.is_a?(Video) %>
+  <%= render :partial => "/videos/list_item", :locals => {:video => taggable} %>
+<% elsif taggable.is_a?(Album) %>
+  <%= render :partial => "/albums/list_item", :locals => {:album => taggable} %>
+<% elsif taggable.is_a?(Politician) %>
+  <%= render :partial => "/politicians/list_item", :locals => {:politician => taggable} %>                                                                                                        
+<% end %>

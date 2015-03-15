@@ -1,0 +1,21 @@
+<div class='events_summary row-fluid'>
+  <div class='span4'>
+    <%= render :partial => '/events/summary_left' %>
+  </div>
+  <div class='span8'>
+    <div class='menu_heading'><%= t('events.comming_events') %></div>
+    <ul class='std_list drop_list events_summary'>
+      <%= render :partial => '/events/list_item', :collection => @events[0..3], :as => :event, :locals => {:target => :nav} %>
+      <li class='item fullwidth'>
+        <div class='item_content'>
+          <div class='title'><%= link_to t('events.see_all'), events_url %></div>
+        </div>
+      </li>
+      <li class='item fullwidth'>
+        <div class='item_content'>
+          <div class='title'><%= link_to t('users.registro_periodistas'), new_journalist_url %></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class='section container intro account show'>
+  <%= render :partial => '/shared/context', :locals => {:type => 'citizens'} %>
+  <div class='section_main row-fluid'>
+    <div class='section_content span12'>
+      <div class='account summary'>
+        <div class='avatar_and_name row-fluid'>
+          <div class='avatar span1'>
+            <%= avatar @user %>
+          </div>
+          <div class='user_name span7'>
+            <h1 class='title'><%= h(@user.public_name) %></h1>
+          </div>
+        </div>
+        <% if @user == current_user -%>
+          <div class='info public_profile row-fluid'><span class='span7 offset1'><%= t('account.public_profile', :site_name => Settings.site_name) %></span></div>
+        <% end -%>
+      </div>  
+    </div>
+  </div>
+</div>

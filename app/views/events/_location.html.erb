@@ -1,0 +1,28 @@
+<% if item.lat.present? && item.lng.present? %>
+  <% enable_map_zoom ||= "false" %>
+  <% content_for :js_data do -%>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&region=ES&language=<%= I18n.locale %>" type="text/javascript"></script>
+    <%= javascript_include_tag 'map' %>
+    <script type="text/javascript" charset="utf-8">
+          google.maps.event.addDomListener(window, 'load', function() {
+            var miniLat = <%= item.lat || 42.8464027 %>,
+                miniLng = <%= item.lng ||  -2.6716728 %>;            
+            startMiniMap("map_<%= item.id %>", miniLat, miniLng, <%= enable_map_zoom %>);                
+          });          
+    </script>  
+  <% end -%>
+
+  <div class='aside_module location'>
+    <div class='title'><span><%= t("shared.sidebar.location") %></span></div>
+    <div class='content'>
+      <ul class="location no-bullets">
+        <li>
+          <div class="map" id="map_<%= item.id %>"></div>
+          <div class="footer">
+            <span class="where"><%= location_pretty(item) %></span>
+          </div>
+        </li>
+      </ul>  
+    </div>
+  </div>
+<% end %>

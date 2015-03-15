@@ -1,0 +1,55 @@
+<%= render :partial => "/sadmin/events/edit_links", :locals => {:event => @document} %>
+
+<% if @w.eql?('traducciones') %>
+  <%= render :partial => "translations", :locals => {:document => @document} %>
+<% else %>
+  <ul class="edit_links">
+    <li><%= link_to t('sadmin.modificar'), edit_tags_admin_document_path(@document, :w => params[:w]), :class => "edit" %></li>
+  </ul>
+  
+  <p>
+    <b><%= t('admin.news.admite_nuevos_comentarios') %></b>
+      <%= si_o_no(!@document.comments_closed?) %>
+  </p>
+  
+  <p><%= show_tags_with_classes(@document) %></p>
+  
+  <p><b><%= t('admin.events.cobertura_irekia', :site_name => Settings.site_name) %>:</b> <%= si_o_no(@document.irekia_coverage?) %></p>
+
+  <% if @document.irekia_coverage? %>
+    <blockquote>
+      <p>
+        <b><%= t('admin.events.cobertura_what', :what => t('photos.title')) %>:</b> 
+        <%= si_o_no(@document.irekia_coverage_photo?) %>
+      </p>
+
+      <p>
+        <b><%= t('admin.events.cobertura_what', :what => t('videos.title')) %>:</b> 
+        <%= si_o_no(@document.irekia_coverage_video?) %>
+      </p>
+
+      <p>
+        <b><%= t('admin.events.cobertura_what', :what => t('documents.audio')) %>:</b> 
+        <%= si_o_no(@document.irekia_coverage_audio?) %>
+      </p>
+      
+      <p>
+        <b><%= t('admin.events.cobertura_what', :what => t('documents.cronica')) %>:</b> 
+        <%= si_o_no(@document.irekia_coverage_article?) %>
+      </p>
+      
+      <p>
+        <b><%= t('admin.events.cobertura_what', :what => t('documents.streaming')) %>:</b> 
+        <%= si_o_no(@document.streaming_live?) %>.
+        <% if @document.streaming_live? %>
+          Sala: <%= @document.stream_flow.title if @document.stream_flow %><br />
+        <% end %>
+      </p>
+      
+      <% if @document.streaming_live? %>
+         <b>Streaming en:</b> <%= show_web_streaming_info_for_admin(@document) %>
+      <% end %>      
+    </blockquote>
+  <% end %>
+
+<% end %>

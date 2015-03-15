@@ -1,0 +1,78 @@
+<% content_for :facebook_meta do -%>
+  <meta property="og:title" content="<%= Settings.site_name %> - <%= @proposal.title.gsub('"', '\'') %>" >
+  <meta property="og:description" content="<%= pretty_n_characters_wo_html(@proposal.body, 200).gsub('"', '\'') if @proposal.body %>" >
+  <meta property="og:image" content="<%= @proposal.image.thumb_70.url if @proposal.has_image? %>" />
+<% end -%>
+
+<% content_for :js_data do  %>
+  <%= javascript_include_tag 'lib/jquery-ui-1.8.16.custom.min', 'public/participation' %>
+<% end %>
+
+<p class="only_for_print page_link"><%= proposal_url(:id => @proposal.id) %></p>  
+
+<%= render :partial => '/shared/contribution_nav' %>
+
+<div class='section container proposals show'>
+  <%= render :partial => '/shared/context', :locals => {:type => 'proposals', :area => @proposal.area} %>
+  <div class='section_main row-fluid'>
+    <div class='section_content span8'>
+      <div class='article proposals'>
+        <%= render :partial => 'shared/edit_links', :locals => {:item => @proposal} %>
+
+        <% unless @proposal.approved? %>
+          <div class='alert alert-error'>
+            <%= t('shared.moderation_pending') %>
+          </div>
+        <% end %>  
+
+        <div class="only_for_print qr_code"><%= item_qr_code(@proposal) %></div> 
+
+        <div class='top'>
+          <%= link_to_item_comments(@proposal.comments_count) %>
+        </div>  
+        
+        <h1 class='title'><%= highlight_according_to_criterio(@proposal.title, @criterio) %></h1>
+        
+        <div class='author meta_article'>
+          <i class='ico_author'></i>
+          <div class='meta_text'><%=raw t('proposals.por2', :author => link_to_user_profile_unless_deleted(@proposal.user)) %></div>
+        </div>
+
+        <%= render_date(@proposal.published_at) %>
+        
+        <div class="irekia_alert answer_info">
+          <%= answer_text(@proposal) %>
+        </div>
+        
+        <%= render :partial => '/shared/tags', :locals => {:tags => @proposal.tags.all_public} %>
+
+        <div class='share_rss_listen row-fluid donotprint'>
+          <%= render :partial => '/shared/share', :locals => {:item => @proposal} %>
+        </div>
+
+        <%= render :partial => '/votes/votes_form', :locals => {:votable => @proposal, :participation_disabled => (@proposal.comments_closed? ? :true : :false)} if @proposal.approved? %>
+        
+        <% if @proposal.has_image? -%>
+          <% orientation = get_photo_orientation(@proposal.image) %>
+          <div class="image_wrap <%= orientation %>">
+            <%= image_tag(@proposal.image.n770.url, :title =>  t('site.cite_irekia', :site_name => Settings.site_name, :publisher_name => Settings.publisher[:name]), 
+                         :id => "photo_#{@proposal.image.url}", :class => 'orientation') %>
+          </div>
+        <% end -%>
+
+        <div class='text'>
+          <%= highlight_according_to_criterio(simple_format(auto_link_urls(white_list(@proposal.body), :rel => "external nofollow")), @criterio) if @proposal.body.present? %>
+        </div>
+        
+        <% if @proposal.approved? -%>
+          <%= render :partial => "/arguments/arguments", :locals => {:argumentable => @proposal, :participation_disabled => (@proposal.comments_closed? ? :true : :false)} %>
+          <%= render :partial => "/comments/list", :locals => {:parent => @proposal, :comments => @comments} %>
+        <% end -%>
+      </div>
+    </div>
+    <div class='section_aside span4 donotprint'>
+      <%= render :partial => "shared/download_tabs", :locals => {:item => @proposal, :audios => [], :mpg_videos => [], :photos => [], :files => @proposal.attached_files } %>
+      <%= render :partial => "/proposals/related_proposals" %>
+    </div>
+  </div>
+</div>

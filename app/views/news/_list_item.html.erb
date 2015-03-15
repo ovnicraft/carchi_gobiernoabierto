@@ -1,0 +1,59 @@
+<% 
+  block ||= ''
+  target ||= ''
+  options = {}
+  options[:criterio_id] = @criterio.id if @criterio.present?
+  options[:track] = 1 if target.eql?(:related)
+%>
+
+<li class='item news'>
+  <% unless target.eql?(:nav) -%>
+    <div class='item_thumbnail'>
+      <% small_img_tag, alt = news_img_and_alt(news, "n70")[:img], news_img_and_alt(news)[:alt] %>
+      <%= image_tag(small_img_tag, :alt => alt) if small_img_tag %>
+    </div>
+  <% end -%>  
+  <div class='item_content <%= 'fullwidth' if target.eql?(:nav) %>'>
+    <%= render_date(news.published_at) %>
+    <div class='title'><%= link_to news.title, news_url(options.merge(:id => news)) %></div>
+    <%= content_tag(:div, news.area.name, :class => "dept_name") if news.area && !target.eql?(:nav) %>
+
+    <%= link_to_item_comments(news.all_comments.count, news) unless target.eql?(:nav) %>
+
+    <% unless target.eql?(:nav) -%>   
+      <div class='icons'>
+        <ul class="icons">
+          <li>
+            <%= link_to_unless !news.has_audios?, raw("<span class='icon'>#{t('documents.audio')}</span>"), news_path(news) + '#audio', :class=>"audio", :title => t('documents.audio') do %>
+              <span class='audio not_available'><span class='icon'><%= t('documents.not_available', :what => t('documents.audio')) %></span></span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to_unless !news.has_files?, raw("<span class='icon'>#{t('documents.ficheros_adjuntos')}</span>"), news_path(news) + '#doc', :class=>"docs", :title => t('documents.ficheros_adjuntos') do %>
+              <span class='docs not_available'><span class='icon'><%= t('documents.not_available', :what => t('documents.ficheros_adjuntos')) %></span></span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to_unless !news.has_photos? && !news.has_cover_photo?, raw("<span class='icon'>#{t('photos.title')}</span>"), news_path(news) + '#photos', :class=>"photos", :title => t("photos.title") do %>
+              <span class='photos not_available'><span class='icon'><%= t('documents.not_available', :what => t('photos.title')) %></span></span>
+            <% end %>
+          </li>
+          <li>
+            <%- if news.has_video? || news.has_videos? -%>
+              <%- if news.has_professional_videos? -%>
+                <%= link_to raw("<span class='icon'>#{t('documents.video_profesional')}</span>"), news_path(news) + '#title', :class => "video vprof_true", :title => t('documents.video_profesional') %>
+              <%- else -%>
+                <%= link_to raw("<span class='icon'>#{t('videos.title')}</span>"), news_path(news) + '#title', :class => "video", :title => t('videos.title') %>
+              <%- end -%>
+            <%- else -%>
+              <span class='video not_available'><span class='icon'><%= t('documents.not_available', :what => t('videos.title')) %></span></span>
+            <%- end -%>
+          </li>
+        </ul>            
+        <%= content_tag(:span, "#{image_tag('cc-icon.png')} #{t('videos.subtitulado')}".html_safe, :class => 'with_closed_captions') if news.has_video_with_captions? %>
+      </div>
+      <%= show_search_explanation(news) %>
+    <% end -%>
+  </div>
+  <%= block if block.present? %>
+</li>

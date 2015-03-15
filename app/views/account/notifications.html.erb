@@ -1,0 +1,19 @@
+<div class='section container'>
+  <h1 class='section_title'><%= Notification.model_name.human(:count => 2).capitalize %></h1>
+  <div class='section_main row-fluid'>
+    <div class='section_content span8'>
+      <div class='account notifications'>
+        <% if @notifications.present? -%>
+          <ul class='std_list'>
+            <% @notifications.each_with_index do |notification,i| %>
+            <%= render :partial => "/account/notifications/#{notification.notifiable.class.to_s.downcase}_#{notification.action}", 
+                       :locals => {:notification => notification} %>
+            <% end %>
+          </ul>
+        <% else -%>
+          <div class='well'><%= t('notifications.empty') %></div>
+        <% end -%>
+      </div>
+    </div>
+  </div>
+</div>

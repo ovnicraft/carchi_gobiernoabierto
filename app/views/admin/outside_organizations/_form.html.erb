@@ -1,0 +1,36 @@
+<%= error_messages(f.object) %>
+
+<table class="admin">
+  <tr>
+    <th><%= f.label :name_es %></th>
+    <td><%= f.text_field :name_es %></td>
+  </tr>
+  
+  <tr>
+    <th><%= f.label :name_eu %></th>
+    <td><%= f.text_field :name_eu %></td>
+  </tr>
+  
+  <tr>
+    <th><%= f.label :name_en %></th>
+    <td><%= f.text_field :name_en %></td>
+  </tr>
+
+  <tr>
+    <th><%= f.label :logo %></th>
+    <td>
+      <%  if @organization.logo?  %>
+        <%= image_tag(@organization.logo_url)%><br/>
+        <%= f.check_box :remove_logo %> eliminar logo <br/>
+        Sustituir logo por
+      <% end %>
+      <%= f.file_field :logo %>
+      <%= f.hidden_field :logo_cache %>
+      <div class="hint">El tamaño obligatorio es <%= OutsideOrganization::LOGO_DIMENSIONS %>px</div>
+    </td>
+  </tr>
+</table>
+
+<p>
+  <%= f.submit "Guardar" %>
+</p>

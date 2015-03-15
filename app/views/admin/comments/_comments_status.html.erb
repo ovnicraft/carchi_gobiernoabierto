@@ -1,0 +1,10 @@
+<p id="comments_status">
+  <% if @item.comments_closed? %>
+  <span style='color:red'>Los comentarios en este <%= @item.class.model_name.human %> están cerrados.</span>
+  [ <%= link_to 'Reabrir', update_comments_status_admin_comments_path(:item_id => @item.id, :type => @item.class.to_s, :comments_closed => "false"), method: :put %>]
+  
+  <% else %>
+  [ <%= link_to "Cerrar comentarios en este #{@item.class.model_name.human}", update_comments_status_admin_comments_path(:item_id => @item.id, :type => @item.class.to_s, :comments_closed => "true"), method: :put %>]
+  <% end %>
+</p>
+        

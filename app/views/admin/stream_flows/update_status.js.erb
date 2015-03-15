@@ -1,0 +1,22 @@
+new_item = $('<%= "td_#{@stream_flow.id.to_s}" %>');
+<% if @show_checked %>
+  new_item.addClassName('<%= @css_class_name %>'); 
+  new_item.removeClassName('<%= "not_#{@css_class_name}" %>'); 
+  new_item.removeClassName('in1h');
+<% else %>  
+  new_item.addClassName('<%= "not_#{@css_class_name}" %>'); 
+  new_item.removeClassName('<%= @css_class_name %>');
+<% end %>
+
+
+<% if @submitted_opt.to_s.match(/show/) %>
+  new_item.removeClassName('<%= @css_class_name.gsub(/show/, "announced") %>');
+  new_item.addClassName('<%= "not_#{@css_class_name.gsub(/show/, "announced")}" %>');
+<% end %>
+
+<% if @submitted_opt.to_s.match(/announce/) %>
+  new_item.removeClassName('<%= @css_class_name.gsub(/announced/, "show") %>');
+  new_item.addClassName('<%= "not_#{@css_class_name.gsub(/announced/, "show")}" %>');
+<% end %>
+
+sfDisableRadioIfOnWeb();

@@ -1,0 +1,12 @@
+<p><%= t('notifier.hola') %>, </p>
+
+<p>
+  <%= t('notifier.new_proposal', :site_name => Settings.site_name) %><br />
+  "<%= @proposal.title %>"
+</p>  
+
+<p>
+  <%= t('notifier.por_favor_revisala', :url => admin_proposal_url(@proposal, locale: I18n.default_locale)) %>
+</p>
+
+<%= render :partial => '/notifier/footer' %>

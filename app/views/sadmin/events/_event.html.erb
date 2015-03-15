@@ -1,0 +1,9 @@
+<% month ||= @month %>
+<% event[1][0..(num_events_in_cell-1)].each_with_index do |e, pos| %>
+  <div id="event_<%= event[0] %>_<%= month %>_<%= pos %>" class="one_event <%= e.state %>" >
+    <% cache(action: 'calendar', action_suffix: "#{e.class.to_s.downcase}_#{e.id}", only_path: true) do %> 
+      <%= render :partial => 'one_event_data', :object => e %>
+    <% end %>
+  </div>
+  
+<% end %>

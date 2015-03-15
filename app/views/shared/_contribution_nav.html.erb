@@ -1,0 +1,14 @@
+<div class='nav_middle contribution_nav container donotprint' id='contribution_nav'>
+  <div class='row-fluid'>
+    <div class="span7 tabs_container">
+      <ul class="nav nav-tabs nav_middle_tabs area_tabs">
+        <%= render :partial => '/shared/contribution_tabs' %>
+      </ul>
+    </div>
+    <div id='contribution_help_buttons' class='span5 pull-right'>
+      <%= link_to t('site.ayudanos_mejorar'), contact_site_url, :class => 'a_btn' %>             
+      <%= link_to t('site.como_participar'), page_site_path(:label => "how_to_participate"), :class => 'a_btn' %>
+    </div>
+  </div>
+  
+</div>  

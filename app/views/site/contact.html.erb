@@ -1,0 +1,39 @@
+<div class="section container">
+  <%= render :partial => '/shared/context', :locals => {:type => 'pages', :title => Settings.site_name} %>
+  <div class='section_main row-fluid'>
+    <div class='section_content span12'>
+      <h1 class='title'><%= @title %></h1>
+      <div class='contact_form'>
+        <%= form_tag send_contact_site_path, :class => "form-horizontal" do %>
+          <%= content_tag(:div, @form_errors.to_h.to_a.to_json, :id => 'has-errors', :"data-class" => "contact", :style => 'display:none') if @form_errors.present? %>
+      
+          <div class='control-group'>
+            <%= label_tag :name, t('share.tu_nombre_completo'), :class => 'control-label' %>
+            <div class='controls'>
+              <%= text_field_tag :name, params[:name], :class => 'input-xlarge', :id => "contact_name" %>
+            </div>
+          </div>
+
+          <div class='control-group'>
+            <%= label_tag :email, t('tu_email'), :class => 'control-label' %>
+            <div class='controls'>
+              <%= text_field_tag :email, params[:email], :class => 'input-xlarge', :id => "contact_email" %>
+            </div>
+          </div>
+          
+          <div class='control-group'>
+            <%= label_tag :message, t('site.mensaje'), :class => 'control-label' %>
+            <div class='controls'>
+              <%= text_area_tag :message, params[:message], :class => 'input-xxlarge', :id => "contact_message", :rows => 10 %>
+            </div>
+          </div>
+          
+          <div class="form-actions">
+            <%= submit_tag t('enviar'), :class => 'irekia_btn' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

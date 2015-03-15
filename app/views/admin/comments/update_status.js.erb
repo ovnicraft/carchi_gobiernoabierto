@@ -1,0 +1,6 @@
+<%- if request.env["HTTP_REFERER"].match('comments_on_item') -%>
+  $("comment_<%= @comment.id %>").replace("<%= escape_javascript(render partial: '/admin/comments/comment_on_item', locals: {comment_on_item: @comment}) %>");
+<%- else -%>
+  $("comment_<%= @comment.id %>").replace("<%= escape_javascript(render partial: '/admin/comments/comment', locals: {comment: @comment}) %>");
+<%- end -%>
+$("comment_<%= @comment.id %>").classNames("<%= @comment.status %>");

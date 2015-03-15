@@ -1,0 +1,51 @@
+<% content_for :css_data do %>
+  <%= stylesheet_link_tag "public/snetworking" %>
+<% end %>
+
+<div class='section container'>
+  <%= render :partial => '/shared/context', :locals => {:type => 'snetworks'} %>
+  <div class='section_main row-fluid'>
+    <div class='section_content span8'>
+      <% @departments.each do |dept| %>
+        <div class="department snetworks" id="dept_<%=dept.id%>">
+          <div class="section_heading"><%= dept.name %></div>
+          <ul class='sos_list'>
+            <% dept.sorganizations.each_with_index do |sorg, index| %>
+              <li class='social_organizations'>
+                <div class='so_image'>
+                  <%= image_tag sorg.icon? ? sorg.icon(:tiny) : "/default/sorganization_img_default.png" %>
+                </div>  
+                <div class='so_name name'>
+                  <%= sorg.name %>
+                </div>  
+                <div class='so_icons icons'>
+                  <% sorg.snetworks.sort.in_groups_of(3, false) do |snets| %>
+                    <div class='row-fluid'>
+                      <% snets.each do |snet| %>
+                        <div class='span4'>
+                          <%= link_to "<i class='#{snet.label}'></i><span>#{snet.pretty_url}</span>".html_safe, snet.url, :rel => 'external', :title => "#{sorg.name} #{snet.label}", :class => snet.label %>
+                        </div>
+                      <% end %>
+                    </div>
+                  <% end %>
+                </div>  
+              </li>   
+            <% end %>
+          </ul> 
+        </div>
+      <% end %>      
+    </div>
+    <div class='section_aside span4'>
+      <div class="aside_module areas">
+        <div class="title"><span><%= t('organizations.title') %></span></div>
+        <div class="content">
+          <ul class='categories'> 
+            <% @departments.each do |dept| %>
+              <li><%= link_to dept.name, "#dept_#{dept.id}" %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

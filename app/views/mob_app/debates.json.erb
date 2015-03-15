@@ -1,0 +1,14 @@
+<%- 
+  debates = []
+  @debates.each do |debate|
+    debates << render(:partial => 'mob_app/cells/debate_cell.json', 
+                        :locals => {:debate => debate, :sort_id => (debate.published_at.to_i*10000 + debate.id), :target => :list})
+  end
+-%>
+
+{
+  "items": [
+    <%=raw debates.join(", \n") %>
+  ], 
+  "has_older" : false
+}

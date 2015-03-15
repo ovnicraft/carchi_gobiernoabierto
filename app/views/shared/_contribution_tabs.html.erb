@@ -1,0 +1,25 @@
+<% span_size ||= 'span7' %>
+<% if @context.is_a?(Area) 
+     url_to_proposals = area_proposals_path(:area_id => @context, :anchor => 'middle') if Settings.optional_modules.proposals
+     url_to_debates = area_debates_path(:area_id => @context, :anchor => 'middle') if Settings.optional_modules.debates
+     url_to_answers = area_answers_path(:area_id => @area, :anchor => 'middle')
+   else
+     url_to_proposals = proposals_path if Settings.optional_modules.proposals
+     url_to_debates = debates_path if Settings.optional_modules.debates
+     url_to_answers = answers_path
+   end
+%>
+
+<% if Settings.optional_modules.proposals %>
+<li class='proposals <%= 'active' if controller_name.eql?('proposals') %>'>
+  <%= link_to t('proposals.title'), url_to_proposals %>
+</li>
+<% end %>
+<% if Settings.optional_modules.debates %>
+<li class='gov_proposals <%= 'active' if controller_name.eql?('debates') %>'>
+  <%= link_to "#{t('debates.title')}", url_to_debates %>
+</li>
+<% end %>
+<li class='gov_answers <%= 'active' if controller_name.eql?('answers') %>'>
+  <%= link_to "#{t('answers.title')}", url_to_answers %>
+</li>

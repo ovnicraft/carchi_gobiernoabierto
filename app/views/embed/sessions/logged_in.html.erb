@@ -1,0 +1,18 @@
+<div class="logged_in">
+  <p><%= t("comments.estamos_enviando_tu_comentario")%></p>
+</div>
+
+
+<% content_for :js_data do %>
+  <script type="text/javascript" >
+    $(document).ready(function(){
+      try {
+        window.opener.postMessage("__irekia_loggedin__", window.opener.location); //no funciona con IE8
+        window.close();
+      } catch(e) {
+        window.opener.windowLoginAction.logIn("__irekia_loggedin__", window.opener.location);
+        window.close();
+      }
+    });
+  </script>
+<% end %>

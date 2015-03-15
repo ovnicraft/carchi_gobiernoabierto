@@ -1,0 +1,16 @@
+<%= render :partial => "/admin/stream_flows/menu" %>
+
+<p>Para reordenar los flujos, pincha y arrastra el nombre hasta la posición deseada.</p>
+
+<ul id="flows">
+  <% @stream_flows.each do |sf| %>
+  <li id="flow_<%= sf.id %>"><%= sf.title %></li>
+  <% end %>
+</ul>
+
+<% content_for :head do %>
+  <%= javascript_include_tag 'prototype/dragdrop' %>
+<% end %>
+  
+<%= sortable_element "flows", :url => sort_admin_stream_flows_path, :method => :post, 
+  :complete => visual_effect(:highlight, 'flows'), :tag => "li" %>

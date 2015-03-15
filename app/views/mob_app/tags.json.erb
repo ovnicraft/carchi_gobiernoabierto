@@ -1,0 +1,20 @@
+<% news = []
+@taggings.each_with_index do |tagging, index|
+  n = tagging.taggable
+  h = {"id" => n.id , "title" => n.title, "body" => short_body_wo_html(n.body),
+       "url" => url_for(:controller => "news", :action => "show", :id => n, :format => :floki, :locale => I18n.locale, :only_path => false),
+       "share_url" => url_for(:controller => "news", :action => "show", :id => n, :only_path => false),
+       "sort_id" => (1e14 - (@page*10 + index)).to_i}
+
+  h["image"] = "#{absolutize_url(news_img_and_alt(n, 'iphone')[:img].strip_version)}" if news_img_and_alt(n, 'iphone')[:img]
+  
+  h["footer"] = I18n.localize(n.published_at.to_date, :format => :long).strip  if n.published_at
+  news << h.to_json.gsub('&amp;size', '&size')
+end
+ %>
+
+{
+  "items": [
+    <%=raw news.join(", \n") %>
+  ]
+}

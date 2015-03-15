@@ -1,0 +1,77 @@
+<%= render 'submenu' %>
+
+<h2>Multimedia</h2>
+
+<%= form_tag video_admin_stats_path, :method => :get do %>
+<table class="stats_container">
+  <tr>
+    <td>
+      <h2>Producción de flv en WebTV</h2>
+      <%= render 'date_select' %>
+      <table class="stats" cellspacing="0" cellpadding="0">
+        <thead>
+          <tr class="title">
+            <th>&nbsp;</th>
+            <th>Nº flv</th>
+            <th>Respuestas oficiales</th>
+            <th>Comentarios<br/>(Original/Twitter)</th>
+          </tr>
+        </thead>
+        <tr class="title">
+          <th>Totales</th>
+          <th class="number"><%= number_with_delimiter @counters_finder.count %></th>
+          <th class="number"><%= number_with_delimiter @counters_finder.where("official_comments > 0").sum(:official_comments) %></th>
+          <th class="number">
+            <%= number_with_delimiter @counters_finder.sum(:user_comments)%><br/>
+            (<%= number_with_delimiter @counters_finder.sum(:not_twitter_comments)%>/<%= number_with_delimiter @counters_finder.sum(:twitter_comments)%>)
+          </th>
+        </tr>
+      </table>
+
+      <hr/>
+      <h2>Producción de mpg y mp3</h2>
+      <table class="stats" cellspacing="0" cellpadding="0">
+        <tr>
+          <td class="item">Vídeos flv con subtítulos</td>
+          <td class="number"><%= number_with_delimiter Video.with_closed_captions.count %></td>
+        </tr>
+        <tr>
+          <td class="item">Videos mpg y mp4</td>
+          <td class="number"><%= number_with_delimiter @videos_mpg %></td>
+        </tr>
+        <tr>
+          <td class="item">Audios mp3</td>
+          <td class="number"><%= number_with_delimiter @audios_mp3 %></td>
+        </tr>
+      </table>
+    </td>
+    <td>
+
+      <h2>Visualizaciones de flv</h2>
+      <%= render "couchdb_date_select" %>
+      <table class="stats" cellspacing="0" cellpadding="0">
+        <tr class="title">
+          <th colspan="2">Vídeos más visitados</th>
+        </tr>
+        <% @top_videos.each do |video| %>
+        <tr>
+          <td class="item">
+            <%= video[0] %>
+          </td>
+          <td class="number"><%= number_with_delimiter video[1] %></td>
+        </tr>
+        <% end %>
+        <tr>
+          <td class="total">
+            Nº total reproducciones para todos los vídeos en este periodo
+          </td>
+          <td class="number total">
+            <%= number_with_delimiter @videos_sum %>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<% end %>

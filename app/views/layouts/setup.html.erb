@@ -1,0 +1,35 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<%= I18n.locale %>" lang="<%= I18n.locale %>">
+<head>
+  <meta name="Description" lang="<%= I18n.locale %>" 
+  content="<%= t('site.meta_description', :publisher_name => Settings.publisher[:name], :locale => "es") %> - <%= t('site.meta_description', :publisher_name => Settings.publisher[:name], :locale => "eu") %> - <%= t('site.meta_description', :locale => "en") %>" />
+  <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+  <%= stylesheet_link_tag 'bootstrap.min' %>
+  <%= stylesheet_link_tag 'error_messages' %>
+  <style>
+   div.width {
+     width: 960px;
+     margin: 0px auto 60px;
+   } 
+  </style>
+  <title><%= Settings.site_name %>: <%= Settings.publisher[:name] %></title>
+</head>
+
+<body>
+
+
+  <div class="width">
+
+   <div class="splash_body">
+
+     <%= yield %>
+
+   </div>
+
+  </div>
+
+</body>
+</html>

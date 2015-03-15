@@ -1,0 +1,18 @@
+<% if @area %>
+  <%= render :partial => 'areas/summary' %>
+  <%= render :partial => 'areas/navigation_menu' %>
+<% elsif @politician %>
+  <%= render :partial => 'politicians/summary' %>
+  <%= render :partial => 'politicians/navigation_menu' %>
+<% elsif @user %>
+  <%= render :partial => "users/summary" %>
+  <%= render :partial => "users/navigation_menu" %>  
+<% end %>
+
+<% if controller_name.eql?('areas') || controller_name.eql?('politicians') -%>
+  <% content_for :css_data do %>
+    <%= stylesheet_link_tag 'public/news' %>
+  <% end %>
+<% end -%>
+<%= render :partial => "/news/news" %>
+ 

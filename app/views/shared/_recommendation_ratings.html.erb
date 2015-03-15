@@ -1,0 +1,11 @@
+<% t_type = target.is_a?(Order) ? 'Order' : 'Document' %>
+
+<% if can?("rate", "recommendations") && (current.is_a?(News) || current.is_a?(Order)) %>
+  <span id="rec_rating_<%= target.id %>" class="rate_related donotprint" >
+    <%= link_to "o", recommendation_ratings_path(:rating => 1, :s_type => current.class.base_class.name, :s_id => current.id, :t_type => t_type, :t_id => target.id), :title => "Bien", :class => 'good' %>                                           
+    <%= link_to "x", recommendation_ratings_path(:rating => -1, :s_type => current.class.base_class.name, :s_id => current.id, :t_type => t_type, :t_id => target.id), :title => "Mal", :class => 'bad' %>                                
+    <span class='total_rating'><%= "(#{target.total_rating})" %></span>
+    <span class='btn_with_spinner'></span>
+  </span>
+<% end %>                
+<%= show_score(target) %>

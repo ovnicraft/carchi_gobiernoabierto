@@ -1,0 +1,38 @@
+<tr id="proposal_<%= proposal.id %>" class="<%= proposal.status %>">
+  <td>
+    <%= image_tag(proposal.image.thumb_70.url, :style => "float:left;margin-right:5px") if proposal.has_image? %>
+    
+    <%= link_to h(proposal.title), admin_proposal_path(proposal) %><br/>
+    <%= link_to h(proposal.user.internal_name), admin_user_path(proposal.user) %><br/>
+    <%= "<span class='destacado'>#{t('sadmin.news.destacado')}</span>".html_safe if proposal.featured %>
+    
+  </td>
+  <td><%= I18n.localize(proposal.published_at, :format => :list) if proposal.published_at %></td>
+  <td><%= I18n.localize(proposal.updated_at, :format => :list) %></td>
+  <td>
+    <%= proposal.area.name if proposal.area %><br/>
+    <% official_comments = proposal.comments.select("id, user_id").select {|c| c.user && c.user.is_official_commenter?}.size %>
+    <% if official_comments > 0 %>
+      <span class="official_comment">
+        <%= link_to_if can_edit?('proposals'), "#{official_comments} comentario(s) oficial(es)", proposal_path(proposal), :target => "_blank" %>
+      </span>
+    <% end %>
+  </td>
+  <td><%= proposal.organization ? proposal.organization.name : "<span class='pending'>pendiente de asignar</span>".html_safe %></td>
+  <td>
+    <ul class="language_versions">
+      <% for_every_locale do |code, lang| %>
+        <li class="translated_<%= proposal.translated_to?(code.to_s) %>" title="<%= pretty_translated(proposal, code) %>">
+          <%= link_to lang, proposal_path(proposal, :locale => code), :class => "public_link" %>
+        </li>
+      <% end %>
+    </ul>
+  </td>
+  
+  <%= render :partial => "status", :locals => {:proposal => proposal} %>
+  
+  <td style="white-space:nowrap;">
+    <%= link_to_if can_create?("proposals"), "#{proposal.comments_count} comentarios", comments_on_item_admin_comment_path(:id => proposal.id, :type => "Proposal" ) %>
+  </td>
+
+</tr>

@@ -1,0 +1,1177 @@
+bolsas:
+    # Organizacion
+    - short_name: organizacion
+      name: Organización / Área de Actuación
+      code: r01e00000fe4e6676dda470b8f65b2dd3e9d05e53
+      level: 0
+      new_ejes: 
+        - name: "Agricultura, Pesca y Alimentación"
+          code: r01epd0121d3548de014fdd5ead209e13dcc1cf44
+          level: 1
+          new_ejes:
+            - name: Agricultura y Medio Rural
+              code: r01e00000fe4e66772ba470b8bac1df8ffb8644f9
+              level: 2
+            - name: Formación agraria y náutico-pesquera
+              code: r01e00000fe4e66772ba470b87018b31bee8c8759
+              level: 2
+            - name: Industrias y comercialización
+              code: r01e00000fe4e66772ba470b857f99651e13febee
+              level: 2
+            - name: Investigación agraria y oceanográfica
+              code: r01e00000fe4e66772ba470b8cf1f9d95c7ee6283 
+              level: 2
+            - name: Pesca
+              code: r01e00000ff26d46260a470b87c960d09d591812a
+              level: 2
+            - name: Política agroalimentaria
+              code: r01e00000fe4e66772ba470b84fcd92ef5bfc56b8
+              level: 2
+        - name: Cultura
+          code: r01epd0121d3560d1614fdd5e536cc74af9452735
+          level: 1
+          new_ejes: 
+            - name: Actividades artísticas y culturales
+              code: r01e00000ff26d4628fa470b8477fadf1a3eda16b
+              level: 2
+            - name: Deportes
+              code: r01e00000ff26d4628fa470b8975afdd47e3e160a
+              level: 2
+            - name: Patrimonio cultural
+              code: r01e00000fe4e66772ba470b892c1f7826a6f5f10
+              level: 2
+            - name: Euskera
+              code: r01e00000ff26d4628fa470b8acd3288a1e1eaf23
+              level: 2
+            - name: Medios de comunicación social
+              code: r01e00000fe4e66772ba470b8b23a04f030c1a441
+              level: 2
+            - name: Juventud
+              code: r01e202851356F640E14C8A9D76BAD179866095AFB2A
+              level: 2
+        - name: "Educación, Universidades e Investigación"
+          code: r01epd0121d357bc6b14fdd5e69bb63ff03c5989e
+          level: 1
+          new_ejes: 
+            - name: Admón. y servicios del sistema educativo
+              code: r01e00000fe4e66771ba470b8f32a499d0ed7fe61
+              level: 2
+            - name: Educación
+              code: r01e00000fe4e66771ba470b8bb90b19f6ac6cf49
+              level: 2
+            - name: Investigación y Política Científica
+              code: r01e00000fe4e66771ba470b8aa5cf662fcbf1cc8
+              level: 2
+            - name: Universidad
+              code: r01e000000fe4e66771ba470b87f5d974032fa907
+              level: 2
+        - name: Hacienda y Administración Pública
+          code: r01epd0121d359acda14fdd5e3515f10014a70824
+          level: 1
+          new_ejes: 
+            - name: Economía y estadística
+              code: r01e00000fe4e66771ba470b8f452e41c7f3d78fb
+              level: 2
+            - name: Hacienda y finanzas
+              code: r01e00000fe4e66771ba470b8bb83d1a186cc3f63
+              level: 2
+            - name: Informática y Telecomunicaciones
+              code: r01e00000ff26d46251a470b8192837da9739ac29
+              level: 2
+            - name: Patrimonio y Contratación
+              code: r01e00000ff26d46222a470b862dd3e4d8b0a0cf2
+              level: 2
+            - name: Presupuestos y control económico
+              code: r01e00000fe4e66771ba470b8e8418c9426a88770
+              level: 2
+            - name: Recursos Generales
+              code: r01e00000fe4e66771ba470b8ca27b6b527c4b25c
+              level: 2
+            - name: Recursos Humanos
+              code: r01e00000fe4e66771ba470b8f6c712ec11652cfb
+              level: 2
+        - name: "Industria, Comercio y Turismo"
+          code: r01epd0121d35c2c6614fdd5eaf1ac43af5de0321
+          level: 1
+          new_ejes:
+            - name: Comercio
+              code: r01e00000ff26d46251a470b88468d07873a13d8e
+              level: 2
+            - name: Consumo
+              code: r01e00000ff26d46251a470b8e32a824c59811d75
+              level: 2
+            - name: Industria
+              code: r01e00000ff26d46251a470b86b97a33338f9eb01
+              level: 2
+            - name: Sociedad de la información
+              code: r01e00000fe4e66771ba470b8debb25b032ac70b1
+              level: 2
+            - name: Turismo
+              code: r01e00000ff26d46251a470b8eec6d2aae38c782b
+              level: 2
+        - name: Interior
+          code: r01epd0121d36b030614fdd5ea5ae2958e53149d2
+          level: 1
+          new_ejes:
+            - name: Administración electoral
+              code: r01e00000fe4e66771ba470b8b75d1bcf2cde9aae
+              level: 2
+            - name: Atención de emergencias
+              code: r01e00000fe4e66771ba470b8c4662272b8bf43ed
+              level: 2
+            - name: Juego y espectáculos
+              code: r01e00000ff26d46241a470b865a460d0e16f0896
+              level: 2
+            - name: Policía
+              code: r01e000000ff26d46241a470b88d44a4b2e53b919
+              level: 2
+            - name: Tráfico
+              code: r01e00000ff26d46241a470b87bc37675b04b7df3
+              level: 2
+        - name: "Justicia, Empleo y Seguridad Social"
+          code: r01epd0121d3835d6c14fdd5e251d3b70276b7683
+          level: 1
+          new_ejes:
+            - name: Derechos Humanos
+              code: r01e00000ff26d46232a470b8c5afdddff45efb4c
+              level: 2
+            - name: Empleo y formación
+              code: r01e00000ff26d46280a470b831a3374b3b56fe67
+              level: 2
+            - name: Exclusión social
+              code: r01e00000fe4e66772ba470b831b5f970966a5cd8
+              level: 2
+            - name: Familias y Parejas
+              code: r01e00000ff26d461b5a470b860cf280151b461bf
+              level: 2
+            - name: Justicia
+              code: r01e00000ff26d461e3a470b8b2fe8507d17716aa
+              level: 2
+            - name: Política penitenciaria
+              code: r01e00000fe4e66771ba470b82f0ae65dd1abaa0c
+              level: 2
+            - name: Seguridad social
+              code: r01e00000fe4e66772ba470b84072484b5f452a52
+              level: 2
+            - name: Trabajo
+              code: r01e00000fe4e66771ba470b88321f4d3a835b031
+              level: 2
+        - name: Medio Ambiente y Ordenación del Territorio
+          code: r01epd0121d386ab4914fdd5e284c9537bd217b1a
+          level: 1
+          new_ejes:
+            - name: Aguas
+              code: r01e00000ff26d462afa470b859ac150984fa9809
+              level: 2
+            - name: "Aire, Ruido y Cambio climático"
+              code: r01epc4a379c995d7153e508d
+              level: 2
+            - name: Biodiversidad
+              code: r01e00000fe4e66772ba470b88e4f28c6a504ccb0
+              level: 2
+            - name: Cartografía
+              code: r01e00000ff26d4629fa470b8e0c53b735efa6455
+              level: 2
+            - name: Desarrollo Sostenible
+              code: r01eC2EB10BCF7D0A926F6E02CF2A1FE7F4ABB0DDE93
+              level: 2
+            - name: "Educación, Información y Participación ciudadana"
+              code: r01e00000fe4e66772ba470b8d5ab4e239294f8ad
+              level: 2
+            - name: Evaluación y Control Ambiental
+              code: r01ep9113f1d3ba919a54a0d2
+              level: 2
+            - name: Ordenación del territorio
+              code: r01e00000ff26d4629fa470b8510479fec88f8887
+              level: 2
+            - name: Residuos y Contaminación
+              code: r01e00000fe4e66772ba470b887894a733c416f96
+              level: 2
+            - name: Suelo
+              code: r01e00000ff26d462afa470b8c98dfd97ee0798fd
+              level: 2
+        - name: Presidencia del Gobierno - Lehendakaritza
+          code: r01epd0121d3888bd314fdd5ef7986694f66416bf
+          level: 1
+          new_ejes:
+            - name: Acción exterior
+              code: r01epd011cace62b1385351416b17940829653a75
+              level: 2
+            - name: Secretaría de la Presidencia
+              code: r01e00000fe4e66771ba470b8bc3d9d6653acbc08
+              level: 2
+            - name: Comunicación institucional
+              code: r01e9E2D6F227C821AD151D28E138AF88A8E82B7F26B
+              level: 2
+        - name: Sanidad
+          code: r01epd0121d389bbaf14fdd5e5dd9e3d0ee5d9d10
+          level: 1
+          new_ejes:
+            - name: Farmacia
+              code: r01e00000fe4e66772ba470b8b7869fe7450d955f
+              level: 2
+            - name: Salud Pública
+              code: r01e000000fe4e66772ba470b8a58b2d0a85c6d23
+              level: 2
+            - name: Servicios sanitarios
+              code: r01e00000fe4e66772ba470b8e32b3fb51480bd17
+              level: 2
+        - name: Transportes y Obras Públicas
+          code: r01epd0121d38ade2314fdd5e746e592f70dcf6f7
+          level: 1
+          new_ejes:
+            - name: Infraestructura de Ferrocarriles
+              code: r01e00000ff26d4629fa470b8c6e2bb62c325f70a
+              level: 2
+            - name: Meteorología
+              code: r01e00000ff26d46232a470b8b4014f52678d969c
+              level: 2
+            - name: Puertos Marítimos
+              code: r01e00000ff26d4629fa470b827078a19036ee25c
+              level: 2
+            - name: Red viaria
+              code: r01e00000fe4e66772ba470b8a780b39eb0e34ab3
+              level: 2
+            - name: Transportes
+              code: r01e00000ff26d46251a470b865b895b9813be988
+              level: 2
+        - name: Vicepresidencia de Gobierno 
+          code: r01epd0122bc18dae9160b79cafb4ffddfcaea6fa
+          level: 1
+          new_ejes: 
+            - name: Administración Local
+              code: r01e00000ff26d46212a470b8e8734a450b201779
+              level: 2
+            - name: Atención al ciudadano
+              code: r01e00000fe4e66771ba470b86328a00a2e99d5d7
+              level: 2
+            - name: BOPV - Boletín Oficial del País Vasco 
+              code: r01e00000fe4e66771ba470b86f6b07b5f37e24a9
+              level: 2
+            - name: Desarrollo Autonómico
+              code: r01e00000fe4e66771ba470b8e49133b2a88b26fc
+              level: 2
+            - name: Modernización de la Administración
+              code: r01e00000fe4e66771ba470b85476564feca0468f
+              level: 2
+            - name: Política Institucional
+              code: r01e00000fe4e66771ba470b8b23add16da7675dc
+              level: 2
+            - name: Régimen Jurídico
+              code: r01e00000fe4e66771ba470b872ceab8058f02819
+              level: 2
+            - name: Secretaría y coordinación
+              code: r01e00000fe4e66771ba470b85b496cac7e581420
+              level: 2
+        - name: Vivienda y Asuntos Sociales
+          code: r01epd0121d38c122614fdd5ed85b29685d2c040f
+          level: 1
+          new_ejes:
+            - name: Vivienda
+              code: r01e00000fe4e66771ba470b85e04a11f38a716da
+              level: 2
+            - name: Cooperación al desarrollo
+              code: r01e00000ff26d46232a470b88c9df4a8d5f468cd
+              level: 2
+            - name: Bienestar Social
+              code: r01e00000fe4e66771ba470b8d98390b941752ba1
+              level: 2
+            - name: Inmigración
+              code: r01e00000ff26d46241a470b86a8eabf91ff09016
+              level: 2
+            - name: Drogodependencias
+              code: r01e00000ff26d46241a470b8ea48d8964327e701
+              level: 2
+            - name: Eraikal
+              code: r01ep687462e02d0bfd8367b3
+              level: 2
+            - name: Observatorio de la Vivienda
+              code: r01ep005c9d072f32a65e80fa
+              level: 2
+            - name: Participación Ciudadana
+              code: r01epd011a0fe325aa5ab77fb1a3c98fe6c8ef1ba
+              level: 2
+        - name: Academia de Policía del País Vasco
+          code: r01epd0122bc173810160b79c559eb5d027b72a1c
+          level: 1
+        - name: AVPD - Agencia Vasca de Protección de Datos
+          code: r01epd0122bc15ce01160b79cc5866c010d773993
+          level: 1
+        - name: Defentsoria para la Igualdad de Mujeres y Hombres
+          code: r01epd0122bc11e44f160b79c59afd14c9f5535aa
+          level: 1
+        - name: Emakunde - Instituto Vasco de la Mujer
+          code: r01epd0122bc0ee75b160b79c6fc2bedfce734e85
+          level: 1
+        - name: EUSTAT - Instituto Vasco de Estadística
+          code: r01epd0122bc0cf3ca160b79c399917883f2da328
+          level: 1
+        - name: HABE - Instituto de Alfabetización y Reeuskaldunización de Adultos
+          code: r01epd0122bc0981ec160b79cbf19d4d8301358c3
+          level: 1
+        - name: IVAP - Instituto Vasco de Administración Pública
+          code: r01epd0122bc06b5ee160b79c188617990abff0ae
+          level: 1
+        - name: IVEF - Instituto Vasco de Educación Física
+          code: r01epd0122bc054506160b79cba0dce57f829c98a
+          level: 1
+        - name: Izenpe - Empresa de Certificación y Servicios
+          code: r01epd0122bc03a5c4160b79cbe5089bd6acb9164
+          level: 1
+        - name: Osakidetza - Servicio Vasco de Salud 
+          code: r01epd0122bc01a7f8160b79c4580022882c3f6ae
+          level: 1
+        - name: OSALAN - Instituto Vasco de Seguridad y Salud Laborales
+          code: r01epd0122bbff76ec160b79c65b55b59df70ef1b
+          level: 1
+          new_ejes:
+            - name: Observatorio Osalan
+              code: r01epd00112fbcc2c4491cd171ef8c53ddde175d8
+              level: 2
+        - name: TVDC - Tribunal Vasco de Defensa de la Competencia
+          code: r01epd0122bbfad9bc160b79c1cdb9b438fa44123
+          level: 1
+        - name: Agencia Vasca del Agua
+          code: r01epd0122bbf934ea160b79cb46202aa6764a1a6
+          level: 1
+        - name: ETS - Euskal Trenbide Sarea
+          code: r01epd0124e3a910f5f66eb6614c39ad4a2ed8f63
+          level: 1
+    
+    
+    
+    
+    
+    
+    
+    # Temas:
+    - short_name: temas
+      name: Temas / Subtemas
+      code: r01e00000fe4e6676dda470b898e584a4a1047312
+      level: 0
+      new_ejes:    
+        - name: Acción exterior 
+          code: r01e00000ff26d461e3a470b89602cd52e9b70e15
+          level: 1
+          new_ejes:
+            - name: Relaciones internacionales
+              code: r01e00000ff26d46232a470b833a1237442afbb51
+              level: 2
+            - name: Colectividades vascas en el exterior
+              code: r01e00000ff26d46232a470b8698daec48e96768d
+              level: 2
+            - name: Asuntos europeos
+              code: r01e00000ff26d46232a470b89e7c621c0827981c
+              level: 2
+        - name: Actividad Política y de Gobierno
+          code: r01eE595377B5BF3CD205266D9F0BE27D68A00C203D3
+          level: 1
+          new_ejes:
+            - name: Acuerdos del Consejo de Gobierno
+              code: r01eDF4C052E513B54D38027C4D143E38BB83496309A
+              level: 2
+            - name: Comisiones de Gobierno
+              code: r01eECFEC56038D546604594BFA60D12E0D9CAFD044E
+              level: 2
+            - name: Comisiones de pleno
+              code: r01e781D4125FFB9D10F5DE27FD2CC281AB548160DD6
+              level: 2
+            - name: Comisiones informativas
+              code: r01eFD34C1758D1F670C4C0BA0934B756FD1998435A4
+              level: 2
+            - name: Intervenciones parlamentarias
+              code: r01e430CA3104DD21E6E65BF6A11281836B4F46BDA62
+              level: 2
+            - name: Iniciativas políticas
+              code: r01eA961415D3065B8BFF9A902B6E9D47B481CA99EE9
+              level: 2
+            - name: Intervenciones públicas
+              code: r01eF9D8EF1137D19D50BF36617DDB9DC6A85696E25C
+              level: 2
+            - name: Juntas de Gobierno
+              code: r01e1F0A831CC3CD24BCBD9AF2ADA12F54EDCE15038D
+              level: 2
+        - name: Actividades Económicas
+          code: r01e000000ff26d46212a470b8d48bb3416b64da7
+          level: 1
+          new_ejes:
+            - name: "Agricultura, Ganadería y Forestal"
+              code: r01e00000ff26d46251a470b81d4575171a3f94f1
+              level: 2
+            - name: Agroalimentación
+              code: r01e00000ff26d46260a470b82043400c8af39732
+              level: 2
+            - name: Comercio
+              code: r01e00000ff26d46251a470b88468d07873a13d8e
+              level: 2
+            - name: Comercio Exterior
+              code: r01e00000ff26d46251a470b869e0a8c6ce98d581
+              level: 2
+            - name: Construcción
+              code: r01e4CB37BBE5DC852931897CEC9281BB5CDAFEEC35E
+              level: 2
+            - name: Consumo
+              code: r01e00000ff26d46251a470b8e32a824c59811d75
+              level: 2
+            - name: Desarrollo Rural
+              code: r01e00000ff26d46260a470b895f0b3cddefc0bea
+              level: 2
+            - name: Energía
+              code: r01e00000ff26d46251a470b853f0bc63bc1e7d39
+              level: 2
+            - name: "Entidades de Crédito, Seguros y Servicios Financieros"
+              code: r01e00000ff26d46251a470b86daad086302afc9b
+              level: 2
+            - name: Industria
+              code: r01e00000ff26d46251a470b86b97a33338f9eb01
+              level: 2
+            - name: Informática y Telecomunicaciones
+              code: r01e00000ff26d46251a470b8192837da9739ac29
+              level: 2
+            - name: Investigación e innovación tecnológica
+              code: r01e00000ff26d46251a470b8881287d77e37d6f1
+              level: 2
+            - name: Minería
+              code: r01e00000ff26d46251a470b86db5866492aff057
+              level: 2
+            - name: Pesca
+              code: r01e00000ff26d46260a470b87c960d09d591812a
+              level: 2
+            - name: Polígonos e infraestructuras industriales
+              code: r01e0BA786103117BC813F036F3EEFDDACE870E3A4E0
+              level: 2
+            - name: Turismo
+              code: r01e00000ff26d46251a470b8eec6d2aae38c782b
+              level: 2
+            - name: Transportes
+              code: r01e00000ff26d46251a470b865b895b9813be988
+              level: 2
+            - name: Sociedad de la información
+              code: r01epd0115f50715c7642d91c668d52eb6eb979e6
+              level: 2
+        - name: Administración Pública
+          code: r01e00000ff26d461e3a470b8181621308b9c4fdf
+          level: 1
+          new_ejes:
+            - name: Administración digital
+              code: r01e100D5FFB9ED890A9EBADB1BE1F5B09364602AC6B
+              level: 2
+            - name: "Archivo, Biblioteca y Documentación"
+              code: r01e00000ff26d46222a470b8ba07c2b2156b8341
+              level: 2
+            - name: Articulación institucional
+              code: r01e80153C756A02386FA04006C96B624E660D7A96FD
+              level: 2
+            - name: Boletines Oficiales
+              code: r01e00000ff26d46232a470b8ba8575d5a3e195fc
+              level: 2
+            - name: Calidad y Evaluación de Servicios
+              code: r01e00000ff26d46212a470b81be2e4106d8a4771
+              level: 2
+            - name: Compras y suministros
+              code: r01e00000ff26d46222a470b88ff08a00566bd937
+              level: 2
+            - name: Patrimonio y Contratación
+              code: r01e00000ff26d46222a470b862dd3e4d8b0a0cf2
+              level: 2
+            - name: Presupuestos y gestión económica
+              code: r01e00000ff26d46212a470b8e3fac7212f9bfa9d
+              level: 2
+            - name: Reclamaciones económico-administrativas
+              code: r01e00000ff26d46222a470b8e20c520eba3198e2
+              level: 2
+            - name: Recursos Humanos y Función Pública
+              code: r01e00000ff26d46212a470b824142330609ed584
+              level: 2
+            - name: "Tesorería, endeudamiento y prestación de garantías"
+              code: r01e00000ff26d46212a470b8cb6daadfaa409792
+              level: 2
+            - name: Tributos
+              code: r01e00000ff26d46222a470b87266d32766e9e8c4
+              level: 2
+        - name: Asuntos sociales
+          code: r01e00000ff26d461e3a470b85bb78a80eb0d03b2
+          level: 1
+          new_ejes:
+            - name: Familia
+              code: r01eB62A745AC23450DAC437E86C3C98D5EC37A626CF
+              level: 2
+            - name: Adopción
+              code: r01e6D6E9A50B2D045A65FDD9875A7FCEA6334E2FDF5
+              level: 2
+            - name: Colectivos desfavorecidos
+              code: r01eF5A9C4ABA6003FCFFDF327716B12DFE3B5D0EEBE
+              level: 2
+            - name: Parejas de hecho
+              code: r01e34A15CA91ABB092C03D07F4BB914163131331182
+              level: 2
+            - name: Pobreza
+              code: r01e000000ff26d46241a470b860ce45286d6c204
+              level: 2
+            - name: Infancia
+              code: r01e00000ff26d461a5a470b8147292fb8997ab6a
+              level: 2
+            - name: Personas Mayores
+              code: r01e00000ff26d461b5a470b8e35e814894aead1e
+              level: 2
+            - name: Integración cultural
+              code: r01eFE15BEE86B35740B1FDA38E43303E651FA82FEDF
+              level: 2
+            - name: Drogodependencias
+              code: r01e00000ff26d46241a470b8ea48d8964327e701
+              level: 2
+            - name: Inmigración
+              code: r01e00000ff26d46241a470b86a8eabf91ff09016
+              level: 2
+            - name: Bienestar Social
+              code: r01e00000fe4e66771ba470b8d98390b941752ba1
+              level: 2
+            - name: Cooperación al desarrollo
+              code: r01e00000ff26d46232a470b88c9df4a8d5f468cd
+              level: 2
+            - name: Voluntariado
+              code: r01e000000ff26d46241a470b89bd03219c91f91d
+              level: 2
+            - name: Víctimas del Terrorismo
+              code: r01e00000ff26d46241a470b8ee17241518154325
+              level: 2
+        - name: Cultura
+          code: r01e00000ff26d46212a470b83de7fedc2cf6d8b0
+          level: 1
+          new_ejes:
+            - name: Actividades artísticas y culturales
+              code: r01e00000ff26d4628fa470b8477fadf1a3eda16b
+              level: 2
+            - name: Archivos
+              code: r01e483A674B31D11F8864140E8A86F5DA3AE66B06AF
+              level: 2
+            - name: Bibliotecas
+              code: r01e7C92EF326C800EC5D77938C7CA1C2DCE06FC27AF
+              level: 2
+            - name: Deportes
+              code: r01e00000ff26d4628fa470b8975afdd47e3e160a
+              level: 2
+            - name: Juventud
+              code: r01e00000ff26d461b5a470b8d02b206e81ee3dbe
+              level: 2
+            - name: Libro
+              code: r01e166BFB6968186626EAB845476A1FED43329B9E97
+              level: 2
+            - name: Museos
+              code: r01e00000ff26d4629fa470b8159f8767b40e9054
+              level: 2
+            - name: Medios de comunicación
+              code: r01e00000ff26d4629fa470b8c9ef9599d1c14ecb
+              level: 2
+            - name: Patrimonio Histórico Artístico y Cultural
+              code: r01e00000ff26d4628fa470b8c36fde519856389f
+              level: 2
+        - name: Educación
+          code: r01e00000fe4e66771ba470b8bb90b19f6ac6cf49
+          level: 1
+          new_ejes:
+            - name: Alumnado
+              code: r01e00010944fcc14341a73b86dc81c7bab8cb4d3
+              level: 2
+            - name: Centros
+              code: r01e000000ff26d4628fa470b8ab8b8149c755da8
+              level: 2
+            - name: "Curso escolar no universitario: matriculación, calendarios, organización..."
+              code: r01e00010944fd5fef4e57fe8bc3fdf4c443d2e07
+              level: 2
+            - name: Etapa infantil
+              code: r01e00010944fa149b44703fa7d05832d2c6c0a96
+              level: 2
+            - name: "Etapa obligatoria: Primaria y Secundaria"
+              code: r01e00010944faa7234da7fb98eb942f907427405
+              level: 2
+            - name: "Etapa Postobligatoria: Bachillerato, Formación Profesional y Universidad"
+              code: r01e00000ff26d4628fa470b87e492a04391c0591
+              level: 2
+            - name: Innovación educativa
+              code: r01e00010944fdc2d948bf4e02731bf8b16a49a90
+              level: 2
+            - name: Inspección de educación
+              code: r01e00010944fe3e0d4eac00d51688e98b9bc3c4f
+              level: 2
+            - name: "Otros estudios: Adultos, Idiomas, Iniciación Profesional, Deporte y Artísticos"
+              code: r01e00000ff26d4628fa470b8904bd3088e58e998
+              level: 2
+            - name: "Personal: docente y no docente"
+              code: r01e00010944fc657245ac33e1ee1ca7225f1c7b5
+              level: 2
+            - name: Universidades e Investigación
+              code: r01e00010944fb97f3463ff84afd8b751d5919f19
+              level: 2
+        - name: Euskera 
+          code: r01e00000ff26d4628fa470b8acd3288a1e1eaf23
+          level: 1
+          new_ejes:
+            - name: Aprendizaje del euskara
+              code: r01eB6315627CB127C62CEE52E3C81D83A7AB49495C6
+              level: 2
+            - name: Herramientas del euskara
+              code: r01eE2162E38FEA3E1480A3DC9C8F9AF160BA973936B
+              level: 2
+            - name: Normalización Lingüística
+              code: r01eE35B302320A098CAC200615AC556B8D3FDB8E038
+              level: 2
+            - name: Rasgos del euskara
+              code: r01eA70CE9DB5EAB4EC4BBD531DFE12BDACB7ABF4D09
+              level: 2
+            - name: Sociolingüística del euskara
+              code: r01e7058C04B4818CDC9843F203EDA87A842696B94F0
+              level: 2
+            - name: Terminología y traducción
+              code: r01eE4119A6A7EBC7D096D0EB4745B2BF56AE2D13BB8
+              level: 2
+            - name: Títulos y perfiles lingüísticos
+              code: r01e9F6CDED11D6053D7CE723847B01DB11FD3AF6529
+              level: 2
+        - name: Infraestructura y Obras Públicas
+          code: r01e0BA0F2F2CC3F6B36D63366302AB989CE4FDE6F68
+          level: 1
+          new_ejes:
+            - name: Edificios y Centros Públicos
+              code: r01e876926BB7808A4B98093C027C021C4E4290BE29E
+              level: 2
+            - name: Equipamiento Público
+              code: r01eE960C118D828449DCEED4F7BFDDD20FE9522D4BB
+              level: 2
+            - name: Infraestructura de Ferrocarriles
+              code: r01e00000ff26d4629fa470b8c6e2bb62c325f70a
+              level: 2
+            - name: Infraestructura del transporte
+              code: r01e00000ff26d4629fa470b8d07d3b9f1b257081
+              level: 2
+            - name: Obras e instalaciones hidráulicas
+              code: r01e00000ff26d4629fa470b81c0340ed49d21767
+              level: 2
+            - name: Obras en la calzada
+              code: r01e42D85D5037226F86ADE19287150165B2AC9249EC
+              level: 2
+            - name: Puertos Marítimos
+              code: r01e00000ff26d4629fa470b827078a19036ee25c
+              level: 2
+            - name: Red viaria (Carreteras)
+              code: r01e00000ff26d4629fa470b89027c66c50682b1d
+              level: 2
+        - name: Justicia
+          code: r01e00000ff26d461e3a470b8b2fe8507d17716aa
+          level: 1
+          new_ejes:
+            - name: Asistencia a la Ejecución Penal y a la Reinserción
+              code: r01eFB4A8A8740DDBCFE3CCB026BADAF1FF7FC621E8C
+              level: 2
+            - name: Asistencia a la víctima
+              code: r01e54DF248ACE76D91F7F80E63D0FBF76731927DACC
+              level: 2
+            - name: Asistencia jurídica gratuita
+              code: r01e55E2578CDD8B953ED9C5A4E3ACB92FCFF45E4336
+              level: 2
+            - name: Asistencia y Orientación Social al Detenido
+              code: r01e00000ff26d46232a470b8e015b322184fd1aa
+              level: 2
+            - name: Derechos Humanos
+              code: r01e00000ff26d46232a470b8c5afdddff45efb4c
+              level: 2
+            - name: Establecimientos penitenciarios
+              code: r01e00000ff26d46232a470b8ce65bb5b38265c4a
+              level: 2
+            - name: Justicia juvenil
+              code: r01e00000ff26d46232a470b8baaf3af72e58b7f8
+              level: 2
+            - name: Medicina Legal
+              code: r01e08443EA72C5F7929B9591CA15F2C8BBD7678E124
+              level: 2
+            - name: Modernización de la Administración de Justicia
+              code: r01e7D4702FA661AABADE7FADB78E2498F2117C6CF59
+              level: 2
+            - name: Órganos Judiciales de Euskadi
+              code: r01e6766797612AB1BAD5999501815876B6540684B8F
+              level: 2
+            - name: Organización de la Justicia en el Estado
+              code: r01e9F15B9F8D73EB375869C4416558ECC0077C896A7
+              level: 2
+            - name: Registro Civil
+              code: r01e0C1554050AAD2E427A6CBDEE6F8C10AAAB9B8D15
+              level: 2
+            - name: Violencia doméstica
+              code: r01eEFDC963A0682424459EEEBCEC9834DD9A459272E
+              level: 2
+        - name: Medio Ambiente
+          code: r01e00000ff26d46212a470b845ecb637861b7081
+          level: 1
+          new_ejes:
+            - name: Aguas
+              code: r01e00000ff26d462afa470b859ac150984fa9809
+              level: 2
+            - name: Aire
+              code: r01e1F2CD47FD876A71BB316FE8CC32340641774A12C
+              level: 2
+            - name: Biodiversidad y paisaje
+              code: r01e00000ff26d462afa470b8c1423d6fd2d20b41
+              level: 2
+            - name: Certificación ambiental (ISO 14.000 - EMAS...) 
+              code: r01e9236ACF81CD9965DE536D50AC37F38604A45CEA8
+              level: 2
+            - name: Costa y litoral
+              code: r01e00000ff26d462afa470b8a422ee4f130cd14b
+              level: 2
+            - name: Desarrollo Sostenible
+              code: r01eC2EB10BCF7D0A926F6E02CF2A1FE7F4ABB0DDE93
+              level: 2
+            - name: Educación ambiental
+              code: r01e00000ff26d462afa470b89622c86a5e214457
+              level: 2
+            - name: Evaluación del impacto ambiental
+              code: r01e00000ff26d462afa470b873d3954c35797928
+              level: 2
+            - name: Indicadores ambientales
+              code: r01eE3B4982FE1E82932631FACAFED317D320466C7D4
+              level: 2
+            - name: Meteorología
+              code: r01e00000ff26d46232a470b8b4014f52678d969c
+              level: 2
+            - name: Prevención y control de la contaminación
+              code: r01e00000ff26d4629fa470b844e759f4a808e3d2
+              level: 2
+            - name: Residuos
+              code: r01e00000ff26d462afa470b8a324aa42664659a3
+              level: 2
+            - name: Riesgos ambientales
+              code: r01e00000ff26d462afa470b83c3d30f149e43fdc
+              level: 2
+            - name: Ruido
+              code: r01e750AFE9A12F35DDCEF78A1A67FBDE209B6E0135E
+              level: 2
+            - name: Suelo
+              code: r01e00000ff26d462afa470b8c98dfd97ee0798fd
+              level: 2
+        - name: Ocio y Turismo
+          code: r01e0001094898039845a5ecf845cd8db5f248b3d
+          level: 1
+          new_ejes:
+            - name: Áreas Recreativas
+              code: r01eB054A49BC47EED155BD62DA9663C1C872988CD5C
+              level: 2
+            - name: Auditorios
+              code: r01e88367D8446220C5D3AD22CFDC9329AE93560D4E0
+              level: 2
+            - name: Compras
+              code: r01e501CF0917CA5D67F3957B055EC218670C38D1AD3
+              level: 2
+            - name: Espacios Naturales
+              code: r01eB2F45282EAFFFACE36E44FDD6D79DC4561A79801
+              level: 2
+            - name: Ferias y mercados
+              code: r01e3FF999B36DFEB33FFDFD4BD9BEB5AB2FB5C02991
+              level: 2
+            - name: Fiestas populares
+              code: r01e578AD2BACF2090924615D41EC9184DF80600CB62
+              level: 2
+            - name: Lugares singulares
+              code: r01e871E41028438A7B411280219E01311282D7F97E6
+              level: 2
+            - name: "Zonas de bares, pubs, discotecas"
+              code: r01e1169A7E5EDED77DBA3479BEFEC0C60A8B6648F6D
+              level: 2
+            - name: Turismo
+              code: r01e00000ff26d46251a470b8eec6d2aae38c782b
+              level: 2
+            - name: Deportes
+              code: r01e00000ff26d4628fa470b8975afdd47e3e160a
+              level: 2
+        - name: Salud
+          code: r01e000000ff26d46212a470b88010910a12c1cba
+          level: 1
+          new_ejes:
+            - name: Farmacia y medicamentos
+              code: r01e00000ff26d4629fa470b8fa6ae8ba79c30c73
+              level: 2
+            - name: Formación de profesionales sanitarios
+              code: r01e4F2FE880ADCAEC845EB3AC0661CC299217E1E373
+              level: 2
+            - name: Investigación y tecnologías sanitarias
+              code: r01eDCE7523AE76E2C192D64186A81C52D31EAE4117A
+              level: 2
+            - name: Inspecciones Médicas y Sanitarias
+              code: r01e4D2119B04A7208F23D67E4CC16E7B1A18C60BE98
+              level: 2
+            - name: Programas y campañas de salud
+              code: r01e3F30D17DD60101CDB7389B19C3C513DCC3BEA743
+              level: 2
+            - name: Protección y prevención de la salud
+              code: r01eA286726B16DAD2A56BABB3E496562F03076C361D
+              level: 2
+            - name: Servicios sanitarios
+              code: r01e00000fe4e66772ba470b8e32b3fb51480bd17
+              level: 2
+            - name: Servicios Veterinarios
+              code: r01e09BD6F3DD7B197D15DA5FE74BFA07C0D9F9E8BFC
+              level: 2
+            - name: Drogodependencias
+              code: r01e00000ff26d46241a470b8ea48d8964327e701
+              level: 2
+        - name: Seguridad e Interior
+          code: r01e00000ff26d46212a470b8f2467ef2bc45e92a
+          level: 1
+          new_ejes:
+            - name: Elecciones
+              code: r01e00000ff26d46241a470b8fa7bd061aa2b6438
+              level: 2
+            - name: Juego y espectáculos
+              code: r01e00000ff26d46241a470b865a460d0e16f0896
+              level: 2
+            - name: Policía
+              code: r01e000000ff26d46241a470b88d44a4b2e53b919
+              level: 2
+            - name: Salvamento marítimo
+              code: r01e00000ff26d46241a470b868edab29b4b58a09
+              level: 2
+            - name: Seguridad Ciudadana
+              code: r01e00000ff26d46241a470b8231f732657fc373c
+              level: 2
+            - name: Tráfico
+              code: r01e00000ff26d46241a470b87bc37675b04b7df3
+              level: 2
+            - name: Víctimas del Terrorismo
+              code: r01e00000ff26d46241a470b8ee17241518154325
+              level: 2
+            - name: Atención de emergencias
+              code: r01e00000fe4e66771ba470b8c4662272b8bf43ed
+              level: 2
+        - name: Trabajo y empleo
+          code: r01e00000ff26d46212a470b818464daec45c59fa
+          level: 1
+          new_ejes:
+            - name: Apoyo a las empresas
+              code: r01eC784B1B711EAB78C2CD805459C6E58DE5B005E43
+              level: 2
+            - name: Autoempleo
+              code: r01e0001094a2664f34a301f2250f6fc2d96e5496
+              level: 2
+            - name: "Economía Social: cooperativas y sociedades laborales"
+              code: r01e00000ff26d46280a470b860948b73d35ad8af
+              level: 2
+            - name: Empresas de trabajo temporal (ETT)
+              code: r01e00000ff26d4628fa470b8adfcbc27065cc5f1
+              level: 2
+            - name: Entidades de Previsión Social (EPSV)
+              code: r01e00000ff26d4628fa470b890c85de9aa1ef469
+              level: 2
+            - name: Formación para desempleados
+              code: r01e1465A9D6957049B8D32E8933DE1E5E71E5DD92E8
+              level: 2
+            - name: Formación para trabajadores en activo
+              code: r01eB425DF30298A332E30A93BF1ADD59EED60983D35
+              level: 2
+            - name: Orientación para el empleo
+              code: r01e25E5DCC19D9B360FF6CC96610ADD2B9EC3957467
+              level: 2
+            - name: Pensiones
+              code: r01e25467EF68B130A2E4BFEB024D4F92A3B094AD5D3
+              level: 2
+            - name: Seguridad y Salud Laboral
+              code: r01e00000ff26d46280a470b8e1adac4c175a9b32
+              level: 2
+            - name: Trabajo y Relaciones laborales
+              code: r01e00000ff26d46280a470b84b513918f4fb66ad
+              level: 2
+        - name: Transporte y movilidad
+          code: r01eF39E4C334FC0257B295A101D23556824A20F58FC
+          level: 1
+          new_ejes:
+            - name: Actividades auxiliares del transporte
+              code: r01eF83AE0FF00B2AFD50F60E219F401AE6A0F3106CA
+              level: 2
+            - name: Aparcamientos y regulación de espacios
+              code: r01eC200DA7AB0D03678DCD907AD77D34A6D38168471
+              level: 2
+            - name: Bicicleta
+              code: r01e25A0E82EE38F581051F0C42E67E330D530460C11
+              level: 2
+            - name: Ferrocarril
+              code: r01e1E175875A81E7C441B7704EEFC204B149F5271B0
+              level: 2
+            - name: Incidencias de tráfico
+              code: r01eC9775F36F29F114D4CDBC0C0D3D9A65747D81502
+              level: 2
+            - name: Logística del transporte
+              code: r01e46E8B97E6DC8E64E9232D36FE5E6C097EE8D38B4
+              level: 2
+            - name: Peatón y movilidad
+              code: r01eB8281B1FB00A55551B73DABB140FBD3F3BF57F78
+              level: 2
+            - name: Transporte aereo
+              code: r01e5B4D5688700C7D459D0C8AEFC51B00C5FA145222
+              level: 2
+            - name: Transporte marítimo
+              code: r01e45FE2E23DC2E8B369CEBDD56D671C74FA9C1ADB5
+              level: 2
+            - name: Transporte por carretera
+              code: r01eC4197AB46ACE28078072F7584B5064203DAACCEF
+              level: 2
+            - name: Transporte público
+              code: r01eDF575D142269340C769524BA49A9F9356AD30A4E
+              level: 2
+            - name: "Otros medios de transporte (tranvía, cable...)"
+              code: r01e6302086F574522B44CAE10699DA15B4327FEF160
+              level: 2
+        - name: Urbanismo y Territorio
+          code: r01e000000ff26d46212a470b84420ef2fc1c004b
+          level: 1
+          new_ejes:
+            - name: Callejero
+              code: r01e076BF376DE2DBBE757F1189E158765F968F1B10D
+              level: 2
+            - name: Cartografía
+              code: r01e00000ff26d4629fa470b8e0c53b735efa6455
+              level: 2
+            - name: Información catastral
+              code: r01eA7ACE8FDD92364715539DEE10901D75A3F299936
+              level: 2
+            - name: Ordenación del territorio
+              code: r01e00000ff26d4629fa470b8510479fec88f8887
+              level: 2
+            - name: Suelo industrial
+              code: r01eA6F23467DBC535DDCB9331416DC3251D1D61C5B2
+              level: 2
+            - name: Suelo rústico
+              code: r01e1616E1938F565F221DA832D126B4DB6657AAB9BB
+              level: 2
+            - name: Suelo urbano
+              code: r01e5F97E362845F253C997A0677428AA85D03BB6470
+              level: 2
+            - name: Urbanismo
+              code: r01e6F7EEF2921AF4E45C90437DD13E1751D1AD2C30E
+              level: 2
+        - name: Vivienda
+          code: r01e00000fe4e66771ba470b85e04a11f38a716da
+          level: 1
+          new_ejes:
+            - name: "Accesibilidad: barreras arquitectónicas y urbanísticas"
+              code: r01e66E93FEE8A1966E0652B9AD7B77E955695B114FD
+              level: 2
+            - name: Adquisición de vivienda
+              code: r01e907FF85F493C56CAA187EE5FCF7E406CB8604652
+              level: 2
+            - name: Alquiler de vivienda
+              code: r01eAF1C6C39A7F21BC6EE05A59C18C631E85D26C03E
+              level: 2
+            - name: Calidad en las edificaciones y en la gestión de la construcción
+              code: r01e06D6EB7F84E09F5F771BB8CD408C7CE1617920CE
+              level: 2
+            - name: Promoción pública de viviendas (VPO)
+              code: r01e00000ff26d4629fa470b8cd8b26e15652a8fb
+              level: 2
+            - name: Rehabilitación de vivienda
+              code: r01e4FC318F89987590AD2F4640E1457EEEA63CF1418
+              level: 2
+            - name: Vivienda libre
+              code: r01epd0011686bcc0814ebeabe798bfa99a1e5dba
+              level: 2
+            - name: Suelo
+              code: r01e00000ff26d462afa470b8c98dfd97ee0798fd
+              level: 2
+
+    # Hechos Vitales:
+    - short_name: vitales
+      name: Hechos Vitales
+      code: r01e00000fe4e6676dda470b8384c1e45db239b9c
+      level: 0
+      new_ejes:
+        - name: Personas
+          code: r01e00000ff26d461a5a470b832d9102c1a18bea0
+          level: 1
+          new_ejes:
+            - name: Acceder a una vivienda
+              code: r01e00000ff26d461c4a470b88f94d9334eba7e28
+              level: 2
+            - name: Consumir responsablemente
+              code: r01ep9c67b9f33f387130766f
+              level: 2
+            - name: Desplazarse en Euskadi
+              code: r01ep5ebb55319cb6b4dcaee0
+              level: 2
+            - name: Disfrutar del ocio
+              code: r01ep13393064f597d0fa8677
+              level: 2
+            - name: Encontrar trabajo
+              code: r01e00000ff26d461c4a470b8faf6af240e32aab7
+              level: 2
+            - name: Familia y pareja
+              code: r01e39724044FE89AFE0BB87820E1899C9CE7A02D153
+              level: 2
+            - name: Formación y estudios
+              code: r01e00000ff26d461c4a470b820a4a7a88c99bcf6
+              level: 2
+            - name: Recibir y prestar apoyo social
+              code: r01epe870626a331782b7e94a
+              level: 2
+            - name: "Salud: prevenir y curar"
+              code: r01e000000ff26d461b5a470b8b83845ef9d0eaa5
+              level: 2
+        - name: Empresas
+          code: r01e00000ff26d461a5a470b86b47bd2b449069f3
+          level: 1
+          new_ejes:
+            - name: Crear una empresa
+              code: r01e00000ff26d461c4a470b853922451327860f7
+              level: 2
+            - name: Solicitar autorizaciones
+              code: r01eAA4A43FB23A0E522A62273908C7E5F7596957724
+              level: 2
+            - name: Pagar impuestos
+              code: r01e000000ff26d461c4a470b89724b8803ed0fa9
+              level: 2
+            - name: Gestionar los Recursos Humanos
+              code: r01e00000ff26d461c4a470b8ab4841f63dfcddd5
+              level: 2
+            - name: Exportar
+              code: r01e00000ff26d461c4a470b8f1481021c0f3f6d1
+              level: 2
+            - name: "Gestión empresarial, innovación y mejora"
+              code: r01e00000ff26d461d4a470b856ec09b3f20bf680
+              level: 2
+            - name: Obtener subvenciones
+              code: r01e00000ff26d461c4a470b88d37df488af52aee
+              level: 2
+            - name: Contratar con la Administración
+              code: r01e00000ff26d461d4a470b811d29761e1a8aa88
+              level: 2
+            - name: Invertir en Euskadi
+              code: r01ep1fc668118f2b806869bf
+              level: 2
+            - name: Promocionar el euskera
+              code: r01epa02f85443efd8fcc51e7
+              level: 2
+            - name: Fomentar la Igualdad de mujeres y hombres
+              code: r01epd01182bb7d03f7a013dbe6c7c5f066de82df
+              level: 2
+        - name: Administraciones
+          code: r01e00000ff26d461a5a470b8618f7e296c596449
+          level: 1
+          new_ejes:
+            - name: Subvenciones a entidades locales
+              code: r01eC70DD2AFF2058BAA9C1240FDCC22EC75A5A004E1
+              level: 2
+            - name: Normalización Lingüística
+              code: r01eE35B302320A098CAC200615AC556B8D3FDB8E038
+              level: 2
+            - name: Modernizar la administración
+              code: r01ep9d5ea9fdde1694c670ae
+              level: 2
+            - name: Formación
+              code: r01e00000ff26d461d4a470b89cb18e96d2ace15a
+              level: 2
+            - name: Programas y proyectos
+              code: r01eD75B5ADCB3EC742263E5B13705AF7912830BE315
+              level: 2
+        - name: Descubrir Euskadi
+          code: r01e00000ff26d461b5a470b86c93c38aecb9f5b5
+          level: 1
+          new_ejes:
+            - name: "Conocer Euskadi (historia, geografia, cultura, realidad social, instituciones...)"
+              code: r01e00000ff26d461d4a470b8f71d7763dd8fb473
+              level: 2
+            - name: "Euskadi en el mundo (participación en organismos internacionales, cooperación al desarrollo, vascos universales...)"
+              code: r01e00000ff26d461d4a470b8213d13aa39163591
+              level: 2
+            - name: Negocios en Euskadi
+              code: r01e00000ff26d461d4a470b8cb62f7d16366333e
+              level: 2
+            - name: Vascos en el mundo
+              code: r01e00000ff26d461e3a470b8c819372eb4bbe2bc
+              level: 2
+            - name: "Visitar Euskadi (turismo, estudios, trabajo...)"
+              code: r01e00000ff26d461d4a470b834214fb055797524
+              level: 2
+    # Perfiles:
+    - short_name: perfiles
+      name: Perfiles / Destinatarios / Público objetivo
+      code: r01e00000fe4e6676dda470b8e96ebfb4e7b967c9
+      level: 0
+      new_ejes:
+        - name: Personas
+          code: r01e00000ff26d461a5a470b832d9102c1a18bea0
+          level: 1
+          new_ejes:
+            - name: Infancia
+              code: r01e00000ff26d461a5a470b8147292fb8997ab6a
+              level: 2
+            - name: Juventud
+              code: r01e00000ff26d461b5a470b8d02b206e81ee3dbe
+              level: 2
+            - name: Familias y Parejas
+              code: r01e00000ff26d461b5a470b860cf280151b461bf
+              level: 2
+            - name: Personas Mayores
+              code: r01e00000ff26d461b5a470b8e35e814894aead1e
+              level: 2
+            - name: Mujeres
+              code: r01e00000ff26d461b5a470b8a560306e9ecfd050
+              level: 2
+            - name: Hombres
+              code: r01epd01182bb09a697a013dbdd9d2c0b0ce1c5bc
+              level: 2
+            - name: Inmigrantes
+              code: r01e00000ff26d461b5a470b8490a5220b56f2b6f
+              level: 2
+            - name: Asociaciones y  Voluntariado
+              code: r01e00000ff26d461b5a470b8a0ae45a9aacb4938
+              level: 2
+            - name: Extranjeros / No residentes
+              code: r01e0E1DB5366DCFF9BD5F9D4766831E0776446E5A80
+              level: 2
+        - name: Empresas
+          code: r01e00000ff26d461a5a470b86b47bd2b449069f3
+          level: 1
+          new_ejes:
+            - name: Comercios
+              code: r01e825F5059C059716B024FBA8041CD57A64EE0AE54
+              level: 2
+            - name: Cooperativas
+              code: r01e00000ff26d461b5a470b8cb349eb09dd40ca1
+              level: 2
+            - name: Exportadores
+              code: r01e00000ff26d461b5a470b8ceb9d6780aabaab2
+              level: 2
+            - name: Inversores internos o extranjeros
+              code: r01e72859449E0D20F14979C474C589E539B6B2E5B66
+              level: 2
+            - name: PYMEs
+              code: r01e00000ff26d461b5a470b843f76b530d27a0cf
+              level: 2
+            - name: Sectores
+              code: r01e00000ff26d461b5a470b851d7a97ba59ab535
+              level: 2
+              new_ejes:
+                - name: "Sector Primario (agricultura, pesca, ..)"
+                  code: r01e5B899E6F0B431AF457455CB767E39E050A57E55F
+                  level: 3
+                - name: "Sector Secundario (industria,...)"
+                  code: r01e6C34376A55BDA220F1242547773713844882E55B
+                  level: 3
+                - name: "Sector Terciario (servicios, ...)"
+                  code: r01e38FEA556AED02115586B95FAE7404AACB31BA74B
+                  level: 3
+        - name: Administraciones
+          code: r01e00000ff26d461a5a470b8618f7e296c596449
+          level: 1
+          new_ejes:
+            - name: Administración Autónoma
+              code: r01e00000ff26d461b5a470b8268a5ed65fbcc235
+              level: 2
+            - name: Administración Foral
+              code: r01e00000ff26d461b5a470b87233b2e349dd77cf
+              level: 2
+            - name: Administración local
+              code: r01e00000ff26d461b5a470b84c5532b0967b5e5f
+              level: 2
+            - name: Otras instituciones
+              code: r01e00000ff26d461b5a470b8683fc38b50f08271
+              level: 2
+            - name: Empleado Público
+              code: r01e000000ff26d461b5a470b8b4a708ee0db7258
+              level: 2

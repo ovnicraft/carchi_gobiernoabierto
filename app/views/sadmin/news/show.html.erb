@@ -1,0 +1,46 @@
+  <h1 class="title"><%= @news.title %></h1>
+
+<%= render :partial => "edit_links" %>
+
+  <ul class="edit_links" style="margin:20px 0px;">
+    <li>
+      <%= link_to t('sadmin.modificar'), edit_sadmin_news_path(@news), :class => "edit" %>
+    </li>
+  </ul>
+  
+  <%= render :partial => "/admin/shared/dept", :locals => {:item => @news}  %>
+
+  <div class="document_body">
+    <% if @news.has_cover_photo? %>
+      <%= render :partial => '/admin/documents/multimedia/cover', :locals => {:document => @news} %>
+    <% end %>
+
+    <%=raw @news.pretty_body %>
+  </div>
+  
+  <hr/>
+  <table class="admin">
+    <tr>
+      <th><%= t('sadmin.news.directorio_multimedia') %></th>
+      <td><%= @news.multimedia_path %></td>
+    </tr>  
+
+    <tr>
+      <th><%= t('sadmin.news.visibilidad') %>:</th>
+      <td>
+        <b><%= si_o_no(@news.is_public?) %></b> <%= t("sadmin.se_muestra_#{@news.is_public?}", :where => 'Irekia') %><br/>
+        <b><%= si_o_no(@news.consejo_news_id.nil?) %></b> <%= t("sadmin.se_muestra_en_actividad") %><br/>
+      </td>
+    </tr>  
+  </table>
+  
+  <%= render :partial => '/sadmin/news/create_update_info' %>
+
+  <div class="document_show2">
+    <%= render :partial => "/sadmin/attachments/list_specific", :object => @news %>
+  </div>
+
+  <div class="document_show2">
+    <%= render :partial => "/sadmin/news/related_event", :locals => {:document => @news } %>
+  </div>
+

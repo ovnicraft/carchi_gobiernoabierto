@@ -1,0 +1,26 @@
+
+<%= form_for @event, :url => sadmin_event_path(@event), :html => {:method => :put} do |f| %>
+
+  <p style="clear:both;text-align:center;">
+    <%= submit_tag t('guardar'), :id => "submit_button_up", :class => "submit_button" %>
+  </p>
+  
+  <%= render :partial => "form", :locals => {:f => f} %>
+  
+  <div class="warning" id="warning" style="display:block;">
+    <%= t('sadmin.events.change_event_warning') %>
+  </div>
+  
+  <p style="clear:both;text-align:center;">
+    <%= submit_tag t('guardar'), :id => "submit_button", :class => "submit_button" %>
+  </p>
+  
+<% end %>
+
+<script type="text/javascript">
+  EventAlerts.has_sent_alerts = <%= @event.alerts.for_journalists.sent.count > 0 %> ;
+  EventAlerts.must_confirm = <%= (!@event.passed? && @event.is_public? && @event.alertable?) ? 'true' : 'false' %>;
+  EventAlerts.confirm_message = '<%= t('sadmin.events.seguro_guardar') %>';
+  EventAlerts.saving_message = '<%= t('sadmin.guardando') %>';
+  EventAlerts.event_has_expired = <%= @event.passed? %>;
+</script>

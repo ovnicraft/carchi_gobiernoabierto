@@ -1,0 +1,30 @@
+<%= error_messages(f.object) %>
+
+<table class="admin">
+  <tr>
+    <th>Nombre</th>
+    <td><%= f.text_field :place %></td>
+  </tr>
+  
+  <tr>
+    <th>Ciudad</th>
+    <td><%= f.text_field :city %></td>
+  </tr>
+  
+  <tr>
+    <th>Dirección</th>
+    <td><%= f.text_field :address %></td>
+  </tr>
+
+  <tr>
+    <th>Latitud</th>
+    <td><%= f.text_field :lat %></td>
+  </tr>
+
+  <tr>
+    <th>Longitud</th>
+    <td><%= f.text_field :lng %></td>
+  </tr>
+</table>
+
+<p><%= f.submit "Guardar" %></p>

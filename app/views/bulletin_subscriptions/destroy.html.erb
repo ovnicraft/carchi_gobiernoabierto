@@ -1,0 +1,18 @@
+
+<div class='section container bulletin_subscriptions subscribe'>
+  <div class='section_main row-fluid'>
+    <div class='section_content span12'>
+      <div class='section_heading'><%= t('bulletin_subscriptions.baja_del_boletin') %></div>
+      <div class="confirmation">
+        <% if @status.eql?('unsubscribed') %>
+          <%= t('bulletin_subscriptions.unsubscription_done') %>
+        <% elsif @status.eql?('failed') %>
+          <%= t('bulletin_subscriptions.unsubscription_failed') %>
+          <%= error_messages_for :user %>
+        <% elsif @status.eql?('canceled') %>
+          <%= t('bulletin_subscriptions.unsubscription_canceled') %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

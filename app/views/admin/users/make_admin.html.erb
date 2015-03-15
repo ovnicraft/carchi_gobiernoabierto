@@ -1,0 +1,23 @@
+<h1>Búsqueda de <%=  User::TYPES[params[:t]] %></h1>
+
+<p>
+  Hemos encontrado un usuario registrado con el email <%= params[:email] %>,
+  actualmente en el rol de <%=  User::TYPES[@user.type.to_s] %>.<br/>
+  <b>¿Seguro que quieres darle permisos de <%=  User::TYPES[params[:t]] %>?</b>
+</p>
+
+<%= form_for :user, :url => admin_user_path(@user), :html => {:method => :put} do |f| %>
+  <%= f.hidden_field :type, :value => params[:t] %>
+  <%= f.hidden_field :status, :value => @user.status %>
+    <% if %w(StaffChief DepartmentEditor DepartmentMember).include?params[:t] %>
+  <p>
+      <b>
+        <%= f.label :department_id, "Departamento" %>
+      </b>
+        <%= f.select :department_id, Department.order("position").collect {|d| [d.name,
+   d.id]} %>
+  </p>
+    <% end %>
+  <%= f.submit "Sí, hazle #{User::TYPES[params[:t]]}" %>
+  <%= submit_tag 'No, cancelar', :name => 'submit_cancel' %>
+<% end %>

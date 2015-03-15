@@ -1,0 +1,83 @@
+<% if Settings.optional_modules.debates %>
+#
+# NOTA: Al añadir un debate aquí, hay que añadir los debate_stages 
+# que le corresponden en debate_stages.yml
+#
+debate_completo:
+  title_es: Tema del debate
+  title_eu: Tema del debate
+  title_en: Tema del debate  
+  body_es: Introducción
+  body_eu: Introducción
+  body_en: Introducción    
+  description_es: Descripción detallada
+  description_eu: Descripción detallada
+  description_en: Descripción detallada    
+  hashtag: "#debate_completo"
+  department: lehendakaritza
+  creator: admin
+  published_at: <%= 1.year.ago %>  # tiene que coincidir con starts_on de la fase presentación
+  finished_at: <%= 8.months.ago %> # tiene que coincidir con ends_on de la fase conclusiones
+  page: debate_page
+  news: news_for_debate
+  multimedia_dir: debate_completo
+  multimedia_path: "debates/debate_completo"
+
+debate_nuevo:
+  title_es: Debate nuevo sin página ni noticia
+  title_eu: Debate nuevo sin página ni noticia
+  title_en: Debate nuevo sin página ni noticia  
+  body_es: Introducción
+  body_eu: Introducción
+  body_en: Introducción    
+  description_es: Descripción detallada
+  description_eu: Descripción detallada
+  description_en: Descripción detallada    
+  hashtag: "#debate_nuevo"
+  department: lehendakaritza
+  creator: admin
+  published_at: <%= 1.month.ago %>  
+  finished_at: <%= 4.months.from_now %>
+  multimedia_dir: debate_nuevo
+  multimedia_path: "debates/debate_nuevo"
+
+debate_viejo:
+  title_es: Debate de la legislatura anterior
+  title_eu: Debate de la legislatura anterior
+  title_en: Debate de la legislatura anterior  
+  hashtag: "#debate_viejo"
+  department: lehendakaritza_ix_leg
+  creator: admin
+  published_at: <%= 2.years.ago %>
+  finished_at: <%= 20.months.ago %>  
+  multimedia_dir: debate_viejo
+  multimedia_path: "debates/debate_viejo"
+
+debate_sin_publicar:
+  title_es: Debate nuevo sin publicar
+  title_eu: Debate nuevo sin publicar
+  title_en: Debate nuevo sin publicar
+  body_es: Introducción
+  body_eu: Introducción
+  body_en: Introducción    
+  description_es: Descripción detallada
+  description_eu: Descripción detallada
+  description_en: Descripción detallada    
+  hashtag: "#debate_sin_publicar"
+  department: lehendakaritza
+  creator: admin
+  multimedia_dir: debate_sin_publicar
+  multimedia_path: "debates/debate_sin_publicar"
+
+debate_sin_traducir:
+  title_es: Debate nuevo sin traducir
+  body_es: Introducción
+  description_es: Descripción detallada
+  hashtag: "#debate_sin_traducir"
+  department: emakunde
+  creator: admin
+  published_at: <%= 1.month.ago %>  
+  finished_at: <%= 4.months.from_now %>
+  multimedia_dir: debate_sin_traducir
+  multimedia_path: "debates/debate_sin_traducir"
+<% end %>

@@ -1,0 +1,20 @@
+<% items ||= [] %>
+<% items_for_pagination ||= items %>
+<% type ||= '' %>
+<% ul_class ||= type %>
+
+<div class='filtered_content' id="filtered_content">
+  <% if items.present? -%>
+    <ul class='std_list <%= ul_class %>' id="list_items">
+      <% items.each do |item| %>
+        <% item_type = type.present? ? type : item.class.to_s.tableize %>
+        <%= render :partial => "/#{item_type}/list_item", :locals => {item_type.singularize.to_sym => item, :target => :list}  %>
+      <% end %>
+    </ul>
+    <%= will_paginate items_for_pagination if items_for_pagination.respond_to?(:total_pages) %>
+  <% else -%>
+    <div class='well'>
+      <%= type.present? ? t("#{type}.no_content") :  t("shared.no_content") %> <%= t('shared.from_context', :name => @context.public_name) if @context.present? %>
+    </div>
+  <% end -%>
+</div>

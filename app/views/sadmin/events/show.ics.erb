@@ -1,0 +1,4 @@
+<%= RiCal.Calendar do |cal|
+  cal.add_x_property('X-WR-CALNAME',"#{Settings.site_name}::Eventos")
+  @event.to_ics(cal)
+end %>

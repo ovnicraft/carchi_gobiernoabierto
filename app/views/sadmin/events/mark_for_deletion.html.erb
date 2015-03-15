@@ -1,0 +1,11 @@
+<h1><%= t('sadmin.eliminar_what', :what => Event.model_name.human) %></h1>
+
+<p>
+  <%= t('sadmin.events.evento_no_eliminable') %>
+</p>
+
+
+<%= form_for :event, :url => delete_sadmin_event_path(@event), :html => {:method => :put} do |f| %>
+  <%= submit_tag t('sadmin.events.marcar_como_eliminado') %>
+  <%= submit_tag t('cancelar'), :name => "cancel" %>
+<% end %>

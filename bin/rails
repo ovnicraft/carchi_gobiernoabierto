@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+# This command will automatically be run when you run "rails" with Rails 3 gems installed from the root of your application.
+
+if ((ARGV.first == 'server' || ARGV.first == 's') && (!ARGV[1] || (ARGV[1] && ARGV[1]!= 'webrick')))
+  if (ARGV.any?{|a| a.match(/debugger/)})
+    ARGV.delete_if{|a| a.match(/debugger/)}
+    puts "\nPlease, to use debugger or byebug, run `rake debug` to restart Phusion Passenger and connect to the debugger.\n"
+  end
+  system("passenger start #{ARGV.drop(1).join(" ")}")
+else
+  APP_PATH = File.expand_path('../../config/application',  __FILE__)
+  require File.expand_path('../../config/boot',  __FILE__)
+  require 'rails/commands'
+end

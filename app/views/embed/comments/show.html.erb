@@ -1,0 +1,15 @@
+<div class='section_main row-fluid'>
+  <div class="section_content span8">
+    <div class='article news'>
+       <%= render :partial => "/comments/list", :locals => {:parent => @item, :comments => @comments} %>
+    </div>
+  </div>
+</div>  
+
+<% content_for :js_data do %>
+  <script type="text/javascript" >
+    $(document).ready(function(){
+      windowLoginAction.init();
+    });
+  </script>
+<% end %>

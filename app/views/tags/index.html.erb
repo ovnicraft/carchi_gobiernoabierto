@@ -1,0 +1,12 @@
+<div class='section container tags index'>
+  <div class='section_main row-fluid'>
+    <div class='section_content span12'>
+      <h1 class='section_heading'><%= @title %></h1>    
+      <div class="tag_cloud">
+        <% tag_cloud @tags, %w(size1 size2 size3 size4 size5 size6 size7 size8) do |tag, css_class| %>
+          <%= link_to tag.name.sub(/^\d-([^\d])/, '\1'), tag_path(tag, :type => params[:type]), :class => css_class %>
+        <% end %>
+      </div>      
+    </div>
+  </div>
+</div>

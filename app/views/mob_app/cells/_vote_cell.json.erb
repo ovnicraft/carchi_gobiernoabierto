@@ -1,0 +1,29 @@
+<%-
+  target ||= 'list'
+  
+  proposal = vote.votable
+  votable_controller = vote.votable_type.eql?("Debate") ? "debates" : "proposals"
+  h = {
+    "id" => vote.id , 
+    "title" => title || t('floki.activity.vote_for', :value => (vote.value == -1 ? t('proposals.against') : t('proposals.in_favor')), :title => proposal.title), 
+    "body" => '',
+    "url" => url_for(:controller => votable_controller, :action => "show", :id => vote.votable_id, :format => :floki, :locale => I18n.locale, :only_path => false),
+    "image" => request.protocol + request.host_with_port + asset_path('floki/irekia_77_propuestas.png'),
+    "share_url" => url_for(:controller => votable_controller, :action => "show", :id => vote.votable_id, :only_path => false),
+    "sort_id" => sort_id,
+    "accepts_votes" => true,
+    "accepts_comments" => proposal.has_comments && !proposal.comments_closed,
+    "accepts_arguments" => true,
+    "online" => true
+   }
+   
+   if target.eql?(:activity)
+     h["image"] = "#{request.protocol}#{request.host_with_port}#{asset_path('floki/irekia_77_propuestas.png')}"
+   elsif proposal.has_image?
+     h["image"] = "#{absolutize_url(proposal.image.thumb_70.url)}"
+   end
+   
+   h["footer"] = I18n.localize(vote.published_at.to_date, :format => :long).strip  if vote.published_at
+-%>
+
+<%=raw h.to_json.gsub('&amp;size', '&size') %>

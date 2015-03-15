@@ -1,0 +1,29 @@
+<%=  content_tag(:h2, @l_subtitle, :class => 'l_info') unless @l_subtitle.blank? %>
+
+<%= render :partial => "create_links" %>
+
+<h2><%= @subtitle %></h2>
+
+<%= render :partial => "agenda_nav" %>
+
+<% if @events.empty? %>
+  <div class="info">
+    <%= t('sadmin.events.no_hay_eventos') %>.
+  </div>
+<% else %>
+  <% week_events = @events.map {|e| e if e.starts_at.to_date >= @first_day_of_week}.compact %>
+  <% week_events.group_by {|e| e.starts_at.to_date}.each do |date, event_group| %>
+     <%= render :partial =>'one_day', :locals => {:date => date, :event_group => event_group} %>
+  <% end %>
+
+  <% long_events = @events - week_events %>  
+  <% unless long_events.empty?%>
+    <div class="long_events">
+      <h2><%= t('sadmin.events.titulo_eventos_largos') %></h2>
+      <% long_events.group_by {|e| e.starts_at.to_date}.each do |date, event_group| %>
+           <%= render :partial =>'one_day', :locals => {:date => date, :event_group => event_group} %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+

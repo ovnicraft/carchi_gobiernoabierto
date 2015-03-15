@@ -1,0 +1,24 @@
+
+<h1>Redes Sociales</h1>
+
+<% departments = @departments.find_all {|d| d.active?}%>
+
+<% if departments.length == 0 %>
+  Primero debes crear <%= link_to "departamentos", admin_organizations_path %>
+<% end %>
+
+<ul class='categories'>
+  <% departments.each do |dept| %>
+    <li><%= link_to dept.name, admin_sorganizations_url(:dept_id => dept.id) %></li>
+  <% end %>
+</ul>
+
+<h1 class="active_false">Departamentos antiguos</h1>
+
+<ul class='categories'>
+  <% (@departments - departments).each do |dept| %>
+    <li class="active_false"><%= link_to dept.name, admin_sorganizations_url(:dept_id => dept.id) %></li>
+  <% end %>
+</ul>
+
+

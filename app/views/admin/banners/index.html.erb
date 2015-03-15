@@ -1,0 +1,28 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'prototype/dragdrop' %>
+<% end %>
+
+<% @title = "Banners" %>
+
+<ul class="edit_links">
+  <li class="add_user"><%= link_to "Añadir banner", new_admin_banner_path, :class => "new" %></li>
+</ul>
+
+<div class="featured_hint">
+  Sólo se muestran en el footer los primeros <%= Banner::MAX_FEATURED %> banners activos de esta lista.
+  <%- diff = (Banner.active.count - Banner::MAX_FEATURED) -%>
+  <%= content_tag(:span, "Sobran #{diff} banners activos.", :class => "over_limit") if diff > 0 %>
+</div>
+
+<p>Para reordenar los banners, pincha y arrastra el banner hasta la posición deseada</p>
+  
+<div class="banners_list">
+  <div id='banners-list' style="cursor: move">
+    <% @banners.each do |banner| %>
+        <%= render :partial => 'banner', :locals => {:banner => banner} %>
+    <% end %>
+  </div>  
+</div>  
+
+<%= sortable_element "banners-list", :url => sort_admin_banners_path, :method => :post, 
+  :complete => visual_effect(:highlight, 'banners-list'), :tag => "div" %>

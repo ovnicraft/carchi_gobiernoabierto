@@ -1,0 +1,18 @@
+<% if @comments.present? %>
+  <div class='comments'>
+    <span class='comments_title'><%= Comment.model_name.human(:count => 2).capitalize %></span>
+
+      <% @comments.each do |comment| %>
+        <div  id="comment_<%= comment.id %>" class="comment_container <%= 'moderation_pending' unless comment.approved? %>">
+          <div class='data'>
+            <span class='author'><%= comment.name %></span>
+            <span class='date'><%= t('shared.list_item.time_ago', :time => distance_of_time_in_words_to_now(comment.created_at)) %></span>
+          </div>
+          <div class='body'>
+            <%= comment.body.strip_html %>
+          </div>    
+        </div>  
+      <% end %>
+ 
+  </div>  
+<% end %>

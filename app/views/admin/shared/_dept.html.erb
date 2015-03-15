@@ -1,0 +1,11 @@
+<div class="date_and_location">
+  <b><%= item.organization.is_a?(Department) ? t('organizations.department') : t('organizations.organism') %>:</b>
+     <%= h item.organization.name %><%= show_gc_link_if_present(item.organization) %>
+  <b><%= t('shared.area') %>:</b><%= item.area_name %><br/>
+  <% if item.is_a?(News) %>
+    <b><%= t('politicians.title') %>:</b><%= politicians_with_roles(item) %><br />
+    <% if item.speaker.present? %>
+      <b><%= t('shared.sidebar.otros_asistentes') %>:</b> <%= item.speaker %>
+    <% end %>
+  <% end %>
+</div>

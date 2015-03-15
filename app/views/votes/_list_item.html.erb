@@ -1,0 +1,19 @@
+<% votable_path = vote.votable_type.eql?("Debate") ? debate_path(vote.votable) : proposal_path(vote.votable) %>
+<% author_with_link =  vote.votable_type.eql?("Debate") ? vote.votable.author_name : link_to_user_profile_unless_deleted(vote.author) %>
+
+<li class="item vote <%= 'not_moderated' unless vote.approved? %>">
+  <div class='item_thumbnail'>
+    <%= icon_for_proposal vote.votable %>  
+  </div>
+  <div class='item_content'>
+    <div class='title'>
+      <%=raw t("votes.vote.title.#{am_I?(vote.author) ? 'you' : 'other'}", :author => vote.author.name, :proposal => link_to(content_tag(:strong, vote.votable.title), votable_path))  %>
+    </div>
+
+    <div class='description <%= vote.positive ? 'in_favor' : 'against' %>'>
+      <%= %Q{#{vote.value == -1 ? t('proposals.against') :  t('proposals.in_favor')}} %>
+    </div>
+    <%= render_date(date_in_distance(vote.created_at)) %>
+  </div>
+
+</li>

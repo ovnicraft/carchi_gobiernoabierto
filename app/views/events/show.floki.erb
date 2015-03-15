@@ -1,0 +1,23 @@
+<div class="<%= 'ipad_container' if ipad_app_request? %>">
+  <h1><%= @event.title %></h1>
+  <%= render :partial => '/events/date_and_location.html', :locals => {:event => @event} %>
+
+  <%= @event.pretty_body %>
+
+
+  <% if @event.lat.present? && @event.lng.present? %>
+    <% if ipad_app_request? %>
+      <div style="position:relative">
+        <%= render :partial => "map4ipad.html", :locals => {:events => [@event]} %>
+      </div>
+
+      <% content_for :head do %>
+        <%= render :partial => '/events/mapjs4ipad.html' %>
+      <% end %>
+    <% else %>
+      <p class="map_button">
+        <a href="http://maps.google.com/maps?q=<%= CGI::escape(@event.pretty_place) %>&ll=<%= @event.lat.to_s %>,<%= @event.lng.to_s %>"><%= t('iphone.mapa') %></a>
+      </p>
+    <% end %>
+  <% end %>
+</div>

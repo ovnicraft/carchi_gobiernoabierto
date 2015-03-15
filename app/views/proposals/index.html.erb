@@ -1,0 +1,16 @@
+<% if @area %>
+  <%= render :partial => 'areas/summary' %>
+  <%= render :partial => 'areas/navigation_menu' %>
+  <%= render :partial => "/proposals/proposals" %>
+<% elsif @politician %>
+  <%= render :partial => 'politicians/summary' %>
+  <%= render :partial => 'politicians/navigation_menu' %>
+  <%= render :partial => "/proposals/proposals" %>
+<% elsif @user %>
+  <%= render :partial => "users/summary" %>
+  <%= render :partial => "users/navigation_menu" %>
+  <%= render :partial => "/proposals/proposals", :locals => {:title => t('users.proposals.title', :public_name => h(@user.public_name))} %>
+<% else %>  
+  <%= render :partial => '/shared/contribution_nav' %>
+  <%= render :partial => "/proposals/proposals" %>
+<% end %>

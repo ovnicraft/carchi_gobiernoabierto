@@ -1,0 +1,109 @@
+<h2>Atributos comunes a todos los idiomas</h2>
+
+<div class="document_show2">
+  
+  <% if !@proposal.is_public? %>
+    <p class="draft_notice">
+      Esta propuesta es aún un borrador
+    </p>
+  <% elsif !@proposal.published? %>
+    <p class="unpublished_notice">
+      Esta propuesta está aún sin publicar
+    </p>
+  <% end %>
+  
+  <ul class="edit_links">
+    <li><%= link_to 'Modificar atributos', edit_common_admin_proposal_path(@proposal), :class => "edit" %></li>
+    <% view_or_preview = @proposal.published? ? t('sadmin.news.ver') : t('sadmin.news.preview') %>
+    <li>
+      <%= link_to "#{view_or_preview} #{t('sadmin.news.en_irekia', :site_name => Settings.site_name)}", proposal_path(@proposal), :class => "public_link" %>
+    </li>
+  </ul>
+  
+  <% if can_create?("proposals") %>
+    <ul class="edit_links delete_link">
+      <li><%= link_to "Eliminar propuesta", admin_proposal_path(@proposal), :data => {:confirm => "Seguro?"}, :method => :delete, :class => "delete" %></li>
+    </ul>
+  <% end %>
+  
+  <% if @proposal.has_image? %>
+      <%= image_tag @proposal.image.n320.url %>
+  <% end %>
+  
+  <p>
+    <b>Departamento:</b> <%= @proposal.organization.name if @proposal.organization %>
+  </p>
+  
+  <p>
+    <b>Área:</b> <%= @proposal.area.name if @proposal.area %>
+  </p>
+  
+  <div>
+    <b>Comentarios oficiales:</b>
+    <ul>
+      <% @proposal.comments.select("id, user_id, created_at, body").select {|c| c.user.is_official_commenter?}.each do |comment| %>
+        <li class="official_comment">
+          <%= link_to comment.author.internal_name, admin_user_path(comment.author) %>
+          el <%= I18n.l(comment.created_at, :format => :long) %><br/>
+          <%= comment.body %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  
+  <p>
+    <b><%= t('admin.news.destacar_en_inicio') %></b>
+      <%= si_o_no(@proposal.featured?) %>
+  </p>
+  
+  <p>
+    <b>Fecha de publicación:</b> <%= @proposal.published_at ? @proposal.published_at.to_s(:short) : 'Sin fecha' %>
+  </p>
+  
+  
+  <p>
+    <b>¿Admite nuevos comentarios?</b>
+      <%= !@proposal.comments_closed? ? 'Sí' : 'No' %>
+  </p>
+
+  <!--<p>
+    <b>Comentarios:</b> <%= @proposal.has_comments? ? 'Sí' : 'No' %>
+  </p>-->
+
+  <p>
+    <%= show_tags_with_classes(@proposal) %>
+  </p>
+  
+</div>
+
+<div class="document_show2">
+  <%= render :partial => "/sadmin/attachments/list_specific", :object => @proposal %>
+</div>
+
+<% for_every_locale do |code, lang| %>
+  
+  <div class="document_show2">
+    <ul class="edit_links">
+      <li>
+        <%= link_to "Ver en la web", proposal_path(@proposal, :locale => code), :class => "public_link" %>
+      </li>
+      <li>
+        <%= link_to "Modificar #{lang}", self.send("edit_admin_proposal_path", {:proposal => @proposal, :lang => code}), :class => "edit" %>
+      </li>
+    </ul>
+    
+    <h2><%= lang %></h2>
+        
+    <% if @proposal.send("title_#{code}").present? || @proposal.send("body_#{code}").present? %>
+      <h3><%= h @proposal.send("title_#{code}") %></h3>
+
+      <div class="document_body">
+        <%=raw @proposal.send("body_#{code}") %>
+      </div>
+    <% else %>
+      <p>No hay traducción para este idioma</p>
+    <% end %>
+            
+  </div>
+  
+<% end %>

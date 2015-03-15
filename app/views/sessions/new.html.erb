@@ -1,0 +1,48 @@
+<div class='section container login'>
+  <div class='section_main row-fluid'>
+    <div class='section_container span8'>
+      <% if !Settings.customized %>
+        <div class="alert alert-info">
+          Por favor, conéctate con la cuenta de administrador para configurar los parámetros básicos de tu Open Irekia como el nombre, logo, y dirección de correo.
+        </div>
+      <% end %>
+
+      <div class='login_form'>      
+        <%= content_tag(:span, t('login.access_irekia', :site_name => Settings.site_name), :class => 'mod_title') unless request.xhr? %>
+
+        <div class='form_block'>
+          <!-- :"data-remote" => true,  -->
+          <%= form_tag session_path, {:class => "login"} do %>
+            <div class='error-messages' style='display:none'><%= t('session.Email_incorrecto') %></div>
+            <div class='control-group'>
+              <label for="user_email"><%= User.human_attribute_name(:email) %></label>
+              <%= text_field_tag 'email', nil, :class => 'mInput', :id => 'user_email', :type => 'email' %>
+            </div>
+            <div class='control-group'>
+              <label for="user_password"><%= User.human_attribute_name(:password) %></label>
+              <%= password_field_tag 'password', nil, :class => 'mInput', :id => 'user_password' %>          
+            </div>
+            <label class="remember_me">
+              <%= check_box_tag 'remember_me', "1", false %>
+              <%= t('session.remember_me') %>
+            </label>
+            <div class='btn_with_spinner'>
+              <%= submit_tag t('entrar'), :name => '', :class => 'irekia_btn login_btn' %>
+            </div>
+          <% end %>
+        </div>      
+      </div>
+
+      <%= render :partial => '/sessions/social_signin' %>
+      <div class='remember_block'>
+        <%= t('login.forgotten_password') %> <%= link_to t('login.get_it_here'), new_password_reset_path, :class => :password_reset %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type='text/javascript'>
+$(document).ready(function(){
+  loginForm.init();
+});
+</script>

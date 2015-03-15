@@ -1,0 +1,16 @@
+<div class="submenu" style="display:block;clear:both;overflow: hidden;">
+  <ul class="status">
+    <li class="<%= 'active' if @subtab.eql?('data') %>">
+      <%= link_to_unless @subtab.eql?('data'), "Datos personales y permisos", params.merge(:subtab => nil) %>
+    </li>
+    <li class="<%= 'active' if @subtab.eql?('sessions') %>">
+      <%= link_to_unless @subtab.eql?('sessions'), "Sesiones", params.merge(:subtab => 'sessions') %>
+    </li>
+    <li class="<%= 'active' if @subtab.eql?('comments') %>">
+      <%= link_to_unless @subtab.eql?('comments'), "Comentarios", params.merge(:subtab => 'comments') %>
+    </li>
+    <li class="<%= 'active' if @subtab.eql?('bulletins') %>">
+      <%= link_to_unless @subtab.eql?('bulletins'), "Boletines", params.merge(:subtab => 'bulletins') %>
+    </li>
+  </ul>
+</div>

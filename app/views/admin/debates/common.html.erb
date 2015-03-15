@@ -1,0 +1,46 @@
+<%= render :partial => "edit_links" %>
+
+<ul class="edit_links" style="margin:20px 0px;">
+  <li>
+    <%= link_to t('sadmin.modificar'), edit_common_admin_debate_path(@debate), :class => "edit" %>
+  </li>
+</ul>
+
+<p>
+  <b><%= t('admin.debates.destacado') %></b>
+    <%= @debate.featured? ? 'Sí' : 'No' %>
+</p>
+
+<p>
+  <b><%= t('admin.news.destacar_en_boletin') %></b>
+  <%= si_o_no(@debate.featured_bulletin) %>
+</p>
+
+<p>
+  <%= show_tags_with_classes(@debate) %>
+</p>
+
+<p><b><%= Debate.human_attribute_name(:cover_image) %></b><br/>
+  <%= image_tag(@debate.cover_image.n372.url) if @debate.cover_image.present? %>
+</p>
+
+<p><b><%= Debate.human_attribute_name(:header_image) %></b><br/>
+  <%= image_tag(@debate.header_image.header.url) if @debate.header_image.present? %>
+</p>
+
+
+<% if @debate.contribution_stage.present? %>
+<p><b><%= Debate.human_attribute_name(:page) %></b>
+  <%= @debate.page.present? ? link_to(@debate.page.title, admin_document_path(@debate.page)) : link_to(t('sadmin.create_what', :what => Page.model_name.human), new_admin_document_path(:lang => "es", :t => "Page", :debate_id => @debate.id))  %>
+</p>
+<% end %>
+
+<p><b><%= Debate.human_attribute_name(:news) %></b>
+  <%= @debate.news.present? ? link_to(@debate.news.title, sadmin_news_path(@debate.news)) : link_to(t('sadmin.create_what', :what => News.model_name.human), new_sadmin_news_path(:debate_id => @debate.id)) %>
+</p>
+
+
+  
+<%= render :partial => "/admin/documents/show_multimedia", :locals => {:document => @debate} %>
+
+<%= render :partial => "multimedia_help" %>

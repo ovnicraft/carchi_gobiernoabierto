@@ -1,0 +1,18 @@
+<%-
+  target ||= 'list'
+  h = {
+    "id" => argument.id, 
+    "id" => target.eql?(:activity) ? argument.floki_id : argument.id , 
+    "title" => title || t('floki.activity.argument_in', :proposal => argument.argumentable.title), 
+    "body" => pretty_n_characters_wo_html(argument.reason).strip_html,
+    "footer" => I18n.localize(argument.published_at, :format => :long).strip,
+    "url" => url_for(:controller => 'proposals', :action => "show", :id => argument.argumentable_id, :format => :floki, :locale => 'es', :only_path => false),
+    "image" => request.protocol + request.host_with_port + asset_path('floki/irekia_77_preguntas.png'),
+    "share_url" => url_for(:controller => 'proposals', :action => "show", :id => argument.argumentable_id, :only_path => false),
+    "sort_id" => sort_id,
+    "accepts_comments" => true,
+    "online" => true
+   }
+-%>
+
+<%=raw h.to_json.gsub('&amp;size', '&size') %>

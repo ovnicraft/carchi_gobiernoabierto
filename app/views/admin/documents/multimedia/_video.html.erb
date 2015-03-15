@@ -1,0 +1,42 @@
+<% video_info = flv_video_info(item) %>
+<% player_id ||= video_info[:player_id] %>
+<% embed_id ||=  video_info[:embed_id] %>
+<% size ||= '400x213' %>
+<% width, height = size.split('x') %>
+<% height = (width.to_i*9/16).to_i if video_info[:display_format].eql?('169') %>
+<% video_title_id ||= "video_title" %>
+<% show_scrubber ||= player_id.eql?("leading") ? :false : :true %>
+
+<% if mobile_user_agent? %>
+  <% width, height = iphone_user_agent? || floki_user_agent? ? [104,  84] : [320, 240] %>
+  <div class="video video_small">
+     <video src="<%= html5_video_for(video_info[:video]) %>" 
+            controls="controls" 
+            autoplay="autoplay" 
+            poster="<%= video_info[:preview_img] %>" 
+            height="<%= height %>" width="<%= width %>"
+            title="<%= h video_info[:title] %>"
+            duration="<%= video_info[:duration] || '' %>" >
+     </video>
+     <!--<p class="emb_vid_title" id="<%= video_title_id %>"><%= h video_info[:title] %></p>-->
+  </div>
+<% else %>
+
+  <div class="video  format<%= video_info[:display_format] %>">
+    <a name="video"></a>
+
+    <a class="player" id="<%= video_info[:player_id] %>">
+      <img src="<%= video_info[:preview_img] %>" width="<%= width %>" alt="Video <%= h video_info[:title] %>" />
+      <span class="video_overlay_<%= I18n.locale %>"></span>
+    </a>
+    
+    <div class="emb_vid_title" id="<%= video_title_id %>">
+      <p class="video_duration"><%= video_info[:duration] || '&nbsp;'.html_safe %></p>
+      <p class="video_title_text"><%= h video_info[:title] %></p>
+    </div>
+  
+  </div>
+  <%= render :partial => '/admin/videos/init_flowplayer.html', :locals => {:video_info => video_info, :player_id => player_id, :show_scrubber => show_scrubber } %>
+<% end %>
+
+

@@ -1,0 +1,14 @@
+
+<%= render :partial => "tags_menu" %>
+
+<%= will_paginate @taggings, :previous_label => "&laquo; #{t('anterior')}", :next_label => "#{t('siguiente')} &raquo;" %>
+
+<div class="search_results tag_documents">
+  <% if @taggings.length > 0 %>
+    <%= render :partial => "/tags/tagging", :collection => @taggings %>
+  <% else %>
+    <p><%= t 'tags.nada' %></p>
+  <% end %>
+</div>
+
+<%= will_paginate @taggings, :previous_label => "&laquo; #{t('anterior')}", :next_label => "#{t('siguiente')} &raquo;" %> 

@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+<% if Settings.optional_modules.streaming %>
+one:
+  stream_flow: sf_one
+  room_manager: room_manager
+two:
+  stream_flow: sf_two
+  room_manager: room_manager2
+three:
+  stream_flow: sf_three
+  room_manager: room_manager2  
+four:
+  stream_flow: sf_without_alerts
+  room_manager: room_manager2
+<% end %>

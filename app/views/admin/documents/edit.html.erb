@@ -1,0 +1,8 @@
+<% if @document.respond_to?("debate") && @document.debate  %>
+<div class="admin_info"><%= debate_info(@document) %></div>
+<% end %>
+
+<%= form_for @document, :as => :document, :url => admin_document_path(@document), :html => {:method => :put} do |f| -%>
+  <%= hidden_field_tag :w,  params[:w] if params[:w] %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+<%- end -%>

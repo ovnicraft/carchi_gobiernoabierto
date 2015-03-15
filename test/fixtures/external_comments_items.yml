@@ -1,0 +1,61 @@
+euskadinet_item1:
+  client_id: <%= ActiveRecord::FixtureSet.identify(:euskadinet) %>
+  title: Ayudas para la dinamización del comercio.
+  url: "http://www.euskadi.net/r33-2288/es/contenidos/nota_prensa/ayudas_dinamizaciom_comercio/es_ayudinam/ayudas_dinamizacion_comercio.html"
+  content_path: "contenidos/nota_prensa/ayudas_dinamizaciom_comercio/es_ayudinam/ayudas_dinamizacion_comercio.html"
+  comments_closed: false
+  content_local_id: "euskadinetNewsID-ayudas_dinamizacion_comercio"
+
+lehendakaritza_item_for_euskadinet_item1:
+  client_id: <%= ActiveRecord::FixtureSet.identify(:cliente_lehendakaritza) %>
+  title: Ayudas para la dinamización del comercio.
+  url: "http://www.lehendakaritza.ejgv.euskadi.net/r48-2288/es/contenidos/nota_prensa/ayudas_dinamizaciom_comercio/es_ayudinam/ayudas_dinamizacion_comercio.html"
+  content_path: "contenidos/nota_prensa/ayudas_dinamizaciom_comercio/es_ayudinam/ayudas_dinamizacion_comercio.html"
+  comments_closed: false
+  content_local_id: "euskadinetNewsID-ayudas_dinamizacion_comercio"
+
+
+
+emakunde_item1:
+  client_id: <%= ActiveRecord::FixtureSet.identify(:cliente_emakunde) %>
+  title: Igualdad en las políticas públicas de la administración general
+  url: "http://www.emakunde.euskadi.net/u72-igualpol/es/contenidos/informacion/ipp_adm_general/es_emakunde/adm_general_es.html"
+  content_path: "contenidos/informacion/ipp_adm_general/es_emakunde/adm_general_es.html"
+  comments_closed: false 
+  content_local_id: "euskadinetNewsID-adm_general_es" 
+  
+euskadinet_item_irekia_news:
+  client_id: <%= ActiveRecord::FixtureSet.identify(:euskadinet) %>
+  title: Los hospitales universitarios de Donostia y Cruces galardonados a nivel estatal en los Premios TOP 20
+  url: "http://www.osasun.ejgv.euskadi.net/r52-dkcont01/es/contenidos/noticia/2013_10_17_los_hospitales_univ/es_16387/index.shtml"
+  content_path: "contenidos/noticia/2013_10_17_los_hospitales_univ/es_16387/index.shtml"
+  comments_closed: false
+  irekia_news_id: <%= ActiveRecord::FixtureSet.identify(:one_news) %>
+
+euskadinet_item_commentable_irekia_news:
+  client_id: <%= ActiveRecord::FixtureSet.identify(:euskadinet) %>
+  title: El Lehendakari se reunirá en Bruselas con los máximos responsables de las instituciones europeas
+  url: "http://www.euskadi.net/r33-2287/es/contenidos/noticia/2013_04_17_bruselas/es_14140/14140.html"
+  content_path: "contenidos/noticia/2013_04_17_bruselas/es_14140/14140.html"
+  comments_closed: false
+  irekia_news_id: <%= ActiveRecord::FixtureSet.identify(:commentable_news) %>
+  
+euskadinet_item_commentable_irekia_news_eu:
+  client_id: <%= ActiveRecord::FixtureSet.identify(:euskadinet) %>
+  title: "Lehendakariak Bruselara egingo du bidaia, europako erakundeen ordezkari gorenekin biltzek"
+  url: "http://www.euskadi.net/r33-2287/eu/contenidos/noticia/2013_04_17_bruselas/eu_14140/14140.html"
+  content_path: "contenidos/noticia/2013_04_17_bruselas/eu_14140/14140.html"
+  comments_closed: false
+  irekia_news_id: <%= ActiveRecord::FixtureSet.identify(:commentable_news) %>  
+
+programa_item_es:
+  client_id: <%= ActiveRecord::FixtureSet.identify(:cliente_programa) %>
+  title: "El Lehendakari se reunirá en Bruselas con los máximos responsables de las instituciones europeas"
+  url: "http://programa.irekia.euskadi.net/es/areas/1"
+  comments_closed: false
+
+programa_item_eu:
+  client_id: <%= ActiveRecord::FixtureSet.identify(:cliente_programa) %>
+  title: "Lehendakariak Bruselara egingo du bidaia, europako erakundeen ordezkari gorenekin biltzek"
+  url: "http://programa.irekia.euskadi.net/eu/areas/1"
+  comments_closed: false  

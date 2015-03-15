@@ -1,0 +1,6 @@
+<%- if response.status.eql?(200) -%>
+  $("headline_<%= @headline.id %>").replace("<%= escape_javascript(render partial: '/admin/headlines/headline', locals: {headline: @headline}) %>");
+  $("headline_<%= @headline.id %>").className = <%= @headline.draft ? 'pendiente' : 'aprobado' %>
+<%- else -%>
+  $("headline_<%= @headline.id %>").highlight();  
+<%- end -%>

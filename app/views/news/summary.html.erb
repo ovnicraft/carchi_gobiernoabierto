@@ -1,0 +1,16 @@
+<div class='news_summary row-fluid'>
+  <div class='span5'>
+    <%= render :partial => '/news/summary_left' %>
+  </div>
+  <div class='span7 summary_right'>
+    <%= render :partial => '/news/featured', :locals => {:news => @leading_news, :target => :nav} if @leading_news %>
+    <ul class='std_list drop_list news'>
+      <%= render :partial => '/news/list_item', :collection => @secondary_news, :as => :news, :locals => {:target => :nav} %>
+      <li class='item fullwidth'>
+        <div class='item_content'>
+          <div class='title'><%= link_to t('news.see_all'), news_index_url %></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

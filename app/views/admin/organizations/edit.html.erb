@@ -1,0 +1,10 @@
+<h1>Modificar <%= @organization.class.model_name.human %></h1>
+
+<%= form_for @organization, :as => :organization, :url => admin_organization_path(@organization), :html => {:method => :put} do |f| %>
+  <%= render :partial => "form", :locals => {:f => f} %>
+  
+  <p>
+    <%= f.submit "Guardar" %>
+  </p>
+<% end %>
+

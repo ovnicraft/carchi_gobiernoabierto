@@ -1,0 +1,54 @@
+  <table class='table table-striped'>
+    <thead>
+      <tr>
+        <th width='70%'>Texto</th>
+        <th width='30%'>Otros datos</th>
+      </tr>
+    </thead>
+    <% @pendings.each do |pending| %>
+      <tr class='pending_row <%= pending.class.to_s.downcase %>'>
+        <td class='text' width='70%'>
+          <%= simple_format(auto_link_urls(white_list(pending.body.to_s), :rel => "external nofollow")) %>
+          <% if pending.is_a?(Comment) %>
+            <%= pending.commentable.class.model_name.human.capitalize %>: 
+            <%= link_to pretty_n_characters(pending.commentable.title, 60), 
+          pending.commentable.is_a?(ExternalComments::Item) ? 
+            comments_on_item_admin_external_comment_path(:id => pending.commentable.id) :
+            comments_on_item_admin_comment_path(:id => pending.commentable.id, :type => pending.commentable.class.to_s) %>    
+          <% elsif pending.is_a?(Argument) %>
+            <%= pending.argumentable.class.model_name.human.capitalize %>: 
+            <%= link_to pending.argumentable.title, send(pending.argumentable_type.eql?('Debate') ? "admin_debate_path" : "admin_proposal_path", pending.argumentable) %>
+          <% end %>
+        </td>
+        <td class='text' width='30%'>
+          <span class='created_at'><%= I18n.l(pending.created_at, :format => :long) %></span>
+          <span class='author'><%= pending.author_name %></span>
+        </td>
+      </tr>    
+      <tr class='buttons_row'>
+        <td width='100%' colspan='2'>
+          <% if pending.is_a?(Proposal) %>
+            <%= link_to 'Aprobar', edit_proposal_admin_pending_path(:pending_id => pending.id, :pending_type => pending.class.to_s), :class => 'btn btn-success btn-large' %>
+          <% else %>
+            <%= link_to 'Aprobar', approve_admin_pending_path(:pending_id => pending.id, :pending_type => pending.class.to_s), :method => :put, :class => 'btn btn-success btn-large' %>
+          <% end %>
+          <%- if pending.is_a?(Comment) -%>
+            <%= link_to 'Spam', spam_admin_pending_path(:pending_id => pending.id, :pending_type => pending.class.to_s), :method => :put, :class => 'btn btn-warning' %>
+          <%- end -%>
+          <% if pending.is_a?(Argument) %>
+            <%= link_to 'Eliminar', admin_pending_path(:pending_id => pending.id, :pending_type => pending.class.to_s), :method => :put, :class => 'btn btn-danger', :data => {:method => :delete, :confirm => '¿Está seguro?'} %>
+          <% else %>  
+            <%= link_to 'Rechazar', reject_admin_pending_path(:pending_id => pending.id, :pending_type => pending.class.to_s), :method => :put, :class => 'btn btn-danger', :data => {:confirm => '¿Está seguro de que desea rechazar?'} %>
+            <%= link_to 'Rechazar+Email', reject_admin_pending_path(:pending_id => pending.id, :pending_type => pending.class.to_s, :send_reject_email => true), :method => :put, :class => 'btn btn-danger with_email', :data => {:confirm => '¿Está seguro de que desea rechazar y enviar un email?'} %>
+            <%= link_to 'Eliminar', destroy_admin_pending_path(:pending_id => pending.id, :pending_type => pending.class.to_s), :method => :put, :class => 'btn btn-danger', :data => {:method => :delete, :confirm => '¿Está seguro?'} %>
+          <% end %>
+        </td> 
+      </tr>
+    <% end %>
+    <%- if @pendings.empty? -%>
+    <tr>
+      <td>No hay items pendientes</td>
+      <td></td>
+    </tr>
+    <%- end -%>
+  </table>

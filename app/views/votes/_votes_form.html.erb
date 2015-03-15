@@ -1,0 +1,42 @@
+<% proposal_result = votable.percentage_to_text %>
+<% participation_disabled ||= :false %>
+<% stage_label ||= '' %>
+
+<% if logged_in?
+  vote = current_user.votes.where("votable_type = '#{votable.class.name}' AND votable_id=#{votable.id}").first || Vote.new
+  else
+  vote = Vote.new
+end %>
+
+<div class="votes <%= proposal_result %> row-fluid" id="votes">
+  <%= render_participation_result_percentage(votable, :votes) %>
+  
+  <div class='votes_forms donotprint span9'>
+    <div class='forms'>
+      <%= form_for :vote, :url => send("#{votable.class.to_s.downcase}_votes_path", votable), :html => {:class => "vote against"} do |f| %>
+          <%= f.hidden_field :value, :value => '-1' %>
+          <div class='btn_with_spinner'>
+            <%= f.submit t('arguments.i_am_against'), :class => "vote_btn irekia_btn against #{'selected' unless vote.new_record? || vote.value == 1 } #{class_for_window_login}", :id => 'vote_in_favor_submit', :disabled => (!vote.new_record? || participation_disabled.eql?(:true)) ? 'disabled' : nil %>
+          </div>
+      <% end -%>
+
+      <%= form_for :vote, :url => send("#{votable.class.to_s.downcase}_votes_path", votable), :html => {:class => "vote in_favor"} do |f| %>
+          <%= f.hidden_field :value, :value => '+1' %>
+          <div class='btn_with_spinner'>
+            <%= f.submit t('arguments.i_am_in_favor'), :class => "vote_btn irekia_btn in_favor #{'selected' unless vote.new_record? || vote.value == 1 } #{class_for_window_login}", :id => 'vote_against_submit',  :disabled => (!vote.new_record? || participation_disabled.eql?(:true)) ? 'disabled' : nil %>
+          </div>  
+      <% end -%>
+    </div>
+    <% if participation_disabled.eql?(:true) -%>
+      <div class='info stage_closed'>
+        <%- if votable.is_a?(Debate) -%>
+          <%= t("debates.is_passed", :stage => t("debates.stage_#{stage_label}")) %>
+        <%- else -%>
+          <%= t("proposals.participation_disabled") %>
+        <%- end -%>
+      </div>   
+    <% elsif !vote.new_record? -%>
+      <div class='info already_voted'><%= t("votes.#{votable.class.name.downcase}_already_voted")  %></div>  
+    <% end -%>
+  </div>
+</div>

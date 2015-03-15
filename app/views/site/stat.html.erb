@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title><%= Settings.site_name %>::Stat</title>
+  </head>
+
+  <body>
+    <p>
+      <b>DB:</b>
+      <span id="db_stat"><%= @db_stat %></span>
+    </p>
+    
+    <p>
+      <b>App:</b>
+      <span id="app_stat"><%= @app_stat %></span>
+    </p>
+    
+    <p>
+      <b>Time:</b>
+      <span id="time"><%= Time.zone.now %></span>
+    </p>
+  </body>
+</html>

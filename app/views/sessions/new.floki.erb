@@ -1,0 +1,78 @@
+<head>
+  <meta name="viewport" content="user-scalable=no, initial-scale=1.0 <%= ", width=device-width" if !ipad_app_request? %>" />
+  <title>Login</title>
+  <style type="text/css">
+  *:not(input) {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none; /* Disable selection/Copy of UIWebView */
+  }
+  h1 {
+    font: bold 18px Helvetica;
+    text-shadow: rgba(255,255,255,.2) 0 1px 1px;
+    color: #00368C;
+    margin: 10px 0px;
+    padding: 0px;
+  }
+  
+  input {
+   -webkit-text-size-adjust: 200%;
+   margin-bottom: 5px;
+    /*width: 200px;
+        height: 20px;*/
+  }
+  
+  p.remember_me label {
+    font-size: 18px;
+  }
+  
+  button {
+    color: white;
+    -webkit-border-radius: 5px;
+    border: 1px solid #13587F;
+    background: #3396CD;
+    -webkit-box-shadow: 0 1px 1px 0 #369ACF;
+    background: -webkit-linear-gradient(top, #3396CD 0%, #2080B5 100%);
+  }
+  
+  button span {
+    padding: 14px 20px 14px 10px;
+    text-align: center;
+    margin: 0 0 0 10px;
+    font-size: 18px;
+  }
+  
+  div.error {
+    color: red;
+  }
+  
+  </style>
+</head>
+
+<div <%= " class='with_errors'" if flash and flash[:error] %>>
+  <div class="content">
+    <h1><%= t('login.access_irekia', :site_name => Settings.site_name) %></h1>
+
+    <% if flash and flash[:error] %>
+      <div class='error'><%= flash[:error] %></div>
+    <% end %>
+        
+    <%= form_tag session_url(:format => 'floki') do %>
+      <p>
+        <!-- <label for="email"><%= t 'session.Email' %></label> -->
+        <%= text_field_tag 'email', params[:email], :id => 'user_email', :type => 'email', :placeholder => t('session.Email') %>
+        <!-- <label for="password"><%= t 'session.Contrasena' %></label> -->
+        <%= password_field_tag 'password', nil, :placeholder => t('session.Contrasena') %>
+      </p>
+      <p class="remember_me">
+        <%= check_box_tag 'remember_me', "1", params[:remember_me] == "1" ? true : false %>
+        <label class='checkbox'><%= t('login.remember_me') %></label>
+      </p>
+
+      <div class="bfooter clearfix">
+        <div class="right">
+          <button ><span><%= t('entrar') %></span></button>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<h1>Importar fotos</h1>
+
+<%= form_tag admin_photos_path do  %>
+  <%= error_messages(@photo) %>
+  <table class="admin">
+    <tr>
+      <th>¿En qué directorio están las fotos?</th>
+      <td>
+        <%= text_field_tag "dir_path", params[:dir_path] %>
+        <div class="hint">
+          Ficheros con extensión ".jpg" (sólo minúsculas).
+          <span class="check"><%= link_to "Comprobar", find_photos_admin_photos_path, data: {remote: true}, id: 'find_photos_link' %></span>
+          <br/><%= multimedia_content_dir_format %>.
+        </div>
+      </td>
+      <td>
+        <span id="find_photos"></span>
+      </td>
+    </tr>
+    
+    <%= fields_for :photo do |f| %>
+    <tr>
+      <th>Título común para todas las fotos</th>
+      <td colspan="2"><%= f.text_field "title_es" %></td>
+    </tr>
+    
+    <tr>
+      <th>Izenburua  común para todas las fotos</th>
+      <td colspan="2"><%= f.text_field "title_eu" %></td>
+    </tr>
+    
+    <tr>
+      <th>Title  común para todas las fotos</th>
+      <td colspan="2"><%= f.text_field "title_en" %></td>
+    </tr>
+    
+    <tr>
+      <th>Album</th>      
+      <td colspan="2"><%= select_tag :album_id, album_options %></td>
+    </tr>
+    <% end %>
+    
+    <tr>
+      <td colspan="3"><%= submit_tag "Importar", :disable_with => "Importando y generando tamaños..." %></td>
+    </tr>
+    
+  </table>
+<% end %>
+
+<script type='text/javascript'>
+  $('find_photos_link').observe('click', function(e) {
+    e.stop();
+    var el = e.element()
+    new Ajax.Request(el.href, { method: 'get', parameters: {dir_path: $('dir_path').value} });
+  })
+</script>

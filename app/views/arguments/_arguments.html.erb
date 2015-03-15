@@ -1,0 +1,33 @@
+<% participation_disabled ||= :false %>
+<% stage_label ||= '' %>
+
+<div class="participation_arguments" id='participation_arguments'>
+  <% ['in_favor', 'against'].each do |arg_type| %>
+    <div class="arguments <%= arg_type %>">
+      <div class='title'><%= t("arguments.#{arg_type}") %></div>
+      <ul class='std_list arguments_list unstyled'>
+        <%= render :partial => '/arguments/list_item_in_participation', :collection => argumentable.arguments.send(arg_type).published, :as => :argument %>
+      </ul>
+      <% if participation_disabled.eql?(:true) -%>
+        <div class='info stage_closed'>
+          <%- if argumentable.is_a?(Debate) -%>
+            <%= t("debates.is_passed", :stage => t("debates.stage_#{stage_label}")) %>
+          <%- else -%>
+            <%= t("proposals.participation_disabled") %>
+          <%- end -%>
+        </div>         
+      <% else -%>
+        <div class='form donotprint'>
+          <%= form_for argumentable.arguments.build, :url => send("#{argumentable.class.name.downcase}_arguments_path", argumentable), :html => {:class => 'new_argument', :id => "new_argument_#{arg_type}"} do |f| -%>
+              <%= f.text_area :reason, :value => '', :rows => 3, :maxlength => 255 %>
+              <span class="help-block pull-right"><%= t('proposals.title_max_length') %></span>
+              <%= f.hidden_field :value, :value => arg_type.eql?('in_favor') ? 1 : -1 %>
+              <div class='btn_with_spinner'>
+                <%= f.submit t('arguments.add'), :class => "irekia_btn #{class_for_window_login}", :disabled => true %>
+              </div>
+          <% end -%>
+        </div>
+      <% end -%>
+    </div>    
+  <% end %>
+</div>

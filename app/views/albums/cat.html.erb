@@ -1,0 +1,36 @@
+<div class='section container albums index'>
+  <%= render :partial => '/shared/context', :locals => {:type => 'albums'} %>
+  <div class='section_main row-fluid'>
+    <div class='section_content span8'>
+      <div class='albums index'>
+        <div class='section_heading'><%= @title %></div>
+        
+        <%= render :partial => '/shared/grid_items', :locals => {:items => @albums} %>
+      </div>
+    </div>
+  
+    <div class="section_aside span4">
+      <div class="aside_module related_albums areas">
+        <div class="title"><%= t('albums.fototeca') %></div>
+        <div class="content">
+          <ul class='categories'>
+            <% Area.ordered.each do |area| %>
+              <li><%= link_to area.name, area_albums_path(:area_id => area.id, :anchor => "middle") %></li>
+            <% end %>            
+          </ul>
+        </div>
+      </div>
+      
+      <div class="aside_module related_albums categories">
+        <div class="title"><%= t('albums.other_albums') %></div>
+        <div class="content">
+          <ul class='categories'>
+            <% Album.categories.each do |category| %>
+              <li><%= link_to category.name, cat_albums_path(:id => category.id) %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

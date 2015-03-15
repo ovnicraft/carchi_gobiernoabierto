@@ -1,0 +1,29 @@
+<%= form_for @category, :url => admin_tree_category_path(@category.tree, @category), :html => {:method => :put} do |f| %>
+  <%= error_messages(f.object) %>
+  
+  <%= hidden_field_tag 'lang', params[:lang] %>
+  <%= hidden_field_tag 'locale', params[:locale] unless !params[:locale]%>
+
+  <p style="clear:both;text-align:center;"><%= submit_tag 'Guardar' %></p>
+
+  <table class="admin">
+
+    <tr>
+      <th>Nombre en <%= locales[params[:lang].to_sym] %></th>
+      <td>
+        <%= f.text_field "name_#{params[:lang]}".to_sym, :size => 60 %>
+      </td>
+    </tr>
+    
+    <tr>
+      <th>Texto en <%= locales[params[:lang].to_sym] %></th>
+      <td>
+        <%= f.text_area "description_#{params[:lang]}".to_sym, :size => "60x20", :class => "mceEditor" %>
+        <div class="hint"><%=raw t('sadmin.do_not_copy_paste') %></div>
+      </td>
+    </tr>
+  </table>
+  <p style="clear:both;text-align:center;"><%= submit_tag 'Guardar' %></p>
+  
+<% end %>
+

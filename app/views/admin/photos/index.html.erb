@@ -1,0 +1,45 @@
+<% content_for :head do %>
+<script type="text/javascript">
+  function toggleAlbumContainer(id) {
+    Effect.toggle('current_albums_'+id, 'blind');
+    Effect.toggle('available_albums_'+id, 'blind');
+    
+    if ($('current_albums_'+id).style.display == 'none') {
+      $('album_toggler_'+id).innerHTML = 'Esconder';
+    } else {
+      $('album_toggler_'+id).innerHTML = 'Mostrar';
+    }
+  }
+</script>
+<% end %>
+
+<h1><%= @album.title %></h1>
+
+<ul class="edit_links">
+  <li><%= link_to "Importar fotos", new_admin_photo_path(:album_id => @album), :class => "edit" %></li>
+</ul>
+
+<%= render :partial => "/admin/albums/show_submenu" %>
+
+<%= will_paginate @aphotos %>
+
+<table class="admin">
+  <% @aphotos.in_groups_of(4, false).each do |photo_group| %>
+    <tr>
+      <% photo_group.each do |aphoto| %>
+      <td class="photo">
+        <div class="thumbnail">
+        <%= link_to image_tag(aphoto.photo.version(:n136)), admin_album_photo_path(@album, aphoto.photo) %>
+          <p class="caption"><%= aphoto.photo.title %></p>
+          <%= render :partial => "/admin/albums/aphoto_cover", :locals => {:aphoto => aphoto} %>          
+        </div>
+        
+        <p style="clear:both"><%= show_tags_with_classes(aphoto.photo, false) %></p>
+
+      </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+
+<%= will_paginate @aphotos %>

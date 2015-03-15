@@ -1,0 +1,6 @@
+<%= RiCal.Calendar do |cal|
+  cal.add_x_property('X-WR-CALNAME', @subscription_title || "#{Settings.site_name}::Agenda")
+  @events.each do |ev|
+    ev.to_ics(cal) {{:url => event_url(ev, {:only_path => false})}}
+  end
+end %>

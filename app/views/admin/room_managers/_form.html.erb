@@ -1,0 +1,31 @@
+<%= f.error_messages %>
+
+<table class="admin">
+  <tr>
+    <th><%= f.label :name, "Nombre" %></th>
+    <td><%= f.text_field :name %></td>
+  </tr>
+  
+  <tr>
+    <th><%= f.label :email, "Email" %></th>
+    <td><%= f.text_field :email %></td>
+  </tr>
+  
+  <tr>
+    <th><%= f.label :telephone, "Teléfono" %></th>
+    <td><%= f.text_field :telephone %></td>
+  </tr>
+  
+  <tr>
+    <th><%= f.label :stream_flow_ids, "Salas de las que es responsable" %></th>
+    <td>
+      <% StreamFlow.not_empty_streaming.each do |sf| %>
+        <%= check_box_tag "room_manager[stream_flow_ids][]", sf.id, @room_manager.stream_flow_ids.include?(sf.id), :id => "sf_#{sf.id}" %>
+        <label for="sf_<%= sf.id %>"><%= sf.title %></label><br/>
+      <% end %>
+    </td>
+  </tr>
+  
+</table>
+
+<p><%= f.submit "Guardar" %></p>

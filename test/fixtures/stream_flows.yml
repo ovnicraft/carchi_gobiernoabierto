@@ -1,0 +1,38 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+<% if Settings.optional_modules.streaming %>
+sf_one:
+  code: stream_name.sdp
+  title_es: Un stream
+  title_eu: Un stream
+  title_en: Un stream
+  announced_in_irekia: false
+  position: 1
+sf_two:
+  code: stream_name2.sdp
+  title_es: Stream 2
+  title_eu: Stream 2
+  title_en: Stream 2
+  announced_in_irekia: false  
+  position: 2  
+sf_three:
+  code: stream_name3.sdp
+  title_es: Stream 3
+  title_eu: Stream 3
+  title_en: Stream 3
+  announced_in_irekia: false  
+  send_alerts: true
+  position: 3  
+sf_without_alerts:
+  code: stream_name3.sdp
+  title_es: Stream without alerts
+  title_eu: Stream without alerts
+  title_en: Stream without alerts
+  announced_in_irekia: false
+  send_alerts: false
+  position: 4  
+sf_traveling:
+  code: SIT0001.sdp
+  title_es: Streaming itinerante
+  send_alerts: false  
+  position: 5  
+<% end %>

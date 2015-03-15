@@ -1,0 +1,9 @@
+<div class='date meta_article'>
+  <i class='ico_date'></i>
+  <div class='meta_text'>
+    <span class='date_text date'><%= event_date_pretty(event) %></span> 
+    <% if event.one_day? && event.has_hour? %>
+      <span class="date_text time"><%= event.pretty_hours %></span>
+    <% end %>  
+  </div>
+</div>

@@ -1,0 +1,34 @@
+# This is a sample cronjob file with all the processes that should be configured in the production server.
+# To configure cronjobs use crontab.
+
+# Crontab does not load ENV variables
+RAILS_ENV=production
+PATH=<your PATH>
+
+# Envía las alertas sobre eventos a los periodistas
+7 * * * * <Rails.root>/batch_processes/process_unsent_alerts_for_journalists.sh
+# Envía las alertas sobre eventos con streaming a operadores de streaming
+*/5 * * * * sh <Rails.root>/batch_processes/process_unsent_alerts_for_staff.sh
+# Importa los vídeos de las noticias en la WebTV
+22 * * * * <Rails.root>/batch_processes/include_new_videos_in_webtv.sh
+# Comprueba si hay versión en euskera para vídeos ya importados en la WebTV
+43 * * * * <Rails.root>/batch_processes/check_webtv_video_languages.sh
+# Pasa a borrador los flv de los vídeos de la videoteca que ya no están en su sitio
+39 3 * * * sh <Rails.root>/batch_processes/hide_orphan_videos_in_webtv.sh
+# Importa las fotos de las noticias en la Fototeca
+16 12,15,18,21,0 * * * <Rails.root>/batch_processes/include_new_photos_in_gallery.sh
+# Actualizar los contadores de mpg y mp3
+13 3 * * * <Rails.root>/batch_processes/find_multimedia_files.sh
+33 3 * * * <Rails.root>/batch_processes/update_file_system_stats.sh
+# Buscar tweets en Twitter
+38 */2 * * * <Rails.root>/batch_processes/import_tweets_as_comments.sh
+# Comprueba si hay boletín programado para enviar
+*/30 * * * 2,3  <Rails.root>/batch_processes/bulletin_send_bulletin.sh
+# Borra el contenido del directorio public/tmp
+* * */15 * * <Rails.root>/batch_processes/delete_public_tmp_png.sh
+# Añade meta datos a los flv para que sea posible hacer scroll a lo largo de timeline de pseudostreaming
+42 4 * * * find <your dir with flv files> -name \*.flv -type f -mtime -2 -mmin +20 -exec <Rails.root>/batch_processes/add-meta-data-to-flvs.sh {} \;
+# Extrae frames de los vídeos flv para poder elegir uno como portada
+*/20 * * * * find <your dir with flv files> -name \*.flv -type f -mtime -2  -exec <Rails.root>/batch_processes/frame_extractor.rb {} \;
+# Realiza copias de los flv en formato apto para visualización en dispositivos con soporte de vídeo HTML5
+12 */2 * * * find <your dir with flv files> -name \*.flv -type f -exec <Rails.root>/batch_processes/recode-html5.rb {} \;

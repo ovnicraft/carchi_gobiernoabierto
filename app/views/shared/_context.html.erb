@@ -1,0 +1,9 @@
+<% area ||= '' %>
+<% title ||= '' %>
+<% type ||= '' %>
+
+<div class='context'>
+  <span class="ribbon <%= type %>"></span>
+  <span class='type'><%= title.present? ? title : t("#{type}.title") %></span>
+  <%= content_tag(:span, link_to(area.name, area_path(area)), :class => 'area') if area.present? %>
+</div>

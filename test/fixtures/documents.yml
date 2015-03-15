@@ -1,0 +1,992 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# News
+one_news:
+  type: News
+  title_es: MyString
+  title_eu: Itzulita
+  body_es: MyText
+  body_es: Nire testua
+  irekia_coverage: false
+  published_at: <%= 1.month.ago %>
+  organization: lehendakaritza
+  creator: admin
+  last_editor: admin
+
+featured_news:
+  type: News
+  title_es: Noticia destacada
+  title_eu: Berri nabarmendua
+  body_es: Noticia destacada
+  body_eu: Berri nabarmendua
+  featured: 1A
+  irekia_coverage: false
+  published_at: <%= 1.day.ago %>
+  organization: lehendakaritza
+  creator: admin
+  last_editor: admin
+
+secondary_news:
+  type: News
+  title_es: Noticia destacada 4B
+  title_eu: Nabarmendua 4B
+  body_es: Noticia destacada 4B
+  body_eu: Nabarmendua 4B
+  featured: 4B
+  irekia_coverage: false
+  published_at: <%= 1.day.ago %>
+  organization: lehendakaritza
+  creator: admin
+  last_editor: admin
+    
+commentable_news:
+  type: News
+  title_es: Comment on me
+  body_es: Comment on me
+  has_comments: true
+  comments_closed: false
+  irekia_coverage: false  
+  published_at: <%= 1.month.ago %>
+  organization: lehendakaritza
+  creator: admin
+  last_editor: admin
+    
+non_commentable_news:
+  type: News
+  title_es: Don't Comment on me
+  body_es: Don't Comment on me
+  has_comments: true
+  comments_closed: true
+  irekia_coverage: false  
+  published_at: <%= 1.month.ago %>
+  organization: lehendakaritza
+  creator: admin
+  last_editor: admin
+
+translated_news:
+  type: News
+  title_es: Noticia traducida
+  title_eu: Noticia traducida eu
+  body_es: body traducido
+  body_eu: body traducido eu
+  irekia_coverage: false  
+  comments_closed: false
+  published_at: <%= 1.day.ago %>
+  organization: interior
+  creator: admin
+  last_editor: admin
+
+untranslated_news:
+  type: News
+  title_es: Noticia sin traducir
+  title_eu: Noticia sin traducir eu
+  body_es: cuerpo sin traducir
+  irekia_coverage: false  
+  published_at: <%= 1.month.ago %>
+  organization: lehendakaritza
+  creator: admin
+  last_editor: admin
+  
+untranslated_to_es_news:
+  type: News
+  title_es: "Noticia sin body, por tanto no traducida"
+  title_eu: "Noticia sin body, por tanto no traducida"
+  irekia_coverage: false  
+  comments_closed: false
+  published_at: <%= 1.day.ago %>
+  organization: interior
+  creator: admin
+  last_editor: admin
+
+news_with_multimedia_dir_and_related_webtv_video_and_gallery_photo:
+  type: News
+  title_es: "Noticia con contenido multimedia"
+  body_es: "Noticia con contenido multimedia"
+  published_at: <%= 5.hours.ago %>
+  organization: lehendakaritza
+  creator: admin
+  last_editor: admin
+  multimedia_dir: "2010/12/02/news_with_multimedia"
+  multimedia_path: "2010/12/02/news_with_multimedia/"
+
+draft_news:
+  type: News
+  title_es: Draft news
+  body_es: MyText
+  irekia_coverage: false  
+  published_at: 
+  organization: lehendakaritza
+  creator: admin
+  last_editor: admin
+
+unpublished_news:
+  type: News
+  title_es: Unpublished news
+  body_es: MyText
+  irekia_coverage: false  
+  published_at: <%= 6.hour.from_now %>
+  organization: lehendakaritza
+  creator: admin
+  last_editor: admin  
+
+agencia_news:
+  type: News
+  title_es: Noticia de la Agencia
+  body_es: Sólo los usuarios logeados con acceso a la agencia pueden ver esta noticia.
+  irekia_coverage: false  
+  published_at: 
+  organization: lehendakaritza
+  creator: admin
+  last_editor: admin
+
+irekia_news:
+  type: News
+  title_es: Noticia de Irekia
+  body_es: La ven todos los visitantes y no sale en la lista de noticias de la Agencia.
+  irekia_coverage: false  
+  published_at: <%= 1.day.ago %>
+  organization: lehendakaritza
+  creator: admin
+  last_editor: admin
+
+news_with_event:
+  type: News
+  title_es: "Noticia con evento relacionado"
+  body_es: "Noticia con evento relacionado"
+  published_at: <%= 1.day.ago %>
+  organization: lehendakaritza
+  creator: admin
+  last_editor: admin
+
+news_for_debate:
+  type: News
+  title_es: "Noticia que corresponde a las conclusiones de un debate"
+  body_es: "Noticia que corresponde a las conclusiones de un debate"
+  published_at: <%= 1.day.ago %>
+  organization: lehendakaritza
+  creator: admin
+  last_editor: admin
+  
+  
+last_year_news:
+  type: News
+  title_es: "Last year news"
+  body_es: "Last year news"
+  irekia_coverage: false
+  published_at: <%= 1.year.ago %>
+  organization: lehendakaritza
+  creator: admin
+  last_editor: admin
+
+consejo_news:
+  type: News
+  title_es: "Noticia secundaria"
+  body_es: "Noticia secundaria"
+  irekia_coverage: false
+  published_at: <%= 1.minute.ago.utc %>
+  organization: lehendakaritza
+  consejo_news_id: 42
+  creator: admin
+  last_editor: admin
+
+news_with_cover_photo:
+  type: News
+  title_es: "Noticia con foto de portada"
+  body_es: "Noticia con foto de portada"
+  irekia_coverage: false
+  published_at: <%= 1.month.ago.utc %>
+  organization: lehendakaritza
+  creator: admin
+  last_editor: admin
+  cover_photo_file_name: "cover_photo.jpg"
+
+news_with_long_body:
+  type: News
+  title_es: "Noticia con texto muy largo"
+  irekia_coverage: false
+  published_at: <%= 1.month.ago.utc %>
+  organization: lehendakaritza
+  creator: admin
+  last_editor: admin
+  cover_photo_file_name: "cover_photo.jpg"  
+  body_es: >
+    <p>Lorem ipsum eu persecuti liberavisse qui, his ex quodsi accusata. Primis sanctus eam et, id equidem veritus mel. Nisl eloquentiam repudiandae an duo, eu sed quas blandit invenire. Ius ea meliore expetenda, nam velit possit docendi at, natum corrumpit eum in. Ne essent delectus est, debet audiam eligendi per eu, cu sea tractatos expetenda corrumpit. Eius fierent gloriatur vel et, doming commune explicari ut vim.</p>
+    <p>Ullum integre lobortis vis an. Quem oratio eam ea. Ne tota philosophia eam, dicunt oportere sapientem ad nec. Cu putent doctus neglegentur quo. Saepe tantas mei ad.</p>
+    <p>Et nam debet repudiare, accumsan iracundia voluptatum ut est. Sea no illud putent, cu est recteque repudiare molestiae. Vero sale nusquam qui eu. Qui vocibus tincidunt incorrupte ne. Eum at vero facilisis, alia legere fierent eos ut, his eu tation civibus.</p>
+    <p>Cibo possim dignissim ius eu, ne vide nulla atomorum mea. Id mei causae malorum, per in nobis scripta omnesque, ut movet iuvaret his. Ne mel doming menandri oportere, hinc adversarium vim ea, ea quo prima corrumpit. An habemus detraxit cum. Ei sea scripta detraxit referrentur, cu eum modo suscipit volutpat. Ei usu suscipit aliquyam gloriatur, ad tale facete usu.</p>
+    <p>Ei pro eripuit suscipiantur consequuntur, vel cu erroribus omittantur, eam cu graeco scaevola pericula. Sale iudico sed at. Ad omnes reformidans sed, et menandri elaboraret est, no pri ullum doctus vituperata. Ut sit brute nostrud, no audire atomorum per, brute dolore audire cu ius. Sed option tritani ut, justo vidisse reprimique id eos, nec id sale tritani signiferumque. Quo et senserit pertinacia, vel ei stet meis. Cu ullum sapientem vis.</p>
+    <p>Vis ad stet dicant meliore, sit eu error pertinacia mediocritatem. Populo nostrud sed ne. Diam sonet definiebas at sea, ea invidunt definiebas inciderint usu. Ex vis movet aeterno, cibo vulputate dissentiet ea sit. Alienum mentitum contentiones nec ne.</p>
+    <p>Ex mei illud quodsi denique, euismod adversarium te cum, eu mea partem minimum. No vero atqui inciderint pro, epicurei scripserit ne ius. Eu elit epicurei mel. Mea ne nonummy splendide. Ne nam vide aeque omnesque.</p>
+    <p>Paulo persius efficiendi vix no. Putent fierent adipisci ad nec, ne modus noster corpora est. Nec ad mutat ipsum sadipscing. In pri minimum theophrastus, mucius quodsi albucius no ius.</p>
+    <p>Stet graeco partiendo ne nam, usu probatus inimicus reprehendunt in. Vix tamquam fabulas cu, libris liberavisse ad nam, ei has voluptua tincidunt. An per movet dicam, sit cu reque suavitate. Prima tamquam ad eum, eam velit assum legere ei.</p>
+    <p>Id sit soluta mentitum, quod invidunt pro ea. Has quis facer graeco id, libris virtute usu ea. Eruditi consulatu assueverit ut cum. Usu te erant patrioque, omnes solet id cum, erat solum diceret sit an. An has velit euripidis.</p>
+
+
+news_with_long_body_without_p_nor_br:
+  type: News
+  title_es: "Noticia con texto muy largo sin p ni br-s"
+  irekia_coverage: false
+  published_at: <%= 1.month.ago.utc %>
+  organization: lehendakaritza
+  creator: admin
+  last_editor: admin
+  cover_photo_file_name: "cover_photo.jpg"  
+  body_es: >
+    Lorem ipsum eu persecuti liberavisse qui, his ex quodsi accusata. Primis sanctus eam et, id equidem veritus mel. Nisl eloquentiam repudiandae an duo, eu sed quas blandit invenire. Ius ea meliore expetenda, nam velit possit docendi at, natum corrumpit eum in. Ne essent delectus est, debet audiam eligendi per eu, cu sea tractatos expetenda corrumpit. Eius fierent gloriatur vel et, doming commune explicari ut vim
+    Ullum integre lobortis vis an. Quem oratio eam ea. Ne tota philosophia eam, dicunt oportere sapientem ad nec. Cu putent doctus neglegentur quo. Saepe tantas mei ad
+    Et nam debet repudiare, accumsan iracundia voluptatum ut est. Sea no illud putent, cu est recteque repudiare molestiae. Vero sale nusquam qui eu. Qui vocibus tincidunt incorrupte ne. Eum at vero facilisis, alia legere fierent eos ut, his eu tation civibus.
+    Cibo possim dignissim ius eu, ne vide nulla atomorum mea. Id mei causae malorum, per in nobis scripta omnesque, ut movet iuvaret his. Ne mel doming menandri oportere, hinc adversarium vim ea, ea quo prima corrumpit. An habemus detraxit cum. Ei sea scripta detraxit referrentur, cu eum modo suscipit volutpat. Ei usu suscipit aliquyam gloriatur, ad tale facete usu.
+    Ei pro eripuit suscipiantur consequuntur, vel cu erroribus omittantur, eam cu graeco scaevola pericula. Sale iudico sed at. Ad omnes reformidans sed, et menandri elaboraret est, no pri ullum doctus vituperata. Ut sit brute nostrud, no audire atomorum per, brute dolore audire cu ius. Sed option tritani ut, justo vidisse reprimique id eos, nec id sale tritani signiferumque. Quo et senserit pertinacia, vel ei stet meis. Cu ullum sapientem vis.
+    Vis ad stet dicant meliore, sit eu error pertinacia mediocritatem. Populo nostrud sed ne. Diam sonet definiebas at sea, ea invidunt definiebas inciderint usu. Ex vis movet aeterno, cibo vulputate dissentiet ea sit. Alienum mentitum contentiones nec ne.
+    Ex mei illud quodsi denique, euismod adversarium te cum, eu mea partem minimum. No vero atqui inciderint pro, epicurei scripserit ne ius. Eu elit epicurei mel. Mea ne nonummy splendide. Ne nam vide aeque omnesque.
+    Paulo persius efficiendi vix no. Putent fierent adipisci ad nec, ne modus noster corpora est. Nec ad mutat ipsum sadipscing. In pri minimum theophrastus, mucius quodsi albucius no ius.
+    
+news_with_long_body_without_p:
+  type: News
+  title_es: "Noticia con texto muy largo con br en vez de p"
+  irekia_coverage: false
+  published_at: <%= 1.month.ago.utc %>
+  organization: lehendakaritza
+  creator: admin
+  last_editor: admin
+  cover_photo_file_name: "cover_photo.jpg"  
+  body_es: >
+    Lorem ipsum eu persecuti liberavisse qui, his ex quodsi accusata. Primis sanctus eam et, id equidem veritus mel. Nisl eloquentiam repudiandae an duo, eu sed quas blandit invenire. Ius ea meliore expetenda, nam velit possit docendi at, natum corrumpit eum in. Ne essent delectus est, debet audiam eligendi per eu, cu sea tractatos expetenda corrumpit. Eius fierent gloriatur vel et, doming commune explicari ut vim
+    <br/>
+    Ullum integre lobortis vis an. Quem oratio eam ea. Ne tota philosophia eam, dicunt oportere sapientem ad nec. Cu putent doctus neglegentur quo. Saepe tantas mei ad
+    <br/>
+    Et nam debet repudiare, accumsan iracundia voluptatum ut est. Sea no illud putent, cu est recteque repudiare molestiae. Vero sale nusquam qui eu. Qui vocibus tincidunt incorrupte ne. Eum at vero facilisis, alia legere fierent eos ut, his eu tation civibus.
+    <br/>
+    Cibo possim dignissim ius eu, ne vide nulla atomorum mea. Id mei causae malorum, per in nobis scripta omnesque, ut movet iuvaret his. Ne mel doming menandri oportere, hinc adversarium vim ea, ea quo prima corrumpit. An habemus detraxit cum. Ei sea scripta detraxit referrentur, cu eum modo suscipit volutpat. Ei usu suscipit aliquyam gloriatur, ad tale facete usu.
+    <br/>
+    Ei pro eripuit suscipiantur consequuntur, vel cu erroribus omittantur, eam cu graeco scaevola pericula. Sale iudico sed at. Ad omnes reformidans sed, et menandri elaboraret est, no pri ullum doctus vituperata. Ut sit brute nostrud, no audire atomorum per, brute dolore audire cu ius. Sed option tritani ut, justo vidisse reprimique id eos, nec id sale tritani signiferumque. Quo et senserit pertinacia, vel ei stet meis. Cu ullum sapientem vis.
+    <br/>
+    Vis ad stet dicant meliore, sit eu error pertinacia mediocritatem. Populo nostrud sed ne. Diam sonet definiebas at sea, ea invidunt definiebas inciderint usu. Ex vis movet aeterno, cibo vulputate dissentiet ea sit. Alienum mentitum contentiones nec ne.
+    <br/>
+    Ex mei illud quodsi denique, euismod adversarium te cum, eu mea partem minimum. No vero atqui inciderint pro, epicurei scripserit ne ius. Eu elit epicurei mel. Mea ne nonummy splendide. Ne nam vide aeque omnesque.<br/>
+    Paulo persius efficiendi vix no. Putent fierent adipisci ad nec, ne modus noster corpora est. Nec ad mutat ipsum sadipscing. In pri minimum theophrastus, mucius quodsi albucius no ius.<br/>
+
+news_hidden_in_irekia_home:
+  type: News
+  title_es: "Hide me at home"
+  body_es: "Hide me at home"
+  published_at: <%= 1.minute.ago %>
+  organization: lehendakaritza
+  creator: admin
+  last_editor: admin
+  consejo_news_id: 19841984
+  
+# Eventos
+passed_event:
+    type: Event
+    starts_at: <%= Time.zone.now.at_beginning_of_day + 8.hours  - 1.month %>
+    ends_at: <%= Time.zone.now.at_beginning_of_day  + 12.hours - 1.month %>
+    title_es: "Evento del mes pasado"
+    organization: lehendakaritza
+    published_at: <%= Time.zone.now.at_beginning_of_day + 8.hours  - 1.month %>
+    irekia_coverage: true
+    stream_flow: sf_three
+    creator: admin
+    last_editor: admin
+    body_es: MyText
+    journalist_alert_version: 1
+    staff_alert_version: 1
+
+#
+# NOTE: The published_at date should be before starts_at date for tests to pass correctly
+#    
+current_event:
+    type: Event
+    starts_at: <%= Time.zone.now.at_beginning_of_day + 6.hours %>
+    ends_at: <%= Time.zone.now.at_beginning_of_day + 12.hours %>
+    title_es: "Evento actual"
+    title_eu: "Evento actual en euskera"
+    title_en: "Current evenet"
+    speaker_es: "El presentador"
+    speaker_eu: "El presentador en euskera"
+    speaker_en: "Speaker"
+    organization: lehendakaritza
+    published_at: <%= Time.zone.now.at_beginning_of_day - 10.hours %>
+    creator: admin
+    last_editor: admin
+    body_es: MyText
+    journalist_alert_version: 1
+    staff_alert_version: 1
+
+current_event_without_body_es:
+  type: Event
+  starts_at: <%= Time.zone.now.at_beginning_of_day + 10.hours %>
+  ends_at: <%= Time.zone.now.at_beginning_of_day + 12.hours %>
+  published_at: <%= Time.zone.now.at_beginning_of_day - 1.day %>
+  title_es: "Evento actual sin body_es"
+  organization: lehendakaritza
+  creator: admin
+  last_editor: admin
+  body_eu: MyText
+  journalist_alert_version: 1
+  staff_alert_version: 1
+  
+    
+future_event:
+    type: Event
+    starts_at: <%= Time.zone.now.at_beginning_of_day + 10.hours + 1.month %>
+    ends_at: <%= Time.zone.now.at_beginning_of_day + 12.hours + 1.month %>
+    title_es: "Evento futuro"
+    organization: lehendakaritza
+    published_at: <%= Time.zone.now.at_beginning_of_day - 3.hours %>
+    creator: admin
+    last_editor: admin
+    body_es: MyText
+    journalist_alert_version: 1
+    staff_alert_version: 1
+    
+#
+# Evento en el futuro (dentro de un més) que ya está publicado (desde hace un mes)
+#
+published_future_event:
+    type: Event
+    starts_at: <%= Time.zone.now.at_beginning_of_day + 10.hours + 1.month %>
+    ends_at: <%= Time.zone.now.at_beginning_of_day + 12.hours + 1.month %>
+    title_es: "Evento futuro publicado"
+    organization: lehendakaritza
+    published_at: <%= Time.zone.now.at_beginning_of_day + 10.hours - 1.month %>
+    creator: admin
+    last_editor: admin
+    body_es: MyText
+    journalist_alert_version: 1
+    staff_alert_version: 1
+    
+# ma_current_event:
+#     type: Event
+#     starts_at: <%= Time.zone.now.at_beginning_of_day + 10.hours %>
+#     ends_at: <%= Time.zone.now.at_beginning_of_day + 12.hours %>
+#     organization: lehendakaritza
+#     title_es: "Evento actual de la Agencia"
+#     state: 'confirmado'
+#     published_at: <%= Time.zone.now.at_beginning_of_day - 10.hours %>
+#     show_in_irekia: false
+#     show_in_agencia: true
+#     draft: false
+#     creator: admin
+#     last_editor: admin
+#     body_es: MyText
+#     journalist_alert_version: 1
+#     staff_alert_version: 1
+#     has_journalists: false
+#     has_photographers: true
+    
+event_with_tag_one:
+    type: Event
+    starts_at: <%= Time.zone.now.at_beginning_of_day + 10.hours %>
+    ends_at: <%= Time.zone.now.at_beginning_of_day + 12.hours %>
+    title_es: "Evento actual de Irekia con tag 'one'. Es el unico evento con este tag. Se usa para probar el redirect del tags controller cuando hay sólo un documento con el tag elegido"
+    organization: lehendakaritza
+    published_at: <%= Time.zone.now.at_beginning_of_day - 10.hours %>
+    creator: admin
+    last_editor: admin
+    body_es: MyText
+    journalist_alert_version: 1
+    staff_alert_version: 1
+    has_journalists: false
+    has_photographers: true
+            
+long_event:
+    type: Event
+    starts_at: <%= Time.zone.now.at_beginning_of_day + 10.hours %>
+    ends_at: <%= Time.zone.now.at_beginning_of_day + 10.hours + 1.month %>
+    title_es: "Evento actual que dura 1 mes"
+    organization: lehendakaritza
+    published_at: <%= Time.zone.now.at_beginning_of_day - 10.hours %>
+    creator: admin
+    last_editor: admin
+    body_es: MyText
+    journalist_alert_version: 1
+    staff_alert_version: 1
+    
+event_feb_23th:
+    type: Event
+    starts_at: <%= Time.zone.parse("2009/2/23 9:30") %>
+    ends_at: <%= Time.zone.parse("2009/2/23 10:30") %>
+    #published_at: <%= Time.zone.parse("2009/2/23 9:30") - 1.day%>
+    organization: lehendakaritza
+    title_es: "Evento lunes 23 de febrero de 2009"
+    published_at: <%= Time.zone.parse("2009/2/23 9:30") %>
+    creator: admin
+    last_editor: admin
+    body_es: MyText
+    journalist_alert_version: 1
+    staff_alert_version: 1
+    
+event_feb_28th:
+    type: Event
+    starts_at: <%= Time.zone.parse("2009/2/28 9:30") %>
+    ends_at: <%= Time.zone.parse("2009/2/28 10:30") %>
+    #published_at: <%= Time.zone.parse("2009/2/28 9:30") - 1.day%>
+    title_es: "Evento sábado, 28 de febrero de 2009"
+    organization: lehendakaritza
+    published_at: <%= Time.zone.parse("2009/2/28 9:30") %>
+    creator: admin
+    last_editor: admin
+    body_es: MyText
+    journalist_alert_version: 1
+    staff_alert_version: 1
+    
+event_march_1st:
+    type: Event
+    starts_at: <%= Time.zone.parse("2009/3/1 9:30") %>
+    ends_at: <%= Time.zone.parse("2009/3/1 10:30") %>
+    #published_at: <%= Time.zone.parse("2009/3/1 9:30") - 1.day%>
+    title_es: "Evento 1 de marzo de 2009"
+    organization: lehendakaritza
+    published_at: <%= Time.zone.parse("2009/3/1 9:30") %>
+    creator: admin
+    last_editor: admin
+    body_es: MyText
+    journalist_alert_version: 1
+    staff_alert_version: 1
+    
+event_august_31st:
+    type: Event
+    starts_at: <%= Time.zone.parse("2009/3/31 9:30") %>
+    ends_at: <%= Time.zone.parse("2009/3/31 10:30") %>
+    #published_at: <%= Time.zone.parse("2009/3/31 9:30") - 1.day%>
+    title_es: "Evento 31 de marzo de 2009"
+    organization: lehendakaritza
+    published_at: <%= Time.zone.parse("2009/3/31 9:30") %>
+    creator: admin
+    last_editor: admin
+    body_es: MyText
+    journalist_alert_version: 1
+    staff_alert_version: 1
+        
+event_apr_1st:
+    type: Event
+    starts_at: <%= Time.zone.parse("2009/4/1 9:30") %>
+    ends_at: <%= Time.zone.parse("2009/4/1 10:30") %>
+    #published_at: <%= Time.zone.parse("2009/4/1 9:30") - 1.day%>
+    title_es: "Evento 1 de abril de 2009"
+    organization: lehendakaritza
+    published_at: <%= Time.zone.parse("2009/4/1 9:30") %>
+    creator: admin
+    last_editor: admin
+    body_es: MyText
+    journalist_alert_version: 1
+    staff_alert_version: 1
+    
+event_apr_5th:
+    type: Event
+    starts_at: <%= Time.zone.parse("2009/4/5 9:30") %>
+    ends_at: <%= Time.zone.parse("2009/4/5 10:30") %>
+    #published_at: <%= Time.zone.parse("2009/4/5 9:30") - 1.day%>
+    title_es: "Evento domingo, 5 de abril de 2009"
+    organization: lehendakaritza
+    published_at: <%= Time.zone.parse("2009/4/5 9:30") %>
+    creator: admin
+    last_editor: admin
+    body_es: MyText
+    journalist_alert_version: 1
+    staff_alert_version: 1
+    
+event_jan_1th:
+    type: Event
+    starts_at: <%= Time.zone.parse("2009/1/1 9:30") %>
+    ends_at: <%= Time.zone.parse("2009/1/1 10:30") %>
+    #published_at: <%= Time.zone.parse("2009/1/1 9:30") - 1.day%>
+    title_es: "Evento jueves, 1 de enero de 2009"
+    organization: lehendakaritza
+    published_at: <%= Time.zone.parse("2009/1/1 9:30") %>
+    creator: admin
+    last_editor: admin
+    body_es: MyText
+    journalist_alert_version: 1
+    staff_alert_version: 1
+    
+event_dic_31th_2008:
+    type: Event
+    starts_at: <%= Time.zone.parse("2008/12/31 9:30") %>
+    ends_at: <%= Time.zone.parse("2008/12/31 10:30") %>
+    #published_at: <%= Time.zone.parse("2008/12/31 9:30") - 1.day%>
+    title_es: "Evento miércoles, 31 de diciembre de 2008"
+    organization: lehendakaritza
+    published_at: <%= Time.zone.parse("2008/12/31 9:30") %>
+    creator: admin
+    last_editor: admin
+    body_es: MyText
+    journalist_alert_version: 1
+    staff_alert_version: 1
+    
+event_dic_30th_2008_to_jan_2nd_2009:
+    type: Event
+    starts_at: <%= Time.zone.parse("2008/12/30 9:30") %>
+    ends_at: <%= Time.zone.parse("2009/1/2 10:30") %>
+    #published_at: <%= Time.zone.parse("2008/12/30 9:30") - 1.day%>
+    title_es: "Evento desde 30 de diciembre de 2008 hasta 2 de enero de 2009"
+    organization: lehendakaritza
+    published_at: <%= Time.zone.parse("2008/12/30 9:30") %>
+    creator: admin
+    last_editor: admin
+    body_es: MyText
+    journalist_alert_version: 1
+    staff_alert_version: 1
+    
+emakunde_passed_event:
+    type: Event
+    starts_at: <%= Time.zone.now.at_beginning_of_day + 10.hours - 1.month %>
+    ends_at: <%= Time.zone.now.at_beginning_of_day + 12.hours - 1.month %>
+    title_es: "Evento del mes pasado de Emakunde"
+    organization: emakunde
+    published_at: <%= Time.zone.now.at_beginning_of_day + 10.hours - 1.month %>
+    creator: admin
+    last_editor: admin
+    body_es: MyText
+    journalist_alert_version: 1
+    staff_alert_version: 1
+    irekia_coverage: true
+    irekia_coverage_article: true
+    
+    
+emakunde_future_event:
+    type: Event
+    starts_at: <%= Time.zone.now.at_beginning_of_day + 10.hours + 1.month %>
+    ends_at: <%= Time.zone.now.at_beginning_of_day + 12.hours + 1.month %>
+    title_es: "Emakunde Evento futuro"
+    organization: emakunde
+    published_at: <%= Time.zone.now.at_beginning_of_day + 10.hours + 1.month %>
+    creator: admin
+    last_editor: admin
+    body_es: MyText
+    journalist_alert_version: 1
+    staff_alert_version: 1
+    
+#
+# Evento de ayer.
+#    
+ma_yesterday_event:
+    type: Event
+    starts_at: <%= Time.zone.now.at_beginning_of_day  - 1.day + 3.hours %>
+    ends_at: <%= Time.zone.now.at_beginning_of_day - 1.day + 4.hours %>
+    title_es: "Evento de ayer"
+    organization: lehendakaritza
+    published_at: 
+    creator: admin
+    last_editor: admin
+    body_es: MyText
+    journalist_alert_version: 1
+    staff_alert_version: 1
+
+event_with_unsent_alert:
+  type: Event
+  starts_at: <%= Time.zone.now.at_beginning_of_day + 1.hour + 1.day - 2.hours %>
+  ends_at: <%= Time.zone.now.at_beginning_of_day + 1.hour + 1.day + 1.hour %>
+  title_es: "Evento con alerta programada pero sin enviar"
+  organization: lehendakaritza
+  published_at: <%= Time.zone.now.at_beginning_of_day + 1.hour + 1.day - 2.hours %>
+  irekia_coverage: false
+  creator: admin
+  last_editor: admin
+  body_es: MyText
+  journalist_alert_version: 1
+  staff_alert_version: 1
+
+event_with_unsent_alert_gob_vasco:
+  type: Event
+  starts_at: <%= Time.zone.now.at_beginning_of_day + 1.hour + 1.day - 2.hours %>
+  ends_at: <%= Time.zone.now.at_beginning_of_day + 1.hour + 1.day + 1.hour %>
+  title_es: "Evento con alerta programada pero sin enviar"
+  organization: gobierno_vasco
+  published_at: 
+  irekia_coverage: false
+  creator: admin
+  last_editor: admin
+  body_es: MyText
+  journalist_alert_version: 1
+  staff_alert_version: 1
+
+event_with_sent_alert:
+  type: Event
+  starts_at: <%= Time.zone.now.at_beginning_of_day + 1.day - 1.hour %>
+  ends_at: <%= Time.zone.now.at_beginning_of_day + 1.day + 2.hours %>
+  title_es: "Evento con alerta enviada"
+  organization: lehendakaritza
+  published_at: <%= Time.zone.now.at_beginning_of_day + 1.hour + 1.day - 2.hours %>
+  irekia_coverage: false
+  creator: admin
+  last_editor: admin
+  body_es: MyText
+  journalist_alert_version: 1
+  staff_alert_version: 1
+
+event_without_scheduled_alerts:
+  type: Event
+  starts_at: <%= Time.zone.now.at_beginning_of_day + 1.day - 1.hour %>
+  ends_at: <%= Time.zone.now.at_beginning_of_day + 1.day + 2.hours %>
+  title_es: "Evento con alerta programada pero sin enviar"
+  organization: lehendakaritza
+  published_at: <%= Time.zone.now.at_beginning_of_day + 1.day - 1.hour %>
+  irekia_coverage: false
+  creator: admin
+  last_editor: admin
+  body_es: MyText
+  journalist_alert_version: 1
+  staff_alert_version: 1
+
+ee_last_day_of_month:
+  type: Event
+  title_es: "Evento para el último día del mes actual"
+  body_es: "Descricpión del evento"
+  organization: lehendakaritza
+  starts_at: <%= Time.zone.now.at_end_of_month.at_beginning_of_day + 8.hours %>
+  ends_at: <%= Time.zone.now.at_end_of_month.at_beginning_of_day + 12.hours %>
+  creator: admin
+  last_editor: admin
+
+
+
+<% if Settings.optional_modules.streaming %>
+event_with_streaming:
+  type: Event
+  starts_at: <%= Time.zone.now.at_beginning_of_day + 20.hours %>
+  ends_at: <%= Time.zone.now.at_beginning_of_day + 23.hours %>
+  title_es: "Evento con streaming"
+  organization: lehendakaritza
+  published_at: <%= Time.zone.now.at_beginning_of_day - 1.day %>
+  irekia_coverage: true
+  creator: admin
+  last_editor: admin
+  body_es: MyText
+  streaming_live: true
+  stream_flow: sf_two
+  streaming_for: irekia
+  journalist_alert_version: 1
+  staff_alert_version: 1
+
+
+current_event_with_streaming:
+  type: Event
+  starts_at: <%= Time.zone.now.at_beginning_of_day + 8.hour %>
+  ends_at: <%= Time.zone.now.at_beginning_of_day + 10.hour %>
+  title_es: "Evento de hoy con streaming"
+  organization: lehendakaritza
+  published_at: <%= 1.hour.ago %>
+  irekia_coverage: true
+  creator: admin
+  last_editor: admin
+  body_es: MyText
+  irekia_coverage: true
+  irekia_coverage_photo: true
+  irekia_coverage_video: true
+  irekia_coverage_audio: true
+  streaming_live: true
+  streaming_for: "irekia"
+  stream_flow: sf_one
+  journalist_alert_version: 1
+  staff_alert_version: 1
+  has_journalists: true
+  has_photographers: true
+
+event_with_streaming_without_alerts:
+  type: Event
+  starts_at: <%= Time.zone.now.at_beginning_of_day + 20.hours %>
+  ends_at: <%= Time.zone.now.at_beginning_of_day + 22.hours %>
+  title_es: "Evento con streaming sin alertas"
+  organization: lehendakaritza
+  published_at: <%= Time.zone.now.at_beginning_of_day - 1.day %>
+  irekia_coverage: true
+  creator: admin
+  last_editor: admin
+  body_es: MyText
+  streaming_live: true
+  stream_flow: sf_without_alerts
+  streaming_for: irekia
+  journalist_alert_version: 1
+  staff_alert_version: 1
+
+event_with_streaming_and_sent_alert_and_show_in_irekia:
+  type: Event
+  starts_at: <%= Time.zone.now.at_beginning_of_day + 1.day - 2.hours - 2.minutes %>
+  ends_at: <%= Time.zone.now.at_beginning_of_day + 1.hour + 1.day + 1.hour %>
+  title_es: "Evento con streaming y alerta ya enviada"
+  organization: lehendakaritza
+  published_at: <%= Time.zone.now.at_beginning_of_day - 1.day - 2.hours %>
+  irekia_coverage: true
+  creator: admin
+  last_editor: admin
+  body_es: MyText
+  streaming_live: true
+  stream_flow: sf_one
+  streaming_for: irekia
+  journalist_alert_version: 1
+  staff_alert_version: 1
+  
+old_event_with_streaming_and_sent_alert_and_show_in_irekia:
+  type: Event
+  starts_at: <%= 1.month.ago %>
+  ends_at: <%= 1.month.ago + 1.hour %>
+  title_es: "Evento pasado con streaming y alerta ya enviada"
+  organization: lehendakaritza
+  published_at: <%= 1.month.ago %>
+  irekia_coverage: true
+  creator: admin
+  last_editor: admin
+  body_es: MyText
+  streaming_live: true
+  stream_flow: sf_one
+  streaming_for: irekia
+  journalist_alert_version: 1
+  staff_alert_version: 1
+
+event_with_streaming_en_diferido:
+  type: Event
+  starts_at: <%= Time.zone.now.at_beginning_of_day + 18.hours %>
+  ends_at: <%= Time.zone.now.at_beginning_of_day + 20.hours %>
+  title_es: "Evento con streaming en diferido"
+  organization: lehendakaritza
+  published_at: <%= 3.hours.ago %>
+  irekia_coverage: true
+  creator: admin
+  last_editor: admin
+  body_es: MyText
+  streaming_live: true
+  stream_flow: sf_one
+  streaming_for: en_diferido
+<% end %>
+
+event_with_duration_of_more_than_one_week:
+  type: Event
+  starts_at: <%= Time.zone.now.at_beginning_of_day - 1.day %>
+  ends_at: <%= Time.zone.now.at_beginning_of_day + 10.days %>
+  published_at: <%= Time.zone.now.at_beginning_of_day - 1.day %>
+  title_es: "Evento que dura mas de una semana"
+  organization: lehendakaritza
+  irekia_coverage: false
+  creator: admin
+  last_editor: admin
+  body_es: "Deberia verse en el view semanal"
+  streaming_live: false
+  journalist_alert_version: 1
+  staff_alert_version: 1
+
+sunday_event:
+  type: Event
+  starts_at: <%= Time.zone.now.at_end_of_week.at_beginning_of_day + 8.hours %>
+  ends_at: <%= Time.zone.now.at_end_of_week.at_beginning_of_day + 10.hours %>
+  published_at: 
+  title_es: "Evento que dura mas de una semana"
+  organization: lehendakaritza
+  irekia_coverage: false
+  creator: admin
+  last_editor: admin
+  body_es: "Deberia verse en el view semanal"
+  streaming_live: false
+  journalist_alert_version: 1
+  staff_alert_version: 1
+
+private_event:
+  type: Event
+  starts_at: <%= Time.zone.now.at_beginning_of_day + 1.day %>
+  ends_at: <%= Time.zone.now.at_beginning_of_day + 1.day + 3.hours %>
+  published_at: 
+  title_es: "Evento privado"
+  organization: lehendakaritza
+  irekia_coverage: false
+  creator: admin
+  last_editor: admin
+  body_es: "Para los que tienen acceso a las agendas especiales, en la admin de este enevto tienen la opción de cambiar la agenda. Los demás sólo pueden modificarlo pero no pueden cambiar su agenda."
+  speaker_es: 'La persona que presenta el evento.'
+  streaming_live: false
+  journalist_alert_version: 1
+  staff_alert_version: 1
+  
+translated_event:
+  type: Event
+  title_es: title in spanish
+  title_eu: title in basque
+  irekia_coverage: false      
+  starts_at: <%= Time.zone.now.at_beginning_of_day + 12.hour %>
+  ends_at: <%= Time.zone.now.at_beginning_of_day + 14.hour %>
+  published_at: 
+  organization: lehendakaritza
+  creator: admin
+  last_editor: admin
+
+untranslated_event:
+  type: Event
+  title_es: title in spanish
+  body_es: body in spanish
+  irekia_coverage: false      
+  starts_at: <%= Time.zone.now.at_beginning_of_day + 12.hour %>
+  ends_at: <%= Time.zone.now.at_beginning_of_day + 13.hour %>
+  published_at: <%= 1.day.ago %>
+  organization: lehendakaritza
+  creator: admin
+  last_editor: admin
+
+interior_public_event:
+  type: Event
+  title_es: 'Evento público de interior'
+  irekia_coverage: false
+  starts_at: <%= Time.zone.now.at_end_of_month.at_beginning_of_day + 10.hour %>
+  ends_at: <%= Time.zone.now.at_end_of_month.at_beginning_of_day + 12.hour %>
+  published_at: <%= Time.zone.now.at_beginning_of_day - 1.day %>
+  organization: interior
+  creator: admin
+  last_editor: admin
+
+event_that_starts_the_week_before_now_with_duration_of_more_than_one_week:
+  type: Event
+  starts_at: <%= Time.zone.now.at_beginning_of_week.at_beginning_of_day - 2.days %>
+  ends_at: <%= Time.zone.now.at_beginning_of_week.at_beginning_of_day + 10.days %>
+  published_at: 
+  title_es: "Evento que empeiza la semana anterior a la actual y dura mas de una semana"
+  organization: lehendakaritza
+  irekia_coverage: false
+  creator: admin
+  last_editor: admin
+  body_es: "Deberia verse en el view semanal al final de la lista de eventos"
+  streaming_live: false
+  journalist_alert_version: 1
+  staff_alert_version: 1
+
+
+last_year_event:
+    type: Event
+    starts_at: <%= 1.year.ago %>
+    ends_at: <%= 1.year.ago  + 12.hours %>
+    title_es: "Last year event"
+    organization: lehendakaritza
+    published_at: <%= 1.year.ago %>
+    irekia_coverage: true
+    stream_flow: sf_three
+    creator: admin
+    last_editor: admin
+    body_es: MyText
+    journalist_alert_version: 1
+    staff_alert_version: 1
+
+page_in_menu:
+  type: Page
+  title_es: "Pagina en menu"
+  title_eu: "Pagina en menu eu"
+  title_en: "Pagina en menu en"
+  published_at: <%= Time.zone.now - 2.days %>
+  organization: interior
+  creator: admin
+  last_editor: admin
+  multimedia_dir: "page_in_menu"
+  multimedia_path: "page_in_menu"
+
+draft_page:
+  type: Page
+  title_es: "Pagina borrador"
+  published_at: 
+  organization: interior
+  creator: admin
+  last_editor: admin
+  
+
+published_news:
+  type: News
+  title_es: Published news
+  body_es: published
+  published_at: <%= 2.hour.ago %>
+  organization: lehendakaritza
+  creator: admin
+  last_editor: admin
+
+unpublished_news:
+  type: News
+  title_es: UnPublished news
+  body_es: Unpublished
+  published_at: <%= 1.hour.from_now %>
+  organization: lehendakaritza
+  creator: admin
+  last_editor: admin
+
+published_event:
+    type: Event
+    starts_at: <%= 1.day.ago %>
+    ends_at: <%= 1.day.ago + 1.hour %>
+    title_es: "Evento publicado"
+    organization: lehendakaritza
+    published_at: <%= 1.day.ago %>
+    creator: admin
+    last_editor: admin
+    body_es: MyText
+unpublished_event:
+    type: Event
+    starts_at: <%= 1.day.ago %>
+    ends_at: <%= 1.day.ago + 1.hour %>
+    title_es: "Evento no publicado"
+    organization: lehendakaritza
+    published_at: <%= 2.hours.from_now %>
+    creator: admin
+    last_editor: admin
+    body_es: MyText
+
+published_page:
+  type: Page
+  title_es: published page
+  published_at: <%= 2.hours.ago %>
+  organization: lehendakaritza
+
+unpublished_page:
+  type: Page
+  title_es: unpublished page
+  published_at: <%= 1.day.from_now %>
+  organization: lehendakaritza
+  
+debate_page:
+  type: Page
+  title_es: Página de aportaciones del debate compelto
+  published_at: <%= 1.month.ago %>
+  organization: lehendakaritza  
+
+# searchable
+searchable_news:
+  type: News
+  title_es: Encuentra esta noticia
+  published_at: <%= 1.week.ago %>
+  organization: lehendakaritza
+
+unsearchable_news:
+  type: News
+  title_es: No encuentra esta noticia
+  published_at: 
+  organization: lehendakaritza
+
+searchable_event:
+  type: Event
+  title_es: Encuentra este evento
+  published_at: <%= 1.week.ago %>
+  starts_at: <%= 1.week.ago %>
+  ends_at: <%= 3.days.ago %>
+  organization: lehendakaritza
+
+unsearchable_event:
+  type: Event
+  title_es: No encuentra este evento
+  published_at: 
+  starts_at: <%= 1.week.ago %>
+  ends_at: <%= 3.days.ago %>
+  organization: lehendakaritza
+
+searchable_page:
+  type: Page
+  title_es: Encuentra esta página
+  published_at: <%= 1.week.ago %>
+  organization: lehendakaritza
+
+unsearchable_page:
+  type: Page
+  title_es: No Encuentra esta página
+  published_at: <%= 1.week.ago %>
+  organization: lehendakaritza
+
+news_rake_related_docs:
+  type: News
+  title_es: Relacionados mediante keywords
+  published_at: <%= 1.week.ago %>
+  organization: lehendakaritza
+
+  body_es: "Tiene que tener cuerpo..."
+  

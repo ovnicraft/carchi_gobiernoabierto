@@ -1,0 +1,132 @@
+/* Flowplayer initializaion */
+
+function setIrekiaPageTracker(){
+  if (typeof _gaq != 'undefined' && _gaq[0] != "Disabled") {
+    try {
+      Irekia.pageTracker = _gaq._getAsyncTracker(); 
+    } catch(err) {
+      Irekia.pageTracker = null;
+    }
+  } else {
+    Irekia.pageTracker = null;    
+  }
+}
+
+function initPlayer(player_id, video_url, show_scrubber, auto_play, captions_url, timeline_bg) {
+  setIrekiaPageTracker();
+ 
+  if (typeof(captions_url) == "undefined") {
+   captions_url = "";
+  }
+  
+  if (typeof(timeline_bg) == "undefined") {
+   timeline_bg = "";
+  }
+  
+  var player = flowplayer(player_id, Irekia.fp_path, {
+    key: Irekia.fp_key,
+    contextMenu: [ "Irekia" ],      
+    plugins: { 
+      controls: { 
+        timeSeparator: "/",
+        timeFontSize: 9,
+        scrubber: show_scrubber,
+        volume: true,
+        fullscreen: show_scrubber
+      },
+      controls: (timeline_bg.length > 0) ? { background: '#262626 url(/images/' + timeline_bg + ') no-repeat 40px 5px', backgroundGradient: 'none', width: 600, height: 25, autoHide: false} : {},
+      lighttpd: { url: Irekia.fp_lighttpd },
+      captions: {
+        url: Irekia.fp_captions,
+        captionTarget: 'content',
+        button: (captions_url.length > 0) ? { width: 20, height: 15, right: 27, bottom: 38, label: 'CC' } : null,
+      },
+      content: {
+        url: Irekia.fp_content,
+        bottom: 25,
+        height: 46,        
+        width: 500,
+        backgroundColor: (captions_url.length > 0) ? '#000' : 'transparent',
+        backgroundGradient: 'none',
+        border: 0,
+        textDecoration: 'outline',   
+        style: {
+            body: {
+                fontSize: 14,
+                fontFamily: 'Arial',
+                textAlign: 'center',
+                color: '#ffffff',
+                fontWeight: 'bold'
+            }
+        }        
+      }
+    },
+    clip: {
+      url: video_url,
+      provider: "lighttpd",
+      scaling: "fit",
+      autoPlay: auto_play,
+      captionUrl: captions_url
+    } 
+  });
+  
+  if (Irekia.pageTracker != null) {
+    player.gatracker = {
+         url: Irekia.fp_gatracker,
+         trackingMode: "Bridge",
+         bridgeObject: "Irekia.pageTracker"
+    }
+  }
+    
+  return player;
+}
+
+function initStreamingPlayer(player_id, opts) {
+  setIrekiaPageTracker();
+  
+  var netConnURL = opts.netConnURL || "<%= Rails.application.config.rtmp_server %>";
+  var autoPlay = true; 
+  if (opts.autoPlay === 'false') {
+    autoPlay = false;
+  }
+
+  var logo_data = null;  
+  if (opts.showLogo === '1') {
+    var logoURL = Irekia.hostWithPort+'/video/irekia_mosca.png';
+    logo_data = {
+       url: logoURL,
+       top: 0,
+       right: 0,
+       fullscreenOnly: false,
+       displayTime: 0
+    };    
+  }
+  
+  return flowplayer(player_id, Irekia.fp_path,
+  {
+    key: Irekia.fp_key,
+    logo: logo_data,
+    clip: {
+      provider: 'rtmp',
+      live: true,
+      autoPlay: autoPlay 
+    },
+    plugins: {
+      controls: { 
+        timeFontSize: 9
+      },
+      rtmp: {
+        url: Irekia.hostWithPort+Irekia.fp_rtmp,
+        netConnectionUrl: netConnURL
+      },
+      gatracker: {
+        url: Irekia.fp_gatracker,
+        trackingMode: "Bridge",
+        bridgeObject: "Irekia.pageTracker",
+        accountId: "UA-10951282-1"
+      }
+    },
+    foto: {url: opts.foto}
+  });
+}
+

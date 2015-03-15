@@ -1,0 +1,20 @@
+<td style="white-space:nowrap;" class="status">
+  <span id="status_<%= proposal.id %>"><%=h proposal.status %></span>
+  <div id="status_links_<%= proposal.id %>" class="status_links">
+    <% if can_edit?("proposals") %>
+      <% if proposal.rejected? %>  
+        <%= link_to "Aprobar", update_status_admin_proposal_path(id: proposal, proposal: {status: 'aprobado'}), 
+              method: :put, data: {remote: true} if proposal.organization %>
+      <% elsif proposal.approved? %>
+        <%= link_to "Rechazar", reject_admin_proposal_path(:id => proposal, :proposal => {:status => 'rechazado'})%>
+      <% elsif proposal.pending? %>
+        <%= link_to "Aprobar", update_status_admin_proposal_path(id: proposal, proposal: {status: 'aprobado'}), 
+              method: :put, data: {remote: true} if proposal.organization %>
+      <% end %>
+    <% end %>
+    <% if can_create?("proposals") %>
+      <br/><%= link_to "<span>Eliminar</span>".html_safe, admin_proposal_path(proposal), 
+            method: :delete, title: "Eliminar", data: {confirm: '¿Estás seguro?', remote: true} %>
+    <% end %>
+  </div>
+</td>

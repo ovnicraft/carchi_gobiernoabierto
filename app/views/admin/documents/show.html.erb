@@ -1,0 +1,13 @@
+<% if @document.is_a?(News) %>
+  <% @news = @document %>
+  <%= render :partial => "/sadmin/news/edit_links" %>
+
+  <% if @w.eql?("multimedia") %>
+    <%= render :partial => "show_#{@t}" %>
+  <% else %>
+    <%= render :partial => "translations", :locals => {:document => @document} %>
+  <% end %>
+
+<% else %>
+  <%= render :partial => "show_#{@t}" %>
+<% end %>

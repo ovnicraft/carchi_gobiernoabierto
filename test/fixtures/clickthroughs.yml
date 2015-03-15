@@ -1,0 +1,4 @@
+tag_click:
+  click_source: tag_prueba (ActsAsTaggableOn::Tag)
+  click_target: one_news (Document)
+  locale: es

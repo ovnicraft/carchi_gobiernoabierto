@@ -1,0 +1,64 @@
+<div style="clear:both; margin:1em 0px;">
+  <% if can_create?("pages") %>
+  <ul class="edit_links">
+      <%= content_tag(:li, link_to(t('sadmin.create_what', :what => @pretty_type), self.send("new_admin_document_path", {:lang => "es", :t => @t}), :class => "new")) %>
+  </ul>  
+  <% end %>
+</div>
+
+<div style="clear:both; margin:1em 0px;">
+  <%= form_tag admin_documents_path, :method => :get do  %>
+    <%= t('sadmin.news.busqueda_titulo') %>:
+    <%= text_field_tag :q %>
+    <%= hidden_field_tag :t, @t %>
+    <%= submit_tag t("site.buscar") %>
+  <% end %>
+</div>
+
+<%= will_paginate @documents, :previous_label => "&laquo; #{t('anterior')}", :next_label => "#{t('siguiente')} &raquo;" %>
+
+<table class="comments" cellspacing="0">
+  <tr>
+    <th class="<%= 'order' if @sort_order.eql?("title") %>">
+      <%= link_to_unless @sort_order.eql?("title"), t('sadmin.news.titulo'), admin_documents_path(params.merge(:sort => "title")) %>
+    </th>
+    <th class="<%= 'order' if @sort_order.eql?("publish") %>">
+      <%= link_to_unless @sort_order.eql?("publish"), t('sadmin.news.fecha_publicacion'), admin_documents_path(params.merge(:sort => "publish")) %>
+    </th>
+    <th class="<%= 'order' if @sort_order.eql?("update") %>">
+      <%= link_to_unless @sort_order.eql?("update"), t('sadmin.news.ultima_actualizacion'), admin_documents_path(params.merge(:sort => "update")) %>
+    </th>
+    <%- if @t.eql?('news') -%>
+      <th><%= t('comments.comentarios') %></th>
+    <%- end -%>
+  </tr>
+  
+  <%- @documents.each do |document| -%>
+  <tr>
+    <td>
+      <%= link_to h(document.title), admin_document_path(document.id) %><br/>
+      <% if document.published? %>
+        <span class="published_notice"><%= t('sadmin.news.publicado') %></span>
+      <% elsif document.is_private? %>
+        <span class='draft_notice'><%= t('sadmin.news.borrador') %></span>
+      <% else %>
+        <% if document.published_at %>
+        <span class="unpublished_notice">
+          <%= t('sadmin.news.se_publicara_en', :fecha => I18n.localize(document.published_at, :format => :short)) %>
+        </span>
+        <% end %>
+      <% end %>
+    </td>
+    <td><%= I18n.localize(document.published_at, :format => :list) if document.published_at %></td>
+    <td><%= I18n.localize(document.updated_at, :format => :list) %></td>
+    <%- if @t.eql?('news') -%>
+      <td style="white-space:nowrap;">
+        <%= link_to_unless !can_create?("pages"), "#{t('comments.comentarios')} (#{document.comments_count})", comments_on_item_admin_comment_path(:id => document.id, :type => "Document") %>
+      </td>
+    <%- end -%>
+  </tr>
+  <%- end -%>
+</table>
+
+
+<%= will_paginate @documents, :previous_label => "&laquo; #{t('anterior')}", :next_label => "#{t('siguiente')} &raquo;" %>

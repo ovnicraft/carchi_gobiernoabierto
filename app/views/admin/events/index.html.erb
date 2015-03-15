@@ -1,0 +1,20 @@
+
+<%= params[:month]%>
+<div style="clear:both; margin:1em 0px;">
+  <% if can_create?("events") %>
+  <ul class="edit_links">
+    <% for_every_locale do |code, lang| %>
+      <%= content_tag(:li, link_to("Crear evento en #{lang}", new_admin_document_path(:lang => code, :t => @t), :class => "new")) %>
+    <% end %>  
+  </ul>
+  <% end %>
+</div>
+
+
+<div id="events_calendar">
+  <%= render :partial => "calendar" %>
+</div>  
+
+<% content_for :head do %>
+  <%= javascript_include_tag 'prototype/qTip' %>
+<% end %>

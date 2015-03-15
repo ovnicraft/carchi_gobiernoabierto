@@ -1,0 +1,46 @@
+<!-- GA initializaton -->
+<script type="text/javascript">
+  var Irekia = {};
+  <% if Rails.env.eql?('development') %>
+  
+    Irekia.ga_debug = true;
+    
+    var _gaq = _gaq || [];
+    _gaq.push("Disabled");
+    
+    _gaq._getAsyncTracker = function(){
+      return [];
+    }
+    
+    <%=raw ga_custom_vars %>
+    
+    <% if @ga_virtual_url %>
+      _gaq.push(['_trackPageview', '<%= @ga_virtual_url %>']);
+    <% else %>
+      _gaq.push(['_trackPageview']);
+    <% end %>
+        
+  <% else %>
+  
+    Irekia.ga_debug = false;
+      
+    var _gaq = _gaq || [];
+    <% if Rails.application.secrets['google_analytics_key']%>
+      _gaq.push(['_setAccount', '<%= Rails.application.secrets['google_analytics_key'] %>']);
+    <% end %>
+
+    <%=raw ga_custom_vars %>
+    
+    <% if @ga_virtual_url %>
+      _gaq.push(['_trackPageview', '<%= @ga_virtual_url %>']);
+    <% else %>
+      _gaq.push(['_trackPageview']);
+    <% end %>
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+    })();
+  <% end %>
+</script>

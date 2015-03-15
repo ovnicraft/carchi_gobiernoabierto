@@ -1,0 +1,21 @@
+<%- 
+  if photo["width"] > photo["height"]
+    width = 740
+    height = 740*photo["height"]/photo["width"]
+  else
+    height = 740
+    width = 740*photo["width"]/photo["height"]
+  end  
+  h = {
+    "id" => photo["id"],
+    "sort_id" => photo["id"], 
+    "title" => photo["title"], 
+    "image" => photo["url"],
+    "url" => photo["url"].gsub(/\/p200\//, '/p740/'),
+    "share_url" => "#{Rails.configuration.external_urls[:argazki_uri]}/es/photos/#{photo["id"]}",
+    "width" => width, 
+    "height" => height,
+    "max_zoom" => 2
+  } 
+-%>                                                                                                  
+<%=raw h.to_json %>

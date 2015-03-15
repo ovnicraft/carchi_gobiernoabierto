@@ -1,0 +1,27 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'prototype/dragdrop' %>
+<% end %>
+
+<h1><%= @area.name %></h1>
+
+<%= render :partial => "/admin/areas/edit_links", :locals => {:area => @area} %>
+
+<ul class="sortable team_list" id="team">
+  <% @area.area_users.each do |au| %>
+    <li class="team_member <%= 'active_false' if au.user.status.eql?('ex-cargo') %>" id="member_<%= au.id %>">
+      <span class="name"><%= link_to(h(au.user.public_name), admin_user_path(au.user)) %></span>
+      <span class="public_role"><%= au.user.public_role %></span>
+      <%= link_to "<span>Eliminar</span>".html_safe,
+             admin_area_user_path(@area, au), method: :delete, data: {confirm: "Seguro?", remote: true},
+             class: 'remove', title: "Eliminar" %>
+    </li>
+  <% end %>
+</ul>
+
+<div class="bottom_links">
+  <ul class="edit_links">
+    <li class="add_user"><%= link_to "Añadir usuario", new_admin_area_user_path(:area_id => @area.id), :class => "new" %></li>
+  </ul>
+</div>
+
+<%= sortable_element 'team', :url => sort_admin_area_users_path(:area_id => @area.id), :method =>:post, :complete => visual_effect(:highlight, 'team') %>

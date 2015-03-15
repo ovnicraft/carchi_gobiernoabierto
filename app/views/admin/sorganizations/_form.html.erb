@@ -1,0 +1,47 @@
+<%= error_messages(f.object) %>
+
+<table class='admin'>
+  <tr>
+    <th>Departamento</th>
+    <td><%= f.select :department_id, [['', '']] + Department.active.order("position").collect {|d| [d.name_es, d.id]} %></td>
+  </tr>  
+  
+  <% for_every_locale do |code, lang| %>
+    <tr>
+      <th>Nombre en <%= lang %></th>
+      <td>
+        <%= f.text_field "name_#{code}" %>
+      </td>
+    </tr>  
+  <% end %>  
+  
+  <tr>
+    <th>Icono</th>
+  <% unless @sorganization.new_record? %>
+    <% if @sorganization.icon? %>
+      <td><%= image_tag @sorganization.icon(:tiny) %></td>
+      <td><%= link_to('Cambiar logo', "#", :onclick => "$('logo_form_container').toggle();return false;") %></td>
+      <td id="logo_form_container" style="<%=@sorganization.new_record? ? '' : 'display: none' %>">
+        <%= f.file_field :icon %>
+        <%= link_to 'Cancelar', "#", :onclick => "$('logo_form_container').hide();return false;" unless @sorganization.new_record? %>
+        <div class='hint'>El tamaño obligatorio es 39x39px </div>
+      </td>
+    <% else %>
+      <td><%= f.file_field :icon %></td>
+    <% end %>  
+  <% else %>
+    <td><%= f.file_field :icon %></td>
+  <% end %>  
+  </tr> 
+
+  <tbody id='snetwork_data'>
+    <% @sorganization.snetworks.each do |snet| %>
+      <%= render :partial => 'snetwork_form', :locals => {:snet => snet, :position => snet.position || 1} %>
+    <% end %>
+  </tbody>
+  <tr>
+    <th><%= add_snetwork %></th>
+  </tr>
+</table>  
+
+<p><%= f.submit 'Guardar' %></p>

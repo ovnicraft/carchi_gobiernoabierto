@@ -1,0 +1,251 @@
+# Events specific tags
+irekia_eventos:
+    name_es: "Irekia::Eventos"
+    name_eu: "Irekia::Eventos"
+    name_en: "Irekia::Eventos"
+    sanitized_name_es: "_irekia_eventos"
+    sanitized_name_eu: "_irekia_eventos"
+    sanitized_name_en: "_irekia_eventos"
+irekia_acciones:
+    name_es: "Irekia::Acciones"
+    name_eu: "Irekia::Acciones"
+    name_en: "Irekia::Acciones"
+    sanitized_name_es: "_irekia_acciones"
+    sanitized_name_eu: "_irekia_acciones"
+    sanitized_name_en: "_irekia_acciones"
+irekia_actos:
+    name_es: "Irekia::Actos"
+    name_eu: "Irekia::Actos"
+    name_en: "Irekia::Actos"
+    sanitized_name_es: "_irekia_actos"
+    sanitized_name_eu: "_irekia_actos"
+    sanitized_name_en: "_irekia_actos"
+
+only_one_event:
+    name_es: "one"
+    name_eu: "one"
+    name_en: "one"
+    sanitized_name_es: "one"
+    sanitized_name_eu: "one"
+    sanitized_name_en: "one"
+
+photo_tag:  
+  name_es: "Photo tag"
+  name_eu: "Photo tag"
+  name_en: "Photo tag"
+  sanitized_name_es: "Photo tag"
+  sanitized_name_eu: "Photo tag"
+  sanitized_name_en: "Photo tag"
+
+menu:  
+  name_es: _menu
+  name_eu: _menu
+  name_en: _menu
+  sanitized_name_es: _menu
+  sanitized_name_eu: _menu
+  sanitized_name_en: _menu
+
+webtv: 
+  name_es: _webtv
+  name_eu: _webtv
+  name_en: _webtv
+  sanitized_name_es: _webtv
+  sanitized_name_eu: _webtv
+  sanitized_name_en: _webtv
+
+# Department tags
+interior_tag:
+    name_es: _interior
+    name_eu: _interior
+    name_en: _interior
+    sanitized_name_es: _interior
+    sanitized_name_eu: _interior
+    sanitized_name_en: _interior
+lehendakaritza_tag:
+    name_es: _lehendakaritza
+    name_eu: _lehendakaritza
+    name_en: _lehendakaritza
+    sanitized_name_es: _lehendakaritza
+    sanitized_name_eu: _lehendakaritza
+    sanitized_name_en: _lehendakaritza
+educacion_tag:
+    name_es: _educacion
+    name_eu: _educacion
+    name_en: _educacion
+    sanitized_name_es: _educacion
+    sanitized_name_eu: _educacion
+    sanitized_name_en: _educacion
+
+
+# Area tags
+a_interior_tag:
+    name_es: _a_interior
+    name_eu: _a_interior
+    name_en: _a_interior
+    sanitized_name_es: _a_interior
+    sanitized_name_eu: _a_interior
+    sanitized_name_en: _a_interior
+
+a_lehendakaritza_tag:
+    name_es: _a_lehendakaritza
+    name_eu: _a_lehendakaritza
+    name_en: _a_lehendakaritza
+    sanitized_name_es: _a_lehendakaritza
+    sanitized_name_eu: _a_lehendakaritza
+    sanitized_name_en: _a_lehendakaritza
+
+a_ogov_tag:
+    name_es: _a_ogov
+    name_eu: _a_ogov
+    name_en: _a_ogov
+    sanitized_name_es: _a_ogov
+    sanitized_name_eu: _a_ogov
+    sanitized_name_en: _a_ogov
+
+a_4_tag:
+    name_es: _a_4
+    name_eu: _a_4
+    name_en: _a_4
+    sanitized_name_es: _a_4
+    sanitized_name_eu: _a_4
+    sanitized_name_en: _a_4
+
+a_5_tag:
+    name_es: _a_5
+    name_eu: _a_5
+    name_en: _a_5
+    sanitized_name_es: _a_5
+    sanitized_name_eu: _a_5
+    sanitized_name_en: _a_5
+
+a_6_tag:
+    name_es: _a_6
+    name_eu: _a_6
+    name_en: _a_6
+    sanitized_name_es: _a_6
+    sanitized_name_eu: _a_6
+    sanitized_name_en: _a_6
+
+a_7_tag:
+    name_es: _a_7
+    name_eu: _a_7
+    name_en: _a_7
+    sanitized_name_es: _a_7
+    sanitized_name_eu: _a_7
+    sanitized_name_en: _a_7
+
+a_8_tag:
+    name_es: _a_8
+    name_eu: _a_8
+    name_en: _a_8
+    sanitized_name_es: _a_8
+    sanitized_name_eu: _a_8
+    sanitized_name_en: _a_8
+
+
+
+viajes_oficiales:
+  name_es: Viajes Oficiales
+  name_eu: Viajes Oficiales
+  name_en: Viajes Oficiales
+  sanitized_name_es: viajesoficiales
+  sanitized_name_eu: viajesoficiales
+  sanitized_name_en: viajesoficiales
+
+agricultura_ganaderia_y_forestal:
+  name_es: Agricultura, Ganadería y Forestal
+  name_eu: Agricultura, Ganadería y Forestal
+  name_en: Agricultura, Ganadería y Forestal
+  sanitized_name_es: agriculturaganaderiayforestal
+  sanitized_name_eu: agriculturaganaderiayforestal
+  sanitized_name_en: agriculturaganaderiayforestal
+
+tagueado:
+  name_es: Tagueado
+  name_eu: Tagueado
+  name_en: Tagueado
+  sanitized_name_es: tagueado
+  sanitized_name_eu: tagueado
+  sanitized_name_en: tagueado
+
+# Este tag es para comprobar que las cosas publicadas pero con fecha futura no salen 
+comprobar_fechas_tag:
+  name_es: Comprobar fecha publicacion
+  name_eu: Argitaratze data konprobatu
+  name_en: Check publication data
+  sanitized_name_es: comprobar_fecha_publicacion
+  sanitized_name_eu: argitaratze_data_konprobatu
+  sanitized_name_en: check_publication_data
+
+# Tag para comprobar que sale en la columna derecha
+tag_prueba:
+  name_es: Prueba
+  name_eu: Froga
+  name_en: Test
+  sanitized_name_es: prueba
+  sanitized_name_eu: froga
+  sanitized_name_en: test                                    
+  criterio_id: <%= ActiveRecord::FixtureSet.identify(:criterio_for_tag) %>
+
+# Tag de un político
+tag_politician_lehendakaritza:
+  name_es: Político Lehendakaritza
+  name_eu: Político Lehendakaritza
+  name_en: Político Lehendakaritza  
+  sanitized_name_es: politicolehendakaritza
+  sanitized_name_eu: politicolehendakaritza  
+  sanitized_name_en: politicolehendakaritza  
+  kind: Político
+  kind_info: <%= ActiveRecord::FixtureSet.identify(:politician_lehendakaritza) %>
+tag_politician_interior:
+  name_es: Político Interior
+  name_eu: Político Interior
+  name_en: Político Interior  
+  sanitized_name_es: politicointerior
+  sanitized_name_eu: politicointerior  
+  sanitized_name_en: politicointerior  
+  kind: Político
+  kind_info: <%= ActiveRecord::FixtureSet.identify(:politician_interior) %>  
+tag_politician_one:
+  name_es: Político
+  name_eu: Político
+  name_en: Político
+  sanitized_name_es: politico
+  sanitized_name_eu: politico  
+  sanitized_name_en: politico  
+  kind: Político
+  kind_info: <%= ActiveRecord::FixtureSet.identify(:politician_one) %>
+  
+tag_debate_completo:
+  name_es: '#debate_completo'
+  name_eu: '#debate_completo'
+  name_en: '#debate_completo'
+  sanitized_name_es: hashtag_debate_completo
+  sanitized_name_eu: hashtag_debate_completo  
+  sanitized_name_en: hashtag_debate_completo
+  
+tag_debate_nuevo:
+  name_es: '#debate_nuevo'
+  name_eu: '#debate_nuevo'
+  name_en: '#debate_nuevo'
+  sanitized_name_es: hashtag_debate_nuevo
+  sanitized_name_eu: hashtag_debate_nuevo  
+  sanitized_name_en: hashtag_debate_nuevo
+  
+# Tags para comprobar el autocomplete de tags en la admin
+tag_empieza_por_educar:
+  name_es: Educar en la ingualdad  
+  name_eu: Educar en la ingualdad    
+  name_en: Educar en la ingualdad  
+  sanitized_name_es: educarenlaingualdad        
+  sanitized_name_eu: educarenlaingualdad        
+  sanitized_name_en: educarenlaingualdad            
+  
+tag_contiene_educar:
+  name_es: Cómo educar en la ingualdad  
+  name_eu: Cómo educar en la ingualdad    
+  name_en: Cómo educar en la ingualdad  
+  sanitized_name_es: comoeducarenlaingualdad        
+  sanitized_name_eu: comoeducarenlaingualdad        
+  sanitized_name_en: comoeducarenlaingualdad            
+  

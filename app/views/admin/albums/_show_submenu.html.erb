@@ -1,0 +1,11 @@
+<div class="one_news_submenu">
+  <ul>
+    <li class="<%= 'active' if current_page?(admin_album_path(@album)) %>">
+      <%= link_to_unless_current "Info", admin_album_path(@album) %>
+    </li>
+    <li class="<%= 'active' if current_page?(admin_album_photos_path(@album)) %>">
+      <%= link_to_unless_current "Fotos", admin_album_photos_path(@album)  %>
+    </li>
+  </ul>
+</div>
+

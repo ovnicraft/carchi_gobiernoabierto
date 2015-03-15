@@ -1,0 +1,31 @@
+<li class="clearfix item comment <%= comment_style(comment)  %>  <%= 'not_moderated' unless comment.approved? %>">
+  <div class='item_thumbnail donotprint'><%= avatar comment.user %></div>
+  <div class="item_content" id ="comment_<%= comment.id %>">  
+    <div class='author'>
+      <% if comment.approved? -%>
+        <%= link_to_user_profile_unless_deleted(comment.user, {:class => :author}, comment) if comment.user.present? %>   
+      <% else -%>  
+        <span class="published_at">
+          <%= link_to t('comments.not_moderated_author'), user_path(comment.user) %> 
+        </span>
+        &middot;
+        <span class="moderation_pending">
+          <%= t('shared.moderation_pending') %>
+        </span>
+      <% end -%>
+    </div>  
+    <div class='date'>
+      <%= date_in_distance(comment.created_at) %>
+    </div>
+    <div class='copy_to_clipboard pull-right'>
+      <span class='copied' style='display: none'><%= t('share.copied') %></span>
+      <%= link_to "#", class: 'copy_to_clipboard', title: t('share.copy_to_clipboard'), :"data-clipboard-target" => "copy_text_#{comment.id}" do %>
+        <i class='icon-share'></i>
+      <% end %>
+      <span id='<%= "copy_text_#{comment.id}" %>' style='display:none'><%= polymorphic_url(comment.commentable, anchor: "comment_#{comment.id}")%></span>
+    </div>
+    <div class="quote">
+      <%= simple_format(auto_link_urls(white_list(comment.body), :rel => "external nofollow")) %>
+    </div>
+  </div>
+</li>

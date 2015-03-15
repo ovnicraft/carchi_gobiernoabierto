@@ -1,0 +1,164 @@
+<!-- CAUTION!! Changing HTML and classes here can be very dangerous  -->
+<% videos ||= [] %>
+<% photos ||= [] %>
+
+<%= init_jquery_tools_scrollable %>
+
+<div class='photo_video_viewer slideshow rs_skip'>
+  <ul class='nav nav-tabs'>
+    <li class="first <%= videos.present? ? 'active' : 'disabled'  %>">
+      <a href="#video_viewer" data-toggle="tab"><%= Video.model_name.human(:count => 2) %></a>
+    </li>
+    <li class="<%= !videos.present? && photos.present? ? 'active' : (!photos.present? ? 'disabled' : '')  %>">
+      <a href="#photo_viewer" data-toggle="tab"><%= Photo.model_name.human(:count => 2) %></a></li>
+  </ul>                              
+  
+  <div class="tab-content pill-content">              
+    <div class="tab-pane x_viewer <%= 'active' if videos.present? %>" id="video_viewer">               
+      <% videos_info = [] %>
+      <% fvideo = videos.first %>   
+      <div class='view_container'>
+        <% if fvideo.present? %>
+          <div class='image_wrap'>
+            <div class="player_and_description">
+              <div class="player iframe_video">     
+                <%- player_id = fvideo.is_a?(String) ? fvideo.to_i : fvideo.id -%>
+                <% videos_info.push(flv_video_info(fvideo).merge(:player_id => "lighty_#{player_id}" )) %>
+                <%= render :partial => '/videos/player', :locals => {:video_info => flv_video_info(fvideo).merge(:player_id => "lighty_#{player_id}" ), :show_embed => :false, :init_flowplayer => :false} %>
+              </div>
+            </div>
+          </div>         
+        <% end %>   
+        <div class='viewer_carousel'>
+          <div class='thumb_viewer_carousel videos'>
+            <% carousel_widget({:target => 'viewer'}) do %>                  
+              <% videos.each_with_index do |video, index| %>
+                <% video_info = flv_video_info(video) %>                                                 
+                <% video_title = video_title_with_duration(video_info) %>            
+                <div class='item_thumb'>
+                  <a href="<%= video_info[:video] %>" data-captions="<%= video_info[:captions_url] %>" <%= "data-m4vsrc=#{html5_video_for(video_info[:video])}" if mobile_user_agent? %> class='<%= "item_#{index}" %>'><%= image_tag(video_info[:preview_img], :alt => video_title, :width => '120px') %></a>  
+                </div>    
+              <% end %>  
+            <% end %>
+          </div>
+        </div>       
+      </div>
+      <div class='viewer_footer'>       
+        <% videos.each_with_index do |video, index| %>        
+          <% video_info = flv_video_info(video) %>    
+          <div class='item <%= "item_#{index}" %> <%= index == 0 ? "active" : "passive" %>'>
+            <div class='toolbar'> 
+              <% if video_info[:webtv_id].present? %>
+                <%= render :partial => '/shared/share', :locals => {:item => Video.find(video_info[:webtv_id])} %>
+              <% else %>  
+                <%= content_tag(:div, '', :class => 'share') %>
+              <% end %>
+              <!--<div class="download">
+                link_to t('documents.descargar_video'), video_info[:video], :class => "download" %>
+              </div>-->
+                         
+              <div class='embed'>    
+                <%= link_to t('videos.embed'), "#", :onclick => "showEmbedCodePhotoVideoViewer(this);return false;" %> 
+              </div>    
+
+              <%- if document.respond_to?(:videos_mpg) && document.videos_mpg.present? -%>
+                <div class='zip_download'>
+                  <%= link_to t('documents.descargar_videos_mpg_zip'), compress_news_url(:id => document.id, :w => 'videos_mpg'), :rel => 'nofollow' %>
+                </div>                                       
+              <%- end -%>                                     
+              
+              <div style="display:none;" class="embed_container">
+                <textarea readonly="readonly" cols="45" rows="3"><%= render(:partial => "/shared/code_to_embed_video.html", :locals => {:video_info => flv_video_info(video)}).gsub(/\n/, '') %></textarea>                       
+              </div>       
+            </div>    
+            <div class='caption'>
+              <span class="title"><%= video_info[:title] %></span>
+              <span class="source"><%= "#{t('shared.source')}: #{Settings.site_name}" %></span>
+            </div>
+          </div>                                                                                  
+        <% end %>
+      </div> 
+    </div>
+    
+    <div class="tab-pane x_viewer <%= 'active' if !videos.present? && photos.present? %>" id="photo_viewer">                          
+      <% fphoto = photos.first %>
+      <div class='view_container'>
+        <% if fphoto.present? %>
+          <% src = fphoto.respond_to?('url') ? fphoto.url("n770") : document_img_tag(fphoto, "n770") %>
+          <% orientation = get_photo_orientation(fphoto) %>
+          <div class="image_wrap <%= orientation %>">
+            <img src="<%= src %>" />
+          </div>                   
+        <% end %>            
+        <div class='viewer_carousel'>
+          <%= show_toggle_carousel_links('photos') %>
+          <div class='thumb_viewer_carousel photos'>
+            <% carousel_widget({:target => 'viewer'}) do %>
+              <% photos.each_with_index do |photo, index| %>           
+                <% src = photo.respond_to?('url') ? photo.url("n70") : document_img_tag(photo, "n70")  %>
+                <% url = photo.respond_to?('url') ? photo.url("n770") : document_img_tag(photo, "n770") %>        
+                <% orientation = get_photo_orientation(photo) %>
+                <div class='item_thumb <%= orientation %>'>
+                  <%= link_to image_tag(src), url, :class => "item_#{index} #{orientation}" %>
+               </div>
+              <% end %>  
+            <% end %>
+          </div>
+        </div>                     
+      </div>
+      <div class='viewer_footer'>      
+        <% photos.each_with_index do |photo, index| %>
+          <div class='item <%= "item_#{index}" %> <%= index == 0 ? "active" : "passive" %>'>     
+            <div class='toolbar'>     
+              <% photo_data = photo_info(photo, document) %>                    
+              <% if photo_data[:gallery_id].present? %>                                                              
+                <%= render :partial => "shared/share", :locals => {:item => Photo.find(photo_data[:gallery_id])} %>
+              <% else %>  
+                <%= content_tag(:div, '', :class => 'sharing') %>
+              <% end %>  
+              <% if photo_data[:file_path].present? && File.exists?(photo_data[:file_path]) %> 
+                <!-- (#{number_to_human_size(File.size(photo_data[:file_path]))}) -->
+                <div class="download"><%= link_to t('documents.descargar_foto'), photo_data[:url], :class => "download" %></div>
+              <% end %>          
+              
+              <div class='embed'>    
+                <%= link_to t('photos.embed'), "#", :onclick => "showEmbedCodePhotoVideoViewer(this);return false;" %>
+              </div>
+              
+              <div class='zip_download'>
+                <%= link_to(t('documents.descargar_fotos_zip'), compress_news_url(:id => document.id, :w => 'photos'), :rel => 'nofollow') if photos.length > 1 %>
+              </div>                                                                           
+              
+              <div style="display:none;" class="embed_container">
+                <textarea readonly="readonly" cols="45" rows="3"><%= render(:partial => "/shared/code_to_embed_photo.html", :locals => {:photo_url => photo_data[:url], :photo_alt => photo_data[:title]}).gsub(/\n/, '') %></textarea>                       
+              </div> 
+              
+            </div> 
+            
+            <div class='caption'>
+              <span class="title"><%= photo_data[:title] %></span>
+              <span class="source"><%= "#{t('shared.source')}: #{Settings.site_name}" %></span>
+            </div> 
+          </div> 
+        <% end %>
+      </div>   
+    </div>    
+    
+   </div> 
+
+</div>  
+
+<% if use_flowplayer? %>
+  <%= render :partial => '/shared/init_flowplayer', :locals => {:video_info => videos_info, :auto_play => :true } %>
+<% else %>
+  <%= init_jquery_videosub %>
+<% end %>
+
+<% if videos.size > 1 -%>
+  <% content_for :js_data do %>
+    <%= javascript_include_tag("flowplayer.playlist.min.js") if use_flowplayer? %>
+    <%= javascript_include_tag("public/video_playlist") %>
+  <% end %>
+<% end -%>
+
+<%= init_photo_video_viewer %>

@@ -1,0 +1,13 @@
+<%-
+  photos = []
+  @photos.each do |p|
+    photos << render(:partial => 'mob_app/cells/photo_cell.json', :locals => {:photo => p, :url => p.version(:n770), :width =>  (photo_width(p, :n770) || 770), :height => (photo_height(p, :n770) || 433)})
+  end
+-%>
+
+{
+ "thumbs": [
+   <%=raw photos.join(", \n") %>
+ ], 
+ "has_older" : <%= !@document.present? %>
+}

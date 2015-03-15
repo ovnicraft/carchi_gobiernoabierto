@@ -1,0 +1,33 @@
+<div class='proposals_summary row-fluid'>
+  <div class='span4'>
+    <%= render :partial => '/proposals/summary_left' %>
+  </div>
+  <div class='span8'>
+   <% if Settings.optional_modules.proposals %>
+    <div class='menu_heading'><%= t('proposals.last') %></div>
+    <ul class='std_list drop_list proposals_summary'>
+      <%= render :partial => '/proposals/list_item', :collection => @proposals, :as => :proposal, :locals => {:target => :nav} %>
+      <li class='item fullwidth'>
+        <div class='item_content'>
+          <div class='title'><%= link_to t('proposals.see_all'), proposals_url %></div>
+        </div>
+      </li>
+    </ul>
+   <% end %>
+   <% if Settings.optional_modules.debates %>
+    <div class='menu_heading'><%= t('debates.last') %></div>
+    <ul class='std_list drop_list debates_summary'>
+      <%= render :partial => '/debates/list_item', :collection => @debates, :as => :debate, :locals => {:target => :nav} %>
+      <li class='item fullwidth'>
+        <div class='item_content'>
+          <div class='title'><%= link_to t('debates.see_all'), debates_url %></div>
+        </div>
+      </li>
+    </ul>
+   <% end %>
+  </div>
+</div>
+
+
+
+

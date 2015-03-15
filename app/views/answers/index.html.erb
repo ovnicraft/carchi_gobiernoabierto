@@ -1,0 +1,30 @@
+<% if @area %>
+  <%= render :partial => 'areas/summary' %>
+  <%= render :partial => 'areas/navigation_menu' %>
+<% elsif @politician %>
+  <%= render :partial => 'politicians/summary' %>
+  <%= render :partial => 'politicians/navigation_menu' %>
+<% elsif @user %>
+  <%= render :partial => "users/summary" %>
+  <%= render :partial => "users/navigation_menu" %>
+<% else %>  
+  <%= render :partial => '/shared/contribution_nav' %>
+<% end %>
+
+<div class='section container proposals answers'>
+  <%= render :partial => '/shared/context', :locals => {:type => 'answers'} if show_context %>
+  <div class='section_main row-fluid'>
+    <div class="section_content span8">
+      <div class="answers index">
+        <% if @context %>
+          <div class='section_heading'><%= @title %></div>
+        <% else %>
+          <%= render :partial => "/shared/#{context_partial(@context, 'filters')}" %>
+        <% end %>
+
+        <%= render :partial => '/shared/list_items', :locals => {:items => @comments} %>
+      </div>
+    </div>
+    <div class='section_aside span4'></div>
+  </div>
+</div>

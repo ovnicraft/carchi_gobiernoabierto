@@ -1,0 +1,5 @@
+<% @title = "Modificar responsable de sala" %>
+
+<%= form_for :room_manager, :url => admin_room_manager_path(@room_manager), :html => {:method => :put} do |f| %>
+  <%= render :partial => "form", :locals => {:f => f} %>
+<% end %>

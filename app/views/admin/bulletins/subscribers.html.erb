@@ -1,0 +1,29 @@
+<%= render :partial => "submenu" %>
+
+<h1>Subscriptores del boletín</h1>
+
+<div style="float:left; margin:1em 0px;">
+  <%= form_tag subscribers_admin_bulletins_path, :method => :get do  %>
+    Búsqueda por nombre, apellidos o email:
+    <%= text_field_tag :q %>
+    <%= submit_tag t('site.buscar') %>
+  <% end %>
+</div>
+
+
+<%= will_paginate @subscribers %>
+<table class="comments users_list" cellspacing="0" cellpadding="2">
+  <tr>
+   <th>Nombre</th>
+   <th>Boletines</th>
+  </tr>
+  
+<% for subscriber in @subscribers %>
+  <tr>
+    <td><%= link_to subscriber.public_name, admin_user_path(subscriber, :subtab => "bulletins") %></td>
+    <td><%= link_to "#{subscriber.bulletin_copies.count} boletines", admin_user_path(subscriber, :subtab => "bulletins") %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate @subscribers %>

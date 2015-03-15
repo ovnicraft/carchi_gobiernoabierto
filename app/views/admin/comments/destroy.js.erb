@@ -1,0 +1,5 @@
+<%- if @comment.destroyed? -%>
+  $("comment_<%= @comment.id %>").fade();
+<%- else -%>
+  alert("El comentario no se ha borrado");
+<%- end -%>

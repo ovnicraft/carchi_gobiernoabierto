@@ -1,0 +1,14 @@
+<% @title = "Noticias para generar ePub" %>
+
+<p>Introduzca el ID del criterio de búsqueda (con un máximo de 300 noticias como resultado) a partir del cual quiere generar el ePub</p>
+
+<p style='float:right'>
+  <%= link_to 'Accede al buscador de Irekia', new_search_path, target: '_blank' %>
+</p>
+
+<%= form_tag "new_epub", :method => :get do %>
+  <%= label_tag :criterio_id %>
+  <%= text_field_tag :criterio_id %>
+  <%= submit_tag "Aceptar" %>
+<% end %>
+

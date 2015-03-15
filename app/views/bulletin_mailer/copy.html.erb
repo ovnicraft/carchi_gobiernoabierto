@@ -1,0 +1,445 @@
+<%- @trackable = true if @trackable.nil? -%>
+<%- if @bulletin_copy.ordered_debates.length > 0 -%>
+  <table id="proposal_table" class="w600" style="margin:0 10px;" border="0" cellpadding="0" cellspacing="0" width="600">
+    <tbody>
+      <tr>
+        <td class="w600" height="30" width="600"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+      </tr>
+      <tr>
+        <td id="td_header_proposal" class="w600" bgcolor="#ffffff" width="600">
+          <table class="w600" border="0" cellpadding="0" cellspacing="0" width="600">
+            <tbody>
+              <tr>
+                <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+                <td id="header_ribbon_proposal" class="w40" align="left" height="60" width="40">
+                  <%= image_tag("bulletin/ic_debate.png", {:style => "display:inline;", :border => '0', :align => 'top', :width => "40", :height => "60"}) %>
+                </td>
+                <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+                <td id="header_title_proposal" class="w500 header_title" align="left" width="500" style="color: #465866; font-size: 16px;">
+                  <h2 style="color: #465866; font-size: 16px; margin: 0;padding:0;"><%= t('bulletin_mailer.debates_section_title') %></h2>
+                </td>
+                <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+              </tr>
+              <tr>
+                <td colspan="5" class="w600" height="1" width="600" bgcolor="#dde4ec"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td class="w600" bgcolor="#ffffff" height="15" width="600"></td>
+      </tr>
+      <tr class="content-row">
+        <td class="w600" bgcolor="#ffffff" width="600">
+          <table class="w600" border="0" cellpadding="0" cellspacing="0" width="600">
+            <tbody>
+              <tr>
+                <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+                <td class="article w560" width="560">
+                  <%- @bulletin_copy.ordered_debates.each do |debate| -%>
+                    <%-
+                      if @trackable
+                        url_for_debate = clickthrough_url(:id => encode_clickthrough(@bulletin_copy, debate), :locale => I18n.locale)
+                        url_for_debate_comments = clickthrough_url(:id => encode_clickthrough(@bulletin_copy, debate), :locale => I18n.locale)
+                      else
+                        url_for_debate = debate_url(:id => debate.to_param, :locale => I18n.locale)
+                        url_for_debate_comments = debate_url(:id => debate.to_param, :anchor => '#acomments', :locale => I18n.locale)
+                      end
+                    -%>
+                    <table class="w560" border="0" cellpadding="0" cellspacing="0" width="560">
+                      <tbody>
+                        <tr>
+                          <td  class="w270 content_image" width="270" valign="top">
+                            <%= link_to image_tag(debate.cover_image.bulletin_270.url, :border => '0', :align => 'top', :style => 'display:inline', :width => "270", :height => "115", :alt => debate.title), url_for_debate, :style => 'font-size:12px;' %>
+                          <td class="w20" align="left" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+                          <td class="w270 content_text" width="270" valign="top" align="left">
+                            <table class="w270" border="0" cellpadding="0" cellspacing="0" width="270">
+                              <tbody>
+                                <!-- <tr class="date_row">
+                                  <td  class="w270 date_cell" width="270" style="color:#465866;font-size:12px;">fila de fecha</td>
+                                </tr>
+                                <tr><td height="2" width="1"></td></tr>    -->
+                                <tr class="title_row">
+                                  <td  class="w270 title_cell" width="270" align="left" style="color:#005A8C;font-size: 16px;font-weight: bold;">
+                                    <%= link_to debate.title, url_for_debate, :style => "text-decoration:none;color:#005A8C;font-size: 16px;font-weight: bold;" %>
+                                  </td>
+                                </tr>
+                                <!-- <tr><td height="2" width="1"></td></tr>
+                                <tr class="area_row">
+                                  <td  class="w270 area_cell" width="270" style="color:#465866;font-size:12px;">fila de area</td>
+                                </tr> -->
+                                <tr><td height="2" width="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td></tr>
+                                <tr class="comments_row">
+                                  <td  class="w270 comments_cell" width="270" style="color:#465866;font-size:14px;">
+                                    <table class="w270" border="0" cellpadding="0" cellspacing="0" width="270">
+                                      <tbody>
+                                        <tr>
+                                          <td class="w25" width="25" style="color:#465866;font-size:14px;">
+                                            <%= image_tag("bulletin/ic_comments.png", {:style => "display:inline;", :border => '0', :alt => 'icon comments', :width => "25", :height => "25"}) %>
+                                          </td>
+                                          <td class="w25" width="25" style="color:#465866;font-size:14px;">
+                                            <%= link_to(debate.comments.count, url_for_debate_comments, :class => 'comments_count', :style => 'text-decoration: none') %>
+                                          </td>
+                                          <td class="w220" width="220" align="left" style="color:green;font-size:14px;">
+                                            <%= render_participation_result_percentage(debate) %>
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  <%- end -%>
+                </td>
+                <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td class="w600" bgcolor="#ffffff" height="15" width="600"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+      </tr>
+    </tbody>
+  </table>
+<%- end -%>
+
+<%- if @bulletin_copy.ordered_featured_news.length > 0 -%>
+<table id="news_table" class="w600" style="margin:0 10px;" border="0" cellpadding="0" cellspacing="0" width="600">
+  <tbody>
+    <tr>
+      <td class="w600" height="30" width="600"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+    </tr>
+    <tr>
+      <td id="td_header_news" class="w600" bgcolor="#ffffff" width="600">
+        <table class="w600" border="0" cellpadding="0" cellspacing="0" width="600">
+          <tbody>
+            <tr>
+              <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+              <td id="header_ribbon_news" class="w40" align="left" height="60" width="40">
+                <%= image_tag("bulletin/ic_news.png", {:style => "display:inline;", :border => '0', :alt => 'icon news', :width => "40", :height => "60"}) %>
+              </td>
+              <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+              <td id="header_title_news" class="w500 header_title" align="left" width="500" style="color: #465866; font-size: 16px;">
+                <h2 style="color: #465866; font-size: 16px; margin: 0;padding:0;"><%= t('bulletin_mailer.news_section_title') %></h2>
+              </td>
+              <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+            </tr>
+            <tr>
+              <td colspan="5" class="w600" height="1" width="600" bgcolor="#dde4ec"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td class="w600" bgcolor="#ffffff" height="15" width="600"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+    </tr>
+    <% news = @bulletin_copy.ordered_featured_news.first %>
+    <% if news = @bulletin_copy.ordered_featured_news.first %>
+    <tr class="content-row">
+      <td class="w600" bgcolor="#ffffff" width="600">
+        <%-
+          if @trackable
+            url_for_news = clickthrough_url(:id => encode_clickthrough(@bulletin_copy, news), :locale => I18n.locale)
+          else
+            url_for_news = news_url(:id => news.to_param, :locale => I18n.locale)
+          end
+        -%>
+        <table class="w600" border="0" cellpadding="0" cellspacing="0" width="600">
+          <tbody>
+            <tr>
+              <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+              <td class="article w560" width="560">
+                <table class="w560" border="0" cellpadding="0" cellspacing="0" width="560">
+                  <tbody>
+                    <tr>
+                      <td  class="w270 content_image" width="270" valign="top">
+                        <% img_tag, alt = news_img_and_alt(news, :bulletin_270)[:img], news_img_and_alt(news)[:alt] %>
+                        <%= link_to image_tag(img_tag, :alt => alt, :title => alt, :border => '0', :style => 'display:inline', :width => "270"), url_for_news, :style => 'font-size:12px;' %>
+                      </td>
+                      <td class="w20" align="left" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+                      <td class="w270 content_text" width="270" valign="top" align="left">
+                        <table class="w270" border="0" cellpadding="0" cellspacing="0" width="270">
+                          <tbody>
+                            <tr class="date_row">
+                              <td  class="w270 date_cell" width="270" align="left" style="color:#465866;font-size:12px;">
+                                <%= I18n.l(news.published_at.to_date, :format => :long) %>
+                              </td>
+                            </tr>
+                            <tr><td height="2" width="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td></tr>
+                            <tr class="title_row">
+                              <td  class="w270 title_cell" width="270" align="left" style="color:#005A8C;font-size: 16px;font-weight: bold;">
+                                <%= link_to news.title, url_for_news, :style => "text-decoration:none;color:#005A8C;font-size: 16px;font-weight: bold;" %>
+                              </td>
+                            </tr>
+                            <tr><td height="2" width="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td></tr>
+                            <tr class="area_row">
+                              <td  class="w270 area_cell" width="270" align="left" style="color:#465866;font-size:12px;">
+                                <%= news.area_name %>
+                              </td>
+                            </tr>
+                            <tr><td height="2" width="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td></tr>
+                            <tr class="comments_row">
+                              <td  class="w270 comments_cell" width="270" style="color:#465866;font-size:14px;">
+                                <table class="w270" border="0" cellpadding="0" cellspacing="0" width="270">
+                                  <tbody>
+                                    <tr>
+                                      <td class="w25" width="25" style="color:#465866;font-size:14px;">
+                                        <%= image_tag("bulletin/ic_comments.png", {:style => "display:inline;", :border => '0', :alt => 'icon comments', :width => "25", :height => "25"}) %>
+                                      </td>
+                                      <td class="w25" width="25" style="color:#465866;font-size:14px;"><%= link_to(news.all_comments.count, news_url(:id => news.id, :anchor => 'comments', :locale => I18n.locale), :class => 'comments_count', :style => 'text-decoration: none') %></td>
+                                      <td class="w220" width="220" align="left"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <% end %>
+    <tr>
+      <td class="w600" bgcolor="#ffffff" height="15" width="600"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+    </tr>
+    <tr>
+      <td colspan="5" class="w600" height="1" width="600" bgcolor="#dde4ec"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+    </tr>
+    <tr>
+      <td class="w600" bgcolor="#ffffff" height="15" width="600"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+    </tr>
+    <%-
+      if @bulletin_copy.ordered_featured_news.length > 1
+        @bulletin_copy.ordered_featured_news[1..-1].each do |news|
+        if @trackable
+          url_for_news = clickthrough_url(:id => encode_clickthrough(@bulletin_copy, news), :locale => I18n.locale)
+        else
+          url_for_news = news_url(:id => news.to_param, :locale => I18n.locale)
+        end
+    -%>
+    <tr class="content-row">
+      <td class="w600" bgcolor="#ffffff" width="600">
+        <table class="w600" border="0" cellpadding="0" cellspacing="0" width="600">
+          <tbody>
+            <tr>
+              <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+              <td class="article w560" width="560">
+                <table class="w560" border="0" cellpadding="0" cellspacing="0" width="560">
+                  <tbody>
+                    <tr>
+                      <td  class="w100 content_image" width="100" valign="top">
+                        <% img_tag, alt = news_img_and_alt(news, :bulletin_270)[:img], news_img_and_alt(news)[:alt] %>
+                        <%= link_to image_tag(img_tag, :alt => alt, :title => alt, :border => '0', :width => '100', :style => 'display:inline'), url_for_news, :style => 'font-size:12px;' %>
+                      </td>
+                      <td class="w20" align="left" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+                      <td class="w440 content_text" width="440" valign="top" align="left">
+                        <table class="w440" border="0" cellpadding="0" cellspacing="0" width="440">
+                          <tbody>
+                            <tr class="date_row">
+                              <td  class="w440 date_cell" width="440" style="color:#465866;font-size:12px;">
+                                <%= I18n.l(news.published_at.to_date, :format => :long) %>
+                              </td>
+                            </tr>
+                            <tr><td height="2" width="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td></tr>
+                            <tr class="title_row">
+                              <td  class="w440 title_cell" width="440" style="color:#005A8C;font-size: 16px;font-weight: bold;">
+                                <%= link_to news.title, url_for_news, :style => "text-decoration:none;color:#005A8C;font-size: 16px;font-weight: bold;" %>
+                              </td>
+                            </tr>
+                            <tr><td height="2" width="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td></tr>
+                            <tr class="area_row">
+                              <td  class="w440 area_cell" width="440" style="color:#465866;font-size:12px;"><%= news.area_name %></td>
+                            </tr>
+                            <tr><td height="2" width="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td></tr>
+                            <tr class="comments_row">
+                              <td  class="w440 comments_cell" width="440" style="color:#465866;font-size:14px;">
+                                <table class="w440" border="0" cellpadding="0" cellspacing="0" width="440">
+                                  <tbody>
+                                    <tr>
+                                      <td class="w25" width="25" style="color:#465866;font-size:14px;">
+                                        <%= image_tag("bulletin/ic_comments.png", {:style => "display:inline;", :border => '0', :alt => 'icon comments', :width => "25", :height => "25"}) %>
+                                      </td>
+                                      <td class="w25" width="25" style="color:#465866;font-size:14px;"><%= link_to(news.all_comments.count, news_url(:id => news.id, :anchor => 'comments', :locale => I18n.locale), :class => 'comments_count', :style => 'text-decoration: none') %></td>
+                                      <td class="w390" width="390" align="left"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="5" class="w600" height="1" width="600" bgcolor="#dde4ec"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+    </tr>
+    <tr>
+      <td class="w600" bgcolor="#ffffff" height="15" width="600"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+    </tr>
+    <%-
+        end
+      end -%>
+  </tbody>
+</table>
+<%- end -%>
+
+<table id="others_table" class="w600" style="margin:0 10px;" border="0" cellpadding="0" cellspacing="0" width="600">
+  <tbody>
+    <tr>
+      <td class="w600" height="30" width="600"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+    </tr>
+    <tr>
+      <td id="td_header_others" class="w600" bgcolor="#ffffff" width="600">
+        <table class="w600" border="0" cellpadding="0" cellspacing="0" width="600">
+          <tbody>
+            <tr>
+              <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+              <td id="header_ribbon_others" class="w40 ribbon" align="left" height="60" width="40">
+                <%= image_tag("bulletin/ic_news.png", {:style => "display:block;", :border => '0', :align => 'top', :alt => 'icon news', :width => "40", :height => "60"}) %>
+              </td>
+              <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+              <td id="header_title_others" class="w500 header_title" align="left" width="500" style="color: #465866; font-size: 16px;">
+                <h2 style="color: #465866; font-size: 16px; margin: 0;padding:0;"><%= t('bulletin_mailer.more_news_section_title') %></h2>
+              </td>
+              <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+            </tr>
+            <tr>
+              <td colspan="5" class="w600" height="1" width="600" bgcolor="#dde4ec"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td class="w600" bgcolor="#ffffff" height="15" width="600"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+    </tr>
+    <tr class="content-row">
+      <td class="w600" bgcolor="#ffffff" width="600">
+        <table class="w600" border="0" cellpadding="0" cellspacing="0" width="600">
+          <tbody>
+            <tr>
+              <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+              <td class="list_others w560" width="560" align="left">
+                <table class="w560" border="0" cellpadding="0" cellspacing="0" width="560">
+                  <tbody>
+                      <% @bulletin_copy.ordered_user_news.each do |news| %>
+                        <%-
+                          if @trackable
+                            url_for_news = clickthrough_url(:id => encode_clickthrough(@bulletin_copy, news), :locale => I18n.locale)
+                          else
+                            url_for_news = news_url(:id => news.to_param, :locale => I18n.locale)
+                          end
+                        -%>
+                        <tr class="content-row">
+                          <td class="w600" bgcolor="#ffffff" width="600">
+                            <table class="w600" border="0" cellpadding="0" cellspacing="0" width="600">
+                              <tbody>
+                                <tr>
+                                  <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+                                  <td class="article w560" width="560">
+                                    <table class="w560" border="0" cellpadding="0" cellspacing="0" width="560">
+                                      <tbody>
+                                        <tr>
+                                          <td  class="w100 content_image" width="100" valign="top">
+                                            <% img_tag, alt = news_img_and_alt(news, :bulletin_270)[:img], news_img_and_alt(news)[:alt] %>
+                                            <%= link_to image_tag(img_tag, :alt => alt, :title => alt, :border => '0', :width => '100', :style => 'display:inline'), url_for_news, :style => 'font-size:12px;' %>
+                                          </td>
+                                          <td class="w20" align="left" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+                                          <td class="w440 content_text" width="440" valign="top" align="left">
+                                            <table class="w440" border="0" cellpadding="0" cellspacing="0" width="440">
+                                              <tbody>
+                                                <tr class="date_row">
+                                                  <td  class="w440 date_cell" width="440" style="color:#465866;font-size:12px;">
+                                                    <%= I18n.l(news.published_at.to_date, :format => :long) %>
+                                                  </td>
+                                                </tr>
+                                                <tr><td height="2" width="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td></tr>
+                                                <tr class="title_row">
+                                                  <td  class="w440 title_cell" width="440" style="color:#005A8C;font-size: 14px;font-weight: bold;">
+                                                    <%= link_to news.title, url_for_news, :style => "text-decoration:none;color:#005A8C;font-size: 14px;font-weight: bold;" %>
+                                                  </td>
+                                                </tr>
+                                                <tr><td height="2" width="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td></tr>
+                                                <tr class="area_row">
+                                                  <td  class="w440 area_cell" width="440" style="color:#465866;font-size:12px;"><%= news.area_name %></td>
+                                                </tr>
+                                                <tr><td height="2" width="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td></tr>
+                                                <tr class="comments_row">
+                                                  <td  class="w440 comments_cell" width="440" style="color:#465866;font-size:14px;">
+                                                    <table class="w440" border="0" cellpadding="0" cellspacing="0" width="440">
+                                                      <tbody>
+                                                        <tr>
+                                                          <td class="w25" width="25" style="color:#465866;font-size:14px;">
+                                                            <%= image_tag("bulletin/ic_comments.png", {:style => "display:inline;", :border => '0', :alt => 'icon comments', :width => "25", :height => "25"}) %>
+                                                          </td>
+                                                          <td class="w25" width="25" style="color:#465866;font-size:14px;"><%= link_to(news.all_comments.count, news_url(:id => news.id, :anchor => 'comments', :locale => I18n.locale), :class => 'comments_count', :style => 'text-decoration: none') %></td>
+                                                          <td class="w390" width="390" align="left"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+                                                        </tr>
+                                                      </tbody>
+                                                    </table>
+                                                  </td>
+                                                </tr>
+                                              </tbody>
+                                            </table>
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </td>
+                                  <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="5" class="w600" height="1" width="600" bgcolor="#dde4ec"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+                        </tr>
+                        <tr>
+                          <td class="w600" bgcolor="#ffffff" height="15" width="600"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+                        </tr>
+                    <%- end -%>                                                                                                    
+                  </tbody>
+                </table>
+              </td>
+              <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td class="w600" bgcolor="#ffffff" height="15" width="600"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+    </tr>
+
+    <tr>
+      <td class="w600" bgcolor="#ffffff" height="15" width="600"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+    </tr>
+
+  </tbody>
+</table>

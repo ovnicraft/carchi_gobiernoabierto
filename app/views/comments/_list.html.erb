@@ -1,0 +1,20 @@
+<%- if parent.has_comments? -%>
+  <div class="comments rs_skip" id="acomments">
+    <div class="count"><%= t('comments.title_with_count', :count => comments.total_entries) %></div>
+
+    <ul class='std_list'>
+      <%= render :partial => '/comments/form', :locals => {:parent => parent} unless parent.comments_closed? %>
+      <%= render :partial => 'comments/comment', :collection => comments, :as => :comment %>
+    </ul>
+
+    <%= will_paginate comments, :params => {:action => "show", :id => parent.id, :anchor => 'comments'},
+        :previous_label => "&laquo; #{t('anterior')}", :next_label => "#{t('siguiente')} &raquo;" %>
+
+    <%- if parent.comments_closed? -%>
+      <div class="comment_row" id="comment_row">
+        <span class="comments_closed"><%= t('comments.comentarios_cerrados') %></span>
+      </div>
+    <% end %>
+    
+  </div>
+<%- end -%>

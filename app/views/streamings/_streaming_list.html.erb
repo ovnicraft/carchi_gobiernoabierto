@@ -1,0 +1,18 @@
+<% status ||= nil %>
+<% if streamings.present? -%>
+  <div class="streaming_block <%= status %>">
+    <% status_info = status.eql?(:live) ? t('events.live_streaming') : t('events.future_streaming') %>
+    <%= content_tag(:div, status_info.capitalize, :class => 'title') unless status_info.blank? %>
+    <ul>
+      <% streamings.each do |n4s| %>
+        <li class="<%= n4s.streaming_status %>"> 
+          <div class="streaming_info">
+            <% current_streaming_url = streaming_url(n4s) %>
+            <span class="date"><%= link_to n4s.pretty_hours, current_streaming_url %>.</span>
+            <span class="event_title"><%= link_to n4s.title, current_streaming_url %></span>
+          </div>
+        </li>
+      <% end  %>
+    </ul>  
+  </div>
+<% end -%>

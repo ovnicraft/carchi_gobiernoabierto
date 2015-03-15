@@ -1,0 +1,254 @@
+@import "headlines"; /* @import "helpers"; */
+@import "participation";
+
+.section_header{
+	position:relative;
+	clear:both;
+	float:left;
+	margin-top: 20px;
+	width: 100%;
+	&.debate{
+		clear: both;
+		float: left;
+
+		& > .header_content{
+			position:relative;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center center;
+			color: white;
+			padding: 1% 2%;
+			width: 96%;
+
+			.veil{
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				background-image: url(image-path('debate_img_bg.png'));
+				background-repeat: repeat;
+				top: 0;
+				left: 0;
+				opacity: .6;
+			}
+			.header_info{
+				position:relative;
+			}
+			@include opensans(16px, bold);
+
+			h1.title{
+				color: inherit;
+				@include opensans(24px, bold);
+				line-height: 25px;
+				margin-top: 30px;
+			}
+			.hashtag{
+				padding: 5px;
+				border-bottom: 1px solid white;
+				a{
+					color: white;
+					&:hover{
+						text-decoration: underline;
+					}
+				}
+
+			}
+			.participation{
+				padding: 5px;
+				border-bottom: 1px solid white;
+
+			}
+			.tags{
+				padding: 5px;
+				border-bottom: 1px solid white;
+				a{
+					color: white; 
+					@include opensans(14px, bold);
+					&:hover{
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+	}
+}
+
+.debate_nav{
+
+	height: 60px;
+	width: 100%;
+	clear: both;
+	float: left;
+	background-color: $greyMainHome;
+	margin: 20px 0;
+	.debate_stages{
+
+		background-color: $greyMainHome;
+		clear: both;
+		float: left;
+		width: 100%;
+
+
+		li{
+			background-color: $greyMainHome;
+			background-image: url(image-path('arrow_grey.png'));
+			background-repeat: no-repeat;
+			background-position: left center;
+			width: 25%;
+			display: inline-block;
+			float: left;
+			height: 60px;
+		
+			&.active{
+				& + li {
+					background-image: url(image-path('arrow_white.png'));
+				}
+				background-color: white;
+				background-image: url(image-path('arrow_grey_hover.png')) !important;
+				a{
+					color: $blueLinksHover;
+					background-color: transparent;
+
+				}
+			}
+
+			&:hover{
+				& + li {
+					background-image: url(image-path('arrow_white.png'));
+				}				
+				background-color:white;
+				background-image: url(image-path('arrow_grey_hover.png')) !important;
+				a{
+					color: $blueLinksHover;
+				}				
+			}
+
+			i{
+				background-image: url(image-path('icons/sprite_debate_ribbon.png'));
+				background-repeat: no-repeat;
+				height: 40px;
+				width: 40px;
+				float: left;
+				margin-right: 5px;
+				margin-left: 25px;
+
+			}
+
+ 
+			a{
+				display: block;
+				background-image: none;
+				border: none;
+				background-color: transparent;
+				border-radius: 0;
+				padding-left: 0;
+				padding-right: 0;
+				padding-bottom: 0;
+				padding-top: 5px;
+				@include oswald(16px,normal); 
+				color: $textColor;
+				text-transform: uppercase;
+
+				&:hover	{
+					background-image: none;
+					border: none;
+					color: $blueLinksHover;				
+				}
+			}
+			.stage_date{
+				clear: both;
+				float: left;
+				@include opensans(12px,normal);
+				margin-left: 30px;
+				line-height: 16px;
+				margin-top: -20px;
+				padding-left: 40px;
+				text-transform: none
+			}
+
+			&.presentation{
+
+				&.active{
+					i{
+						background-position: left top; 
+					}
+
+				}
+				&:hover{
+					i{
+						background-position: left top; 
+					}
+
+				}				
+				i{
+					background-position: left -40px; 
+				}
+
+			}
+			&.discussion{
+				&.active{
+					i{
+						background-position: left -120px; 
+					}
+					
+				}
+				&:hover{
+					i{
+						background-position: left -120px; 
+					}
+					
+				}
+				i{
+					background-position: left -160px; 
+				}
+
+			}
+			&.contribution{
+				&.active{
+					i{
+						background-position: left -240px; 
+					}
+					
+				}
+
+				&:hover{
+					i{
+						background-position: left -240px; 
+					}
+					
+				}				
+				i{
+					background-position: left -280px; 
+				}
+
+			}
+			&.conclusions{
+				&.active{
+					i{
+						background-position: left -360px; 
+					}
+					
+				}
+
+				&:hover{
+					i{
+						background-position: left -360px; 
+					}
+					
+				}				
+				i{
+					background-position: left -400px; 
+				}
+			}
+
+
+
+
+		}
+
+	}
+
+} 
+
+.section_heading {
+	margin-top: 20px;
+}

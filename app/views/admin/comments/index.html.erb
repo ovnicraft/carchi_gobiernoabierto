@@ -1,0 +1,34 @@
+<%= render :partial => 'tabs' %>
+
+<% if is_admin? %>
+  <p>
+    <%= form_tag admin_comments_path, :method => :get do %>
+      Filtrado para: 
+      <%= select_tag :dep_id, ("<option value='0'>Todos los departamentos</option>" << options_for_select(Department.order("id").collect {|d| [d.name, d.id]}, params[:dep_id].to_i)).html_safe, :onchange => "submit()" %>
+    <% end %>
+  </p>
+<% end %>
+
+<%= will_paginate @comments %>
+
+<%= render :partial => "submenu" %>
+
+<table class="comments" cellpadding="0" cellspacing="0" border="0">
+  <thead>
+  <tr>
+    <th width="5%">Id</th>
+    <th width="50%">Comentario</th>
+    <th width="10%">Nombre</th>
+    <th width="10%">Fecha</th>
+    <th width="10%">Estado</th>
+    <th width="15%">Documento</th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <%= render :partial => '/admin/comments/comment', :collection => @comments %>
+
+  </tbody>
+</table>
+
+<%= will_paginate @comments %>

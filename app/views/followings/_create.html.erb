@@ -1,0 +1,14 @@
+<%= form_for @following, :html => {:"data-type" => 'html', :"data-remote" => true, :class => 'follow_button', :id => nil} do |f| %>
+  <%= f.hidden_field :followed_id, :value => item.id %>
+  <%= f.hidden_field :followed_type, :value => item.class.name %>
+  <div class='btn_with_spinner inner_spinner'>
+    <%= f.submit t("followings.create.#{item.class.name.downcase}", 
+  :name => item.public_name), :class => "irekia_btn #{class_for_window_login} btn_following add_following " %>
+  </div>
+<% end -%>
+
+<script type='text/javascript'>
+$(document).ready(function(){
+  followingForm.init();
+});
+</script>

@@ -1,0 +1,15 @@
+<div class='article'>
+  <div class='inner'>
+    <h1><%= t('session.pendiente_aprobacion') %></h1>
+
+    <% if @user.is_a?(Journalist) %>
+      <p>
+        <%= t('session.journalist_pendiente_aprobacion') %>
+      </p>
+    <% else %>
+      <p>
+        <%=raw t('session.No_has_activado_cuenta', :link => link_to(t('pincha_aqui'), email_activation_session_path(:email => params[:email], :return_to => @return_to))) %>
+      </p>
+    <% end %>
+  </div>
+</div>  

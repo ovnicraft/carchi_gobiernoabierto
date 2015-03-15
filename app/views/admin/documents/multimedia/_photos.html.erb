@@ -1,0 +1,15 @@
+<%- if document.has_photos? -%>
+  <% photos_template_url = Document::MULTIMEDIA_URL %>
+  <% photos = document.photos %>
+  <div class="photos">
+    <h3>Fotos</h3>
+
+    <a name="photos"></a>
+
+      <%- photos.in_groups_of(5, false).each_with_index do |row,i| -%>
+        <% row.each do |photo|%>
+        <%= render :partial => "/admin/documents/multimedia/photo", :locals => {:photo => photo, :document => document} %>
+        <% end %>
+      <%- end -%>
+  </div>
+<%- end -%>

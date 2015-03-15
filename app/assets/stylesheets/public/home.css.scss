@@ -1,0 +1,285 @@
+@import "helpers";
+
+.section_aside{
+	border-bottom: none;
+}
+
+#home_leading{
+	clear:both;
+	float:left;
+
+	margin-bottom: 30px;
+	background-color: $greyCollapsableHeader;
+	.accordion-group{
+		margin-bottom: 0;
+	}
+	#home_leading_content{
+		background-color: $greyCollapsableHeader;
+		margin-bottom: 0;
+		padding-bottom: 30px;
+	}
+	.home_leading_toggle{
+		background-color: $greyMainHome;
+		clear: both;
+		float: left;
+		width: 100%;
+		a{
+			span{
+				padding-left: 20px;
+				background-repeat: no-repeat;
+				background-position:  left center;
+				&.toggle_up{
+					background-image: url(image-path('plegar.png'));
+				}
+				&.toggle_down{
+					background-image: url(image-path('desplegar.png'));
+				}
+			}
+			float: right;
+			margin-right: 10%;
+			background-color: $greyCollapsableHeader;
+			border-radius: 0 0 5px 5px;
+			padding: 5px 15px;
+			text-decoration: none;	
+			@include opensans(14px, bold);
+		}
+	}
+}
+
+/*ol.carousel-indicators {
+	position: relative;
+	clear: both;
+	float: left;
+	width: 100%;
+	text-align: center;
+	
+}*/
+
+.carousel-inner{
+
+	&.std_list{
+		li{
+			&.item{
+				border-bottom: none;
+				height: 120px;
+			}
+		}
+	}
+}
+
+#news_carousel{
+
+	padding: 0;
+	margin-bottom: 0;
+
+	.carousel-inner{
+		.item{
+
+			.featured_media{
+				margin: 0;
+				background-color: transparent;
+				background: none;
+				border: none;
+				padding: 0;
+				width: 100%;
+
+				.featured_image{
+					a{
+						img{
+							//width: 86%;
+							//height: auto;
+							//padding: 7%;
+							//background-color: white; 
+						}
+					}
+				}
+
+				.featured_content{
+					background: none;
+					min-height: 150px;
+				}
+
+			}
+		}
+	}
+
+	.carousel-indicators{
+		position: relative;
+		width: 100%;
+		text-align: center;
+	}
+
+	.carousel-indicators li{
+		display: inline-block;
+		float: none;
+		background-color: $greyMainHome;
+		cursor: pointer;
+	}
+
+	.carousel-indicators .active{
+		background-color:  $blueLinks; 
+	}
+}
+
+.item.news{
+	.new_item_img{
+		padding: 12px;
+		background-color: white;
+	}
+	.new_item_date{
+		@include opensans(.9em,normal) ;
+	}
+	.new_item_title{
+		@include opensans(1.2em,bold) ;
+		color: $blueLinks;
+
+	}
+	.new_item_excerpt{
+		@include opensans(1em,normal) ;
+	}
+}
+
+
+
+#debates_carousel{
+
+	.carousel-inner{
+		.item{
+			//height: 500px;
+		}
+	}
+
+	.carousel-caption{
+		left: 7%;
+		right: 0;
+		//top: 10%;
+		bottom: 34%;
+		padding: 15px;
+		position: absolute;
+		width: 80%;
+		background: none;
+		color: white;
+		@include opensans(30px,bold); 
+		line-height: 45px;
+		&.bottom_small{
+			bottom: 51%;
+		}
+		&.bottom_medium{
+			bottom: 40%;			
+		}
+		&.bottom_large{
+			bottom: 30%;
+		}
+		
+		a{
+			color: white;
+			/*background: none repeat scroll 0 0 rgba(0, 0, 0, 0.75);*/
+			background-image: url(image-path('bg_caption.png'));
+			background-repeat: repeat;			
+			@include opensans(30px,bold);
+			 box-shadow: 10px 0 0 rgba(0, 0, 0, 0.75), -10px 0 0 rgba(0, 0, 0, 0.75);
+			 line-height: 55px;
+			 padding: 5px;
+			 display: inline;
+		}
+	}
+	
+	.carousel-indicators{
+
+		/*background: none repeat scroll 0 0 rgba(0, 0, 0, 0.75); */
+		background-image: url(image-path('bg_caption.png'));
+		background-repeat: repeat;	
+		width: 100%;
+		padding: 0;
+		right: 0;
+		bottom: 0;
+		top: inherit;
+		left:0;
+		z-index: 5;
+		position: absolute;
+		text-align: left;
+		a{
+			color: white;
+			@include opensans(14px,normal);
+		}
+	}	
+
+	.carousel-indicators li{
+		&:first-child{
+		    border-left: none;
+		}
+		width: 22%;
+		padding: 1%;
+		background: none;
+		border-radius: 0;
+		display: block;
+		float: left;
+		height: 80px;
+		text-indent: 0;	
+		border-left: 1px solid #999;
+		margin-left: 0;
+		a{
+			text-decoration: none;
+			cursor: pointer;
+			color: white;
+			opacity: .5;
+			text-align: left;
+			&:hover{
+				color:white;
+				text-decoration: none;
+			}
+		}	    
+		&.active{
+			&:first-child{
+			 	border-left: none;
+			}
+			background: none;
+		 	border-left: 1px solid white;
+			a{
+				cursor: default;
+				/*color:white;*/
+				opacity: 1;
+			}
+		}
+
+	}
+}
+
+#debates_explanation{
+	clear: both;
+	float: left;
+	padding-top: 20px;
+	border-top: 1px solid $colorLines;
+	background-color: white;
+
+}
+.stage{
+	text-align: center;
+	
+	div.stage_title{
+		padding:0 30px 0 0;
+		text-align: center;
+		color: $blueTab;
+		display: block;
+		@include opensans(1.2em,normal);
+		margin-bottom: 20px;
+	}
+	div.stage_description{
+		text-align: center;
+		padding:0 30px 0 0; 
+	}
+
+}
+
+#media_tabs{
+
+	margin-top: 40px;
+
+	#mediaNavTabs{
+		margin-bottom: 0;	
+	}	
+	#mediaTabContent{
+		padding: 20px;
+		background-color: white;	
+	}
+}

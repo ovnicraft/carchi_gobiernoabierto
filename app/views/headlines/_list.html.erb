@@ -1,0 +1,20 @@
+<div class='aside_module active_listening'>
+  <div class='title'><span><%= t('headlines.title') %></span></div>
+  <div class='content'>
+    <ul class='headlines'>
+      <% headlines.each_with_index do |headline, index| %>
+        <li class='<%= index == headlines.size - 1 ? 'last' : '' %>'>
+          <span class='media'><%= headline.media_name %></span>
+          <%= link_to headline.title, headline.url, :rel => 'external nofollow' %>
+          <span class='date'><%= I18n.l(headline.published_at.to_date, :format => :long) %></span>
+          <%- if headline.tweets.present? && headline.tweets > 0 -%>
+            <div class='no_tweets'>
+              <%= image_tag 'entzu_bird.png' %>
+              <%= link_to_headline_tweets(headline) %>
+            </div>
+          <%- end -%>
+        </li>
+      <% end %>
+    </ul>    
+  </div>
+</div>  

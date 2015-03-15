@@ -1,0 +1,69 @@
+<% content_for :head do %>
+<style>
+  
+  div.voto {
+    border-top: solid 1px #fff;
+    margin-top: 10px;
+    padding-top: 6px;
+    font-style: italic;
+    font-size: .9em;
+  }
+  
+  div.question_body {
+    padding: 0px 16px;
+  }
+  
+  div.question_body p, div.answer_placeholder p {
+    margin-top: 0px;
+  }
+  
+  div.answer_placeholder {
+    background: #f8f8f8;
+    border-radius: 6px 6px 6px 6px;
+    margin-bottom: 25px;
+    padding: .7em 20px;
+  }
+  
+  p.has_requested_answer {
+    font-style: italic;
+  }
+  
+  div.data {
+    margin-bottom: 4px;
+    border-bottom: solid 1px #eaeaea;
+  }
+  
+</style>
+<% end %>
+
+<div class="<%= 'ipad_container' if ipad_app_request? %>">
+  <h1><%= @proposal.title %></h1>
+
+  <div class="meta">
+
+  <% if @proposal.area %>
+    <div class="addressed_to">
+    <%= t("proposals.addressed_to") %> <%= @proposal.area.name %>
+    </div>
+  <% end %>
+    <div class="author_name">
+      <%= @proposal.author_name  %>
+      <%= t('shared.list_item.time_ago', :time => distance_of_time_in_words_to_now(@proposal.published_at)) %>
+    </div>
+    <div class="voto">
+    <%= @proposal.participation == 0 ? t('votes.count.nobody_voted') : "#{t('votes.count.a_favor', :count => @proposal.n_in_favor)}, #{t('votes.count.contra', :count => @proposal.n_against)}" %>
+    </div>
+  </div>
+
+  <% if @proposal.has_image? %>
+    <div class="mamufas">
+      <%= image_tag(@proposal.image.n320.url) %>
+    </div>
+  <% end %>
+
+  <%= simple_format @proposal.body %>
+
+  <%= render :partial => "/arguments/arguments.floki" %>
+
+  <%= render :partial => "/comments/comments.floki" %>
+</div>

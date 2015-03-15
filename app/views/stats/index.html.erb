@@ -1,0 +1,74 @@
+<div class='well stats'>
+  Sólo se muestran datos posteriores al 1 de septiembre de 2013
+  <div class="stats_data">
+    <div>
+      <b>Visitas a la página:</b><br/>
+      <% trimmed_url = @stats_for.gsub(/-.+$/, '') %>
+      <% for_every_locale do |code, lang| %>
+         <% lang_url = trimmed_url.gsub(/\/(es|eu|en)\//, "/#{code}/") %>
+         <%= lang %>: <b><%=view_counter_for(lang_url) %></b>.
+      <% end %>
+    </div>
+
+    <% if @item.is_a?(News) %>
+      <% all_videos = @item.videos %>
+      <% videos = (all_videos[:list].values.flatten.uniq + all_videos[:featured].values).uniq.compact  %>
+      <% if videos.length > 0 %>
+        <div>
+          <b>Vistas de los vídeos flv:</b>
+          <table class="stats_data">
+          <% videos.each do |v| %>
+            <tr>
+              <td><%= Pathname.new(v).basename %>:</td>
+              <td>
+                local: <b><%= flv_view_counter_for("/#{v}") %></b>
+              </td>
+              <td>
+                embebido: <b><%= flv_view_counter_for("/#{v}?emb=1") %></b>
+              </td>
+            </tr>
+          <% end %>
+          </table>
+        </div>
+      <% end %>
+
+      <% videoshq = all_videos[:mpg].values.flatten.uniq %>
+      <% if videoshq.length > 0 %>
+        <div>
+          <b>Descargas de los videos HQ:</b>
+          <table class="stats_data">
+          <% videoshq.each do |v| %>
+            <tr>
+              <td><%= Pathname.new(v).basename %>:</td>
+              <td><b><%= mpg_view_counter_for("/#{v}") %></b></td>
+            </tr>
+          <% end %>
+          </table>
+        </div>
+      <% end %>      
+    <% end %> 
+    
+    <%- if @item.is_a?(Event) && @item.stream_flow -%>
+      <% if @item.on_air? %>
+        <div id="sf_watchers_info">
+          <% #admin_show_streaming_watchers(@item.stream_flow) %>
+        </div>
+      <% else %>
+          <div><b>Datos sobre streaming:</b><br/> <%= streaming_view_counter(@item) %></div>
+      <% end %>
+    <%- end -%>
+
+    <% if @item.respond_to?('events') && @item.events.first.present? && @item.events.first.stream_flow.present? %>
+      <div><b>Datos sobre el streaming:</b> <%= streaming_view_counter(@item.events.first) %></div>
+    <% end %>
+  </div>
+  
+  <% if @item.is_a?(News) %>
+  <div class="clickthrough_data">
+    <div>
+      <b>Visitas provenientes del boletín:</b>
+      <%= @item.clicks_to.where("click_source_type='BulletinCopy'").count %>
+    </div>
+  </div>
+  <% end %>
+</div>  

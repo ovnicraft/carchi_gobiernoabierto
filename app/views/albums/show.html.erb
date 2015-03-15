@@ -1,0 +1,42 @@
+
+<p class="only_for_print page_link"><%= album_url(:id => @album.id) %></p>  
+
+<div class='section container albums show'>
+  <%= render :partial => '/shared/context', :locals => {:type => 'albums', :area => @album.area, :title => t('albums.fototeca')} %>  
+  <div class='section_main row-fluid'>
+    <div class='section_content span8'>
+      <div class='article albums'>
+        <%= render :partial => 'shared/edit_links', :locals => {:item => @album} %>
+
+        <%= render(:partial => '/albums/photo_viewer', :locals => {:album => @album, :photos => @photos}) if @photos.length > 0 %>
+
+        <h1 class='title'><%= highlight_according_to_criterio(@album.title, @criterio) %></h1>
+
+        <%= render_date(@album.created_at) %>
+        
+        <%= render :partial => '/shared/tags', :locals => {:tags => @album.public_tags_without_politicians} %>
+
+        <div class='share_rss_listen row-fluid'>
+          <%= render :partial => '/shared/share', :locals => {:item => @album} %>
+        </div>
+
+        <%= render :partial => '/shared/more_info', :locals => {:news => @album.document} if @album.document_id %>
+      </div>
+    </div>
+    <div class='section_aside span4 donotprint'>
+      <%= render :partial => "shared/politicians", :object => @album.politicians %>
+      <div class='aside_module related_albums'>
+        <div class='title'>
+          <span><%= @album.area ? t('albums.other_albums_dept', :name => @album.area_name) : t('albums.other_albums') %></span>
+        </div>
+        <div class='content'>
+          <ul class='std_list albums'>
+            <%= render :partial => '/albums/list_item', :collection => @related_albums, :as => :album %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= init_jquery_lightbox %>

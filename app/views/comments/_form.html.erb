@@ -1,0 +1,34 @@
+<li class="clearfix item form donotprint">
+  <div class='item_thumbnail'><%= avatar current_user %></div>
+  <div class='item_content'>
+    <%= form_for parent.comments.new, :html => {:novalidate => :novalidate, :"data-remote" => true, :"data-type" => :html, :class => :add_comment }  do |form| %>
+      <%= hidden_field_tag "#{form.object.commentable.class.to_s.downcase}_id", form.object.commentable.id  %>
+      <div class="textarea-comment placeholder">
+        <span class="holder"><%=raw t("comments.answer_this.#{form.object.commentable.class.to_s.downcase}") %></span>
+        <%= form.text_area :body, :id => :comment %>
+      </div>
+      <% if logged_in?  %>
+        <div class="info current_user_info">
+          <% if current_user.is_official_commenter? %>
+            <div class="input_field">
+              <%= form.text_field :name, :value => current_user.public_name, :size => "60" %>
+            </div>
+          <% else %>
+            <%= link_to_if(current_user.url.present?, h(current_user.public_name), current_user.url) %>
+          <% end %>
+          (<%=raw t('session.si_no_eres', :name => h(current_user.public_name), 
+                                 :link => link_to(t('pincha_aqui'), 
+                                                  logout_path(:return_to => url_for(params.merge(:authenticity_token => nil))))) %>)
+        </div>
+      <% end %>
+      <div class='btn_with_spinner'>
+        <%= form.submit t('comments.comentar'), :class => "irekia_btn #{class_for_window_login}", :disabled => true %>
+      </div>
+    <% end %>
+  </div>
+  <script type='text/javascript'>
+  $(document).ready(function(){
+    commentForm.init();
+  })
+  </script>
+</li>

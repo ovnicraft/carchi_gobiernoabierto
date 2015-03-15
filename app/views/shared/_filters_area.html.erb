@@ -1,0 +1,19 @@
+<% content_type ||= params[:controller] %>
+<% users_for_filter = content_type.eql?('events') ? @context.users.approved.with_agenda : @context.users.approved %>
+<% if users_for_filter.length > 0 %>
+  <%= init_bootstrap_select %>
+
+  <div class="filters">
+    <ul>
+      <li>
+        <%= form_tag "/#{I18n.locale}/#{content_type}", "data-remote".to_sym => true, :method => :get, :id => "area_filter" do %>
+          <%= hidden_field_tag :year, params[:year] if params[:year] %>
+          <%= hidden_field_tag :month, params[:month] if params[:month] %>
+          <%= hidden_field_tag :day, params[:day] if params[:day] %>
+          <%= select_tag :politician_id, options_for_select([[t('shared.filters.por_cargo'), '0']] + users_for_filter.collect {|user| [user.public_name, user.id.to_s]}, :selected => params[:politician_id]), :class => 'selectpicker' %>
+        <% end %>
+      </li>
+      <li class='btn_with_spinner'></li>
+    </ul>
+  </div>
+<% end %>

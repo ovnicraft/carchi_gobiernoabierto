@@ -1,0 +1,24 @@
+<% @videos_mpg = document.videos_mpg %>
+<%- if @videos_mpg.length > 0 -%>
+  <div class="docs videos">
+    <div class="section_icon video_mpg" title="Video"><span><%= t('videos.title') %></span></div>
+    <h3><%= t('videos.title') %></h3>
+
+    <a name="videos"></a>
+    <div class="list">
+      <ul>
+        <%- @videos_mpg.each_with_index do |f,i| -%>
+        <li class="mpg">
+          <span class="file_name"><%= file_name_for_path(f) %></span>
+          <span class="print"><%= Document::MULTIMEDIA_URL + f %></span>
+          <span class="screen">
+            <span class="download icon"></span>
+            <%= link_to t('descargar'), Document::MULTIMEDIA_URL + f, :class => "download" %>
+            <span class="file_size">(<%= number_to_human_size(File.size(File.join(Document::MULTIMEDIA_PATH, f))) %>)</span>
+          </span>
+        </li>
+        <%- end -%>
+      </ul>
+    </div>
+  </div>
+<%- end -%>

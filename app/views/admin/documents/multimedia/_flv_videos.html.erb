@@ -1,0 +1,113 @@
+<% @videos_flv = document.videos_flv %>
+<%- if @videos_flv.length > 1 -%>
+  <div class="docs videos">
+    <div class="section_icon video_list" title="Video"><span><%= t('videos.title') %></span></div>
+    <h3>Vídeos FLV</h3>
+
+    <a name="videos"></a>
+    <div class="list" id="clips">
+      <%- @videos_flv.in_groups_of(2).each do |row| -%>
+      <div class="content_row">
+        <div class="left_block">
+          <% video_info = flv_video_info(row.first) %>
+          <% video_title = video_title_with_duration(video_info) %>
+          <div class="image">
+            <a href="<%= video_info[:video] %>" class="link_with_tip" <%= "m4vsrc=#{html5_video_for(video_info[:video])}" if iphone_user_agent? %>>
+              <%= image_tag(video_info[:preview_img], :alt => video_title, :width => '120px') %>
+              <span class="embed_code" style="display: none;">
+                <%= h(render(:partial => "/shared/code_to_embed_video.html", :locals => {:video_info => video_info}).gsub(/\n/, '')) %>
+              </span>
+              <span class="video_title"><%= h video_info[:title] %></span>
+              <span class="video_duration"><%= h video_info[:duration] %></span>
+            </a>
+          </div>
+          <div class="image_tip">
+            <%= image_tip(:title => video_title) %>
+          </div>
+        </div>
+        <div class="right_block">
+          <% if row.last %>
+          <% video_info = flv_video_info(row.last) %>
+          <% video_title = video_title_with_duration(video_info) %>
+          <div class="image">
+            <a href="<%= video_info[:video] %>" class="link_with_tip" <%= "m4vsrc=#{html5_video_for(video_info[:video])}" if iphone_user_agent? %>>
+              <%= image_tag(video_info[:preview_img], :alt => video_title, :width => '120px') %>
+              <span class="embed_code" style="display: none;">
+                <%= h(render(:partial => "/shared/code_to_embed_video.html", :locals => {:video_info => video_info}).gsub(/\n/, '')) %>
+              </span>
+              <span class="video_title"><%= h video_info[:title] %></span>
+              <span class="video_duration"><%= video_info[:duration] || ''%></span>
+            </a>
+          </div>
+          <div class="image_tip">
+            <%= image_tip(:title => video_title) %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+      <%- end -%>
+    </div>
+  </div>
+<%- end -%>
+
+
+
+<script type='text/javascript'>
+if ($('clips')) {
+  Event.observe(window, 'load', function() {
+    if ($$('a.player').length > 0) {
+      // flowplayer playlist plugin
+      if (flowplayer()) {
+        flowplayer().playlist("clips", {loop:true});
+      }
+    } else {
+      // html5 video element
+      if ($$('video').first()) {
+        var video = $$('video').first();
+        var videoTitle = new Element('div', { 'class': 'emb_vid_title ipad_video_title', 'id': 'video_title'});
+        videoTitle.insert({top: new Element('p', {'class': 'video_duration'})});
+        videoTitle.insert({bottom: new Element('p', {'class': 'video_title_text'})});
+        videoTitle.down('p.video_duration').innerHTML = video.getAttribute('duration');
+        videoTitle.down('p.video_title_text').innerHTML = video.title;
+        video.insert({after: videoTitle});
+        $('clips').select("a").each(function(elem){
+          elem.observe('click',function(evt) {
+            var el = $(this);
+            video.pause();
+            video.src = el.attributes["m4vsrc"].value;
+            video.title = el.select('span.video_title').first().innerHTML;
+            video.setAttribute('duration', el.select('span.video_duration').first().innerHTML);
+            video.poster = el.down('img').src;
+            if ($('video_title')) {
+              $('video_title').down('p.video_duration').innerHTML = video.getAttribute('duration');
+              $('video_title').down('p.video_title_text').innerHTML = video.title;
+            }
+            video.load();
+            video.play();
+            $('clips').select("a.playing").each(function(link){
+              link.removeClassName('playing');
+            });
+            elem.addClassName('playing');
+            evt.stop();
+            return false;
+          });
+        });
+      }
+    }
+
+    // scroll to video div when image is clicked.
+    $('clips').select("a").each(function(elem){
+      var videoPosition = $$('div.video').first().cumulativeOffset();
+      elem.observe('click',function(evt) {
+        window.scroll(videoPosition.left, videoPosition.top);
+      });
+    });
+
+  });
+}
+</script>
+
+<%- if @videos_flv.length > 1 -%>
+  <% init_prototype_tooltip %>
+  <div id="qTip">&nbsp;</div>
+<%- end -%>

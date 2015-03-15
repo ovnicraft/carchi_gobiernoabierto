@@ -1,0 +1,120 @@
+<script type="text/javascript">
+  function togglePhotoComments() {
+    if ($('document_has_comments').checked) {
+      $('document_has_comments_with_photos').disabled = false;
+    } else {
+      $('document_has_comments_with_photos').checked = false;  
+      $('document_has_comments_with_photos').disabled = true;
+    }
+  }
+</script>
+
+  <div class="document_show2">
+  <table class="admin">
+
+    <!-- <tr>
+      <th>Sort_order</th>
+      <td><%= f.text_field :position, :size => "4" %></td>
+    </tr> -->
+
+    <tr>
+      <th>Áreas</th>
+      <td>
+        <%= select_tag 'document[area_tags][]', options_for_select(Area.all.collect {|a| [a.name_es, a.tag_name_es]}, @document.area_tags), :multiple => true %>
+      </td>
+    </tr>
+    
+    <tr>
+      <th>
+        Tags en castellano<br/>
+        <span class="hint">(Separados por coma)</span>
+      </th>
+      <td>
+        <%= text_area_with_auto_complete :document, :tag_list_without_areas, {:size => "60x5"}, {:tokens => ',', :indicator => "spinner"} %>
+        <br/>
+        <span id="spinner" style = 'display:none'>
+        <%= image_tag 'admin/spinner.gif' %>
+        </span>
+        <%= render :partial => "/admin/tags/help", :locals => {:object => @document} %>
+      </td>
+    </tr>
+  </table>
+  
+  <table class="admin">
+
+    <tr>
+      <th><%= f.label :featured, t('admin.news.destacar_en_inicio') %></th>
+      <td>
+        <%= f.select :featured, [nil, '1A', '4B'] %>
+        <span class="hint">
+          1A: Noticia destacada principal en el listado de noticias
+          4B: 4 noticias destacadas secundarias en el listado de noticias
+        </span>
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+
+    <tr>
+      <th><%= f.label :featured_bulletin, t('admin.news.destacar_en_boletin') %></th>
+      <td>
+        <%= f.check_box :featured_bulletin %>
+        <label for="document_featured_bulletin">Sí</label>
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+    
+    <tr>
+      <th><%= t('admin.news.admite_nuevos_comentarios') %><br/></th>
+      <td>
+        <%= f.check_box :comments_closed, {:checked => !@document.comments_closed?}, 0, 1 %>
+        <label for="document_comments_closed"><%= t('si') %></label>
+      </td>
+    </tr>
+    
+    <% if @document.multimedia_dir.blank? || @document.errors[:multimedia_dir].present? %>
+    <!-- <tr>
+      <th><%= t('sadmin.news.fecha_creacion') %></th>
+      <td><%= @document.created_at.to_date.to_s.gsub('-', '/')  %></td>
+    </tr> -->
+    
+    <tr>
+      <th><%= t('sadmin.news.fecha_publicacion') %></th>
+      <td><%= @document.published_at ? @document.published_at.to_date.to_s.gsub('-', '/') : t('sadmin.news.sin_fecha') %></td>
+    </tr>
+
+    <tr>
+      <th><%= t('sadmin.news.dir_multimedia') %></th>
+      <td>
+        <% default_value = (@document.published_at ? @document.published_at.to_date : Date.today).to_s.gsub('-', '/') + '/' %>
+        <%= f.text_field :multimedia_dir, :value => (@document.multimedia_dir.blank? ? default_value : @document.multimedia_dir) %>
+        <div class="hint"><%= t('sadmin.news.multimedia_dir_explain') %></div>
+      </td>
+    </tr>
+    <% end %>
+
+    <!-- 
+    <tr>
+      <th>¿Se muestran los comentarios antiguos?<br/></th>
+      <td>
+        <%= f.check_box :has_comments %><label for="document_has_comments">Sí</label>
+      </td>
+    </tr>
+    
+    <tr>
+      <th>¿Se puede valorar?<br/></th>
+      <td>
+        <%= f.check_box :has_ratings %><label for="document_has_ratings">Sí</label>
+      </td>
+    </tr>
+    -->
+
+  </table>
+
+
+  </div>
+
+
+  <p class="buttons">
+    <%= submit_tag t('guardar') %>
+    <%= link_to t("cancelar"), :back, :class => "cancel_link" %>
+  </p>

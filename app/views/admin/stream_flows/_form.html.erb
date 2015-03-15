@@ -1,0 +1,51 @@
+<%= hidden_field_tag :return_to, @return_to %>
+
+<table class="admin">
+<tr>
+  <th><label for="stream_flow_title">Título en castellano</label></th>
+  <td><%= f.text_field :title_es %></td>
+</tr>
+<tr>
+  <th><label for="stream_flow_title">Título en euskera</label></th>
+  <td><%= f.text_field :title_eu %></td>
+</tr>
+<tr>
+  <th><label for="stream_flow_title">Título en inglés</label></th>
+  <td><%= f.text_field :title_en %></td>
+</tr>
+<tr>
+  <th><label for="stream_flow_code">Clip URL</label></th>
+  <td><%= f.text_field :code %></td>
+</tr>
+<tr>
+  <th><label for="stream_flow_mobile_support">Soporte streaming móvil</label></th>
+  <td><%= f.check_box :mobile_support %><label for="stream_flow_mobile_support"><%= t('si') %></label></td>
+</tr>
+
+<tr>
+  <th><label for="stream_flow_send_alerts">Enviar alertas</label></th>
+  <td><%= f.check_box :send_alerts %><label for="stream_flow_send_alerts"><%= t('si') %></label></td>
+</tr>
+
+<tr>
+  <th><label for="stream_flow_photo"><%=t("admin.stream_flows.foto_sala")%></label></th>
+  <td>
+    <% if @stream_flow.has_photo? %>
+      <div>
+        <%= image_tag @stream_flow.photo.url(:n320) %><br/>
+        <%= f.check_box :delete_photo %><label for="stream_flow_delete_photo"><%= t('borrar') %></label><br/>
+        <label for="stream_flow_photo">Cambiar por:</label><%= f.file_field :photo %>
+      </div>
+    <% else %>
+      <%= f.file_field :photo %>
+    <% end %>
+    <div class="hint">
+      <%= t('sadmin.news.foto_portada_size') %>
+    </div>    
+  </td>
+</tr>
+  
+<tr>
+  <td colspan="2"><%= submit_tag "Guardar" %></td>
+</tr>
+</table>

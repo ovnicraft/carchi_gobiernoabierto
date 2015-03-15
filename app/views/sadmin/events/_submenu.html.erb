@@ -1,0 +1,11 @@
+
+<div class="submenu">
+  <ul class="status">
+    <li class="<%= 'active' if controller.controller_name.eql?('events') %>">
+    <%= link_to_unless controller.controller_name.eql?('events'), "Eventos", sadmin_events_path %>
+    </li>
+    <li class="<%= 'active' unless controller.controller_name.eql?('events') %>">
+      <%= link_to_if controller.controller_name.eql?('events'), "Coordenadas", admin_event_locations_path %>
+    </li>
+  </ul>
+</div>

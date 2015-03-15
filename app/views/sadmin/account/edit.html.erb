@@ -1,0 +1,122 @@
+<h1>Mis datos</h1>
+
+<%= form_for @user, as: :user, :url => sadmin_account_path, :html => { :method => :put, :multipart => true } do |f| %>
+  <%= error_messages(f.object) %>
+  <table class="admin">      
+    <tr>
+      <th><label for="email">Email(NO se muestra en la web)</label></th>
+      <td><%= f.text_field :email %></td>
+    </tr>
+    
+    <tr>
+      <th><label for="password">Contraseña</label></th>
+      <td><%= f.text_field :password %></td>
+    </tr>
+    
+    <tr>
+      <th><label for="password_confirmation">Confirmación de contraseña</label></th>
+      <td><%= f.text_field :password_confirmation %></td>
+    </tr>
+    
+    <tr>
+      <th><label for="name"><span class="<%= 'twit' if @user.is_twitter_user? %>">Nombre</span></label> (se muestra en la web)</th>
+      <td><%= f.text_field :name %></td>
+    </tr>
+  
+    <tr>
+      <th><label for="last_names">Apellidos (se muestra en la web)</label></th>
+      <td><%= f.text_field :last_names %></td>
+    </tr>
+
+    <tr>
+      <th><label for="telephone">Nombre interno y teléfono (NO se muestra en la web)</label></th>
+      <td><%= f.text_field :telephone %></td>
+    </tr>
+
+    <tr>
+      <th><label for="url">URL</label></th>
+      <td><%= f.text_field :url %></td>
+    </tr>
+  
+    <tr>
+      <th><%= f.label :photo, User.human_attribute_name('photo') %></th>
+      <td><%= image_tag @user.photo.url(:thumb_70) if @user.photo.present? %><br/>
+          cambiar por: <%= f.file_field :photo %>
+      </td>
+    </tr>
+
+    <tr id="department_container" style="display:<%=  @user.has_department? ? 'table-row' : 'none' %>">
+      <th>
+        <%= f.label :department_id, "Departamento" %>
+      </th>
+      <td>
+        <%= f.select :department_id, Department.order("position").collect {|d| [d.name, d.id]} %>
+      </td>
+    </tr>
+
+    <% if @user.is_a?(Politician) %>
+      <tr class="politician_data_container">  
+        <th>Área</th>
+        <td>
+          <%= @user.areas.map {|a| a.name}.join(",")  %><br/>
+          <span class="hint">Se asigna desde la página del área.</span>
+        </td>
+      </tr>
+      <tr class="politician_data_container">
+        <th><%= f.label :public_role,  User.human_attribute_name('public_role') %> (en Castellano)</th>
+        <td><%= f.text_field :public_role_es  %></td>
+      </tr>
+
+      <tr class="politician_data_container">
+        <th><%= f.label :public_role,  User.human_attribute_name('public_role') %> (en Euskara)</th>
+        <td><%= f.text_field :public_role_eu  %></td>
+      </tr>
+
+      <tr class="politician_data_container">
+        <th><%= f.label :public_role,  User.human_attribute_name('public_role') %> (en English)</th>
+        <td><%= f.text_field :public_role_en  %></td>
+      </tr>
+
+      <% if Rails.configuration.external_urls[:guia_uri] %>
+      <tr class="politician_data_container">
+        <th><%= f.label :gc_id,  User.human_attribute_name('gc_id') %></th>
+        <td><%= f.text_field :gc_id  %></td>
+      </tr>
+      <% end %>
+  
+      <tr class="politician_data_container">
+        <th><%= f.label :description,  User.human_attribute_name('description') %> (en Castellano)</th>
+        <td><%= f.text_area :description_es, :size => '60x6'  %></td>
+      </tr>
+
+      <tr class="politician_data_container">
+        <th><%= f.label :description,  User.human_attribute_name('description') %> (en Euskara)</th>
+        <td><%= f.text_area :description_eu, :size => '60x6'  %></td>
+      </tr>
+
+      <tr class="politician_data_container">
+        <th><%= f.label :description,  User.human_attribute_name('description') %> (en English)</th>
+        <td><%= f.text_area :description_en, :size => '60x6'  %></td>
+      </tr>
+
+      <tr class="politician_data_container">
+        <th colspan="2"><%= t('politicians.curriculum') %></th>
+      </tr>
+      <tr class="politician_data_container">
+        <td colspan="2">
+        <%= f.fields_for :attachments do |g| %>
+          <%= render :partial => "/attachments/form", :locals => {:f => g} %>
+        <% end %>
+        <div>
+          <%= link_to_add_fields t('politicians.new_cv'), f, :attachments %>
+        </div>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
+  <div class="form_button" style="margin-top:1em">
+    <%= submit_tag 'Guardar' %>
+  </div>
+
+<%- end -%>

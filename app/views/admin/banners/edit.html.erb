@@ -1,0 +1,5 @@
+<% @title = "Modificar banner" %>
+
+<%= form_for @banner, :url => admin_banner_path(@banner), :html => {:method => :put, :multipart => true } do |f| %>
+  <%= render :partial => "form", :locals => {:f => f} %>
+<% end %>

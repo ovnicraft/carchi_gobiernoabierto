@@ -1,0 +1,32 @@
+@import "bootstrap.min";
+@import "public/main";
+@import "public/articles";
+@import "public/comments";
+@import "public/lists";
+@import "public/pagination"; 
+
+body {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+#main {
+  background-color: #fff;
+  padding-bottom: 0px;  
+  .section {
+    padding-bottom: 20px;
+    margin-bottom: 6px;
+    .section_main {
+      margin-top: 15px;
+    }
+  }
+}
+
+.login_info {
+  padding: 15px 0 15px 0;
+}
+
+div.logged_in {
+  /* el mismo que .alert */
+  padding: 8px 35px 8px 14px;
+}

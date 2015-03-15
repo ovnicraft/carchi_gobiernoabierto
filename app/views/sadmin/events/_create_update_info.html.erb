@@ -1,0 +1,10 @@
+<div class="create_update_info">
+  <% unless @event.creator.nil? %>
+    <span class='title'><%= t('sadmin.events.creado') %>:</span>
+    <span class="date_and_user"><%= t('sadmin.events.el_dia_por_user', :dia => I18n.localize(@event.created_at, :format => :short), :user => @event.creator.internal_name) %></span><br/>
+  <% end %>
+  <% unless @event.last_editor.nil? %>
+    <span class='title'><%= t('sadmin.news.ultima_actualizacion') %>:</span>
+    <span class="date_and_user"><%= t('sadmin.events.el_dia_por_user', :dia => I18n.localize(@event.updated_at, :format => :short), :user => @event.last_editor.internal_name) unless @event.last_editor.nil? %></span>
+  <% end %>
+</div>

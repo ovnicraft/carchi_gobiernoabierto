@@ -1,0 +1,37 @@
+<%- data = {
+  "unique_id" => unique_id,
+  "row_height" => 80,
+  "padding" => 4,
+  "image_size" => Floki::IMAGE_SIZE,
+  "title_lines" => Floki::TITLE_LINES,
+  "title_size" => Floki::TITLE_SIZE,
+  "title_color" => Floki::TITLE_COLOR,
+  "text_size" => Floki::TEXT_SIZE,
+  "text_color" => Floki::TEXT_COLOR,
+  "footer_alignment" => 1,
+  "back_normal_color" => Floki::BACK_COLOR,
+  "back_highlight_color" => Floki::BACK_HIGHLIGHT_COLOR,
+  "ttl" => 600,
+  "download_if_virgin" => true,
+  "allow_manual_reload" => true,
+  "navigation_changes_section" => true
+} 
+
+  if data_options.present?
+    data.merge!(data_options)
+  end
+
+-%>
+
+{
+  "id": <%= id %>, 
+  "class_type": "News_view_controller",
+  "sort_id": <%= sort_id %>, 
+  "new_window": false, 
+  "section_ids": [20],
+  "title": "<%= I18n.t('events.agenda') %>", 
+  "body": "<%= body %>",
+  "url": "<%= url %>",
+  "image": "<%= request.protocol + request.host_with_port + asset_path('floki/irekia_77_agenda.png') %>",
+  "data": <%=raw data.to_json %>
+}

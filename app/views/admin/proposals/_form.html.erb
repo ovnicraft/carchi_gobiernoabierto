@@ -1,0 +1,28 @@
+<%= error_messages(f.object) %>
+
+<%= hidden_field_tag 'lang', params[:lang] %>
+<%= hidden_field_tag 'locale', params[:locale] unless !params[:locale]%>
+
+<table class="admin">
+  <tr>
+    <th>Título en <%= locales[params[:lang].to_sym] %>:</th>
+    <td><%= f.text_field "title_#{params[:lang]}".to_sym, :size => "60" %></td>
+  </tr>
+      
+  <tr>
+    <th>Texto en <%= locales[params[:lang].to_sym] %>:</th>
+    <td>
+      <%= f.text_area "body_#{params[:lang]}".to_sym, :size => "90x20", :class => "mceEditor" %>
+      <div class="hint"><%=raw t('sadmin.do_not_copy_paste') %></div>
+    </td>
+  </tr>  
+
+</table>
+
+<% if @proposal.new_record? %>
+  <%= render :partial => "form_common", :locals => {:f => f} %>
+<% end %>
+
+<p style="clear:both;text-align:center;"><%= submit_tag t('guardar'), :disable_with => t('sadmin.guardando'), :class => "submit_button" %></p>
+
+

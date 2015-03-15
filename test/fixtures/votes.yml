@@ -1,0 +1,7 @@
+<% if Settings.optional_modules.proposals %>
+one:
+  votable_type: Proposal
+  votable_id: <%= ActiveRecord::FixtureSet.identify(:approved_and_published_proposal_in_basque) %>
+  user: visitante
+  value: 1
+<% end %>

@@ -1,0 +1,12 @@
+<%= form_for @following, as: :following, :html => {:"data-type" => 'html', :"data-remote" => true, :class => 'follow_button following', :method => :delete, :id => nil} do |f| %>
+  <%= hidden_field_tag :return_to, request.url %>
+  <div class='btn_with_spinner inner_spinner'>
+    <%= f.submit t("followings.destroy"), :class => "irekia_btn #{class_for_window_login} btn_following destroy_following" %>
+  </div>
+<% end -%>
+
+<script type='text/javascript'>
+$(document).ready(function(){
+  followingForm.init();
+});
+</script>

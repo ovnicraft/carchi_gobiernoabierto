@@ -1,0 +1,73 @@
+<h1>Configura tu <%= image_tag(asset_path('logo.png'), :alt => Settings.site_name) %></h1>
+  
+    <%= form_for @corporative, :url => update_setup_site_path, :html => {:method => :put, :multipart => true} do |f| %>
+       <%= error_messages(@corporative) %>       
+       <%= hidden_field_tag 'form_action', 'setup2' %>
+       
+       <h2><%= t('site.setup.redes_sociales') %></h2>
+       <div class='control-group'>
+         <%= label_tag 'corporative_social_networks_twitter', t("site.setup.social_networks_twitter"), :class => 'control-label' %>
+         <div class='controls'>
+           <%= text_field_tag 'corporative[social_networks][twitter]', Settings.social_networks[:twitter], :class => "input-xxlarge", :maxlength => "255" %>
+           <span class="help-block"><i class="icon-info-sign"></i> <%= t('site.setup.social_networks_twitter_hint') %></span>
+         </div>
+       </div>
+       
+       <div class='control-group'>
+         <%= label_tag 'corporative_social_networks_facebook', t("site.setup.social_networks_facebook"), :class => 'control-label' %>
+         <div class='controls'>
+           <%= text_field_tag 'corporative[social_networks][facebook]', Settings.social_networks[:facebook], :class => "input-xxlarge", :maxlength => "255" %>
+           <span class="help-block"><i class="icon-info-sign"></i> <%= t('site.setup.social_networks_facebook_hint') %></span>
+         </div>
+       </div>
+
+       <div class='control-group'>
+         <%= label_tag 'corporative_social_networks_flickr', t("site.setup.social_networks_flickr"), :class => 'control-label' %>
+         <div class='controls'>
+           <%= text_field_tag 'corporative[social_networks][flickr]', Settings.social_networks[:flickr], :class => "input-xxlarge", :maxlength => "255" %>
+           <span class="help-block"><i class="icon-info-sign"></i> <%= t('site.setup.social_networks_flickr_hint') %></span>
+         </div>
+       </div>
+
+       <div class='control-group'>
+         <%= label_tag 'corporative_social_networks_youtube', t("site.setup.social_networks_youtube"), :class => 'control-label' %>
+         <div class='controls'>
+           <%= text_field_tag 'corporative[social_networks][youtube]', Settings.social_networks[:youtube], :class => "input-xxlarge", :maxlength => "255" %>
+           <span class="help-block"><i class="icon-info-sign"></i> <%= t('site.setup.social_networks_youtube_hint') %></span>
+         </div>
+       </div>
+
+       <h2><%= t('site.setup.optional_modules') %></h2>
+
+       <label for="corporative_optional_modules_proposals">
+         <%= hidden_field_tag 'corporative[optional_modules][proposals]', false %>
+         <%= check_box_tag 'corporative[optional_modules][proposals]', true, Settings.optional_modules[:proposals] %>
+         <%= t("site.setup.optional_modules_proposals") %>
+           <span class="help-block"><i class="icon-info-sign"></i> <%= t('site.setup.optional_modules_proposals_hint') %></span>
+       </label>
+
+       <label for="corporative_optional_modules_debates">
+         <%= hidden_field_tag 'corporative[optional_modules][debates]', false %>
+         <%= check_box_tag 'corporative[optional_modules][debates]', true, Settings.optional_modules[:debates] %>
+         <%= t("site.setup.optional_modules_debates") %>
+           <span class="help-block"><i class="icon-info-sign"></i> <%= t('site.setup.optional_modules_debates_hint') %></span>
+       </label>
+
+       <label for="corporative_optional_modules_streaming">
+         <%= hidden_field_tag 'corporative[optional_modules][streaming]', false %>
+         <%= check_box_tag 'corporative[optional_modules][streaming]', true, Settings.optional_modules[:streaming] %>
+         <%= t("site.setup.optional_modules_streaming") %>
+           <span class="help-block"><i class="icon-info-sign"></i> <%= t('site.setup.optional_modules_streaming_hint') %></span>
+       </label>
+
+       <label for="corporative_optional_modules_headlines">
+         <%= hidden_field_tag 'corporative[optional_modules][headlines]', false %>
+         <%= check_box_tag 'corporative[optional_modules][headlines]', true, Settings.optional_modules[:headlines] %>
+         <%= t("site.setup.optional_modules_headlines") %>
+           <span class="help-block"><i class="icon-info-sign"></i> <%= t('site.setup.optional_modules_headlines_hint') %></span>
+       </label>
+
+       <div class="form-actions">
+         <%= submit_tag t('enviar'), :class => 'submit irekia_btn' %>
+       </div>
+     <% end %>

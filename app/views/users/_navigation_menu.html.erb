@@ -1,0 +1,14 @@
+<div class='nav_middle user_nav container' id='middle'>
+  <div class='row-fluid'>
+    <div class='span7 tabs_container'>
+      <ul class='nav nav-tabs nav_middle_tabs user_tabs'>
+        <li class="<%= users_navigation_menu_class('users') %>">
+          <%= link_to t("users.activity").mb_chars.upcase.to_s,  user_path(@user, :anchor => 'middle') %>
+        </li>
+        <li class="<%= users_navigation_menu_class('followings') %>">
+          <%= link_to t("users.following").upcase, url_for(:controller => 'followings', :action => 'index', :user_id => @user.id, :anchor => 'middle') %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

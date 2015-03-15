@@ -1,0 +1,11 @@
+<%= calendar_for(@year, @month,
+               :previous_month =>  lambda { |date| link_to("&laquo;", admin_events_path(:year => date.year, :month => date.month)) },
+               :next_month => lambda { |date| link_to("&raquo;", admin_events_path(:year => date.year, :month => date.month)) }
+        ) do |d|
+        render_calendar_cell(d, @events[d.mday], @today.day)
+      end
+%>
+
+<div class="events_info" style="display: none">
+  <%= render :partial => "event", :collection => @events %>
+</div>

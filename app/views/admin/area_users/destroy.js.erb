@@ -1,0 +1,5 @@
+<%- if @area_user.destroyed? -%>
+  $("member_<%= @area_user.id %>").fade();
+<%- else -%>
+  alert('El miembro del equipo NO se ha eliminado correctamente');
+<%- end -%>

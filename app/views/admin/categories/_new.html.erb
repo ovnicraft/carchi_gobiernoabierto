@@ -1,0 +1,17 @@
+<div id='new_container'>
+  <h1>Nueva categoría</h1>
+
+  <%= form_for @category, :url => admin_tree_categories_path(@tree), :html => {:id => "new_category"}, :data => {:remote => true} do |f| %>
+    <%= error_messages(f.object) %>
+    <%= f.hidden_field :parent_id, :value => params[:parent_id] %>
+    <table class="admin">
+      <%= render :partial => 'form', :locals => {:f => f} %>
+      <tr>
+        <td colspan="2">
+          <%= submit_tag "Guardar" %>
+          <%= link_to "Cancelar", "#", :onclick => "$('new_container#{params[:parent_id]}').replace('');return false;" %>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+</div>

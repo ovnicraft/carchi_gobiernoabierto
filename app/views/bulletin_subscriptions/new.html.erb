@@ -1,0 +1,26 @@
+
+<div class='section container account subscribe'>
+  <div class='section_main row-fluid'>
+    <div class='section_content span12'>
+      <div class='section_heading'><%= t('bulletin_subscriptions.alta_en_el_boletin') %></div>
+      <div class="confirmation">
+        <% if @status.eql?('subscribed') %>
+          <%= t('bulletin_subscriptions.subscription_done') %>
+        <% elsif @status.eql?('failed') %>
+          <%= t('bulletin_subscriptions.subscription_failed') %>
+          <%= error_messages_for :user %>
+        <% elsif @status.eql?('already_subscribed') %>
+          <%= t('bulletin_subscriptions.already_subscribed') %>
+        <% end %>
+      </div>
+      <br/>
+      <div class="unsubscribe">
+        <%=raw t('bulletin_subscriptions.unsubscribe', :link => link_to(t('aqui'),edit_account_path)) %>
+      </div>      
+      <br/>
+      <div class='button'>
+        <%= link_to t('people.create.volver_navegar'), session[:return_to] || root_path, :class => 'return_to' %>
+      </div>
+    </div>
+  </div>
+</div>

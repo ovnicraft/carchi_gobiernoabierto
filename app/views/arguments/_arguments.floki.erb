@@ -1,0 +1,16 @@
+<% if @arguments.present? %>
+  <div class='comments'>
+    <span class='comments_title'><%= Argument.model_name.human(:count => 2).capitalize %></span>
+      <% @arguments.each do |argument| %>
+        <div class="comment_container" id="argument_#<%= argument.id %>">
+          <div class='data'>
+            <span class='author'><%= h(argument.user.public_name) %> <%= t("arguments.is_#{argument.value==1 ? 'in_favor' : 'against'}") %></span>
+            <span class='date'><%= t('shared.list_item.time_ago', :time => distance_of_time_in_words_to_now(argument.created_at)) %></span>
+          </div>
+          <div class='body'>
+            <%= argument.reason.strip_html %>
+          </div>    
+        </div>  
+      <% end %>
+  </div>  
+<% end %>

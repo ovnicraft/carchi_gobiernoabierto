@@ -1,0 +1,34 @@
+<% target ||= '' %>
+
+<% if @criterio.present? -%>
+  <% options = {:criterio_id => @criterio.id} %>
+<% else -%>
+  <% options = {} %>
+<% end -%>
+
+
+<li class="item proposal <%= 'not_moderated' unless proposal.approved? %> <%= 'rejected' if proposal.rejected? %>">
+  <% unless target.eql?(:related) -%>
+    <div class='item_thumbnail'>
+      <%= icon_for_proposal proposal %>  
+    </div>
+  <% end -%>  
+  <div class='item_content <%= 'fullwidth' if target.eql?(:related)%>'>
+    <div class='title'><%= link_to '"' + proposal.title + '"', proposal_path(options.merge(:id => proposal)) %></div>
+    <div class='author_and_date meta_article'>
+      <i class='ico_author'></i>
+      <div class='meta_text'>
+        <span class='author'><%= t('proposals.por2', :author => link_to_user_profile_unless_deleted(proposal.user)).html_safe %>.</span>
+        <span class='date'><%= date_in_distance(proposal.created_at) %>.</span>
+        <span class='date'><%= answer_text(proposal, 'url') %>.</span>
+      </div>
+    </div>
+    <%= render_participation_result_percentage(proposal, target) %>
+    <% if target.eql?(:list) %>
+      <%= link_to_item_comments(proposal.comments.count, proposal) %>
+    <% end %>
+    <% unless proposal.approved? %>
+      <div class='moderation_pending'><%= t('shared.moderation_pending') %></div>
+    <% end %>
+  </div>
+</li>

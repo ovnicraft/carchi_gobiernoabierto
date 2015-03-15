@@ -1,0 +1,19 @@
+<%= render :partial => "sadmin/events/submenu"%>
+
+<%=  content_tag(:h2, @l_subtitle, :class => 'l_info') unless @l_subtitle.blank? %>
+
+<%= render :partial => "create_links" %>
+
+<div id="events_calendar">
+  <%= render :partial => "calendar" %>
+</div>
+
+<% content_for :head do %>
+  <%= javascript_include_tag 'prototype/qTip' %>
+<% end %>
+
+<% if can_access?("events") %>
+  <ul class="edit_links">
+    <li>&nbsp;<br/><%= link_to t('sadmin.events.suscripcion'), myfeed_sadmin_events_path(:format => "ics", :u => current_user.id, :p => current_user.crypted_password, :only_path => false, :protocol => "webcal"), :class => "ical" %></li>
+  </ul>
+<% end %>

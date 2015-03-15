@@ -1,0 +1,6 @@
+<h1>Crear album</h1>
+
+<%= form_for :album, :url => admin_albums_path do |f| %>
+  <%= render :partial => "form", :locals => {:f => f} %>
+  <p><%= f.submit "Guardar" %></p>
+<% end %>

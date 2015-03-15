@@ -1,0 +1,37 @@
+<% @title = @location.name %>
+
+  
+<ul class="edit_links">
+  <li><%= link_to "Modificar", edit_admin_event_location_path(@location), :class => "edit" %></li>
+</ul>
+
+
+<%= render :partial => '/events/location', :locals => {:item => @location, :enable_map_zoom => "true"} %>
+
+<table class="admin" style="clear: none; float: left">
+  <tr>
+    <th>Nombre</th>
+    <td><%= @location.name %></td>
+  </tr>
+  
+  <tr>
+    <th>Ciudad</th>
+    <td><%= @location.city %></td>
+  </tr>
+  
+  <tr>
+    <th>Dirección</th>
+    <td><%= @location.address %></td>
+  </tr>
+
+  <tr>
+    <th>Coordenadas</th>
+    <td><%= @location.coord.join(", ") %></td>
+  </tr>
+
+</table>
+
+
+<div class="back_link" style="clear:both">
+  <%= link_to "Volver a la lista", admin_event_locations_path %>
+</div>

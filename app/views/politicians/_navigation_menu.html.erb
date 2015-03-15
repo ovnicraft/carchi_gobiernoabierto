@@ -1,0 +1,23 @@
+<div class='nav_middle politician_nav container' id='middle'>
+  <div class='row-fluid'>
+    <div class='span7 tabs_container'>
+      <ul class='nav nav-tabs nav_middle_tabs politician_tabs'>
+        <li class="<%= politicians_navigation_menu_class('news') %>">
+          <%= link_to News.model_name.human(:count => 2).upcase, politician_news_path(:politician_id => @politician, :anchor => 'middle') %>
+        </li>
+        <% if @politician.politician_has_agenda? %>
+        <li class="<%= politicians_navigation_menu_class('events') %>">
+          <%= link_to Event.model_name.human(:count => 2).upcase, politician_events_path(:politician_id => @politician, :anchor => 'middle') %>
+        </li>
+        <% end %>
+        <li class="<%= politicians_navigation_menu_class('videos') %>">
+          <%= link_to Video.model_name.human(:count => 2).mb_chars.upcase.to_s, politician_videos_path(:politician_id => @politician, :anchor => 'middle') %>
+        </li>
+        <li class="<%= politicians_navigation_menu_class('albums') %>">
+          <%= link_to Album.model_name.human(:count => 2).mb_chars.upcase.to_s, politician_albums_path(:politician_id => @politician, :anchor => 'middle') %>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+</div>

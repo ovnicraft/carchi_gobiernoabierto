@@ -1,0 +1,24 @@
+
+<%= render :partial => "submenu" %>
+
+<h1>Noticias publicadas desde el último boletín enviado</h1>
+
+<p>
+  Éstas son las noticias que se han publicado desde el último boletín que enviamos.<br/>
+  Puedes ir preseleccionando las candidatas a ser incluidas en el próximo boletín, tantas como quieras.<br/>
+  Cuando hayas terminado deberás pinchar en la pestaña "próximo boletín" para
+  elegir las <%= Bulletin::MAX_FEATURED_NEWS %> definitivas que serán enviadas.
+</p>
+
+<%= form_tag mark_candidates_admin_bulletins_path do %>
+    <% @news.each do |news| %>
+    <div style="margin-bottom: 1em;">
+      <%= check_box_tag "candidates[]", news.id, news.featured_bulletin?, :id => "fn_#{news.id}" %>
+      <label for="fn_<%= news.id %>">
+        <span class="date"><%= I18n.l news.published_at.to_date %></span>:
+        <%= link_to news.title, sadmin_news_path(news) %>
+      </label>
+    </div>
+  <% end %>
+  <%= submit_tag 'Guardar selección' %>
+<% end %>

@@ -1,0 +1,17 @@
+<div class='videos_summary row-fluid'>
+  <div class='span4'>
+    <%= render :partial => '/videos/summary_left' %>
+  </div>
+  <div class='span8'>
+    <div class='row-fluid'>
+      <div class='span4'>
+        <div class='menu_heading'><%= t('videos.video_destacado') %></div>
+        <%= render :partial => '/videos/grid_item', :locals => {:video => @featured_video, :span_size => 'span12'} if @featured_video %>
+      </div>
+      <div class='span8'>
+        <div class='menu_heading'><%= "#{t('photos.title')}: #{t('albums.destacados')}" %></div>
+        <%= render :partial => '/shared/grid_items', :locals => {:items => @featured_albums, :in_groups_of => 2, :span_size => 'span6'} %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<%- if @category.parent -%>
+  $("cat_<%= @category.parent.id %>").replace("<%= escape_javascript(render partial: '/admin/categories/category', locals: {category: @category.parent, tree: @category.tree}) %>");
+  $("new_container<%= @category.parent.id %>").replace("");
+<%- else -%>
+  $("categories").insert({
+    bottom: "<%= escape_javascript(render partial: '/admin/categories/category', locals: {category: @category, tree: @category.tree}) %>"
+  });
+  $("new_container").replace("");
+<%- end -%>
+$("cat_<%= @category.id %>").highlight();

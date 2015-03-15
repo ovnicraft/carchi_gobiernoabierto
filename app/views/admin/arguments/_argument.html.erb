@@ -1,0 +1,32 @@
+<tr id="argument_<%= argument.id %>" class="<%= comment_row_class(argument) %>">
+  <td>
+    <%= argument.id %><br/>
+  </td>
+  <td>
+    <div class="one_argument">
+      <div class="argument_body">
+        <%= simple_format(auto_link_urls(white_list(argument.reason), :rel => "external nofollow")) %><br/>
+      </div>
+    </div>    
+  </td>
+  <td>
+    <%= link_to h(argument.user.internal_name), admin_user_path(argument.user) %>
+  </td>
+  <td><%= argument.created_at.to_s(:short) %></td>
+  
+  <td>
+    <span id="status_<%= argument.id %>"><%=h argument.status %></span>
+    <div id="status_links_<%= argument.id %>" class="status_links">
+      <% if can_edit?(argument.argumentable.class.base_class.to_s.downcase.pluralize) %>
+        <% unless argument.approved? %>  
+          <%= link_to "Aprobar", approve_admin_argument_path(argument), :method => :put, :"data-remote" => true %>
+        <% end %>
+        <br/><%= link_to "<span>Eliminar</span>".html_safe, admin_argument_path(argument), :method => :delete, :data => {:confirm => '¿Estás seguro?', :remote => true}, :title => "Eliminar" %>
+      <% end %>
+    </div>
+  </td>
+  <td>
+    <%= link_to argument.argumentable.title, send(argument.argumentable_type.eql?('Debate') ? "admin_debate_path" : "admin_proposal_path", argument.argumentable) %>
+  </td>
+  
+</tr>

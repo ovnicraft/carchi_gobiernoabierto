@@ -1,0 +1,37 @@
+<% if comment.commentable_type.eql?('Proposal') && !Proposal.exists?(comment.commentable_id) %>
+
+<% else %>
+<tr id="comment_<%= comment.id %>" class="<%= comment_row_class(comment) %>">
+  <td class="comment_id">
+    <%= comment.id %>
+  </td>
+  <td>
+    <div class="one_comment">
+      <div class="comment_body">
+        <%= simple_format(auto_link_urls(white_list(comment.body), :rel => "external nofollow")) %><br/>
+        <% if is_admin? %>
+          [<%= link_to "Modificar", edit_admin_comment_path(comment) %>]
+        <% end %>
+        <!-- TODO: Comment mark as abused -->
+      </div>
+    </div>
+  </td>
+  
+  <td>
+    <%= link_to h(comment.name), admin_user_path(comment.user) %><br/>
+    <%= h(comment.email) %>
+  </td>
+  <td><%= I18n.localize(comment.created_at, :format => :list) %></td>
+  
+  <%= render :partial => "/admin/comments/comment_status", :locals => {:comment => comment} %>
+  
+  <td>
+    <%= link_to pretty_n_characters(comment.commentable.title, 60), 
+        comment.commentable.is_a?(ExternalComments::Item) ? 
+          comments_on_item_admin_external_comment_path(:id => comment.commentable.id) :
+          comments_on_item_admin_comment_path(:id => comment.commentable.id, :type => comment.commentable.class.to_s)  
+    %>    
+  </td>
+  
+</tr>
+<% end %>

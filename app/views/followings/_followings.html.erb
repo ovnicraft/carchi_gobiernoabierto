@@ -1,0 +1,27 @@
+<div class='section container user followings'>
+  <div class='section_main row-fluid'>
+    <div class='section_content span12'>
+      <div class='section_heading'><%= t("#{controller_name}.followings", :site_name => Settings.site_name) %></div>
+      <% if @following_areas.empty? && @following_politicians.empty? -%>
+        <div class='well'>
+          <%= t('account.no_sigues_a_nadie') %>
+          <%=raw t('account.conoce_areas', :publisher_name => Settings.publisher[:name], :link => link_to(Department.model_name.human(:count => 2), areas_path)) %>
+        </div>
+      <% else -%>
+        <div class='current_followings'>
+          <% @following_areas.in_groups_of(3, false).each do |areas| %>
+            <ul class='row-fluid'>
+              <%= render :partial => 'areas/list_item', :collection => areas, :as => :area %>
+            </ul>
+          <% end %>
+          <% @following_politicians.in_groups_of(3, false).each do |politicians| %>
+            <ul class='row-fluid'>
+              <%= render :partial => 'politicians/list_item', :collection => politicians, :as => :politician, :locals => {:additional_class => 'span4', :show_ex_alert => true} %>
+            </ul>
+            <%= content_tag(:div, t('politicians.no_update'), class: 'help') if @following_politicians.any?{|a|a.former?} %>
+          <% end %>
+        </div>
+      <% end -%>
+    </div>
+  </div>
+</div>

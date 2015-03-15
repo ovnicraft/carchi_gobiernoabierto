@@ -1,0 +1,16 @@
+<div class='section container albums index'>
+  <%= render :partial => '/shared/context', :locals => {:type => 'albums', :title => t('albums.fototeca')} if show_context %>
+  <div class='section_main row-fluid'>
+    <div class='section_content span12'>
+      <%= content_tag(:div, @title.mb_chars.upcase.to_s, :class => 'section_heading') unless show_context %>
+      <div class='albums index'>
+        <%= render :partial => "featured" if @featured_album %>
+        
+        <div class='section_heading'><%= show_see_more_heading('albums', @context) %></div>
+        
+        <%= render :partial => '/shared/grid_items', :locals => {:items => @albums, :in_groups_of => 4} %>
+      </div>
+    </div>
+  
+  </div>
+</div>

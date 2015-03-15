@@ -1,0 +1,34 @@
+<%- if @s == 1 -%>
+<%= {:step_type => "text",
+ :step_var => "title",
+ :step_line => 30010,
+ :step_title => 30011,
+ :step_post_url => url_for(:controller => "/mob_app/iui", :action => 'step', :what => params[:what], :format => :json, :s => 2, :locale => '_LNG_', :only_path => false).gsub(/&amp;/, '&'),
+ :step_post_vars => [],
+ :step_next_button => 30012,
+ :step_text_char_min => 0,
+ :step_text_char_max => 255}.to_json.html_safe %>
+<%- elsif @s == 2 -%>
+<%= {:step_type => "text",
+ :step_var => "body",
+ :step_line => 30013,
+ :step_title => 30011,
+ :step_post_url => url_for(:controller => "/mob_app/iui", :action => 'step', :what => params[:what], :format => :json, :s => 3, :locale => '_LNG_', :only_path => false).gsub(/&amp;/, '&'),
+ :step_post_vars => [],
+ :step_next_button => 30012,
+ :step_text_char_min => 0,
+ :step_text_char_max => 255}.to_json.html_safe %>
+<%- elsif @s == 3 -%>
+<%= {:step_type => "choice",
+ :step_choice_names => Area.order('position').collect(&:name),
+ :step_choice_values => Area.order('position').collect {|a| a.area_tag_name},
+ :step_var => "tag_list",
+ :step_line => 30014,
+ :step_title => 30011,
+ :step_post_url => url_for(:controller => "/proposals", :action => 'create', :locale => 'es', :format => :json, :locale => '_LNG_', :only_path => false).gsub(/&amp;/, '&'),
+ :step_post_vars => ['title', 'body', 'tag_list'],
+ :step_next_button => 30012,
+ :step_text_char_min => 0,
+ :step_text_char_max => 255}.to_json.html_safe %>
+<%- end -%>
+

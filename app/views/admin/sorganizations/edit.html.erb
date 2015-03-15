@@ -1,0 +1,6 @@
+<h1> Modificar Redes Sociales </h1>
+
+<%= form_for @sorganization, :url => admin_sorganization_url(@sorganization), :html => {:method => :put, :multipart => true} do |f| %>
+  <%= hidden_field_tag :dept_id, @department.id %>
+  <%= render :partial => 'form', :locals => {:f => f} %>  
+<% end %>

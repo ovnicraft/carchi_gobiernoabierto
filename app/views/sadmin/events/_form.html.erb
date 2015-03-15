@@ -1,0 +1,177 @@
+<%= error_messages(f.object) %>
+
+<table class="admin event_form" width="100%">
+
+      <tr>
+        <th  width="20%"><%= t('sadmin.events.fecha_inicio') %>:</th>
+        <td>
+          <%= f.datetime_select :starts_at, :start_year => 2009, :default => Date.today, :minute_step => 5 %>
+        </td>
+      </tr>
+
+      <tr>
+        <th><%= t('sadmin.events.fecha_fin') %>:</th>
+        <td>
+          <%= f.datetime_select :ends_at, :start_year => 2009, :default => Date.today, :minute_step => 5 %>
+        </td>
+      </tr>
+
+      <tr>
+        <th><%= t('sadmin.events.Politicos') %>:</th>
+        <td>
+          <%= text_field_with_auto_complete :event, :politicians_tag_list, {:size => "100"}, {:tokens => ',', :indicator => "spinner"} %>
+          <span id="spinner" style = 'display:none'><%= image_tag 'admin/spinner.gif' %></span><br/>
+          <span class="hint"><%=raw t('sadmin.documents.politicians_hint') %></span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <th><%= t('sadmin.events.Otros_invitados') %>:</th>        
+        <td>
+          <%= f.text_field :speaker %><br/>
+          <span class="hint"><%=raw t('sadmin.documents.speaker_hint') %></span>
+        </td>
+      </tr>
+
+      <tr>
+        <th><%= t('sadmin.news.departamento_u_organismo') %></th>
+        <td>
+          <%= select_tag "event[organization_id]", dept_select(@event.organization_id, :include_blank => true) %>
+        </td>
+      </tr>
+
+      <tr>
+        <th width="20%"><%= t('sadmin.news.area') %></th>
+        <td>
+          <% if @event.new_record? %>
+            <%= select_tag "event[area_tags][]", area_select(@event.area_tag, :include_blank => true) %>
+          <% else %>
+            <%= @event.areas.map {|a| a.name}.join(", ") %>
+          <% end %>
+        </td>
+      </tr>
+
+      <tr>
+        <th><%= t('sadmin.events.tema') %></th>
+        <td>
+          <%= f.text_field :title_es, :size => 60 %>
+        </td>
+      </tr>
+
+
+
+      <tr>
+        <th><%= t('sadmin.events.place') %>:</th>
+        <td>
+          <%= text_field_with_auto_complete :event, :place, {:size => "40"}, {:indicator => "place_spinner", :select => "place", :after_update_element => "function(elem, value) {setEventPlaceValues(elem, value)}"} %>
+          <span id="place_spinner" style = 'display:none'>
+          <%= image_tag 'admin/spinner.gif' %>
+          </span>
+          <div class="hint"><%= t('sadmin.events.place_explain') %></div>
+        </td>
+      </tr>
+
+      <tr>
+        <th><%= t('sadmin.events.city') %>:</th>
+        <td>
+          <%= f.text_field :city %>
+          <div class="hint"><%= t('sadmin.events.city_explain') %></div>
+        </td>
+      </tr>
+
+      <tr>
+        <th><%= t('sadmin.events.location_gmaps') %>:</th>
+        <td>
+          <%= f.text_field :location_for_gmaps %>
+          <div class="hint"><%= t('sadmin.events.location_gmaps_explain') %></div>
+        </td>
+      </tr>
+
+      <tr>
+        <th><%= t('sadmin.events.body_es') %></th>
+        <td>
+          <%= f.text_area :body_es, :size => "90x10", :class => "mceEditor" %>
+          <div class="hint"><%=raw t('sadmin.do_not_copy_paste') %></div>
+        </td>
+      </tr>
+      
+      <tr><td colspan="2"><hr/></td></tr>
+      
+      <tr>
+          <th><%= t('sadmin.news.visibilidad') %></th>
+          <td colspan="2">
+            <div class="is_private_radio_options">
+              <ul>
+                <%- if can?('create_private', 'events') -%>
+                    <%- if can_create_only_one_type_of_event? -%>
+                      <%= f.hidden_field :is_private, :value => "1" %>
+                    <%- else -%>
+                      <li class="radio_with_label private_event">
+                        <%= f.radio_button :is_private, 1, :id => "event_is_private__1" %>
+                        <%= f.label :is_private__1, t('sadmin.events.uso_interno') %>
+                      </li>
+                    <%- end -%>
+                <% end %>
+                            
+                <%- if can?('create_irekia', 'events') -%>
+                  <li class="radio_with_label irekia_event">
+                    <%= f.radio_button :is_private, "0" %>
+                    <%= f.label :is_private_0, t('sadmin.events.publico', :site_name => Settings.site_name) %>
+
+                    <ul class="journalists_options">
+                      <% public_disabled = !@event.is_public? %>                  
+                      <li class="radio_with_label irekia_event">
+                        <%= f.check_box :alertable %>
+                        <%= f.label :alertable, t('sadmin.events.notify_journalists') %>
+                    
+
+                        <ul class="journalists_options">
+                          <li class="checkbox_with_label alert_option">
+                            <span class="option_text"><%= t('sadmin.events.all_journalists') %></span>
+                            <%= f.check_box :all_journalists %><label for="event_all_journalists"><%= t("si") %></label>
+                          </li>
+                          <li class="checkbox_with_label alert_option">
+                            <span class="option_text"><%= t('sadmin.events.only_photographers') %></span>
+                            <%= f.check_box :only_photographers %><label for="event_only_photographers"><%= t("si") %></label>
+                            <div class="only_photographers_hint" style="display: <%= @event.only_photographers? ? 'block' : 'none' %>">
+                              <%= t('sadmin.events.only_photographers_hint') %>
+                            </div>
+                          </li>
+                        </ul>
+                    
+                      </li>
+                    </ul>
+                  </li>
+                <%- end -%>
+                
+              </ul>
+            </div>
+          </td>
+      </tr>
+  
+      <tr>
+        <th><%= Event.human_attribute_name('alert_this_change') %></th>
+        <td id="alert_this_change_container" class="alert_option">
+          <%= f.check_box :alert_this_change %><%= t('si') %>
+          <div class="hint"><%=raw t('sadmin.events.conveniente_alertar') %></div>
+        </td>
+      </tr>
+</table>
+      
+<% content_for :head do %>
+  <%= javascript_include_tag "admin/agenda_events" %>  
+  <% if !@event.new_record? && !@event.one_day? %>
+    <script type="text/javascript">
+      setEndsAtChanged();
+    </script>
+  <% end %>
+  
+  <% if @event.new_record? %>
+    <script type="text/javascript">
+       Event.observe(window, 'load', setDefaultVisibility);
+    </script>
+  <% end %>
+<% end %>
+
+

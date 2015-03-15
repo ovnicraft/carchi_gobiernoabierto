@@ -1,0 +1,37 @@
+<div class='section container videos index'>
+  <%= render :partial => '/shared/context', :locals => {:type => 'videos'} %>
+  <div class='section_main row-fluid'>
+    <div class='section_content span8'>
+      <div class='videos index'>
+        <div class='section_heading'><%= @title %></div>
+        
+        <%= render :partial => '/shared/grid_items', :locals => {:items => @videos, :in_groups_of => 3} %>
+      </div>
+    </div>
+  
+    <div class="section_aside span4">
+      <div class="aside_module areas related_videos">
+        <div class="title"><span><%= t('videos.videoteca') %></span></div>
+        <div class="content">
+          <ul class='categories'>
+            <% Area.ordered.each do |area| %>
+              <li><%= link_to area.name, area_videos_path(:area_id => area.id, :anchor => "middle") %></li>
+            <% end %>            
+          </ul>
+        </div>
+      </div>
+      
+      <div class="aside_module related_videos categories">
+        <div class="title"><span><%= t('videos.otros_canales') %></span></div>
+        <div class="content">
+          <ul class='categories'>
+            <% Video.categories.each do |category| %>
+              <li><%= link_to category.name, cat_videos_path(:id => category) %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

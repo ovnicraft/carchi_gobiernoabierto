@@ -1,0 +1,57 @@
+<div class='section container'>
+  <div class='context'>
+    <span class="ribbon rss"></span>
+    <span class='type'><%= t('site.rss') %></span>
+  </div>
+  <div class='section_main row-fluid'>
+    <div class='section_content span12'>
+      <div class='feeds index'>
+        <div class='global_feeds'>
+          <div class='row-fluid'>
+            <div class='item rss span8'>
+              <span class='title'><%= Settings.site_name %></span>
+              <div class='row-fluid'>
+                <ul class="span6 rss_feeds all">
+                  <li class="news">
+                    <%= link_to t('news.all'), :controller => "news", :format => :rss, :protocol => "http://", :only_path => false %>
+                  </li>
+                  <li class="comments">
+                  <%= link_to t('comments.all'), :controller => "comments", :format => :rss, :protocol => "http://", :only_path => false %>
+                  </li>
+                </ul> 
+              
+                <ul class="span6 rss_feeds all">
+                  <li class="proposals">
+                    <%= link_to t('proposals.all'), :controller => "proposals", :format => :rss, :protocol => "http://", :only_path => false %>
+                  </li>
+                  <li class="debates">
+                    <%= link_to t('debates.all'), :controller => "debates", :format => :rss, :protocol => "http://", :only_path => false %>
+                  </li>
+                </ul>
+              </div>
+            </div>      
+          </div>
+        </div>
+        <!--<div class='section_heading'><%= t('organizations.title') %></div>-->
+        <div class='dept_feeds'>
+          <% @departments.in_groups_of(3, false).each do |departments| %>
+            <div class='row-fluid'>
+              <% departments.each do |department| %>
+                <div class='item rss span4'>
+                  <span class='title'><%= department.name %></span>
+                  <ul class='rss_feeds deparment'>
+                    <% @feed_types.each do |type| %>
+                      <li class="<%= type %>">
+                        <%= link_to t("#{type}.feed_title", :name => department.name), send("department_#{type}_url", :id => department, :format => :rss, :protocol => "http://") %>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
+            </div>
+          <% end %>  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

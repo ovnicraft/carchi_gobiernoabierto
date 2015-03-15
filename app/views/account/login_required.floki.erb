@@ -1,0 +1,15 @@
+<% h = {:items => [
+  {"id" => 999999, 
+    "body" => "", "title" => "Regístrate o loggeate en #{Settings.site_name} para recibir contenido personalizado.", 
+    "sort_id" => 99999},
+    {"id" => 999998, 
+     "sort_id" => 999998,
+     "class_type" => "Login_cell",
+     "title" => "Login",
+     "body" => 'Login'
+     }
+],
+  :to_delete => [999997]
+}.to_json %>
+
+<%=raw h.to_json %>

@@ -1,0 +1,11 @@
+<% if Settings.optional_modules.headlines %>
+headline_media: 
+  title: 'Reference Media'
+  body: 'This is an example of reference'
+  url: 'http://www.media.com'
+  media_name: 'Media'
+  published_at: <%= Date.today %>  
+  source_item_id: 10
+  source_item_type: 'Headline'
+  draft: false
+<% end %>

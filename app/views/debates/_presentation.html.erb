@@ -1,0 +1,30 @@
+<%= render :partial => 'shared/edit_links', :locals => {:item => @debate, :needed_privilege => 'can_access?'} %>
+
+<div class='section_main row-fluid'>
+  <div class='section_content span8'>
+    <div class='article debate presentation'>
+      <div class='section_heading'><%= t('debates.body_title') %></div>
+      <div class='description text intro'><%= highlight_according_to_criterio(@debate.body.to_s, @criterio) %></div>
+      <%= @debate.hashtag %>
+      <% if @leading_news -%>
+        <div class='section_heading'><%= t('news.related') %></div>
+        <%= render :partial => '/news/featured', :locals => {:news => @leading_news} %>
+        <%= render :partial => "/shared/list_items", :locals => {:items => @other_news, :type => 'news'} if @other_news.present? %>
+      <% end -%>
+    </div>  
+  </div>
+  <div class='section_aside span4'>
+    <%= render :partial => "shared/download_tabs", :locals => {:item => @debate, :audios => @debate.all_audios(:all), :mpg_videos => @debate.videos_mpg, :files => @debate.attached_files, :photos => @debate.photos } %>
+    <% if @debate.debate_entities.size > 0 %>
+      <div class='aside_module organizations areas'>
+        <div class='title'><span><%= t('debates.related_entities') %></span></div>
+        <div class='content'>
+          <ul class="std_list people">
+            <%= render :partial => 'entity_list_item', :collection => @debate.debate_entities, :as => :debate_entity %>
+          </ul>
+        </div>
+      </div> 
+    <% end %>
+    <%= render :partial => '/headlines/list', :locals => {:headlines => @debate.approved_headlines} if @debate.approved_headlines.present? %>
+  </div>
+</div>

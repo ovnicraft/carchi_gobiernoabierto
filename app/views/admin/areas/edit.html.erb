@@ -1,0 +1,9 @@
+<h1>Modificar <%= @area.class.model_name.human %></h1>
+
+<%= form_for @area, :url => admin_area_path(@area), :html => {:method => :put, :multipart => true} do |f| %>
+  <%= render :partial => "form", :locals => {:f => f} %>
+  
+  <p>
+    <%= f.submit "Guardar" %>
+  </p>
+<% end %>

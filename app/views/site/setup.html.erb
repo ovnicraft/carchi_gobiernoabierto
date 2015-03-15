@@ -1,0 +1,57 @@
+<h1>Configura tu <%= image_tag(asset_path('logo.png'), :alt => Settings.site_name) %></h1>
+  
+    <%= form_for @corporative, :url => update_setup_site_path, :html => {:method => :put, :multipart => true} do |f| %>
+       <%= error_messages(@corporative) %>       
+       <%= hidden_field_tag 'form_action', 'setup' %>
+       
+       <div class='control-group'>
+         <%= label_tag 'corporative_site_name', t("site.setup.site_name"), :class => 'control-label' %>
+         <div class='controls'>
+           <%= text_field_tag 'corporative[site_name]', @corporative.site_name, :class => "input-large", :maxlength => "255" %>
+         </div>
+       </div>
+       
+       <div class='control-group'>
+         <%= label_tag 'corporative_publisher_name', t("site.setup.publisher_name"), :class => 'control-label' %>
+         <div class='controls'>
+           <%= text_field_tag 'corporative[publisher][name]', @corporative.publisher_name, :class => "input-xxlarge", :maxlength => "255" %>
+           <span class="help-block"><i class="icon-info-sign"></i> <%= t('site.setup.publisher_name_hint') %></span>
+         </div>
+       </div>
+       
+       <div class='control-group'>
+         <%= label_tag 'corporative_publisher_address', t("site.setup.publisher_address"), :class => 'control-label' %>
+         <div class='controls'>
+           <%= text_field_tag 'corporative[publisher][address]', @corporative.publisher_address, :class => "input-xxlarge", :maxlength => "255" %>
+           <span class="help-block"><i class="icon-info-sign"></i> <%= t('site.setup.publisher_name_hint') %></span>
+         </div>
+       </div>
+       
+       <div class='control-group'>
+         <%= label_tag 'corporative_corporative_email', t("site.setup.corporative_email"), :class => 'control-label' %>
+         <div class='controls'>
+           <%= text_field_tag 'corporative[corporative_email]', @corporative.email_addresses_from, :class => "input-xxlarge", :maxlength => "255" %>
+           <span class="help-block"><i class="icon-info-sign"></i> <%= t('site.setup.corporative_email_hint') %></span>
+         </div>
+       </div>
+       
+       <div class='control-group'>
+         <%= label_tag 'corporative_images_logo', t("site.setup.images.logo"), :class => 'control-label' %>
+         <div class='controls'>
+           <%= f.file_field 'logo' %>
+           <span class="help-block"><i class="icon-info-sign"></i> <%= t('site.setup.images.logo_hint') %></span>
+         </div>
+       </div>
+
+       <div class='control-group'>
+         <%= label_tag 'corporative_images_footer', t("site.setup.images.footer"), :class => 'control-label' %>
+         <div class='controls'>
+           <%= f.file_field 'footer' %>
+           <span class="help-block"><i class="icon-info-sign"></i> <%= t('site.setup.images.footer_hint') %></span>
+         </div>
+       </div>
+
+       <div class="form-actions">
+         <%= submit_tag t('enviar'), :class => 'submit irekia_btn' %>
+       </div>
+     <% end %>

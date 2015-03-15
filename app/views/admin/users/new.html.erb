@@ -1,0 +1,10 @@
+<h1>Nuevo usuario</h1>
+
+<% if params[:email] %>
+  <p>No hemos encontrado a nadie con este email. Rellena este formulario para crear un nuevo usuario.</p>
+<% end %>
+
+<%= form_for @user, :as => :user, :url => admin_users_path, :html => {:multipart => true} do |f| -%>
+  <%= error_messages(f.object) %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+<% end -%>

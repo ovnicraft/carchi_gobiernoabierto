@@ -1,0 +1,28 @@
+<% content_for :css_data do %>
+  <%= stylesheet_link_tag 'public/events' %>
+<% end %>
+
+<div class='section container streaming show'>
+  <div class='section_main row-fluid'>
+    <div class='section_content span12'>
+      <div class='streaming show'>
+        <% if @streaming.present? %>
+          <%- @title_for_head = t('events.en_directo_desde_sala', :room => @streaming.title)  -%>
+          <h1 class="title event_title"><%= t('events.en_directo_desde_sala', :room => @streaming.title)  %></h1>
+
+          <div class="streaming_without_event">
+            <% if params[:actions].eql?('live') %>
+              <div class="coverage">
+                <span class="marked" id="home_video_title"><%= t('events.streaming_live') %></span>
+              </div>  
+            <% end %>
+      
+            <%= render :partial => '/streamings/streaming', :locals => {:streaming  => @streaming, :streaming_status => event_or_streaming_current_status(nil, @streaming)} %> 
+          </div>
+        <% else %>
+          No hay emisión.
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

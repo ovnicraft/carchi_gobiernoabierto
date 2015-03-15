@@ -1,0 +1,12 @@
+<p>
+  <%= t('notifier.hola_user', :name => @recipient_name) %>,
+</p>
+
+<p>
+  <%= t('share.te_gustara', :sender_name => @sender_name) %><br/>
+
+  <%= link_to @document.title, url_for(controller: @document.class.name.tableize, action: 'show', id: @document.id, locale: I18n.locale, only_path:false) %> 
+  ( <%= url_for(controller: @document.class.name.tableize, action: 'show', id: @document.id, locale: I18n.locale, only_path:false) %> )
+</p>
+
+<%= render partial: '/notifier/footer' %>

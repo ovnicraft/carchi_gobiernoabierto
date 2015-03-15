@@ -1,0 +1,17 @@
+<% pages = []
+@pages.each_with_index do |n, i|
+  h = {"id" => n.id , "title" => n.title, "body" => short_body_wo_html(n.body),
+       "url" => url_for(:controller => "pages", :action => "show", :id => n.id, :format => :floki, :locale => I18n.locale, :only_path => false),
+       "share_url" => url_for(:controller => "pages", :action => "show", :id => n, :only_path => false),
+       "sort_id" => i}
+
+  pages << h.to_json.gsub('&amp;size', '&size')
+end
+ %>
+
+{
+  "items": [
+    <%=raw pages.join(", \n") %>
+  ],
+  "to_delete": [2651, 2659]
+}

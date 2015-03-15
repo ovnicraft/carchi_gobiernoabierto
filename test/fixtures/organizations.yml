@@ -1,0 +1,82 @@
+lehendakaritza:
+  name_es: "Presidencia"
+  name_eu: "LEHENDAKARITZA"  
+  tag_name: "_lehendakaritza"
+  type: Department
+  active: true
+  term: "X"
+  position: 2
+
+lehendakaritza_ix_leg:
+  name_es: "Presidencia IX legislatura"
+  name_eu: "LEHENDAKARITZA IX legislatura"  
+  tag_name: "_lehendakaritza_ix"
+  type: Department
+  active: false
+  term: "IX"  
+  position: 2  
+
+emakunde:
+  parent: lehendakaritza
+  name_es: Emakunde
+  position: 1
+  type: Entity
+  active: true  
+  term: "IX"
+  position: 2    
+
+organismo_ix_leg:
+  parent: lehendakaritza_ix_leg
+  name_es: Organismo debajo de presidencia
+  position: 1
+  type: Entity
+  active: true  
+  position: 2    
+
+gobierno_vasco:
+  name_es: "Gobierno Vasco"
+  tag_name: "_gobierno_vasco"
+  type: Department
+  active: false  
+  term: "IX"
+  position: 1    
+
+gobierno_vasco_x:
+  name_es: "Gobierno Vasco X"
+  tag_name: "_gobierno_vasco_x"
+  type: Department
+  active: true  
+  term: "X"  
+  position: 1  
+
+interior:
+  name_es: "Interior"
+  tag_name: "_interior"
+  type: Department
+  active: true 
+  term: "IX" 
+  position: 3    
+
+pacad:
+  parent: interior
+  name_es: "Academia de Policia del País Vasco"
+  position: 1
+  type: Entity
+  active: true  
+  position: 2  
+
+educacion:
+  name_es: 'Educación'
+  tag_name: '_educacion'
+  type: Department
+  active: true
+  term: "IX"  
+  position: 4  
+
+organismo_educacion:
+  parent: educacion
+  name_es: Organismo Educacion
+  type: Entity
+  active: true  
+  term: "IX"
+  position: 1    

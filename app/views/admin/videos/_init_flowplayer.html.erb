@@ -1,0 +1,46 @@
+<% player_id ||= nil %>
+<% show_scrubber ||= :true %>
+<% auto_play ||= :true %>
+
+<% content_for :head do %>
+  <%= javascript_include_tag('flowplayer.min') if player_id.blank? %>
+  <%= javascript_include_tag('public/irekia_flowplayer') %>
+  <%= javascript_tag do %>
+    Event.observe(window, 'load', function(){
+      
+      Irekia.hostWithPort = "http://<%= request.host_with_port %>";
+      Irekia.fp_key = "<%=  flowplayer_info[:key] %>";
+      Irekia.fp_path = "<%= flowplayer_info[:path] %>";
+      Irekia.fp_rtmp = "<%= flowplayer_info[:rtmp_plugin] %>";
+      Irekia.fp_lighttpd = "<%= flowplayer_info[:streaming_plugin] %>";
+      Irekia.fp_gatracker = "<%= flowplayer_info[:gatracker_plugin] %>";      
+      Irekia.pageTracker = null;
+      
+      var player = initPlayer("<%= video_info[:player_id] %>", "<%= video_info[:video] %>", <%= show_scrubber.eql?(:true) ? true : false %>, <%= auto_play.eql?(:true) ? true : false%>);
+      
+      if ($$('div.video_cuepoint').size() > 0) {
+        var cp = $A([]);
+        $$('div.video_cuepoint').each(function(elem){
+          var currentTime = parseInt(elem.id.gsub(/text/,''));
+          cp.push(currentTime*1000);
+          Event.observe(elem, 'click', function(e){
+            if (player.isLoaded()) {
+              videoTranscript.highlightCuepointText(currentTime);
+              if (!player.isPlaying()) {
+                player.play();
+              }
+              player.seek(currentTime).resume();
+            }  
+          })
+        });
+        player.onCuepoint(cp, function(clip, cuepoint) {
+          videoTranscript.highlightCuepointText(cuepoint/1000);
+        });
+        player.getCommonClip().onFinish(function(){
+          videoTranscript.clearCuepointsStyle();
+          true;
+        });
+      }
+    });
+  <% end %>
+<% end %>

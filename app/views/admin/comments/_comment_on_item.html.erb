@@ -1,0 +1,25 @@
+<% comment = comment_on_item %>
+
+<tr id="comment_<%= comment.id %>" class="<%= comment_row_class(comment) %>">
+  <td>
+    <%= comment.id %>
+  </td>
+  <td>
+    <div class="one_comment">
+      <div class="comment_body">
+        <%= simple_format(auto_link_urls(white_list(comment.body), :rel => "external nofollow")) %><br/>
+        <% if is_admin? %>
+          [<%= link_to "Modificar", edit_admin_comment_path(comment) %>]
+        <% end %>
+        <!-- TODO: Comment mark as abused -->
+      </div>
+    </div>    
+  </td>
+  <td>
+    <%=h comment.user.internal_name %><br />
+    <%=h comment.email %>
+  </td>
+  <td><%= comment.created_at.to_s(:short) %></td>
+  
+  <%= render :partial => "/admin/comments/comment_status", :locals => {:comment => comment} %>  
+</tr>

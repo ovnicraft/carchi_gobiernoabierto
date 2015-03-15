@@ -1,0 +1,93 @@
+lehendakari:
+  short_name: lehendakari
+  name: Lehendakari 
+  code: r01eF0C9638E1803FEC42C38D8212301D672CD16EDB1
+  level: 0
+  new_ejes:
+    - name: Actividad del Lehendakari
+      code: r01eFF72F9F0C17A33DF39450E37C5A29FF23BE601B7
+      level: 1
+      new_ejes: 
+        - name: Actividad política del Lehendakari
+          code: r01e4DAC9AC9269BA15A7D9698F9AF079B517CEE3E5C
+          level: 2
+          new_ejes: 
+            - name: Iniciativas políticas del Lehendakari
+              code: r01e0AE2A30FC04D7B83436F9CFD938DC73FAE478B26
+              level: 3
+            - name: Declaraciones del Lehendakari
+              code: r01e16DFAAD0C46E3FA234358369E893E8AB3C92C688
+              level: 3
+            - name: Intervenciones parlamentarias del Lehendakari
+              code: r01e59AB1680D18334DD6687DD2514BA5216D7BDFD20
+              level: 3
+        - name: Actividad pública del Lehendakari
+          code: r01e8FC0973416F7E9CF7017D1FD9E455CC95B7F89C2
+          level: 2
+          new_ejes:
+            - name: Viajes oficiales
+              code: r01ep64c0bfacc6d19e3b4ab1
+              level: 3
+            - name: Artículos y entrevistas del Lehendakari
+              code: r01eFB2AEBA105B56234FC40FE6487AE6FCFADA95FC3
+              level: 3
+            - name: Audiencias
+              code: r01ep4ac64d423bb663bb25a0
+              level: 3
+            - name: Conferencias del Lehendakari
+              code: r01eFA92490E430DEB3B1448C18CC5971F2C32FD859C
+              level: 3
+            - name: Intervenciones públicas del Lehendakari
+              code: r01eA69B6AE270CF569B6CE8E5DCD5F747BA3995836C
+              level: 3
+        - name: Consulta 
+          code: r01epd01155b7d450d4424d3f35484663a5cb5557
+          level: 2
+    - name: Encausamiento penal
+      code: r01epa172eb24740fbeae0b2f
+      level: 1
+      new_ejes:
+        - name: Pronunciamientos Centros Vascos sobre el encausamiento
+          code: r01epa17261e85d9109d4d7fa
+          level: 2
+        - name: Pronunciamientos del Gobierno sobre el encausamiento
+          code: r01epa172815c5963948eba16
+          level: 2
+          new_ejes:
+            - name: Otros miembros
+              code: r01ep24cdde8b85a9cc070a5d
+              level: 3
+        - name: Documentos sobre el encausamiento
+          code: r01epa17284815bd14da9bca9
+          level: 2
+        - name: Declaraciones de otras instituciones sobre el encausamiento
+          code: r01epa126c57066b421106f8f
+          level: 2
+        - name: Declaraciones independientes sobre el encausamiento
+          code: r01epa126fca56f0694048985
+          level: 2
+        - name: Medios de comunicación
+          code: r01epd0117b07e5814721feebcff3a380d9a0ba18
+          level: 2
+        - name: Juicio
+          code: r01epd011eb15fbf785d11fccc565669df018ec8e
+          level: 2
+    - name: Portavoz del Gobierno
+      code: r01eE1EB331B4F4EE630109F9E3853180A9CD4A0F6E1
+      level: 1
+      new_ejes:
+        - name: Pronunciamientos de la Portavoz del Gobierno
+          code: r01e8FFE4198483A06450B3523D081D1ACDEB0102E86
+          level: 2
+    - name: Otras declaraciones de terceros
+      code: r01epd011ab53a0f252cc6f36e4ae051d043bce23
+      level: 1
+    - name: Declaraciones miembros del gobierno
+      code: r01epd011ab53aae532cc6f36aa04924d1426c177
+      level: 1
+    - name: Contexto internacional
+      code: r01epd011ab53b8aee2cc6f36dfa553f6e42b0b26
+      level: 1
+    - name: Documentos
+      code: r01epd011ab53c67fa2cc6f364f1eca7a1afb800f
+      level: 1

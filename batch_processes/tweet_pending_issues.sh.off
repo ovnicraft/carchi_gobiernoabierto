@@ -1,0 +1,12 @@
+#!/bin/bash
+
+cd /usr/app/irekia4/
+
+# Extracted from `rvm env --path -- 2.1.2@irekia5`
+source /usr/local/rvm/environments/ruby-2.1.2@irekia5
+
+if [ -f ~/irekia_secrets.sh ]; then
+  source ~/irekia_secrets.sh
+fi
+
+rake _0.8.7_ ogov:tweet_pending_issues 

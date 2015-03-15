@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<%= I18n.locale %>" lang="<%= I18n.locale %>">
+<head>
+  <meta name="Description" lang="<%= I18n.locale %>" 
+  content="<%= t('site.meta_description', :publisher_name => Settings.publisher[:name], :locale => "es") %> - <%= t('site.meta_description', :publisher_name => Settings.publisher[:name], :locale => "eu") %> - <%= t('site.meta_description', :locale => "en") %>" />
+  <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+  <%= stylesheet_link_tag 'public/splash' %>
+  <title><%= Settings.site_name %>: <%= Settings.publisher[:name] %></title>
+</head>
+
+<body>
+
+  <div class="width">
+
+   <div class="splash_body">
+     <img src="/images/splash/logo_well_be_back_soon.png" width="960" height="199" alt="<%= Settings.site_name %>"/>
+   </div>
+
+  </div>
+
+<div class="nav_well_be_back_soon">  
+  <div class="locales">
+    <ul>
+      <li>
+        <div>
+          <b>En <%= Settings.site_name %> estamos actualizando el portal a una nueva versión...</b>
+          <p>Lo podrás volver a visitar en las próximas horas.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <b><%= Settings.site_name %>n atariaren bertsio berria eguneratzen ari gara...</b>
+          <p>Ordu batzuk barru bisitatu ahalko duzu berriro.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <b><%= Settings.site_name %> is updating the portal to a new version…</b>
+          <p>It will be up and running again shortly.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+</body>
+</html>

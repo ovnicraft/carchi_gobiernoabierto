@@ -1,0 +1,187 @@
+<% @event = @document %>
+
+<% content_for :head do %>
+  <%= javascript_include_tag "admin/agenda_events" %>  
+<% end %>
+
+<div class="document_show2">
+
+  <table class="admin event_form">
+    <tr>
+      <th><%= t('admin.news.admite_nuevos_comentarios') %><br/></th>
+      <td>
+        <%= f.check_box :comments_closed, {:checked => !@document.comments_closed?}, 0, 1 %>
+        <label for="document_comments_closed"><%= t('si') %></label>
+      </td>
+    </tr>
+    
+    <tr>
+      <th>Áreas</th>
+      <td>
+        <%= select_tag 'document[area_tags][]', options_for_select(Area.all.collect {|a| [a.name_es, a.tag_name_es]}, @document.area_tags), :multiple => true %>
+      </td>
+    </tr>
+    
+    <tr>
+      <th>
+        Tags en castellano<br/>
+        <span class="hint">(Separados por coma)</span>
+      </th>
+      <td>
+        <%= text_area_with_auto_complete :document, :tag_list_without_areas, {:size => "60x5"}, {:tokens => ',', :indicator => "spinner"} %>
+        <span id="spinner" style = 'display:none'>
+        <%= image_tag 'admin/spinner.gif' %>
+        </span>
+        <%= render :partial => "/admin/tags/help", :locals => {:object => @document} %>
+      </td>
+    </tr>
+     
+    <tr>
+      <th><%= t('admin.events.cobertura_irekia', :site_name => Settings.site_name) %></th>
+      <td>
+        <%= f.check_box :irekia_coverage %>
+        <label for="document_irekia_coverage"><%= t('si') %></label>
+        
+        <div class="select_webs disabled" id="coverage_types">
+          <%= f.check_box :irekia_coverage_photo %>
+          <%= f.label :irekia_coverage_photo, t('photos.title') %>
+          
+          <%= f.check_box :irekia_coverage_video %>
+          <%= f.label :irekia_coverage_video, t('videos.title') %>
+          
+          <%= f.check_box :irekia_coverage_audio %>
+          <%= f.label :irekia_coverage_audio, t('documents.audio') %>          
+
+          <%= f.check_box :irekia_coverage_article %>
+          <%= f.label :irekia_coverage_article, t('documents.cronica') %>          
+
+         <% if Settings.optional_modules.streaming %>
+          <br/>
+            <%= f.check_box :streaming_live %>
+            <%= f.label :streaming_live, t('admin.events.streaming_directo') %><br/>
+            <blockquote id="stream_flows" class="disabled">
+              <%= dummy_field("Sala de Streaming:", @document, :streaming_room) %><br/>
+              <% StreamFlow.not_empty_streaming.each do |sf| %>
+                <%= f.radio_button :stream_flow_id, sf.id, :class => "sf_radio" %>
+                <label for="document_stream_flow_id_<%= sf.id %>"><%= sf.title %></label>
+                <span class="overlap_info" id="overlap_info_<%= sf.id %>"></span>
+                <br/>
+              <% end %>
+            </blockquote>
+            <blockquote id="stream_places" class="disabled">
+              <%= dummy_field("Streaming en:", @document, :streaming_for) %><br />
+              <% Event::STREAMING4.each do |pl| %>
+                <%= f.check_box "streaming_for_#{pl}", :class => (pl.eql?(:en_diferido) ? 'sf_for_diferido' : "sf_for") %> 
+                <label for="document_streaming_for_<%= pl %>"><%= pl.to_s.humanize %></label>
+                <span class="overlap_info" id="overlap_info_<%= pl %>"></span><br />
+              <% end %>
+              <%= link_to '¿Qué es el streaming en diferido?', '#', :class => 'help_link' %>
+              <div class="help" style="display:none;">
+                <p>Utilizar la opción de streaming en diferido sólo para casos de emisiones on-line privadas [p.ej. intranet] o simplemente para grabarlo en un FLV para uso posterior off-line. 
+                </p>
+                <p>
+                Procedimiento: 
+                <ul>
+                <li>1º generar evento SIN publicarlo;</li> 
+                <li>2º darle cobertura "en diferido" > ya está en el flujo seleccionado [ad hoc];</li> 
+                <li>y 3º utilizar el embebido on-line de dicho flujo ad hoc para incrustarlo en la intranet. Otra alternativa es NO emitirlo ni siquiera en privado, y utilizar luego el FLV grabado en diferido.</li>
+                </ul>
+                </p>
+              </div>
+              <br/>
+            </blockquote>
+           <% end %> 
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <th><%= Event.human_attribute_name('alert_this_change') %></th>
+      <td id="alert_this_change_container" class="alert_option">
+        <%= f.check_box :alert_this_change %><%= t('si') %>
+        <div class="hint"><%= t('sadmin.events.conveniente_alertar') %></div>
+      </td>
+    </tr>
+    <% unless @document.has_related_news? %>    
+    <tr>
+      <th>¿<%= t('sadmin.news.crear_borrador_noticia') %>?</th>
+      <td><%= f.check_box :draft_news %><label for="document_draft_news"><%= t('si') %></label></td>
+    </tr>
+    <% end %>
+    
+  </table>  
+</div>
+
+<div class="warning" id="warning">
+  <%= t('sadmin.events.change_streaming_info_warning') %>
+</div>
+
+<p class="buttons">
+  <%= submit_tag t('guardar'), :id => "submit_button", :class => "submit_button" %>
+  <%= link_to t("cancelar"), :back, :class => "cancel_link" %>
+</p>
+
+
+<script type="text/javascript">
+  Irekia.overlapEvents = [];
+  <% @overlap_events_with_streaming.map do |evt| %>
+    Irekia.overlapEvents.push({<%= event_json_for_sf(evt) %>});
+  <% end %>
+
+  setElementClassIfChecked($('document_irekia_coverage'), $('coverage_types'));
+  setElementClassIfChecked($('document_streaming_live'), $('stream_flows'));
+  setElementClassIfChecked($('document_streaming_live'), $('stream_places'));
+  
+  EventAlerts.has_sent_alerts = <%= @event.alerts.for_staff.sent.count > 0 %> ;
+  EventAlerts.must_confirm = false;
+  EventAlerts.confirm_message = '<%= t('sadmin.events.seguro_guardar_streaming') %>';
+  EventAlerts.saving_message = '<%= t('sadmin.guardando') %>';
+  EventAlerts.event_is_confirmed_and_shown = <%= @event.is_public? %>;
+  EventAlerts.event_has_expired = <%= @event.passed? %>;
+  
+  
+  Event.observe(window, 'load', function(evt){
+    $$("input.sf_radio").each(function(elem){
+      if (elem.checked) {
+        setFlowOverlapInfo(elem);
+      }
+      Event.observe(elem, 'click', checkForOverlapFlow);
+    });
+
+    $$("input.sf_for").each(function(elem){
+      if (elem.checked) {
+        setWebOverlapInfo(elem);
+      }
+      Event.observe(elem, 'click', checkForOverlapWeb);
+    });
+
+    $$("input.sf_for_diferido").each(function(elem){
+      setEnDiferidoInfo(elem);
+      Event.observe(elem, 'click', function(e){setEnDiferidoInfo(Event.element(e))});
+    });
+  });
+  
+  Event.observe('document_streaming_live', 'click', function(evt){
+    var elem = $('document_streaming_live');
+    setElementClassIfChecked(elem, $('stream_flows'));
+    setElementClassIfChecked(elem, $('stream_places'));
+
+    if (elem.checked) {
+      if (!$("document_streaming_for_irekia").checked && !($("document_streaming_for_en_diferido").checked)) {
+        $("document_streaming_for_irekia").checked = true;
+      }      
+    } else {
+      $("document_streaming_for_irekia").checked = false;
+      $("document_streaming_for_en_diferido").checked = false;      
+    }
+  });
+  
+  Event.observe('document_irekia_coverage', 'click', function(evt) {
+    setElementClassIfChecked($('document_irekia_coverage'), $('coverage_types'));
+    setElementClassIfChecked($('document_streaming_live'), $('stream_flows'));
+    setElementClassIfChecked($('document_streaming_live'), $('stream_places'));
+    
+  });
+  
+</script>
+

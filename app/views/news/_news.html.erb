@@ -1,0 +1,41 @@
+<% content_for :head do %>
+  <%= auto_discovery_link_tag :rss, {:controller => "news", :action => "index", :locale => I18n.locale, :format => 'rss'}, :title => t('documents.feeds_rss') %>
+<% end %>
+
+<div class='section container news index'>
+  <%= render :partial => '/shared/context', :locals => {:type => 'news', :area => @area} if show_context %>
+  <div class='section_main row-fluid'>
+    <div class="section_content span8">
+      <div class="news index">
+        <% if @leading_news -%>
+          <h1 class='section_heading'><%= @title %></h1>
+          <%= render :partial => '/news/featured', :locals => {:news => @leading_news} %>
+          <% if @secondary_news.present? %>
+            <div class="secondary_news_container container row-fluid">
+              <% @secondary_news.each do |news| %>
+                <div class="secondary_news span3">
+                  <% small_img_tag, alt = news_img_and_alt(news, "n320")[:img], news_img_and_alt(news)[:alt] %>
+                  <%= content_tag(:div, link_to(image_tag(small_img_tag, :alt => alt), news), :class => 'image') if small_img_tag %>
+                  <%= render_date(news.published_at) %>
+                  <div class="title">
+                    <%= link_to truncate(news.title, :length => 108, :omission => "&hellip;", :escape => false), news %>         
+                  </div>
+                  <div class="comments"><%= link_to news.all_comments.count, news_path(news), :class => "comment-count" %></div>     
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+
+        
+        <div class="other_news_container">
+          <%= content_tag(:div, t('news.more'), :class => 'section_heading') unless @context.present? %>
+          <%= render :partial => "/shared/#{context_partial(@context, 'filters')}", :locals => {:content_type => "news"} rescue nil %>
+          <%= render :partial => "/shared/list_items", :locals => {:items => @other_news, :items_for_pagination => @news, :type => 'news'} %>
+        </div>
+      </div>
+    </div>
+
+    <%= render :partial => "/news/#{context_partial(@context, 'aside')}" %>
+  </div>
+</div>

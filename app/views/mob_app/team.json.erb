@@ -1,0 +1,39 @@
+<% people = []
+@team.each_with_index do |person, index|
+  h = {"id" => person.id, "class_type" => "News_view_controller",
+    "title" => person.public_name,  
+    "sort_id" => (1000 - index), 
+    "body" => person.public_role, 
+    "url" => url_for(:controller => 'mob_app', :action => 'politician', :person_id => person.id, :only_path => false), 
+    "data" => {
+      "unique_id" => person.id,
+      "row_height" => 90, 
+      "padding" => 4, 
+      "image_size"=> [60,70],
+      "image_alignment" => 0, 
+      "title_lines" => Floki::TITLE_LINES, 
+      "title_size" => Floki::TITLE_SIZE,
+      "title_color" => Floki::TITLE_COLOR,
+      "text_size" => Floki::TEXT_SIZE, 
+      "text_color" => Floki::TEXT_COLOR,
+      "footer_alignment" => 1,
+      "back_normal_color" => Floki::BACK_COLOR,
+      "back_highlight_color" => Floki::BACK_HIGHLIGHT_COLOR, 
+      "ttl" => 600,
+      "download_if_virgin" => true, 
+      "allow_manual_reload" => true,
+      "refresh_on_broadcasts" => ["update_users"]
+    }}
+                                                                                                  
+  h["image"] = person.photo.present? ? (request.protocol + request.host_with_port + person.photo.url('thumb_70')) : (request.protocol + request.host_with_port + asset_path("default/faceless_avatar_thumb_70.png"))
+  people << h.to_json		
+end  
+
+%>
+
+{
+  "items": [
+    <%=raw people.join(", \n") %>
+  ],
+  "to_delete": [<%= Politician.where({:status => 'ex-cargo'}).map(&:id).join(',') %>]
+}

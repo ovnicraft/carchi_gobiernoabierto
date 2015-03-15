@@ -1,0 +1,16 @@
+<%= render :partial => 'tabs' %>
+
+<h1>Modificando comentario</h1>
+
+<%= form_for @comment, url: do_reject_admin_comment_path(@comment), html: {method: :put} do |f| %>
+  <%= error_messages(f.object) %>
+  <%= hidden_field_tag :return_to, params[:return_to] || request.referer %>
+  <p>
+    Tienes la opción de enviar al comentarísta un email diciéndole que su comentario ha sido rechazado por
+    no ajustarse a las Normas de uso
+  </p>
+  <p>
+    <%= submit_tag "Rechazar y enviar email", :name => "reject_and_mail" %>
+    <%= submit_tag "Sólo rechazar", :name => "reject" %>
+  </p>
+<% end %>

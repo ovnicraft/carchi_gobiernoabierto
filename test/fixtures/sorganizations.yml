@@ -1,0 +1,6 @@
+social_org:
+  name_es: Irekia
+  name_eu: Irekia
+  name_en: Irekia
+  department_id: <%= ActiveRecord::FixtureSet.identify(:lehendakaritza) %>
+  

@@ -1,0 +1,44 @@
+# Fichero de configuración de parámetros específicos de Open Irekia
+
+default: &default
+  multimedia: &default_multimedia
+    # El contenido multimedia (vídeos, fotos y audios) de noticias, páginas y debates
+    # no se suben mediante formularios web sino copiándolos en el "directorio multimedia"
+    # de cada item, que se define al crear dicho item.
+    #
+    # Directorio raíz donde se colocan los contenidos multimedia de Document, Video y Photo
+    path: <%= File.join(Rails.root, 'public', 'data') %>
+    # URL del servidor que sirve el contenido multimedia que se sube al directorio anterior
+    # Si no se especifica se utiliza la IP pública del servidor
+    # url: 'http://localhost:3000/data'
+
+    # Directorio donde exportar en formato ePub y Mobi
+    news_epub_path: <%= File.join(Rails.root, 'epub') %>
+
+  external_urls:
+    # URL donde has instalado tu copia de Open Argazki (opcional)
+    # argazki_uri: "http://localhost:3500"
+    # URL del servicio de escucha activa (opcional). 
+    # Requiere también activar el módulo de headlines en config/settings.yml y configurar elasticsearch.albiste_url en config/secrets.yml
+    # albiste_uri: "http://localhost:4000"
+    # URL de la "Guía de comunicación"
+    # guia_uri: "http://localhost:4500"
+  # URL del servidor de streaming (opcional). Requiere activar el módulo de streaming en config/settings.yml
+  # rtmp_server: "rtmp://localhost:1935/live"
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+  multimedia:
+    <<: *default_multimedia
+    path: <%= File.join(Rails.root, 'test', 'data') %>
+
+production:
+  <<: *default
+  multimedia:
+    <<: *default_multimedia
+
+staging:
+  <<: *default

@@ -1,0 +1,6 @@
+<% unless @context.is_a?(User) %>
+<%= render :partial => '/events/calendar', :locals => {:target => :nav}  %>
+<% end %>
+<ul class='nav-list'>
+  <li><%= link_to t('politicians.title2'), politicians_path %></li>
+</ul>

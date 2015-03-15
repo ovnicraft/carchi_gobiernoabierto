@@ -1,0 +1,62 @@
+  <table class="admin">
+    <tr>
+      <th width="20%"><%= t('organizations.department') %>:</th>
+      <td width="80%">
+        <%= select_tag "document[organization_id]", dept_select(@document.organization_id) %>
+      </td>
+    </tr>
+    
+    <% if @document.new_record? %>
+    <tr>
+      <th><%= t('sadmin.news.dir_multimedia') %></th>
+      <td>
+        <%= f.text_field :multimedia_dir %>
+        <div class="hint"><%= t('sadmin.news.solo_letras') %></div>
+        <%= render :partial => "/admin/shared/multimedia_help" %>
+      </td>
+    </tr>
+    <% end %>
+
+    <!-- <tr>
+      <th>Sort_order</th>
+      <td><%= f.text_field :position, :size => "4" %></td>
+    </tr> -->
+
+
+    <tr>
+      <th>
+        Tags en castellano<br/>
+        <span class="hint">(Separados por coma)</span>
+      </th>
+      <td>
+        <%= text_area_with_auto_complete :document, :tag_list_without_areas, {:size => "60x5"}, {:tokens => ',', :indicator => "spinner"} %>
+        <span id="spinner" style = 'display:none'>
+        <%= image_tag 'admin/spinner.gif' %>
+        </span>
+        <%= render :partial => "/admin/tags/help", :locals => {:object => @document} %>
+      </td>
+    </tr>
+  </table>
+  
+  <table class="admin">
+    <tr>
+      <th><%= t('sadmin.news.borrador') %></th>
+      <td>
+        <%= f.check_box :draft, :onclick => "togglePublicationDateVisibility('document', '#{t('guardar')}', '#{t('publicar')}')"%>
+        <label for="document_draft"><%= t('si') %></label>
+      </td>
+    </tr>
+
+  </table>
+
+  <p id="publication_date" style="display:<%= @document.is_private? ? 'none' : 'block' %>;">
+    <b><%= t('sadmin.news.fecha_publicacion') %></b>
+      <%= f.datetime_select :published_at, {:start_year => 2009}, 
+                                           {:onchange => "PastOrFuture('document', '#{t('programar')}', '#{t('publicar')}')"} %>
+  </p>
+
+
+  <p class="buttons">
+    <%= submit_tag t('guardar') %>
+    <%= link_to t("cancelar"), :back, :class => "cancel_link" %>
+  </p>

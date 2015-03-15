@@ -1,0 +1,11 @@
+<% active_arguments = params[:action].eql?('arguments') %>
+<div class="submenu">
+  <ul>
+    <li class="<%= 'active' unless active_arguments %>">
+      <%= link_to_if active_arguments, t('admin.proposals.peticiones'), admin_proposals_path() %>
+    </li>
+    <li class="<%= 'active' if active_arguments %>">
+      <%= link_to_unless active_arguments, t('admin.proposals.argumentos'), arguments_admin_proposals_path() %>
+    </li>
+  </ul>
+</div>

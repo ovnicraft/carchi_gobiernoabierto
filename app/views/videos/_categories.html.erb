@@ -1,0 +1,42 @@
+<div class='section container videos index'>
+  <%= render :partial => '/shared/context', :locals => {:type => 'videos'} %>
+  <div class='section_main row-fluid'>
+    <div class='section_content span12'>
+      <div class='videos index'>
+
+        <%= render :partial => "featured" if @featured_video %>
+        
+        <% if Area.count > 0 %>
+        <div class='section_heading'><%= t('videos.videoteca').upcase %></div>
+        <div class='gob_categories'>
+          <div class='categories areas'>
+            <% Area.ordered.in_groups_of(3, false).each do |area_group| %>
+              <div class='row-fluid'>
+                <% area_group.each_with_index do |area, i| %>
+                  <%= render :partial => '/videos/category', :locals => {:category => area} %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>  
+        </div>
+        <% end %>
+
+        <div class='section_heading'><%= t('videos.otros_canales') %></div>        
+        <div class='other_categories'>
+          <div class='categories'>
+            <% if Video.categories.length > 0 %>
+            <% Video.categories.in_groups_of(3, false).each do |category_group| %>
+              <div class='row-fluid'>
+                <% category_group.each_with_index do |category, i| %>
+                  <%= render :partial => '/videos/category', :object => category %>
+                <% end %>
+              </div>
+            <% end %>
+            <% end %>
+          </div>
+        </div>    
+
+      </div>
+    </div>
+  </div>
+</div>

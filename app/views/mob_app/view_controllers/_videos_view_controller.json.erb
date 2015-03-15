@@ -1,0 +1,34 @@
+<%- data = {
+  "unique_id" => unique_id,
+  "row_height" => 76,
+  "padding" => 4,
+  "image_size" => [85, 50],
+  "title_lines" => 3,
+  "title_size" => 15,
+  "title_color" => [0, 91, 140],
+  "text_size" => 12,
+  "text_color" => [64, 64, 64],
+  "footer_alignment" => 1,
+  "back_normal_color" => [255, 255, 255],
+  "back_highlight_color" => [186, 196, 210],
+  "ttl" => 600,
+  "download_if_virgin" => true,
+  "allow_manual_reload" => true
+} 
+
+if data_options.present?
+  data.merge!(data_options)
+end
+-%>
+
+{"id": <%= id %>, 
+"class_type": "News_view_controller",
+"sort_id": <%= sort_id %>, 
+"new_window": false, 
+"section_ids": [20],
+"title": "<%= Video.model_name.human(:count => 2).capitalize %>", 
+"body": "",
+"url": "<%= url %>",
+"image": "<%= request.protocol + request.host_with_port + asset_path('floki/irekia_77_videos.png') %>",
+"data": <%=raw data.to_json %>
+}

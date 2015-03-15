@@ -1,0 +1,5 @@
+<%- if response.status.eql?(200) -%>
+  $("tag_row_<%= @tag.id %>").replace("<%= escape_javascript(render partial: '/admin/tags/tag_row', locals: {tag: @tag}) %>");
+<%- else -%>
+  alert("El estado del tag no se ha actualizado")
+<%- end -%>

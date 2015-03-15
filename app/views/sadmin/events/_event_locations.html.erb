@@ -1,0 +1,5 @@
+<ul class="event_locations">
+  <% event_locations.each do |l| %>
+  <li><span class="place"><%= l.place %></span><%= "," unless  l.address.blank? %> <span class="address"><%= l.address %></span><%= "," unless l.city.blank?  %> <span class="city"><%= l.city %></span></li>
+  <% end %>
+</ul>

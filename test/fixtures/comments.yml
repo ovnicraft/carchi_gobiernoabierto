@@ -1,0 +1,247 @@
+aprobado_castellano:
+  commentable_type: Document
+  commentable: commentable_news
+  name: MyString
+  email: myemail@someplace.com
+  body: Comentario aprobado en castellano
+  status: aprobado
+  locale: es
+  user: visitante
+  is_official: false
+
+rechazado_castellano:
+  commentable_type: Document
+  commentable: commentable_news
+  name: MyString
+  email: myemail@someplace.com
+  body: Comentario rechazado en castellano
+  status: rechazado
+  locale: es
+  user: visitante
+  is_official: false
+  
+pendiente_castellano:
+  commentable_type: Document
+  commentable: commentable_news
+  name: MyString
+  email: myemail@someplace.com
+  body: Comentario pendiente en castellano
+  status: rechazado
+  locale: es
+  user: visitante
+  is_official: false
+  
+spam_castellano:
+  commentable_type: Document
+  commentable: commentable_news
+  name: MyString
+  email: myemail@someplace.com
+  body: Comentario spam en castellano
+  status: spam
+  locale: es
+  user: visitante
+  is_official: false
+  
+aprobado_euskera:
+  commentable_type: Document
+  commentable: commentable_news
+  name: MyString
+  email: myemail@someplace.com
+  body: Comentario aprobado en euskera
+  status: aprobado
+  locale: eu
+  user: visitante
+  is_official: false
+  
+rechazado_euskera:
+  commentable_type: Document
+  commentable: commentable_news
+  name: MyString
+  email: myemail@someplace.com
+  body: Comentario rechazado en euskera
+  status: rechazado
+  locale: eu
+  user: visitante
+  is_official: false
+
+pendiente_euskera:
+  commentable_type: Document
+  commentable: commentable_news
+  name: MyString
+  email: myemail@someplace.com
+  body: Comentario pendiente en euskera
+  status: rechazado
+  locale: eu
+  user: visitante
+  is_official: false
+
+spam_euskera:
+  commentable_type: Document
+  commentable: commentable_news
+  name: MyString
+  email: myemail@someplace.com
+  body: Comentario spam en euskera
+  status: spam
+  locale: eu
+  user: visitante
+  is_official: false
+
+aprobado_de_interior:
+  commentable_type: Document
+  commentable: translated_news
+  name: MyString
+  email: myemail@someplace.com
+  body: Comentario aprobado en castellano
+  status: aprobado
+  locale: es
+  user: visitante
+  is_official: false
+
+<% if Settings.optional_modules.proposals %>
+comentario_aprobado_en_propuesta:
+  commentable_type: Proposal
+  commentable: approved_and_published_proposal
+  name: Visitante
+  email: myemail@someplace.com
+  body: Comentario aprobado en propuesta
+  status: aprobado
+  locale: es
+  user: visitante
+<% end %>
+
+comentario_aprobado_en_video:
+  commentable_type: Video
+  commentable: every_language
+  name: Visitante
+  email: myemail@someplace.com
+  body: Comentario aprobado en video
+  status: aprobado
+  locale: es
+  user: visitante
+  is_official: false
+
+comentario_aprobado_en_pagina:
+  commentable_type: Document
+  commentable: page_in_menu
+  name: Visitante
+  email: myemail@someplace.com
+  body: Comentario aprobado en pagina
+  status: aprobado
+  locale: es
+  user: visitante
+  is_official: false
+
+comentario_aprobado_en_evento:
+  commentable_type: Document
+  commentable: passed_event
+  name: Visitante
+  email: myemail@someplace.com
+  body: Comentario aprobado en evento
+  status: aprobado
+  locale: es
+  user: visitante
+  is_official: false
+  
+<% if Settings.optional_modules.debates %>
+comentario_aprobado_en_debate:
+  commentable_type: Debate
+  commentable: debate_completo
+  name: Visitante
+  email: myemail@someplace.com
+  body: Comentario aprobado en debate
+  status: aprobado
+  locale: es
+  user: visitante
+  is_official: false
+<% end %>
+
+official_comment:
+  commentable_type: Document
+  commentable: commentable_news
+  name: "Comentarios oficiales"
+  email: oficial@efaber.net
+  body: Comentario oficial
+  status: aprobado
+  locale: es
+  user: comentador_oficial
+  is_official: true
+
+aprobado_euskadinet:
+  commentable_type: "ExternalComments::Item"
+  commentable: euskadinet_item1
+  name: Visitante  
+  body: "Comentario en euskadi.net"
+  status: aprobado
+  locale: es
+  user: visitante
+  is_official: false
+
+pendiente_euskadinet:
+  commentable_type: "ExternalComments::Item"
+  commentable: euskadinet_item1
+  name: Visitante  
+  body: "Comentario en euskadi.net"
+  status: pendiente
+  locale: es
+  user: visitante
+  is_official: false
+
+rechazado_euskadinet:
+  commentable_type: "ExternalComments::Item"
+  commentable: euskadinet_item1
+  name: Visitante  
+  body: "Comentario en euskadi.net"
+  status: rechazado
+  locale: es
+  user: visitante
+  is_official: false
+
+aprobado_emakunde:
+  commentable_type: "ExternalComments::Item"
+  commentable: emakunde_item1
+  name: Visitante  
+  body: "Comentario en emakunde.euskadi.net"
+  status: aprobado
+  locale: es
+  user: visitante
+  is_official: false
+  
+aprobado_euskadi_net_es:
+  commentable_type: "ExternalComments::Item"
+  commentable: euskadinet_item_commentable_irekia_news
+  name: Visitante  
+  body: "Comentario en euskadi.net en castellano"
+  status: aprobado
+  locale: es
+  user: visitante
+  is_official: false
+
+aprobado_euskadi_net_eu:
+  commentable_type: "ExternalComments::Item"
+  commentable: euskadinet_item_commentable_irekia_news_eu
+  name: Visitante  
+  body: "Comentario en euskadi.net en euskera"
+  status: aprobado
+  locale: es
+  user: visitante
+  is_official: false
+
+aprobado_programa_es:
+  commentable_type: "ExternalComments::Item"
+  commentable: programa_item_es
+  name: Visitante  
+  body: "Comentario en programa.irekia.euskadi.net"
+  status: aprobado
+  locale: es
+  user: visitante
+  is_official: false
+
+aprobado_programa_eu:
+  commentable_type: "ExternalComments::Item"
+  commentable: programa_item_eu
+  name: Visitante  
+  body: "Comentario en programa.irekia.euskadi.net"
+  status: aprobado
+  locale: eu
+  user: visitante
+  is_official: false

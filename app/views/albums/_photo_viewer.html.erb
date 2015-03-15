@@ -1,0 +1,46 @@
+<!-- CAUTION!! Changing HTML and classes here can be very dangerous  -->
+<% photos ||= [] %>
+
+<%= init_jquery_tools_scrollable %>
+<%= init_photo_video_viewer(:true) %>
+
+<div class='photo_video_viewer slideshow rs_skip'>
+  <div class="tab-content pill-content">
+
+    <div class="tab-pane x_viewer active" id="photo_viewer">
+      <% fphoto = album.cover_photo || album.photos.ordered_by_title.first %>
+      <div class='view_container'>
+        <div class="image_wrap <%= fphoto.orientation %>">
+          <% if fphoto.present? -%>
+            <%= image_tag fphoto.version(:n770) %>
+          <% else -%>
+            <%= image_tag("album_cover.png")%>
+          <% end -%>            
+        </div>      
+        <div class='viewer_carousel'>
+          <%= show_toggle_carousel_links('photos') %>
+          <div class='thumb_viewer_carousel photos'>
+            <% carousel_widget({:target => 'viewer'}) do %>
+              <% ([fphoto] + photos).each_with_index do |photo, index| %>
+                <div class='item_thumb <%= photo.orientation %>'>  
+                  <%= link_to image_tag(photo.version(:n70)), photo.version(:n770), :class => "item_#{index} #{photo.orientation} #{index == 0 ? 'active' : 'passive'}" %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class='viewer_footer' style='display:none'>
+        <% photos.each_with_index do |photo, index| %>
+          <div class='item <%= "item_#{index}" %> <%= index == 0 ? "active" : "passive" %>'>
+            <div class='caption'>
+              <span class="title"><%= photo.title %></span>
+              <span class="source"><%= "#{t('shared.source')}: #{Settings.site_name}" %></span>
+            </div> 
+          </div> 
+        <% end %>
+      </div>
+    </div>
+    
+   </div> 
+</div>

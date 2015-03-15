@@ -1,0 +1,21 @@
+
+<%= form_for @event, :url => sadmin_events_path do |f| %>
+  <%= render :partial => "form", :locals => {:f => f} %>
+  
+  <div class="warning" id="warning">
+    <%=raw t('sadmin.events.new_event_warning', :checkbox_text => t('sadmin.events.notify_journalists')) %>
+  </div>
+  
+  <p style="clear:both;text-align:center;">
+    <%= submit_tag t('sadmin.events.aceptar'), :id => "submit_button", :class => "submit_button" %>
+  </p>
+  
+<% end %>
+
+
+<script type="text/javascript">
+  EventAlerts.has_sent_alerts = false;
+  EventAlerts.must_confirm = false;
+  EventAlerts.confirm_message = '<%= t('sadmin.events.seguro_guardar') %>';
+  EventAlerts.saving_message = '<%= t('sadmin.guardando') %>';
+</script>

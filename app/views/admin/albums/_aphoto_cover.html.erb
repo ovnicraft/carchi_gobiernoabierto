@@ -1,0 +1,7 @@
+<p id="photo_cover_<%= aphoto.id %>" class="photo_cover">
+<% if aphoto.cover_photo? %>
+  <b>Foto de portada</b>
+<% else %>
+  <%= link_to "Elegir para portada", choose_cover_admin_album_path(:id => @album.id, :photo_id => aphoto.photo.id), data: {remote: true}, method: :post %>
+<% end %>
+</p>

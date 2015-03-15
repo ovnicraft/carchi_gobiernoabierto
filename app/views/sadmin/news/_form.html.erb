@@ -1,0 +1,124 @@
+<table class="admin" width="100%">
+  <%= error_messages(f.object) %>
+  <tr>
+    <th width="20%"><%= t('sadmin.news.departamento_u_organismo') %></th>
+    <td>
+      <%= select_tag "news[organization_id]", dept_select(@news.organization_id, :include_blank => true) %>
+    </td>
+  </tr>
+
+  <tr>
+    <th width="20%"><%= t('sadmin.news.area') %></th>
+    <td>
+      <% if @news.new_record? %>
+        <%= select_tag "news[area_tags][]", area_select(@news.area_tag, :include_blank => true) %>
+      <% else %>
+         <%= @news.areas.map {|a| a.name}.join(", ") %>
+      <% end %>
+    </td>
+  </tr>
+
+  <tr>
+    <th><%= t('sadmin.news.Politicos') %>:<br />
+    </th>
+    <td>
+      <%= text_field_with_auto_complete :news, :politicians_tag_list, {:size => "100"}, {:tokens => ',', :indicator => "spinner"} %>    
+      <span id="spinner" style = 'display:none'><%= image_tag 'admin/spinner.gif' %></span><br/>
+      <span class="hint"><%=raw t('sadmin.documents.politicians_hint') %></span>
+    </td>
+  </tr>
+
+  <tr>
+    <th><%= t('sadmin.news.Otros_invitados_en', :lang => "Castellano") %>:</th>
+    <td>
+      <%= f.text_field :speaker_es, :size => 60 %><br/>
+      <span class="hint"><%=raw t('sadmin.documents.speaker_hint') %></span>
+    </td>
+  </tr>
+  
+  <tr>
+    <th><%= t('sadmin.news.titulo_en', :lang => "Castellano") %></th>
+    <td>
+      <%= f.text_field :title_es, :size => 60 %>
+    </td>
+  </tr>
+
+  <tr>
+    <th >
+      <%= t('sadmin.news.texto_en', :lang => "Castellano") %> 
+      (<%= link_to t('esconder'), "#", :onclick => "toggleBodyContainer(this, \"body_es_container\", \"#{t('mostrar')}\", \"#{t('esconder')}\");return false;", :id => "body_toggler" %>)
+    </th>
+    <td id="body_es_container">
+      <%= f.text_area :body_es, :size => "90x20", :class => "mceEditor" %>
+      <div class="hint"><%=raw t('sadmin.do_not_copy_paste') %></div>
+    </td>
+  </tr>
+
+  <tr>
+    <th><%= t('sadmin.news.foto_portada') %></th>
+    <td>
+      <%= f.file_field :cover_photo %>
+      <div class="hint"><%=raw t('sadmin.news.foto_portada_size') %></div>
+      <% if @news.has_cover_photo? %>
+      <div>
+        <%= f.check_box :delete_cover_photo %>
+        <label for="news_delete_cover_photo"><%= t('borrar') %></label>
+        <%= link_to(t('sadmin.news.foto_actual'), @news.cover_photo.url(:n320)) %>
+      </div>
+      <% end %>
+    </td>
+  </tr>
+  
+  <tr>
+    <th><%= t('sadmin.news.alt_foto_portada_en', :lang => "Castellano") %></th>
+    <td>
+      <%= f.text_field :cover_photo_alt_es %>
+    </td>
+  </tr>
+  
+  <% if is_admin? && @news.new_record? %>
+  <tr>
+    <th><%= t('sadmin.news.dir_multimedia') %></th>
+    <td>
+      <%= f.text_field :multimedia_dir, :value => @news.multimedia_dir %>
+      <div class="hint"><%= t('sadmin.news.multimedia_dir_explain') %></div>
+      <%= render :partial => "/admin/shared/multimedia_help" %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+
+<hr/>
+
+<table class="admin">  
+  <tr>
+    <th><%= t('sadmin.news.visibilidad') %></th>
+    <td>
+      <% if is_admin? %>
+        <%= f.check_box :consejo_news_id, {}, 19841984, "" %>
+        <%= f.label :consejo_news_id, t('sadmin.news.esconder_en_el_home') %>
+      <% end %>
+    </td>
+  </tr>
+
+
+  <tr>
+    <th><%= t('sadmin.news.borrador') %></th>
+    <td>
+      <%= f.check_box :draft, :onclick => "togglePublicationDateVisibility('news', '#{t('guardar')}', '#{t('publicar')}')" %>
+      <label for="news_draft"><%= t('si') %></label>
+    </td>
+  </tr>
+  
+</table>
+
+<p id="publication_date" style="display:<%= @news.is_private? ? 'none' : 'block' %>;">
+  <b><%= t('sadmin.news.fecha_publicacion') %></b>
+    <%= f.datetime_select :published_at, {:start_year => 2009}, 
+                                         {:onchange => "PastOrFuture('news', '#{t('programar')}', '#{t('publicar')}')"} %>
+</p>
+
+
+<p style="clear:both;text-align:center;">
+  <%= submit_tag t('guardar'), :disable_with => t('sadmin.guardando'), :class => "submit_button" %>
+</p>

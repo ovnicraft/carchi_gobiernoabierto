@@ -1,0 +1,32 @@
+<%= render 'submenu'%>
+
+<h2>Boletines</h2>
+
+
+<p><b>Nº suscriptores:</b> <%= Bulletin.subscribers.count %></p>
+
+<%= form_tag bulletin_admin_stats_path, :method => :get do %>
+<table class="stats_container">
+  <tr>
+    <td>
+      <%= render 'date_select' %>
+      <table class="stats" cellspacing="0" cellpadding="0" style="width:50%">
+        <thead>
+          <tr class="title">
+            <th>Nº boletines</th>
+            <th>Nº aperturas</th>
+            <th>Nº clicks</th>
+          </tr>
+        </thead>
+        <tr class="title">
+          <td class="number"><%= number_with_delimiter @bulletin_counter  %></td>
+          <td class="number"><%= number_with_delimiter @opening_counter %></td>
+          <td class="number"><%= number_with_delimiter @click_counter %></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<% end %>
+
+<p>Estadísticas individuales de cada boletín, en <%= link_to "el archivo de boletines", archive_admin_bulletins_path%>.</p>

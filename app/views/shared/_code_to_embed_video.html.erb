@@ -1,0 +1,13 @@
+<% width = 320 %>
+<% height = video_info[:display_format].eql?('169') ? 180 : 240  %>
+
+<% l ||= "es" %>
+<object width="<%= width %>" height="<%= height %>" data="https://<%= ActionMailer::Base.default_url_options[:host] %><%= flowplayer_info[:path] %>" type="application/x-shockwave-flash">
+  <param name="movie" value="http://<%= ActionMailer::Base.default_url_options[:host] %><%= flowplayer_info[:path] %>" /><param name="allowfullscreen" value="true" />
+  <param name="allowscriptaccess" value="always" />
+  <param name="flashvars" value='config={"key":"<%= video_info[:fp_key] %>",
+    "playlist":["<%= video_info[:preview_img] %>", {"url":"<%= video_info[:video] %>?emb=1","autoPlay":false,"provider":"lighttpd"}],
+    "canvas":{"backgroundColor":"#1180B8"},
+    "plugins":{"lighttpd":{"url":"http://<%= ActionMailer::Base.default_url_options[:host] %><%= flowplayer_info[:streaming_plugin] %>"},"gatracker":{"url":"http://<%= ActionMailer::Base.default_url_options[:host] %><%= flowplayer_info[:gatracker_plugin] %>","accountId": "UA-10951282-1"}}}' />
+</object>
+<p style="color:#BBB"><%= I18n.t('site.cite_irekia', :site_name => Settings.site_name, :publisher_name => Settings.publisher[:name], :locale => l) %></p>

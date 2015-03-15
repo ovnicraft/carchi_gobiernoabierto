@@ -1,0 +1,50 @@
+<%- locale = @event_alert.spammable.alerts_locale || "en" -%>
+<%- event = @event_alert.event -%>
+<p>
+  <%= t('notifier.informamos_sobre_evento', :site_name => Settings.site_name, :locale => locale) %>
+
+  <%- if @event_alert.exists_previous_sent_alert? -%>
+    <%= t('notifier.event_has_changed', :locale => locale) %><br/>
+  <%- end -%>
+  <%- if event.deleted? -%>
+    - <%= t('notifier.event_deleted', :locale => locale) %><br/>
+  <%- else -%>
+  <%-  if event.streaming_live? || @event_alert.notify_about.eql?('streaming_live') -%>
+    - <%= t("notifier.event_streaming_live_#{event.streaming_live?}", :locale => locale) %><br/>
+    <%- if event.streaming_live? && %w(StreamingOperator RoomManager).include?(@event_alert.spammable.class.to_s)-%>
+      - <%= t('notifier.event_streaming_live_in', :room => event.stream_flow.send("title_#{locale}").present? ? event.stream_flow.send("title_#{locale}") : event.stream_flow.title, :where => event.streaming_for_pretty(locale), :locale => locale) %><br/>
+    <%- end -%>
+  <%- end -%>
+  <%- if event.only_photographers? -%>
+    - <%= t('events.solo_medios_graficos', :locale => locale) %><br/>
+  <%- elsif event.all_journalists? -%>
+    - <%= t('events.todos_los_medios', :locale => locale) %><br/>
+  <%- end -%>
+    <%- if event.has_related_news? && @event_alert.spammable.can_access?('news')  -%>
+      - <%= !event.related_news.published? ? t('sadmin.events.related_news_draft_at', :locale => locale) : t('sadmin.events.related_news_at', :locale => locale) %> <%= event.related_news_title %>, <%= "(#{url_for(:controller => "/sadmin/news", :action => "show", :id => event.related_news_id, :locale => locale)})" %><br/>
+  <%- end -%>
+  <%- end -%>
+</p>
+
+<p>
+  <%= t('sadmin.events.Ultimos_datos', :locale => locale) %>:<br />
+  ---------------------------------------<br />
+  <%= event.send("title_#{locale}").present? ? event.send("title_#{locale}") : event.title %><br />
+
+  <%= t('events.fecha', :locale => locale) %>: <%= event.pretty_dates(locale) %><br />
+  <%= t('events.lugar', :locale => locale) %>: <%= h event.pretty_place %><br />
+  <%= t('events.speaker', :locale => locale) %>: <%= h event.attendee_names(locale) %><br />
+  <%= event.organization.is_a?(Department) ? t('organizations.department', :locale => locale) : t('organizations.organism', :locale => locale) %>: <%= h event.organization.send("name_#{locale}") %><br />
+  <%- if @event_alert.spammable.is_a?(Journalist) -%>
+    <%= t('site.mas_informacion', :locale => locale) %>: <%= url_for(:controller => "events", :action => "show", :id => event, :locale => locale, :only_path => false) %><br />
+  <%- else -%>
+    <%= t('site.mas_informacion', :locale => locale) %>: <%= url_for(:controller => "/sadmin/events", :action => "show", :id => event, :locale => locale, :only_path => false) %><br />
+  <%- end -%>
+  ---------------------------------------<br />
+</p>
+
+<p>
+  <%= t('notifier.nota_baja_alertas', :link => url_for(:controller => "account", :action => "show", :locale => locale, :only_path => false), :locale => locale) %>
+</p>
+
+<%= render :partial => '/notifier/footer', :locals => {:locale => locale} %>

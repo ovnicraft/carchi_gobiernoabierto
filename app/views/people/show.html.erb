@@ -1,0 +1,11 @@
+<div class="one_person" style="width:400px">
+  <div>
+    <%= image_tag(@person.public_photo, :alt => h(@person.public_name), :class => 'clear') %>
+ 
+  </div>
+  
+  <%- if @person.url.present? -%>
+  <p class="url"><%= link_to @person.url, @person.url, :rel => "external" %></p>
+  <%- end -%>
+  
+</div>

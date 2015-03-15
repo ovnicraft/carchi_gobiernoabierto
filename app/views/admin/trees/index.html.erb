@@ -1,0 +1,21 @@
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+
+<% for tree in @trees %>
+  <tr>
+    <td><%=h tree.name_es %></td>
+    <td><%=h tree.name_eu %></td>
+    <td><%= link_to 'Show', admin_tree_path(tree) %></td>
+    <td><%= link_to 'Edit', edit_admin_tree_path(tree) %></td>
+    <td><%= link_to 'Destroy', admin_tree_path(tree), data: {confirm: 'Are you sure?'}, method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<ul class="edit_links">
+  <li><%= link_to 'New tree', new_admin_tree_path %></li>
+</ul>

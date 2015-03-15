@@ -1,0 +1,52 @@
+<%= render :partial => "/sadmin/news/edit_links" %>
+
+<p>
+  Los vídeos flv depositados en el directorio multimedia de cada noticia, son importados
+  automáticamente en la videoteca con ogov::include_new_videos_in_webtv. Para estos vídeos 
+  se pueden aportar subtítulos en formato .srt
+</p>
+
+<% for_every_locale do |code, lang| %>
+  <a name="l_<%= code %>"></a>
+  <div class="document_show2">
+  
+    <h2><%= lang %></h2>
+    
+    <% code = code.to_sym %>
+    <% if @videos[code].present? %>
+      <% @videos[code].to_a.each_with_index do |path, i| %>
+        <div class="flv_row">
+          <%  video_info = flv_video_info(path, code) %>
+          <p><b>URL: <%= video_info[:video] %></b></p>
+          <p>
+            <% if video_info[:captions_url].present? %>
+              <ul class="edit_links">
+                <li>Subtítulos: <%= link_to(video_info[:captions_url].split("/").last.split("?").first, video_info[:captions_url], :class => "publish") %></li>
+                <li><%= link_to(t('sadmin.subtitles.sustituir'), "#", :onclick => "$(this).toggle(); $('form_#{code}_#{i}').toggle();return false;", :class => "edit") %></li>
+                <% if video_info[:webtv_id].present? %>
+                  <% if video = Video.find(video_info[:webtv_id]) %>
+                    <% if video.send("subtitles_#{code}").exists? %>
+                      <li><%= link_to t("sadmin.eliminar"), delete_subtitles_admin_video_path(:id => video_info[:webtv_id], :lang => code), :method => :post, :confirm => t('sadmin.estas_seguro'), :class => "delete" %></li>
+                    <% else %>
+                      <li><span class="info"><%= t('sadmin.subtitles.se_usan_los_subtitulos_por_defecto') %></span></li>
+                    <% end %>   
+                  <% end %>   
+                <% end %>
+              </ul>              
+            <% else %>
+              <ul class="edit_links">
+                <li><span class="subtitles_false"><%=  "Subtítulos no disponibles"  %></span></li>
+                <li><%= link_to(t('sadmin.subtitles.subir'), "#", :onclick => "$(this).toggle(); $('form_#{code}_#{i}').toggle();return false;", :class => "edit") %></li>
+              </ul>
+            <% end %>
+          </p>
+          <div class="subtitles_form" id="form_<%= code %>_<%= i %>" style="display: none">
+            <%= render :partial => '/admin/videos/subtitles_form', :locals => {:video_info => video_info, :locale => code} %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p><%= t('sadmin.subtitles.no_hay_traduccion') %></p>
+    <% end %>
+  </div>
+<% end %>

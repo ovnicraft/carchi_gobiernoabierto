@@ -1,0 +1,12 @@
+<h1>Nuevo organismo</h1>
+
+<%= form_for @organization, as: :organization, :url => admin_organizations_path do |f| %>
+  <%= hidden_field_tag :d, params[:d] %>
+  
+  <%= render :partial => "form", :locals => {:f => f} %>
+
+  <p>
+    <%= f.submit "Guardar" %>
+  </p>
+<% end %>
+

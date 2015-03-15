@@ -1,0 +1,24 @@
+<%- @title = @title_for_head = t('events.en_directo') -%>
+
+<div class="article activity with_footer">
+  
+  <div class="inner">
+
+    <div class="left">
+
+      <% @flows.each do |sf| %>
+      <div class="flow_data">
+        <img src="<%= sf.photo_path %>" alt="<%= t('events.streaming_live').capitalize %>" />
+        <div class="room_info">
+          <%= sf.title %>
+        </div>
+        <div class="go2streaming"><%= link_to(t('events.ver_streaming'), streaming_path(sf)) %></div>
+      </div>
+      <% end %>
+   </div>
+  </div>
+</div>  
+
+<% content_for :css_data do %>
+  <%= stylesheet_link_tag 'public/events' %>
+<% end %>

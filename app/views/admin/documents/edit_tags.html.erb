@@ -1,0 +1,9 @@
+<h2><%= h @document.title %></h2>
+
+<%= form_for @document, :as => :document, :url => admin_document_path(@document), :html => {:method => :put} do |f| -%>
+  <%= error_messages(f.object) %>
+  <%= hidden_field_tag 'return_to', 'edit_tags' %>
+  <%= hidden_field_tag "w", @w || "multimedia" %>
+  <%= render :partial => "#{@t}_common", :locals => {:f => f} %>
+<%- end -%>  
+

@@ -1,0 +1,34 @@
+<td>
+  <span id="status_<%= comment.id %>"><%=h comment.status %></span>
+  <div id="status_links_<%= comment.id %>" class="status_links">
+    <% if can_edit?("comments") %>
+      <% if comment.rejected? %>  
+        <%= link_to "Aprobar", update_status_admin_comment_path(:id => comment, :do_action => 'approve'), 
+              method: :put, data: {remote: true} %>
+      <% elsif comment.spam? %>
+        <%= link_to "No es spam", update_status_admin_comment_path(:id => comment, :do_action => 'mark_as_ham'), 
+              method: :put, data: {remote: true} %>
+      <% elsif comment.approved? %>
+        <%= link_to "Rechazar?", 
+              reject_admin_comment_path(:id => comment, :comment => {:status => 'rechazado'}) %><br/>
+        <%= link_to "Es spam", update_status_admin_comment_path(:id => comment, :do_action => 'mark_as_spam'), 
+              method: :put, data: {remote: true} %>
+      <% elsif comment.pending? %>
+        <%= link_to "Aprobar", update_status_admin_comment_path(:id => comment, :do_action => 'approve'), 
+              method: :put, data: {remote: true} %><br/>
+        <%= link_to "Rechazar", 
+              reject_admin_comment_path(:id => comment, :comment => {:status => 'rechazado'}) %><br/>
+      
+        <%= link_to "Es spam", update_status_admin_comment_path(:id => comment, :do_action => 'mark_as_spam'), 
+              method: :put, data: {remote: true} %>
+      <% elsif comment.abused? %>
+        <%= link_to "<span style='white-space:nowrap;'>Rechazar denuncias</span>".html_safe, update_status_admin_comment_path(:id => comment, :do_action => 'approve_after_abuse'),
+              method: :put, data: {remote: true} %>    
+      <% end %>
+      <br/><%= link_to "<span>Eliminar</span>".html_safe, admin_comment_path(comment), 
+              method: :delete, data: {remote: true, confirm: '¿Estás seguro?'}, 
+              title: "Eliminar" %>
+    <% end %>
+    
+  </div>
+</td>

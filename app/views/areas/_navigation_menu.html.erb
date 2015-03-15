@@ -1,0 +1,24 @@
+<div class='nav_middle area_nav container' id='middle'>
+  <div class='row-fluid'>
+    <div class='span12 tabs_container'>
+      <ul class='nav nav-tabs nav_middle_tabs area_tabs'>
+        <li class="<%= areas_navigation_menu_class('politicians') %>">
+          <%= link_to t('politicians.title').upcase, area_politicians_path(:area_id => @area, :anchor => 'middle') %>
+        </li>
+        <li class="<%= areas_navigation_menu_class('news') %>">
+          <%= link_to News.model_name.human(:count => 2).upcase, area_news_path(:area_id => @area, :anchor => 'middle') %>
+        </li>
+        <li class="<%= areas_navigation_menu_class('events') %>">
+          <%= link_to Event.model_name.human(:count => 2).upcase, area_events_path(:area_id => @area, :anchor => 'middle') %>
+        </li>
+        <li class="<%= areas_navigation_menu_class('videos') %>">
+          <%= link_to Video.model_name.human(:count => 2).mb_chars.upcase.to_s, area_videos_path(:area_id => @area, :anchor => 'middle') %>
+        </li>
+        <li class="<%= areas_navigation_menu_class('albums') %>">
+          <%= link_to Album.model_name.human(:count => 2).mb_chars.upcase.to_s, area_albums_path(:area_id => @area, :anchor => 'middle') %>
+        </li>
+        <%= render :partial => '/shared/contribution_tabs', :locals => {:span_size => 'span5'} %>
+      </ul>
+    </div>
+  </div>
+</div>

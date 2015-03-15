@@ -1,0 +1,35 @@
+<% @following = get_followings %> 
+
+<div class='section container areas summary intro'>
+  <%= render :partial => '/shared/context', :locals => {:type => 'areas'} %>
+  <h1 class='section_title'><%= @area.name %></h1>
+  <div class='section_main row-fluid'>
+    <div class='section_content span8'>
+      <div class='areas summary'>
+        <h2> <%= Area.human_attribute_name('description') %></h2>
+        <div class="text">
+          <%= simple_format(@area.description) %>
+        </div>
+      </div>  
+    </div>
+    <div class='section_aside span4'>
+      <div class='following_form'>
+        <%- if @following.new_record? -%>
+           <%= render :partial => 'followings/create', :locals => {:item => @area} %>
+        <%- else -%>
+           <%= render :partial => 'followings/destroy', :locals => {:item => @area} %>
+        <%- end -%>
+      </div>
+      <div class='area_proposals_debates'>
+        <ul>
+          <% if Settings.optional_modules.proposals %>
+          <li><%= link_to t('proposals.count', :count => @area.approved_and_published_proposals.count('distinct proposals.id')).html_safe, area_proposals_path(:area_id => @area, :anchor => 'middle') %></li>
+          <% end %>
+          <% if Settings.optional_modules.debates %>
+          <li><%= link_to t('debates.count', :count => @area.debates_count).html_safe, area_debates_path(:area_id => @area, :anchor => 'middle') %></li>
+          <% end %>
+        </ul>
+      </div>  
+    </div>
+  </div>
+</div>

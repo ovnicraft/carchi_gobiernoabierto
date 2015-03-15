@@ -1,0 +1,45 @@
+<%= render 'submenu' %>
+
+<h2>Comentarios en contenidos externos</h2>
+
+<%= form_tag external_comments_admin_stats_path, :method => :get do %>
+  <%= render 'date_select' %>
+<% end %>
+<table class="stats" cellspacing="0" cellpadding="0">
+  <thead>
+    <tr class="title">
+      <th>Departamento</th>
+      <th>Nº items</th>
+      <th>Respuestas oficiales</th>
+      <th>Tiempo medio de respuesta</th>
+      <th>Sin contestar</th>
+      <th>Comentarios<br/>(Original/Twitter)</th>
+    </tr>
+  </thead>
+  <% Department.active.each do |department| %>
+    <% department_finder = @counters_finder.where(["department_id=:department_id", {department_id: department.id}])%>
+    <tr>
+      <td><%= department.name %></td>
+      <td class="number"><%= department_finder.count %></td>
+      <td class="number"><%= department_finder.where("official_comments > 0").sum(:official_comments) %></td>
+      <td class="number"><%= humanize_seconds(department_finder.where("official_comments > 0").average(:answer_time_in_seconds)) %></td>
+      <td class="number"><%= department_finder.where("official_comments = 0").count %></td>
+      <td class="number">
+        <%= number_with_delimiter department_finder.sum(:user_comments)%><br/>
+        (<%= number_with_delimiter department_finder.sum(:not_twitter_comments)%>/<%= number_with_delimiter department_finder.sum(:twitter_comments)%>)
+      </td>
+    </tr>
+  <% end%>
+  <tr class="title">
+    <th>Totales</th>
+    <th class="number"><%= @counters_finder.count %></th>
+    <th class="number"><%= @counters_finder.where("official_comments > 0").sum(:official_comments) %></th>
+    <th class="number"><%= humanize_seconds(@counters_finder.where("official_comments > 0").average(:answer_time_in_seconds)) %></th>
+    <th class="number"><%= @counters_finder.where("official_comments = 0").count %></th>
+    <th class="number">
+      <%= number_with_delimiter @counters_finder.sum(:user_comments)%><br/>
+      (<%= number_with_delimiter @counters_finder.sum(:not_twitter_comments)%>/<%= number_with_delimiter @counters_finder.sum(:twitter_comments)%>)
+    </th>
+  </tr>
+</table>
+

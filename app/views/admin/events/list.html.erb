@@ -1,0 +1,44 @@
+<div style="clear:both; margin:1em 0px;">
+  <% if can_create?("events") %>
+  <ul class="edit_links">
+    <% for_every_locale do |code, lang| %>
+      <%= content_tag(:li, link_to("Crear evento en #{lang}", new_admin_document_path(:lang => code, :t => @t, :year => params[:year], :month => params[:month], :day => params[:day]), :class => "new")) %>
+    <% end %>  
+  </ul>
+  <% end %>
+</div>
+
+<table class="comments" cellspacing="0">
+  <tr>
+    <th><%= "Título" %></th>
+    <th><%= "Fecha de publicación" %></th>
+    <th><%= "Última actualización" %></th>
+    <th>Páginas públicas</th>
+  </tr>
+  
+  <%- @documents.each do |document| -%>
+  <tr>
+    <td>
+      <%= link_to document.title, admin_document_path(document) %><br/>
+      <% if document.draft? %>
+        <span class='draft_notice'>Borrador</span>
+      <% elsif document.published? %>
+        <span class="published_notice">Publicado</span>
+      <% else %>
+        <span class="unpublished_notice">Se publicará el <%=  I18n.localize(document.published_at, :format => :short) if document.published_at %></span>
+      <% end %>
+    </td>
+    <td><%= I18n.localize(document.published_at, :format => :short) if document.published_at %></td>
+    <td><%= I18n.localize(document.updated_at, :format => :short) %></td>
+    <td>
+      <ul class="language_versions">
+        <% for_every_locale do |code, lang| %>
+          <li class="translated_<%= document.translated_to?(code.to_s) %>" title="<%= pretty_translated(document, code) %>">
+            <%= link_to lang, eval("#{@t.singularize}_path(document, :locale => code)"), :class => "public_link" %>
+          </li>
+        <% end %>
+      </ul>
+    </td>
+  </tr>
+  <%- end -%>
+</table>

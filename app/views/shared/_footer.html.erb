@@ -1,0 +1,73 @@
+<% cache("footer_#{I18n.locale}", skip_digest: true) do %>
+<footer>
+  <div id='site_links' class="container donotprint">
+    <div class='row-fluid'>
+      <div class='span6'>
+        <h2 class='footer_title'><%= Settings.site_name %></h2>
+        <div class='row-fluid'>
+          <ul class='nav nav-list span6'>
+            <% if Settings.optional_modules.proposals %>
+            <li><%= link_to t('proposals.title'), proposals_path %></li>
+            <% end %>
+            <li><%= link_to t('news.title'), news_index_path %></li>
+            <li><%= link_to t('events.agenda'), events_url %></li>
+            <li class='nav-header'><%= t('site.rss_y_registro') %></li>
+            <li><%= link_to t('site.rss'), feeds_site_url %></li>
+            <li><%= link_to t('site.newsletter'), bulletin_subscriptions_path %></li>
+            <li><%= link_to t('users.registro_periodistas'), new_journalist_url %></li>
+            <li><%= link_to t('events.rss_agenda'), myfeed_events_url(:format => :ics) %></li>
+          </ul>
+          <ul class='nav nav-list span6'>
+            <li class='nav-header'><%= t('site.videos_y_fotos') %></li>
+            <li><%= link_to t('videos.irekia'), videos_url %></li>
+            <li class='indented'><%= link_to t('videos.irekia_subtitulados'), closed_captions_videos_path %></li>
+            <li><%= link_to t('photos.irekia'), gallery_url %></li>
+            <li><%= link_to 'Open Argazki', "http://argazki.irekia.euskadi.net", :rel => 'external' %></li>
+            <li class='nav-header'><%= Snetwork.model_name.human(:count => 2) %></li>
+            <li><%= link_to t('site.gobierno_en_las_redes'), snetworking_site_path %></li>
+            <li><%= link_to t('headlines.title'), "http://entzumena.irekia.euskadi.net", :rel => 'external' %></li>
+            <!-- <li><%= link_to t('site.gure_bloga'), '#', :rel => 'external' %></li> -->
+          </ul>
+        </div>
+      </div>
+      <div class='span3'>
+        <h2 class='footer_title'><%= t('areas.title') %></h2>  
+        <ul class='nav nav-list'>
+          <% @areas.each do |area| %>
+            <li><%= link_to area.name, area_path(area) %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class='span3'>
+        <h2 class='footer_title'><%= t('site.about', :site_name => Settings.site_name) %></h2>
+        <ul class='nav nav-list'>
+          <% Page.about_pages.each do |page| %>
+            <li><%= link_to page[:title], page_site_path(page[:label]) %></li>
+          <% end %>
+        </ul>
+
+        <%- cc_url = "http://creativecommons.org/licenses/by/3.0/es/#{'/deed.eu' if I18n.locale.eql?(:eu)}" -%>
+        <%= link_to image_tag(asset_path('icons/cc_l_by_30_es_88x31.png')), cc_url, :rel => 'external' %>
+      </div>
+    </div>
+  </div>
+
+  <div id='banners' class="container donotprint">
+    <div class='row-fluid'>
+      <%= render :partial => "/banners/banner", :collection => Banner.active.order('position DESC').limit(Banner::MAX_FEATURED) %>
+    </div>  
+  </div>                  
+
+  <div id='copyright' class='container'>
+    <div class='copyright'>
+      2014 <%= Settings.publisher[:name] %>
+    </div>  
+    <div class='powered_by'>
+      <%= raw I18n.t('shared.powered_by')%>
+    </div>  
+    <div class='logo'>
+      <%= image_tag(asset_path("footer_#{locale_es_or_eu}.jpg"), :alt => t('shared.footer_alt')) %>
+    </div>  
+  </div>  
+</footer>  
+<% end %>

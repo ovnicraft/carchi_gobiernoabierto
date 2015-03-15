@@ -1,0 +1,20 @@
+<div class='section container'>
+  <%= render :partial => '/shared/context', :locals => {:title => t('people.registro_nuevo', :name => Settings.site_name), :type => 'user'} %>
+  <div class='section_main row-fluid'>
+    <div class='section_content span12'>
+      <div class='signup_form'>
+        <div class='section_heading'><%= t('people.fill_in_your_data') %></div>
+          <%= form_for @user, as: :user, url: people_path, html: {class: 'form form-horizontal', id: 'register', multipart: true} do |f| %>
+
+            <%= render :partial => "/users/form", :locals => {:f => f} %>
+          
+            <div class="form-actions">
+              <%= f.submit t('people.sign_up'), :class => 'submit irekia_btn' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,44 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+cat_de_webtv:
+  name_es: Cat de webtv
+  name_eu: Cat de webtv
+  name_en: Cat de webtv
+  tree: web_tv
+  position: 1
+
+cat_webtv_lehendakaritza:
+  name_es: Lehendakaritza
+  name_eu: Lehendakaritza
+  name_en: Lehendakaritza    
+  tree: web_tv
+  position: 1
+  
+cat_webtv_interior:
+  name_es: Departamento de interior
+  name_eu: Departamento de interior
+  name_en: Departamento de interior    
+  tree: web_tv
+  position: 2
+
+cat_de_fototeca:
+  name_es: Cat de fototeca
+  name_eu: Cat de fototeca
+  name_en: Cat de fototeca
+  tree: albums
+  position: 1
+
+cat_de_fototeca_interior:
+  name_es: Collection de interior
+  name_eu: Collection de interior
+  name_en: Collection de interior
+  tree: albums
+  position: 2
+
+cat_de_fototeca_lehendakaritza:
+  name_es: Collection de lehendakaritza
+  name_eu: Collection de lehendakaritza
+  name_en: Collection de lehendakaritza
+  tree: albums
+  position: 3
+

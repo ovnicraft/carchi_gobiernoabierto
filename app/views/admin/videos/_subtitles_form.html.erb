@@ -1,0 +1,28 @@
+<% if video_info[:webtv_id].present? %>
+  <% 
+    form_action = update_subtitles_admin_video_path(:id => video_info[:webtv_id]) 
+    new_video  = false
+  %>
+<% else %>
+  <%
+   form_action = create_with_subtitles_admin_videos_path() 
+   new_video = true
+   %>
+<% end %>
+
+<%= form_tag form_action, {:method => :post, :multipart => true} do |f| %>
+  <%= error_messages(@document) %>
+  
+  <% if new_video %>
+    <%= hidden_field_tag "video[document_id]", @document.id %>
+    <%= hidden_field_tag "video[flv_url]", video_info[:video] %>
+  <% end %>
+
+  <p class="buttons" style="text-align: left">
+    <label for="subtitles_<%= locale %>"><%= t('sadmin.subtitles.subir_srt') %></label>
+    <%= file_field_tag "video[subtitles_#{locale}]", accept: 'text/srt' %> 
+    <%= submit_tag t(:guardar), :disable_with => t('sadmin.guardando') %>
+    <%= link_to t(:cancelar), "#", :onclick => "$(this).up('div.subtitles_form').hide(); $(this).up('div.flv_row').down('ul.edit_links a.edit').show();return false;", :class => "cancel_link" %>
+  </p>
+<% end %>
+

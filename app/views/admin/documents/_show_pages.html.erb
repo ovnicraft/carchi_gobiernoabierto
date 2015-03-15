@@ -1,0 +1,50 @@
+<%= render :partial => "edit_links_pages" %>
+
+<style>
+  div.thumbnails {width:400px;}
+</style>
+
+<% if params[:w].nil? %>
+    <ul class="edit_links">
+      <li><%= link_to t('sadmin.modificar'), edit_admin_document_path(@document, :lang => 'es'), :class => "edit" %></li>
+    </ul>
+    
+    <div class="document_body">
+      <%= render :partial => '/admin/documents/multimedia/cover', :locals => {:document => @document} if @document.has_cover_photo?%>
+      <%=raw @document.pretty_body %>
+    </div>
+
+    <hr/>
+    
+    <p><b><%= t('organizations.department') %>:</b>
+      <%= @document.department.name %>
+    </p>
+  
+    <p>
+      <b><%= t('sadmin.news.directorio_multimedia') %></b>
+      <%= @document.multimedia_path %>
+    </p>
+
+    <p>
+      <%= show_tags_with_classes(@document) %>
+    </p>
+    
+    <div class="document_show2">
+      <%= render :partial => "/sadmin/attachments/list_specific", :object => @document %>
+    </div>
+
+<% elsif params[:w].eql?("multimedia") %>
+    <ul class="edit_links">
+      <li><%= link_to t('sadmin.modificar'), edit_tags_admin_document_path(@document, :lang => 'es'), :class => "edit" %></li>
+    </ul>
+    
+<% end %>
+
+<% if params[:w].eql?("multimedia") %>
+  <%= render :partial => "show_multimedia", :locals => {:document => @document} %>
+<% end %>
+
+<% if params[:w].eql?("traducciones") %>
+  <%= render :partial => "translations", :locals => {:document => @document} %>
+<% end %>
+

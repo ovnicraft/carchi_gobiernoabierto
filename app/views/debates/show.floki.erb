@@ -1,0 +1,95 @@
+<% content_for :head do %>
+<style>
+  
+  div.voto {
+    font-style: italic;
+    font-size: .9em;
+  }
+  
+  div.question_body {
+    padding: 0px 16px;
+  }
+  
+  div.question_body p, div.answer_placeholder p {
+    margin-top: 0px;
+  }
+  
+  div.answer_placeholder {
+    background: #f8f8f8;
+    border-radius: 6px 6px 6px 6px;
+    margin-bottom: 25px;
+    padding: .7em 20px;
+  }
+  
+  p.has_requested_answer {
+    font-style: italic;
+  }
+  
+  div.data {
+    margin-bottom: 4px;
+    border-bottom: solid 1px #eaeaea;
+  }
+
+  img {
+    width: 100%;
+  }
+  
+  div.more_info {
+    border-top: solid 1px #fff;
+    margin-top: 10px;
+    font-size: .9em;
+    background-color: #005B8C;
+    color: #fff;
+  }
+
+  div.more_info a {
+    color: #fff;
+  }
+
+  ul.debate_stages li.active{
+    font-weight: bold;
+  }
+
+</style>
+<% end %>
+
+<div class="<%= 'ipad_container' if ipad_app_request? %>">
+  <% if @debate.area %>
+    <div class='date'><%= @debate.area.name %></div>
+  <% end %>
+  
+  <h1><%= @debate.title %></h1>
+
+  <ul class='debate_stages'>
+    <% @debate.stages.each do |stage| %>
+      <li class="<%= 'active' if @stage.label.eql?(stage.label.to_s) %>">
+        <%= t("debates.stage_#{stage.label}") %>
+        <%= render_debate_stage_dates(stage, ' - ') %>
+      </li>
+    <% end %>
+  </ul>
+
+  <div class="meta">
+    <div class="voto">
+      <%= @debate.participation == 0 ? t('votes.count.nobody_voted') : "#{t('votes.count.a_favor', :count => @debate.n_in_favor)}, #{t('votes.count.contra', :count => @debate.n_against)}" %>
+    </div>
+  </div>
+
+  <% if @debate.header_image.present? %>
+    <div class="image">
+      <%= image_tag(@debate.header_image.header.url) %>
+    </div>
+  <% end %>
+
+  <%= simple_format @debate.body %>
+
+  <%= simple_format @debate.description %>
+
+  <div class='meta more_info'>
+    <%=raw 'Para obtener más información y participar en la propuesta pincha ' + link_to('aquí', url_for(:controller => "debates", :action => "show", :id => @debate, :format => :html, :locale => I18n.locale, :only_path => false))  + ' (versión web)' %>
+  </div>
+
+  <%= render :partial => "/arguments/arguments.floki" %>
+
+  <%= render :partial => "/comments/comments.floki" %>
+</div>

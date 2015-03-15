@@ -1,0 +1,16 @@
+<% if @search_results.length > 0 %>
+  <%= will_paginate_search @search_results, @total_hits %>
+  <div class="results" id='es_results'>
+    <ul class='std_list search' id="list_items">
+      <% @search_results.each do |item| %>      
+        <%= render :partial => "/#{item.class.to_s.tableize}/list_item", :locals => {item.class.to_s.downcase.to_sym => item, :target => :list} %>
+      <% end %>
+    </ul>
+  </div>
+  <%= will_paginate_search @search_results, @total_hits %>
+  <%= show_irekia_coverage_footnote(@search_results) %>
+<%- else -%>
+  <p><%= t('search.nada') %></p>
+<%- end -%>
+
+<div class='explanation_overlay' id='overlay' style='display:none'></div>

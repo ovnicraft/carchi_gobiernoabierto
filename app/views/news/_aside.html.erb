@@ -1,0 +1,11 @@
+<div class="section_aside span4">
+  <div class="banner_aside area_news_feed">
+    <div class='banner_image'>  
+      <%= link_to raw("<span>#{t('documents.rss_news')}</span>"), news_index_path(:format => "rss") %>
+    </div>
+  </div>
+  
+  <%= render :partial => "/streamings/upcoming" if Settings.optional_modules.streaming %>
+  <%= render :partial => "/events/calendar", :locals => {:month_events => @month_events} %>  
+  <%= render :partial => '/headlines/list', :locals => {:headlines => @headlines} if Settings.optional_modules.headlines and @headlines.present? %>
+</div>

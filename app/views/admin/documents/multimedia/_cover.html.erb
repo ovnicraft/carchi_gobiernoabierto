@@ -1,0 +1,23 @@
+<% size ||= :n320 %>
+
+<% if size == :n320 
+     if mobile_user_agent?
+       width = "300px"
+     else
+       if [root_path, root_with_locale_path].include?(request.url)
+         width = "230px"
+       else
+         width = "320px"
+       end
+     end
+   else
+     width = "#{size.to_s.gsub(/[^\d]/, '')}px"
+   end
+   
+   alt_text = document.cover_photo_alt.present? ? document.cover_photo_alt : document.cover_photo_file_name
+%>
+
+<div class="video">
+    <a name="video"></a>
+    <%= image_tag document.cover_photo.url(size), :width => width, :alt => alt_text, :title => alt_text %>
+</div>

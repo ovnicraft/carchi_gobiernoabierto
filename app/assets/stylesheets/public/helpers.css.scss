@@ -1,0 +1,268 @@
+/* Basics */
+$background_color: #EFEFEF;
+$avatar_big_size: 280px;
+$avatar_iphone_size: 43px;
+$avatar_normal_size: 65px;
+$avatar_medium_size: 40px;
+$avatar_small_size: 36px;
+
+$margin_for_avatar: $avatar_normal_size + 13px;
+
+/* Dark levels */
+$darkest:          #000000;
+$uber_dark:        #222222;
+$ultra_dark:       #333333;
+$medium_dark:      #666666;
+$dark:             #999999;
+$gray:             #cccccc;
+$subtle_gray:      #dedede;
+$light_gray:       #f1f1f1;
+$error_color:      #FF3300;
+$gray_border_color:#e2e2e2;
+$org_back:         #f0f0f0;
+$org_back-hover:   #1d79b0;
+
+$standard_gray:    #7D8A92; // 125, 138, 146
+
+/* Colors */
+$white:               #FFFFFF;
+$silver:              #F2F5F8;
+$pink:                #F10063;
+$dark_blue:           #6c777f; // 70 88 102 - #eaeaea
+$link_color:          #005b8c;
+$link_color_hover:    #2c8cc5;
+$moderated_color:     #E9F0DE;
+$twitter_blue:        #2C8CC5;
+$agree_color:         #669900;
+$against_color:       #FF9933;
+$orange:              #FF6600;
+$green:               #75B100;
+$blue:                #2687BD;
+$editable_color:      #FFFFEB;
+$border_color:        #B5BDC4;
+$border_color_light:  #ecedef;
+
+$error_message_color: #FF0000;
+
+$player_window_width: 600px;
+$player_window_height: 320px;
+
+@mixin inline-block {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: top;
+  zoom: 1; *display: inline;
+}
+
+@mixin opacity($value) {
+  filter: alpha(opacity=$value * 100);
+  -khtml-opacity: $value;
+  -moz-opacity: $value;
+  opacity: $value;
+}
+
+@mixin textShadow($h,$v,$c) {
+  text-shadow:$h $v $c;
+}
+
+@mixin text-overflow() {
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  overflow:hidden;
+  white-space:nowrap;
+}
+
+@mixin disable-selection {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+/*Blue buttons in the nav_menu*/
+@mixin menu-button($bkg) {
+  background: $bkg #3396cd; /* Old browsers */
+  background: $bkg, -moz-linear-gradient(top, #3396cd 0%, #2080b5 100%); /* FF3.6+ */
+  background: $bkg, -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3396cd), color-stop(100%,#2080b5)); /* Chrome,Safari4+ */
+  background: $bkg, -webkit-linear-gradient(top, #3396cd 0%,#2080b5 100%); /* Chrome10+,Safari5.1+ */
+  background: $bkg, -o-linear-gradient(top, #3396cd 0%,#2080b5 100%); /* Opera11.10+ */
+  background: $bkg, -ms-linear-gradient(top, #3396cd 0%,#2080b5 100%); /* IE10+ */
+  background: $bkg, linear-gradient(top, #3396cd 0%,#2080b5 100%); /* W3C */
+
+  &:active {
+    background: $bkg #3396cd; /* Old browsers */
+    background: $bkg, -moz-linear-gradient(top,  #2080b5 0%, #3396cd 100%); /* FF3.6+ */
+    background: $bkg, -webkit-gradient(linear, left top, left bottom, color-stop(0%, #2080b5), color-stop(100%, #3396cd)); /* Chrome,Safari4+ */
+    background: $bkg, -webkit-linear-gradient(top, #2080b5 0%, #3396cd 100%); /* Chrome10+,Safari5.1+ */
+    background: $bkg, -o-linear-gradient(top, #2080b5 0%, #3396cd 100%); /* Opera11.10+ */
+    background: $bkg, -ms-linear-gradient(top,#2080b5  0%, #3396cd 100%); /* IE10+ */
+    background: $bkg, linear-gradient(top, #2080b5 0%, #3396cd 100%); /* W3C */
+  }
+}
+
+/* New clearfix */
+.inner:after, .clearfix:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+* html .clearfix, * html .inner { zoom: 1; }
+*:first-child+html .clearfix, *:first-child+html .inner { zoom: 1; }
+
+/*=== Border radius ===*/
+@mixin box-border {
+  $radius: 6px;
+  @include border-radius($radius);
+  background: $white;
+  border-color: $border_color;
+  border-style: solid;
+  border-width: 1px;
+  padding: 15px 30px 35px;
+  margin-bottom: 25px;
+}
+
+/*=== Titles ===*/
+@mixin title-h2 {
+  margin-bottom: 5px;
+  font-size: 31px;
+  color: $dark_blue;
+  line-height: 31px;
+  font-weight: 300;
+  font-family: "ClarendonLTMedium", Georgia, serif;
+}
+
+@mixin input-text {
+  height: 32px;
+  padding: 0 9px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  @include border-radius(5px);
+  @include box-shadow(inset 0 5px 5px rgba(0, 0, 0, 0.1));
+  outline: none;
+  color: $medium_dark;
+  font-size: 15px;
+}
+
+/* Version 4 */
+
+
+/*end bootstrap variables*/ 
+
+$textColor: #465866;
+
+/* Open Irekia */
+$colorIrekia: #888;
+$blueNav: $colorIrekia;
+$blueNavHover: #777;
+
+$blueDarkNav: #666;
+$blueDarkNavHover: #555;
+/* / Open Irekia */
+
+$greyButtonDark: #9db1c8;
+$blueTab: #47bfea;
+$greenTab: #70b237;
+$greenParticipation: #70b237;
+$blueGovern: #47bfea;
+
+$blueMenuLinks: #1d79b0;
+$blueLinks: $colorIrekia;
+$blueLinksHover: #0098ea;
+$bgHover: #F1F4F5;
+$bgNotModerated: #F7EAEE;
+
+$greyCollapsableHeader: #f2f5f9;
+$greyMainHome: #dde4ec;
+$greyBgLeading : #e7ecf2;
+$menuLinksHover: #EEEEEE;
+$greenFollowing : $greenParticipation;
+
+$colorLines: $greyMainHome;
+$borderItemMenu:#1a5c7f;
+
+$dottedLine: #AEB9C5;
+$greyButtons: #eef1f5;
+$greyButtons: $greyMainHome;
+$blueShare: #888; /* OpenIrekia */
+$bgNotes: #ececdd;
+
+$eventPassed: $textColor;
+$eventLive: #009900;
+$eventAnnounced: $colorIrekia;
+$titleLiveBg: #007a00;
+$titleFutureBg : #23709e;
+$eventEmpty : #dfe4ea; 
+
+$colorRss: #ff9901;
+$colorMedios: #ff6600;
+$colorBlogs: #009933;
+$colorTwitter: #00aced;
+$colorFacebook: #3b5998;
+$colorGoogle: #dc0017;
+$colorPinterest: #d73532;
+$colorFollowDefault : #F5F5F5;
+
+
+
+$colorInFavor:#339933;
+$colorAgainst:#cc3333;
+$colorNeutral: $textColor;
+
+$colorDisabled: #a7bacf;
+
+$bgOfficialComment : #E8F7FF;
+
+
+/*bootstrap variables*/
+
+$navbarHeight: 50px !default;
+$baseLineHeight: 20px !default;
+
+
+// -------------------------
+$inputBackground:               $greyMainHome !default;
+$inputBorder:                   none !default;
+$inputBorderRadius:             0 !default;
+$inputDisabledBackground:       #ccc !default;
+$inputHeight:                   $baseLineHeight + 10px; // base line-height + 8px vertical padding + 2px top/bottom border
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+@import url(http://fonts.googleapis.com/css?family=Oswald);
+
+@mixin opensans($size:14px ,$bold:normal){ 
+  font-family: 'Open Sans', sans-serif;
+  font-size: $size;
+  font-weight: $bold; 
+}
+@mixin arial($size:14px ,$bold:normal){ 
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: $size;
+  font-weight: $bold; 
+}
+@mixin oswald($size:14px ,$bold:normal){ 
+  font-family: 'Oswald', sans-serif;
+  font-size: $size;
+  font-weight: $bold;
+}
+@mixin tabgradient($from:#ffffff, $to:#dde4ec){
+  /* fallback/image non-cover color */
+  background-color: $from;
+
+  /* Firefox 3.6+ */
+  background-image: -moz-linear-gradient($from, $to);
+
+  /* Safari 4+, Chrome 1+ */
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from), to($to));
+
+  /* Safari 5.1+, Chrome 10+ */
+  background-image: -webkit-linear-gradient($from, $to);
+
+  /* Opera 11.10+ */
+  background-image: -o-linear-gradient($from, $to);
+}
+@mixin bgTransition(){
+
+  -o-transition:color .1s ease-out, background .2s ease-in;
+  -ms-transition:color .1s ease-out, background .2s ease-in;
+  -moz-transition:color .1s ease-out, background .2s ease-in;
+  -webkit-transition:color .1s ease-out, background .2s ease-in;
+  /* ...and now for the proper property */
+  transition:color .1s ease-out, background .2s ease-in;
+
+}

@@ -1,0 +1,412 @@
+div.cal_table_a {
+  background: #3e7393 url(image-path("admin/a.gif")) no-repeat;
+  float: left;
+  width: 100%;
+}
+
+div.cal_table_b {
+  background: url(image-path("admin/b.gif")) no-repeat 100% 0%;
+}
+
+div.cal_table_c {
+  background: url(image-path("admin/cc.gif")) no-repeat 100% 100%;
+}
+
+div.cal_table_d {
+  padding: 4px 1% 0px;
+  background: url(image-path("admin/d.gif")) no-repeat 0% 100%;
+  padding-bottom: 20px;
+}
+
+/* Caendar month view navigation */
+div.cal_nav {
+  float: left;
+  width: 100%;
+  padding-bottom: 6px;
+  padding-top: 6px;  
+}
+
+div.cal_nav ul {
+  list-style: none;
+  margin: 0px 0px 0px 20px;
+  padding: 0px;
+}
+
+div.cal_nav ul li {
+  float: left;
+}
+
+li.prev_month_link {
+  margin-right: 4px;
+}
+
+li.next_month_link {
+  margin-right: 20px;
+}
+
+li.prev_month_link a, li.next_month_link a {
+  display: block;
+  width: 32px;
+  height: 18px;
+  background: url(image-path("admin/com_1.gif")) no-repeat;
+}
+
+li.prev_month_link a span, li.next_month_link a span {
+  display: none;
+}
+
+li.next_month_link a {
+  background-position: -32px 0px;
+}
+
+div.days_nav {
+  padding-top: 1em
+}
+
+div.days_nav ul {
+  margin: 0;
+}
+
+div.days_nav ul li.current_day {
+  font-size:14px;
+  color:#1180B8;
+  font-weight: bold;
+}
+
+
+/* Calendar month view */
+
+table.calendar_navigation {
+  width: 100%;
+  margin-bottom: 10px;
+
+}
+
+table.calendar_navigation td {
+  width: 33%;
+}
+
+td.prev {
+  text-align: right;
+}
+
+td.next {
+  text-align: left;
+}
+
+td.prev a, td.next a {
+  font-size: 12px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #00b2e0;
+}
+
+td.current {
+  font-size: 16px;
+  text-align: center;
+  color: #003c76;
+}
+
+table.calendar {
+  width: 100%;
+  border: solid #3e7393;
+  border-width: 1px 1px 0px 0px;
+}
+
+table.calendar td, table.calendar th {
+  border: solid #3e7393;
+  border-width: 0px 0px 1px 1px;
+}
+
+tr.day_names th {
+  font-weight: normal;
+  color: #fff;
+  font-size: 11px;
+}
+
+tr.day_names th abbr {
+  border: none;
+}
+
+
+table.calendar td {
+  font-size: 11px;
+  vertical-align: top;
+  height: 8em;
+}
+
+table.calendar td a {
+  text-align: left;
+  color: #000;
+}
+
+.monthName th {
+  font-weight: normal;
+  text-align: right;
+  padding-top: 1em;
+  padding-bottom: 0.7em;
+}
+
+.dayName th {
+  font-size: 11px;
+  padding: 4px 0px;
+  color: #fff;
+  background: #002b73;
+}
+
+.otherMonth, .day, .specialDay {
+}
+
+div.day_number {
+  background: #c8dcec;
+  padding: 1px 4px;
+  text-align: right;
+}
+
+td.otherMonth div.day_number {
+  background: #ececec;
+}
+
+td.today div.day_number {
+  background: #95b8d5;
+}
+
+div.day_number a.day_number {
+  margin-left:50px;
+}
+
+
+table.calendar td a span.day_number, span.day_number {
+  font-weight: bold;
+  margin-right: 4px;
+  font-size: 10px;
+  color: #829bbc;
+  display: block;
+}
+
+.day, .specialDay {
+  background-color: #fff;
+  width: 14%;
+}
+.specialDay {
+  background-color: #003355;
+  color: white;
+}
+.specialDay a, .specialDay a:visited, .specialDay a:hover {
+  color: white;
+  text-decoration: none;
+  padding: 1em;
+}
+.specialDay a:hover {
+  color: white;
+  background-color: black;
+}
+.weekendDay {
+  background-color: #fffbed;
+}
+
+.today{
+  background-color: #fdffe3;
+}
+
+.otherMonth {
+  color: #cdcdcd;
+  background-color: #fff;
+}
+
+span.event_hour {
+  margin-right: 4px;
+  font-size: 10px;
+}
+
+div.one_event_link a {
+  text-decoration: none;
+}
+
+/* qTip (http://qrayg.com/learn/code/qtip/) */
+div#qTip {
+  padding: 0px 0px 3px 0px;
+  border: 1px solid #666;
+  display: none;
+  background: #fff;
+  position: absolute;
+  z-index: 1000;
+  width: 300px;
+}
+
+div#qTip h1 {
+  margin: 0px 0px 6px 0px;
+  padding: 2px 4px;
+  color: #fff;
+  background: #003c76;
+  font-size: 10px;
+  font-weight: normal;
+  text-align: center;
+}
+
+div#qTip h2, div#qTip p {
+  padding: 0px 4px;
+}
+
+div#qTip p {
+  margin: 0px 0px 10px;
+  font-size: 12px;
+}
+
+div#qTip h2 {
+  font-size: 11px;
+  margin: 0px 0px 2px;
+  font-weight: normal;
+  color: #003c76;
+}
+
+div#qTip div#event_3_1 h2 {
+  color: #b40000;
+}
+
+div.date_and_location {
+  font-size: 11px;
+}
+
+div.date_and_location b {
+  color: #838383;
+  font-size: 10px;
+  font-weight: normal;
+  font-style: italic;
+}
+
+
+/* Admin: event form */
+
+div.select_webs {
+  margin-left: 2em;
+}
+table.event_form td span.photographers_info {
+  margin-left: 4em;
+}
+
+table.event_form td span.photographers_info span.title{
+  font-weight: bold;
+}
+
+
+table.event_form td span.disabled, table.event_form td div.disabled, blockquote.disabled {
+  color: grey;
+}
+
+/* Admin: event show */
+table.event_short_info th {
+  text-align: left;
+}
+
+
+/* Admin events list */
+div.calendar_legend {
+  float: left;
+  width: 100%;
+  margin-top: 10px;
+}
+
+div.calendar_legend ul {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  font-size: 11px;
+}
+
+div.calendar_legend ul li {
+  float: none;
+  margin-top: 10px;
+  border-left: 14px solid;
+  padding-left: 10px;
+}
+
+div.calendar_legend ul li.legend_title {
+  border-left: none;
+  padding-left: 0px;
+}
+
+
+span.day_info {
+  display: block;
+}
+
+div.one_event_link {
+  padding: 0px 4px;
+}
+
+div.more_events_link {
+  text-align: right;
+  font-size: 10px;
+  padding-right: 4px;
+}
+
+div.one_event_link span {
+  color: grey;	
+}
+
+.private_event, table.calendar tr td div.private_event span {
+  color: red;
+}
+
+.irekia_event, table.calendar tr td div.irekia_event span {
+  color: #000000;
+}
+
+.irekia_coverage_true, table.calendar tr td div span.irekia_coverage_true {
+  font-weight:bold;
+	color: #1779ae;
+}
+
+span.irekia_coverage_false {
+  font-weight:normal;
+}
+
+div.previsto, div.previsto h1, div.previsto h2, div#qTip div.previsto, div#qTip div.previsto h1, div#qTip div.previsto h2 {
+  font-style:italic;
+}
+
+table.calendar tr td.otherMonth div span {
+  color: #b5b5b5;
+}
+
+
+div.event_data4admin_with_map {
+    float: left;
+    width: 60%;
+}
+
+div.date_and_location {
+    background-color: #F1F6F8;
+    border: 1px solid #CBE0ED;
+    margin-bottom: 20px;
+    padding: 5px 0 5px 10px;
+}
+
+div.map_container {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px dotted #BBBBBB;
+    float: right;
+    padding: 5px;
+    width: 320px;
+}
+
+div.map {
+  width: 320px;
+  height: 140px; 
+}
+
+div.location {
+	margin-left: 19px;
+	width: 320px;
+  float: right;	
+  background: none repeat scroll 0 0 #FFFFFF;
+  border: 1px dotted #BBBBBB;
+  padding: 5px;  
+}
+
+div.location ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}

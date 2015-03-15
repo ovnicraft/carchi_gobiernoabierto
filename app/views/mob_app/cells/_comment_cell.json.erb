@@ -1,0 +1,17 @@
+<%-
+  target ||= 'list'
+  h = {
+    "id" => target.eql?(:activity) ? comment.commentable.floki_id : comment.commentable_id, 
+    "title" => title || I18n.t('floki.activity.comment_in', :content_type => comment.commentable.class.model_name.human, :title => comment.commentable.title), 
+    "body" => pretty_n_characters_wo_html(comment.body).strip_html,
+    "footer" => I18n.localize(comment.published_at,:format => :long).strip,
+    "url" => url_to_commentable(comment.commentable, {:locale => 'es', :format => :floki}),
+    "image" => request.protocol + request.host_with_port + asset_path('floki/irekia_77_preguntas.png'),
+    "share_url" => url_to_commentable(comment.commentable, {:format => :html}),
+    "sort_id" => sort_id,
+    "accepts_comments" => true,
+    "online" => true
+   }
+-%>
+
+<%=raw h.to_json.gsub('&amp;size', '&size') %>

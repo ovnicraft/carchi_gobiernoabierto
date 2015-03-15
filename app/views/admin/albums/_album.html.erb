@@ -1,0 +1,21 @@
+<tr>
+  <td>
+    <%= link_to album.title, admin_album_path(album) %><br/>
+    <% if album.draft? %>
+      <span class="draft_notice">Borrador</span>
+    <% elsif album.published? %>
+      <span class="published_notice">Publicado</span>
+    <% end %>
+    <%= content_tag(:span, t('sadmin.news.destacado'), :class => "destacado") if album.featured? %>
+  </td>
+  <td><%= I18n.localize(album.created_at, :format => :list) if album.created_at %></td>
+  <td>
+    <ul class="language_versions">
+      <% for_every_locale do |code, lang| %>
+        <li class="translated_true">
+          <%= link_to lang, album_path(album, :locale => code), :class => "public_link" %>
+        </li>
+      <% end %>
+    </ul>
+  </td>
+</tr>

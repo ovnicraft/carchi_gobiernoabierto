@@ -1,0 +1,16 @@
+<div class='section container'>
+  <div class='section_main row-fluid'>
+    <div class='section_content container'>
+      <% if @success %>
+        <h1><%= t('account.cuenta_activada') %></h1>
+        <% if params[:f] && params[:f].eql?("p") %>
+          <p><b><%= t('account.propuesta_se_activara') %></b></p>
+        <% end %>
+        <p><%=raw t('account.ya_puedes_participar', :link => link_to(Settings.site_name, root_path)) %></p>
+      <% else %>
+        <h1><%= t('account.informacion_incorrecta') %></h1>
+      <% end %>
+    </div>
+  </div>
+</div>
+

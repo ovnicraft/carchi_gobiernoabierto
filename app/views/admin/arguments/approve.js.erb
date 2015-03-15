@@ -1,0 +1,2 @@
+$("argument_<%= @argument.id %>").replace("<%= escape_javascript(render partial: '/admin/arguments/argument', locals: {argument: @argument}) %>");
+$("argument_<%= @argument.id %>").classNames("<%= @argument.status %>");

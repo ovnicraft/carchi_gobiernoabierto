@@ -1,0 +1,32 @@
+<%- 
+  video_info = flv_video_info(video)
+  data = {
+    "unique_id" => video.id,
+    "preview_url" =>  document_img_tag(video_info[:preview_img], preview_size, true),
+    "title" => "#{video_info[:title]}",
+    "text" => I18n.localize(video.published_at.to_date, :format => :long).strip,
+    "preview_width" => width,
+    "preview_height" =>  height,
+    "autoload" => false,
+    "padding" => padding,
+    "title_color" => Floki::TITLE_COLOR, 
+    "playback_color" => Floki::TITLE_COLOR
+  }
+  if data_options.present?
+    data.merge!(data_options)
+  end
+    
+  h = {
+    "id" => video.id , 
+    "title" => video.title, 
+    "image" => "#{document_img_tag(video_info[:preview_img], 'n70', true)}", :body => "",
+    "url" => iphone_app_video_for(video_info[:video]),
+    "share_url" => url_for(:controller => "videos", :action => "show", :id => video, :only_path => false),
+    "footer" => I18n.localize(video.published_at.to_date, :format => :long).strip,
+    "sort_id" => sort_id,
+    "class_type" => "Movie_view_controller",
+    "data" => data
+  } 
+  
+-%>
+<%=raw h.to_json.gsub('&amp;size', '&size') %>

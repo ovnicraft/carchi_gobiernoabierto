@@ -1,0 +1,5 @@
+<%- if response.status.eql?(200) -%>
+  $("cat_<%= @category.id %>").fade();
+<%- else -%>
+  alert('La categoría NO se ha eliminado correctamente');
+<%- end -%>

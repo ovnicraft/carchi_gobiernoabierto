@@ -1,0 +1,24 @@
+<% icon_class ||= 'icon' %>
+<% files_to_show = document.attached_files(I18n.locale) %>
+<%- if files_to_show.length > 0 -%>
+  <div class="docs">
+    <div class="<%= icon_class %> document" title="<%= tit = Attachment.model_name.human(:count => 2).titleize %>">
+      <span><%= tit %></span>
+    </div>
+    <h3>Documentos adjuntos</h3>
+    
+    <a name="docs"></a>
+    <div class="list">
+      <ul>
+        <%- files_to_show.each do |f| -%>
+          <li class="file <%= file_type(f) %>">
+            <span class="file_name"><%= f.file_file_name %></span>
+            <span class="screen"><%= link_to "<span class='icon download'></span>#{t(:descargar)}".html_safe,  f.file.url %></span>
+            <span class="file_size">(<%= number_to_human_size(f.file_file_size) %>)</span><br/>
+            <span class="print">URL: <%= url_for request.protocol + request.host_with_port + f.file.url.strip_version %></span>
+          </li>
+        <%- end -%>
+      </ul>
+    </div>
+  </div>
+<%- end -%>

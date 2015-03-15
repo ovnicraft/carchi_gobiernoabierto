@@ -1,0 +1,21 @@
+<div class='category span4'>
+  <div class='category_header'>
+    <div class="title"><%= category.name %></div>
+    <div class="count_info"><%= link_to_category_of_type('videos', category) %></div>
+  </div>
+  <% video = category.videos.order('published_at DESC').first %>
+  <% if video -%>
+    <div class='category_main category_video'>
+      <div class='row-fluid'>
+        <div class='category_image span6'>
+          <%= link_to image_tag(document_img_tag(video_preview_img(video), :n320)), video %>
+        </div>
+        <div class='category_content span6'>
+          <div class="title"><%= link_to h(video.title), video %></div>
+          <%= render_date(video.published_at) %>
+          <%= link_to_item_comments(video.comments.count, video) %>
+        </div>
+      </div>
+    </div>                      
+  <% end -%>
+</div>

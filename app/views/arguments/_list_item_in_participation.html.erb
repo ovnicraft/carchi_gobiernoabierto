@@ -1,0 +1,13 @@
+<li class='item argument'>
+  <div class='item_content fullwidth'>
+    <div class='quote'>
+      <%= argument.reason %>
+    </div>
+    <div class='author'>
+      <%= link_to_user_profile_unless_deleted(argument.user, {:class => :author}) if argument.user.present? %>
+    </div>
+    <div class='date'>
+      <%= date_in_distance(argument.created_at) %>
+    </div>
+  </div>
+</li>

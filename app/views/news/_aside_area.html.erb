@@ -1,0 +1,6 @@
+<div class="section_aside span4">
+  <div class="banner_aside area_news_feed">
+    <%= link_to "<span>RSS #{@area.name}</span>".html_safe, news_index_path(:area_id => @area.id, :format => "rss") %>
+  </div>
+  <%= render :partial => '/headlines/list', :locals => {:headlines => @area.approved_headlines} if Settings.optional_modules.headlines && @area.approved_headlines.present? %>
+</div>

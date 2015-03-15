@@ -1,0 +1,8 @@
+<span class="event_title"><%= event_link(streamed_event) %></span>
+<div class="event_info" id="event_<%=  streamed_event.id %>">
+  <%= streamed_event.pretty_hours %>:
+  <%= streamed_event.pretty_place %>.<br/>
+  <%- if streamed_event.speaker.present? -%>
+    <em><%= t('events.speaker') %>:</em> <%= h streamed_event.speaker %><br/>
+  <%- end -%>
+</div>

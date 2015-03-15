@@ -1,0 +1,43 @@
+<%= form_for sf, :as => :stream_flow, :url => update_status_admin_stream_flow_path(:id => sf.id), :html => {:method => :put, :id => "sf_#{sf.id}_status_form"}, :before => "if (!sfEventOptionIsSelected('sf_#{sf.id}_status_form')) {return false}", :data => {:remote => true} do |f| %>
+
+    <% if sf.event || !sf.day_events.blank? %>
+       <%  sf.event_id ||= sf.default_event.id unless sf.on_web? %>
+       <div class="sf_event_options">
+         
+         <h3><%=t("admin.stream_flows.evento")%>:<span id="spinner" style = 'display:none'><%= image_tag 'admin/spinner.gif' %></span></h3>
+       
+          <span class="error_notice" style="display: none"><%=t("admin.stream_flows.elija_opcion_para_evento")%></span>
+          <ul class="event_radio">
+            <% sf.day_events.each do |evt| %>
+            <li class="<%= event_div_class_name(evt) %>">
+              <%= f.radio_button :event_id, evt.id, :class => "event_radio", :web => evt.streaming_for  %> 
+              <b><%= evt.pretty_hours %></b>, 
+              <%= h evt.title %>
+              <span class="streaming4info">(<%= evt.streaming_for_pretty %>)</span></li>
+            <% end %>
+            <li cass="no_event"><%= f.radio_button :event_id, nil, :class => "event_radio", :web => 'irekia' %> <b><%=t("admin.stream_flows.no_evento_asignado")%></b></li>
+          </ul>
+       </div>
+    <% end %>
+
+    <div class="buttons">
+      <div class="irekia_row">
+         <span class="show_options_link"><a href="#" style="display: none"><%=t("admin.stream_flows.mostrar_botones")%></a></span>  
+         
+         <div class="web_and_announcement">
+           <% if sf_show_annoucement_links?(sf) %>
+             <%= sf_announce_link(sf) %>
+             <span class="irekia_announced_txt"><%=t("admin.stream_flows.anunciado")%></span>
+             <%= sf_stop_announcing(sf) %>
+           <% end %>
+         </div>
+     
+         <%= image_tag '/video/onair_irekia.gif', :class => "on_air_in_irekia" %>
+         <%=  sf_show_live_button(sf) %>
+         <%=  sf_stop_live_button(sf) %>
+      </div>
+  
+      <%= hidden_field_tag 'submitted_opt', '', {:id => "submitted_opt_#{sf.id}"} %>
+    </div>
+
+<% end %>

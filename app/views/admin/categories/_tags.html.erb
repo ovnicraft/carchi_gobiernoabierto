@@ -1,0 +1,5 @@
+<span class="category_tags" id="tags_<%= category.id %>">
+  <%= show_tags_with_classes(category, false) %>
+  <%= link_to "<span>Modificar tag</span>".html_safe,
+    edit_tags_admin_tree_category_path(category.tree, category), method: :get, class: 'edit', title: "Modificar tags", data: {remote: true} %>
+</span>

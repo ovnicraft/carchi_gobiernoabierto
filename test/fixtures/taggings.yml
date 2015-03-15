@@ -1,0 +1,857 @@
+# Events
+tag4passed2:
+  taggable: passed_event (Document)
+  tag: irekia_actos
+  context: 'tags'
+
+dept_tag4passed:
+  taggable: passed_event (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+tag4current2:
+  taggable: current_event (Document)
+  tag: irekia_actos
+  context: 'tags'
+
+dept_tag4current:
+  taggable: current_event (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+tag4future:
+  taggable: future_event (Document)
+  tag: irekia_eventos
+  context: 'tags'    
+
+tag4published_future:
+  taggable: published_future_event (Document)
+  tag: irekia_eventos
+  context: 'tags'      
+
+tag4event_with_tag_one:
+  taggable: event_with_tag_one (Document)
+  tag: irekia_eventos
+  context: 'tags'      
+
+tag4long_event:
+  taggable: long_event (Document)
+  tag: irekia_eventos
+  context: 'tags'      
+
+tag4event_feb_23th:
+  taggable: event_feb_23th (Document)
+  tag: irekia_eventos
+  context: 'tags'      
+
+tag4event_feb_28th:
+  taggable: event_feb_28th (Document)
+  tag: irekia_eventos
+  context: 'tags'      
+
+tag4event_march_1st:
+  taggable: event_march_1st (Document)
+  tag: irekia_eventos
+  context: 'tags'      
+
+tag4event_august_31st:
+  taggable: event_august_31st (Document)
+  tag: irekia_eventos
+  context: 'tags'      
+
+tag4event_apr_1st:
+  taggable: event_apr_1st (Document)
+  tag: irekia_eventos
+  context: 'tags'      
+
+tag4event_apr_5th:
+  taggable: event_apr_5th (Document)
+  tag: irekia_eventos
+  context: 'tags'          
+
+tag4event_jan_1th:
+  taggable: event_jan_1th (Document)
+  tag: irekia_eventos
+  context: 'tags'            
+
+tag4event_dic_31th_2008:
+  taggable: event_dic_31th_2008 (Document)
+  tag: irekia_eventos
+  context: 'tags'            
+
+tag4event_dic_30th_2008_to_jan_2nd_2009:
+  taggable: event_dic_30th_2008_to_jan_2nd_2009 (Document)
+  tag: irekia_eventos
+  context: 'tags'            
+
+one_event_tag:
+  taggable: event_with_tag_one (Document)
+  tag: only_one_event
+  context: 'tags'          
+
+one_photo_tag:
+  taggable: photo_one (Photo)
+  tag: photo_tag
+  context: 'tags'        
+
+one_photo_lehendakaritza_tag:
+  taggable: photo_one (Photo)
+  tag: lehendakaritza_tag  
+  context: 'tags'        
+
+one_photo_area_lehendakaritza_tag:
+  taggable: photo_one (Photo)
+  tag: a_lehendakaritza_tag  
+  context: 'tags'          
+
+menu_tag:
+  taggable: cat_de_menu (Category)
+  tag: menu
+  context: 'tags'
+
+webtv_tag:
+  taggable: cat_de_webtv (Category)
+  tag: webtv
+  context: 'tags'
+
+video_en_webtv:
+  taggable: every_language (Video)
+  tag: webtv
+  context: 'tags'
+
+video_con_tag_de_lehendakaritza:
+  taggable: every_language (Video)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+video_con_tag_de_a_lehendakaritza:
+  taggable: every_language (Video)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+video_con_tag_de_lehendakaritza2:
+  taggable: video_lehendakaritza (Video)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+video_con_tag_del_area_lehendakaritza1:
+  taggable: video_lehendakaritza (Video)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+video_con_tag_del_area_lehendakaritza2:
+  taggable: video_lehendakaritza (Video)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+video_con_tag_del_politico:
+  taggable: video_lehendakaritza (Video)
+  tag: tag_politician_lehendakaritza
+  context: 'tags'
+
+video_con_tag_de_comprobar_fechas:
+  taggable: every_language (Video)
+  tag: comprobar_fechas_tag
+  context: 'tags'
+
+video_con_tag_de_interior:
+  taggable: video_dept_interior (Video)    
+  tag: interior_tag
+  context: 'tags'
+
+one_news_dept_tag:
+  taggable: one_news (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+featured_news_dept_tag:
+  taggable: featured_news (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+commentable_news_dept_tag:
+  taggable: commentable_news (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+commentable_news_viajes_oficiales:
+  taggable: commentable_news (Document)
+  tag: viajes_oficiales
+  context: 'tags'
+
+commentable_news_agricultura:
+  taggable: commentable_news (Document)
+  tag: agricultura_ganaderia_y_forestal
+  context: 'tags'  
+
+non_commentable_news_dept_tag:
+  taggable: non_commentable_news (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'  
+
+translated_news_dept_tag:
+  taggable: translated_news (Document)
+  tag: interior_tag
+  context: 'tags'
+
+translated_news_area_tag:
+  taggable: translated_news (Document)
+  tag: a_interior_tag
+  context: 'tags'
+  
+untranslated_news_dept_tag:
+  taggable: untranslated_news (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+untranslated_to_es_news_dept_tag:
+  taggable: untranslated_to_es_news (Document)
+  tag: interior_tag
+  context: 'tags'
+
+draft_news_dept_tag:
+  taggable: draft_news (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+agencia_news_dept_tag:
+  taggable: agencia_news (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+news_with_multimedia_dir_and_related_webtv_video_and_gallery_photo_prueba_tag:
+  taggable: news_with_multimedia_dir_and_related_webtv_video_and_gallery_photo (Document)
+  tag: tag_prueba
+  context: 'tags'
+
+passed_event_dept_tag:
+  taggable: passed_event (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+current_event_dept_tag:
+  taggable: current_event (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+current_event_without_body_es_dept_tag:
+  taggable: current_event_without_body_es (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+future_event_dept_tag:
+  taggable: future_event (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+published_future_event_dept_tag:
+  taggable: published_future_event (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+event_with_tag_one_dept_tag:
+  taggable: event_with_tag_one (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+long_event_dept_tag:
+  taggable: long_event (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+event_feb_23th_dept_tag:
+  taggable: event_feb_23th (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+event_feb_28th_dept_tag:
+  taggable: event_feb_28th (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+event_march_1st_dept_tag:
+  taggable: event_march_1st (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+event_august_31st_dept_tag:
+  taggable: event_august_31st (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+event_apr_1st_dept_tag:
+  taggable: event_apr_1st (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+event_apr_5th_dept_tag:
+  taggable: event_apr_5th (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+event_jan_1th_dept_tag:
+  taggable: event_jan_1th (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+event_dic_31th_2008_dept_tag:
+  taggable: event_dic_31th_2008 (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+event_dic_30th_2008_to_jan_2nd_2009_dept_tag:
+  taggable: event_dic_30th_2008_to_jan_2nd_2009 (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+emakunde_passed_event_dept_tag:
+  taggable: emakunde_passed_event (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+emakunde_current_event_dept_tag:
+  taggable: emakunde_current_event (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+emakunde_future_event_dept_tag:
+  taggable: emakunde_future_event (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+ma_yesterday_event_dept_tag:
+  taggable: ma_yesterday_event (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+ma_tomorrow_event_dept_tag:
+  taggable: ma_tomorrow_event (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+event_with_unsent_alert_dept_tag:
+  taggable: event_with_unsent_alert (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+event_with_sent_alert_dept_tag:
+  taggable: event_with_sent_alert (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+event_without_scheduled_alerts_dept_tag:
+  taggable: event_without_scheduled_alerts (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+<% if Settings.optional_modules.streaming %>
+event_with_streaming_dept_tag:
+  taggable: event_with_streaming (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+event_with_streaming_without_alerts_a_lehendakaritza:
+  taggable: event_with_streaming_without_alerts (Document)
+  tag: a_lehendakaritza_tag    
+  context: 'tags'
+
+event_with_streaming_and_sent_alert_and_show_in_irekia_a_lehendakaritza:
+  taggable: event_with_streaming_and_sent_alert_and_show_in_irekia (Document)
+  tag: a_lehendakaritza_tag 
+  context: 'tags'
+<% end %>
+
+event_with_duration_of_more_than_one_week_dept_tag:
+  taggable: event_with_duration_of_more_than_one_week (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+sunday_event_dept_tag:
+  taggable: sunday_event (Document)
+  taggable_type: Document
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+private_event_dept_tag:
+  taggable: private_event (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+translated_event_dept_tag:
+  taggable: translated_event (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+untranslated_event_dept_tag:
+  taggable: untranslated_event (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+interior_public_event_dept_tag:
+  taggable: interior_public_event (Document)
+  tag: interior_tag
+  context: 'tags'
+
+event_that_starts_the_week_before_now_with_duration_of_more_than_one_week_dept_tag:
+  taggable: event_that_starts_the_week_before_now_with_duration_of_more_than_one_week (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+page_in_menu_dept_tag:
+  taggable: page_in_menu (Document)
+  tag: interior_tag
+  context: 'tags'
+
+page_in_menu_area_tag:
+  taggable: page_in_menu (Document)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+draft_page_dept_tag:
+  taggable: draft_page (Document)
+  tag: interior_tag
+  context: 'tags'
+
+published_news_tag:
+  taggable: published_news (Document)
+  tag: comprobar_fechas_tag
+  context: 'tags'
+
+unpublished_news_tag:
+  taggable: unpublished_news (Document)
+  tag: comprobar_fechas_tag
+  context: 'tags'
+
+published_event_tag:
+  taggable: published_event (Document)
+  tag: comprobar_fechas_tag
+  context: 'tags'
+
+unpublished_event_tag:
+  taggable: unpublished_event (Document)
+  tag: comprobar_fechas_tag
+  context: 'tags'
+
+published_page_tag:
+  taggable: published_page (Document)
+  tag: comprobar_fechas_tag
+  context: 'tags'
+
+unpublished_page_tag:
+  taggable: unpublished_page (Document)
+  tag: comprobar_fechas_tag
+  context: 'tags'
+
+unpublished_video_tag:
+  taggable: unpublished_video (Video)
+  tag: comprobar_fechas_tag  
+  context: 'tags'
+
+approved_and_published_proposal_tag:
+  taggable: approved_and_published_proposal (Proposal)
+  tag: comprobar_fechas_tag  
+  context: 'tags'
+
+unpublished_proposal_tag:
+  taggable: unpublished_proposal (Proposal)
+  tag: comprobar_fechas_tag
+  context: 'tags'
+
+canal_interior_tag:
+  taggable: cat_webtv_interior (Category)
+  tag: interior_tag
+  context: 'tags'  
+
+canal_lehendakaritza_tag:
+  taggable: cat_webtv_lehendakaritza (Category)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+fototeca_interior:
+  taggable: cat_de_fototeca_interior (Category)
+  tag: interior_tag
+  context: 'tags'
+
+fototeca_lehendakaritza:
+  taggable: cat_de_fototeca_lehendakaritza (Category)
+  tag: lehendakaritza_tag  
+  context: 'tags'
+
+album_interior:
+  taggable: album_dept_interior (Album)
+  tag: interior_tag
+  context: 'tags'  
+
+album_interior_draft:
+  taggable: album_dept_interior_draft (Album)
+  tag: interior_tag
+  context: 'tags'
+
+album_interior_empty:
+  taggable: album_dept_interior_empty (Album)
+  tag: interior_tag
+  context: 'tags'
+
+album_con_tag_del_area_lehendakaritza1:
+  taggable: album_area_lehendakaritza (Album)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+orphane_photo:
+  taggable: orphane_photo (Photo)
+  tag: viajes_oficiales
+  context: 'tags'
+
+orphane_photo2:
+  taggable: orphane_photo (Photo)
+  tag: agricultura_ganaderia_y_forestal
+  context: 'tags'
+
+searchable_news:
+  taggable: searchable_news (Document)
+  tag: tagueado
+  context: 'tags'
+
+unsearchable_news:
+  taggable: unsearchable_news (Document)
+  tag: tagueado
+  context: 'tags'
+
+searchable_event:
+  taggable: searchable_event (Document)
+  tag: tagueado
+  context: 'tags'
+
+unsearchable_event:
+  taggable: unsearchable_event (Document)
+  tag: tagueado
+  context: 'tags'
+
+searchable_page:
+  taggable: searchable_page (Document)
+  tag: tagueado  
+  context: 'tags'
+
+unsearchable_page:
+  taggable: unsearchable_page (Document)
+  tag: tagueado  
+  context: 'tags'
+
+searchable_photo:
+  taggable: searchable_photo (Photo)
+  tag: tagueado  
+  context: 'tags'
+
+searchable_photo_lehendakaritza:
+  taggable: searchable_photo (Photo)
+  tag: lehendakaritza_tag
+  context: 'tags'
+
+unsearchable_photo:
+  taggable: unsearchable_photo (Photo)
+  tag: tagueado
+  context: 'tags'
+
+searchable_proposal:
+  taggable: searchable_proposal (Proposal)
+  tag: tagueado  
+  context: 'tags'
+
+unsearchable_proposal:
+  taggable: unsearchable_proposal (Proposal)
+  tag: tagueado  
+  context: 'tags'
+
+searchable_video:
+  taggable: searchable_video (Video)
+  tag: tagueado  
+  context: 'tags'
+
+unsearchable_video: 
+  taggable: unsearchable_video (Video)
+  tag: tagueado  
+  context: 'tags'
+
+  
+# Tags de los áreas: 
+# a cada área le corresponde un tag con formato _a_nombre_del_area
+governmental_proposal_lehendak:
+  taggable: governmental_proposal (Proposal)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+a_lehendakaritza_tagging:
+  taggable: a_lehendakaritza (Area)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+a_interior_tagging:
+  taggable: a_interior (Area)
+  tag: a_interior_tag
+  context: 'tags'
+
+a_ogov_tagging:
+  taggable: a_ogov (Area)
+  tag: a_ogov_tag
+  context: 'tags'
+
+a_4_tagging:  
+  taggable: a_4 (Area)
+  tag: a_4_tag
+  context: 'tags'
+
+a_5_tagging:  
+  taggable: a_5 (Area)
+  tag: a_5_tag
+  context: 'tags'
+
+a_6_tagging:  
+  taggable: a_6 (Area)
+  tag: a_6_tag
+  context: 'tags'
+
+a_7_tagging:  
+  taggable: a_7 (Area)
+  tag: a_7_tag
+  context: 'tags'
+
+a_8_tagging:  
+  taggable: a_8 (Area)
+  tag: a_8_tag
+  context: 'tags'
+
+draft_proposal_lehen:
+  taggable: draft_proposal (Proposal)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+unapproved_proposal_lehen:
+  taggable: unapproved_proposal (Proposal)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+approved_and_published_proposal_lehen:
+  taggable: approved_and_published_proposal (Proposal)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+featured_proposal_lehen:
+  taggable: featured_proposal (Proposal)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+searchable_proposal_lehen:
+  taggable: a_interior (Proposal)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+unsearchable_proposal_lehen:
+  taggable: searchable_proposal (Proposal)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+approved_and_published_proposal_in_basque_lehen:
+  taggable: approved_and_published_proposal_in_basque (Proposal)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+unpublished_proposal_lehen:
+  taggable: unpublished_proposal (Proposal)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+interior_proposal_interior:
+  taggable: interior_proposal (Proposal)
+  tag: a_interior_tag
+  context: 'tags'
+
+proposal_from_inactive_department_interior:
+  taggable: proposal_from_inactive_department (Proposal)
+  tag: a_interior_tag
+  context: 'tags'
+
+interior_question_interior:
+  taggable: interior_question (Proposal)
+  tag: a_interior_tag
+  context: 'tags'
+
+unapproved_question_lehen:
+  taggable: unapproved_question (Proposal)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+approved_and_published_question_interior:
+  taggable: approved_and_published_question (Proposal)
+  tag: a_interior_tag
+  context: 'tags'
+
+approved_and_published_and_answered_question_with_department_interior:
+  taggable: approved_and_published_and_answered_question_with_department (Proposal)
+  tag: a_interior_tag
+  context: 'tags'
+
+answered_question_lehen:
+  taggable: answered_question (Proposal)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+question_from_inactive_department_lehen:
+  taggable: question_from_inactive_department (Proposal)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+current_event_a_lehendakaritza:
+  taggable: current_event (Document)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+current_event_without_body_es_a_lehendakaritza:
+  taggable: current_event_without_body_es (Document)
+  tag: a_lehendakaritza_tag  
+  context: 'tags'
+
+event_with_tag_one_a_lehendakaritza:
+  taggable: event_with_tag_one (Document)  
+  tag: a_lehendakaritza_tag  
+  context: 'tags'
+
+long_event_a_lehendakaritza:
+  taggable: long_event (Document)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+translated_event_a_lehendakaritza:
+  taggable: translated_event (Document)
+  tag: a_lehendakaritza_tag  
+  context: 'tags'
+
+untranslated_event_a_lehendakaritza:
+  taggable: untranslated_event (Document)
+  tag: a_lehendakaritza_tag  
+  context: 'tags'
+
+emakunde_current_event_a_lehendakaritza:
+  taggable: emakunde_current_event (Document)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+
+event_with_duration_of_more_than_one_week_a_lehendakaritza:
+  taggable: event_with_duration_of_more_than_one_week (Document)
+  tag: a_lehendakaritza_tag  
+  context: 'tags'
+
+commentable_news_area_tag:
+  taggable: commentable_news (Document)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+politician_lehendakaritza_politician_tag:
+  taggable: politician_lehendakaritza (User)
+  tag: tag_politician_lehendakaritza
+  context: 'tags'
+
+politician_interior_politician_tag:
+  taggable: politician_interior (User)
+  tag: tag_politician_interior
+  context: 'tags'
+
+politician_one_politician_tag:
+  taggable: politician_one (User)
+  tag: tag_politician_one
+  context: 'tags'
+
+translated_news_politician_lehendakaritza:
+  taggable: translated_news (Document)
+  tag: tag_politician_lehendakaritza
+  context: 'tags'
+
+tagging_debate_completo_tag:
+  taggable: debate_completo (Debate)
+  tag:  tag_debate_completo
+  context: 'tags'
+
+tagging_debate_completo_lehendakaritza:
+  taggable: debate_completo (Debate)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+tagging_debate_nuevo_tag:
+  taggable: debate_nuevo (Debate)
+  tag:  tag_debate_nuevo
+  context: 'tags'
+
+tagging_debate_nuevo_lehendakaritza:
+  taggable: debate_nuevo (Debate)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+tagging_official_comment_lehendakaritza:
+  taggable: official_comment (Comment)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+tagging_news_aprobado_castellano_lehendakaritza:
+  taggable: aprobado_castellano (Comment)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+tagging_rechazado_castellano_lehendakaritza:
+  taggable: rechazado_castellano (Comment)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+tagging_spam_castellano_lehendakaritza:
+  taggable: spam_castellano (Comment)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+tagging_news_pendiente_castellano_lehendakaritza:
+  taggable: pendiente_castellano (Comment)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+tagging_aprobado_euskera_lehendakaritza:
+  taggable: aprobado_euskera (Comment)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+tagging_spam_euskera_lehendakaritza:
+  taggable: spam_euskera (Comment)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+tagging_rechazado_euskera_lehendakaritza:
+  taggable: rechazado_euskera (Comment)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+tagging_pendiente_euskera_lehendakaritza:
+  taggable: pendiente_euskera (Comment)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+tagging_aprobado_de_interior_lehendakaritza:
+  taggable: aprobado_de_interior (Comment)  
+  tag: a_interior_tag
+  context: 'tags'
+
+tagging_comentario_aprobado_en_video_lehendakaritza:
+  taggable: comentario_aprobado_en_video (Comment)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+tagging_comentario_aprobado_en_pagina_lehendakaritza:
+  taggable: comentario_aprobado_en_pagina (Comment)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+consejo_news_a_lehendakaritza:
+  taggable: consejo_news (Document)
+  tag: a_lehendakaritza_tag
+  context: 'tags'
+
+consejo_news_lehendakaritza:
+  taggable: consejo_news (Document)
+  tag: lehendakaritza_tag
+  context: 'tags'

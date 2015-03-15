@@ -1,0 +1,48 @@
+<div style="clear:both;margin:10px 0px;">
+  <% if @debate.featured %>
+    <p class='destacado'><%= t('sadmin.news.destacado_inicio') %></p>
+  <% end %>
+  <% if !@debate.is_public? %>
+    <span class='draft_notice'><%= t('admin.debates.es_borrador') %></span>
+  <% elsif @debate.published? %>
+    <span class="published_notice"><%= t('admin.debates.ya_publicado') %></span>
+    <% if @debate.finished? %>
+    <span class="published_notice"><%= t('admin.debates.ya_finalizado') %></span>
+    <% end %>
+  <% else %>
+    <span class="unpublished_notice">
+      <%= t('admin.debates.sin_publicar') %>.   <%= t('admin.debates.fecha_publicacion') %>: <%= @debate.published_at ? I18n.localize(@debate.published_at.to_date, :format => :short) : t('sadmin.news.sin_fecha') %>
+    </span>
+  <% end %>
+
+  
+  <ul class="edit_links">
+    <% view_or_preview = @debate.published? ? t('sadmin.news.ver') : t('sadmin.news.preview') %>
+    <!--if @debate.is_public? -%>-->
+      <li>
+        <%= link_to "#{view_or_preview} #{t('sadmin.news.en_irekia', :site_name => Settings.site_name)}", debate_path(@debate), :class => "public_link" if @debate.stages.present? %>
+      </li>
+    <!-- end -%>-->
+  </ul>
+  <% if can_create?("debate") %>
+    <ul class="edit_links" style="text-align: right;">
+      <li><%= link_to t('admin.debates.eliminar'), admin_debate_path(@debate), :data => {:confirm => t('seguro')}, :method => :delete, :class => "delete" %></li>
+    </ul>
+  <% end %>
+</div>
+
+<div class="one_news_submenu">
+  <ul>
+    <li class="<%= 'active' if current_page?(admin_debate_path(@debate)) %>">
+      <%= link_to_unless_current t('sadmin.news.contenido_principal'), admin_debate_path(@debate) %>
+    </li>
+    <% if can?("complete", "debate") %>
+    <li class="<%= 'active' if current_page?(admin_document_path(@debate.id, :w => "multimedia")) %>">
+      <%= link_to_unless_current t('sadmin.news.contenido_adicional'), common_admin_debate_path(@debate.id) %>
+    </li>
+    <% end %>
+    <li class="<%= 'active' if current_page?(admin_document_path(@debate.id, :w => "traducciones")) %>">
+      <%= link_to_unless_current t('sadmin.news.traducciones'), translations_admin_debate_path(@debate.id)  %>
+    </li>
+  </ul>
+</div>

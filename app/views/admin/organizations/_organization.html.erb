@@ -1,0 +1,10 @@
+<li class="active_<%= organization.active.to_s %>">
+  <%= link_to organization.name, admin_organization_path(organization) %>
+  
+  <% if organization.children.length > 0 %>
+    <ul id="organization_<%= organization.id %>">
+    <%= render :partial => "/admin/organizations/organization", :collection => organization.children %>
+    </ul>
+  <% end %>
+  
+</li>

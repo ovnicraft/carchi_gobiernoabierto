@@ -1,0 +1,25 @@
+<%= render :partial => '/admin/comments/tabs' %>
+
+<h2><%= t('admin.external.comment_items.lista_cliente',:cliente => @client.name) %></h2>
+
+<table class="comments" cellspacing="0">
+  <tr>
+    <th><%= ExternalComments::Item.human_attribute_name(:title) %></th> 
+    <th><%= ExternalComments::Item.human_attribute_name(:irekia_news_id) %></th>        
+    <th><%= t('sadmin.news.comentarios') %></th>
+  </tr>
+  <% @items.each do |item| %>
+  <tr>
+    <td><%= link_to(item.title, item.url, :target => "_blank") %></td>
+    <td><% if item.irekia_news_id.present? %>
+          <%= item.irekia_news.present? ? link_to(item.irekia_news.title, news_path(item.irekia_news_id)) : "No hay noticia #{item.irekia_news_id}"  %>
+        <% else %>
+          --
+        <% end %>
+    </td>
+    <td style="white-space:nowrap;">
+      <%= link_to "#{t('sadmin.news.comentarios')} (#{item.comments_count || 0})", comments_on_item_admin_external_comment_path(:id => item.id) %>
+    </td>
+  </tr>
+  <% end %>
+</table>

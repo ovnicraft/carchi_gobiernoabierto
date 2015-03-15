@@ -1,0 +1,10 @@
+<% if other_speakers.present? %>
+	<div class='aside_module other_speakers'>
+    <div class='title'><span><%= t('shared.sidebar.otros_asistentes') %></span></div>
+    <div class='content'>
+    	  <ul class="std_list people">
+    	    <li class='item speaker'><%= other_speakers %></li>
+    	  </ul>
+    </div>
+	</div>
+<% end %>

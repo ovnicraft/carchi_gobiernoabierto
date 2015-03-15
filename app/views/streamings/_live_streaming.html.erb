@@ -1,0 +1,31 @@
+<% if use_flowplayer? %>            
+  <a class="player" id="lighty" href="#" data-streaming_code="<%= streaming.code %>">
+    <span class="video_overlay_<%= I18n.locale %>"></span>
+  </a>
+<% else %>
+  <% if streaming.mobile_support? %>
+  <video controls="controls" width="600px" height="320px">
+    <source src="<%= streaming.mobile_url %>" />
+  </video>
+  <% end %>
+<% end %>
+
+  <%= javascript_tag do %>
+    $(function() {
+      <% # Asignar el código del streaming como href del enlace.
+         # El flowplayer usa el href del enlace para coger el código del streaming.
+         # Pero si el href se pone en el HTML y el visitante pincha en él antes de
+         # que el flowplayer este inicializado, seguirá el enlace.
+         # Por esto ponemos el código del streaming como data-streaming_code
+         # y lo asignamos como href justo antes de inicializar el player.
+      %>
+      $('#lighty').attr('href', $('#lighty').data('streaming_code'));
+      
+      initStreamingPlayer('lighty', {netConnURL: '<%= get_net_connection_url_for_streaming %>', showLogo: '<%= show_logo_for_streaming?(streaming)%>'});
+      
+      if (typeof(streaming) != "undefined") {
+        streaming.interval("<%= event.present? ? event.ends_at - Time.zone.now() : 10*60*1000 %>").init();
+      }
+      
+    });
+  <% end %>

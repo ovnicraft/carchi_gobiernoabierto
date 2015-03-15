@@ -1,0 +1,57 @@
+<%= error_messages(f.object) %>
+
+<%= hidden_field_tag 'lang', params[:lang] %>
+<%= hidden_field_tag 'locale', params[:locale] unless !params[:locale]%>
+
+<p style="clear:both;text-align:center;"><%= submit_tag t('guardar') %></p>
+
+<table class="admin">
+
+  <tr>
+    <th width="20%"><%= t('sadmin.news.titulo_en', :lang => locales[params[:lang].to_sym]) %></th>
+    <td width="80%">
+      <%= f.text_field "title_#{params[:lang]}".to_sym, :size => 60 %>
+    </td>
+  </tr>
+  
+  <% if @document.is_a?(News) %>
+  <tr>
+    <th><%= t('sadmin.news.Politicos') %>:<br />
+    </th>
+    <td>
+      <%= @document.politicians_tag_list %>
+    </td>
+  </tr>
+  
+  <tr>
+    <th><%= t('sadmin.news.Otros_invitados_en', :lang => locales[params[:lang].to_sym]) %></th>
+    <td>
+      <%= f.text_field "speaker_#{params[:lang]}".to_sym, :size => 60 %>
+    </td>
+  </tr>
+  
+  <tr>
+    <th><%= t('sadmin.news.alt_foto_portada_en', :lang => locales[params[:lang].to_sym]) %></th>
+    <td>
+      <%= f.text_field "cover_photo_alt_#{params[:lang]}".to_sym, :size => 60 %>
+    </td>
+  </tr>
+  <% end %>
+    
+  <tr>
+    <th><%= t('sadmin.news.texto_en', :lang => locales[params[:lang].to_sym]) %></th>
+  
+    <td>
+      <%= f.text_area "body_#{params[:lang]}".to_sym, :size => "90x20", :class => "mceEditor" %>
+      <div class="hint"><%=raw t('sadmin.do_not_copy_paste') %></div>
+    </td>
+  </tr>
+  
+
+</table>
+
+<% unless params[:w].eql?("traducciones") %>  
+  <%= render :partial => "#{@t}_common", :locals => {:f => f} %>
+<% end %>
+    
+<!-- <p style="clear:both;text-align:center;"><%= submit_tag t('guardar') %></p> -->

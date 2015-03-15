@@ -1,0 +1,9 @@
+<ul class="edit_links delete_link">
+  <li><%= link_to "Eliminar entidad", admin_outside_organization_path(@organization), method: "delete", 
+    data: {confirm: "¿Estás seguro? Se eliminará por completo y no se puede deshacer."}, class: "delete" %>
+  </li>
+</ul>
+
+<%= form_for @organization, :url => admin_outside_organization_path(@organization), :html => {:method => :put, :multipart => true} do |f| %>
+  <%= render :partial => "form", :locals => {:f => f} %>
+<% end %>

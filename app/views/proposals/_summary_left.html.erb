@@ -1,0 +1,10 @@
+<ul class='nav-list'>
+  <% if Settings.optional_modules.proposals %>
+  <li><%= link_to t('proposals.title'), proposals_url %></li>
+  <% end %>
+  <% if Settings.optional_modules.debates %>
+  <li><%= link_to t('debates.title'), debates_url %></li>
+  <% end %>
+  <li><%= link_to t('answers.title'), answers_url %></li>
+  <li><%= link_to t('site.rss'), feeds_site_url %></li>
+</ul>

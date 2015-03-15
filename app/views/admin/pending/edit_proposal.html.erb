@@ -1,0 +1,24 @@
+<div class='title'>
+  <label class='control-label'>Título</label>
+  <%= @pending.title %>
+</div>
+<div class='body'>
+  <label class='control-label'>Texto</label>
+  <%=raw @pending.body %>
+</div>
+<div class='area'>
+  <label class='control-label'>Area</label>
+  <%= @pending.area.name if @pending.area %>
+</div>
+
+<%= form_for @pending, as: :pending, :url => approve_admin_pending_path(:pending_id => @pending.id, :pending_type => 'Proposal'), :html => {:method => :put, :class => 'form'} do |f| %>
+
+  <div class='control-group'>
+    <%= f.label :organization_id, 'Departamento', :class => 'control-label' %>
+    <div class='controls'>
+      <%= f.select :organization_id, options_for_select([['', '']] + Department.active.order("position").collect {|d| [d.name_es, d.id]}) %>
+    </div>
+  </div>  
+
+  <%= f.submit 'Guardar y publicar', :class => 'btn btn-primary' %>
+<% end %>

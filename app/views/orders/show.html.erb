@@ -1,0 +1,50 @@
+<div class='section container order show'>
+  <%= render :partial => '/shared/context', :locals => {:type => 'orders'} %>
+  <div class='section_main row-fluid'>
+    <div class='section_content span8'>
+      <div class='article order'>
+      <div class='meta_article date_and_boletin'>
+        <i class='ico_date'></i>
+        <div class='meta_text'>
+          <span class='date'><%=  "#{Order.human_attribute_name("fecha_bol")}: #{I18n.l(@order.fecha_bol)}" %></span>    
+          <span class='boletin'><%= t('orders.publicado_en_boletin', :no_bol => @order.no_bol) %></span>
+        </div>
+      </div>   
+      <h1 class='title'><%= highlight_according_to_criterio(@order.titulo, @criterio) %></h1>      
+      <div class='meta_article order_data'>       
+        <% ['materias', 'dept', 'no_disp', 'fecha_disp', 'no_orden', 'rango', 'seccion', 'vigencia', 'ref_ant', 'ref_pos'].each do |att| %>        
+          <% if @order.send(att).present? %>  
+            <%=raw "<br/>" if att.eql?('ref_ant') %>
+            <div class="<%= att %>"> 
+              <%= "#{Order.human_attribute_name(att)}: " %>    
+              <% case att
+                when /^fecha.*/ %>                             
+                <b><%= I18n.l(@order.send(att)) %></b>
+              <% when 'materias', 'seccion', 'dept' %>  
+                <b><%= show_order_attributes_with_links(@order, att) %></b>
+              <% when 'ref_ant', 'ref_pos' %>  
+                <b><%= show_order_ref_with_links(@order.send(att)) %></b>
+              <% else %>                                      
+                <b><%= @order.send(att) %></b>
+              <% end %>                                         
+            </div>            
+            <%=raw "<br/>" if att.eql?('ref_ant') %>            
+          <% end %>           
+        <% end %>   
+      </div>  
+      <div class='text'><%= show_order_texto_hightlighted_with_links(@order.texto, @criterio) %></div>
+      </div>
+    </div>
+    <div class='section_aside span4'>
+      <% if @criterio.present? %>
+        <div class="return_to_search"><%= link_to "&laquo; #{t('orders.volver_busqueda')}".html_safe, search_url(:id => @criterio.id) %></div>
+      <% end %>
+      <div class='banner_aside see_on_enet'>
+        <div class='banner_image'>
+          <%= link_to "<span>#{t('orders.ver_en_enet')}</span>".html_safe, @order.enet_url, :rel => 'external' %>
+        </div>
+      </div>  
+      <%= render :partial => "shared/related_content", :locals => {:current => @order, :limit => 8 }  %>
+    </div>
+  </div>
+</div>

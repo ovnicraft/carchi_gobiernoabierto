@@ -1,0 +1,13 @@
+<%- 
+  videos = []
+  @videos.each do |v|
+    videos << render(:partial => 'mob_app/cells/video_cell', :locals => {:video => v, :preview_size => 'n770', :width => 770, :height => 440, :padding => 30, :sort_id => (v.published_at.to_i * 10000 + v.id), :data_options => {"title_size" => 24, "text_size" => 19}})
+  end
+-%>
+
+{
+  "items": [
+    <%=raw videos.join(", \n") %>
+  ], 
+  "has_older" : <%= !@document.present? %>
+}

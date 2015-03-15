@@ -1,0 +1,301 @@
+@import "helpers";
+.section {
+
+	&.videos{
+		.article{
+			h1.title{
+				font-size: 1.4em;
+			}
+		}
+	}
+	&.albums{
+		.article{
+			h1.title{
+				font-size: 1.4em;
+			}
+		}
+	}
+	
+	.article {
+
+
+		&.proposals{
+			& > .text{
+				//padding-left: 13%;
+			}
+		}
+		&.order{
+			& > h1.title{
+				font-size: 24px;
+				line-height: 26px;      
+			}			
+		}		
+
+		border-bottom: 1px solid $colorLines;
+		float: left;
+		width: 100%;
+
+		& > div.top{
+			clear: both;
+			float: left;
+			height: 20px;
+			width: 100%;
+			padding-bottom: 5px;
+			border-bottom: 1px solid $colorLines;
+			.comments_link{
+				background-image: url(image-path('icons/ic_comments.png'));
+				background-repeat: no-repeat;
+				padding-left: 30px;
+				min-height: 25px;
+				display: block;
+				a.comments_count{
+					min-height: 25px; 
+
+				}
+			}
+		}
+
+		& > h1.title{
+
+			clear: both;
+			float: left;
+			width: 100%;
+			font-size: 30px;
+			line-height: 32px;      
+			color: $textColor;
+			padding: 10px 0;
+			font-weight: bold;
+			border-bottom: 1px solid $colorLines;
+			margin-bottom: 0;
+			margin-top: 0; 
+			a{
+				font-size: inherit;
+				line-height: inherit;       
+				color: inherit;
+			}
+		}
+
+
+
+		& > div.heading {
+			width: 50%;
+			clear: both;
+			float: left;
+			margin-right: 20px;
+
+			img{
+				width: 100%;
+				margin-bottom:10px;
+			}
+		}
+
+		& > div.text{
+			clear: both;
+			float: left;
+			border-bottom:none;
+			margin-top: 10px;
+			width: 100%;
+
+			a{
+				font-weight: bold;
+				text-decoration: underline;
+			}
+
+			&.description{
+				//padding-left: 13%; 
+			}
+		}
+
+		& > div.meta_article{
+
+			clear: both;
+			float: left;
+			border-bottom:1px solid $colorLines;
+			font-size: 12px;
+			width: 100%;
+			padding: 3px 0;
+			i {
+
+				width: 25px;
+				height: 25px;
+				background-repeat: no-repeat;
+				background-position: left center;
+				float: left;
+				margin-right: 10px;
+			}
+			.meta_text{
+				padding-top: 3px;
+				&.time{
+					margin-left: 10px;
+				}
+			}
+
+			&.author{
+
+				.ico_author{
+					background-image: url(image-path('icons/ic_author.png'));
+				}
+			}
+
+			&.date{
+
+				.ico_date{
+					background-image: url(image-path('icons/ic_date.png'));
+				}
+
+			}
+			&.date_and_boletin{
+
+				.ico_date{
+					background-image: url(image-path('icons/ic_calendar.png'));	
+				}
+				.date{
+					float: left;
+					padding-right: 5px;
+					border-right: 1px solid $colorLines;
+				}
+				.boletin{
+					padding-left: 5px;
+					float: left;
+				}
+
+			}
+			&.place{
+				.ico_location{
+					background-image: url(image-path('icons/ic_location.png'));
+				}
+			}
+
+			&.tags{
+				.ico_tags{
+					background-image: url(image-path('icons/ic_tags.png'));
+				}
+				ul.tag_list{
+					margin: 0;
+
+					li{
+						color: $colorIrekia;
+						&:first-child{
+							color: $textColor;
+							padding-left: 0;
+
+						}
+					}
+				}	
+			}
+		}
+
+
+		& > div.coverage_info {
+			clear:both;
+			float: left;
+			width: 100%;
+		}
+
+
+		
+		& > div.more_info{
+			clear:both;
+			float: left;
+			margin-bottom: 10px;
+			width: 100%;
+			padding-top:10px;
+			border-top: 1px solid $colorLines;
+			@include opensans();
+			.tags_label{
+				display: block;
+				margin-bottom: 5px;
+				color: $textColor;
+				float: left;
+			}
+			.tag_links{
+				display: block;
+				clear: both;
+
+				a{
+					@include opensans(17px,bold);
+					color: $colorIrekia;
+				}
+			}
+		}
+		& > div.player{
+			clear: both;
+			float: left;
+		}
+
+		& > .image_wrap{
+			clear: both;
+			float: left;
+			width: 100%;
+			height: auto;
+			text-align: center;
+			margin-bottom: 10px;
+			margin-top: 10px;
+			img{
+				width: 100%;
+				height: auto;
+			}
+			&.landscape{
+				img{
+					width: 100%;
+					height: auto;
+				}				
+			}
+			&.portrait{
+				height: 430px;
+				img{
+					width: auto;
+					height: 430px;
+				}
+			}
+		}
+		& > .proposal_arguments{
+			clear: both;
+			float: left;
+			width: 100%;
+			height: auto;
+			margin-bottom: 10px; 
+		}
+		.description, .text	{
+			clear:both;
+			float:left;
+
+			ul{
+				list-style-type: disc;
+				padding: 12px;
+				li{
+
+				}
+			}
+
+			img{
+				margin-bottom: 5px;
+				&[style*="float: right"]{
+					margin-left: 10px;
+				}
+				&[style*="float: left"]{
+					margin-right: 10px;
+				}				
+			}
+			p.r01Subtitular{
+				@include opensans(14px, bold);
+				line-height: 18px;
+				color: $textColor;
+				clear: both;
+				float: left;
+				width: 100%;
+				padding-bottom:5px;			
+			}
+
+			p.r01Entradilla{
+				@include opensans(14px, bold); 
+				line-height: 18px;
+				color: $textColor;
+				clear: both;
+				float: left;
+				width: 100%;
+				padding-bottom:5px;			
+			}			
+		}
+	}
+}

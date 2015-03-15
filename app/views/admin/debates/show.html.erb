@@ -1,0 +1,58 @@
+<%= render :partial => "edit_links" %>
+
+<ul class="edit_links" style="margin:20px 0px;">
+  <li>
+    <%= link_to t('sadmin.modificar'), edit_admin_debate_path(@debate), :class => "edit" %>
+  </li>
+</ul>
+
+<%= render :partial => "/admin/shared/dept", :locals => {:item => @debate}  %>
+
+<h1 class="title"><%= @debate.title %></h1>
+
+<div class="document_body">
+  <h2><%= Debate.human_attribute_name("body") %></h2>
+  <%=raw @debate.body %>
+</div>
+
+<div class="document_body">
+  <h2><%= Debate.human_attribute_name("description") %></h2>  
+  <%=raw @debate.description %>
+</div>
+
+<hr/>
+<table class="admin">
+  <tr>
+    <th>Hashtag</th><td><%= @debate.hashtag %></td>
+  </tr>
+  <tr>
+    <th><%= Debate.human_attribute_name(:multimedia_dir) %></th>
+    <td><%= @debate.multimedia_path || "no tiene" %><br/><%= render :partial => "multimedia_help" %></td>
+  </tr>  
+
+</table>
+
+<%= render :partial => '/admin/shared/create_update_info', :locals => {:item => @debate} %>
+
+<div class="document_show2" id="debate_related_news">
+  <%= render :partial => "admin/debates/related_news", :object => @debate %>
+</div>
+
+
+<div class="document_show2" id="debate_attachments">
+  <%= render :partial => "/sadmin/attachments/list_specific", :object => @debate %>
+</div>
+
+<div class="document_show2" id="debate_entities">
+  <%= render :partial => "admin/debates/entities", :locals => {:debate => @debate} %>
+</div>
+
+<div class="document_show2" id="debate_stages">
+  <%= render :partial => "admin/debates/stages", :locals => {:debate => @debate} %>
+</div>
+
+<% content_for :head do %>
+  <%= javascript_include_tag 'prototype/dragdrop' %>
+<% end %>
+
+<%= sortable_element 'entities_list', :url => sort_admin_debate_entities_path(:debate_id => @debate.id), :method =>:post, :complete => visual_effect(:highlight, 'entities_list') %>

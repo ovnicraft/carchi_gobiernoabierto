@@ -1,0 +1,6 @@
+<h1><%= @department.name %>: Añadir redes sociales </h1>
+
+<%= form_for @sorganization, :url => admin_sorganizations_url, :html => {:method => :post, :multipart => true} do |f| %>
+  <%= hidden_field_tag :dept_id, @department.id %>
+  <%= render :partial => 'form', :locals => {:f => f} %>  
+<% end %>  

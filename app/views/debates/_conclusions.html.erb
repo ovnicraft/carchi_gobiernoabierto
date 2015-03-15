@@ -1,0 +1,11 @@
+<% if @document.present? -%>
+  <%= render :partial => 'news/show' %>
+<% else -%>  
+  <div class='section_main row-fluid'>
+    <div class='section_content span12'>
+      <div class='article debate conclusions'>
+        <div class='currently_working well'><%= t('debates.currently_working') %></div>
+      </div>
+    </div>
+  </div>
+<% end -%>  

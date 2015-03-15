@@ -1,0 +1,14 @@
+<li id="<%= "entity_#{debate_entity.id}" %>">
+  <% if debate_entity.organization.present? %>
+    <%= image_tag(debate_entity.organization.logo.url) if debate_entity.organization.logo? %>
+    <%= debate_entity.organization.name %>
+  <% end %>
+  <%= link_to "<span>Eliminar</span>".html_safe, admin_debate_entity_path(@debate, debate_entity), method: :delete, 
+      data: {confirm: "Seguro?", remote: true}, html: {class: 'remove', title: "Eliminar"} %>
+  <br/>
+  <% for_every_locale do |code, lang| %>
+    <% url = debate_entity.send("url_#{code}") %>
+    <% url = debate_entity.url_es unless url.present? %>
+    URL <%= lang %>: <%= url.present? ? link_to(url, url) : 'sin URL' %><br/>
+  <% end %>
+</li>

@@ -1,0 +1,101 @@
+<% mode ||= "show" %>
+
+<% if mode.eql?("show") && can?('administer', 'permissions') %>
+  <ul class="edit_links">
+    <li><%= link_to "Modificar", edit_admin_user_permissions_path(@user), :class=>"edit" %></li>
+  </ul>
+<% end %>
+
+<table class="permissions" cellspacing="0">  
+  <tr>
+    <td class="module">&nbsp;</td>
+    <th class="permission govt" colspan="3">Agenda compartida Gobierno</th>
+  </tr>
+  <tr>
+    <td class="module">&nbsp;</td>
+    <th class="permission govt">Uso interno</th>
+    <th class="permission govt">Visible <%= Settings.site_name %></th>
+  </tr>
+  <tr>
+    <th>Agenda</th>
+    <td class="govt"><%= show_or_edit_tag_for("perm[events][create_private]", mode) %></td>
+    <td class="govt"><%= show_or_edit_tag_for("perm[events][create_irekia]", mode) %></td>
+  </tr>  
+</table>
+
+<br/>
+
+<table class="permissions" cellspacing="0">
+  <tr>
+    <td class="module">&nbsp;</td>
+    <th class="permission">Crear, modificar y traducir</th>
+    <th class="permission">Sólo modificar y traducir</th>
+    <th class="permission">Pestaña cont. adicional, modificar y traducir</th>
+    <th class="permission">Exportar (ePub)</th>
+  </tr>
+  <tr>
+    <th>Noticias</th>
+    <td><%= show_or_edit_tag_for("perm[news][create]", mode) %></td>
+    <td><%= show_or_edit_tag_for("perm[news][edit]", mode) %></td>
+    <td><%= show_or_edit_tag_for("perm[news][complete]", mode) %></td>
+    <td><%= show_or_edit_tag_for("perm[news][export]", mode) %></td>
+  </tr>
+  
+</table>
+
+<br/>
+
+<% if Settings.optional_modules.proposals %>
+<table class="permissions" cellspacing="0">  
+  <tr>
+    <td class="module">&nbsp;</td>
+    <th class="permission">Moderar</th>
+  </tr>
+  <tr>
+    <th>Peticiones</th>
+    <td><%= show_or_edit_tag_for("perm[proposals][edit]", mode) %></td>
+  </tr>  
+</table>
+<br/>
+<% end %>
+
+<table class="permissions" cellspacing="0">  
+  <tr>
+    <td class="module">&nbsp;</td>
+    <th class="permission">Responder oficialmente</th>
+    <th class="permission">Moderar</th>
+  </tr>
+  <tr>
+    <th>Comentarios</th>
+    <td><%= show_or_edit_tag_for("perm[comments][official]", mode) %></td>
+    <td><%= show_or_edit_tag_for("perm[comments][edit]", mode) %></td>
+  </tr>  
+</table>
+
+<br/>
+
+<table class="permissions" cellspacing="0">  
+  <tr>
+    <td class="module">&nbsp;</td>
+    <th class="permission">Votar</th>
+  </tr>
+  <tr>
+    <th>Relacionados</th>
+    <td><%= show_or_edit_tag_for("perm[recommendations][rate]", mode) %></td>
+  </tr>  
+</table>
+
+<br/>
+
+<% if Settings.optional_modules.headlines %>
+<table class="permissions" cellspacing="0">  
+  <tr>
+    <td class="module">&nbsp;</td>
+    <th class="permission">Aprobar/Modificar</th>
+  </tr>
+  <tr>
+    <th>Escucha activa</th>
+    <td><%= show_or_edit_tag_for("perm[headlines][approve]", mode) %></td>
+  </tr>  
+</table>
+<% end %>

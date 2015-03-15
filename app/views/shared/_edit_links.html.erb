@@ -1,0 +1,42 @@
+<% needed_privilege ||= 'can_edit?' %>
+<% type = item.class.to_s.downcase %>
+<% url = case type
+  when 'news', 'event' 
+    "sadmin_#{type}_path"
+  when 'page'  
+    "admin_document_path"
+  else
+    "admin_#{type}_path"
+  end  
+%>
+
+<%- if send(needed_privilege, type.pluralize) -%>
+  <div class='admin_links'>
+    <div class='pull-right'>
+      <% if !item.is_public? && !item.published? -%>
+        <% publish_link = item.is_a?(Document) ? publish_admin_document_path(item) : send("publish_admin_#{type}_path", item) -%>
+        <%= link_to t('site.publicar_ahora'), publish_link, :class => "publish btn btn-info", :method => :put %>
+      <% end -%>
+      <%= link_to t('modificar'), send(url, item), :class => "edit btn btn-primary" %>
+    </div>
+    
+    <div class='btn_with_spinner'>
+      <%= link_to t('site.stats'), stats_url(:item_type => type, :item_id => item.id), :class => "stats btn btn-success", :id => 'stats', :'data-remote' => true if (can_see_stats? && !['question', 'proposal', 'debate'].include?(type)) %>
+    </div>
+
+  </div>
+
+  <% if !item.is_public? -%>
+    <div class='admin_alerts'>
+      <div class='alert alert-error'><%= t('site.contenido_borrador') %></div>
+    </div>
+  <% elsif !item.published? && item.respond_to?(:published_at) -%>
+    <div class='admin_alerts'>
+      <div class='alert alert-notice'><%= t('site.se_publicara', :date => I18n.localize(item.published_at, :format => :short)) %></div>
+    </div>  
+  <% end -%>
+
+<%- end -%>
+
+<div id='stats_container'>
+</div>  

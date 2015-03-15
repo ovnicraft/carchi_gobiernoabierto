@@ -1,0 +1,6 @@
+$("clients_list").insert({
+  bottom: "<%= escape_javascript(render(partial: '/admin/externals/clients/client_row', locals: {client_row: @client})) %>"
+});
+$("add_client_form").hide();
+$("client_name").value = "";
+$("client_url").value = "";

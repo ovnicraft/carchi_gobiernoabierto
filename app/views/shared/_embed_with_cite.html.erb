@@ -1,0 +1,13 @@
+
+<p>
+  <%= link_to t("#{what}.embed"), "#", :onclick => "showEmbedCode2(this);return false;" %>
+</p>
+
+<div id="embed_container_<%= id %>" style="display:none;" class="embed_container">
+  <p class="embed_video_expl"><%= t("#{what}.embed_explain") %></p>
+
+  <textarea class="embed" id="embed_<%= id %>" cols="45" rows="3">
+<%= code_to_embed %>
+<%= h(content_tag(:p, t('site.cite_irekia', :site_name => Settings.site_name, :publisher_name => Settings.publisher[:name]), :style=> "color:BBB"))%>
+  </textarea>
+</div>

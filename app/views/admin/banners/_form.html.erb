@@ -1,0 +1,51 @@
+<%= error_messages(f.object) %>
+
+<% current_locale=I18n.locale%>
+
+<% for_every_locale do |code, lang| %>
+<h3><%= lang %></h3>
+<% I18n.locale=code%>
+<div class="banner_form">
+  <% unless @banner.new_record? %>
+  <div class='logo_block'>
+    <% banner_img = ( if @banner.send("logo_#{code}_file_name").nil? then @banner.logo_es.url else @banner.logo.url  end) %>
+    <%= image_tag banner_img %><br/>
+    <span id="toggle_form_link">
+      <%= link_to('Cambiar logo', "#", :onclick => "$('logo_form_container_#{code}').toggle();return false;") %>
+    </span>
+  </div>
+  <% end %>
+
+  <table class="admin">  
+    <tr id="logo_form_container_<%= code %>" style="<%=@banner.new_record? ? '' : 'display: none' %>">
+      <th>Logo <%= lang %></th>
+      <td>
+        <%= f.file_field "logo_#{code}".to_sym %>
+        
+        <%= link_to 'Cancelar', "#", :onclick => "$('logo_form_container_#{code}').hide();return false;" unless @banner.new_record? %>
+        <div class='hint'>El tamaño obligatorio es 170x100px </div>
+      </td>
+    </tr>
+  
+    <tr>
+      <th>Enlace <%= lang %></th>
+      <td><%= f.text_field "url_#{code}".to_sym %></td>
+    </tr>
+  
+    <tr>
+      <th>'Alt'(Texto descriptivo) <%= lang %></th>
+      <td><%= f.text_field "alt_#{code}".to_sym %></td>
+    </tr>
+  </table>
+</div>  <!-- /banner_form -->
+<% end %>
+
+<% I18n.locale = current_locale%>
+<table>
+  <tr>
+    <th>Activo?</th>
+    <td><%= f.check_box :active %></td>
+  </tr>
+</table>
+
+<p><%= f.submit "Guardar" %></p>

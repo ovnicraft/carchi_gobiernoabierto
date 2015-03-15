@@ -1,0 +1,16 @@
+<div class="submenu">
+  <ul class="status">
+    <li class="<%= 'active' if controller.action_name.eql?('index') %>">
+      <%= link_to_unless controller.action_name.eql?('index'), "Candidatas para el próximo boletín", admin_bulletins_path %>
+    </li>
+    <li class="<%= 'active' if ['new', 'create'].include?(controller.action_name) %>">
+      <%= link_to_unless controller.action_name.eql?('new'), "Próximo boletín", new_admin_bulletin_path %>
+    </li>
+    <li class="<%= 'active' if controller.action_name.eql?('archive') %>">
+      <%= link_to_unless controller.action_name.eql?('archive'), "Archivo", archive_admin_bulletins_path %>
+    </li>
+    <li class="<%= 'active' if controller.action_name.eql?('subscribers') %>">
+      <%= link_to_unless controller.action_name.eql?('subscribers'), "Suscriptores", subscribers_admin_bulletins_path %>
+    </li>
+  </ul>
+</div>

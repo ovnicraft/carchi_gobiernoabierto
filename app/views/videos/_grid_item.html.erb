@@ -1,0 +1,12 @@
+<% span_size ||= 'span3' %>
+
+<div class="grid_item video <%= span_size %>">
+  <div class="image">
+    <%= link_to(image_tag(document_img_tag(video_preview_img(video), :n320)), video) %>
+  </div>
+  <div class="title">
+    <%= link_to video.title, video %>
+  </div>
+  <%= render_date(video.published_at) %>
+  <%= link_to_item_comments(video.comments.count, video) unless span_size.eql?('span12') %>
+</div>

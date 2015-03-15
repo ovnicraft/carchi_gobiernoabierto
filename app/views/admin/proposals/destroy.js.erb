@@ -1,0 +1,5 @@
+<%- if @proposal.destroyed? -%>
+  $("proposal<%= @proposal.id %>").fade();
+<%- else -%>
+  alert("La propuesta no se ha borrado");
+<%- end -%>

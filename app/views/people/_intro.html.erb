@@ -1,0 +1,17 @@
+<div class='signup_intro row-fluid'>
+  <div class='span6'>
+    <div class='mod_title'><%= t('people.que_me_aporta') %></div>
+    <ol>
+      <li><%= t('people.registro_motivo1') %></li>
+      <li><%= t('people.registro_motivo2') %></li>
+      <li><%= t('people.registro_motivo3') %></li>
+      <li><%= t('people.registro_motivo4') %></li>
+    </ol>
+  </div>
+  <div class='span6'>
+    <%= link_to t('people.crea_tu_cuenta', :site_name => Settings.site_name), new_person_path, :class => 'irekia_signin' %>
+    <span class='small_text'><%= t('people.conectate_con') %></span>
+    <%= render :partial => '/sessions/social_signin' %>
+    <div class='journalists_block'><%= link_to t('users.registro_periodistas'), new_journalist_url %></div>
+  </div>
+</div>

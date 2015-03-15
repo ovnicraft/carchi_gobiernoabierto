@@ -1,0 +1,21 @@
+<h2><%= Debate.human_attribute_name("entities") %></h2>
+<ul class="sortable admin_entities_list" id="entities_list">
+  <% debate.debate_entities.each do |de| %>
+    <%= render :partial => "/admin/debate_entities/entity_row", :locals => {:debate_entity => de} %>
+  <% end %>
+</ul>
+
+<div class="bottom_links">
+  <ul class="edit_links">
+    <li class="add_entity"><%= link_to "Añadir entidad", "#", :onclick => "$('add_entity_form').show(); $('debate_entity_organization_name').focus();return false;", :class => "new" %></li>
+  </ul>
+</div>
+
+<div id="add_entity_form" style="display: none">
+  <%= form_for debate.debate_entities.build, :as => :debate_entity,
+                     :url => admin_debate_entities_path(:debate_id => debate), 
+                     :loading => "$('spinner').show()",
+                     :loaded  => "$('spinner').hide()", :data => {:remote => true} do |f| %>
+     <%= render :partial => '/admin/debate_entities/form', :locals => {:f => f} %>
+  <% end %>
+</div>

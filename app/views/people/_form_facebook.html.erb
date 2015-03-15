@@ -1,0 +1,63 @@
+<%= error_messages_for :user %>
+<table class="signup" cellspacing="0" cellpadding="0">
+  
+<%= form_for :user, :url => account_path, :html => {:method => :put} do |f| %>
+  <%= error_messages_for :user %>
+  
+  <%= hidden_field_tag 'return_to', params[:return_to] if params[:return_to] %>
+  <tr>
+    <th><label for="user_email"><%= t('email') %></label></th>
+    <td width="75%" id="user_email_container">
+      <%= f.text_field :email %><br/>
+      <span class="info"><%= t('comments.no_mostrar') %></span>
+    </td>
+  </tr>
+
+  <tr>
+    <th><span class="fb"><%= Person.human_attribute_name(:name) %></span></th>
+    <td id="user_name_container">
+      <%= current_user.name %>
+    </td>
+  </tr>
+
+  <tr>
+    <th><span class="fb"><%= Person.human_attribute_name(:last_names) %></span></th>
+    <td id="user_last_names_container">
+      <%= current_user.last_names %>
+    </td>
+  </tr>
+  
+  <tr>
+    <th><label for="user_raw_location"><%= t('people.localidad') %></label></th>
+    <td id="user_raw_location_container">
+      <%= f.text_field :raw_location, :size => "20" %>
+      <%- loc_hint = t('people.explain_localidad') -%>
+      <%= image_tag 'admin/hint.gif', :alt => loc_hint, :title => loc_hint %>
+    </td>
+  </tr>
+
+  <tr>
+    <th><span class="fb"><%= Person.human_attribute_name(:url) %></span></th>
+    <td id="user_url_container">
+      <%= current_user.url %>
+    </td>
+  </tr>
+
+  <% content_for :observe_fields do %>
+    <p class="hint fb"><%= t('account.campos_facebook') %></p>
+
+    <%= observe_field :user_email, :url => validate_field_people_path(:type => 'Person'), :frequency => 2, :with => "email" %>
+  <% end %>
+
+  <tr>
+    <td class="submit" colspan='2'>
+      <%= submit_tag t("guardar") %>
+    </td>
+  </tr>
+<% end %>
+
+</table>
+
+
+<%= yield :observe_fields %>
+<p class="hint">* <%= t('campos_obligatorios') %></p>

@@ -1,0 +1,263 @@
+<h1><%= h(@user.internal_name) %></h1>
+
+<%= render :partial => "submenu" %>
+
+<% if @subtab.eql?('data') %>
+<fieldset class="permissions">
+  <legend>Datos</legend>
+
+  <ul class="edit_links">
+    <% if @user.is_a?(Politician) %>
+      <li>
+        <%= link_to "Ver en la web", politician_path(@user), :class => "public_link" %>
+      </li>
+    <% end %>
+    <li class="edit_n"><%= link_to 'Modificar', edit_admin_user_path(@user), :class => "edit" %></li>
+    <li class="ch_pass"><%= link_to 'Cambiar contraseña', pwd_edit_admin_user_path(@user), :class => "edit" %></li>
+  </ul>
+
+
+  <table class="admin with_avatar">
+      
+    <% if @user.is_twitter_user? %>
+      <tr>
+        <th><span class="twit">Screen name</span></th>
+        <td>@<%= @user.screen_name %></td>
+      </tr>
+    <% end %>
+
+    <tr>
+      <th>Nombre (se muestra en la web)</th>
+      <td><%= h @user.name %></td>
+    </tr>
+
+    <tr>
+      <th>Apellidos (se muestra en la web)</th>
+      <td><%= h @user.last_names %></td>
+    </tr>
+
+    <tr>
+      <th>Nombre interno y teléfono (NO se muestra en la web)</th>
+      <td><%= h @user.telephone %></td>
+    </tr>
+
+    <tr>
+      <th>URL de su página o blog personal</th>
+      <td><%= link_to h(@user.url), @user.url, :rel => "external" %></td>
+    </tr>
+
+    <% if @user.is_googleplus_user? %>
+      <tr>
+        <th>Googleplus ID</th>
+        <td><%= @user.googleplus_id %></td>
+      </tr>
+    <% end %>
+  
+    <tr>
+      <th>Email <%= "(NO se muestra en la web)" unless @user.is_a?(Politician) %></th>
+      <td><%= h @user.email %></td>
+    </tr>
+
+    <tr>
+      <th>Boletín</th>
+      <td>
+        <%= si_o_no(@user.wants_bulletin) %>
+        <%= " (#{@user.bulletin_email})" if @user.wants_bulletin %>
+      </td>
+    </tr>
+
+    <tr>
+      <th>Tipo</th>
+      <td><%= User::TYPES[@user.type] %></td>
+    </tr>
+  
+    <tr class="<%= @user.status %>">
+      <th>Estado</th>
+      <td>
+        <%= @user.status %>
+        <table>
+          <tr>
+            <% if %w(pendiente vetado).include?(@user.status) %>
+              <td>
+                <%= form_for :user, :url => admin_user_path(@user), :html => {:method => :put} do |f| %>
+                  <%= f.hidden_field :status, :value => 'aprobado' %>
+                  <% if @user.is_a?(Journalist) %>
+                    <%= f.submit "Aprobar y enviar email de bienvenida" %>
+                  <% else %>
+                    <%= f.submit "Aprobar" %>
+                  <% end %>
+                <% end %>
+              </td>
+            <% end %>
+            <% if %w(pendiente aprobado).include?(@user.status) %>
+              <td>
+              <%= form_for :user, :url => admin_user_path(@user), :html => {:method => :put} do |f| %>
+                <%= f.hidden_field :status, :value => 'vetado' %>
+                <%= f.submit "Vetar" %>
+              <% end %>
+            </td>
+            <% end %>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <%  if @user.has_department? %>
+      <tr>
+        <th>Departamento</th>
+        <td>
+          <%= h @user.department.name if @user.department %>
+        </td>
+      </tr>
+    <% elsif @user.is_a?(RoomManager) %>
+      <tr>
+        <th>Salas</th>
+        <td>
+          <ul style="margin:0px;padding:0px 0px 0px 10px">
+            <% @user.stream_flows.each do |sf| %>
+            <li><%= sf.title %></li>
+            <% end %>
+          </ul>
+        </td>
+      </tr>    
+    <% elsif @user.is_a?(Journalist) %>
+      <tr>
+        <th>Medio</th>
+        <td>
+          <%= h @user.media %>
+        </td>
+      </tr>
+      <tr>
+        <th>URL</th>
+        <td><%= link_to @user.url, @user.url, :target => "new" %></td>
+      </tr>
+      <tr>
+        <th>Suscripciones</th>
+        <td><%= @user.departments.collect(&:name_es).join('<br/>') %></td>
+      </tr>
+    <% elsif @user.is_a?(Person) %>
+      <tr>
+        <th>Localidad</th>
+        <td><%= h @user.raw_location %></td>
+      </tr>
+    <% end %>
+      <tr>
+        <th>Fecha de alta</th>
+        <td><%= I18n.localize(@user.created_at, :format => :long) %></td>
+      </tr>
+  </table>
+
+  <div class="avatar_big">
+    <%= image_tag @user.photo.url if @user.photo.present? %>
+  </div>
+  
+  <% if @user.is_a?(Politician) %>
+    <div id="politician_data" class="politician_data_container">
+      <h3>Datos del político</h3>
+      <table class="admin">
+        <tr class="politician_data_container">
+          <th>Área</th>
+          <td>
+            <%= @user.areas.map {|a| a.name}.join(",")  %>
+          </td>
+        </tr>
+        
+        <tr class="politician_data_container">
+          <th><%= User.human_attribute_name('public_role') %></th>
+          <td><%= @user.public_role_es  %> / <%= @user.public_role_eu  %> / <%= @user.public_role_en  %></td>
+        </tr>
+        
+
+        <tr class="politician_data_container">
+          <th>Tag del político</th>
+          <td>
+            <%= @user.tag_name  %><br/>
+            <span class="hint"><b>Coincide con el nombre completo del político.</b> Se usa para asignar noticias, eventos, vídeos, y álbumes a este politco.</span>
+          </td>
+        </tr>
+                
+        <% if Rails.configuration.external_urls[:guia_uri] %>
+        <tr class="politician_data_container">
+          <th><%= User.human_attribute_name('gc_id') %></th>
+          <td><%= @user.gc_id  %></td>
+        </tr>
+        <% end %>
+        
+        <tr class="politician_data_container">
+          <th>¿Tiene agenda pública?</th>
+          <td>
+            <%= si_o_no(@user.politician_has_agenda)  %>
+          </td>
+        </tr>
+      </table>
+  
+      <h3><%= User.human_attribute_name('description') %></h3>
+     
+         <% for_every_locale do |code, lang| %>
+           <% txt = @user.send("description_#{code}") %>
+           <%= txt.present? ? simple_format(txt) : "No hay traducción en #{lang}"    %>
+           <hr/>
+         <% end %>
+    </div>
+  <% end %>
+  
+</fieldset>
+
+<fieldset class="permissions">
+  <legend>Permisos</legend>
+
+  <%= render :partial => "/admin/permissions/show", :locals => {:user => @user} %>
+</fieldset>
+<% end %>
+
+<% if @subtab.eql?('sessions') %>
+<fieldset class="permissions">
+  <legend>Últimas sesiones</legend>
+
+  <table class="comments" cellspacing="0" cellpadding="2" style="width:auto">
+    <tr>
+      <th>Cuándo</th>
+      <th>Qué</th>
+    </tr>
+  
+  <% for session in @sessions %>
+    <tr>
+      <td><%= session.action_at.to_s(:short) %></td>
+      <td><%= session.action %></td>
+    </tr>
+  <% end %>
+  </table>
+</fieldset>
+<% end %>
+
+
+
+<% if @subtab.eql?('comments') %>
+<fieldset class="comments">
+  <legend>Comentarios</legend>
+
+  <table class="comments" cellspacing="0" cellpadding="2" style="width:auto">
+    <tr>
+      <th width="50%">Comentario</th>
+      <th width="35%">Sobre qué</th>
+      <th width="15%">Cuándo</th>
+    </tr>
+  
+  <% @comments.each do |comment| %>
+    <% if commentable = comment.get_commentable %>
+    <tr>
+      <td>
+        <%= "##{comment.id}" %>: <%= comment.name %><br/>
+        <%= shorten(comment.body, 200) %>
+      </td>
+      <td><%= link_to(commentable.title, path_to_commentable(commentable, {:anchor => 'comment-#{comment.id}'})) rescue commentable.title %></td>
+      <td><%= comment.created_at.to_s(:short) %></td>
+    </tr>
+    <% end %>
+  <% end %>
+  </table>
+</fieldset>
+
+<% elsif @subtab.eql?('bulletins') %>
+  <%= render :partial => "/admin/bulletins/copies" %>
+<% end %>

@@ -1,0 +1,39 @@
+<div class="event_edit_links" style="clear:both;margin:10px 0px;">
+  <%= event_state_info(event) %>
+  <%= coverage_and_streaming_for(event, 'all') %>
+    
+  <ul class="edit_links" style="margin:10px 0px;">
+    <li><%= link_to t('sadmin.events.bajar'), sadmin_event_path(event, :format => :ics), :class => "ical" %></li>
+    <li><%= link_to "#{event.published? ? t('sadmin.news.ver') : t('sadmin.news.preview')} #{t('sadmin.news.en_irekia', :site_name => Settings.site_name)}", event_path(event.id), :class => "public_link" %></li>
+  </ul>
+
+  <% if can_edit_event?(event) %>
+    <ul class="edit_links delete_link">
+    <% if event.is_destroyable? %>
+      <li><%= link_to t('sadmin.eliminar_what', :what => Event.model_name.human), admin_document_path(event.id), data: {confirm: t('seguro')}, method: :delete, class: "delete" %></li>
+    <% elsif !event.deleted? %>
+      <li><%= link_to t('sadmin.events.marcar_como_eliminado'), mark_for_deletion_sadmin_event_path(event.id), :class => "delete" %></li>
+    <% end %>
+    </ul>
+  <% end %>
+</div>
+
+<div class="one_news_submenu">
+  <ul>
+    <% if can_access?("events") %>
+      <li class="<%= 'active' if current_page?(sadmin_event_path(event.id)) %>">
+        <%= link_to_unless_current t('sadmin.news.contenido_principal'), sadmin_event_path(event.id) %>
+      </li>
+    <% end %>
+    <% if current_user.is_admin? %>
+    <li class="<%= 'active' if current_page?(admin_document_path(event.id, :w => "more_info")) %>">
+      <%= link_to_unless_current t('sadmin.news.contenido_adicional'), admin_document_path(event.id, :w => "more_info") %>
+    </li>
+    <% end %>
+    <% if can_edit?("events") %>
+    <li class="<%= 'active' if current_page?(admin_document_path(event.id, :w => "traducciones")) %>">
+      <%= link_to_unless_current t('sadmin.news.traducciones'), admin_document_path(event.id, :w => "traducciones")  %>
+    </li>
+    <% end %>
+  </ul>
+</div>

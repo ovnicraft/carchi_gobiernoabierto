@@ -1,0 +1,16 @@
+/* Subtitulos en móviles (eli@efaber.net) */
+/* Estilo parecido al que se define en irekia_flowplayer.js->initPlayer() */
+div.videosub-bar {
+  width: 500px;
+  padding-bottom: 40px;
+  padding: 0 25px;
+  margin-left: 25px;
+  text-align: center;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 14px;
+  font-weight: bold;
+  text-shadow: #000000 1px 1px 0px;
+  background: rgba(0, 0, 0, 0.6);
+  text-decoration: outline;
+}

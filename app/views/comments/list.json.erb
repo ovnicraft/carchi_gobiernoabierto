@@ -1,0 +1,17 @@
+<%- comments = []
+@comments.each do |comm|
+  h = { "comment_id" => comm.id , 
+        "author" => comm.name, 
+        "avatar_url" => (comm.user.photo.present? ? (request.protocol + request.host_with_port + comm.user.photo.url) : ''),
+        "date_str" => I18n.l(comm.created_at, :format => :long),
+        "text" => comm.body.strip_html,
+        "comment_type" => comm.user.is_twitter_user? ? 'twitter' : (comm.user.is_facebook_user? ? 'facebook' : 'native'),
+        "comment_url" => url_for(:controller => "comments", :action => "show", :id => comm.id, :only_path => false)}
+  comments << h.to_json
+end
+ -%>
+
+{
+  "comment_list": [<%= @comments.map(&:id) %>], 
+  "comments" : [<%= comments.join(", ") %>]
+}

@@ -1,0 +1,34 @@
+<%= render :partial => "submenu" %>
+
+<h1>Últimos boletines enviados</h1>
+
+<table class="comments" cellspacing="0">
+  <thead>
+  <tr>
+    <th>Boletín</th>
+    <th>Fecha de envío</th>
+    <th>Estadísticas</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @bulletins.each do |bulletin| %>
+  <tr>
+    <td><%= link_to "nº #{bulletin.id}: #{bulletin.title}", admin_bulletin_path(bulletin) %></td>
+    <td>
+      <%= I18n.l bulletin.sent_at, :format => :list if bulletin.sent_at %><br/>
+      
+    </td>
+    <td>
+      <ul class="nomargin">
+        <li><span class="views">Enviado a <%= bulletin.bulletin_copies.count %> personas</span></li>
+        <li><span class="views">Abierto <%= bulletin.openings.count %> veces por <%= bulletin.unique_user_openings %> personas</span></li>
+        <li><span class="views">Pinchados <%= bulletin.clicks_from.count %> enlaces</span></li>
+      </ul>
+    </td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @bulletins %>

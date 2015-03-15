@@ -1,0 +1,18 @@
+<p><%= t('notifier.hola') %>, </p>
+
+<p>
+  Los siguientes vídeos han sido marcados como borrador porque ya no está el fichero .flv 
+  en el lugar correspondiente
+</p>  
+
+<ul>
+  <% @videos.each do |video| %>
+    <li><%= link_to video.title, admin_video_path(:id => video.id, :locale => "es", :only_path => false) %></li>
+  <% end %>
+</ul>
+
+<p>
+  Por favor, revísalo
+</p>
+
+<%= render :partial => '/notifier/footer' %>

@@ -1,0 +1,10 @@
+<h1>Modificar album</h1>
+
+<ul class="edit_links delete_link">  
+  <li><%= link_to "Eliminar album", admin_album_path(@album), :method => :delete, :class => "delete", :data => {:confirm => "Estás seguro?"} %></li>
+</ul>
+
+<%= form_for @album, as: :album, url: admin_album_path(@album), :html => {:method => :put} do |f| %>
+  <%= render :partial => "form", :locals => {:f => f} %>
+  <p><%= f.submit "Guardar" %></p>
+<% end %>

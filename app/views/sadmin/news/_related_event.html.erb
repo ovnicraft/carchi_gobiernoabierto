@@ -1,0 +1,8 @@
+<div class="related_items">
+   <div class="rel_news">
+     <h2><%= t('sadmin.news.evento_relacionado') %></h2>
+     <div class="news_title">
+       <%= document.events.first ? link_to(document.events.first.title, sadmin_event_path(document.events.first)) : t('sadmin.news.no_hay_evento_relacionado')+"." %>
+     </div>
+   </div>
+</div>

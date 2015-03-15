@@ -1,0 +1,5 @@
+<% @title = "Modificar emplazamiento" %>
+
+<%= form_for @location, as: :event_location, :url => admin_event_location_path(@location), :html => {:method => :put} do |f| %>
+  <%= render :partial => "form", :locals => {:f => f} %>
+<% end %>

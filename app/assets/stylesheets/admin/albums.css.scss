@@ -1,0 +1,58 @@
+div.album {
+  width: 840px;
+  margin: 0px auto;
+}
+
+div.albumsdetails {
+  float: left;
+  width: 320px;
+  background: #f4f4f4;
+  border: 1px solid #C9C9C9;
+  text-align: center;
+  padding: 10px 0px;
+}
+
+div.photo_c {
+  margin: 0px auto;
+  width: 500px;
+  text-align: center;
+}
+
+div.photo_container {
+  width: 520px;
+  background: #f4f4f4;
+  border: 1px solid #C9C9C9;
+  padding: 10px 0px;
+  margin-left:30px;
+}
+
+div.a_image {
+  text-align: center;
+  height: 114px;
+}
+
+div.a_image img {
+  margin-top: 10px;
+  border: solid 1px #cdcdcd;
+  background: #fff;
+  padding: 4px;
+}
+
+span.album_data {
+  padding: 0px 10px;
+  font-size: 10px;
+  color: #8b8b8b;
+}
+
+div.related_articles ul.photo_data li {
+  background-image:none;
+}
+
+div.photo_group {
+  clear:both;
+}
+
+div.two_albums div.horizontal img {
+  width: 486px;
+  height: 323px;
+}

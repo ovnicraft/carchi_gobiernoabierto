@@ -1,0 +1,19 @@
+proposal_attachment:
+  attachable_id: <%= ActiveRecord::FixtureSet.identify(:governmental_proposal) %>
+  attachable_type: 'Proposal'  
+  show_in_es: true
+  show_in_eu: true
+  show_in_en: true
+  created_by: 1
+  updated_by: 1
+  file_content_type: 'application/pdf'
+
+news_attachment:
+  attachable_id: <%= ActiveRecord::FixtureSet.identify(:irekia_news) %>
+  attachable_type: 'Document'  
+  show_in_es: true
+  show_in_eu: true
+  show_in_en: true
+  created_by: 1
+  updated_by: 1
+  file_content_type: 'application/pdf'

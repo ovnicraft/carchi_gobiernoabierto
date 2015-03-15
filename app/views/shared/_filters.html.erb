@@ -1,0 +1,19 @@
+<% areas = Area.ordered %>
+<% if areas.length > 0 %>
+  <%= init_bootstrap_select %>
+
+  <div class="filters">
+    <ul>
+      <li>
+        <%= form_tag url_for({:controller => params[:controller], :action => :index, :locale => I18n.locale}), "data-remote".to_sym => true, :method => :get, :id => "area_filter" do %>
+          <%= hidden_field_tag :year, params[:year] if params[:year] %>
+          <%= hidden_field_tag :month, params[:month] if params[:month] %>
+          <%= hidden_field_tag :day, params[:day] if params[:day] %>
+          <%= select_tag :area_id, 
+                          options_for_select([[t('shared.filters.por_departamentos'), '0']] + areas.collect {|area| [area.name, area.id.to_s]}, :selected => params[:area_id]), :class => 'selectpicker' %>
+        <% end %>
+      </li>
+      <li class='btn_with_spinner'></li>
+    </ul>
+  </div>
+<% end %>

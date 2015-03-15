@@ -1,0 +1,13 @@
+<% if document.has_video? || document.has_cover_photo? %>
+  <h3>Foto o vídeo de portada</h3>
+  <div class="news_cover_or_video">
+    <% if document.has_video? %>
+      <% if !ipad_user_agent? && !iphone_user_agent? %>
+        <%= javascript_include_tag 'flowplayer.min', 'prototype/flowplayer.playlist.min' %>
+      <% end %>
+      <%= render :partial => '/admin/documents/multimedia/video', :locals => {:item => document.featured_video, :player_id => 'player2', :embed_id => 'video_embed'} %>
+    <% elsif document.has_cover_photo? %>
+      <%= render :partial => '/admin/documents/multimedia/cover', :locals => {:document => document} %>
+    <% end %>
+  </div>
+<% end %>

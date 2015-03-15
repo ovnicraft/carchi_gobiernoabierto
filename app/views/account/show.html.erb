@@ -1,0 +1,16 @@
+<%= render :partial => "account/summary" %>
+
+<%= render :partial => 'account/navigation_menu' %>
+
+<div class='section container user activity'>
+  <div class='section_main row-fluid'>
+    <div class='section_content span12'>
+      <% if @items.present? %>
+        <%= render :partial =>'shared/list_items', :locals => {:items => @items, :ul_class => 'activity'} %>
+      <% else %>
+        <div class='section_heading'><%= t('users.no_activity_title',:user => h(@user.public_name)) %></div>
+        <div class='well'><%= t('account.no_activity_description', :site_name => Settings.site_name) %></div>
+      <% end %>        
+    </div>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+<% default_area = @debate.area ? @debate.area.id : nil %>
+
+  <table class="admin">        
+    <tr> 
+      <th width="20%">Hashtag</th>
+      <td><%= @debate.hashtag %></td>
+    </tr>
+    <tr> 
+      <th width="20%">
+        Área y otros tags (en castellano)<br/>
+        <span class="hint">(Separados por coma)</span>
+      </th>
+      <td>
+        <%= text_area_with_auto_complete :debate, :tag_list_without_hashtag, {:size => "60x5"}, {:tokens => ',', :indicator => "spinner"} %>
+        <span id="spinner" style = 'display:none'>
+        <%= image_tag 'admin/spinner.gif' %>
+        </span>
+        <%= render :partial => "/admin/tags/help", :locals => {:object => @debate} %>
+      </td>
+    </tr>
+    
+    <tr>
+      <th><%= Debate.human_attribute_name(:multimedia_dir) %></th>
+      <td>
+        <% if @debate.new_record? %>
+          <% default_value = "" %>
+          <%= f.text_field :multimedia_dir, :value => @debate.multimedia_dir || default_value %>
+          <div class="hint"><%= t('admin.debates.multimedia_dir_explain') %></div>
+          <%= render :partial => "multimedia_help" %>
+        <% else %>
+          <%= @debate.multimedia_dir %>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <th><%= t('admin.news.destacar_en_inicio') %></th>
+      <td>
+        <%= f.check_box :featured %>
+        <%= f.label :featured, t('si') %>
+      </td>
+    </tr>
+  
+    <tr>
+      <th><%= f.label :featured_bulletin, t('admin.news.destacar_en_boletin') %></th>
+      <td>
+        <%= f.check_box :featured_bulletin %>
+        <label for="debate_featured_bulletin">Sí</label>
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+
+    <tr>
+      <th><%= Debate.human_attribute_name(:cover_image) %></th>
+      <td>
+        <%= f.file_field :cover_image %>
+        <% if @debate.cover_image.present? %>
+        <div>
+          <%= f.check_box :remove_cover_image %>
+          <label for="debate_remove_cover_image"><%= t('borrar') %> <%= t('sadmin.news.foto_actual') %></label>
+          <%= image_tag(@debate.cover_image.n372.url)  %>
+        </div>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <th><%= Debate.human_attribute_name(:header_image) %></th>
+      <td>
+        <%= f.file_field :header_image %>
+        <% if @debate.header_image.present? %>
+        <div>
+          <%= f.check_box :remove_header_image %>
+          <label for="debate_remove_header_image"><%= t('borrar') %> <%= t('sadmin.news.foto_actual') %></label>
+          <%= image_tag(@debate.header_image.header.url) %>
+        </div>
+        <% end %>
+      </td>
+    </tr>
+  
+</table>

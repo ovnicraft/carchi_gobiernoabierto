@@ -1,0 +1,2 @@
+$('tags_<%= @category.id %>').replace("<%= escape_javascript(render partial: '/admin/categories/tags', locals: {category: @category}) %>");
+$('tags_<%= @category.id %>').highlight();

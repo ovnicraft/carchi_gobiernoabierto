@@ -1,0 +1,670 @@
+@import "helpers";
+@import "compass/css3";
+/******** HEADER ********/
+
+#header_logos {
+	padding: 20px 0 5px 0;
+	
+	.net_logo {
+		padding-top: 20px;
+	}
+}
+
+#header_tools_container{
+	border-top: 1px solid $colorLines;
+}
+
+#header_tools {
+	padding: 5px 0;
+
+	ul{
+		font-size: 11px;
+		list-style: none;
+		margin: 0;
+		li{
+			border-right: 1px solid $colorLines;
+			float: left;
+			padding: 0 5px;
+			display: inline-block;
+			&.last{
+				border-right: none;
+			}
+
+			a{
+				color: $blueNav;
+				text-decoration: none;
+				text-transform: lowercase;
+				&:hover{
+					text-decoration: underline;
+				}
+			}
+		}
+		&.user_options{
+
+		}
+	}
+}
+
+nav#nav_top{
+	@include opensans();
+	background-color: $blueDarkNav;
+	.navbar{
+		margin-bottom: 0;
+		.navbar-inner {
+			background-color: $blueDarkNav;
+			background-image: none;
+			padding: 0 0;
+			filter: none;
+			border: none;
+			@include border-radius(0);
+			@include box-shadow(0 0px 0px rgba(0,0,0,.065));		
+		}
+	}
+	.navbar .nav .dropdown-toggle .caret {
+		margin-top: 8px;
+		border-bottom-color: #FFFFFF;
+		border-top-color: #FFFFFF;	  
+	}
+
+	.navbar .nav > li {
+		border-left: 1px solid $borderItemMenu;
+		position: relative;
+
+		& > a {
+			background-color: $blueDarkNav; // "transparent" is default to differentiate :hover/:focus from .active
+			color: white;
+		}
+
+	}
+
+	// Hover/focus
+	.navbar .nav > li > a:focus,
+	.navbar .nav > li > a:hover {
+	  background-color: $blueDarkNavHover; // "transparent" is default to differentiate :hover/:focus from .active
+	  color: white;
+	}
+
+	// Active nav items
+	.navbar .nav > .active > a,
+	.navbar .nav > .active > a:hover,
+	.navbar .nav > .active > a:focus {
+	  color: white;
+	  background-color: $blueDarkNavHover;
+	}
+
+	.nav_user_logged{
+		padding: 15px 0 7px 15px;
+		float: left;
+
+		span{
+			display: inline-block;
+			float: left;
+			margin-right: 10px;
+			a{
+				color:white;
+			}
+			&.avatar{
+				margin-top: -5px;
+				a{
+
+					img{
+						width: 30px;
+						height: 30px;
+					}
+				}
+			}
+			&.username{
+				a{
+
+				}
+			}
+			&.notifications{
+				margin-top: -3px;
+				a{
+					.ico_alert{
+						background-image: url(image-path('icons/ic_nav_alert.png'));
+						background-repeat: no-repeat;
+						width: 30px;
+						height: 28px;
+						padding-top: 2px;
+						display: inline-block;
+						font-style: normal;
+						font-size: 10px;
+						text-align: center;
+					}
+
+				}			
+			}
+		}
+	}
+
+	.nav_settings{
+		display: inline-block;
+		float: left;
+		border-right: 1px solid $borderItemMenu;
+		
+		& > a{
+
+			background-image: url(image-path('icons/ic_nav_settings.png'));
+			background-repeat: no-repeat;
+			background-position: left center;
+			height: 20px;			
+
+			.ico_settings{
+				
+			}
+			.link_text{
+				display: none; 
+			}
+		}
+		ul.dropdown-menu{
+
+			li{
+				a{
+
+					background-image: url(image-path('icons/s_account.png'));
+					background-repeat: no-repeat;
+					display:block;
+					height:20px;
+					padding: 5px 0;
+					padding-left: 40px;
+					color: $colorIrekia;
+
+					&:hover{
+						background-color: white;
+					}
+
+					&.admin {						
+						background-position: 0 -60px
+					}
+					&.settings {						
+						background-position: 0 -30px;
+					}
+
+					&.logout {						
+						background-position: 0 0;	
+					}
+				}
+			}
+		}
+	}
+
+
+	.nav_signup{
+
+		& > a {
+			background-image: url(image-path('icons/ic_nav_register.png'));
+			background-repeat: no-repeat;
+			background-position: right center;
+			padding-right: 30px;		
+		}		
+
+		.dropdown-menu {
+
+			width: 550px;
+			max-width: inherit !important;
+			right: 0;
+			left: inherit !important;
+			.arrow {
+				left:90%;
+			}
+			.dropdown-menu-content{
+				background-image: url(image-path('register_bg.png'));
+				background-repeat: no-repeat;
+				background-position: left top;
+				@include arial();
+			}
+		}
+
+		ol{
+			font-size: 12px;
+
+		}
+
+	}
+
+	.nav_follow{
+
+		& > a {
+			background-image: url(image-path('icons/ic_nav_follow.png'));
+			background-repeat: no-repeat;
+			background-position: 10px center;
+			padding-left: 52px;
+		}
+
+		ul{
+			border-radius: 0;
+			border: 0;
+
+			a{
+				background-image: url(image-path('share_logos.png'));
+				background-repeat: no-repeat;
+
+
+				&:hover{
+					background-color: $colorFollowDefault;
+					color:white;
+				}
+
+				&.twitter {
+					background-position: 0 -90px;
+					&:hover{
+						background-color: $colorTwitter;
+						text-decoration: none;					
+					} 							
+				}
+				&.facebook {
+					background-position: 0 -120px;
+					&:hover{
+						background-color: $colorFacebook;
+						text-decoration: none;
+					}
+				}
+
+				&.googleplus {
+					background-position: 0 -30px;
+					&:hover{
+						background-color: $colorGoogle;
+						text-decoration: none;						
+					}					
+				}
+
+				&.flickr {
+					background-position: 0 -150px;
+					&:hover{
+						background-color: #0062DC;
+						text-decoration: none;					
+					} 							
+				}
+				&.youtube {
+					background-position: 0 -180px;
+					&:hover{
+						background-color: #4D4D4D;
+						text-decoration: none;					
+					} 							
+				}
+				&.issu {
+					background-position: 0 -210px;
+					&:hover{
+						background-color: #F97D15;
+						text-decoration: none;					
+					} 							
+				}
+				&.slideshare {
+					background-position: 0 -240px;
+					&:hover{
+						background-color: #0099FF;
+						text-decoration: none;					
+					} 							
+				}
+				&.pinterest {
+					background-position: 0 -270px;
+					&:hover{
+						background-color: $colorPinterest;
+						text-decoration: none;					
+					} 							
+				}
+			}
+		}
+	}
+
+	.nav_search{
+		.search_label{
+
+			margin: 0;
+			background-color: $blueDarkNav;
+			background-image: url(image-path('icons/ic_nav_search.png'));
+			background-repeat: no-repeat;
+			background-position: right center;
+			padding-right: 35px;
+
+		}
+		background-color: white;
+		.navbar-search {
+			border-top: 1px solid $blueDarkNav;
+			background-color: white;
+			float: left;
+			height: 34px;
+			margin-bottom: 0;
+			margin-top: 0;
+			padding: 7px 0;
+			position: relative;
+
+			input{
+
+				&[type=text]{
+					background-color: white !important;
+					box-shadow: none;
+					border:none;
+					float: left;
+				}
+
+				&[type="submit"]{
+					margin: 0;
+					background-color:white !important;
+					width: 30px;
+					height: 30px;
+					background-image: url(image-path("icons/ic_nav_search_over.png"));
+					background-repeat: no-repeat;
+					float: right;
+					border: none;
+				}
+			}
+		}
+	}
+
+	.nav_login{
+		.dropdown-menu{
+			width: 250px;
+			right: 0;
+			left: inherit !important;
+			.arrow{
+				left:90%;
+			}
+		}
+	}
+
+}
+
+nav#nav_bottom{
+	@include opensans(16px); 
+	background-color: $blueNav;
+	.navbar{
+		margin-bottom: 0;
+		.navbar-inner {
+			background-color: $blueNav;
+			background-image: none;
+			padding: 0 0;
+			filter: none;
+			border: none;
+			@include border-radius(0);
+			@include box-shadow(0 0px 0px rgba(0,0,0,.065));		
+		}
+	}
+	.navbar .nav .dropdown-toggle .caret {
+		margin-top: 8px;
+		border-bottom-color: #FFFFFF;
+		border-top-color: #FFFFFF;	  
+	}
+
+	.navbar .nav > li > a {
+	  background-color: $blueNav; // "transparent" is default to differentiate :hover/:focus from .active
+	  color: white;
+
+	}
+
+		// Hover/focus
+	.navbar .nav > li > a:focus,
+	.navbar .nav > li > a:hover {
+		background-color: $blueNavHover; // "transparent" is default to differentiate :hover/:focus from .active
+		color: white;
+	}
+
+	// Active nav items
+	.navbar .nav > .active > a,
+	.navbar .nav > .active > a:hover,
+	.navbar .nav > .active > a:focus {
+	  color: white;
+	  background-color: $blueNavHover;
+	}	
+	#menu_panel_participation{
+		width: 300%;
+	}
+
+	li.dropdown{
+
+		.dropdown-menu{
+
+			border-radius: 0;
+
+			.menu_heading {
+				font-size: 13px;
+			}
+			
+			ul.nav-list{
+				padding: 20px 0;
+
+				li {
+
+					a{
+						@include arial(13px,normal);
+						border-bottom: 1px solid #ddd;
+						color: $blueMenuLinks;
+						display: block;
+						margin: 0;
+						padding: 3px 0;
+
+						&:hover{
+							background-color: $bgHover;
+							text-decoration: none;
+						}
+
+					}
+
+					&.active{
+
+						a{
+							color:$blueMenuLinks;
+							background-color: $menuLinksHover;
+							&:hover{
+
+							}
+						}
+					}
+
+				}
+			}
+
+			min-width: 230px;
+			width: 230px;
+
+			&.proposals{
+				width: 600px;
+			}
+			&.departments{
+				width: 230px;
+			}
+			&.events{
+				width: 600px;
+
+				.calendar_container{
+					border: 1px solid $colorLines;
+					padding: 0;
+					margin: 0;
+					text-align: center;
+					border-radius: 0;
+					background-color: transparent;
+					table.calendar td.day {
+						padding: 2% 0;
+					}
+				}
+				.cal_nav {
+					font-size: 12px;
+
+				}
+
+			}
+			&.news{
+				width: 650px;
+
+				.featured_media{
+					margin-bottom: 10px;
+					background-color: transparent;
+					border: none;
+					background-image: none;
+					.featured_content{
+						min-height: inherit;
+						background-image: none;
+						line-height: 16px;
+						.date{
+							@include arial(12px,normal);
+						}
+						.title{
+							a{
+								@include opensans(13px,bold);
+								&:hover{
+									color: $blueLinksHover;
+								}
+							}
+						}
+					}
+
+				}
+
+
+			}
+			&.videos_photos{
+				width: 650px;
+				.grid_item {
+					.title {
+						@include opensans(12px,bold);
+					}
+					.meta_article{
+						@include arial(11px,normal);
+					}
+				}			
+			}
+
+			&.snetworks{
+				width: 550px;
+				.description{
+					@include arial(12px,normal);
+					padding:20px 3%;
+					width: 94%;
+					line-height: 16px;
+				}
+
+			}
+		}
+
+	}
+
+
+}
+
+.navbar .nav > li > a {
+	float: none;
+	// Vertically center the text given $navbarHeight
+	padding: (($navbarHeight - $baseLineHeight) / 2) 15px (($navbarHeight - $baseLineHeight) / 2);
+	color: white;
+	text-decoration: none;
+	text-shadow: none;
+}
+
+.menu_panel{
+	.nav-list{
+
+		padding: 0 20px;
+		margin: 20px 0;
+		border-right: 1px solid #ccc;
+		float: left;
+	}
+	.menu_panel_aside{
+		float: left;
+	}
+}
+
+.form-search{
+	input.search-query {
+		border-radius: 5px;
+	}
+}
+
+/******* FOOTER *******/
+footer {
+	background-image: url(image-path("ej-gv-logo-footer.jpg"));
+	background-position: 50% 25%;
+	background-repeat: no-repeat;
+	background-color: white;
+	padding: 30px 0 0 0;
+
+	#site_links{
+		margin-bottom: 20px; 
+		.nav-list{
+			padding: 20px 0;
+
+			li {
+
+				a{
+					border-bottom: 1px solid #ddd;
+					//@include opensans(.9em,normal);
+					font-size: .9em;
+					color: $blueMenuLinks;
+					display: block;
+					margin: 0;
+					padding: 3px 0;
+
+					&:hover{
+						//background-color: $bgHover;
+						background-color: transparent;
+						text-decoration: none;
+						color: $blueLinksHover;
+					}
+
+				}
+
+				&.active{
+
+					a{
+						color:$blueMenuLinks;
+						background-color: $menuLinksHover;
+						&:hover{
+
+						}
+					}
+				}
+
+			}
+		}
+	}
+
+	.footer_title{
+			border-bottom: 1px solid #ccc;
+			padding-bottom: 5px;
+			@include arial(14px,bold);
+			line-height: inherit;
+		}
+
+	#banners{
+
+		padding-bottom: 30px;
+
+
+		.item {
+
+			margin-top: 15px;
+			margin-bottom: 10px;
+
+			text-align: left;
+
+			img{
+				border:1px solid #ccc;
+				margin-bottom: 5px;
+			}
+
+		}
+	}
+	#copyright{
+		text-align: center;
+		padding: 10px 0;
+		border-top: 1px solid $colorLines;	
+		.copyright{
+			float:left;
+			font-size: 12px;
+		}
+		.powered_by {
+			float:right;
+			font-size: 12px;
+		}
+		.logo{
+			clear: both;
+			span{
+				display: none;
+			}
+			img{
+				clear: both;
+			}
+		}
+	}
+}
+

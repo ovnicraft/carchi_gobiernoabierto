@@ -1,0 +1,34 @@
+<% @title = @room_manager.name %>
+
+<ul class="edit_links">
+  <li><%= link_to "Modificar responsable de sala", edit_admin_room_manager_path(@room_manager), :class => "edit" %></li>
+</ul>
+
+<table class="admin">
+  <tr>
+    <th>Nombre</th>
+    <td><%= @room_manager.name %></td>
+  </tr>
+  
+  <tr>
+    <th>Email</th>
+    <td><%= @room_manager.email %></td>
+  </tr>
+  
+  <tr>
+    <th>Teléfono</th>
+    <td><%= @room_manager.telephone %></td>
+  </tr>
+  
+  <tr>
+    <th>Salas de las que es responsable</th>
+    <td>
+      <ul>
+        <% @room_manager.stream_flows.each do |sf| %>
+        <li><%= sf.title %></li>
+        <% end %>
+      </ul>
+    </td>
+  </tr>
+  
+</table>

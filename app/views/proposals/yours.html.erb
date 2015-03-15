@@ -1,0 +1,20 @@
+<% if @introductory_text %>
+<div class="proposals_text">
+  <%= @introductory_text.pretty_body %>
+</div>
+<% end %>
+
+
+<% if @proposals.length > 0 %>
+  <div class="proposals_list">
+    <%= render :partial => "/proposals/proposal", :collection => @proposals, :locals => {:target => "proposal"} %>
+  </div>
+  <%= will_paginate @propuestas, :previous_label => "&laquo; #{t('anterior')}", :next_label => "#{t('siguiente')} &raquo;" %>
+
+<% else %>
+  <p><%= t('proposals.no_content') %></p>
+<% end %>
+
+<% if controller.action_name.eql?("yours") %>
+  <p><%= link_to t('proposals.haz_propuesta'), new_proposal_path %></p>
+<% end %>

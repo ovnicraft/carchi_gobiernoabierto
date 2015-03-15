@@ -1,0 +1,61 @@
+<% is_one_user_page = controller.controller_name.match(/users/) %>
+<table class="comments" cellspacing="0">
+  <thead>
+  <tr>
+    <th>Ejemplar individual</th>
+    <% if is_one_user_page %>
+    <th>Boletín</th>
+    <% else %>
+    <th>Para</th>
+    <% end %>
+    <th>Fecha de envío</th>
+    <th>Contenidos</th>
+  </tr>
+  </thead>
+
+  <tbody>
+    <% if is_one_user_page %>
+    <tr>
+      <td colspan="4" style="text-align: right">
+        <%= form_for BulletinCopy.new, :url => admin_bulletin_copies_path do |f| %>
+          <%= f.hidden_field :user_id, :value => @user.id %>
+          <%= f.submit "Enviar boletín de prueba" %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+    <% @copies.each do |copy| %>
+      <tr>
+        <td><%= link_to copy.id, admin_bulletin_copy_path(copy) %></td>
+        <% if is_one_user_page %>
+        <td><%= link_to copy.bulletin.id, admin_bulletin_path(copy.bulletin) %></td>
+        <% else %>
+        <td><%= link_to h(copy.user.public_name), admin_user_path(copy.user, :subtab => 'bulletins') %></td>
+        <% end %>
+        <td>
+          <%= I18n.l copy.sent_at, :format => :list if copy.sent_at %><br/>
+          <span class="views"><%= copy.openings.count > 0 ? "Abierto #{copy.openings.count} veces" : "Aún sin abrir" %></span>
+        </td>
+        <td>
+          <ul class="nomargin">
+          <% Debate.find(copy.debate_ids).each do |d| %>
+            <li>
+              <%= link_to(d.title, admin_debate_path(d)) %>
+              <%= content_tag :span, "Visto #{copy.clicks_from.to_content(d).count} veces", :class => "views" %>
+            </li>
+          <% end %>
+
+          <% (copy.ordered_featured_news + copy.ordered_user_news).each do |n| %>
+            <li>
+              <%= link_to(n.title, sadmin_news_path(n)) %>
+              <%= content_tag :span, "Visto #{copy.clicks_from.to_content(n).count} veces", :class => "views" %>
+            </li>
+          <% end %>
+          </ul>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @copies %>

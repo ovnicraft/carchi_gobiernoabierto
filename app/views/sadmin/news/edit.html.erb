@@ -1,0 +1,10 @@
+<% if @news.debate  %>
+<div class="admin_info"><%= debate_info(@news) %></div>
+<% end %>
+
+
+<%= form_for @news, :url => sadmin_news_path(@news), :html => {:method => :put, :multipart => true} do |f| %>
+  <p style="text-align:center;"><%= submit_tag t('guardar'), :disable_with => t('sadmin.guardando'), :class => "submit_button" %></p>
+
+  <%= render :partial => "form", :locals => {:f => f} %>
+<% end %>

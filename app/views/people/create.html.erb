@@ -1,0 +1,9 @@
+<div class='section container'>
+  <div class='section_main row-fluid'>
+    <div class='section_content container'>
+      <h1><%= t('people.create.gracias') %></h1>
+      <p><%= t('people.create.recibiras_email').html_safe %></p>
+      <p><%= link_to embed_layout? ? t('people.create.volver_al_login', :site_name => Settings.site_name) : t('people.create.volver_navegar') , (session[:return_to] || root_url) %></p>
+    </div>
+  </div>
+</div>

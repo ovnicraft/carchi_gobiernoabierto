@@ -1,0 +1,67 @@
+<% @tag = tag %>
+<tr id="tag_row_<%= tag.id %>" class="<%= tag_names_row_class(tag) %> <%= tag.kind.to_s.tildes.downcase %>">
+  <% if tag.kind.eql?('Político') || tag.name_es.match(/^#/) %>
+   <td>&nbsp;</td>
+   <td><%= tag.name_es %></td>
+   <td><%= tag.name_eu %></td>   
+   <td><%= tag.name_en %></td>   
+   <td>
+     <%= link_to 'ver', tag_path(@tag) %>
+     <%= link_to 'por id', tag_path(@tag.id) %>
+   </td>
+   <td><%= tag.kind %>
+     <% if tag.kind.eql?('Político') %>
+     <br/>ID: <%= link_to tag.kind_info, admin_user_path(:id => tag.kind_info) %>
+     <% end %>
+     </td>
+  <% else %>  
+    <td class="checkbox">
+      <%= check_box_tag "tag[translated]", "1", tag.translated, 
+        :id => "tag_#{tag.id}", 
+        :onclick => remote_function(:url => admin_tag_path(tag.id), 
+          :method => 'put', 
+          :with => "'tag[translated]=' +$('tag_#{tag.id}').getValue()"),
+        :disabled => tag.translated? && tag.all_languages_different %>
+    
+    </td>
+    <td>
+      <span class="tag">
+        <%= in_place_editor_field :tag, :name_es, {}, 
+            :nil_content_replacement => "--modificar tag--", :click_to_edit_text => "Clic para modificar",
+            :saving_text => "Guardando...", :cancel_text => 'cancelar', :script => true, 
+            :url => set_tag_name_admin_tag_path(tag.id, :locale => "es") %>
+      </span>
+    </td>
+    <td class="<%= @tag.translated_to?("eu") ? 'translated' : 'not_translated' %>">
+      <span class="tag">
+        <%= in_place_editor_field :tag, :name_eu, {}, 
+            :nil_content_replacement => "--modificar tag--", :click_to_edit_text => "Clic para modificar",
+            :saving_text => "Guardando...", :cancel_text => 'cancelar', :script => true,
+            :url => set_tag_name_admin_tag_path(tag.id, :locale => "eu") %>
+      </span>
+    </td>
+    <td class="<%= @tag.translated_to?("en") ? 'translated' : 'not_translated' %>">
+      <span class="tag">
+        <%= in_place_editor_field :tag, :name_en, {}, 
+            :nil_content_replacement => "--modificar tag--", :click_to_edit_text => "Clic para modificar",
+            :saving_text => "Guardando...", :cancel_text => 'cancelar', :script => true,
+            :url => set_tag_name_admin_tag_path(tag.id, :locale => "en") %>
+      </span>
+    </td>
+  
+    <td>
+      <%= link_to 'ver', tag_url(:id => tag.sanitized_name) %>
+      <!--  link_to 'por id', tag_url(@tag.id) %> -->
+    </td>
+    <% I18n.locale = :es %>
+  
+    <td><%= in_place_editor_field :tag, :kind, {:nil_content_replacement => "--modificar tipo--"} , 
+        :click_to_edit_text => "Clic para modificar",
+        :saving_text => "Guardando...", :cancel_text => 'cancelar', :script => true %>
+    <br/>
+    ID: <%= in_place_editor_field :tag, :kind_info, {:nil_content_replacement => "---"}, 
+        :click_to_edit_text => "Clic para modificar",
+        :saving_text => "Guardando...", :cancel_text => 'cancelar', :script => true %></td>
+
+  <% end %>
+</tr>

@@ -1,0 +1,11 @@
+<% if @debate.present? %>
+<div class="admin_info">
+  <%= debate_info(@document) %>
+</div>
+<% end %>
+
+<%= form_for @document, as: :document, url: admin_documents_path do |f| %>
+  <%= hidden_field_tag :t, @t %>
+  <%= f.hidden_field( :debate_id ) if @debate.present? %>
+  <%= render :partial => "form", :locals => {:f => f} %>
+<% end %>

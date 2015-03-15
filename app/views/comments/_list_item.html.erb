@@ -1,0 +1,19 @@
+<% if commentable = comment.get_commentable %>
+<li class="item comment <%= comment_style(comment) %> <%= "not_moderated" unless comment.approved? %>">
+  <div class='item_thumbnail'>
+    <%= avatar comment.author %>
+  </div>
+  <div class="item_content">
+    <div class='title'>
+      <%= raw t("comments.list_item.title.#{am_I?(comment.author) ? 'you' : 'other'}", 
+                :author => show_comment_author_name(comment), 
+                :item => link_to(content_tag(:strong, commentable.title), path_to_commentable(commentable))) %>
+    </div>
+    <div class='description block'>
+      &quot;<%= link_to pretty_n_characters_wo_html(comment.body).html_safe, 
+                  "#{path_to_commentable(commentable)}#comment_#{comment.id}" %>&quot;
+    </div>
+    <div class='date'><%= date_in_distance(comment.published_at) %></div>
+  </div>
+</li>
+<% end %>

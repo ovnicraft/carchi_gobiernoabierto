@@ -1,0 +1,46 @@
+<% 
+  items = []
+  @my_content.each_with_index do |item, i|
+    sort_id = 10000 - i
+    if item.is_a?(Comment)
+      items << render(:partial => "mob_app/cells/comment_cell.json", 
+                      :locals => {:comment => item, :sort_id => sort_id, :target => :activity,
+                                  :title => t('floki.activity.comment_in', :content_type => item.commentable.class.model_name.human, :title => item.commentable.title)})
+    elsif item.is_a?(Vote)
+      items << render(:partial => "mob_app/cells/vote_cell.json", 
+                      :locals => {:vote => item, :sort_id => sort_id, :target => :activity,
+                                  :item_id => item.floki_id,
+                                  :title => t('floki.activity.vote_for', :value => (item.value == -1 ? t('proposals.against') : t('proposals.in_favor')), :title => item.votable.title)})
+                                  
+    elsif item.is_a?(Argument)
+      items << render(:partial => "mob_app/cells/argument_cell.json", 
+                      :locals => {:argument => item, :sort_id => sort_id, :target => :activity,
+                                  :item_id => item.floki_id,
+                                  :title => t('floki.activity.argument_in', :proposal => item.argumentable.title)})
+    end
+    
+  end
+%>
+ 
+<% 
+
+  @content.each_with_index do |item, i|
+    sort_id = 1000 - i
+    if item.is_a?(Event)  
+      items << render(:partial => 'mob_app/cells/event_cell.json', 
+                      :locals => {:event => item, :section => nil, :sort_id => sort_id, :target => :activity})
+    else
+      item_class = item.class.name.downcase
+      items << render(:partial => "mob_app/cells/#{item_class}_cell.json", 
+                      :locals => {item_class.to_sym => item, :sort_id => sort_id, :target => :activity})  
+    end  
+  end
+
+%>
+
+{
+  "items": [
+    <%=raw items.join(", \n") %>
+  ], 
+  "has_older": false
+}

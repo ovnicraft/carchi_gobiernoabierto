@@ -1,0 +1,18 @@
+<div class='section container account subscribe'>
+  <div class='section_main row-fluid'>
+    <div class='section_content span8'>
+      <div class='section_heading'><%= t('bulletin_subscriptions.alta_en_el_boletin') %></div>
+      <div class='text'>
+        <%= t('bulletin_subscriptions.info_text', :site_name => Settings.site_name) %>
+      </div>
+      <div class='buttons'>
+        <%= button_to t('bulletin_subscriptions.info_button_alta'), bulletin_subscriptions_path, :class => "btn btn-primary #{class_for_window_login} subscription" %>
+        <%= link_to t('bulletin_subscriptions.popup_button_no'), @return_to, :class => 'btn nosubscription' %>
+      </div>
+      <%= content_tag(:div, t('bulletin_subscriptions.advice', :site_name => Settings.site_name), :class => 'help_text') unless logged_in? %>
+    </div>
+    <div class='span4'>
+      <%= image_tag 'bulletin/bulletin_example.png' %>
+    </div>
+  </div>
+</div>    

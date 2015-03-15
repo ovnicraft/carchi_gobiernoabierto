@@ -1,0 +1,12 @@
+
+  <p>
+    <div id="custom_container" >
+      Desde: 
+      <%= select_date(@couchdb_start_date, :prefix => "couchdb_start", :start_year => 9.months.ago.year, :end_year => Date.today.year, :allow_blank => true) %>
+      <br/>
+      Hasta:
+      <%= select_date(@couchdb_end_date, :prefix => "couchdb_end", :start_year => 9.months.ago.year, :end_year => Date.today.year) %>
+    <%= submit_tag "Cambiar" %>
+  <span class="hint">Sólo periodos de menos de 9 meses</span>
+    </div>
+  </p>

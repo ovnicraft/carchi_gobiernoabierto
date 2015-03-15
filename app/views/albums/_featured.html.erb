@@ -1,0 +1,14 @@
+<% cover_photo = @featured_album.cover_photo || @featured_album.photos.ordered_by_title.first %>
+<% img = cover_photo ? cover_photo.version(:n770) : asset_path("album_cover.png") %>
+
+<div class='section_heading'><%= t('albums.destacado') %></div>
+<div class='featured_media featured_album row-fluid'>
+  <% first_photo = @featured_album.cover_photo || @featured_album.photos.ordered_by_title.first %>
+  <div class='featured_image span7'>
+      <%= link_to image_tag(img), @featured_album %> 
+  </div>
+  <div class='featured_content span5'>
+    <div class="title"><%= link_to h(@featured_album.title), @featured_album %></div>
+    <%= render_date(@featured_album.published_at) %>
+  </div>
+</div>

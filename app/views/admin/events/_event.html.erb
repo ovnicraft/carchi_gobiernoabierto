@@ -1,0 +1,12 @@
+<% event[1].each_with_index do |e, i| %>
+  <div id="event_<%= event[0] %>_<%= i %>" class="one_event">
+    <h1><%= I18n.localize(e.starts_at, :format => :long) %></h1>
+    <h2><%= h(e.title) %></h2>
+    <div class="date_and_location">
+      <b><%= t('events.lugar') %>:</b> <%= h e.place %><br/>
+      <% if e.speaker.blank? %>
+        <b><%= t('events.speaker') %>:</b> <%= h e.speaker %>
+      <% end %>
+    </div>    
+  </div>
+<% end %>

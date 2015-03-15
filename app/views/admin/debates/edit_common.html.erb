@@ -1,0 +1,9 @@
+<%= form_for @debate, :url => admin_debate_path(@debate), :html => {:method => :put, :multipart => true} do |f| %>
+  <%= hidden_field_tag :return_to, "edit_common" %>
+  <%= hidden_field_tag :redirect_to, common_admin_debate_path(@debate)  %>  
+  
+  <%= render :partial => "form_common", :locals => {:f => f} %>
+
+  <p style="clear:both;text-align:center;"><%= submit_tag t('guardar'), :disable_with => t('sadmin.guardando'), :class => "submit_button" %></p>
+<%- end -%>  
+

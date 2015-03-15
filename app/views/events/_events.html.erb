@@ -1,0 +1,25 @@
+<div class='section container events index'>
+  <%= render :partial => '/shared/context', :locals => {:type => 'events'} if show_context %>
+  <div class='section_main row-fluid'>
+    <div class="section_content span8">
+      <div class="events index">
+        <h1 class='section_heading'><%= @title %></h1>
+
+        <%= render :partial => "/shared/#{context_partial(@context, 'filters')}" rescue nil  %>
+        <%= render :partial => '/shared/list_items', :locals => {:items => @actions, :type => 'events'} %> 
+        <%= show_irekia_coverage_footnote(@actions) %>
+      </div>
+    </div>
+
+    <div class='section_aside span4'>
+      <% unless @context -%>
+        <div class='banner_aside events_subscription'>
+          <div class='banner_image'>
+            <%= link_to content_tag(:span, t("events.suscripcion")), myfeed_events_path(:format => "ics", :dept_label => @dept_label, :tag_label => @tag_label, :only_path => false, :protocol => "webcal"), :title => @subscription_title, :class => "ical" %>
+          </div>
+        </div>
+      <% end -%>      
+      <%= render :partial => '/events/calendar', :locals => {:month_events => @month_events} %>
+    </div>
+  </div>
+</div>

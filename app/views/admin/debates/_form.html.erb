@@ -1,0 +1,112 @@
+<% default_org = @debate.organization ? @debate.organization.id : nil %>
+
+<%= error_messages(f.object) %>
+
+<%= hidden_field_tag 'lang', @lang %>
+<%= hidden_field_tag 'locale', params[:locale] unless !params[:locale]%>
+
+<table class="admin">  
+  <% unless @show_only_translatable %>
+    <tr>
+      <th><label for="debate_organization_id">Departamento</label></th>
+      <td><%= select_tag "debate[organization_id]", options_for_select([['', '']] + @departments.collect {|d| [d.name_es, d.id]}, default_org) %></td>
+    </tr>
+
+    <tr>
+      <th><%= Debate.human_attribute_name(:hashtag) %></th>
+      <td><%= f.text_field :hashtag %></td>
+    </tr>
+  <% end %>
+
+  <tr>
+    <th class="w15em"><%= t('sadmin.news.titulo_en', :lang => locales[@lang]) %></th>
+    <td><%= f.text_field "title_#{@lang}".to_sym, :size => "60" %></td>
+  </tr>
+
+  <tr>
+    <th><%= Debate.human_attribute_name(:body) %> <br/> (<%= locales[@lang] %>)
+        (<%= link_to t('esconder'), "#", :onclick => "toggleBodyContainer(this, \"body_#{@lang}_container\", \"#{t('mostrar')}\", \"#{t('esconder')}\");return false;", :id => "body_toggler" %>)
+      
+    </th>
+    <td id="body_<%= @lang %>_container">
+      <%= f.text_area "body_#{@lang}".to_sym, :size => "90x20", :class => "mceEditor" %>
+      <div class="hint"><%=raw t('sadmin.do_not_copy_paste') %></div>
+    </td>
+  </tr>  
+      
+  <tr>
+    <th><%= Debate.human_attribute_name(:description) %> <br/> (<%= locales[@lang] %>)
+        (<%= link_to t('esconder'), "#", :onclick => "toggleBodyContainer(this, \"description_#{@lang}_container\", \"#{t('mostrar')}\", \"#{t('esconder')}\");return false;", :id => "body_toggler" %>)
+    </th>
+    <td id="description_<%= @lang %>_container">
+      <%= f.text_area "description_#{@lang}".to_sym, :size => "90x20", :class => "mceEditor" %>
+      <div class="hint"><%=raw t('sadmin.do_not_copy_paste') %></div>
+    </td>
+  </tr>  
+</table>
+
+<% unless @show_only_translatable %>
+  <div class="debate_fases">
+    <h2><%= t('admin.debates.fases') %></h2>
+
+    <table class="admin">
+    <% DebateStage::STAGES.each do |stage_label| %>  
+      <% stage = @debate.stages.detect {|s| s.label.to_sym.eql?(stage_label)} || @debate.stages.build(:label => stage_label, :active => false) %>
+      <%= f.fields_for :stages, stage do |debate_stage_fields| %>  
+        <tr class="<%= stage.active ? "active" : "disabled" %>">
+          <td><%= debate_stage_fields.check_box :active, :onclick => "toggleStageActive(this)" %>
+              <%= debate_stage_fields.hidden_field "_destroy", :value => !stage.active %>
+          </td>
+          <th class="w15em"><%= t("debates.stage_#{debate_stage_fields.object.label}") %></th>
+          <td class="inputs">
+            <%= debate_stage_fields.hidden_field :label %>      
+            <span class="fecha_input"><b>Fecha inicio:</b>&nbsp;<%= debate_stage_fields.date_select :starts_on, :start_year => 2009 %></span>
+            <span class="fecha_input"><b>Fecha fin:</b>&nbsp;<%= debate_stage_fields.date_select :ends_on, :start_year => 2009 %></span>
+            <%= content_tag(:span, debate_stage_fields.object.errors.full_messages, :class => "error_message") if debate_stage_fields.object.errors.present? %>
+          </td>
+        </tr>  
+      <% end %>
+    <% end %>
+    </table>
+    
+    <div class="help">
+      <p><%= t('admin.debates.aviso_fecha_publicacion') %></p>
+      <p><%= t('admin.debates.aviso_fecha_final') %></p>      
+    </div>
+  </div>
+  
+  <% if @debate.new_record? %>
+    <h2><%= t('admin.debates.contenido_adicional') %></h2>
+    <%= render :partial => "form_common", :locals => {:f => f} %>
+  <% end %>
+
+  <p>
+    <b>¿Borrador?</b>
+      <%= f.check_box :draft %><label for="debate_draft">Sí</label>
+  </p>
+<% end %>
+
+<p style="clear:both;text-align:center;"><%= submit_tag t('guardar'), :disable_with => t('sadmin.guardando'), :class => "submit_button" %></p>
+
+<% if @debate.new_record? %>
+  <script type="text/javascript">
+      
+      String.prototype.toASCII = function() {
+        var asciiEquiv = {"á": "a", "é": "e", "í": "i", "ó": "o", "ú": "u", "ñ": "n"};
+        
+        return this.replace(/[áéíóú]/gi, function(m){
+          return asciiEquiv[m];
+        });
+      };
+      
+      
+      Event.observe(window, "load", function() {
+       Event.observe("debate_hashtag", "change", function() {
+         // Generamos el nombre del dir multimedia a partir del hashtag del debate,
+         // susituyendo las mayúsculas por _ y la letra minúscula correspondeinte
+         // y pasándo todo a miníusculas.
+         $("debate_multimedia_dir").value = $("debate_hashtag").value.gsub("#","").gsub(" ", "_").strip().replace(/([^\_])([A-Z]|[ÁÉÍÓÚ])/g, "$1_$2").toLowerCase().toASCII().replace(/[\W|\.|,]/g,"");
+       });   
+     });
+  </script>
+<% end %>

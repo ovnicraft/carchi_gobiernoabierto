@@ -1,0 +1,29 @@
+<%= render :partial => "/admin/debates/menu" %>
+
+<%= will_paginate @organizations %>
+
+<table class="comments" cellspacing="0">
+  <tr>
+    <th style="width: 100px"><%= OutsideOrganization.human_attribute_name(:logo) %></th>
+    <th><%= OutsideOrganization.human_attribute_name(:name) %></th>    
+    <th>Debates</th>
+  </tr>
+
+  <% @organizations.each do |o| %>
+  <tr>
+    <td><%= o.logo? ? image_tag( o.logo.url ) : '&nbsp;'%></td>
+    <td><%= link_to o.name, edit_admin_outside_organization_path(o) %></td>
+    <td><% o.debates.each do |debate| %>
+        <p><%= link_to debate.title, admin_debate_path(debate) %></p>
+        <% end %>
+    </td>
+  </tr>
+  <% end %>
+  
+</table>
+
+<%= will_paginate @organizations %>
+
+<ul class="edit_links">
+  <li><%= link_to 'Añadir entidad', new_admin_outside_organization_path(), :class => 'new' %></li>
+</ul>

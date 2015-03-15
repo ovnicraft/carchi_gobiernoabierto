@@ -1,0 +1,31 @@
+<%=  content_tag(:h2, @l_subtitle, :class => 'l_info') unless @l_subtitle.blank? %>
+
+<%= render :partial => "create_links" %>
+
+<h2><%= @subtitle %></h2>
+
+<% @events.sort_by {|e| e.starts_at}.group_by {|e| e.starts_at.to_date}.each do |date, event_group| %>
+  <h3><%= link_to I18n.localize(date, :format => :long), list_sadmin_events_path(:day => params[:day], :month => params[:month], :year => params[:year]) %></h3>
+  <ul>
+    <% event_group.each do |e| %>
+      <li>
+          <div class="one_event <%= e.state %>">
+            <%=  e.pretty_hours %>: <%= link_to e.title, sadmin_event_path(e) %>
+            <div class="date_and_location">
+              <b><%= t('events.lugar') %>:</b> <%= h e.pretty_place %><br/>
+              <b><%= dept_title(e) %>: </b><%= h e.organization.name%><br/>
+              <% unless e.speaker.blank? %>
+                <b><%= t('events.speaker') %>:</b> <%= h e.speaker %>
+              <% end %>
+              <% if e.irekia_coverage? %>
+                <b><%= t('sadmin.events.cubre_irekia', :site_name => Settings.site_name) %>:</b><%= event_coverage_info(e) %>
+              <% end %>
+            </div>    
+          </div>
+        
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+

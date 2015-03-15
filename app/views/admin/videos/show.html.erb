@@ -1,0 +1,71 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'flowplayer.min', 'public/irekia_flowplayer' %>
+<% end %>
+
+<ul class="edit_links">
+  <li><%= link_to 'Modificar', edit_admin_video_path(@video), :class => "edit" %></li>
+  <% view_or_preview = @video.published? ? t('sadmin.news.ver') : t('sadmin.news.preview') %>
+  <li>
+    <%= link_to "#{view_or_preview} #{t('sadmin.news.en_irekia', :site_name => Settings.site_name)}", video_path(@video), :class => "public_link" %>
+  </li>
+  
+</ul>
+<% if can_create?("videos") %>
+  <ul class="edit_links delete_link">
+    <li><%= link_to "Eliminar", admin_video_path(@video), :data => {:confirm => "Seguro?"}, :method => :delete, :class => "delete" %></li>
+  </ul>
+<% end %>
+
+<% if @video.is_private? %>
+  <span class="draft_notice">
+    Este video es un borrador
+  </span>
+<% elsif !@video.published? %>
+  <span class="unpublished_notice">
+    Este video está sin publicar.<br/>
+    Fecha de publicación: <%= @video.published_at ? I18n.localize(@video.published_at.to_date, :format => :short) : t('sadmin.news.sin_fecha') %>
+  </span>
+<% end %>
+
+ <%= render(:partial => '/admin/documents/multimedia/video', :locals => {:item => @video}) %>
+
+<div class="video_info4admin">  
+  <% if @video.featured %>
+    <p style='color:red'>Destacado en la página de inicio</p>
+  <% end %>
+  
+  <p>
+    <b>¿Dónde está el video?</b>
+    <%= @video.video_path %>
+  </p>
+  
+  <% prev_locale = I18n.locale %>
+  <% for_every_locale do |code, lang| %>
+    <% I18n.locale = code %>
+    <p>
+      <b><%= lang %>: </b> 
+        <%= @video.send("title_#{code}") %>.
+        <%= link_to "Ver en la web", video_path(@video, :locale => code), :class => "public_link" %>
+    </p>
+  <% end %>            
+  <% I18n.locale = prev_locale %>
+  
+  <p>
+    <b>Fecha de publicación:</b> <%= @video.published_at ? @video.published_at.to_s(:short) : 'Sin fecha' %>
+  </p>
+  
+  <p><%= show_tags_with_classes(@video) %></p>
+  
+  <% if @video.document_id %>
+  <p>
+    <b>Proviniente de la noticia:</b>
+    <%= link_to @video.document.title, sadmin_news_path(@video.document) %>
+  </p>
+  <% end %>
+
+  <%  if @video.transcription_available? %>
+  <p>
+    <b>Transcripción:</b> <%= @video.captions_file_name %>
+  </p>
+  <% end %>
+</div>

@@ -1,0 +1,12 @@
+<%= form_for @category, :url => admin_tree_category_path(@tree, @category), :html => {:method => :put}, :data => {:remote => true} do |f| %>
+  <%= error_messages(f.object) %>
+  <table class="admin">
+    <%= render :partial => 'form', :locals => {:f => f} %>
+    <tr>
+      <td colspan="2">
+        <%= submit_tag "Guardar" %>
+        <%= link_to("Cancelar", "#", :onclick => "$('cat_#{@category.id}').replace('#{escape_javascript(render partial: '/admin/categories/category', object: @category)}');return false;") %>
+      </td>
+    </tr>
+  </table>
+<% end %>

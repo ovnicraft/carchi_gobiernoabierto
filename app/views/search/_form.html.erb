@@ -1,0 +1,8 @@
+
+<%= form_tag search_index_path, :class => 'form-search' do -%>
+  <div class="input-append">
+    <%= hidden_field_tag :key, 'keyword' %>
+    <%= text_field_tag :value, params[:value], :size => 60, :class => 'search-query' %>
+    <%= submit_tag '', :name => nil %>  
+  </div>
+<%- end -%>

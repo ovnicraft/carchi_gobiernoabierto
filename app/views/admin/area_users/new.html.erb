@@ -1,0 +1,9 @@
+<%= form_for @area.area_users.new, as: :area_user, :url => admin_area_users_path() do |f| %>
+  <%= f.label :name_and_email, AreaUser.human_attribute_name('name_and_email') %><br/>
+  <%= text_field_with_auto_complete :area_user, :name_and_email, {:size => "60"}, {:indicator => "spinner"} %>
+  <span id="spinner" style = 'display:none'><%= image_tag 'admin/spinner.gif' %></span>
+  <div class="hint">Elegir de la lista que sale al empezar a escribir el nombre o el email.</div>
+  <p>
+    <%= f.submit "Guardar" %>
+  </p>
+<% end %>

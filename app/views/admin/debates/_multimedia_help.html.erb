@@ -1,0 +1,46 @@
+<div>
+  <%= link_to 'Ayuda', '#', :class => 'help_link' %>
+  <div class="help" style="display:none;">
+    <% today = Date.today %>
+    <p>
+      El contenido multimedia (vídeos, imágenes de alta resolución, audios y otros materiales descargables)
+      se suben a través de SFTP en lugar de formulario web, en el directorio <%= Debate::MULTIMEDIA_PATH %>.
+    </p>
+    <p>
+      <% if @debate && !@debate.new_record? %>
+        Este es el directorio multimedia para el debate "<%= @debate.title %>".
+      <% else %>
+        Aquí se especifica un subdirectorio para el contenido multimedia de este debate. Así, si en este 
+        campo se asigna el valor "<%= "un_debate" %>", 
+        se debererá subir el contenido multimedia en el directorio <%= File.join(Debate::MULTIMEDIA_PATH, 'debates', 'un_debate') %>
+      <% end %>
+    </p>
+    <p>
+      En ese directorio, se puede subir contenido del siguiente tipo:
+      <ul>
+        <li>
+          Vídeos .mpg: Son los vídeos de alta resolución que se ofrecen para descargar. Si el nombre del fichero acaba 
+          en _es, _eu, o _en, el vídeo sólo se ofertará en castellano, euskera o inglés respectivamente. Por ejemplo, 
+          "video_es.mpg" se ofertará sólo en castellano, "video_eu.mpg" sólo en inglés y "video.mpg" en todos.
+        </li>
+        <li>
+          Audios .mp3: Son los audios que se ofrecen para escuchar en la web y para descargar. Si el nombre del fichero acaba 
+          en _es, _eu, o _en, el vídeo sólo se ofertará en castellano, euskera o inglés respectivamente. Por ejemplo, 
+          "audio_es.mpg" se ofertará sólo en castellano, "audio_eu.mpg" sólo en inglés y "audio.mpg" en todos.
+        </li>
+        <li>
+          Imágenes .jpg
+        </li>
+      </ul>
+    </p>
+    <p>
+      <b>NOTA</b>: En el directorio multimedia de las propuestas del gobierno <b>no se pueden subir ficheros flv</b>. 
+      Para incluir vídeos flv en la página de una propuesta:
+      <ul> 
+        <li>Los ficheros flv con los vídeos se suben en el directorio multimedia de la noticia destacada de la propuesta.<br/>
+        o</li>
+        <li>Se crean los vídeos en la videoteca y luego se ponen directamente en el texto usando el código para incrustar el vídeo.</li>
+      </ul>
+    </p>
+  </div>
+</div>

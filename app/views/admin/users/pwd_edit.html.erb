@@ -1,0 +1,17 @@
+<h1>Cambiar la contraseña de <%= @user.email %></h1>
+<%= form_for(@user, :url => pwd_update_admin_user_path(@user), :html => {:method => :put}) do |f| -%>
+  <%= error_messages(f.object) %>
+  <%= hidden_field_tag 'return_to', params[:return_to] %>
+
+  <p>
+    <label for="user_password">Elija nueva contraseña:</label>
+    <%= password_field "user", "password", :size => 20, :value=>"" %><br/>
+  </p>
+
+  <p>
+    <label for="user_password_confirmation">Confirmar contraseña:</label>
+    <%= password_field "user", "password_confirmation", :size => 20, :value=>"" %><br/>
+  </p>
+
+  <%= submit_tag "Guardar" %>
+<% end %>

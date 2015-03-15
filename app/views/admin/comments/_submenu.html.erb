@@ -1,0 +1,15 @@
+<div class="submenu">
+  <ul class="status">
+    <li class="<%= 'active' if (@status.blank? && !@oficiales) %>">
+      <%= link_to_unless @status.blank? && !@oficiales, "Todos", params.merge(:status => nil, :oficiales => false) %>
+    </li>
+    <% Comment.select("DISTINCT status").each do |status| %>
+      <li class="<%= 'active' if @status.eql?(status.status) && !@oficiales %>">
+        <%= link_to_unless @status.eql?(status.status), status.status.titleize, params.merge(:status => status.status, :oficiales => nil) %>
+      </li>
+    <% end %>
+    <li class="<%= 'active' if @oficiales %>">
+      <%= link_to_unless params[:oficiales], "Oficiales", params.merge(:oficiales => 1, :status => nil) %>
+    </li>
+  </ul>
+</div>

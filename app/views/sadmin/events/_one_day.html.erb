@@ -1,0 +1,46 @@
+<div class="one_day">
+<h3><%= link_to I18n.localize(date, :format => :long), list_sadmin_events_path(:day => date.day, :month => date.month, :year => date.year) %></h3>
+<table class="comments" cellspacing="0">
+  <tr>
+    <th width="10%"><%= t('sadmin.events.hora_inicio') %></th>
+	<th width="10%"><%= t('sadmin.events.hora_fin') %></th>
+	<th width="20%"><%= t('documents.presenta') %></th>
+	<th width="2%">Fot.</th>
+	<th width="2%">Vid.</th>
+	<th width="2%">Aud.</th>
+	<th width="2%">Cro.</th>
+	<th width="2%">Str.</th>
+    <th width="15%"><%= t('sadmin.events.place') %></th>
+    <th width="35%"><%= t('sadmin.events.tema') %></th>
+  </tr>
+
+  <% event_group.each do |e| %>
+  <tr class="event">
+    <td>
+       <span class="e_hour"><%= e.has_hour? ? I18n.localize(e.starts_at, :format => :hour) : "--"%></span>
+       <span class="day_info"><%=  I18n.localize(e.starts_at.to_date, :format => :long) if !e.one_day?%></span>
+    </td>
+    <td>
+      <span class="e_hour"><%= e.has_hour? ? I18n.localize(e.ends_at, :format => :hour) : "--" %></span>
+      <span class="day_info"><%=  I18n.localize(e.ends_at.to_date, :format => :long) if !e.one_day?%></span>
+    </td>
+    <td>
+  	<%if e.speaker.present? %>** <%end%>
+  	<% e.politicians.each do |politician| %><%= politician.public_name %>, <% end %><br/>
+  	<%if e.speaker.present? %>* <%= h e.speaker %><%end%>
+  	</td>
+    <td><%=image_tag "admin/publish.gif" if (e.irekia_coverage_photo?)%></td>
+    <td><%=image_tag "admin/publish.gif" if (e.irekia_coverage_video?)%></td>
+    <td><%=image_tag "admin/publish.gif" if (e.irekia_coverage_audio?)%></td>
+    <td><%=image_tag "admin/publish.gif" if (e.irekia_coverage_article?)%></td>
+    <td><%=image_tag "admin/publish.gif" if (e.streaming_live?)%></td>
+    <td><%= h e.place %></td>
+    <td>
+      <%= link_to h(e.title), event_link_url(e) %><br/>
+      <%= event_publication_state_info(e) %>
+    </td>
+  </tr>
+  
+  <% end %>
+</table>
+</div>

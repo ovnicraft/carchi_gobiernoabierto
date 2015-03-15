@@ -1,0 +1,167 @@
+@import "compass/css3";
+@import "helpers";
+
+div.meta {
+	overflow: hidden;
+	margin-top:0 !important; /*@vudu*/
+	
+	span {
+		display: block;
+		float: left;
+		&.location {
+			border-left: 1px solid;
+			border-color: $gray_border_color;
+			padding-left: 24px;
+			margin-left: 19px;
+			background: url(image-path('icons/icon_sprite.png')) no-repeat 10px -900px;
+			width: 360px;
+		}
+		&.time {
+			background: url(image-path('icons/icon_sprite.png')) no-repeat 0px -33px;
+			padding: 0px 0px 0px 17px;
+		}
+	}
+}
+
+div.organization {
+	background: $org_back;
+	padding: 10px 0px 0px 14px;
+	color: $blue;
+	font-size: 15px;
+	overflow: hidden;
+	margin: 1px 0px 20px;
+	
+	span {
+		display: block;
+		float: left;
+		margin: 0px 14px 10px 0px;
+	}  
+}
+ 
+
+/* Streaming */
+div.streaming_video {
+	@include background-image(linear-gradient(#fafafa, #dddddd));
+	width: $player_window_width;
+	height: $player_window_height;
+	width: 100%;
+	height: auto;
+	clear: both;
+	float:left;
+
+	div.empty_player {
+		width: $player_window_width;
+		height: $player_window_height;
+		width: 100%;
+		height: auto;
+		//background: url(image-path("video/streamings_anuncio_base_previa.jpg"))  no-repeat center;
+		position:relative;
+		img{
+			width: 100%;
+			height: auto;
+		}
+
+	}
+}
+
+div.empty_player_info {
+	color: #fff;
+	position: absolute;
+	top:58%;
+	left: 40%;
+	color:#2C8CC5;
+	font-weight:bold;
+	text-align:center;
+}
+
+.date_and_comments {
+	font-size: 13px;
+	margin-bottom: 5px /*@vudu antes 20px*/;
+	
+	.date {
+	text-transform: uppercase;
+	background: url(image-path('icons/icon_sprite.png')) no-repeat 0px -816px;
+	padding-left: 17px;
+	}
+	
+	.comments {
+		float: right;
+		border-left: 1px solid;
+		border-color: $gray_border_color;
+		padding-left: 9px;
+	}
+}
+
+div.box_label_sm {
+	font-size: 13px;
+	color: $standard_gray;
+	margin-bottom: 16px;
+}
+
+div.attendance {
+	padding-bottom: 20px;
+	div.other {
+		font-size: 13px;
+	}
+}
+
+div.politicians {
+	overflow: hidden;
+	font-size: 13px;
+	color: $standard_gray;
+	
+	div.politician, div.other {
+		float: left;
+		margin: 0px 20px 20px 0px;
+		width: 180px;
+		
+		a.avatar {
+			float: left;
+		}
+		
+		div.politician_name {
+			margin-left: 45px;
+			
+			a {
+				display: block;
+				margin-bottom: 2px;
+			}
+			a.gc_link {
+				display: inline;
+				padding-left: 0.5em;
+			}
+			
+			span.public_name {
+				display: block;
+				margin-bottom: 2px;        
+			}
+		}
+	}
+}
+
+
+
+/* Maps */
+.map {
+	float: center;
+	/*background:#f1f1f1;*/
+	width: 100%;
+  height: 140px;
+  margin-bottom:9px;
+ 
+  .infowindow {
+    display: none;
+    span.close { right: 10px; }
+  }
+
+  a.icon {
+    position: relative;
+    display: block;
+    background: url(image-path('icons/maps_marker.png')) no-repeat;
+    width: 25px;
+    height: 34px;
+    cursor: pointer;
+    &.with_counter { background-position: -26px -67px; }
+    .counter { position: absolute; display: block; top: 6px; width: 25px; text-align: center; color: $white; font-size: 11px; font-weight: bold; }
+  }
+}

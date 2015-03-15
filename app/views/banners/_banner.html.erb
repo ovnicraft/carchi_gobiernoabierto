@@ -1,0 +1,5 @@
+<% banner_img = (banner.logo.url == "/logo_#{I18n.locale}s/original/missing.png") ? banner.logo_es.url : banner.logo.url %>
+
+<div class='item span2'>
+  <%= link_to image_tag(banner_img, :alt => banner.alt, :title => banner.alt) + banner.alt, banner.url, :class => "gida_en", :rel => "external" %>
+</div>      

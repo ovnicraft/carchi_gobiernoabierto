@@ -1,0 +1,38 @@
+<div>
+  <%= link_to 'Ayuda', '#', :class => 'help_link' %>
+  <div class="help" style="display:none;">
+    <% today = Date.today %>
+    <p>
+      El contenido multimedia (vídeos, images de alta resolución, audios y otros materiales descargables)
+      se suben a través de SFTP en lugar de formulario web, en el directorio definido en config/multimedia_directories.rb
+      (en nuestro caso <%= Document::MULTIMEDIA_PATH %>).
+    </p>
+    <p>
+      Aquí se especifica un subdirectorio para el contenido multimedia de esta noticia. Así, si en este 
+      campo se asigna el valor "<%= "#{today.year}/#{today.month}/#{today.day}/mi_noticia" %>", 
+      se debererá subir el contenido multimedia en el directorio <%= File.join(Document::MULTIMEDIA_PATH, today.year.to_s, today.month.to_s, today.day.to_s, 'mi_noticia') %>
+    </p>
+    <p>
+      En ese directorio, se puede subir contenido del siguiente tipo:
+      <ul>
+        <li>
+          Vídeos .flv: Son los que se ofrecen para visualizar directamente en la web y para descargar. Si el nombre del fichero acaba 
+          en _es, _eu, o _en, el vídeo sólo se ofertará en castellano, euskera o inglés respectivamente. Por ejemplo, 
+          "video_es.flv" se ofertará sólo en castellano, "video_eu.flv" sólo en inglés y "video.flv" en todos.<br/>
+          Si además acaba en 1, será el vídeo que se ofrece como vídeo principal de la noticia. Ejemplo: video_es_1.flv
+          aparecerá por defecto en el visor de vídeo.
+        </li>
+        <li>
+          Vídeos .mpg: Son los vídeos de alta resolución que se ofrecen para descargar. Si el nombre del fichero acaba 
+          en _es, _eu, o _en, el vídeo sólo se ofertará en castellano, euskera o inglés respectivamente. Por ejemplo, 
+          "video_es.mpg" se ofertará sólo en castellano, "video_eu.mpg" sólo en inglés y "video.mpg" en todos.
+        </li>
+        <li>
+          Vídeos .mp3: Son los audios que se ofrecen para escuchar en la web y para descargar. Si el nombre del fichero acaba 
+          en _es, _eu, o _en, el vídeo sólo se ofertará en castellano, euskera o inglés respectivamente. Por ejemplo, 
+          "audio_es.mpg" se ofertará sólo en castellano, "audio_eu.mpg" sólo en inglés y "audio.mpg" en todos.
+        </li>
+      </ul>
+    </p>
+  </div>
+</div>

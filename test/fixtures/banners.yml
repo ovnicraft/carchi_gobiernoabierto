@@ -1,0 +1,41 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+banner_one:
+  url_es: 'http://www.yahoo.es'
+  alt_es: 'Banner one'
+  logo_es_file_name: 'Banner_one.jpg'
+  logo_es_content_type: 'image/jpeg'
+  logo_es_file_size: 8803
+  logo_es_updated_at: 2011-01-10 08:23:46.009608
+  active: t
+  position: 1
+  
+banner_two:
+  url_es: 'http://www.terra.es'
+  alt_es: 'Banner two'
+  logo_es_file_name: 'Banner_two.jpg'
+  logo_es_content_type: 'image/jpeg'
+  logo_es_file_size: 10000
+  logo_es_updated_at: 2011-01-14 08:23:46.009608
+  active: t
+  position: 2  
+    
+banner_three:
+  url_es: 'http://www.google.es'
+  alt_es: 'Banner three'
+  logo_es_file_name: 'Banner_three.jpg'
+  logo_es_content_type: 'image/jpeg'
+  logo_es_file_size: 9300
+  logo_es_updated_at: 2011-01-15 10:23:46.009608
+  active: t
+  position: 3
+  
+banner_no_active:
+  url_es: 'http://www.notactive.com'
+  alt_es: 'Banner no active'
+  logo_es_file_name: 'Banner_no_active.jpg'
+  logo_es_content_type: 'image/jpeg'
+  logo_es_file_size: 9333
+  logo_es_updated_at: 2011-01-25 10:23:46.009608
+  position: 4  
+  active: f

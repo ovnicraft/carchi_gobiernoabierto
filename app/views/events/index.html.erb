@@ -1,0 +1,9 @@
+<% if @context.present? && @context.is_a?(Area) %>
+  <%= render :partial => 'areas/summary' %>
+  <%= render :partial => 'areas/navigation_menu' %>
+<% elsif @context.present? && @context.is_a?(Politician) %>
+  <%= render :partial => 'politicians/summary' %>
+  <%= render :partial => 'politicians/navigation_menu' %>
+<% end %>
+
+<%= render :partial => "/events/events" %>

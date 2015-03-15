@@ -1,0 +1,22 @@
+
+<div class='section container bulletin_subscriptions unsubscribe'>
+  <div class='section_main row-fluid'>
+    <div class='section_content span12'>
+      <div class='section_heading'><%= t('bulletin_subscriptions.baja_del_boletin') %></div>
+      <div class="confirmation">
+        <% if @user.wants_bulletin? %>
+          <%= t('bulletin_subscriptions.unsubscribe_confirmation') %>
+          <%= form_tag bulletin_subscription_path(:id => params[:id]), :method => :delete, :class => 'form form-horizontal' do %>
+            <%= hidden_field_tag :wants_bulletin, 0 %>
+            <div class="form-actions">  
+              <%= submit_tag t('bulletin_subscriptions.baja_del_boletin'), :class => 'submit irekia_btn' %>
+              <%= submit_tag t('cancelar'), :name => 'cancel', :class => "btn" %>
+            </div>
+          <% end %>
+        <% else %>
+          <%= t('bulletin_subscriptions.you_are_not_subscribed') %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

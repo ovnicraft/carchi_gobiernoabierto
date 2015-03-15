@@ -1,0 +1,14 @@
+<h1>Áreas</h1>
+
+<ul class="categories">
+  <% @areas.each do |a| %>
+    <li><%= link_to a.name, admin_area_path(a) %></li>
+  <% end %>
+</ul>
+
+<br />
+
+<ul class="edit_links">
+  <li><%= link_to 'Nueva área', new_admin_area_path, :class => 'new' %></li>
+</ul>
+

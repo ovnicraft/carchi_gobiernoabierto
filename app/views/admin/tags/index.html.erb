@@ -1,0 +1,52 @@
+<% content_for(:head) do %>
+  <%= javascript_include_tag "prototype/in_place_editor" %>
+<% end %>
+
+<div class="tag_search donotprint">
+  <%= form_tag admin_tags_path, :method => :get do %>
+    <%= text_field_tag :q, params[:q] %>
+    <%= submit_tag "Buscar" %>
+  <% end %>
+</div>
+
+<ul class="letters donotprint">
+<% ("A".."Z").to_a.each do |l| %>
+  <li><%= link_to_unless @l.eql?(l), l, admin_tags_path(:l => l) %></li>
+<% end %>
+  <li><%= link_to 'Tags Acuerdos CG', admin_tags_path(:l => 'acuerdosdelconsejodegobiernode') %></li>
+  <li><%= link_to 'Hashtags', admin_tags_path(:l => 'hashtag') %></li>
+</ul>
+
+<ul class="edit_links">
+  <li><%= link_to "Buscar tags duplicados", find_duplicates_admin_tags_path %></li>
+</ul>
+
+<% if @tags.present? %>
+  <p class="donotprint">
+  <% if @l.eql?("hashtag") %>
+    Los hashtags de los debates se modifican desde la página del debate.
+  <% else %>
+    Para cambiar o traducir un tag, pincha sobre el nombre.
+  <% end %>
+</p>  
+
+
+  <table class="comments">
+    <tr>
+      <th width="5%">Traducido</th>
+      <th width="23%">Nombre</th>
+      <th width="23%">Izena</th>
+      <th width="23%">name</th>
+      <th width="10%">En la web</th>
+      <th>Tipo</th>
+    </tr>
+  
+    <% @tags.each do |tag| %>
+      <%= render :partial => 'tag_row', :locals => {:tag => tag} %>
+    <% end %>
+  </table>
+
+  <ul class="edit_links">
+    <li><%= link_to "Buscar tags duplicados", find_duplicates_admin_tags_path %></li>
+  </ul>
+<% end %>

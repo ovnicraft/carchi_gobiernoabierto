@@ -1,0 +1,45 @@
+<% doc = list_specific %>
+
+<h2><%= t('sadmin.attachments.doc_adjuntos') %></h2>
+
+<% if doc.attachments.length == 0 %>
+  <p><%= t('sadmin.attachments.no_hay_doc', :type => doc.class.model_name.human) %>.</p>
+<% else %>
+  <%- audio_files = doc.attachments.find_all {|ad| ad.is_audio?} -%>
+  <%- other_files = doc.attachments - audio_files -%>
+  
+  <% if other_files.present? %>
+    <div class="section_icon document"></div>
+    <div class="sadmin_doc_list">
+      <ul>
+        <% other_files.each do |a| %>
+          <li>
+            <%= render :partial => '/sadmin/attachments/item', :locals => {:doc => doc, :a => a} %>        
+          </li>
+        <% end %>
+      </ul>    
+    </div>
+  <% end %>
+
+  <% if audio_files.present? %>
+    <div class="section_icon audio"></div>
+    <div class="sadmin_doc_list">
+    <ul>
+      <% audio_files.each do |a| %>
+        <li>
+          <%= render :partial => '/sadmin/attachments/item', :locals => {:doc => doc, :a => a} %>        
+        </li>
+      <% end %>
+    </ul>
+    </div>
+  <% end %>
+
+<% end %>
+
+<% if doc.is_a?(Event) ? can_edit_event?(doc) : can_edit?(doc.class.to_s.pluralize.downcase) %>
+<ul class="edit_links">
+  <li>
+    <%= link_to t('sadmin.create_what', :what => Attachment.model_name.human), new_sadmin_attachment_path(:attachable_id => doc.id, :attachable_type => doc.class_name), :class=> "new", :id => "add_attachment" %>
+  </li>
+</ul>
+<% end %>

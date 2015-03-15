@@ -1,0 +1,13 @@
+<% target ||= :list %>
+
+<li class="item area span4 <%= logged_in? && current_user.follows?(area) ? 'selected' : 'passive' %>">
+  <div class='item_content fullwidth'>
+    <div class='title'><%= link_to area.name, area_path(area) %></div>
+    <% if target.eql?(:list) -%>
+      <div class='total'>
+        <div class='proposals'><%=raw t('proposals.count', :count => area.approved_and_published_proposals.count('distinct proposals.id')) %></div>
+        <div class='debates'><%=raw t('debates.count', :count => area.debates.count) %></div>
+      </div>  
+    <% end -%>
+  </div>                
+</li>

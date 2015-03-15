@@ -1,0 +1,84 @@
+
+.inline-rating {
+/*
+display:-moz-inline-block;
+display:-moz-inline-box;
+*/
+display:inline-block;
+vertical-align: middle;
+}
+
+div.rating {
+  float: right;
+}
+
+div.document_votes > div.rating {
+  width: auto;
+}
+
+div.document_votes span {
+  float: left;
+  font-size: 10px;
+  text-align: right;
+}
+
+div.comment_body div.rating {
+  width:175px;
+}
+
+
+/*======================*/
+div.vote_and_abuse div.rating {
+  text-align: right;
+  padding-right: 8px;
+  font-size: 11px;
+}
+
+div.vote_and_abuse div.rating ul {
+  list-style:none;
+  display:inline;
+  padding:0px;
+}
+
+div.vote_and_abuse div.rating ul li {
+  display:inline;
+  margin-left: 4px;
+}
+
+
+
+
+.comment-rating a, .comment-rating span {
+  display: inline-block;
+  height: 18px;
+  width: 19px;
+  vertical-align: middle;
+}
+
+.comment-rating a span {
+  display:none;
+}
+
+ul.comment-abuse {
+  margin:0em;
+}
+
+ul.comment-abuse li {
+  background: url(image-path("admin/remove.png")) no-repeat 0px 0px;
+  padding-left:2em;
+  white-space: nowrap;
+}
+
+ul.comment-abuse li a {
+  color:#000;
+}
+
+
+
+div.vote_and_abuse {
+  border: solid #e4e4e4;
+  border-width: 1px 0px;
+  overflow: hidden;
+  padding: 3px 0px 2px;
+  height: 100%;
+}

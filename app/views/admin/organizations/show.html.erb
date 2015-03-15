@@ -1,0 +1,65 @@
+<h1><%= @organization.name %></h1>
+
+<ul class="edit_links">
+  <li><%= link_to 'Modificar', edit_admin_organization_path(@organization), :class => "edit" %></li>
+</ul>
+
+<table class="admin <%= "active_#{@organization.active.to_s}" %>">
+  <tr>
+    <th>Nombre</th>
+    <td><%= @organization.name_es %></td>
+  </tr>
+  
+  <tr>
+    <th>Izena</th>
+    <td><%= @organization.name_eu %></td>
+  </tr>
+  
+  <tr>
+    <th>Name</th>
+    <td><%= @organization.name_en %></td>
+  </tr>
+  
+  <tr>
+    <th>Vigente</th>
+    <td><%= si_o_no(@organization.active) %></td>
+  </tr>
+  
+  <tr>
+    <th>Antecesor</th>
+    <td><%= Organization.find(@organization.parent_id).name_es if @organization.parent_id %></td>
+  </tr>
+  
+  <% if @organization.is_a?(Department) %>
+  <tr>
+    <th>Tag</th>
+    <td>
+      <%= @organization.tag_name %>
+    </td>
+  </tr>
+
+  <tr>
+    <th>Legislatura</th>
+    <td>
+      <%= @organization.term %>
+    </td>
+  </tr>
+  
+  <% end %>
+  
+  <% if Rails.configuration.external_urls[:guia_uri] %>
+    <th>Id interno</th>
+    <td><%= @organization.gc_id %> <%= link_to("ver", @organization.gc_link, :rel => 'external') if @organization.gc_id.present? %></td>
+  </tr>
+  <% end %>
+</table>
+
+<% if @organization.is_a?(Department) %>
+  <h2>Organismos en este departamento</h2>
+
+  <ul class="categories">
+    <%= render :partial => "organization", :collection => @organization.children %>
+  </ul>
+  
+  <%= link_to 'Nuevo organismo', new_admin_organization_path(:parent_id => @organization.id) %>
+<% end %>

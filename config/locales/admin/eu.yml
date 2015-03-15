@@ -1,0 +1,309 @@
+eu:
+  sadmin:
+    do_not_copy_paste: "Gomendagarria da testu-prozesadoreetako testua zuzenean ez itsastea, testu beraren webgunean bistaratzea oztopatu dezakeen kodea izan dezakeelako.
+    <br/><b>Kopiatu eta itsatsi behar baduzu, egin ezazu formato-gabeko fitxategitatik (.txt).</b>"
+    attachments:
+      doc_adjuntos: Erantsitako dokumentuak
+      fichero_pdf: "PDF fitxategia"
+      idiomas: Hizkuntzak
+      no_hay_doc: "Ez dago documenturik %{type} honetarako"
+    create_what: "%{what} eratu"
+    documents:
+      politicians_hint: "Izenak komaz bereizirik. Izena idazten hastean, sistemak eskuragarri dauden izenak jasoko dituen zerrenda bat erakutsiko du.<br/><b>Zerrendako izenak bakarrik aukera daitezke.</b> "
+      speaker_hint: "Politikariak ez diren gonbidatuen izenak. "
+    eliminado_correctamente: "%{what} ezabatu egin da"
+    eliminar: Ezabatu
+    eliminar_what: "%{what} ezabatu"
+    estas_seguro: "Ziur al zaude? Hau ezin da desegin."
+    events:
+      Asiste_el_lehendakari: 'Lehendakaria joango den ekitaldiak soilik'
+      Solo_asiste_el_lehendakari: 'Erakutsi Lehendakaria joango deneko ekitaldian soilik'
+      Ultimos_datos: "Ekitaldiari buruzko azken datuak"
+      Politicos: Cargos del gobierno
+      Otros_invitados: 'Beste gonbidatu batzuk '
+      acciones: akzioak
+      actos: ekitaldiak
+      agenda_actual: 'Egungo Agenda'
+      agenda_compartida: 'Agenda Gobierno compartida'
+      agenda_mes: "Hileko agenda"
+      agenda_semana: "Asteko agenda"
+      all_journalists: "Kazetari guztietara irekia ..."
+      bajar: "Outlooken kopiatu"
+      body_es: "Informazio gehigarria"
+      cambiar: aldatu
+      cambiar_agenda: 'Agendaz aldatu'
+      cambiar_agenda_a: 'aldatu ondokora'
+      change_event_warning: "Argitaratuta dagoen ekitaldi baten informazioa aldatzen duzunean, komunikabideetara alertak bidaltzen dira, hasi baino 3 egun lehenago. Ziurta zaitez egiten dituzun aldaketan behin-betikoak direla aldakorrak diren ekitaldietaz ez abisatzeko."
+      change_streaming_info_warning: "Ekitaldi baten zuzeneko streamingaren buruzko informazioa aldatzen duzunean, streaming-operadore eta areto-arduradunei email alertak bidaltzen zaizkie hasi baino egun bat lehenago. Ziurta zaitez egiten dituzun aldaketan behin-betikoak direla aldakorrak diren ekitaldietaz ez abisatzeko."
+      city: Hiria
+      city_explain: "Ekitaldiaren orri publikoan agertuko den bezela. Adib: Vitoria-Gasteiz"
+      confirmado: "Ekitaldi konfirmatuta?"
+      confirmar_desvincular: "Ziur al zaude ekitaldi eta berriaren arteko lotura kendu nahi duzulaz?"
+      conveniente_alertar: Ekitaldiaren data, lekua, streaming edo konfirmazio egoeraren inguruko aldaketentzat komenigarria
+      creado: Eratuta
+      cubre_irekia: "%{site_name}k estaltzen du"
+      desvincular: "Lotura kendu"
+      dia_y_hora: "Eguna eta ordua"
+      el_dia_por_user: '%{user}(e)k, %{dia}(e)tan'
+      evento_no_confirmado: "Ekitaldi hau konfirmatzeke dago"
+      evento_no_eliminable: "Ekitaldi hau ezin da guztiz ezabatu lehenengo bere izateaz abisatuta izan zirenak, kantzelazioaz abisatu behar ditugulako.<br/> Momentuz ezabatuta bezela markatuko dugu webgunean ager ez dadin, eta alertak bidaltzen direnean, behinbetiko ezabatu da automatikoki."
+      evento_publicado_en: "Ekitaldi hau %{en}n argitaratuta dago"
+      eventos: ekitaldiak
+      fecha_fin: "Ekitaldiaren amaiera data"
+      fecha_inicio: "Ekitaldiaren hasiera data"
+      guardado_correctamente: "Ekitaldia gorde egin da."
+      has_journalists: "Kazetariak?"
+      has_photographers: "Kazetari grafikoak?"
+      hora_fin: "Bukaera ordua"
+      hora_inicio: "Hasiera ordua"
+      irekia_cubrira: "%{site_name}k ekitaldiaren berri emango du %{cov_types}(r)en bidez "
+      la_agenda_ha_sido_cambiada: 'Agenda aldatuta izan da.'
+      leyenda: Legenda
+      location_gmaps: "Ekitaldiaren helbidea Google Mapserako"
+      location_gmaps_explain: "Google Mapsen kokatzeko soilik erabiliko da. Adib: Nafarroa kalea, 2"
+      lugar: Lekua
+      marcado_eliminado: "Ekitaldia ezabatuta bezela markatu da"
+      marcar_como_eliminado: "Ezabatuta bezela markatu"
+      new_event_warning: "Komunikabideetara email alertak bidaltzera zoaz.<br/>Hala ezbaduzu nahi, \"%{checkbox_text}\" ez markatu."
+      no_confirmado: "konfirmatu gabe"
+      notify_journalists: Alertak bidali kazetariei ekitaldi honi buruz
+      no_guardado_correctamente: "Ekitaldia ez da gorde."
+      no_ha_indicado_la_agenda: 'Ez duzu agendarik zehaztu.'
+      no_hay_eventos: 'Ez dago ekitaldirik'
+      no_hay_noticia: "Ez dago erlazionatutako berririk"
+      no_marcado_eliminado: "Ekitaldia ez da ezabatuta bezela markatu"
+      no_tiene_permiso_para_cambiar_la_agenda: 'Ez duzu agenda aldatzeko baimenik'
+      only_photographers: "... ala kazetari grafikoei soikik?"
+      only_photographers_hint: "'Kazetari grafikoak soikik' testua ekitaldiaren testuan eta email alertetan agertuko da"
+      pendiente_confirmar: konfirmatzeke
+      place: "Lekuaren izena"
+      place_explain: "Ekitaldiaren orri publikoan agertuko den bezela. Adib: Lehendakaritza"
+      publicara_en: "Ekitaldi hau %{en}n argitaratuko da"
+      related_news: "Erlazionatutako berria"
+      related_news_at: "Erlazionatutako berria eskurai hemen:"
+      related_news_draft_at: "Erlazionatutako berriaren ZIRRIBORROA ezkuragai hemen:"
+      se_publica: "Webgunean"
+      seguro_guardar: "Ekitaldia gordetzen baduzu, alertak bidaliko dira komunikabideetara. Ziur al zaude gorde nahi duzulaz?"
+      seguro_guardar_streaming: "Ekitaldia gordetzen baduzu, alertak bidaliko zaizkie streaming-operadore eta areto-arduradunei ekitaldia hasi baino egun bat lehenago. Ziur al zaude gorde nahi duzulaz?"
+      si_confirmado: konfirmatuta
+      suscripcion: "Suskripzioa"
+      tema: "Gaia"
+      titulo_eventos_largos: 'Aste bat baino gehiagotan ematen diren ekitaldiak'
+      ultima_actualizacion: "Last update"
+      uso_interno: "Erabilera internoa"
+      uso_interno_dept: "%{dept} sailaren erabilera internoa"
+      ver: "Ikusi"
+      visible_en: "Ikusgarria %{en}n"
+      publico: "Ikusgarria %{site_name}n"
+      aceptar: "Onartu"
+    guardado_correctamente: "%{what} gorde egin da."
+    guardando: "Gordetzen..."
+    guardar: "Gorde"
+    modificar: "Aldatu"
+    modificar_what: "%{what} aldatu"
+    mostrar_en: "%{where}(e)n erakutsi"
+    news:
+      Presenta_en: '"Joango da" (%{lang}z)'
+      Politicos: Cargos del gobierno
+      Otros_invitados_en: '"Beste gonbidatu batzuk" %{lang}(e)an '
+      alt_foto_portada_en: '"Alt" (testu deskriptiboa) azaleko argazkiarentzat (%{lang}z)'
+      area: Eremua
+      borrador: "Zirriborroa"
+      buscar_noticia: Find news
+      busqueda_titulo: "Bilaketa izenburuan"
+      comentarios: "Iruzkinak"
+      contenido_adicional: "Gainerako edukia"
+      contenido_principal: "Eduki nagusia"
+      creada: Eratuta
+      creado: Eratuta
+      crear_borrador_noticia: "Crear borrador de noticia"
+      crear_noticia: "Berria eratu"
+      departamento_u_organismo: "Saila edo erakundea"
+      destacado: "Nabarmenduta"
+      destacado_boletin: Buletinean nabarmenduta
+      destacado_inicio: "Hasiera orrian nabarmenduta"
+      dir_multimedia: "Multimedia edukirako direktorioa"
+      directorio_multimedia: "Multimedia direktorioa"
+      el_dia_por_user: '%{user}(e)k, %{dia}(e)tan'
+      eliminar_noticia: "Berria ezabatu"
+      en_irekia: "%{site_name}n"
+      es_borrador: "Berri hau zirriborro bat da"
+      esconder_en_el_home: "Izkutatu jarduera zerrendetan, adib. home-ean edo arloetako jardueran"
+      evento_relacionado: Erlazionatutako ekitaldia
+      export_noticias_in_epub: "ePub eta Mobin berriak esportatu"
+      fecha_creacion: "Eratze-data"
+      fecha_publicacion: "Argitalpen-data"
+      foto_actual: "egungo argazkia"
+      foto_portada: "Azaleko argazkia"
+      foto_portada_size: "Tamaina egokia 320x180px-koa da."
+      multimedia_dir_explain: "Formatoa: uuuu/hh/ee/izena, non 'uuu/hh/ee' data den eta 'izena' bereizgarria den"
+      no_hay_evento_relacionado: Ez dago erlazionatutako ekitaldirik
+      preview: "Aurreikusi"
+      publicado: "Argitaratuta"
+      se_publicara_en: "%{fecha}n argitaratuko da"
+      sin_fecha: "Datarik gabe"
+      sin_icono: "Ikonorik ez"
+      sin_publicar: "Berri hau publikatu gabe dago oraindik"
+      solo_letras: 'Izki, zenbaki eta "_" soilik'
+      texto_en: "Testua (%{lang}z)"
+      titulo: "Izenburua"
+      titulo_en: "Izenburua (%{lang}z)"
+      traducciones: "Itzulpenak"
+      ultima_actualizacion: "Azken eguneraketa"
+      ver: "Ikusi"
+      visibilidad: "Bisibilitatea"
+      ya_publicada: "Berri hau publikatuta dago jadanik"
+    no_eliminado_correctamente: '%{what} ez da ezabatu'
+    no_guardado_correctamente: "%{what} ez da gorde."
+    pages:
+      paginas_publicas: "Orri publikoak"
+    se_muestra: "%{where}(e)n erakusten da"
+    se_muestra_en_actividad: "zerrendatzen da jarduera orrietan"
+    se_muestra_false: "%{where}(e)n ez da erakusten"
+    se_muestra_true: "%{where}(e)n erakusten da"
+    publicado_irekia: "Publicado en irekia *"
+    subtitles:
+      fichero_eliminado: "El fichero con los subtítulos ha sido eliminado"
+      fichero_guardado: "El fichero se ha guradado"
+      fichero_no_eliminado: "El fichero con los subtítulos NO ha sido eliminado"
+      fichero_no_guardado:  "El fichero NO se ha guardado"
+      no_hay_traduccion: No hay vídeos para este idioma
+      no_hemos_encontrado_el_documento: "No hemos encontrado el documento"
+      se_usan_los_subtitulos_por_defecto: "NOTA: Se usan los subtítulos por defecto"
+      solo_se_pueden_gestionar_videos_con_documento: "Desde este formulario sólo se pueden gestionar los subtítulos de vídeos que pertenecen a alguna noticia"
+      solo_se_pueden_subir_subtitulos_para_documento: "Desde este formulario sólo se pueden subir los subtítulos de vídeos que pertenecen a alguna noticia"
+      subir: Subir fichero
+      subir_srt: Subir fichero .srt
+      sustituir: Sustituir
+      title: Subtítulos
+      video_con_subtitulos_creado: El vídeo se ha importado a la videoteca y se ha guardado el fichero con los subtítulos.
+      video_con_subtitulos_no_creado: "El fichero NO se ha guardado"
+
+  admin:
+    areas:
+      datos_del_area: eremuaren datuak
+      equipo: taldea
+    events:
+      cobertura_irekia: "%{site_name}ren estaldura?"
+      cobertura_what: "%{what} estaldura"
+      streaming_directo: "Streaming zuzenean?"
+    debates:
+      actualizar_propuesta_gubernamental: Gobernuaren proposamena eguneratu
+      aviso_fecha_final: "NOTA: La fecha final de la propuesta es la fecha final de la última fase. *"
+      aviso_fecha_publicacion: "NOTA: La fecha de publicación de la propuesta es la fecha de inicio de la primera fase. *"
+      argumento: Argudioa
+      argumentos: Argudioak
+      contenido_adicional: Contenido adicional  *
+      crear_propuesta: Proposamena eratu
+      crear_propuesta_gubernamental: Gobernuaren proposamena eratu
+      descripcion_en: "Más información en %{lang}  *"
+      destacado: Destacar en la home  *
+      eliminar: Eliminar propuesta  *
+      eliminar_propuesta_gubernamental: Gobernuaren proposamena ezabatu
+      entidades: Entitateak
+      es_borrador: "Esta propuesta es aún un borrador  *"
+      fase: Fasea
+      fases: Faseak 
+      fecha: Data
+      fecha_publicacion: "Fecha de publicación *"
+      id: Id
+      intro_en: "Introducción en %{lang} *"
+      modificar_propuesta_gubernamental: Gobernuaren proposamena aldatu 
+      muestran_debates_destacados: "Home-ean bakarrik azkenetako %{max_featured} proposamen nabarmendu azaltzen dira, publikazio datari begiratuz."
+      multimedia_dir_explain: "Formato: sólo letras y _, sin espacios ni tildes. *"
+      news_info: "Esta es la noticia con las conclusiones del debate <b>%{debate}</b>. *"
+      nombre: Izena
+      nueva_entidad_relacionada: Añadir entidad relacionada *
+      page_info: "Esta es la página de inicio para la fase de aportaciones del debate <b>%{debate}</b>. *"
+      propuesta: Proposamena
+      propuestas: Proposamenak
+      propuestas_del_gobierno: Gobernuaren proposamenak
+      sin_publicar: "Esta propuesta está aún sin publicar *"
+      ya_finalizado: Esta propuesta ha finalizado. *
+      ya_publicado: Esta propuesta está publicada. *
+    la_web: "Webgunea"
+    menu:
+      agenda: Agenda
+      areas: Eremuak
+      banners: Bannerrak
+      bulletins: Buletinak
+      canales_albums: "Fototeka kanalak"
+      canales_webtv: "WebTV kanalak"
+      categories: Kategoriak
+      comments: Iruzkinak
+      debates: Gob. proposamenak
+      departamentos: Sailak
+      enlaces: Estekak
+      escucha_activa: Entzute-aktiboa
+      estadisticas: Estatistikak
+      "externalcomments::items": Páginas externas*
+      fototeca: Fototeka
+      headlines: Entzumen aktiboa
+      iconos: Ikonoak
+      noticias: Berriak
+      paginas: Orriak
+      propuestas: Herritarren eskaerak
+      preguntas: Eskaerak
+      questions: Eskaerak
+      redes_sociales: Gizarte-sareak
+      snetworks: Gizarte-sareak
+      streaming: Streaming
+      tags: Tagak
+      usuarios: Erabiltzaileak
+      web_tv: Bideoteka
+    news:
+      admite_nuevos_comentarios: "Iruzkin berriak onartzen al ditu?"
+      destacar_en: "Nabarmendu..."
+      destacar_en_boletin: "Berrien buletinean nabarmendu?"
+      destacar_en_inicio: "Hasierako orrian nabarmendu?"
+      no_hay_traduccion: "Ez dago itzulpenik hizkuntza honetarako"
+      noticia_abierta_am: "øAM berri irekia?"
+      traducir_a: "%{lang} aldatu"
+      ver_en_web: "Webgunean ikusi"
+    organizations:
+      legislatura: Legislatura %{term}
+    proposals:
+      argumentos: Argudioak
+      departamento: Saila
+      estado: Egoera
+      paginas_publicas: Orri publikoak
+      peticiones: Eskaerak
+    room_managers:
+      email: Email-a
+      telefono: Telefonoa
+      salas: Gelak
+    stream_flows:
+      anunciado: Iragarrita!
+      anunciar_streaming: Hurrengo streaming-a iragarri
+      dejar_emitir: Utzi emaiketa
+      elija_opcion_para_evento: "Mesedez, asignatutako ekitaldirako hautatu aukeretako bat."
+      empezar_emitir_ahora: Emaiketa oraintxe hasi
+      evento: Ekitaldi
+      foto_sala: Gelaren argazkia
+      flujos: Fluxuak
+      flujos_stream: Stream fluxuak
+      incrustar: Txertatu
+      mostrar_botones: botoiak azaldu
+      nuevo_flujo: Fluxu berria
+      no_evento_asignado: Ez dago ekitaldirik asignatuta
+      ordenar_flujos: Fluxuak ordenatu
+      ocultar_anuncio_streaming: Hurrengo emanaldiaren iragarkia ezkutatu
+      problemas: ¿Arazoak?
+      responsables_sala: Gela arduradunak
+      sala_sin_responsable:  Gela ez dauka arduradunik
+      soporte_streaming_movil: (streaming mugikorra soportatuta)
+      stream: Stream
+    external:
+      comment_items:
+        title: Páginas externas *
+        lista_cliente: "Páginas externas de %{cliente} *"
+        cliente: Cliente *
+      clients:
+        title: Webs clientes *
+        nuevo: Añadir cliente *
+        datos: Datos del cliente *
+        codigo: Código para incrustar *
+        eliminar: Eliminar cliente *
+        eliminado: El cliente ha sido eliminado *
+        no_eliminado: El cliente NO ha sido eliminado *
+        paginas: Páginas *

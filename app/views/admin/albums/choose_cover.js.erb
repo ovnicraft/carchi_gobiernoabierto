@@ -1,0 +1,6 @@
+<%- if response.status.eql?(200) -%>
+  $("photo_cover_<%= @aphoto.id %>").replace("<%= escape_javascript(render partial: '/admin/albums/aphoto_cover', locals: {aphoto: @aphoto}) %>");
+  <%- if @previous_cover && @previous_cover.update_attributes(:cover_photo => false) -%>
+    $("photo_cover_<%= @previous_cover.id %>").replace("<%= escape_javascript(render partial: '/admin/albums/aphoto_cover', locals: {aphoto: @previous_cover}) %>");
+  <%- end -%>
+<%- end -%>

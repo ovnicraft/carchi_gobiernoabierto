@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+tweet_for_news:
+  document: one_news
+  tweet_account: "ireki"
+  tweet_at: <%= 1.day.ago %>
+  tweet_locale: "es"
+
+tweet_for_event:
+  document: current_event
+  tweet_account: "ireki"
+  tweet_at: <%= Time.zone.now.at_beginning_of_day + 1.hour - 3.days %>
+  tweet_locale: "es"

@@ -1,0 +1,17 @@
+<div id='criterio_results_container'>
+  <%- if @criterio.present? && !@criterio.new_record? -%>
+
+    <%= render :partial => '/search/criterio', :collection => @criterio.ancestors.reverse, :as => :criterio, :locals => {:delete_hidden => true} %>
+    <%= render :partial => '/search/criterio', :object => @criterio, :as => :criterio, :locals => {:delete_hidden => false} %>  
+
+  <%- elsif @criterio.present? && @criterio.new_record? -%>  
+
+    <div class="criterio_result">
+      <div class="criterio_title"><%= show_criterio_title(@criterio) %></div>
+      <div class='nb_registers'>
+        <%= link_to_unless_current t('search.criterio.results_count', :value => @total_hits.to_i, :count => @total_hits.to_i), new_search_path %>
+      </div>
+    </div>
+
+  <%- end -%>  
+</div>

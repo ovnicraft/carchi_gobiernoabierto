@@ -1,0 +1,6 @@
+<%- if response.status.eql?(200) -%>
+  $("proposal_<%= @proposal.id %>").replace("<%= escape_javascript(render partial: '/admin/proposals/proposal', locals: {proposal: @proposal}) %>");
+  $("proposal_<%= @proposal.id %>").classNames("<%= @proposal.status %>");
+<%- else -%>
+  $("proposal_<%= @proposal.id %>").highlight();
+<%- end -%>

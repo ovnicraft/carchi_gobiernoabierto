@@ -1,0 +1,3 @@
+$("new_container<%= params[:parent_id]%>").replace("<%= escape_javascript(render partial: '/admin/categories/new') %>");
+$("name_es").focus();
+location.href = "#name_es";

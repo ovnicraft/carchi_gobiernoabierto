@@ -1,0 +1,44 @@
+<%= render :partial => '/shared/contribution_nav' %>
+
+<p class="only_for_print page_link"><%= @stage.present? ? debate_url(:id => @debate.id, :stage => @stage.label) : debate_url(:id => @debate.id) %></p>
+
+<div class='section container'>
+  <%= render :partial => '/shared/context', :locals => {:type => 'debates'} %>
+  <div class='section_header debate'>
+    <div class='header_content' style='background-image: url(<%= @debate.header_image.header.url %>)'>
+      <div class='veil'></div>
+      <div class='header_info row-fluid'>
+        <div class='span8'>
+          <h1 class='title'><%= highlight_according_to_criterio(@debate.title, @criterio) %></h1>
+          <div class='share_rss_listen row-fluid'>
+            <%= render :partial => '/shared/share', :locals => {:item => @debate} %>
+          </div>
+        </div>
+        <div class='span4'>
+          <div class='hashtag'><%= link_to @debate.hashtag, tag_path(:id => @debate.debate_tag.sanitized_name) %></div>
+          <% unless @debate.total_participation.zero? -%>
+            <div class='participation'><%= t('debates.participation', :count => @debate.total_participation) %></div>
+          <% end -%>  
+          <%= render :partial => '/shared/tags', :locals => {:tags => @debate.tags_without_hashtag} %>
+        </div>
+      </div>
+      <div class="only_for_print qr_code"><%= item_qr_code(@debate) %></div> 
+    </div>
+    <div class='debate_nav'>
+      <ul class='nav debate_stages'>
+        <% @debate.stages.each do |stage| %>
+          <li class="<%= stage.label %> <%= 'active' if @stage.label.eql?(stage.label.to_s) %>">
+            <% text = t("debates.stage_#{stage.label}") -%>
+            <%= link_to "<i class='ico_#{stage.label}'></i> #{text} #{render_debate_stage_dates(stage)}".html_safe, debate_path(@debate, :stage => stage.label) %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <% if @stage.is_future? && !@stage.label.eql?('presentation') -%>
+    <div class='well is_future'><%= t('debates.is_future', :stage => t("debates.stage_#{@stage.label}"), :date => I18n.l(@stage.starts_on, :format => :long)) %></div>
+  <% else -%>
+    <%= render :partial => "/debates/#{@stage.label}" %>
+    <%= render_debates_legal_advice %>
+  <% end -%>
+</div>

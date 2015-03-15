@@ -1,0 +1,17 @@
+order_one:
+  titulo_es: Orden primera
+  texto_es: Texto de orden primera noticia. 
+  seccion_es: Seccion1
+  rango_es: Rango1
+  fecha_bol: '2000-10-01'
+  no_bol: '200010'
+  no_orden: '20001001'
+
+order_two:
+  titulo_es: Orden segunda
+  texto_es: Texto de orden segunda noticia. 
+  seccion_es: Seccion1
+  rango_es: Rango1
+  fecha_bol: '2013-10-01'
+  no_bol: '200013'
+  no_orden: '20131001'

@@ -1,0 +1,11 @@
+<div class='control-group' id="alerts_locale_container">
+  <%= f.label :alerts_locale, t('journalists.idioma_alertas'), :class => 'control-label' %>
+  <div class='controls'>
+    <% Bulletin::AVAILABLE_LANGUAGES.each do |locale, language| %>
+      <label class='radio inline'>
+        <%= f.radio_button :alerts_locale, locale, :checked => (f.object.wants_bulletin? ? f.object.alerts_locale : params[:locale].to_s) == locale.to_s %>
+        <%= language %>
+      </label>           
+    <% end %>            
+  </div>
+</div>

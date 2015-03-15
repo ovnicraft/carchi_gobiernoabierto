@@ -1,0 +1,15 @@
+<div class="one_news_submenu">
+  <ul>
+    <% unless StreamFlow.programmed.empty? %>
+    <li class="<%= 'active' if controller.controller_name.eql?("stream_flows") && controller.action_name.eql?('index') %>">
+      <%= link_to "Eventos programados", admin_stream_flows_path %>
+    </li>
+    <% end %>
+    <li class="<%= 'active' if controller.controller_name.eql?("stream_flows")  && !controller.action_name.eql?('index') %>">
+      <%= link_to t("admin.stream_flows.flujos"), list_admin_stream_flows_path %>
+    </li>
+    <li class="<%= 'active' if controller.controller_name.eql?("room_managers") %>">
+      <%= link_to t("admin.stream_flows.responsables_sala"), admin_room_managers_path %>
+    </li>
+  </ul>
+</div>

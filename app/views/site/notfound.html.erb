@@ -1,0 +1,8 @@
+<% @title = t('site.pagina_no_encontrada') %>
+
+<div class="article not_found">
+  <%= image_tag 'icons/not_found.png' %>
+  <h1><%= @title %></h1>
+  <p><%= raw t('site.no_encontrada_text', :inicio_link => link_to(t('site.pagina_de_inicio'), root_path), :busqueda_link => link_to(t('site.la_busqueda'), tags_path)) %></p>
+</div>
+

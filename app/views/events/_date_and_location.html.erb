@@ -1,0 +1,19 @@
+<!-- se usa en show.floki -->
+    <div class="date_and_location">
+      <table cellspacing="0" cellpadding="0" class="row">
+        <tr>
+         <td class="p">
+          <b><%= t('events.fecha') %>:</b> <%= event.pretty_dates %><br />
+          <%- if event.pretty_place.present? || event.location_for_gmaps.present? -%>
+            <b class="event_location_label"><%= t('events.lugar') %>:</b> 
+            <%= event_location_pretty(event) %><br />
+          <%- end -%>
+          <%- if event.speaker.present? -%>
+            <b><%= t('events.speaker') %>:</b> <%= h event.speaker %><br/>
+          <%- end -%>
+          <b><%= event.organization.is_a?(Department) ? t('organizations.department') : t('organizations.organism') %>:</b> 
+          <%= h event.organization.name %><%= show_gc_link_if_present(event.organization) %>
+         </td>
+        </tr>
+       </table>
+    </div>

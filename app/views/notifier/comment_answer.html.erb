@@ -1,0 +1,22 @@
+<%- AvailableLocales::AVAILABLE_LANGUAGES.keys.sort.reverse.each do |locale| -%>
+  <p>
+    <%= I18n.t('notifier.hola_user', :name => @commenter.public_name, :locale => locale) %>, 
+  </p>
+
+  <p>
+  <%= I18n.t('notifier.comment_answer.answered', :site_name => Settings.site_name, 
+             :publisher_name => Settings.publisher[:name], 
+             :title => @item.title, 
+             :url => url_to_commentable(@item, {:locale => locale, :only_path => false}), :locale => locale) %><br />
+    <%= I18n.t('notifier.comment_answer.gracias', :site_name => Settings.site_name, :locale => locale) %>
+  </p>
+
+  <%= render :partial => '/notifier/footer', :locals => {:locale => locale} %>
+  
+  <p>
+    <br />
+    ---------------------------------------------
+    <br />
+  </p>
+
+<%- end -%>

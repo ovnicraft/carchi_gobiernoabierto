@@ -1,0 +1,17 @@
+<div class='section container areas index intro'>
+  <%= render :partial => '/shared/context', :locals => {:type => 'organizations'} %>
+  <!--<h1 class='section_title'><%= t('organizations.title') %></h1>-->
+  <div class='section_main row-fluid'>
+    <div class="section_content span12">
+      <div class='areas index'>
+        <div class='col_list areas_list'>
+          <% @areas.in_groups_of(3).each do |areas| %>
+            <ul class='row-fluid'>
+              <%= render :partial => '/areas/list_item', :collection => areas.compact, :as => :area, :locals => {:additional_class => 'span4'} %>
+            </ul>
+          <% end %> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

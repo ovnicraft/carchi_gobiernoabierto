@@ -1,0 +1,10 @@
+<% commentable = Question.find(notification.item_id) %>
+
+<li class="clearfix question">
+  <%= avatar commentable.author %>
+
+  <div class="content">
+    <p><%= t('notifications.new_comment', :commentable => link_to(commentable.title, question_path(commentable, :n_id => notification.id, :anchor => "acomments"))) %></p>
+  </div>
+  
+</li>

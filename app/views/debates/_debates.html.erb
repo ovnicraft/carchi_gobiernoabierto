@@ -1,0 +1,25 @@
+<% content_for :head do %>
+  <%= auto_discovery_link_tag :rss, {:controller => "debates", :action => "index", :locale => I18n.locale, :format => 'rss'}, :title => t('documents.feeds_rss') %>
+<% end %>
+
+<div class='section container' id='middle'>
+  <%= render :partial => '/shared/context', :locals => {:type => 'debates', :area => @area} if show_context %>
+  <div class='section_main row-fluid'>
+    <div class="section_content span12">
+      <div class="proposals index" id="proposals-<%= params[:id] %>">
+        <% if @context %>
+          <div class='section_heading'><%= @title %></div>
+        <% else %>
+          <%= render :partial => "/shared/#{context_partial(@context, 'filters')}" %>
+        <% end %>
+        <div class='section_heading'><%= t('debates.active') %></div>
+        <%= render :partial => '/shared/grid_items', :locals => {:items => @debates} %>
+        <% if @finished_debates.present? -%>
+          <div class='section_heading'><%= t('debates.finished') %></div>
+          <%= render :partial => '/shared/grid_items', :locals => {:items => @finished_debates} %>
+        <% end -%>
+        <%= render_debates_legal_advice %>
+      </div>
+    </div>
+  </div>
+</div>

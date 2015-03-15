@@ -1,0 +1,20 @@
+<%- 
+ items = []
+  @content.each_with_index do |item, i|
+    sort_id = 1000 - i
+    if item.is_a?(Event)  
+      items << render(:partial => 'mob_app/cells/event_cell', 
+                      :locals => {:event => item, :section => nil, :sort_id => sort_id, :target => :activity})
+    else
+      item_class = item.class.name.downcase
+      items << render(:partial => "mob_app/cells/#{item_class}_cell", 
+                      :locals => {item_class.to_sym => item, :sort_id => sort_id, :target => :activity})  
+    end  
+  end
+-%>
+
+{
+  "items": [
+    <%= items.join(", \n") %>
+  ]
+}

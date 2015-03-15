@@ -1,0 +1,23 @@
+<% 
+  block ||= ''
+  target ||= ''
+  options = {}
+  options[:criterio_id] = @criterio.id if @criterio.present?
+  options[:track] = 1 if target.eql?(:related)
+%>
+
+<li class='item order'>
+  <% cache(order.cache_path) do %>
+    <div class='item_thumbnail'>
+      <%= image_tag 'default/order_img_default.png', :alt => t('orders.bopv') %>
+    </div>
+    <div class='item_content'>
+      <div class='title'>
+        <%= link_to smart_truncate(h(order.titulo), 255), order_url(options.merge(:no_orden => order.no_orden)) %>
+      </div>
+      <%= render_date(order.fecha_bol) %>
+    </div>
+  <% end %>  
+  <%= show_search_explanation(order) %>         
+  <%= block if block.present? %>
+</li>

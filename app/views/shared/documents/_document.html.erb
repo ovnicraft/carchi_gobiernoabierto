@@ -1,0 +1,77 @@
+<% 
+  target ||= "news" 
+  rank ||= nil 
+  case target
+  when "news"
+    table_class = "news_row"
+    comments_class = ""
+  when "featured"
+    table_class  = "multimedia_row"
+    comments_class = "comentar_s"
+  when "search"
+    table_class  = "news_row"
+    comments_class = ""    
+  end
+%>
+
+
+<div class="<%= table_class %>">
+  <table class="<%= table_class %>" cellspacing="0" cellpadding="0">
+    <tr>
+      <% unless target.eql?("featured") %>
+        <td class="img">
+          <span class="fixet_size organization">
+            <%= icon_for_document(document) %>
+          </span>
+        </td>
+        <td class="title">
+          <h1><%= link_to document.title, [@category, document] %></h1>
+          <span class="date"><%= I18n.localize(document.published_at, :format => :long) if document.published_at %></span>
+          <span class="dept_name"><%= "(#{document.organization.name})" if document.organization %></span>
+          <%= "<span class='search_rank'>(#{rank})</span>" if logged_in? && !rank.nil? %>
+        </td>
+      <% end %>
+      
+      <td class="icons">
+        <ul class="icons">
+          <li>
+            <%= link_to_unless !document.has_audios?, "<span class='icon'>#{t('documents.audio')}</span>", document_path(document) + '#audio', :class=>"audio", :title => t('audios.title') do |name|
+              "<span class='audio not_available'><span class='icon'>#{t('documents.not_available', :what => t('audios.title'))}</span></span>"
+              end
+            %>
+          </li>
+          <li>
+            <%= link_to_unless !document.has_files?, "<span class='icon'>#{t('documents.ficheros_adjuntos')}</span>", document_path(document) + '#doc', :class=>"docs", :title => t('documents.ficheros_adjuntos') do |name|
+              "<span class='docs not_available'><span class='icon'>#{t('documents.not_available', :what => t('documents.ficheros_adjuntos'))}</span></span>"
+              end
+              %>
+          </li>
+          <li>
+            <%= link_to_unless !document.has_photos? && !document.has_cover_photo?, "<span class='icon'>#{t('photos.title')}</span>", document_path(document) + '#photos', :class=>"photos", :title => t("photos.title") do |name|
+              "<span class='photos not_available'><span class='icon'>#{t('documents.not_available', :what => t('photos.title'))}</span></span>"
+              end
+              %>
+          </li>
+          <li>
+            <%- if document.has_video? || document.has_videos? -%>
+              <%- if document.has_professional_videos? -%>
+                <%= link_to "<span class='icon'>#{t('documents.video_profesional')}</span>", document_path(document) + '#title', :class => "video vprof_true", :title => t('documents.video_profesional') %>
+              <%- else -%>
+                <%= link_to "<span class='icon'>#{t('videos.title')}</span>", document_path(document) + '#title', :class => "video", :title => t('videos.title') %>
+              <%- end -%>
+            <%- else -%>
+              <span class='video not_available'><span class='icon'><%= t('documents.not_available', :what => t('videos.title')) %></span></span>
+            <%- end -%>
+          </li>
+        </ul>
+
+      </td>
+      <td class="comentar <%= comments_class %> comentar_<%= I18n.locale %>">
+        <%= link_to_unless (document.comments_closed? || !document.has_comments?), "<span class='icon'>#{t('comments.comentar')}</span>", document_path(document) + '#comments', :title => t('comments.comentar') do |name|
+          "<span class='comments not_available'>#{name}</span>"
+          end
+        %>
+      </td>
+    </tr>
+  </table>
+</div>

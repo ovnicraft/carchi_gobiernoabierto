@@ -1,0 +1,67 @@
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px -7px 0px -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+div.with_errors {
+  border: 2px solid red;  
+}
+
+div.with_errors span.error_notice, div.with_errors h3 {
+  padding-left: 1em;
+  display: block;
+}
+
+div.with_errors span.error_notice {
+  color: red;
+}
+
+span.error_message {
+  color: red;
+  margin-left:1em;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+.field_with_errors label {
+  background-color: #fff;
+}
+
+.field_with_errors input {
+  background-color: #fff;
+}
+
+div.errorExplanation {
+  margin-top: 10px;
+}
+

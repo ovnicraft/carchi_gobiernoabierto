@@ -1,0 +1,21 @@
+<% item_type = items.first ? items.first.class.to_s.downcase : controller.controller_name.singularize %>
+<% type = item_type.pluralize %>
+<% in_groups_of ||= 3 %>
+<% span_size ||= "span#{12/in_groups_of}" %>
+
+<div class='filtered_content' id="filtered_content">
+<% if items.present? -%>
+  <div class="grid <%= item_type.pluralize %>_grid">
+    <% items.in_groups_of(in_groups_of, false).each do |item_group| %>
+      <div class='row-fluid'>
+        <%= render :partial => "/#{type}/grid_item", :collection => item_group, :as => item_type.to_sym, :locals => {:span_size => span_size} %>
+      </div>  
+    <% end %>
+  </div>
+  <%= will_paginate items if items.respond_to?(:total_pages) %>
+<% else -%>
+  <div class='well'>
+    <%= type.present? ? t("#{type}.no_content") :  t("shared.no_content") %> <%= t('shared.from_context', :name => @context.public_name) if @context.present? %>
+  </div>
+<% end -%>  
+</div>

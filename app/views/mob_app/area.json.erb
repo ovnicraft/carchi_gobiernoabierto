@@ -1,0 +1,105 @@
+<%- features = [] 
+  features << {"id" => 1, 
+              "sort_id" => 1000,
+              "class_type" => "Follow_cell",
+              "title" => t("followings.create.area", :name => @area.public_name),
+              "body" => t("followings.destroy"),
+              "url" => state_followings_url(:type => 'Area', :id => @area.id).gsub('&amp;', '&'),
+              "data" => {
+                "follow_url" => url_for(:controller => 'followings', :action => 'create', :locale => '_LNG_', :only_path => false),
+                "follow_data" => "following[followed_id]=#{@area.id}&following[followed_type]=Area",
+                "unfollow_url" => url_for(:controller => 'followings', :action => 'destroy', :id => (@following.present? ? @following.id : 0), :item_id => @area.id, :item_type => 'Area', :locale => '_LNG_', :only_path => false).gsub('&amp;', '&')
+                }
+              }.to_json
+  features << {"id" => 2, "title" => Area.human_attribute_name("description"),
+              "sort_id" => 950,
+              "body" => "",
+              "image" => request.protocol + request.host_with_port + asset_path('floki/irekia_77_que-hacemos.png'),
+              "image_size" => Floki::IMAGE_SIZE,
+              "url" => url_for(:controller => 'areas', :action => 'what', :id => @area.id, :only_path => false)}.to_json  
+              
+  features << {"id" => 4, "title" => I18n.t('areas.team'),
+              "class_type" => "News_view_controller",
+              "sort_id" => 800,
+              "body" => t('areas.miembros'),
+              "image" => request.protocol + request.host_with_port + asset_path('floki/irekia_77_equipo.png'),
+              "image_size" => Floki::IMAGE_SIZE,
+              "new_window" => false,
+              "url" => url_for(:controller => "mob_app", :action => "team", :area_id => @area.id, :only_path => false),
+              "data" => {
+                "unique_id" => Floki::FACTORS[:area] * @area.id + 90000,
+                "row_height" => 90, "padding" => 4, "image_size"=> [60,70],
+                "image_alignment" => 0, "title_lines" => 4, 
+                "title_size" => Floki::TITLE_SIZE,
+                "title_color" => Floki::TITLE_COLOR,
+                "text_size" => Floki::TEXT_SIZE, 
+                "text_color" => Floki::TEXT_COLOR,
+                "footer_alignment" => 1,
+                "back_normal_color" => Floki::BACK_COLOR,
+                "back_highlight_color" => Floki::BACK_HIGHLIGHT_COLOR, 
+                "ttl" => 600,
+                "download_if_virgin" => true, "allow_manual_reload" => true
+               }
+              }.to_json      
+              
+  features << render(:partial => 'mob_app/view_controllers/news_view_controller.json', :locals => {
+              :id => 5, 
+              :sort_id => 700, 
+              :unique_id => Floki::FACTORS[:area] * @area.id + Floki::FACTORS[:news], 
+              :body => t('news.count', :count => @area.news.count),
+              :url => url_for(:controller => "mob_app", :action => "news", :area_id => @area.id, :only_path => false), 
+              :data_options => nil})
+  
+  features << render(:partial => 'mob_app/view_controllers/events_view_controller.json', :locals => {
+              :id => 8, 
+              :sort_id => 400, 
+              :unique_id => Floki::FACTORS[:area] * @area.id + Floki::FACTORS[:event], 
+              :body => t('floki.events.body'),
+              :url => url_for(:controller => "mob_app", :action => "events", :area_id => @area.id, :only_path => false), 
+              :data_options => nil})    
+
+  features << render(:partial => 'mob_app/view_controllers/proposals_view_controller.json', :locals => {
+              :id => 7, 
+              :sort_id => 500, 
+              :unique_id => Floki::FACTORS[:area] * @area.id + Floki::FACTORS[:proposal], 
+              :url => url_for(:controller => "mob_app", :action => "proposals", :area_id => @area.id, :only_path => false), 
+                            :title => t('proposals.title'),
+              :body => "#{@area.proposals_count} #{t('proposals.citizens_count', :count => @area.proposals_count)}",
+              :section => nil,
+              :data_options => nil})
+
+  features << render(:partial => 'mob_app/view_controllers/debates_view_controller.json', :locals => {
+              :id => 11, 
+              :sort_id => 450, 
+              :unique_id => Floki::FACTORS[:area] * @area.id + Floki::FACTORS[:debate], 
+              :url => url_for(:controller => "mob_app", :action => "debates", :area_id => @area.id, :only_path => false), 
+                            :title => t('debates.title'),
+              :body => "#{@area.debates_count} #{t('debates.gob_count', :count => @area.debates_count)}",
+              :section => nil,
+              :data_options => nil})
+              
+  features << render(:partial => 'mob_app/view_controllers/photos_view_controller.json', :locals => {
+              :id => 9, 
+              :sort_id => 400, 
+              :title => t('photos.title'),
+              :body => "",
+              :section => nil,
+              :unique_id => Floki::FACTORS[:area] * @area.id + Floki::FACTORS[:photo], 
+              :url => url_for(:controller => "mob_app", :action => "photos", :area_id => @area.id, :only_path => false), 
+              :data_options => nil})
+              
+  features << render(:partial => 'mob_app/view_controllers/videos_view_controller.json', :locals => {
+              :id => 10, 
+              :sort_id => 300, 
+              :unique_id => Floki::FACTORS[:area] * @area.id + Floki::FACTORS[:video], 
+              :url => url_for(:controller => "mob_app", :action => "videos", :area_id => @area.id, :only_path => false), 
+              :data_options => nil})
+
+-%>
+
+{
+  "items": [
+    <%=raw features.join(", \n") %>
+  ],
+  "to_delete": [3]
+}

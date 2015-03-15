@@ -1,0 +1,10 @@
+<% if politicians.size > 0 %>
+  <div class='aside_module politicians'>
+    <div class='title'><span><%= t('politicians.asistentes') %></span></div>
+    <div class='content'>
+      <ul class="std_list people">
+        <%= render :partial => '/politicians/list_item', :collection => politicians, :as => :politician %>
+      </ul>
+    </div>
+  </div> 
+<% end %>

@@ -1,0 +1,9 @@
+irekia_twitter:
+  url: http://twitter.com/irekia
+  label: twitter
+  sorganization_id: <%= ActiveRecord::FixtureSet.identify(:social_org) %>
+  
+irekia_facebook:
+  url: http://facebook.com/irekia
+  label: facebook
+  sorganization_id: <%= ActiveRecord::FixtureSet.identify(:social_org) %>

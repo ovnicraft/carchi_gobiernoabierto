@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+featured_news_with_one_news:
+  source_type: Document
+  source: featured_news
+  target_type: Document
+  target: one_news
+  rating: 4
+  user: admin

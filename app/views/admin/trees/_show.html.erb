@@ -1,0 +1,28 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'prototype/dragdrop' %>
+<% end %>
+
+<p class="print_link">
+  <%= link_to "<span>Imprimir</span>".html_safe, "#", :onclick => "print();return false;", :title => "Imprimir", :alt => "Imprimir" %>
+</p>
+
+<ul class="edit_links">
+  <li>
+    <%= link_to 'Modificar nombre', edit_admin_tree_path(@tree), method: :get, 
+      href: edit_admin_tree_path(@tree), class: "edit", data: {remote: true} %>
+  </li>     
+  <li>
+    <%= link_to 'Nueva categoría', new_admin_tree_category_path(@tree), method: :get, 
+      href: new_admin_tree_category_path(@tree), class: "new", data: {remote: true} %>
+  </li>
+</ul>   
+
+<div id="edit_container"></div>
+
+<ul id="categories">
+  <%= render :partial => "/admin/categories/category", :collection => @tree.categories.where("parent_id IS NULL") %>
+</ul>
+
+<div id="new_container"></div>
+
+<%= sortable_element 'categories', :url => sort_admin_tree_categories_path(:tree_id => @tree, :parent_id => nil), :method =>:post, :complete => visual_effect(:highlight, 'categories') %>

@@ -1,0 +1,30 @@
+@import "bootstrap.min";
+
+body {
+  padding-left: 0px;
+}
+
+tr.pending_row td.text {
+  font-size: 18px;
+}
+
+tr.pending_row span.created_at {
+  float: right;
+  font-size: 14px;
+  color: gray;
+}
+
+/*a.with_email {
+  margin-top: 10px;
+}*/
+
+tr.buttons_row{
+  border-bottom: 10px solid #c0c0c0;
+  .btn {
+    margin-right: 12px;
+  }
+}
+
+label {
+  font-weight: bold;
+}

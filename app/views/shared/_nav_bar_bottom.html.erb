@@ -1,0 +1,91 @@
+<nav role='navigation' id='nav_bottom' class='fullcontainer'>
+  <div class='container'>
+    <div class='navbar'>
+      <div class='navbar-inner'>
+        <ul class='nav pull-left'>
+          <li class='dropdown proposals'>
+            <%= link_to raw("#{t('site.participation')} <b class='caret'></b>"), participation_url, :class => "dropdown-toggle dropdown-remote proposals", :"data-source" => summary_participation_url, :"data-toggle" => 'dropdown' %>
+            <div class='dropdown-menu proposals'> 
+              <div class='dropdown-menu-content row-fluid'>
+                <div class='span4'>
+                  <%= render :partial => '/proposals/summary_left' %>
+                </div>
+                <div class='span8'>                  
+                  <%= render_loading_spinner('proposals') %>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class='dropdown departments'>
+            <%= link_to raw("#{t('areas.title')} <b class='caret'></b>"), areas_url, :class => "dropdown-toggle", :"data-toggle" => 'dropdown' %>
+            <div class='dropdown-menu departments'>
+              <div class='dropdown-menu-content'>
+                <ul class='nav-list departments'>
+                  <% Area.ordered.each do |area| %>
+                    <li><%= link_to area.name, area_url(area) %></li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class='dropdown events'>
+            <%= link_to raw("#{t('events.agenda')} <b class='caret'></b>"), events_url, :class => "dropdown-toggle dropdown-remote events", :"data-source" => summary_events_url, :"data-toggle" => 'dropdown' %>
+            <div class='dropdown-menu events'> 
+              <div class='dropdown-menu-content row-fluid'>
+                <div class='span4'>
+                  <%= render :partial => '/events/summary_left' %>
+                </div>
+                <div class='span8'>                  
+                  <%= render_loading_spinner('events') %>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class='dropdown news'>
+            <%= link_to raw("#{t("news.title")} <b class='caret'></b>"), news_index_url, :class => "dropdown-toggle dropdown-remote news", :"data-source" => summary_news_index_url, :"data-toggle" => 'dropdown' %>
+            <div class='dropdown-menu news'> 
+              <div class='dropdown-menu-content row-fluid'>
+                <div class='span5'>
+                  <%= render :partial => '/news/summary_left' %>
+                </div>
+                <div class='span7'>                  
+                  <%= render_loading_spinner('news') %>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class='dropdown videos_photos'>
+            <%= link_to raw("#{t("site.videos_y_fotos")} <b class='caret'></b>"), videos_url, :class => "dropdown-toggle dropdown-remote videos", :"data-source" => summary_videos_path, :"data-toggle" => 'dropdown' %>
+            <div class='dropdown-menu videos_photos pull-right'> 
+              <div class='dropdown-menu-content row-fluid'>
+                <div class='span4'>
+                  <%= render :partial => '/videos/summary_left' %>
+                </div>
+                <div class='span8'>                  
+                  <%= render_loading_spinner('videos') %>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class='dropdown snetworks'>
+            <%= link_to raw("#{Snetwork.model_name.human(:count => 2)} <b class='caret'></b>"), snetworking_site_path, :class => "dropdown-toggle dropdown-link", :"data-toggle" => 'dropdown' %>
+            <div class='dropdown-menu snetworks pull-right'>
+              <div class='dropdown-menu-content row-fluid'>
+                <div class='span4'>
+                  <ul class='nav-list'>
+                    <li><%= link_to t('site.gobierno_en_las_redes'), snetworking_site_path %></li>
+                  </ul>
+                </div>
+                <div class='span8'>
+                  <div class='description'>
+                    <%= t('site.snetworks_nav_text') %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>   
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

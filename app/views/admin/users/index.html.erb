@@ -1,0 +1,104 @@
+<% @title = @t ? User::TYPES[@t].pluralize : "Usuarios" %>
+
+<div style="float:left; margin:1em 0px;">
+  <%= form_tag admin_users_path, :method => :get do  %>
+    Búsqueda por nombre, apellidos, email, medio o departamento:
+    <%= text_field_tag :q %>
+    <%= submit_tag t('site.buscar') %>
+  <% end %>
+</div>
+
+
+<% unless %w(Person Journalist).include?(@t) %>
+  <ul class="edit_links" style="float:right;">
+    <li class="add_user"><%= link_to "Añadir #{@t.constantize.model_name.human}", search_admin_users_path(:t => @t), :class => "new" %></li>
+  </ul>
+<% end %>
+
+<div style="clear:both">
+  Viendo
+  <%= form_tag admin_users_path, :method => :get do %>
+    <%= select_tag :t, options_for_select(user_types_for_select.collect {|u| [u[0].pluralize, u[1]]}, @t), :onchange => "submit()" %>
+  <% end %>
+</div>
+
+<div class="submenu users_submenu">
+  <ul>
+    <li class="active">
+      <%= @t ? User::TYPES[@t].pluralize : "Usuarios" %>
+    </li>
+  </ul>
+</div>
+
+<%= will_paginate @users %>
+<table class="comments users_list" cellspacing="0" cellpadding="2">
+  <tr>
+   <th width="30%" class="<%= 'order' if @sort_order.eql?("name") %>">     
+   <%=link_to_unless @sort_order.eql?("name"),'Nombre', admin_users_path(params.merge(:sort => "name")) %>
+  </th>
+  <th width="25%" class="<%= 'order' if @sort_order.eql?("email") %>">
+   <%=link_to_unless @sort_order.eql?("email"),'Email', admin_users_path(params.merge(:sort => "email")) %>
+  </th>
+  <th width="15%" class="<%= 'order' if @sort_order.eql?("type") %>">
+  	 <%=link_to_unless @sort_order.eql?("type"),'Tipo', admin_users_path(params.merge(:sort => "type")) %>
+  </th>  
+  <th width="20%" class="<%= 'order' if @sort_order.eql?("group") %>">
+   <%=link_to_unless @sort_order.eql?("group"),'Agrupacion', admin_users_path(params.merge(:sort => "group")) %>
+  </th>
+  <th width="10%" class="<%= 'order' if @sort_order.eql?("status") %>">
+   <%=link_to_unless @sort_order.eql?("status"),'Estado', admin_users_path(params.merge(:sort => "status")) %>
+  </th>
+  </tr>
+  
+<% for user in @users %>
+  <tr class="<%= user.status %>">
+    <td>
+      <span  class="<%= 'twit' if user.is_twitter_user? %> <%= 'fb' if user.is_facebook_user? %> <%= 'gp' if user.is_googleplus_user? %>">
+        <%= link_to h(user.internal_name), admin_user_path(user) %>
+      </span>
+    </td>
+    <td class="user_icon"><span <%= 'class="official_comment"' if user.approved? && user.is_official_commenter? %>><%=h user.email || user.url %></span></td>
+  	<td>
+      <%= User::TYPES[user.type] %>
+    </td>
+    <% if user.is_a?(Journalist) %>
+      <td><%= user.media %></td>
+    <% elsif user.has_department? %>
+      <td><%= user.department.name if user.department %></td>
+    <% elsif user.is_a?(Person) %>
+      <td><% if %w(pendiente vetado).include?(user.status) %><%= I18n.localize(user.created_at, :format => :long)%><%end%></td>  
+    <% else%>
+      <td></td>
+    <% end%>
+    <td>
+      <%= user.status %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate @users %>
+
+<h2>Últimos logins de <%= User::TYPES[@t] %></h2>
+
+<table class="comments last_logins" cellspacing="0" cellpadding="2" style="width:auto">
+  <tr>
+    <th width="20%">Cuándo</th>
+    <th width="20%">Qué</th>
+    <th width="20%">Quién</th>
+    <% if @t.eql?('Journalist') %>
+      <th width="20%">Medio</th>
+    <% end %>
+  </tr>
+  
+<% for session in @sessions %>
+  <tr>
+    <td><%= session.action_at.to_s(:short) %></td>
+    <td><%= session.action %></td>
+    <td><%= link_to h(session.user.internal_name), admin_user_path(session.user) %></td>
+    <% if session.user.is_a?(Journalist) %>
+      <td><%= session.user.media %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>

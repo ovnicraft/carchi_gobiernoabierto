@@ -1,0 +1,141 @@
+<% if Settings.optional_modules.debates %>
+debate_completo_presentation:
+  debate: debate_completo
+  label: presentation
+  starts_on: <%= 12.months.ago %>
+  ends_on: <%= 11.months.ago %>  
+  position: 1
+
+debate_completo_discussion:
+  debate: debate_completo  
+  label: discussion
+  starts_on: <%= 11.months.ago %>
+  ends_on: <%= 10.months.ago %>  
+  position: 2  
+
+debate_completo_contribution:
+  debate: debate_completo  
+  label: contribution
+  starts_on: <%= 10.months.ago %>
+  ends_on: <%= 9.months.ago %>  
+  position: 3  
+
+debate_completo_conclusions:
+  debate: debate_completo  
+  label: conclusions
+  starts_on: <%= 9.months.ago %>
+  ends_on: <%= 8.months.ago %>  
+  position: 4  
+
+debate_nuevo_presentation:
+  debate: debate_nuevo
+  label: presentation
+  starts_on: <%= Date.today %>
+  ends_on: <%= 1.month.from_now %>  
+  position: 1
+
+debate_nuevo_discussion:
+  debate: debate_nuevo  
+  label: discussion
+  starts_on: <%= 1.month.from_now %>
+  ends_on: <%= 2.months.from_now %>  
+  position: 2  
+
+debate_nuevo_contribution:
+  debate: debate_nuevo  
+  label: contribution
+  starts_on: <%= 2.months.from_now  %>
+  ends_on: <%= 3.months.from_now %>  
+  position: 3  
+
+debate_nuevo_conclusions:
+  debate: debate_nuevo  
+  label: conclusions
+  starts_on: <%= 3.months.from_now %>
+  ends_on: <%= 4.months.from_now %>    
+  position: 4  
+  
+debate_viejo_presentation:
+  debate: debate_viejo
+  label: presentation
+  starts_on: <%= 24.months.ago %>
+  ends_on: <%= 23.months.ago %>  
+  position: 1  
+
+debate_viejo_discussion:
+  debate: debate_viejo  
+  label: discussion
+  starts_on: <%= 23.months.ago %>
+  ends_on: <%= 22.months.ago %>  
+  position: 2  
+
+debate_viejo_contribution:
+  debate: debate_viejo  
+  label: contribution
+  starts_on: <%= 22.months.ago %>
+  ends_on: <%= 21.months.ago %>  
+  position: 3  
+
+debate_viejo_conclusions:
+  debate: debate_viejo  
+  label: conclusions
+  starts_on: <%= 21.months.ago %>
+  ends_on: <%= 20.months.ago %>  
+  position: 4
+
+debate_sin_publicar_presentation:
+  debate: debate_sin_publicar
+  label: presentation
+  starts_on: <%= Date.today %>
+  ends_on: <%= 1.month.from_now %>  
+  position: 1  
+
+debate_sin_publicar_discussion:
+  debate: debate_sin_publicar  
+  label: discussion
+  starts_on: <%= 1.month.from_now %>
+  ends_on: <%= 2.months.from_now %>  
+  position: 2  
+
+debate_sin_publicar_contribution:
+  debate: debate_sin_publicar  
+  label: contribution
+  starts_on: <%= 2.months.from_now  %>
+  ends_on: <%= 3.months.from_now %>  
+  position: 3  
+
+debate_sin_publicar_conclusions:
+  debate: debate_sin_publicar  
+  label: conclusions
+  starts_on: <%= 3.months.from_now %>
+  ends_on: <%= 4.months.from_now %>    
+  position: 4  
+
+debate_sin_traducir_presentation:
+  debate: debate_sin_traducir
+  label: presentation
+  starts_on: <%= Date.today %>
+  ends_on: <%= 1.month.from_now %>  
+  position: 1  
+
+debate_sin_traducir_discussion:
+  debate: debate_sin_traducir  
+  label: discussion
+  starts_on: <%= 1.month.from_now %>
+  ends_on: <%= 2.months.from_now %>  
+  position: 2  
+
+debate_sin_traducir_contribution:
+  debate: debate_sin_traducir  
+  label: contribution
+  starts_on: <%= 2.months.from_now  %>
+  ends_on: <%= 3.months.from_now %>  
+  position: 3
+  
+debate_sin_traducir_conclusions:
+  debate: debate_sin_traducir  
+  label: conclusions
+  starts_on: <%= 3.months.from_now %>
+  ends_on: <%= 4.months.from_now %>
+  position: 4  
+<% end %>

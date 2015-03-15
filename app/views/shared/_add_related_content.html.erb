@@ -1,0 +1,12 @@
+<%- if can?("rate", "recommendations") && (current.is_a?(News) || current.is_a?(Order)) -%>
+  <div class='add_related'>
+    <%= link_to t("shared.sidebar.añadir_#{t_type.downcase}_relacionada"), "#", :onclick => "$(this).siblings('div.add_related_form').toggle();$(this).siblings('div.add_related_form').find('input[type=text]').focus();return false;", :class => 'btn btn-primary' %>
+    <div class='add_related_form' style='display:none'>
+      <%= form_tag recommendation_ratings_path(:rating => 3, :s_type => current.class.base_class.name, :s_id => current.id, :t_type => t_type), :class => 'form-inline' do %>
+        <%= label_tag t("shared.sidebar.id_#{t_type.downcase}") %><br/>
+        <%= text_field_tag :t_id, '', :size => 9 %>
+        <%= submit_tag t('guardar'), :class => 'btn' %>
+      <% end %>
+    </div>  
+  </div>  
+<%- end -%>                        

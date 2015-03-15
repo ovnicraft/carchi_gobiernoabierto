@@ -1,0 +1,13 @@
+<%- 
+  photos = []
+  @photos.each do |p|
+    photos << render(:partial => 'mob_app/cells/argazki_photo_cell.json', :locals => {:photo => p})    
+  end
+-%>
+
+{
+ "thumbs": [
+   <%=raw photos.join(", \n") %>
+ ], 
+ "has_older" : <%= @photos.present? || @error.eql?(true) %>
+}

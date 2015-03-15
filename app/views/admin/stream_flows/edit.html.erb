@@ -1,0 +1,7 @@
+<ul class="edit_links delete_link">
+  <li><%= link_to "Eliminar", admin_stream_flow_path(@stream_flow), :data => {:confirm => "Seguro?"}, :method => :delete, :class => "delete" %></li>
+</ul>
+
+<%= form_for @stream_flow, :url => admin_stream_flow_path(@stream_flow), :html => {:method => 'put', :multipart => true} do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>

@@ -1,0 +1,28 @@
+<% argument ||= nil %>
+<% target ||= :list %>
+
+<li class="item event <%= event.passed? ? 'passed' : event_or_streaming_current_status(event) %>" id="e<%= event.id %>">
+  <% unless target.eql?(:nav) -%>
+    <div class='item_thumbnail'>
+      <%= icon_for_day(event) %>
+    </div>
+  <% end -%>
+
+  <div class='item_content <%= 'fullwidth' if target.eql?(:nav) %>'>
+    <div class='title'><%= link_to h(event.title), event_url(event, :criterio_id => @criterio) %></div>
+
+    <%= render :partial => '/events/date', :locals => {:event => event} %>
+    
+    <div class='place meta_article'>
+      <i class='ico_location'></i>
+      <div class='meta_text'>
+        <%= location_pretty(event, ", ")  %>
+      </div>
+    </div>
+
+    <%= render :partial => '/events/coverage_and_streaming', :locals => {:event => event, :target => :list} %>
+    
+    <%= "<span class='search_argument'>(#{argument})</span>" if logged_in? && !argument.nil? %>
+    <%= show_search_explanation(event) %>
+  </div>
+</li>

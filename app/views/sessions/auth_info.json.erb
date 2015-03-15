@@ -1,0 +1,17 @@
+<% if logged_in? 
+    name = current_user.public_name
+    auth_type = current_user.is_twitter_user? ? 'twitter' : (current_user.is_facebook_user? ? 'facebook' : (current_user.is_googleplus_user? ? 'googleplus' : 'native'))
+    avatar = current_user.photo.present? ? (request.protocol + request.host_with_port + current_user.photo.url) : ''
+    logout_url = url_for(:controller => 'sessions', :action => 'destroy', :format => 'floki', :locale => '_LNG_', :only_path => false).gsub(/&amp;/, '&')
+  else
+    name = ''
+    auth_type = ''
+    avatar = ''
+    logout_url = ''
+  end  
+%>
+  
+{"display_name": "<%= name %>",
+"avatar": "<%= avatar %>",
+"auth_type": "<%= auth_type %>",
+"logout_url": "<%= logout_url %>"}

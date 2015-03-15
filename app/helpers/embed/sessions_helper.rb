@@ -1,0 +1,2 @@
+module Embed::SessionsHelper
+end

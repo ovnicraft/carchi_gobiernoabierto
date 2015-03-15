@@ -1,0 +1,16 @@
+<div class='section container'>
+  <div class='section_main row-fluid'>
+    <div class='section_content span12'>
+      <div class='signup_form'>
+        <h1 class='section_heading'><%= t('politicians.new_cv') %></h1>
+        <%= form_for @attachment, :url => create_cv_politician_path(@politician), :html => {:class => 'form form-horizontal', :multipart => true} do |f| %>
+          <%= render :partial => "new" %>
+          
+          <div class="form-actions">
+            <%= f.submit t('enviar'), :class => 'submit irekia_btn' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

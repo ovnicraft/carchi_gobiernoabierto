@@ -1,0 +1,16 @@
+<ul class="edit_links">
+  <li><%= link_to 'Ver en irekia', area_path(area), :class => "public_link" %></li>
+</ul>
+
+<div class="spacer">&nbsp;</div>
+
+<div class="one_news_submenu">
+  <ul>
+    <li class="<%= 'active' if current_page?(admin_area_path(area.id)) %>">
+      <%= link_to_unless_current t('admin.areas.datos_del_area'), admin_area_path(area.id) %>
+    </li>
+    <li class="<%= 'active' if current_page?(admin_area_users_path(:area_id => area.id)) %>">
+      <%= link_to_unless_current t('admin.areas.equipo'), admin_area_users_path(:area_id => area.id) %>
+    </li>
+  </ul>
+</div>

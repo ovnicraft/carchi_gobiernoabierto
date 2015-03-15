@@ -1,0 +1,14 @@
+<% @breadcrumbs_info.uniq! %>
+<% last_step = @breadcrumbs_info.pop if @breadcrumbs_info.length > 0 %>
+
+<div class="breadcrumbs container">
+  <ul>
+    <li><%= link_to t("shared.inicio"), root_path %> <span class="divider">&middot;</span></li>
+    <% @breadcrumbs_info.each do |step| %>                                                     
+      <li><%= link_to shorten(step[0], 100), step[1] if step[0] %> <span class="divider">&middot;</span></li>
+    <% end %>
+    <% if last_step.present? %>
+      <li class="active"><%= link_to_unless_current shorten(last_step[0], 50), last_step[1] if last_step[0] %></li>
+    <% end %>
+  </ul>
+</div>

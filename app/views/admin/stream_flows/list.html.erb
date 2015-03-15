@@ -1,0 +1,29 @@
+<%= render :partial => "/admin/stream_flows/menu" %>
+
+<table class="flows" cellpadding="0" cellspacing="0">
+
+  <% @stream_flows.in_groups_of(3).each do |sf_group| %>
+  <tr>
+    <% sf_group.each do |sf| %>
+    <td class="<%= sf_td_class(sf) %>" <%= "id=td_#{sf.id}" unless sf.nil? %>>
+	  <%= render :partial => 'block', :locals => {:sf => sf, :show_new => controller.action_name.eql?("list")} %>
+    </td>
+    <% end %> <!-- /row-->
+  </tr>
+  <% end %> <!-- /group -->
+</table>
+
+
+<% content_for :head do %>
+  <%= javascript_include_tag 'flowplayer.min', 'public/irekia_flowplayer', 'admin/streaming_flows' %>
+<% end %>
+
+<% content_for :js_data do %>
+  <%= render :partial => '/shared/player_js_vars' %>  
+<% end %>
+
+<% if is_admin? %>
+  <div class="special_options">
+    [ <%= link_to t("admin.stream_flows.ordenar_flujos"), order_admin_stream_flows_path() %> ]
+  </div>
+<% end %>

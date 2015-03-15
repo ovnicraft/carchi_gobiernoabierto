@@ -1,0 +1,25 @@
+<h1>Buscando tags duplicados</h1>
+
+<% if @duplicated_tags.length > 0 %>
+  <p>Se han encontrado <%= @duplicated_tags.length / 2 %> tags duplicados</p>
+  <ul>
+  <% @duplicated_tags.group_by(&:sanitized_name_es).each do |pair_name, pairs| %>
+  <li>
+    <%= pair_name %>
+    <ul>
+      <% pairs.sort!{|c1, c2| c2.taggings.count <=> c1.taggings.count} %>
+      <% pairs.each do |tag| %>
+        <li><%= tag.name_es %>: <%= tag.taggings.count %> contenidos con este tag</li>
+      <% end %>
+    </ul>
+  </li>
+  <% end %>
+  </ul>
+  <p>¿Quieres agrupar estas parejas de tags en uno solo?</p>
+  <%= form_tag merge_admin_tags_path do %>
+  <%= submit_tag "Sí, agrúpalos" %>
+  <%= submit_tag "No, déjalos como están", :name => "cancel" %>
+  <% end %>
+<% else %>
+  <p>No hay ningún tag duplicado</p>
+<% end %>

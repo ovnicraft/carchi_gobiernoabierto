@@ -1,0 +1,17 @@
+<!-- Partial para mostrar un banner en la parte admin -->
+<div id="banner_<%= banner.id %>" class="banner admin <%= banner.active? ? 'active' : 'passive' %>">
+  <%= image_tag(banner.logo.url, :alt => banner.alt) %>
+  <span class='alt_text'><%= banner.alt %></span><br/>
+  <span class='link'><%= link_to banner.url, banner.url, :rel => "external" %></span><br/>
+  <span class='status'><%= 'Banner desactivado' unless banner.active? %></span>
+  
+  <ul class='edit_links'>
+    <li class='edit'>
+      <%= link_to 'Modificar', edit_admin_banner_path(:id => banner.id), :class => 'edit', :title => 'Modificar' %>
+    </li>
+    <li class='delete'>
+      <%= link_to 'Eliminar', admin_banner_path(:id => banner.id), :data => {:confirm => '¿Está seguro?', :remote => true}, 
+                                     :method => :delete, :html => {:class => 'delete', :title => 'Eliminar'} %>
+    </li>
+  </ul>
+</div>  

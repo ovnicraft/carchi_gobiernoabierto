@@ -1,0 +1,40 @@
+<%- # Eli: mapa para mostrar en la página de un evento para iPad -%>
+<%- # Para el mapa de un evento usamos events/location  -%>
+<% 
+  if events.length > 1
+    center = "42.99, -2.39"
+    zoom = 8
+  else
+    center = "#{events.first.lat},#{events.first.lng}"
+    zoom = 15
+  end
+
+
+  if ipad_app_request?
+    width = "500px"
+    height = "400px"
+  else
+    width = "315px"
+    height = "300px"
+  end
+%>
+
+<div class="map_container">
+  <div style="width: <%= width %>; height: <%= height %>;" id="map"></div>
+</div>
+
+<% content_for ('map') do %>
+  map.setCenter(new GLatLng(<%= center %>), <%= zoom %>);
+    
+    <% events.each do |event| %>
+      <% if event.lng.present? && event.lat.present? -%>
+      var point_<%= event.id %> = new GLatLng(<%= "#{event.lat},#{event.lng}" %>);
+      var marker_<%= event.id %> = new GMarker(point_<%= event.id %>);
+      map.addOverlay(marker_<%= event.id %>);
+      var info_<%= event.id %> = '<div class=\'one_event\'><div class="event_name"><span class="name"><%= link_to_unless_current double_quote_quote(h(event.title)), event_path(event) %></span></div></div>';
+      GEvent.addListener(marker_<%= event.id %>, "click", function() {
+        marker_<%= event.id %>.openInfoWindowHtml(info_<%= event.id %>);
+      });
+      <% end %>
+    <% end %>
+<% end %>

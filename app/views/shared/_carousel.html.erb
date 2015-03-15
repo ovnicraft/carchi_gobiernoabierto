@@ -1,0 +1,9 @@
+<% target ||= 'home' %>
+
+<a class='prev browse left'></a>
+<div class="carousel <%= target %> " id="<%= target.eql?('viewer') ? 'clips' : '' %>">
+  <div class='items'>
+    <%= block %>
+  </div>  
+</div>  
+<a class='next browse right'></a>

@@ -1,0 +1,18 @@
+<% show_alert ||= false %>
+<% target ||= '' %>
+<% event_status = event_or_streaming_current_status(event, event.stream_flow) %>
+<% coverage_text = coverage_and_streaming_for(event) %>
+
+<% if coverage_text.present? -%>
+  <div class="coverage_info <%= "event_#{event_status}" if event_status.present? %>">
+    <i class='ico_streaming'></i>
+    <div class="text <%= "without_alert" unless show_alert %>">
+      <% if !target.eql?(:list) && event.stream_flow.present? && show_streaming_status?(event_status) -%>
+        <div><%= t("events.streaming_status.#{event_status}").mb_chars.upcase.to_s %></div>
+      <% else -%>
+        <%= coverage_text %>
+      <% end -%>  
+      <%= content_tag(:div, t('events.irekia_coverage_alert'), :class => 'coverage_footnote_mark') if show_alert || !event_status.eql?('passed') %>
+    </div>
+  </div>
+<% end -%>

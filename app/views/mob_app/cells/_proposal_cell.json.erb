@@ -1,0 +1,33 @@
+<%- 
+  target ||= 'list'
+  
+  if !proposal.approved?
+    body = t('proposals.create.moderation_pending')
+  else
+    body = proposal.participation == 0 ? t('votes.count.nobody_voted') : "#{t('votes.count.a_favor', :count => proposal.n_in_favor)}, #{t('votes.count.contra', :count => proposal.n_against)}"
+  end
+  
+  h = {
+    "id" => target.eql?(:activity) ? proposal.floki_id : proposal.id , 
+    "title" => proposal.title, 
+    "body" => body,
+    "url" => url_for(:controller => "proposals", :action => "show", :id => proposal, :format => :floki, :locale => I18n.locale, :only_path => false),
+    "image" => request.protocol + request.host_with_port + asset_path('floki/irekia_77_propuestas.png'),
+    "share_url" => url_for(:controller => "proposals", :action => "show", :id => proposal, :only_path => false),
+    "sort_id" => sort_id,
+    "accepts_votes" => true,
+    "accepts_comments" => proposal.has_comments && !proposal.comments_closed,
+    "accepts_arguments" => true,
+    "online" => true
+   }
+   
+   if target.eql?(:activity)
+     h["image"] = "#{request.protocol}#{request.host_with_port}#{asset_path('floki/irekia_77_propuestas.png')}"
+   elsif proposal.has_image?
+     h["image"] = "#{absolutize_url(proposal.image.thumb_70.url)}"
+   end
+   
+   h["footer"] = I18n.localize(proposal.published_at.to_date, :format => :long).strip  if proposal.published_at
+-%>
+
+<%=raw h.to_json.gsub('&amp;size', '&size') %>

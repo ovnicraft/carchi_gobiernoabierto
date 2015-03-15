@@ -1,0 +1,140 @@
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">-->
+<!DOCTYPE html>
+<head>
+  <link rel="shortcut icon" href="<%= asset_path('favicon_admin.ico') %>"/>  
+  <title><%= [admin_section_name, @title, Settings.site_name].compact.join("::") %></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+
+  <%= stylesheet_link_tag 'admin' %>
+  <%= stylesheet_link_tag 'admin/print', :media => 'print' %>
+  <%= javascript_include_tag 'admin' %>
+
+  <%= csrf_meta_tags %>
+  <%= yield :head %>
+
+  <%= include_tiny_mce_if_needed %>
+
+  <%= render :partial => '/shared/ga_init' if Rails.application.secrets['google_analytics_key'] %>
+
+</head>
+<body>
+  <div class="admin_head">
+    <h1>
+      <%= link_to "<span>#{Settings.site_name}</span>".html_safe, root_path %>
+    </h1>
+    <p class="current_user">
+      <%= t('site.hola', :name => h(current_user.internal_name)) %> |
+      <%= link_to t('admin.la_web'), root_with_locale_path %> |
+      <%= link_to t('account.mi_cuenta'), edit_sadmin_account_url %>
+      [<%= link_to t('salir'), logout_path %>]
+    </p>
+    <ul class="lang">
+      <li class="lang">
+        <%- if request.request_method.eql?('GET') -%>
+        <%=raw locales.map{|code, lang| link_to_unless(code.eql?(I18n.locale), code, params.merge(locale: code))}.join(' | ') %>
+        <%- end -%>
+      </li>
+    </ul>
+
+  </div>
+
+  <% if is_admin? %>
+  <div class="menu_admin">    
+    <ul>
+      <li class="<%= menu_link_class(:banners) %>">
+        <%= link_to t('admin.menu.banners'), admin_banners_path %>
+      </li>
+
+      <li class="<%= menu_link_class(:snetworks) %>">
+        <%= link_to t('admin.menu.snetworks'), admin_sorganizations_path %>
+      </li>
+      
+      <li class="<%= menu_link_class(:depts) %>">
+        <%= link_to t('admin.menu.departamentos'), admin_organizations_path %>
+      </li>
+      <li class="<%= menu_link_class(:areas) %>">
+        <%= link_to t('admin.menu.areas'), admin_areas_path %>
+      </li>
+      
+      <li class="<%= menu_link_class(:tags) %>">
+        <%= link_to t('admin.menu.tags'), admin_tags_path %>
+      </li>
+      
+      <%= content_tag(:li, link_to(t('admin.menu.usuarios'), admin_users_path), :class=> menu_link_class(:users)) if can_access?("users") %>
+      
+      <li class="<%= menu_link_class(:stats) %>">
+        <%= link_to t('admin.menu.estadisticas'), event_admin_stats_path %>
+      </li>
+    </ul>
+  </div>  
+  <% end %>
+
+  <div class="menu_admin"> 
+    <ul>
+      <%= content_tag(:li, link_to(t('admin.menu.noticias'), sadmin_news_index_path), 
+      :class => menu_link_class(:news)) if can_access?("news") %>
+
+      <%= content_tag(:li, link_to(t('admin.menu.agenda'), sadmin_events_path), 
+      :class => menu_link_class(:events)) if can_access?("events") %>
+
+      <%= content_tag(:li, link_to(t('admin.menu.web_tv'), admin_videos_path), 
+      :class => menu_link_class(:videos)) if can_access?("videos") %>
+
+      <%= content_tag(:li, link_to(t('admin.menu.fototeca'), admin_albums_path), 
+      :class => menu_link_class(:photos)) if can_access?("photos") %>
+
+      <%= content_tag(:li, link_to(t('admin.menu.paginas'), admin_documents_path(:t => 'pages')), 
+      :class => menu_link_class(:pages)) if can_access?("pages") %>
+
+      <% if Settings.optional_modules.proposals %>
+      <%= content_tag(:li, link_to(t('admin.menu.propuestas'), admin_proposals_path), 
+      :class => menu_link_class(:proposals)) if can_access?("proposals") || can?("official", "comments") %>
+      <% end %>
+
+      <% if Settings.optional_modules.debates %>
+      <%= content_tag(:li, link_to(t('admin.menu.debates'), admin_debates_path), 
+      :class => menu_link_class(:debates)) if can_access?("debates") %>
+      <% end %>
+      
+      <% if Settings.optional_modules.streaming %>
+      <%= content_tag(:li, link_to(t('admin.menu.streaming'), admin_stream_flows_path), 
+      :class => menu_link_class(:stream_flows)) if can_access?("stream_flows") %>
+      <% end %>
+
+      <%= content_tag(:li, link_to(t('admin.menu.comments'), admin_comments_path), 
+      :class => menu_link_class(:comments)) if can_edit?("comments") || can?("official", "comments") %>
+      
+     <% if Settings.optional_modules.headlines %>
+      <%= content_tag(:li, link_to(t('admin.menu.headlines'), admin_headlines_path), 
+      :class => menu_link_class(:headlines)) if can?("approve", "headlines") %>
+     <% end %>
+
+      <%= content_tag(:li, link_to(t('admin.menu.bulletins'), admin_bulletins_path), 
+      :class => menu_link_class(:bulletins)) if is_admin? %>
+    </ul>
+  </div>  
+
+  <div class="admin_body">
+    <div class="padding">
+
+      <%= render :partial => '/shared/breadcrumbs' unless @breadcrumbs_info.length == 0 %>
+
+      <% if @title %>
+      <h1 class="title"><%= h @title %></h1>
+      <% end %>
+
+      <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg.to_s.html_safe, :class => "flash_#{name}" %>
+      <% end %>
+
+      <%= yield  %>
+
+    </div>
+  </div>
+
+  <%= yield :js_data %>
+  
+</body>
+</html>

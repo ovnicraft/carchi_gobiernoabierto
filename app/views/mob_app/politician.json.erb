@@ -1,0 +1,74 @@
+<%- features = [] 
+  features << {"id" => 1, 
+              "sort_id" => 1000,
+              "title" => [@politician.areas.map{|area| area.name}.flatten, @politician.public_role].join(', '),
+              "body" => "",
+              "image" => (@politician.photo.present? ? (request.protocol + request.host_with_port + @politician.photo.url('thumb_70')) : (request.protocol + request.host_with_port + asset_path("default/faceless_avatar_thumb_70.png")))
+              }.to_json
+  features << {"id" => 2, 
+              "sort_id" => 900,
+              "class_type" => "Follow_cell",
+              "title" => t("followings.create.politician", :name => @politician.public_name),
+              "body" => t("followings.destroy"),
+              "url" => state_followings_url(:type => 'Politician', :id => @politician.id).gsub('&amp;', '&'),
+              "data" => {
+                "follow_url" => url_for(:controller => 'followings', :action => 'create', :locale => '_LNG_', :only_path => false),
+                "follow_data" => "following[followed_id]=#{@politician.id}&following[followed_type]=Politician",
+                "unfollow_url" => url_for(:controller => 'followings', :action => 'destroy', 
+                                          :id => (@following.present? ? @following.id : 0), :item_id => @politician.id, 
+                                          :item_type => 'Politician', :locale => '_LNG_', :format => :floki, :only_path => false).gsub('&amp;', '&')
+                }
+              }.to_json
+
+  features << {"id" => 3, 
+              "sort_id" => 800,
+              "title" => t('floki.politician.who_is'),
+              "url" => url_for(:controller => 'politicians', :action => 'what', :id => @politician.id, :w => "description", 
+                               :format => :floki, :locale => '_LNG_', :only_path => false).gsub('&amp;', '&'),
+              "image" => request.protocol + request.host_with_port + asset_path('floki/irekia_77_que-hacemos.png'),
+              "body" => ""
+              }.to_json
+
+  # to prevent unique_id overflow (int32) we divide unique_id by 10 (it could possibly conflict with older news)
+  features << render(:partial => 'mob_app/view_controllers/news_view_controller.json', :locals => {
+              :id => 5, 
+              :sort_id => 700, 
+              :unique_id => (Floki::FACTORS[:politician] * @politician.id + Floki::FACTORS[:news])/10, 
+              :body => t('news.count', :count => @politician.news.count),
+              :url => url_for(:controller => "mob_app", :action => "news", :politician_id => @politician.id, :only_path => false), 
+              :data_options => nil})
+
+  if @politician.politician_has_agenda?
+    features << render(:partial => 'mob_app/view_controllers/events_view_controller.json', :locals => {
+            :id => 8, 
+            :sort_id => 600, 
+            :unique_id => (Floki::FACTORS[:politician] * @politician.id + Floki::FACTORS[:event] + 15)/10, 
+            :body => t('floki.events.body'),
+            :url => url_for(:controller => "mob_app", :action => "events", :politician_id => @politician.id, :only_path => false), 
+            :data_options => nil})    
+  end
+
+  features << render(:partial => 'mob_app/view_controllers/photos_view_controller.json', :locals => {
+              :id => 9, 
+              :sort_id => 400, 
+              :title => t('photos.title'),
+              :body => "",
+              :section => nil,
+              :unique_id => (Floki::FACTORS[:politician] * @politician.id + Floki::FACTORS[:photo])/10, 
+              :url => url_for(:controller => "mob_app", :action => "photos", :politician_id => @politician.id, :only_path => false), 
+              :data_options => nil})
+              
+  features << render(:partial => 'mob_app/view_controllers/videos_view_controller.json', :locals => {
+              :id => 10, 
+              :sort_id => 300, 
+              :unique_id => (Floki::FACTORS[:politician] * @politician.id + Floki::FACTORS[:video])/10, 
+              :url => url_for(:controller => "mob_app", :action => "videos", :politician_id => @politician.id, :only_path => false), 
+              :data_options => nil})
+
+-%>
+
+{
+  "items": [
+    <%=raw features.join(", \n") %>
+  ]
+}

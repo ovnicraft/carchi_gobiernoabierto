@@ -1,0 +1,64 @@
+<div class='control-group'>
+  <%= f.label :telephone, Person.human_attribute_name(:telephone), :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :telephone, :class => 'input-xlarge' %>
+  </div>
+</div> 
+
+<div class='control-group'>
+  <%= f.label :media, t('journalists.media'), :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :media, :class => 'input-xlarge' %>
+  </div>
+</div>
+
+<div class='control-group'>
+  <%= f.label :url, Person.human_attribute_name(:url), :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :url, :class => 'input-xlarge' %>
+  </div>
+</div> 
+
+<div class='control-group'>
+  <%= f.label :departments, t('journalists.Choose_departments'), :class => 'control-label' %>
+  <div class='controls'>
+    <label class='checkbox'>
+      <%= check_box_tag :all_depts, "", false, :class => "requires_alerts_locale" %>
+      <%= t('todos') %>
+    </label>           
+  </div>
+  <%  current_subscriptions = @user.subscriptions %>
+  <% Department.active.order("position").each_with_index do |dept, i| %>
+    <% s = current_subscriptions.detect {|s| s.department_id == dept.id} %>
+    <div class='controls'>
+        <label class='checkbox'>
+          <% if s && !s.new_record? %>
+            <%= hidden_field_tag "user[subscriptions_attributes][#{i}][id]", s.id %>
+            <%= hidden_field_tag "user[subscriptions_attributes][#{i}][_destroy]" %>
+          <% end %>
+          <%= check_box_tag "user[subscriptions_attributes][#{i}][department_id]", dept.id, s.present?, :id => "dept_#{dept.id}", :class => "depts requires_alerts_locale"  %>
+          
+          <%= dept.name %>
+        </label>
+    </div>
+  <% end %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('#all_depts').on('click', function() { 
+        if ($(this).is(':checked')) {
+          $('input.depts').prop('checked', true)
+        } else {
+          $('input.depts').prop('checked', false)
+          $('input.depts').prev("input[type=hidden]").val("1");
+        }
+      });            
+      
+      $('.depts').on('click', function() {
+        if (!$(this).is(':checked')) {
+          remove_fields(this);
+        }
+      });
+    });
+    
+  </script>
+</div>

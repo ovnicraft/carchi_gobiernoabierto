@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9" lang="<%= I18n.locale %>"> <![endif]-->
+
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="<%= I18n.locale %>"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+
+  <meta name="Description" lang="<%= I18n.locale %>" content="<%= t('site.meta_description', :publisher_name => Settings.publisher[:name]) %>" />
+  <meta name="author" content="<%= Settings.site_name  %>">
+  
+  <meta name="csrf-token" content="<%= form_authenticity_token if protect_against_forgery? %>" />
+  <meta name="csrf-param" content="authenticity_token" />
+
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=1210">
+  <title><%= "#{I18n.t('site.title', :site_name => Settings.site_name, :publisher_name => Settings.publisher[:name])} :: #{(@title || @title_for_head || Settings.site_name).strip_html}" %></title>
+  
+  <link rel="shortcut icon" href="<%= asset_path('favicon.ico') %>"/>  
+  <%= stylesheet_link_tag "application" %>
+  <%= stylesheet_link_tag("public/#{controller.controller_name}") if Rails.application.assets["public/#{controller.controller_name}.css"] %>
+  <%= stylesheet_link_tag 'public/print', :media => 'print' %>
+  <%= yield :css_data %>
+
+  <%= javascript_include_tag "modernizr-2.6.2.min.js" %>
+  
+  <script type='text/javascript'>window.jQuery || document.write("<%=raw escape_javascript('<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>') %>")</script>
+  
+  <%= javascript_tag do %>
+    var Irekia = {};
+  <% end %>   
+  
+  <% if Rails.application.secrets['google_analytics_key']%>
+    <%= javascript_include_tag 'public/irekia_tracking' %>  
+    <%= render :partial => '/shared/ga_init' %>
+  <% end %>
+
+  <%= yield :facebook_meta %>
+  
+  <%= yield :head %>
+</head>
+
+<body>
+  <%= yield :handheld_warning %>
+  
+  <header>
+    <%= render :partial => 'shared/header' %>
+    <%= render :partial => 'shared/nav_bar_top' %>
+    <%= render :partial => 'shared/nav_bar_bottom' %>
+  </header>
+  
+  <div id="main" class="fullcontainer <%= controller_name %> <%= action_name %>">
+    <%= render :partial => 'shared/breadcrumbs' unless homepage? %>
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg.to_s.html_safe, :class => "container alert alert-#{name}" unless name.eql?(:tracking) %>
+    <% end %>
+    
+    <%= yield %>
+
+    <!-- This elements must be included in order to enable window login -->
+    <div id='iddle_container' style='display:none'><div class='spinner donotprint'><%= image_tag(asset_path('ajax-loader.gif')) %></div></div>
+
+    <div class='donotprint'>
+    <%= link_to "", embed_login_path(:return_to => embed_logged_path, :irekia => '1'), :id => "login_window_link", :html => {:style => "display:none", :target => "_blank"} %>
+    </div>
+  </div>
+  
+  <%= render :partial => 'shared/footer' %>
+  
+  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag("public/#{controller.controller_name}") if Rails.application.assets["public/#{controller.controller_name}.js"] %>
+
+  <%= yield :js_data %>
+
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<%= I18n.locale %>" lang="<%= I18n.locale %>">
+<head>
+  <meta name="Description" lang="<%= I18n.locale %>" 
+  content="<%= t('site.meta_description', :publisher_name => Settings.publisher[:name], :locale => "es") %> - <%= t('site.meta_description', :publisher_name => Settings.publisher[:name], :locale => "eu") %> - <%= t('site.meta_description', :locale => "en") %>" />
+  <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+  <%= stylesheet_link_tag 'public/splash' %>
+  <title><%= Settings.site_name %>: <%= Settings.publisher[:name] %></title>
+</head>
+
+<body>
+
+  <div class="width">
+
+   <div class="splash_body">
+     <img src="<%= asset_path('splash/logo.png') %>" width="960" height="362" alt="<%= Settings.site_name %>"/>
+   </div>
+
+  </div>
+
+<div class="nav">  
+  <div class="locales">
+    <ul>
+    <% locales.each do |code,lang| %>
+      <li><%= link_to lang, "/#{code}" %></li>
+    <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="head <%= I18n.locale %>">
+  <h1>
+    <%= link_to "<span>#{Settings.publisher[:name]}</span>".html_safe, root_path %>
+  </h1>
+  <h2>
+    <%= link_to "<span>#{Settings.site_name}</span>".html_safe, root_path %>
+  </h2>
+</div>
+
+</body>
+</html>

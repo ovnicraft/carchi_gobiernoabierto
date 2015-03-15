@@ -1,0 +1,20 @@
+<%-
+  target ||= 'list'
+  title ||= t('answers.new', :text => answer.question.title)
+  h = {
+    "id" => target.eql?(:activity) ? answer.question.floki_id : answer.question_id, 
+    "title" => title, 
+    "body" => pretty_n_characters_wo_html(answer.body).strip_html,
+    "footer" => I18n.localize(answer.published_at,:format => :long).strip,
+    "url" => url_for(:controller => 'questions', :action => "show", :id => answer.question_id, :format => :floki, :locale => '_LNG_', :only_path => false),
+    "image" => request.protocol + request.host_with_port + asset_path('floki/irekia_77_preguntas.png'),
+    "share_url" => url_for(:controller => "questions", :action => "show", :id => answer.question_id, :only_path => false),
+    "sort_id" => sort_id,
+    "accepts_comments" => true,
+    "accepts_answers" => can_answer_question?(answer.question),
+    "online" => true
+   }
+-%>
+
+<%=raw h.to_json.gsub('&amp;size', '&size') %>
+

@@ -1,0 +1,73 @@
+<table class="admin" width="100%">
+  <tr>
+    <th width="30%">
+      ¿Dónde está la cronica en flv?<br/>
+    </th>
+    <td width="30%">
+      <%= f.text_field :video_path %>
+      <%= link_to(image_tag('admin/hint.gif'), "#", :onclick => "$('video_hint').toggle('blind');return false;") %>
+      <div class="hint">
+        Formato flv
+        <span class="check"><%= link_to "Comprobar", find_video_admin_documents_path, data: {with: "'path=' + $('document_video_path').value", remote: true} %></span>
+      </div>
+        
+      <div class="hint" id="video_hint" style="display:none;">
+        <%= multimedia_content_dir_format %>. <br/>
+        Ejemplo: Si pones <em>2009_04_21/parlamento</em> buscaremos, en el directorio <em>2009_04_21</em>
+        los videos <em>parlamento_es.flv</em> para castellano, <em>parlamento_eu.flv</em> para euskera
+        y <em>parlamento_en.flv</em> para inglés. Si el video es común para todos los idiomas, llamadlo
+        <em>parlamento.flv</em>. <br />
+        Buscaremos también la imagen <em>parlamento.jpg</em> que se usará como preview del video. 
+        La imagen debe ser de tamaño 320x240px.
+      </div>
+    </td>
+    <td>
+      <span id="find_video"></span>
+    </td>
+  </tr>
+
+  <tr>
+    <th width="30%">¿Dónde está el audio?</th>
+    <td width="30%">
+      <%= f.text_field :audio_path %> 
+      <%= link_to image_tag('admin/hint.gif'), "#", :onclick => "$('audio_hint').toggle('blind');return false;" %>
+      <div class="hint">
+        Formato mp3
+        <span class="check"><%= link_to "Comprobar", find_audio_admin_documents_path, data: {remote: true, with: "'path=' + $('document_audio_path').value"} %></span>
+      </div>
+      <div class="hint" id="audio_hint" style="display:none;">
+        <%= multimedia_content_dir_format %>.<br/> 
+        Ejemplo: Si pones <em>2009_04_21/parlamento</em> buscaremos, en el directorio <em>2009_04_21</em>
+        los audios <em>parlamento_es.mp3</em> para castellano, <em>parlamento_eu.mp3</em> para euskera
+        y <em>parlamento_en.mp3</em> para inglés. Si el audio es común para todos los idiomas, llamadlo
+        <em>parlamento.mp3</em>. 
+      </div>
+    </td>
+    <td>
+      <span id="find_audio"></span>
+    </td>
+  </tr>
+
+  <tr>
+    <th>¿Dónde están las fotos?</th>
+    <td>
+      <%= f.text_field :photos_path %> 
+      <%= link_to image_tag('admin/hint.gif'), '#', :onclick => "$('photos_hint').toggle('blind');return false;" %>
+      <div class="hint">
+        Formato jpg
+        <span class="check"><%= link_to "Comprobar", find_photos_admin_documents_path, data: {with: "'path=' + $('document_photos_path').value", remote: true} %></span>
+      </div>
+      <div class="hint"  id="photos_hint" style="display:none;">
+        <%= multimedia_content_dir_format %>.<br/>
+        Ejemplo: Si pones <em>2009_04_21/parlamento-</em>, buscaremos todas las fotos que empiecen por 
+        <em>"parlamento-"</em> y tengan extensión <em>".jpg"</em>, dentro del directorio <em>"2009_04_21"</em>.
+        Las fotos son comunes para todos los idiomas.
+      </div>
+    </td>
+    <td>
+      <span id="find_photos"></span>
+    </td>
+  </tr>
+  
+
+</table>

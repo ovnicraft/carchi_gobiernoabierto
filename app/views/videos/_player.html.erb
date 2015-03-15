@@ -1,0 +1,58 @@
+<% player_id ||= video_info[:player_id] %>
+<% embed_id ||=  video_info[:embed_id] %>
+<!-- size ||= '600x320' %>-->
+<% size ||= '770x430' %>
+<% width, height = size.split('x') %>
+<% height = (width.to_i*9/16).to_i if video_info[:display_format].eql?('169') %>
+<% video_title_id ||= "video_title" %>
+<% show_embed ||= :true %>
+<% init_flowplayer ||= :true %>
+
+<% content_for :css_data do %>
+  <%= stylesheet_link_tag 'public/video_formats' %>
+<% end %>
+
+<% if use_flowplayer? %>
+  <div class="video format<%= video_info[:display_format] %>">
+    <a class="player" id="<%= video_info[:player_id] %>">
+      <!-- width="<%= width %>px"  -->
+      <img src="<%= video_info[:preview_img] %>" alt="Video <%= h video_info[:title] %>" />
+      <span class="video_overlay_<%= I18n.locale %> <%= video_info[:captions_url].present? ? 'with_closed_captions' : '' %>"></span>
+    </a>
+    
+    <% if show_embed.eql?(:true) %>    
+      <div class="emb_vid_title" id="<%= video_title_id %>">
+        <p class="video_duration"><%= video_info[:duration] || '&nbsp;' %></p>
+        <p class="video_title_text"><%= h video_info[:title] %></p>
+      </div>
+    
+      <p class="embed_link donotprint">
+        <%= link_to "<span class='icon embed_video'></span>#{t('videos.embed')}".html_safe, "#", :onclick => "showEmbedCode('#{video_info[:embed_container]}', '#{embed_id}');return false;" %>
+      </p>
+
+      <div id="<%= video_info[:embed_container] %>" style="display:none;">
+        <p class="embed_video_expl"><%= t('videos.embed_explain') %></p>
+        <label for="<%= embed_id %>" class="hidden_label"><%= t('videos.embed_label') %></label>
+        <textarea class="embed" id="<%= embed_id %>" rows="10" cols="50">
+          <%= h(render(:partial => "/shared/code_to_embed_video.html", :locals => {:video_info => video_info, :height => height}).gsub(/\n/, '')) %>
+        </textarea>
+      </div>
+    <% end %>
+  </div>
+  <%= render :partial => '/shared/init_flowplayer', :locals => {:video_info => video_info} if init_flowplayer.eql?(:true) %>
+
+<% else %>
+  <div class="video video_small" style='position:relative'>
+    <video height="<%= height %>" width="<%= width %>" src="<%= html5_video_for(video_info[:video]) %>" 
+            controls="controls" 
+            autoplay="autoplay" 
+            poster="<%= video_info[:preview_img] %>">
+      <% if  video_info[:captions_url].present? %>
+        <track src="<%= request.ssl? ? 'https' : 'http' %>://<%= request.host %><%= ":#{request.port}" if Rails.env.eql?("development") %><%= video_info[:captions_url] %>" kind="subtitle" srclang="<%= I18n.locale %>" label="<%= I18n.locale %>" />
+      <% else %>
+        <track />
+      <% end %>
+      
+    </video>
+  </div>
+<% end %>

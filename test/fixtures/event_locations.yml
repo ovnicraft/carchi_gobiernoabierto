@@ -1,0 +1,14 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+el_lehendakaritza:
+    city: Vitoria-Gasteiz
+    place: Lehendakaritza
+    address: c/ Navarra 2
+    lat: 42.839135
+    lng: -2.678053
+el_zamudio:
+    city: ""
+    place: Parque tecnológico de Zamudio
+    address: ""
+    lat: 43.289483
+    lng: -2.859428

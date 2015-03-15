@@ -1,0 +1,40 @@
+<% if Settings.optional_modules.debates %>
+debate_argument:
+  argumentable_type: Debate
+  argumentable: debate_completo
+  user: visitante
+  value: 1
+  reason: "Me gusta"
+  published_at: <%= Time.zone.now %>
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+
+pendiente_debate_argument:
+  argumentable_type: Debate
+  argumentable: debate_completo
+  user: visitante
+  value: 1
+  reason: "Me gusta"
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+<% end %>
+<% if Settings.optional_modules.proposals %>
+proposal_argument:
+  argumentable_type: Proposal
+  argumentable: interior_proposal
+  user: visitante
+  value: 1
+  reason: "Me gusta"
+  published_at: <%= Time.zone.now %>
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+
+pendiente_proposal_argument:
+  argumentable_type: Proposal
+  argumentable: interior_proposal
+  user: visitante
+  value: 1
+  reason: "Me gusta"
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+<% end %>

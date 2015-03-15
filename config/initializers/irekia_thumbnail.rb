@@ -1,0 +1,1 @@
+require 'irekia_thumbnail'

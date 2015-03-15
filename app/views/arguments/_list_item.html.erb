@@ -1,0 +1,17 @@
+<% argumentable_path = argument.argumentable_type.eql?("Debate") ? "debate_path" : "proposal_path" %>
+
+<li class="item argument <%= 'not_moderated' unless argument.approved? %>">
+  <div class='item_thumbnail'>
+    <%= avatar argument.author %>
+  </div>
+  
+  <div class="item_content">
+    <div class='title'>
+      <%=raw t("arguments.list_item.title.#{am_I?(argument.author) ? 'you' : 'other'}", :author => argument.author.public_name, :proposal => link_to(content_tag(:strong, argument.argumentable.title), send(argumentable_path, argument.argumentable))) %>
+    </div>
+    <div class='description block <%= argument.in_favor ? 'in_favor' : 'against' %>'>
+      <%= %Q{"#{truncate(argument.reason, :length => 160)}"} %>
+    </div>
+    <%= render_date(date_in_distance(argument.created_at)) %>
+  </div>
+</li>

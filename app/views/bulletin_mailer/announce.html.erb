@@ -1,0 +1,134 @@
+<% content_for :bulletin_announcement do %>
+<tr>
+  <td class="w560 welcome_title" width="560" align="left" style="color: #465866; font-size: 16px; font-weight: bold;"><p><%= t('bulletin_mailer.hola', :name => @user.public_name, :locale => 'eu') %></p></td>
+</tr>
+
+<tr>
+  <td class="w560 welcome_content" width="560" align="left" style="color: #465866;">
+    Azken aldiz bidaltzen dugu gonbidapena, <%= Settings.site_name %> astekarian izena ematea kontuan hartu nahi baduzu ere. Dena den, edozein unetan eman dezakezu izena zure kontuko datuak aldatuta.
+  </td>
+</tr>
+
+<tr>
+  <td class="w560 welcome_content" width="560" align="left" style="color: #465866;">
+    <p>Hauxe duzu <%= Settings.site_name %>ren asteroko buletin berria. Buletin honen bitartez, zure posta elektronikoan jasoko duzu argitaratutako berri nagusien laburpena, baita herritarrek parte hartzeko ireki diren proposamen nagusiena ere. Espero dugu erabilgarri izango zaizula, eta <%= Settings.site_name %>ren gaurkotasuna zure posta elektronikotik ere jarraitzeko aukera emango dizula.  Eskerrik asko zure konfiantzagatik.</p>
+
+    <p><strong>Zerbitzu honetara harpidetzeko, klik egin <%= link_to "esteka honetan", new_bulletin_subscription_url(:id => @user.id.to_s(35), :locale => 'eu') %></strong>, edo <%= link_to "zure kontura", edit_account_url(:locale => 'eu') %> jo eta aukeratu buletina jasotzea eta buletinaren hizkuntza. Harpidetu nahi ez baduzu, barkatu eragozpenak, eta ez egin jaramonik mezu elektroniko honi.</p>
+
+    <p>Agur</p>
+
+  </td>
+</tr>
+
+<tr class="content_row">
+  <td id="shared_footer" class="w560" width="560">    
+    <table class="w560" border="0" cellpadding="0" cellspacing="0" width="560">
+      <tbody>
+        <tr>
+          <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+          <td id="label_shared" class="w125" width="125" align="left" style="color: #465866; font-size: 24px; font-weight: bold;">
+            <p><%= t('bulletin_mailer.siguenos', :locale => 'eu') %></p>
+          </td>
+          <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+          <% bulletin_follow_links.each do |name, link| %>
+            <td id="<%= name %>" class="w30 shared_icon" align="left" width="30" style="color: #465866; font-size: 16px;">
+              <%= link_to image_tag("bulletin/#{name}.png", :alt => name, :border => '0', :align => 'top', :style => 'display:block', :width => "30", :height => "30"), link %>
+            </td>
+            <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>  
+          <% end %>
+          <td class="w315" width="315" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+          <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+        </tr>                                 
+      </tbody>
+    </table>                
+  </td>
+</tr>
+
+<tr class="content_row">
+  <td id="proposal_footer" class="w560" width="560">    
+    <table class="w560" border="0" cellpadding="0" cellspacing="0" width="560">
+      <tbody>
+        <tr>
+          <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+          <td id="label_debate" class="w370" width="370" align="left" style="color: #465866; font-size: 14px;">
+            <p><%= t('bulletin_mailer.crear_peticion_text', :locale => 'eu') %></p>
+          </td>
+          <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+          <td class="w170" width="170" height="40" bgcolor="#70b237" align="center" valign="middle">
+            <%= link_to(t('bulletin_mailer.crear_peticion', :locale => 'eu'), new_proposal_url(:locale => 'eu'), :style => "color: #ffffff; font-size: 14px;font-weight: bold;text-decoration: none;") %>
+          </td>
+          <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+        </tr>                                 
+      </tbody>
+    </table>                
+  </td>
+</tr>
+
+<tr><td><hr/></td></tr>
+
+<tr>
+  <td class="w560 welcome_title" width="560" align="left" style="color: #465866; font-size: 16px; font-weight: bold;"><p><%= t('bulletin_mailer.hola', :name => @user.public_name, :locale => 'es') %></p></td>
+</tr>
+
+<tr>
+  <td class="w560 welcome_content" width="560" align="left" style="color: #465866;">
+    Reenviamos la invitación por última vez por si quieres considerar darte de alta en el boletín de <%= Settings.site_name %>. En cualquier caso, siempre puedes darte de alta posteriormente modificando las preferencias de tu cuenta.
+  </td>
+</tr>
+
+<tr>
+  <td class="w560 welcome_content" width="560" align="left" style="color: #465866;">
+    <p>Éste es el nuevo boletín semanal de <%= Settings.site_name %>. Con él recibirás en tu correo un resumen de las principales noticias publicadas, además de las principales propuestas abiertas a la participación ciudadana. Esperamos que lo encuentres útil y te permita seguir la actualidad de <%= Settings.site_name %>, también, desde tu correo electrónico.  Gracias por tu confianza.</p>
+
+    <p><strong>Para darte de alta en este servicio, pincha en <%= link_to "este enlace", new_bulletin_subscription_url(:id => @user.id.to_s(35), :locale => 'es') %></strong>, o accede a <%= link_to "tu cuenta ", edit_account_url(:locale => 'es') %> y elige si quieres recibir el boletín y en qué idioma. En caso contrario, disculpa las molestias e ignora este email.</p>
+
+    <p>Un saludo</p>
+
+  </td>
+</tr>
+
+<tr class="content_row">
+  <td id="shared_footer" class="w560" width="560">
+    <table class="w560" border="0" cellpadding="0" cellspacing="0" width="560">
+      <tbody>
+        <tr>
+          <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+          <td id="label_shared" class="w125" width="125" align="left" style="color: #465866; font-size: 24px; font-weight: bold;">
+            <p><%= t('bulletin_mailer.siguenos', :locale => 'es') %></p>
+          </td>
+          <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+          <% bulletin_follow_links.each do |name, link| %>
+            <td id="<%= name %>" class="w30 shared_icon" align="left" width="30" style="color: #465866; font-size: 16px;">
+              <%= link_to image_tag("bulletin/#{name}.png", :alt => name, :border => '0', :align => 'top', :style => 'display:block', :width => "30", :height => "30"), link %>
+            </td>
+            <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>  
+          <% end %>
+          <td class="w315" width="315" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+          <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+        </tr>                                 
+      </tbody>
+    </table>                
+  </td>
+</tr>
+
+<tr class="content_row">
+  <td id="proposal_footer" class="w560" width="560">    
+    <table class="w560" border="0" cellpadding="0" cellspacing="0" width="560">
+      <tbody>
+        <tr>
+          <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+          <td id="label_debate" class="w370" width="370" align="left" style="color: #465866; font-size: 14px;">
+            <p><%= t('bulletin_mailer.crear_peticion_text', :locale => 'es') %></p>
+          </td>
+          <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+          <td class="w170" width="170" height="40" bgcolor="#70b237" align="center" valign="middle">
+            <%= link_to(t('bulletin_mailer.crear_peticion', :locale => 'es'), new_proposal_url(:locale => 'es'), :style => "color: #ffffff; font-size: 14px;font-weight: bold;text-decoration: none;") %>
+          </td>
+          <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
+        </tr>                                 
+      </tbody>
+    </table>                
+  </td>
+</tr>
+
+<% end %>

@@ -1,0 +1,23 @@
+
+<%= form_for(@tree, :url => admin_tree_path(@tree), :html => {:method => :put}) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <label for="tree_name_es">Nombre</label><br />
+    <%= f.text_field :name_es %>
+  </p>
+  <p>
+    <label for="tree_name_eu">Nombre</label><br />
+    <%= f.text_field :name_eu %>
+  </p>
+  <p>
+    <label for="tree_name_eu">Nombre</label><br />
+    <%= f.text_field :name_en %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', admin_tree_path(@tree) %> |
+<%= link_to 'Back', admin_trees_path %>

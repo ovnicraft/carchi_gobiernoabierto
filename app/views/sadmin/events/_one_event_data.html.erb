@@ -1,0 +1,12 @@
+<% e = one_event_data %>
+<% dom_class ||= '' %>
+<h1 class="<%= dom_class %>"><%= e.pretty_dates %></h1>
+<h2 class="<%= dom_class %>"><%= h e.title %></h2>
+<div class="date_and_location <%= dom_class %>">
+  <b><%= t('events.lugar') %>:</b> <%= h e.pretty_place %><br/>
+  <b><%= dept_title(e) %>: </b><%= h e.organization.name%><br/>
+  <b><%= t('events.speaker') %>:</b> <%= e.attendee_names %>
+  <% if e.irekia_coverage? %>
+    <b><%= t('sadmin.events.cubre_irekia', :site_name => Settings.site_name) %>:</b><%= event_coverage_info(e) %>
+  <% end %>
+</div>    

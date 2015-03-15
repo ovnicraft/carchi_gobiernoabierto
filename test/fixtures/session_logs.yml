@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+login:
+  user: admin
+  action: login
+  action_at: <%= Time.zone.now %>
+
+logout:
+  user: admin
+  action: logout
+  action_at: <%= Time.zone.now %>

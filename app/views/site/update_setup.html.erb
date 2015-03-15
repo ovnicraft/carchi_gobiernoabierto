@@ -1,0 +1,22 @@
+<h1>Configura tu <%= Settings.site_name %></h1>
+
+<p>
+  Acabas de configurar los parámetros <b>básicos</b> de tu aplicación.
+  <%= raw "Ahora puedes seguir eligiendo #{link_to('qué módulos quieres activar', setup2_site_path, :class => "btn btn-primary")}" if request.referer && !request.referer.match("setup2") %>.
+</p>
+
+<p>
+  También hay otros parámetros que deberías examinar con calma
+  para poder usar toda la funcionalidad que este software ofrece. Esos parámetros están en los ficheros<br/>
+  <b><%= File.join(Rails.root, 'config', 'irekia.yml') %></b>, <br/>
+  <b><%= File.join(Rails.root, 'config', 'settings.yml') %></b>, <br/>
+  y<br/> <b><%= File.join(Rails.root, 'config', 'secrets.yml') %></b>
+</p>
+
+<p>
+  Cuando termines debes reiniciar tu servidor para que los cambios se apliquen.
+</p>
+
+<p>
+  Después, puedes <%= link_to "empezar a navegar", site_path %>.
+</p>

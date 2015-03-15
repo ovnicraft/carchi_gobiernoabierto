@@ -1,0 +1,31 @@
+
+<tr>
+  <td>
+    <%= link_to video.title, admin_video_path(video) %><br/>
+    <% if video.is_private? %>
+      <span class="draft_notice">Borrador</span>
+    <% elsif video.published? %>
+      <span class="published_notice">Publicado</span>
+    <% else %>
+      <span class="unpublished_notice">Se publicará el <%=  I18n.localize(video.published_at, :format => :short) %></span>
+    <% end %>
+    <%= content_tag(:span, t('sadmin.news.destacado'), :class => "destacado") if video.featured? %>
+  </td>
+  <td><%= I18n.localize(video.published_at, :format => :list) if video.published_at %></td>
+  <td><%= I18n.localize(video.updated_at, :format => :list) %></td>
+  <td>
+    <ul class="language_versions">
+      <% for_every_locale do |code, lang| %>
+        <li class="translated_true">
+          <%= link_to lang, video_path(video, :locale => code), :class => "public_link" %>
+        </li>
+      <% end %>
+    </ul>
+  </td>
+
+  <td style="white-space:nowrap;">
+    <%= link_to_unless !can_create?("comments"), "Comentarios (#{video.comments_count})", comments_on_item_admin_comment_path(:id => video.id, :type => "Video" ) %>
+  </td>
+
+</tr>
+

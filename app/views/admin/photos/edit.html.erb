@@ -1,0 +1,76 @@
+<ul class="edit_links delete_link">
+  <% if @album %>
+    <li><%= link_to "Eliminar", admin_album_photo_path(@album, @photo), :method => :delete, :class => "delete", :confirm => "Estás seguro?" %></li>
+  <% else %>
+    <li><%= link_to "Eliminar", admin_photo_path(@photo), :method => :delete, :class => "delete", :confirm => "Estás seguro?" %></li>
+  <% end %>
+</ul>
+
+
+<h1><%= @photo.title %></h1>
+
+<div class="medium_photo">
+  <%= image_tag @photo.version(:n320) %>
+</div>
+
+<div class="medium_info">
+<% if @album %>
+<% url = url_for(:controller => "admin/photos", :action => "update", :id => @photo, :album_id => @album.id) %>
+<% else %>
+<% url = url_for(:controller => "admin/photos", :action => "update", :id => @photo) %>
+<% end %>
+<%= form_for :photo, :url => url, :html => {:method => :put} do |f| %>
+<table class="admin">
+  <tr>
+    <th>Título:</th> 
+    <td><%= f.text_field :title_es %></td>
+  </tr>
+  
+  <tr>
+    <th>Izenburua:</th> 
+    <td><%= f.text_field :title_eu %></td>
+  </tr>
+
+  <tr>
+    <th>Title</th> 
+    <td><%= f.text_field :title_en %></td>
+  </tr>
+  
+  <tr>
+    <th>Ciudad</th>
+    <td><%= f.text_field :city %></td>
+  </tr>
+  
+  <tr>
+    <th>Provincia</th>
+    <td><%= f.text_field :province_state %></td>
+  </tr>
+  
+  <tr>
+    <th>País</th>
+    <td><%= f.text_field :country %></td>
+  </tr>
+
+  <tr>
+    <th>
+      Tags en castellano<br/>
+      <span class="hint">(Separados por coma)</span>
+    </th> 
+    <td>
+      <%= text_area_with_auto_complete :photo, :tag_list, {:size => "60x5"}, {:tokens => ',', :indicator => "spinner"} %>
+      <span id="spinner" style = 'display:none'>
+      <%= image_tag 'admin/spinner.gif' %>
+      </span>
+      <%= render :partial => "/admin/tags/help", :locals => {:object => @photo} %>
+    </td>
+  </tr>
+  
+  <tr>
+    <th>Albums</th>
+    <%= hidden_field_tag 'photo[album_ids][]', '' %>
+    <td><%= f.select :album_ids, Album.order("title_es").collect {|a| [a.title_es, a.id]}, {:selected => @photo.album_ids}, {:multiple => true} %></td>
+  </tr>
+</table>
+<p><%= f.submit "Guardar" %></p>
+<% end %>
+</div>

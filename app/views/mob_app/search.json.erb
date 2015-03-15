@@ -1,0 +1,34 @@
+<%
+  items = []
+  @results.each_with_index do |result, index|
+    h = {"id" => result.id , "title" => result.title}
+    if result.is_a?(News)
+      h.merge!("body" => short_body_wo_html(result.body), "url" => url_for(:controller => "news", :action => "show", :id => result.id, :format => :floki, :locale => I18n.locale, :only_path => false),
+           "share_url" => url_for(:controller => "news", :action => "show", :id => result.id, :only_path => false),
+           "sort_id" => (1e14 - (@page*Elasticsearch::Base::ITEMS_PER_PAGE + index)).to_i)
+      h["image"] = "#{absolutize_url(news_img_and_alt(result, 'iphone')[:img].strip_version)}" if news_img_and_alt(result, 'iphone')[:img]
+
+      h["footer"] = I18n.localize(result.published_at.to_date, :format => :long).strip  if result.published_at
+    elsif result.is_a?(Event)  
+      date = result.starts_at.to_date
+      date_id = date.strftime("%Y%m%d").to_i
+      h.merge!("body" => short_body_wo_html(result.body), "url" => url_for(:controller => "events", :action => "show", :id => result.id, :format => :floki, :locale => I18n.locale, :only_path => false), "share_url" => url_for(:controller => "events", :action => "show", :id => result, :only_path => false), "expiration_date" => (result.starts_at+1.day).beginning_of_day.to_i, "footer" => result.pretty_dates, "sort_id" => (1e14 - (@page*Elasticsearch::Base::ITEMS_PER_PAGE + index)).to_i, "section_ids" => [date_id])
+    elsif result.is_a?(Photo)
+      h.merge!("image" => "#{result.version(:square)}", "url" => result.version(:n320),
+          "share_url" => url_for(:controller => "albums", :action => "show", :id => result.albums.first, :only_path => false),
+          "width" => photo_width(result, :n320) || 320, "height" => photo_height(result, :n320) || 214,
+          "max_zoom" => 2)
+    elsif result.is_a?(Video)  
+      video_info = flv_video_info(result)
+      h.merge!("image" => "#{document_img_tag(video_info[:preview_img], 'n70', true)}", :body => "",
+           "url" => iphone_app_video_for(video_info[:video]), "share_url" => url_for(:controller => "videos", :action => "show", :id => result, :only_path => false), "footer" => I18n.localize(result.published_at.to_date, :format => :long).strip, "sort_id" => (1e14 - (@page*Elasticsearch::Base::ITEMS_PER_PAGE + index)).to_i, "class_type" => "Movie_view_controller", "data" => { "preview_url" =>  document_img_tag(video_info[:preview_img], 'n320', true), "title" => "#{video_info[:title]}", "text" => I18n.localize(result.published_at.to_date, :format => :long).strip, "preview_width" => 320, "preview_height" =>  256, "autoload" => false, "padding" => 10, "title_color" => [0, 91, 140], "playback_color" => [0, 91, 140]})
+    end
+    items << h.to_json.gsub('&amp;size', '&size')      
+  end  
+%>
+  
+{
+  "items": [
+    <%=raw items.join(", \n") %>
+  ]
+}  

@@ -1,0 +1,41 @@
+<%= render :partial => '/admin/comments/tabs' %>
+
+<% if @item.irekia_news.present? %>
+<p>
+  Noticia de irekia: <br/><%= @item.irekia_news.title %>
+  [<%= link_to "ver en la web", news_path(@item.irekia_news) %> | 
+   <%= link_to "comentarios", comments_on_item_admin_comment_path(:id => @item.irekia_news.id, :type => @item.irekia_news.type)   %> ]</li>
+  
+</p>
+<% end %>
+
+<p>
+  <%= t('admin.external.comment_items.cliente') %>: <%= link_to @item.client.name, admin_external_client_path(@item.client) %>
+</p>
+<p>
+  <%= link_to "Ver página pública", @item.url, :target => 'new' %>
+</p>
+
+<%= render :partial => '/admin/comments/comments_status' %>
+
+
+<%= render :partial => "/admin/comments/submenu" %>
+
+<table class="comments" cellpadding="0" cellspacing="0" border="0">
+  <thead>
+    <tr>
+      <th width="5%">Id</th>
+      <th width="35%">Comentario</th>
+      <th width="15%">Nombre</th>
+      <th width="10%">Fecha</th>
+      <th width="10%">Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  <%= render :partial => '/admin/comments/comment_on_item', :collection => @comments %>
+  
+</tbody>  
+</table>
+
+<%= will_paginate @comments %>

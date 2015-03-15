@@ -1,0 +1,2 @@
+$("tags_<%= @category.id %>").replace("<%= escape_javascript(render partial: '/admin/categories/tags_form', locals: {category: @category}) %>");
+$("category_tag_list").focus();

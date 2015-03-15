@@ -1,0 +1,46 @@
+<%= form_tag batch_update_admin_photos_path,  method: :put do %>
+  <table class="admin" width="100%" cellspacing=0>
+    <% @photos.in_groups_of(3, false).each do |photo_group| %>
+      <tr>
+        <% photo_group.each do |photo| %>
+        <% small_version = photo.version(:n136)  %>
+        <td style="text-align:center;padding-top:1em;">
+          <%= image_tag photo.version(:n136) %><br/>
+        </td>
+        <% end %>
+      </tr>
+      <tr class="separator">
+        <% photo_group.each do |photo| %>
+        <td>
+          <% @photo = photo %>
+          <p><%= error_messages(@photo) %></p>
+          <table>
+          <tr><th>Título:</th> <td><%= text_field_tag "photos[#{photo.id}][title_es]", photo.title_es %></td></tr>
+          <tr><th>Izenburua:</th> <td><%= text_field_tag "photos[#{photo.id}][title_eu]", photo.title_eu %></td></tr>
+          <tr><th>Title</th> <td><%= text_field_tag "photos[#{photo.id}][title_en]", photo.title_en %></td></tr>
+          <tr>
+            <th>Ciudad</th>
+            <td><%= text_field_tag "photos[#{photo.id}][city]" %></td>
+          </tr>
+
+          <tr>
+            <th>Provincia</th>
+            <td><%= text_field_tag "photos[#{photo.id}][province_state]" %></td>
+          </tr>
+
+          <tr>
+            <th>País</th>
+            <td><%= text_field_tag "photos[#{photo.id}][country]" %></td>
+          </tr>
+          
+          <tr><th>Tags</th> <td><%= text_field_tag "photos[#{photo.id}][tag_list]", photo.tag_list %></td></tr>
+          </table>
+        </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+
+  <p><%= submit_tag "Guardar" %></p>
+  <p><%= link_to "Dejarlas como están", admin_albums_path %></p>
+<% end %>

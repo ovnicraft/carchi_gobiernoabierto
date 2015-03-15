@@ -1,0 +1,8 @@
+<% if @area %>
+  <%= render :partial => 'areas/summary' %>
+  <%= render :partial => 'areas/navigation_menu' %>
+  <%= render :partial => "/debates/debates" %>
+<% else %>  
+  <%= render :partial => '/shared/contribution_nav' %>
+  <%= render :partial => "/debates/debates" %>
+<% end %>

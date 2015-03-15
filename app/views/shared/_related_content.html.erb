@@ -1,0 +1,52 @@
+<%
+  limit ||= 10 
+  if current.is_a?(News)
+    related_documents = current.get_related_news_by_keywords[0..limit-1]          
+    related_orders = current.get_related_orders_by_keywords[0..limit-2]
+    title_for_related_orders = t('shared.sidebar.otros_relacionados_bopv') 
+  elsif current.is_a?(Order)
+    related_documents = current.get_related_news_by_keywords[0..limit-1]
+    related_orders = current.get_related_orders_by_keywords[0..limit-2]
+    title_for_related_orders = t('shared.sidebar.otros_similares_bopv')
+  else
+    # related_documents = (Document.published.find_tagged_with(current.tag_list, :order => "matching_tag_counter DESC, position") - [current])[0..limit-1]
+    related_documents = (News.published.tagged_with(current.tag_list, any:true, order_by_matching_tag_count: true).limit(limit) - [current])[0..limit-1]
+    related_orders = []
+  end  
+%>
+
+<% if related_documents.length > 0 %>
+  <div class='aside_module related_content related_news'>
+    <div class='title'><span><%= t('news.related') %></span></div>
+    <div class='content'>
+    <ul class="std_list related bullets">
+      <% related_documents.each do |document| %>
+        <% if document.published? %>
+          <% block_to_partial '/news/list_item', {:news => document, :target => :related} do %>
+            <%= render :partial => '/shared/recommendation_ratings', :locals => {:current => current, :target => document} %>
+          <% end %>        
+        <% end %>
+      <% end %>
+    </ul>
+    </div>
+  </div>  
+<% end %>
+
+<%= render :partial => '/shared/add_related_content', :locals => {:current => current, :t_type => 'Document'} %>
+
+<% if related_orders.length > 0 %>
+  <div class='aside_module related_content related_orders'>
+    <div class='title'><span><%= title_for_related_orders %></span></div>  
+    <div class='content'>
+    <ul class="std_list related bullets">
+      <% related_orders.each do |order| %>
+        <% block_to_partial '/orders/list_item', {:order => order, :target => :related} do %>   
+          <%= render :partial => '/shared/recommendation_ratings', :locals => {:current => current, :target => order} %>
+        <% end %>
+      <% end %>
+    </ul>
+    </div>
+  </div>
+<% end %>
+
+<%= render :partial => '/shared/add_related_content', :locals => {:current => current, :t_type => 'Order'} %>

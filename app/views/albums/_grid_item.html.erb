@@ -1,0 +1,13 @@
+<% span_size ||= 'span3' %>
+
+<% cover_photo = album.cover_photo || album.photos.ordered_by_title.first %>
+<% img = cover_photo ? cover_photo.version(:n320) : asset_path("album_cover.png") %>
+<div class="grid_item album <%= span_size %>">
+  <div class="image">
+    <%= link_to image_tag(img), album %>
+  </div>
+  <div class="title">
+    <%= link_to album.title, album %>
+  </div>
+  <%= render_date(album.created_at) %>
+</div>

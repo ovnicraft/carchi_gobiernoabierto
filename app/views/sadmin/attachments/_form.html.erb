@@ -1,0 +1,16 @@
+<table class="admin">
+  <tr>
+    <th><%= t('sadmin.attachments.fichero_pdf') %></th>
+    <td><%= f.file_field :file %></td>
+  </tr>
+  <tr>
+    <th><%= t('sadmin.attachments.idiomas') %></th>
+    <td>
+      <%= f.check_box :show_in_es %><%=  f.label :show_in_es, t('sadmin.mostrar_en', :where => t('castellano')) %><br/>
+      <%= f.check_box :show_in_eu %><%=  f.label :show_in_eu, t('sadmin.mostrar_en', :where => t('euskera')) %><br/>
+      <%= f.check_box :show_in_en %><%=  f.label :show_in_en, t('sadmin.mostrar_en', :where => t('ingles')) %>
+    </td>
+  </tr>
+</table>
+
+<%= f.submit t("sadmin.guardar"), :disable_with => t("sadmin.guardando") %>

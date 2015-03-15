@@ -1,0 +1,31 @@
+<%= error_messages(f.object) %>
+
+<table class="admin">
+  <tr>
+    <th><%= f.label :name, ExternalComments::Client.human_attribute_name("name") %></th>
+    <td><%= f.text_field :name %></td>
+  </tr>        
+  <tr>
+    <th><%= f.label :url, ExternalComments::Client.human_attribute_name("url") %></th>
+    <td><%= f.text_field :url %></td>
+  </tr>        
+  <tr>
+    <th><%= f.label :code, ExternalComments::Client.human_attribute_name("code") %></th>
+    <td><%= f.text_field :code %></td>
+  </tr>        
+  <tr>
+    <th><%= f.label :organization_id, ExternalComments::Client.human_attribute_name("organization_id") %></th>
+    <td><%= f.select :organization_id, dept_select(f.object.organization_id, :include_blank => false) %></td>
+  </tr>             
+  <tr>
+    <th><%= f.label :notes, ExternalComments::Client.human_attribute_name("notes") %></th>
+    <td><%= f.text_area :notes, :size => "70x5" %></td>
+  </tr>             
+  <tr>
+    <th>&nbsp;</th>
+    <td>
+      <%= f.submit "Guardar", :disable_with => 'Guardando ...' %> 
+      <span id="spinner" style = 'display:none'><%= image_tag 'admin/spinner.gif' %></span>
+    </td>
+  </tr>
+</table>

@@ -1,0 +1,110 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+unsent_alert:
+  event: event_with_unsent_alert
+  spammable: periodista_con_alertas
+  spammable_type: Journalist
+  version: 1
+  send_at: <%= Time.zone.now - 1.hour %>
+
+unsent_alert_for_room_manager:
+  event: event_with_unsent_alert
+  spammable: room_manager
+  spammable_type: RoomManager
+  version: 1
+  send_at: <%= Time.zone.now - 1.hour %>
+
+unsent_alert_gov_vasco:
+  event: event_with_unsent_alert_gob_vasco
+  spammable: periodista_con_alertas
+  spammable_type: Journalist
+  version: 1
+  send_at: <%= Time.zone.now - 1.hour %>
+
+
+unsent_alert_eu:
+  event: event_with_unsent_alert
+  spammable: periodista_con_alertas_en_euskera
+  spammable_type: Journalist
+  version: 1
+  send_at: <%= Time.zone.now - 1.hour %>
+  
+<% if Settings.optional_modules.streaming %>
+unsent_alert_for_creator_of_event_with_streaming:
+  event: event_with_streaming
+  spammable: admin
+  spammable_type: Admin
+  version: 1
+  send_at: <%= Time.zone.now - 1.hour %>
+
+unsent_alert_for_streaming_operator_of_event_with_streaming:
+  event: event_with_streaming
+  spammable: operador_de_streaming
+  spammable_type: StreamingOperator
+  version: 1
+  send_at: <%= Time.zone.now - 1.hour %>
+
+unsent_alert_for_room_manager_of_event_with_streaming:
+  event: event_with_streaming
+  spammable: room_manager
+  spammable_type: RoomManager
+  version: 1
+  send_at: <%= Time.zone.now - 1.hour %>
+
+sent_alert_with_streaming_to_streaming_operator:
+  event: event_with_streaming_and_sent_alert_and_show_in_irekia
+  spammable: operador_de_streaming
+  spammable_type: StreamingOperator
+  version: 1
+  send_at: <%= Time.zone.now - 1.hour %>
+  sent_at: <%= Time.zone.now - 30.minutes %>
+
+sent_old_alert_with_streaming_to_streaming_operator:
+  event: old_event_with_streaming_and_sent_alert_and_show_in_irekia
+  spammable: operador_de_streaming
+  spammable_type: StreamingOperator
+  version: 1
+  send_at: <%= 1.month.ago - 1.day %>
+  sent_at: <%= 1.month.ago - 1.day %>
+
+sent_old_alert_with_streaming_to_periodista:
+  event: old_event_with_streaming_and_sent_alert_and_show_in_irekia
+  spammable: periodista
+  spammable_type: Journalist
+  version: 1
+  send_at: <%= 1.month.ago - 1.day %>
+  sent_at: <%= 1.month.ago - 1.day %>
+  
+sent_alert_with_streaming_to_room_manager:
+  event: event_with_streaming_and_sent_alert_and_show_in_irekia
+  spammable: room_manager
+  spammable_type: RoomManager
+  version: 1
+  send_at: <%= Time.zone.now - 1.hour %>
+  sent_at: <%= Time.zone.now - 30.minutes %>
+
+sent_alert_with_streaming_to_owner:
+  event: event_with_streaming_and_sent_alert_and_show_in_irekia
+  spammable: admin
+  spammable_type: Admin
+  version: 1
+  send_at: <%= Time.zone.now - 1.hour %>
+  sent_at: <%= Time.zone.now - 30.minutes %>
+<% end %>
+  
+sent_alert:
+  event: event_with_sent_alert
+  spammable: periodista_con_alertas
+  spammable_type: Journalist
+  version: 1
+  send_at: <%= Time.zone.now - 1.hour %>
+  sent_at: <%= Time.zone.now - 30.minutes %>
+
+sent_alert_to_owner:
+  event: event_with_sent_alert
+  spammable: admin
+  spammable_type: Admin
+  version: 1
+  send_at: <%= Time.zone.now - 1.hour %>
+  sent_at: <%= Time.zone.now - 30.minutes %>
+

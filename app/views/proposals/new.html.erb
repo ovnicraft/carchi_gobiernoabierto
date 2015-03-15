@@ -1,0 +1,15 @@
+<div class='section container'>
+  <%= render :partial => '/shared/context', :locals => {:type => 'proposals', :title => t('proposals.nueva_propuesta')} %>
+  <div class='section_main row-fluid'>
+    <div class="section_content span8">
+      <div class='section_heading'><%= t("proposals.haz_propuesta") %></div>
+
+      <%= form_for :proposal, :url => proposals_path, :html => {:multipart => true} do |f| %>
+        <%= render :partial => 'form', :locals => {:f => f} %>
+      <% end %>
+    </div>
+    <div class='section_aside span4'>
+      <%= render_zuzenean_banner_advice %>
+    </div>
+  </div>
+</div>

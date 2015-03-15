@@ -1,0 +1,20 @@
+<%- 
+  events = []
+  sections = []
+  @events.each do |e|
+    date = e.starts_at.to_date
+    date_id = date.strftime("%Y%m%d").to_i       
+    events << render(:partial => 'mob_app/cells/event_cell.json', :locals => {:event => e, :section => date_id, :sort_id => (1e14-(e.starts_at.to_i*10000 + e.id)), :target => :list})
+    sections << {"id" => date_id, "sort_id" => (1e8 - date_id), "name" => I18n.l(date, :format => :long),
+                 "starts_collapsed" => false, "autocollapse_others" => false}.to_json
+  end
+-%>
+
+{
+  "items": [
+    <%=raw events.join(", \n") %>
+  ],
+  "sections": [
+    <%=raw sections.uniq.join(", \n") %> 
+  ]
+}

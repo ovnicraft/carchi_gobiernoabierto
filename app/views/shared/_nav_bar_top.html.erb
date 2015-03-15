@@ -1,0 +1,53 @@
+<nav id='nav_top' class='fullcontainer'>
+  <div class='container'>
+    <div class='navbar'>
+      <div class='navbar-inner'>
+        <ul class='nav pull-right'>
+          <li class='dropdown nav_follow'>
+            <%= link_to raw("#{t('site.siguenos')} <b class='caret'></b>"), '#', :class => 'dropdown-toggle', :"data-toggle" => 'dropdown' %>
+            <ul class='dropdown-menu follow_irekia'>
+              <% follow_irekia_links.each do |name, link| %>
+                <li><%= link_to t("snetworks.irekia_#{name}", :site_name => Settings.site_name), link, :class => "#{name} follow", :rel => 'external' %></li>
+              <% end %>
+            </ul>
+          </li>
+          <li>
+            <%= link_to t('site.about', :site_name => Settings.site_name), page_site_path(:label => "about") %>
+          </li>
+          <li>
+            <%= link_to t('site.Ayuda'), page_site_path(:label => "help") %>
+          </li> 
+          <li class='nav_search'>
+            <%= link_to raw("<span>#{t('search.title')}</span>"), new_search_url, :class => 'search_label' %>
+            <%= form_tag search_index_path, :class => 'navbar-search search_form', :style => 'display:none' do %>
+              <%= hidden_field_tag :key, 'keyword' %>
+              <%= hidden_field_tag :new, true %>
+              <%= text_field_tag :value, '' %>
+              <%= submit_tag "", :name => '' %>
+            <% end %>
+          </li>
+          <% if logged_in? %>
+            <%= render :partial => '/shared/nav_user_logged' %>
+          <% else %>
+            <li class='dropdown nav_signup'>
+              <%= link_to t('people.register'), intro_people_path, :class => 'dropdown-toggle dropdown-remote register', :"data-source" => intro_people_path, :"data-toggle" => 'dropdown' %>
+              <div class='dropdown-menu'>
+                <div class='dropdown-menu-content container'>
+                  <%= render_loading_spinner %>
+                </div>  
+              </div>
+            </li>
+            <li class='dropdown nav_login'>
+              <%= link_to 'Login', login_path, :class => 'dropdown-toggle dropdown-remote login', :"data-source" => login_path, :"data-toggle" => 'dropdown' %>
+              <div class='dropdown-menu'>
+                <div class='dropdown-menu-content container'>
+                  <%= render_loading_spinner %>
+                </div>  
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

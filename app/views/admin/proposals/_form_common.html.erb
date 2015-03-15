@@ -1,0 +1,93 @@
+<% default_org = @proposal.organization ? @proposal.organization.id : nil %>
+<% default_area = @proposal.area ? @proposal.area.id : nil %>
+
+  <table class="admin">
+    <tr>
+      <th><label for="proposal_organization_id">Departamento</label></th>
+      <td><%= select_tag "proposal[organization_id]", options_for_select([['', '']] + Department.active.order("position").collect {|d| [d.name_es, d.id]}, default_org) %></td>
+    </tr>
+    
+    <tr>
+      <th><%= t('admin.news.destacar_en_inicio') %></th>
+      <td>
+        <%= f.check_box :featured %>
+        <%= f.label :featured, t('si') %>
+      </td>
+    </tr>
+    
+    <tr>
+      <th>¿Admite nuevos comentarios?<br/></th>
+      <td>
+        <%= f.check_box :comments_closed, {:checked => !@proposal.comments_closed?}, 0, 1 %><label for="proposal_comments_closed">Sí</label>
+      </td>
+    </tr>
+    
+    <tr>
+      <th>Estado</th>
+      <td><%= f.select :status, Proposal::STATUS %></td>
+    </tr>
+
+    <tr>
+      <th><%= Proposal.human_attribute_name(:image) %></th>
+      <td>
+        <%= f.file_field :image %>
+        <% if @proposal.has_image? %>
+        <div>
+          <%= f.check_box :remove_image %>
+          <label for="proposal_remove_image"><%= t('borrar') %> <%= t('sadmin.news.foto_actual') %></label>
+          <%= image_tag(@proposal.image.thumb_70.url) %>
+        </div>
+        <% end %>
+      </td>
+    </tr>
+    
+    <tr>
+      <th>
+        Área y otros tags (en castellano)<br/>
+        <span class="hint">(Separados por coma)</span>
+      </th>
+      <td>
+        <%= text_area_with_auto_complete :proposal, :tag_list, {:size => "60x5"}, {:tokens => ',', :indicator => "spinner"} %>
+        <span id="spinner" style = 'display:none'><%= image_tag 'admin/spinner.gif' %></span>
+        <%= render :partial => "/admin/tags/help", :locals => {:object => @proposal} %>
+      </td>
+    </tr>
+    
+  </table>
+
+  <p>
+    <b>¿Borrador?</b>
+      <%= f.check_box :draft , :onclick => "togglePublicationDateVisibility('proposal', '#{t('guardar')}', '#{t('publicar')}')"%><label for="proposal_draft">Sí</label>
+  </p>
+  <p id="publication_date" style="display:<%= @proposal.is_public? ? 'table-row' : 'none'  %>;">
+    <b>Fecha de publicación:</b>
+      <%= f.datetime_select :published_at, :start_year => 2009 %>
+  </p>
+
+
+<script type="text/javascript">
+  Event.observe('proposal_status', 'change', toggleDraftCheckbox);
+  function toggleDraftCheckbox(e) {
+    if ($('proposal_status').options[$('proposal_status').selectedIndex].value == "aprobado") {
+      $('proposal_draft').checked = false;
+    } else {
+      $('proposal_draft').checked = true;
+    }
+    togglePublicationDateSelect(e);
+  }
+  
+  Event.observe('proposal_draft', 'change', togglePublicationDateSelect);
+  function togglePublicationDateSelect(e) {
+    console.log('en togglePublicationDateSelect');
+    togglePublicationDateVisibility('proposal', '<%= t('guardar') %>', '<%= t('publicar') %>');
+    
+    
+    // if ($('proposal_draft').checked) {
+    //   $('publication_date').each(function(ele) {
+    //     ele.setStyle({display: 'none'})
+    //   });
+    // } else {
+    //   ele.setStyle({display: 'table-row'})
+    // }
+  }
+</script>

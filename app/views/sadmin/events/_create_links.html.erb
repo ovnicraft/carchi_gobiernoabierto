@@ -1,0 +1,7 @@
+<div class="create_links">
+  <% if can_create?("events") %>
+  <ul class="edit_links">
+    <%= content_tag(:li, link_to(t('sadmin.create_what', :what => Event.model_name.human.capitalize), new_sadmin_event_path(@selected_date || {}), :class => "new")) if can_create?("events") %>
+  </ul>
+  <% end %>
+</div>

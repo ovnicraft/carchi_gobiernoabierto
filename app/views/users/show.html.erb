@@ -1,0 +1,15 @@
+<%= render :partial => "users/summary" %>
+<%= render :partial => "users/navigation_menu" %>
+
+<div class='section container user activity'>
+  <div class='section_main row-fluid'>
+    <div class='section_content span12'>
+      <% if @actions.present? %>
+        <%= render :partial =>'shared/list_items', :locals => {:items => @actions, :ul_class => 'activity'} %>
+      <% else %>
+        <h2><%= t('users.no_activity_title',:user => h(@user.public_name)) %></h2>
+        <div class='well'><%= t('users.no_activity_description',:user => h(@user.public_name), :site_name => Settings.site_name) %></div>
+      <% end %>        
+    </div>
+  </div>
+</div>

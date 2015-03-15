@@ -1,0 +1,38 @@
+photo_one:
+  title_es: Foto 1
+  title_eu: Foto 1
+  title_en: Foto 1
+  file_path: "photos/fixture.png"
+  created_by: 1
+  updated_by: 1
+
+photo_two:
+  title_es: Foto 2
+  title_eu: Foto 2
+  title_en: Foto 2
+  file_path: "photos/fixture2.png"
+  created_by: 1
+  updated_by: 1
+
+photo_from_news_with_multimedia_dir_and_related_webtv_video_and_gallery_photo:
+  title_es: "Foto de la noticia destacada"
+  file_path: "2010/12/02/news_with_multimedia/photo.jpg"
+  document: news_with_multimedia_dir_and_related_webtv_video_and_gallery_photo
+
+orphane_photo:
+  title_es: orphane_photo
+  title_eu: orphane_photo
+  title_en: orphane_photo
+  file_path: "photos/orphane.jpg"
+
+searchable_photo:
+  title_es: Encuentra esta foto
+  title_eu: Encuentra esta foto
+  title_en: Encuentra esta foto
+  file_path: "photos/searchable_photo.jpg"
+
+unsearchable_photo:
+  title_es: No encuentra esta foto
+  title_eu: No encuentra esta foto
+  title_en: No encuentra esta foto
+  file_path: "photos/unsearchable_photo.jpg"

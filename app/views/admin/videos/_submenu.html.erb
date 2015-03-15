@@ -1,0 +1,11 @@
+
+<div class="submenu">
+  <ul class="status">
+    <li class="<%= 'active' unless controller.action_name.eql?('channels') %>">
+      <%= link_to_unless !controller.action_name.eql?('channels'), "Vídeos", admin_videos_path %>
+    </li>
+    <li class="<%= 'active' if controller.action_name.eql?('channels') %>">
+      <%= link_to_unless controller.action_name.eql?('channels'), "Canales WebTV", channels_admin_videos_path %>
+    </li>
+  </ul>
+</div>

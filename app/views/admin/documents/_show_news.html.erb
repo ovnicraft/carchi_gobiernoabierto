@@ -1,0 +1,42 @@
+  <ul class="edit_links">
+    <li><%= link_to t('sadmin.modificar'), edit_tags_admin_document_path(@document), :class => "edit" %></li>
+    <% if !@document.is_a?(News) %>
+      <% if can_create?("news") %>
+        <li><%= link_to t('sadmin.news.eliminar_noticia'), admin_document_path(@document), :confirm => t('seguro'), :method => :delete, :class => "delete" %></li>
+
+        <% end %>
+    <% end %>
+  </ul>
+  
+  <p>
+    <b><%= t('admin.news.destacar_en') %></b>
+      <%= @document.featured.present? ? @document.featured : 'sin destacar' %>
+  </p>
+
+  <p>
+    <b><%= t('admin.news.destacar_en_boletin') %></b>
+      <%= si_o_no(@document.featured_bulletin) %>
+  </p>
+  
+  <p>
+    <b><%= t('admin.news.admite_nuevos_comentarios') %></b>
+      <%= si_o_no(!@document.comments_closed?) %>
+  </p>
+
+  <!-- <p>
+    <b>¿Se muestran los comentarios antiguos?</b>
+      <%= si_o_no(@document.has_comments?) %>
+  </p> 
+  
+  <p>
+    <b>Comentarios:</b> <%= si_o_no(@document.has_comments?) %>
+  </p>
+
+  <p>
+    <b>Se puede valorar:</b> <%= si_o_no(@document.has_ratings?) %>
+  </p>
+  --> 
+
+  <p><%= show_tags_with_classes(@document) %></p>
+  
+<%= render :partial => "show_multimedia", :locals => {:document => @document} %>

@@ -1,0 +1,140 @@
+estructura:
+  short_name: estructura
+  name: Estructura
+  code: r01e00000fe4e6676dda470b8deed65c9bfe02f4c
+  level: 0
+  new_ejes:
+    - name: Gobierno Vasco
+      code: r01epd0122e4ed314423e0db04c97a47b5baa317f
+      level: 1
+      new_ejes:
+        - name: Presidencia del Gobierno - Lehendakaritza
+          code: r01e00000fe4e66771ba470b824b4611c98397a70
+          level: 2
+        - name: Administración Pública y Justicia
+          code: r01e00000fe4e66771ba470b8b16eead1a456352e
+          level: 2
+        - name: "Desarrollo Económico y Competitividad"
+          code: r01e00000fe4e66771ba470b85e6897e3cbce045d
+          level: 2
+        - name: Empleo y Políticas Sociales
+          code: r01e00000fe4e66771ba470b8fc153391b0592a44
+          level: 2
+        - name: "Hacienda y Finanzas"
+          code: r01e00000fe4e66771ba470b8c5e0176bb5f8c3fb
+          level: 2
+        - name: "Educación, Política Lingüística y Cultura" 
+          code: r01e00000fe4e66771ba470b8c53a3375b90675c3
+          level: 2
+        - name: Seguridad
+          code: r01e00000fe4e66771ba470b88bf55ea1f734f3c6
+          level: 2
+        - name: Salud
+          code: r01e00000fe4e66771ba470b8d4a0e78f58078568
+          level: 2
+        - name: Medio Ambiente y Política Territorial
+          code: r01e00000fe4e66771ba470b8e35584d9d7da8391
+          level: 2
+    # - name: Organismos Autónomos, Entes y Sociedades Públicas
+    #   code: r01epd0122e4edf39923e0db0b11fff216b637726
+    #   level: 1
+    #   new_ejes:
+    #     - name: Academia de Policía del País Vasco
+    #       code: r01e00000fe4e66771ba470b81e5b4b53e7ee83f6
+    #       level: 2
+    #     - name: Agencia Vasca de Cooperación al Desarrollo
+    #       code: r01epd012c0bafe88620e1f433f756f4c8fc4b73a
+    #       level: 2
+    #     - name: Agencia Vasca del Agua
+    #       code: r01epd01176818abca9dfe881a5994fb28cb6adf8
+    #       level: 2
+    #     - name: Autoridad Vasca de la Competencia
+    #       code: r01epd013a6964a3871bf85544df030fa5f80f34f
+    #       level: 2
+    #     - name: AVPD - Agencia Vasca de Protección de Datos
+    #       code: r01e02C300EDA7B68BD6A8E8EF9DBE603D8BE221AE0A
+    #       level: 2
+    #     - name: BASQUETOUR
+    #       code: r01epd012761b52c2ceeaede444854baf4e0a7067
+    #       level: 2
+    #     - name: Comisión Jurídica Asesora de Euskadi
+    #       code: r01epd012e52cab7cf1268a9219196d892339b33c
+    #       level: 2
+    #     - name: Defensoría para la Igualdad de Mujeres y Hombres
+    #       code: r01epd0116a59ef7886b19e28a77391c29a27c58a
+    #       level: 2
+    #     - name: EJIE-Sociedad Informática del Gobierno Vasco
+    #       code: r01epd012cab7c3b2513bab5f2d1fd16f8b777a71
+    #       level: 2
+    #     - name: Emakunde - Instituto Vasco de la Mujer
+    #       code: r01e00000fe4e66771ba470b85a842e927973ef4d
+    #       level: 2
+    #     - name: EUSTAT - Instituto Vasco de Estadística
+    #       code: r01e00000fe4e66771ba470b8e4ed5cd2e087efd0
+    #       level: 2
+    #     - name: ETS - Euskal Trenbide Sarea
+    #       code: r01epd0124ddd405c0f66eb66553e9a3434a06831
+    #       level: 2
+    #     - name: EVE - Ente Vasco de la Energía
+    #       code: r01epd012761b52b1aeeaede4441307476c3f35b6
+    #       level: 2
+    #     - name: HABE - Instituto de Alfabetización y Reeuskaldunización de Adultos
+    #       code: r01e00000fe4e66771ba470b8bb45ccde3a9353e5
+    #       level: 2
+    #     - name: HOBETUZ - Fundación Vasca para la Formación Continua
+    #       code: r01epd012761b52c7beeaede48375ebc301f50165
+    #       level: 2
+    #     - name: IHOBE - Sociedad Pública de Gestión Ambiental
+    #       code: r01epd012761b52b7aeeaede4756370898b0aa43e
+    #       level: 2
+    #     - name: IVAP - Instituto Vasco de Administración Pública
+    #       code: r01e00000fe4e66771ba470b8e727bb9edc9a4f9a
+    #       level: 2
+    #     - name: IVEF - Instituto Vasco de Educación Física
+    #       code: r01e00000fe4e66771ba470b8b2db33ef4292dd94
+    #       level: 2
+    #     - name: Izenpe - Empresa de Certificación y Servicios
+    #       code: r01e8B12FC897732F513DB760A5F59F05D554C2D2675
+    #       level: 2
+    #     - name: Kontsumobide - Instituto Vasco de Consumo
+    #       code: r01epd013165a58e4e18eca258c6663af6dcb1a98
+    #       level: 2
+    #     - name: Lanbide - Servicio Vasco de Empleo
+    #       code: r01epd013585e617101f1fff01fe05cc4e331e666
+    #       level: 2
+    #     - name: Osakidetza - Servicio Vasco de Salud
+    #       code: r01eEF101135D3F04C4806230B827B80FC4755949557
+    #       level: 2
+    #     - name: OSALAN - Instituto Vasco de Seguridad y Salud Laborales
+    #       code: r01e00000fe4e66771ba470b819e45a15e8799725
+    #       level: 2
+    #     - name: Órgano Administrativo de Recursos Contractuales
+    #       code: r01epd013eeb86e26113c2f7fccd6cc5327a5b70a
+    #       level: 2
+    #     - name: SPRI - Agencia de desarrollo del País Vasco
+    #       code: r01epd012761b52bdfeeaede4620a87292b60080e
+    #       level: 2
+    #     - name: SPRILUR
+    #       code: r01epd012761b52cd0eeaede47ffa6df9855fb5e3
+    #       level: 2
+    #     - name: Universidad del País Vasco
+    #       code: r01epd0133266ab41216ec28e4029e792921e7605
+    #       level: 2
+    #     - name: Alokabide - Sociedad de Alquiler
+    #       code: r01epd01409b55d1dc15b23cfbc0106d993c957ea
+    #       level: 2
+    #     - name: ITELAZPI, S.A.
+    #       code: r01epd0130d01e05ae5d40450360588b8913ed50a
+    #       level: 2
+    #     - name: EuskoTren
+    #       code: r01epd0135f72788bf537ea4ed1bc700cbaec394d
+    #       level: 2
+    #     - name: Orquesta de Euskadi
+    #       code: r01epd01379d72d4ad6137367b57c69dad28cae77
+    #       level: 2
+    #     - name: NEIKER-TECNALIA
+    #       code: r01epd0139e890fc6f42849b412cbe528d27ba47d
+    #       level: 2
+    #     - name: VISESA
+    #       code: r01epd013658e2b0595e89e0cfae1a80b1bd32074
+    #       level: 2

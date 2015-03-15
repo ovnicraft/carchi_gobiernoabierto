@@ -1,0 +1,18 @@
+<% tags ||= [] %>
+
+<% if tags.present? %>
+<div class="tags meta_article rs_skip">
+  <i class='ico_tags'></i>
+  <div class='meta_text'>
+    <ul class='inline tag_list'>
+      <li><%= t('tags.title') %></li>
+      <% tags.each do |tag| %>
+        <li>
+          <%= link_to tag.name, tag_url(:id => tag.sanitized_name) %>        
+          <%= show_gc_link_if_present(tag) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<% end %>

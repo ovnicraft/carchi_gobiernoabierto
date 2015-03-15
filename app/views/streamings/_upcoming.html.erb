@@ -1,0 +1,22 @@
+<div class="aside_module upcoming_streamings">
+    <div class='title'><span><%= t('events.next4streaming_alert') %></span></div>
+    <div class='content'>
+      <% unless @streaming.live.empty? %>
+        <%= render :partial => '/streamings/streaming_list', 
+                   :locals => {:status => :live, :streamings => @streaming.live} %>
+      <% end %>
+      <% if @streaming.announced.present? || @streaming.programmed.present? %>
+        <%= render :partial => '/streamings/streaming_list', 
+            :locals => {:status => :future, :streamings => @streaming.announced + @streaming.programmed} %>
+      <% end %>
+      <% unless @streaming.has_next_streaming? %>
+        <div class='streaming_block empty'>
+          <ul>
+            <li class='empty'>
+              <div class='streaming_info'><%= t('site.no_upcoming_streaming') %></div>
+            </li>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  </div>

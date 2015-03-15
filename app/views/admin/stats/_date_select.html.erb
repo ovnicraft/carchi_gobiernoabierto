@@ -1,0 +1,11 @@
+  <%= hidden_field_tag :for, @for %>
+  <p>
+    <div id="custom_container" >
+      Desde: 
+      <%= select_date(@start_date, :prefix => "start", :start_year => 2009, :end_year => Date.today.year, :allow_blank => true) %>
+      <br/>
+      Hasta:
+      <%= select_date(@end_date, :prefix => "end", :start_year => 2009, :end_year => Date.today.year) %>
+    <%= submit_tag "Cambiar" %>
+    </div>
+  </p>

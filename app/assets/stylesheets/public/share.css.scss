@@ -1,0 +1,47 @@
+$blueShare: #2c8cc5;
+
+.share_link{
+
+	float: left;
+	margin:10px;
+	text-align: center;
+
+	.share_logo{
+		display:block;
+		width: 30px;
+		height:30px;
+		margin-right: 10px;
+		margin: 0 auto;
+
+		background-image: url(image-path('share_logos.png'));
+		background-repeat: no-repeat;
+
+		&.share_facebook {
+		  background-position: 0 -120px;
+		}
+
+		&.share_googleplus {
+		  background-position: 0 -30px;
+		}
+
+		&.share_email {
+		  background-position: 0 -60px;
+		}
+
+		&.share_pinterest {
+		  background-position: 0 -270px;
+		}
+
+		&.share_twitter {
+		  background-position: 0 -90px; 
+		}		
+	}
+
+	.share_text {
+		clear: both;
+		font-family: "Open Sans", sans-serif;
+		font-size: 11px;
+		font-weight: bold;
+		color: $blueShare;
+	}
+}

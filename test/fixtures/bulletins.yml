@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one_hour_ago:
+  sent_at: <%= 1.hour.ago %>
+  title_es: Boletín de hace una hora
+
+<% if Settings.optional_modules.debates %>
+with_debate:
+  sent_at: <%= 1.hour.ago %>
+  title_es: Boletín de hace una hora
+  featured_debate_ids: |
+    --- 
+    - <%= ActiveRecord::FixtureSet.identify(:debate_completo) %>
+
+<% end %>

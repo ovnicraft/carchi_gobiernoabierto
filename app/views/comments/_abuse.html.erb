@@ -1,0 +1,9 @@
+<!-- Not used, but should recover -->
+<div id ="comment_abuse_<%= comment.id %>" class="rating">
+<ul class="comment-rating comment-abuse">
+  <li id="abuse_<%= comment.id %>">
+    <%= link_to t('comments.inadecuado'), report_abuse_comment_path(comment),
+            data: {remote: true, confirm: t('comments.seguro_inadecuado')} %>
+  </li>
+</ul>
+</div>

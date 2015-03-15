@@ -1,0 +1,84 @@
+<% content_for :facebook_meta do -%>
+  <meta property="og:title" content="<%= Settings.site_name %> - <%= @event.title.gsub('"', '\'') %>" />
+  <meta property="og:description" content='<%= pretty_n_characters_wo_html(@event.body, 200).gsub('"', '\'') if @event.body %>' />
+<% end -%>
+
+<p class="only_for_print page_link"><%= event_url(:id => @event.id) %></p>
+
+<div class='section container events show'>
+  <%= render :partial => '/shared/context', :locals => {:type => 'events', :area => @event.area} %>
+  <div class='section_main row-fluid'>
+    <div class='section_content span8' id="readspeaker">
+      
+      <div class="article events vevent" id="irekia-hcalendar-<%= @event.to_param %>">
+        <%= render :partial => 'shared/edit_links', :locals => {:item => @event, :needed_privilege => 'can_access?'} %>
+
+        <%= translation_missing_info unless @event.translated_to?(I18n.locale.to_s) %>
+
+        <div class="only_for_print qr_code rs_skip"><%= item_qr_code(@event) %></div> 
+
+        <div class='top'>
+          <%= link_to_item_comments(@comments.total_entries) %>
+        </div>  
+        
+        <h1 class="title event_title"><a name="title"></a><span class="summary"><%= highlight_according_to_criterio(h(@event.title), @criterio) %></span></h1>
+
+        <span class="donotshow rs_skip">
+          <abbr title="<%= I18n.l(@event.starts_at, :format => :microformats) %>" class='dtstart'>
+            <%= I18n.localize(@event.starts_at, :format => :long) %>
+          </abbr> 
+          <abbr title="<%= I18n.l(@event.ends_at, :format => :microformats) %>" class='dtend'>
+            <%= I18n.localize(@event.ends_at, :format => :long) %>
+          </abbr>
+          <%= link_to h(@event.title), event_url(:id => @event.id), :class => "url" %>
+        </span>
+
+        <%= render :partial => '/events/date', :locals => {:event => @event} %>
+
+        <div class='place meta_article'>
+          <i class='ico_location'></i>
+          <div class='meta_text'><%= location_pretty(@event, ", ")  %></div>
+        </div>
+
+        <%- if @event.politicians.present? -%>
+        <div class='only_for_print meta_article'>
+          <%= "#{t('politicians.asistentes')}: #{@event.politicians.map(&:public_name).join(', ')}" %>
+        </div>
+        <%- end -%>
+
+        <%- if @event.speaker.present? -%>
+        <div class='only_for_print meta_article'>
+          <%= "#{t('shared.sidebar.otros_asistentes')}: #{@event.speaker}" %>
+        </div>
+        <%- end -%>
+
+        <%= render :partial => '/shared/tags', :locals => {:tags => @event.public_tags_without_politicians} %>
+
+        <div class='share_rss_listen row-fluid donotprint rs_skip'>
+          <%= render :partial => '/shared/share', :locals => {:item => @event} %>
+        </div>
+
+       <% if Settings.optional_modules.streaming %>
+        <%= render :partial => '/events/coverage_and_streaming', :locals => {:event => @event, :show_alert => true} %>
+
+        <%= render :partial => '/streamings/streaming', :locals => {:event => @event, :streaming  => @event.stream_flow, :streaming_status => event_or_streaming_current_status(@event, @event.stream_flow)} %> 
+       <% end %>
+
+        <div class="description text"><%= highlight_according_to_criterio(@event.pretty_body, @criterio) %></div>
+        
+        <%= render :partial => '/shared/more_info', :locals => {:news => @event.related_news_published} if @event.related_news_published %>
+          
+        <%= show_irekia_coverage_footnote([@event], true) %>
+
+        <%= render :partial => "/comments/list", :locals => {:parent => @event, :comments => @comments} %>
+      </div>  
+    </div>
+    <div class='section_aside span4 donotprint'>
+      <%= render :partial => "events/location", :locals => {:item => @event} %>        
+      <%= render :partial => "shared/politicians", locals: { politicians: @event.politicians } %>
+      <%= render :partial => "shared/other_speakers", locals: { other_speakers: @event.speaker } %>        
+      <%= render :partial => "shared/related_content", :locals => {:current => @event, :limit => 5 }  %>            
+    </div>
+  </div>
+</div>
+

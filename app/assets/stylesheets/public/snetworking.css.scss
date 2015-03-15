@@ -1,0 +1,225 @@
+@import "helpers";
+
+/*new*/
+
+.department.snetworks{
+	clear:both;
+	float:left;
+	width: 100%;
+	margin-bottom:40px;
+
+	.section_heading{
+		@include arial(20px !important, bold);
+		border-bottom: none !important;
+
+	}
+
+	.sos_list{
+		float:left;
+		width: 100%;
+
+		.social_organizations{
+			clear:both;
+			float:left;
+			width:99%;
+			border-top: 1px solid $colorLines;
+			border-left: 1px solid $colorLines;
+			padding-top: 1%;
+			padding-left: 1%;
+			margin: 0 0 40px 0;  
+
+			.so_image{
+				float:left;
+				word-wrap: break-word;
+			}
+			.so_name{
+				float:left;
+				margin-left:1%;
+				margin-top: 10px;
+				@include arial(16px,bold); 
+			}
+			.so_icons{
+				clear:both;
+				float:left;
+				width:100%;
+				margin-top: 20px; 
+			}
+
+		}
+
+	}
+}
+
+
+ul.sos_list{
+	
+	li.social_organizations{
+		
+		.so_icons{
+
+			&.icons{
+
+				& > .row-fluid{
+					margin-bottom: 5px;
+				}
+					
+				a{
+					display: block;
+					float: left;
+					@include arial(13px,normal);
+					
+					i{
+						background: url(image-path("gov_snet.png")) no-repeat;
+						background-position: 0 0;
+						width: 24px;
+						height: 25px;
+						float: left;
+						border-radius: 4px;
+
+
+						&.googleplus {
+							background-position: 0px -25px;
+						}
+						&.google {
+							background-position: 0px -25px;
+						}
+
+						&.twitter {
+							background-position: 0px -50px;
+						}
+
+						&.facebook {
+							background-position: 0px -75px;
+						}
+
+						&.flickr {
+							background-position: 0px -100px;
+						}
+
+						&.youtube {
+							background-position: 0px -125px;
+						}
+
+						&.issuu {
+							background-position: 0px -150px;
+						}
+
+						&.slideshare {
+							background-position: 0px -175px;
+						}
+
+						&.pinterest {
+							background-position: 0px -200px;
+						}
+
+						&.bliptv{
+								background-position: 0px -225px;
+						}
+
+						&.blogger{
+								background-position: 0px -250px;
+						}
+
+						&.blog{
+								background-position: 0px -250px;
+						}
+
+						&.calameo{
+								background-position: 0px -275px;
+						}
+
+						&.delicious{
+								background-position: 0px -300px;
+						}
+
+						&.foursquare{
+								background-position: 0px -325px;
+						}
+
+						&.gowalla{
+								background-position: 0px -350px;
+						}
+
+						&.linkedin{
+								background-position: 0px -375px;
+						}
+
+						&.mrwong{
+								background-position: 0px -400px;
+						}
+
+						&.ning{
+								background-position: 0px -425px;
+						}
+
+						&.openideiak{
+								background-position: 0px -450px;
+						}
+
+						&.picasa{
+								background-position: 0px -475px;
+						}
+
+						&.picotea{
+								background-position: 0px -500px;
+						}
+
+						&.posterous{
+								background-position: 0px -525px;
+						}
+
+						&.prezi{
+								background-position: 0px -550px;
+						}
+
+						&.qik{
+								background-position: 0px -575px;
+						}
+
+						&.scribd{
+								background-position: 0px -600px;
+						}
+
+						&.tuenti{
+								background-position: 0px -625px;
+						}
+
+						&.tumblr{
+								background-position: 0px -650px;
+						}
+
+						&.vimeo{
+								background-position: 0px -675px;
+						}
+
+						&.wiki{
+								background-position: 0px -700px;
+						}
+
+						&.wordpress{
+								background-position: 0px -725px;
+						}
+
+						&.xing{
+								background-position: 0px -750px;
+						}
+
+						&.ivoox{
+								background-position: 0px -775px;
+						}
+					}
+
+					span{
+						display: inline-block;
+						padding-top:8px;
+						margin-left: 5px;
+						line-height:16px;
+						color: $textColor;
+					}
+
+
+				}
+			}
+		}
+	}
+}

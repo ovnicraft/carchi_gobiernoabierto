@@ -1,0 +1,12 @@
+<%- if @photo.errors[:dir_path].present? -%>
+  $('find_photos').replace('<%=j "<span id=\'find_photos\' style=\'color:red\'>Directorio incorrecto.<br/> #{@photo.errors[:video_path].join(', ')}</span>".html_safe %>');
+<%- else -%>
+  <%- dir = File.join(Photo::PHOTOS_PATH, params[:dir_path]) -%>
+  <%- logger.info "Buscando fotos #{dir + "/*.jpg"}" -%>
+  <%- found_photos = Dir.glob(dir + "/*.jpg") -%>
+  <%- if found_photos.length > 0 -%>
+    $('find_photos').replace('<%=j "<span id=\'find_photos\' style=\'color:green\'>#{found_photos.length} fotos encontradas</span>".html_safe %>');
+  <%- else -%>
+    $('find_photos').replace('<%=j "<span  id=\'find_photos\' style=\'color:red\'>fotos NO encontrado</span>".html_safe %>');
+  <%- end -%>
+<%- end -%>

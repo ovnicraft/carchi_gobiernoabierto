@@ -1,0 +1,30 @@
+<% target ||= '' %>
+
+<div class="featured_media featured_news row-fluid">
+  <% video_info = [] %>
+  <div class='featured_image <%= target.eql?(:nav) ? 'span4' : (target.eql?(:home) ? 'span3' : 'span6') %>'>
+    <% if !homepage? && !target.eql?(:nav) && news.has_video? %>
+      <% @document = news %>
+      <% news_video =  news.featured_video %>
+      <% video_info.push(flv_video_info(news_video)) %>
+      <%= render :partial => '/videos/player', 
+                  :locals => {:video_info => video_info.last, :player_id => 'leading', :video_title_id => "dummy", 
+                              :show_embed => :false, :size => '320x240'} %>
+    <% elsif news.has_cover_photo? %>
+      <% alt_text = news.cover_photo_alt.present? ? news.cover_photo_alt : news.cover_photo_file_name %>
+      <%= link_to image_tag(news.cover_photo.url(:n320), :alt => alt_text, :title => alt_text), news_path(news) %>
+    <% else %>
+      <% img_tag, alt = news_img_and_alt(news, :n320)[:img], news_img_and_alt(news)[:alt] %>
+      <%= link_to image_tag(img_tag, :alt => alt, :title => alt), news_path(news) %>
+    <% end %>
+  </div>
+    
+  <div class='featured_content <%= target.eql?(:nav) ? 'span8' : (target.eql?(:home) ? 'span9' : 'span6') %>'>
+    <%= render_date(news.published_at) %>
+    <div class='title'><%= link_to news.title, news_path(news) %></div>
+    <%  unless target.eql?(:nav) -%>
+      <div class='text'><%= short_body_wo_html(news.body) %></div>
+      <%= link_to_item_comments(news.all_comments.count, news) unless target.eql?(:home) %> 
+    <% end -%>  
+  </div>
+</div>

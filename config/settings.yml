@@ -1,0 +1,21 @@
+---
+site_name: Open Irekia
+publisher:
+  name: Open Irekia Org.
+  address: C/ Open Irekia
+email_addresses:
+  from: openirekia@example.com, info@example.com
+  contact: openirekia@example.com, info@example.com
+  proposal_moderators: openirekia@example.com, info@example.com
+  orphan_videos_responsibles: openirekia@example.com, info@example.com
+social_networks:
+  twitter: https://twitter.com/irekia
+  facebook: http://www.facebook.com/pages/Irekia/416723460540
+  flickr: http://www.flickr.com/photos/irekia
+  youtube: http://www.youtube.com/irekia
+optional_modules:
+  proposals: true
+  debates: true
+  streaming: false
+  headlines: false
+customized: false

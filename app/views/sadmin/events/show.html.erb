@@ -1,0 +1,70 @@
+<%= render(:partial => "create_links") if @just_created %>
+
+<h1 class="title"><%= @event.title %></h1>
+
+<%= render :partial => "edit_links", :locals => {:event => @event} %>
+
+<% if can_edit_event?(@event) %>
+  <ul class="edit_links" style="margin:10px 0px;">
+    <li>
+      <%= link_to t('sadmin.modificar'), edit_sadmin_event_path(@event), :class => "edit" %>
+    </li>
+  </ul>
+<% end %>
+
+  <div class="event_data4admin_<%= (@event.is_public? && @event.lat.present? && @event.lng.present?) ? 'with_map' : 'no_map'%>">
+    <div class="date_and_location">
+      <table class="event_short_info">
+        <tr><th><%= t('sadmin.events.dia_y_hora') %>:  </th><td> <%=  event_dates_with_links(@event) %> </td></tr>
+        <tr><th><%= t('sadmin.events.lugar') %>:  </th><td> <%=  h @event.pretty_place %> </td></tr>
+        <tr>
+          <th><%= @event.organization.is_a?(Department) ? t("organizations.department") : t("organizations.organism") %>:</th>
+          <td> <%= h @event.organization.name %></td>
+        </tr>
+        <tr>
+          <th><%= t("shared.area") %>:</th>
+          <td> <%= h @event.areas.map{|a| a.name}.join(", ") %></td>
+        </tr>        
+        <tr><th><%= t('politicians.title') %>: </th><td> <%= politicians_with_roles(@event) %> </td></tr>
+        <tr><th><%= t('shared.sidebar.otros_asistentes') %>: </th><td> <%= h @event.speaker %> </td></tr>
+      </table>    
+    </div>
+  
+
+    <div class="document_body">
+      <%=raw @event.pretty_body %>
+    </div>
+  </div>
+
+  <% if @event.is_public? && @event.lat.present? && @event.lng.present? %>
+   <%= render :partial => "/events/location", :locals => {:item => @event, :enable_map_zoom => "true"} %>
+  <% end %>
+  
+  <div style="clear: both">&nbsp;</div>
+  
+  <hr/>
+  <table class="admin">
+    <tr>
+      <th><%= t('sadmin.news.visibilidad') %>:</th>
+      <td><%= si_o_no(!@event.is_private?) %>
+      </td>
+    </tr>
+    <tr>
+      <th><%= t('sadmin.events.all_journalists') %>:</th> 
+      <td><%= si_o_no(@event.all_journalists?) %></td>
+    </tr>
+      <tr>
+        <th><%= t('sadmin.events.only_photographers') %>:</th> 
+        <td><%= si_o_no(@event.only_photographers?) %></td>
+      </tr>    
+  </table>
+  
+  <%= render :partial => 'create_update_info' %>
+  
+  <!--<div class="document_show2">
+    <%= render :partial => "/sadmin/attachments/list_specific", :object => @event %>
+  </div>-->
+
+  <div class="document_show2">
+    <%= render :partial => 'related_news', :locals => {:document => @event} %>
+  </div>

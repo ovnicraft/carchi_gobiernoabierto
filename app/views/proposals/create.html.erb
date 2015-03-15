@@ -1,0 +1,7 @@
+<div class="success message">
+  <div class="icon"></div>
+  <h2><%= t('proposals.create.title') %></h2>
+  <% unless @proposal.approved? %>
+    <p><%= t('proposals.create.description') %></p>
+  <% end %>
+</div>

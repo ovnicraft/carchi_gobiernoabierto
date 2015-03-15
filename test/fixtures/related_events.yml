@@ -1,0 +1,43 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+rel_video_passed_event:
+  event_id: <%= ActiveRecord::FixtureSet.identify(:passed_event) %>
+  eventable_type: Video
+  eventable_id: <%= ActiveRecord::FixtureSet.identify(:featured_video) %>
+  creator: admin
+  last_editor: admin
+  
+rel_video_emakunde_passed_event:
+  event_id: <%= ActiveRecord::FixtureSet.identify(:emakunde_passed_event) %>
+  eventable_type: Video
+  eventable_id: <%= ActiveRecord::FixtureSet.identify(:video_with_event) %>
+  creator: admin
+  last_editor: admin
+
+rel_news_event:
+  event_id: <%= ActiveRecord::FixtureSet.identify(:emakunde_passed_event) %>
+  eventable_type: Document
+  eventable_id: <%= ActiveRecord::FixtureSet.identify(:news_with_event) %>
+  creator: admin
+  last_editor: admin
+
+rel_irekia_news_agencia_event:
+  event_id: <%= ActiveRecord::FixtureSet.identify(:ma_yesterday_event) %>
+  eventable_type: Document
+  eventable_id: <%= ActiveRecord::FixtureSet.identify(:irekia_news) %>
+  creator: admin
+  last_editor: admin
+
+rel_agencia_news_irekia_event:
+  event_id: <%= ActiveRecord::FixtureSet.identify(:passed_event) %>
+  eventable_type: Document
+  eventable_id: <%= ActiveRecord::FixtureSet.identify(:agencia_news) %>
+  creator: admin
+  last_editor: admin
+  
+rel_irekia_draft_news_event:
+  event_id: <%= ActiveRecord::FixtureSet.identify(:emakunde_future_event) %>
+  eventable_type: Document
+  eventable_id: <%= ActiveRecord::FixtureSet.identify(:draft_news) %>
+  creator: admin
+  last_editor: admin

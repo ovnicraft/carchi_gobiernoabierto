@@ -1,0 +1,11 @@
+<h2><%= t('admin.debates.fases') %></h2>
+
+<table class="admin">
+<% current_stage = @debate.current_stage %>  
+<% debate.stages.each do |stage| %>  
+  <tr class="<%= stage.eql?(current_stage) ? "current" : "not_current" %>">
+    <th class="w15em"><%= t("debates.stage_#{stage.label}") %></th>
+    <td>De <%= l stage.starts_on %> a <%= l stage.ends_on %></td>
+  </tr>  
+<% end %>
+</table>

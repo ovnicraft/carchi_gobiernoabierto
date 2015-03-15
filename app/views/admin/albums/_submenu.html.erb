@@ -1,0 +1,11 @@
+<div class="one_news_submenu">
+  <ul>
+    <li class="<%= 'active' unless controller.action_name.eql?('channels') %>">
+      <%= link_to_unless_current "Albums", admin_albums_path %>
+    </li>
+    <li class="<%= 'active' if controller.action_name.eql?('channels') %>">
+      <%= link_to_unless controller.action_name.eql?('channels'), "Canales Fototeca", channels_admin_albums_path %>
+    </li>
+  </ul>
+</div>
+

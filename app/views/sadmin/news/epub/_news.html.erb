@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title><%= news.send("title_#{locale}") %></title>
+    <link href="../template.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div id="epubrs1" class="epub-rs">
+      
+      <h1><%= news.send("title_#{locale}") %></h1>
+      
+      <p class="date">
+        <%= I18n.l(news.published_at.to_date, :locale => locale, :format => :long) %>
+      </p>
+
+      <div class="news_body">
+        <% if news.has_cover_photo? %>
+          <img class="news_cover_img" style="float:left; margin: 0px 1em 0px 0px;" src="../images/news<%= news.id %>.jpg" alt="<%= news.cover_photo.original_filename %>"/>
+        <% end %>
+
+        <%= news.pretty_body(locale).html_safe %>
+      </div>
+
+    </div>
+    <div class="footer">
+      <%= av.url_for(:controller => "news", :id => news.id, :only_path => false, :host => ActionMailer::Base.default_url_options[:host]) %>
+    </div>  
+  </body>
+</html>

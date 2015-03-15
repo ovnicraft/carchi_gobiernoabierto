@@ -1,0 +1,34 @@
+<div class="submenu">
+  <ul>
+    <li class="<%= 'active' if @tab == 1 %>">
+      <%= link_to_unless (@tab.blank? && @tab == 1), "Tiempo real", admin_stats_path %>
+    </li>
+    <% %w(event news).each do |ct| %>
+      <li class="<%= 'active' if controller.action_name.eql?(ct) %>">
+      <%= link_to_unless controller.action_name.eql?(ct), ct.camelize.constantize.model_name.human(:count => 2).titleize, self.send("#{ct}_admin_stats_path") %>
+      </li>
+    <% end %>
+    <li class="<%= 'active' if controller.action_name.eql?('video') %>">
+      <%= link_to_unless controller.action_name.eql?('video'), "Multimedia", video_admin_stats_path %>
+    </li>
+    <li class="<%= 'active' if controller.action_name.eql?('external_comments') %>">
+      <%= link_to_unless controller.action_name.eql?('external_comments'), ExternalComments::Item.model_name.human(:count => 2).titleize, external_comments_admin_stats_path %>
+    </li>
+    <% if Settings.optional_modules.debates %>
+    <li class="<%= 'active' if controller.action_name.eql?('debate') %>">
+      <%= link_to_unless controller.action_name.eql?('debate'), Debate.model_name.human(:count => 2).titleize, debate_admin_stats_path %>
+    </li>
+    <% end %>
+    <% if Settings.optional_modules.proposals %>
+    <li class="<%= 'active' if controller.action_name.eql?('proposal') %>">
+      <%= link_to_unless controller.action_name.eql?('proposal'), Proposal.model_name.human(:count => 2).titleize, proposal_admin_stats_path %>
+    </li>
+    <% end %>
+    <li class="<%= 'active' if controller.action_name.eql?('bulletin') %>">
+      <%= link_to_unless controller.action_name.eql?('bulletin'), Bulletin.model_name.human(:count => 2).titleize, bulletin_admin_stats_path %>
+    </li>
+    <li class="<%= 'active' if @tab == 3 %>">
+      <%= link_to_unless (@tab.blank? && @tab == 3), "Misc", contents_admin_stats_path %>
+    </li>
+  </ul>
+</div>

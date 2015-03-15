@@ -1,0 +1,62 @@
+<%=  content_tag(:h2, @l_subtitle, :class => 'l_info') unless @l_subtitle.blank? %>
+
+<%= render :partial => "create_links" %>
+
+<%= render :partial => "agenda_nav" %>
+
+<div class="cal_nav days_nav">
+  <ul>
+    <li class="prev_month_link"  style="padding: 0"><%= content_tag :span, link_to("", list_sadmin_events_path(:day => @prev_day.day, :month => @prev_day.month, :year => @prev_day.year)), :class => 'previous' %></li>
+    <li class="next_month_link"><%= content_tag :span, link_to("", list_sadmin_events_path(:day => @next_day.day, :month => @next_day.month, :year => @next_day.year)), :class => 'next' %></li>    
+    <li class="current_day"><%= @subtitle %></li>            
+  </ul>
+</div>
+
+<% if @documents.empty? %>
+  <div class="info">
+    <%= t('sadmin.events.no_hay_eventos') %>.
+  </div>
+<% else %>
+<table class="comments" cellspacing="0">
+  <tr>
+    <th><%= t('sadmin.events.hora_inicio') %></th>
+    <th><%= t('sadmin.events.hora_fin') %></th>
+    <th><%= t('documents.presenta') %></th>
+    <th>Fot.</th>
+    <th>Vid.</th>
+    <th>Aud.</th>
+    <th>Cro.</th>
+    <th>Str.</th>
+    <th><%= t('sadmin.events.place') %></th>
+    <th><%= t('sadmin.events.tema') %></th>
+  </tr>
+  
+  <%- @documents.each do |document| -%>
+  <tr class="event">
+    <td>
+       <span class="e_hour"><%= document.has_hour? ? I18n.localize(document.starts_at, :format => :hour) : "--"%></span>
+       <span class="day_info"><%=  I18n.localize(document.starts_at.to_date, :format => :long) if !document.one_day?%></span>
+    </td>
+    <td>
+      <span class="e_hour"><%= document.has_hour? ? I18n.localize(document.ends_at, :format => :hour) : "--" %></span>
+      <span class="day_info"><%=  I18n.localize(document.ends_at.to_date, :format => :long) if !document.one_day?%></span>
+    </td>
+    <td>
+      <%if document.speaker.present? %>** <%end%>
+      <% document.politicians.each do |politician| %><%= politician.public_name %>, <% end %><br />
+      <%if document.speaker.present? %>* <%= h document.speaker %><%end%>
+	  </td>
+    <td><%=image_tag "admin/publish.gif" if (document.irekia_coverage_photo?)%></td>
+    <td><%=image_tag "admin/publish.gif" if (document.irekia_coverage_video?)%></td>
+    <td><%=image_tag "admin/publish.gif" if (document.irekia_coverage_audio?)%></td>
+    <td><%=image_tag "admin/publish.gif" if (document.irekia_coverage_article?)%></td>
+    <td><%=image_tag "admin/publish.gif" if (document.streaming_live?)%></td>
+    <td><%= h document.place %></td>
+    <td>
+      <%= link_to h(document.title), event_link_url(document) %><br/>
+      <%= event_publication_state_info(document) %>
+    </td>
+  </tr>
+  <%- end -%>
+</table>
+<% end %>

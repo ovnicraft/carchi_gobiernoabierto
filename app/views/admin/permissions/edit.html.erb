@@ -1,0 +1,14 @@
+<h1>Modificando los permisos de <%= h(@user.internal_name) %> :: <%= @user.class %> :: <%= @user.department.name if @user.respond_to?("department") && @user.department %></h1>
+
+<%= form_tag admin_user_permissions_path(@user), :method => :put do %>
+  <%= render :partial => "show", :locals => {:mode => "edit"} %>
+  <p><%= submit_tag "Guardar" %></p>
+<% end %>
+
+<div class="hint">
+  <p>
+  <b>Nota:</b>
+    Los permisos no modificables viene heredados por el rol del usuario. Si quieres eliminar alguno de esos permisos, tienes que 
+    convertir al usuario en "Miembro de departamento" y después asignarle los permisos individualmente
+  </p>
+</div>

@@ -1,0 +1,90 @@
+<%= error_messages(f.object) %>
+
+<table class="admin">
+  <% for_every_locale do |code, lang| %>
+    <tr>
+      <th width="25%">Título en <%= lang %></th>
+      <td width="30%">
+        <%= f.text_field "title_#{code}".to_sym, :size => 60 %>
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+  <% end %>
+  
+  <tr>
+    <th>¿Dónde está el video?</th>
+    <td>
+      <%= f.text_field :video_path %>
+      <%= link_to image_tag('admin/hint.gif'), "#", :onclick => "$('video_hint').toggle('blind');return false;" %>
+      
+      <div class="hint">
+        Ficheros con extensión ".flv" (sólo minúsculas).
+        <!-- data: {remote: true, with: "'video_path=' + $('video_video_path').value"}, method: :post,  -->
+        <span class="check"><%= link_to "Comprobar", find_video_admin_videos_path, id: 'find_video_link' %></span>
+        <br/><%= multimedia_content_dir_format %>.
+      </div>
+      
+      <div class="hint" id="video_hint" style="display:none;">
+        <%= multimedia_content_dir_format %>.<br/>
+        Ejemplo: Si pones <em>2009_04_21/parlamento</em> buscaremos, en el directorio <em>2009_04_21</em>
+        los videos <em>parlamento_es.flv</em> para castellano, <em>parlamento_eu.flv</em> para euskera
+        y <em>parlamento_en.flv</em> para inglés. Si el video es común para todos los idiomas, llamadlo
+        <em>parlamento.flv</em>. <br />
+        Buscaremos también la imagen <em>parlamento.jpg</em> que se usará como preview del video o como
+        foto de portada si no hay video. La imagen debe ser de tamaño 320x240px.
+      </div>
+    </td>
+    <td>
+      <span id="find_video"></span>
+    </td>
+  </tr>
+  
+  <tr>
+    <th>
+      Tags en castellano<br/>
+      <span class="hint">(Separados por coma)</span>
+    </th>
+    <td>
+      <%= text_area_with_auto_complete :video, :tag_list, {:size => "60x5"}, {:tokens => ',', :indicator => "spinner"} %>
+      <span id="spinner" style = 'display:none'>
+      <%= image_tag 'admin/spinner.gif' %>
+      </span>
+      <%= render :partial => "/admin/tags/help", :locals => {:object => @video} %>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+
+  <tr>
+    <th>¿Destacar en la página de inicio?</th>
+    <td>
+      <%= f.check_box :featured %>
+      <%= f.label :featured, "Sí" %>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+  
+  <tr>
+    <th><%= t('sadmin.news.borrador') %></th>
+    <td>
+      <%= f.check_box :draft, :onclick => "togglePublicationDateVisibility('video', '#{t('guardar')}', '#{t('publicar')}')" %>
+      <label for="video_draft"><%= t('si') %></label>
+    </td>
+  </tr>
+  
+</table>
+
+<p id="publication_date" style="display:<%= @video.is_private? ? 'none' : 'block' %>;">
+  <b><%= t('sadmin.news.fecha_publicacion') %></b>
+    <%= f.datetime_select :published_at, {:start_year => 2009}, {:onchange => "PastOrFuture('video', '#{t('programar')}', '#{t('publicar')}')"} %>
+</p>
+
+  
+<p style="clear:both;text-align:center;"><%= submit_tag 'Guardar', :class => "submit_button" %></p>
+
+<script type='text/javascript'>
+  $('find_video_link').observe('click', function(e) {
+    e.stop();
+    var el = e.element()
+    new Ajax.Request(el.href, { method: 'get', parameters: {video_path: $('video_video_path').value} });
+  })
+</script>

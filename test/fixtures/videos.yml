@@ -1,0 +1,131 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+only_es:
+  title_es: "Solo castellano"
+  title_eu: "Solo castellano eu"
+  title_en: "Solo castellano en"
+  published_at: 2009-12-04 09:22:59
+  show_in_es: true
+  show_in_eu: false
+  show_in_en: false
+  video_path: "2009/12/02/video_es"
+  display_format: '43'
+
+every_language:
+  title_es: "Todos los idiomas"
+  title_eu: "Todos los idiomas"
+  title_en: "Todos los idiomas"
+  published_at: <%= 2.hour.ago %>
+  show_in_es: true
+  show_in_eu: true
+  show_in_en: true
+  video_path: "2009/12/02/video"
+  display_format: '43'  
+
+last_video:  
+  title_es: "Ultimo video"
+  title_eu: "Ultimo video"
+  title_en: "Ultimo video"
+  published_at: 2009-12-10 09:22:59
+  show_in_es: true
+  show_in_eu: true
+  show_in_en: true
+  video_path: "2009/12/02/video2"
+  display_format: '43'  
+
+unpublished_video:
+  title_es: "Video sin publicar"
+  published_at: <%= Time.zone.now + 2.days %>
+  show_in_es: true
+  show_in_eu: true
+  show_in_en: true
+  video_path: "<%= (Time.zone.now + 2.days).year %>/<%= (Time.zone.now + 2.days).month %>/<%= (Time.zone.now + 2.days).day %>/video"
+  display_format: '43'  
+
+draft_video: 
+  title_es: "Video borrador"
+  published_at: 
+  show_in_es: true
+  show_in_eu: true
+  show_in_en: true
+  video_path: "2009/12/02/draft_video"
+  display_format: '43'  
+  
+featured_video:
+  title_es: "Vídeo destacado"
+  title_eu: "Video destacado"
+  title_en: "Video destacado"
+  published_at: 2009-12-04 09:22:59
+  show_in_es: true
+  show_in_eu: true
+  show_in_en: true
+  video_path: "2009/12/02/video"
+  featured: true
+  display_format: '43'  
+
+video_taken_from_a_news_item:
+  title_es: "Video proveniente de una noticia"
+  title_eu: "Video proveniente de una noticia"
+  title_en: "Video proveniente de una noticia"
+  published_at: 2009-12-04 09:22:59
+  show_in_es: true
+  show_in_eu: true
+  show_in_en: true
+  featured: false
+  video_path: "2010/12/02/news_with_multimedia/video1"
+  document: news_with_multimedia_dir_and_related_webtv_video_and_gallery_photo
+  display_format: '43'  
+  
+video_with_event:
+  title_es: "Video con evento"
+  title_eu: "Video con evento"
+  title_en: "Video con evento"
+  published_at: 2009-12-04 09:22:59
+  show_in_es: true
+  show_in_eu: true
+  show_in_en: true
+  video_path: "2009/12/02/video"
+  featured: false
+  display_format: '43'  
+  
+video_dept_interior:
+  title_es: "Video del Dpto. de Interior"
+  title_eu: "Video del Dpto. de Interior"
+  title_en: "Video del Dpto. de Interior"
+  published_at: 2009-12-04 09:22:59
+  show_in_es: true
+  show_in_eu: true
+  show_in_en: true
+  video_path: "2009/12/02/video"
+  display_format: '43'  
+
+video_lehendakaritza:
+  title_es: "Video Lehendakaritza"
+  title_eu: "Video Lehendakaritza"
+  title_en: "Video Lehendakaritza"
+  published_at: 2010-06-03 09:22:59
+  show_in_es: true
+  show_in_eu: true
+  show_in_en: true
+  video_path: "2009/12/02/video"
+  display_format: '43'  
+
+searchable_video:
+  title_es: "Encuentra este video"
+  title_eu: "Encuentra este video"
+  title_en: "Encuentra este video"
+  published_at: <%= 1.week.ago %>
+  show_in_es: true
+  video_path: "2009/12/02/searchable"
+  display_format: '43'
+  
+video_with_subtitles:
+  title_es: 'Vídeo con subtítulos'
+  title_eu: 'Vídeo con subtítulos'
+  title_en: 'Vídeo con subtítulos'
+  published_at: 
+  show_in_es: true
+  show_in_eu: true
+  show_in_en: true
+  video_path: "2009/12/02/test"
+  display_format: '43'  

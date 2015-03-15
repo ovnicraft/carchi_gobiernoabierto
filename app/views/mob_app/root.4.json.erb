@@ -1,0 +1,150 @@
+{
+"items": [
+  <%- if logged_in? -%>
+    {"id": 11, "class_type": "Login_cell",
+     "sort_id": 1000,
+     "title": "<%= I18n.t('floki.login') %>", "body": "<%= t('salir') %>",
+     "section_ids": [10]
+    },
+    
+    <%= render(:partial => 'mob_app/view_controllers/activity_view_controller.json', 
+        :locals => {:id => 2, :sort_id => 990, :unique_id => 2, :title => t('account.navigation_menu.actions'), 
+                    :url => url_for(:controller => "account", :action => "activity", :locale => "_LNG_", :format => :floki, :only_path => false), 
+                    :title => t('account.tu_irekia', :site_name => Settings.site_name), 
+                    :body => '', :section => 10, :data_options => {"purge_on_broadcasts" => ["auth_change"]}}) %>,
+
+    <%= render(:partial => 'mob_app/view_controllers/proposals_view_controller.json', 
+        :locals => {:id => 10, :sort_id => 970, :unique_id => 10, 
+                    :url => url_for(:controller => "account", :action => "proposals", :locale => "_LNG_", :format => 'floki', :only_path => false), 
+                    :title => t('account.your_proposals'), :body => '', :section => 10, 
+                    :data_options => {"refresh_on_broadcasts" => ["auth_change"], "purge_on_broadcasts" => ["auth_change"]}}) %>,
+  <%- else -%>
+    {"id": 1, "class_type": "Login_cell",
+    "sort_id": 1000, "section_ids": [10],
+    "title": "<%= I18n.t('floki.login') %>", "body": "<%= t('salir') %>"
+    },
+  <%- end -%>
+  {"id": 3, "class_type": "News_view_controller",
+  "sort_id": 950, "new_window": false, "section_ids": [20],
+   "title": "<%= Department.model_name.human(:count => 2).mb_chars.capitalize.to_s %>", "body": "<%= Area.select("name_es, name_eu, name_en").map(&:name).to_sentence %>",
+  "url": "<%= url_for(:controller => "mob_app", :action => "areas", :locale => "_LNG_", :only_path => false) %>",
+  "image": "<%= request.protocol + request.host_with_port + asset_path('floki/irekia_77_areas.png') %>",
+  "data": {
+    "unique_id": 3,
+    "row_height": 85,
+    "padding": 4,
+    "image_size": <%= Floki::IMAGE_SIZE.to_json %>,
+    "image_alignment": 0,
+    "title_lines": 3,
+    "title_size": <%= Floki::TITLE_SIZE %>,
+    "title_color": <%= Floki::TITLE_COLOR.to_json %>,
+    "text_size": <%= Floki::TEXT_SIZE %> ,
+    "text_color": <%= Floki::TEXT_COLOR.to_json %>,
+    "footer_alignment": 1,
+    "back_normal_color": <%= Floki::BACK_COLOR.to_json %>,
+    "back_highlight_color": <%= Floki::BACK_HIGHLIGHT_COLOR.to_json %>,
+    "ttl": 600,
+    "download_if_virgin": true,
+    "allow_manual_reload": true
+    }
+  },
+  
+  <%= render(:partial => 'mob_app/view_controllers/news_view_controller.json', 
+        :locals => {:id => 4, :sort_id => 900, :unique_id => 4, 
+                    :url => url_for(:controller => "mob_app", :action => "news", :locale => "_LNG_", :only_path => false ), 
+                    :body => t('floki.news.body'),
+                    :data_options => {"search_bar" => url_for(:controller => "mob_app", :action => "search", :locale => '_LNG_', 
+                                                              :only_path => false, :q => '_WORDS_', :page => '_PAGE_', :type => 'news').gsub(/&amp;/, '&')}}) %>,
+  
+  <%= render(:partial => 'mob_app/view_controllers/events_view_controller.json', 
+        :locals => {:id => 5, :sort_id => 850, :unique_id => 5, 
+                    :url => url_for(:controller => "mob_app", :action => "events", :locale => "_LNG_", :only_path => false), 
+                    :body => t('floki.events.body'),
+                    :data_options => {"search_bar" => url_for(:controller => "mob_app", :action => "search", :locale => '_LNG_', 
+                                                              :only_path => false, :q => '_WORDS_', :page => '_PAGE_', :type => 'events').gsub(/&amp;/, '&')}}) %>,
+
+  <%= render(:partial => 'mob_app/view_controllers/proposals_view_controller.json', 
+        :locals => {:id => 13, :sort_id => 830, :unique_id => 13, 
+                    :url => url_for(:controller => "proposals", :action => "index", :locale => "_LNG_", :format => 'floki', :only_path => false), 
+                    :title => t('proposals.title'), 
+                    :body => "#{@all_proposals_citiz} #{t('proposals.citizens_count', :count => @all_proposals_citiz)}", 
+                    :section => 20, :data_options => nil}) %>,
+
+  <%= render(:partial => 'mob_app/view_controllers/debates_view_controller.json', 
+        :locals => {:id => 14, :sort_id => 815, :unique_id => 14, 
+                    :url => url_for(:controller => "debates", :action => "index", :locale => "_LNG_", :format => 'floki', :only_path => false), 
+                    :title => t('debates.title'), 
+                    :body => "#{@all_proposals_gov} #{t('proposals.gov_count', :count => @all_proposals_gov)}", 
+                    :section => 20, :data_options => nil}) %>,                    
+  
+  <%= render(:partial => 'mob_app/view_controllers/photos_view_controller.json', 
+        :locals => {:id => 6, :sort_id => 800, :unique_id => 6, 
+                    :url => url_for(:controller => "mob_app", :action => "photos", :only_path => false),
+                    :title => I18n.t('photos.fototeca'), :body => '', 
+                    :section => 20, :data_options => nil}) %>,
+  
+  <%= render(:partial => 'mob_app/view_controllers/videos_view_controller.json', 
+        :locals => {:id => 7, :sort_id => 750, :unique_id => 7, 
+                    :url => url_for(:controller => "mob_app", :action => "videos", :locale => "_LNG_", :only_path => false), 
+                    :data_options => {"search_bar" => url_for(:controller => "mob_app", :action => "search", :locale => '_LNG_', 
+                                                              :only_path => false, :q => '_WORDS_', :page => '_PAGE_', :type => 'videos').gsub(/&amp;/, '&')}}) %>,
+
+<%= render(:partial => 'mob_app/view_controllers/photos_view_controller.json', 
+    :locals => {:id => 14, :sort_id => 775, :unique_id => 14, 
+                :url => url_for(:controller => "mob_app", :action => "argazki", :only_path => false), 
+                :title => 'Argazki', :body => t('mob_app.accede_argazki', :publisher_name => Settings.publisher[:name]), 
+                :section => 30, :data_options => nil}) %>,
+                                                              
+  {"id": 8, "class_type": "News_view_controller",
+  "sort_id": 700, "new_window": false, "section_ids": [30],
+  "title": "<%= I18n.t('iphone.acerca') %>", "body": "",
+  "url": "<%= url_for(:controller => "mob_app", :action => "about", :locale => "_LNG_", :only_path => false, :format => :json) %>",
+  "image": "<%= request.protocol + request.host_with_port + asset_path('floki/irekia_77_que-hacemos.png') %>",
+  "data": {
+    "unique_id": 8,
+    "row_height": 90,
+    "padding": 4,
+    "title_lines": <%= Floki::TITLE_LINES %>,
+    "title_size": <%= Floki::TITLE_SIZE %>,
+    "title_color": <%= Floki::TITLE_COLOR.to_json %>,
+    "text_size": <%= Floki::TEXT_SIZE %>,
+    "text_color": <%= Floki::TEXT_COLOR.to_json %>,
+    "footer_alignment": 1,
+    "back_normal_color": <%= Floki::BACK_COLOR.to_json %>,
+    "back_highlight_color": <%= Floki::BACK_HIGHLIGHT_COLOR.to_json %>,
+    "ttl": 600,
+    "download_if_virgin": true,
+    "allow_manual_reload": true
+    }
+  }  
+],
+"sections": [
+  {
+    "id": 10, "sort_id": 2000,
+    "visible": true, "interactive": false,
+    "name": "<%= I18n.t('iphone.acceso_personalizado') %>",
+    "expanded_text_color": <%= Floki::SECTION_COLOR.to_json %>,
+    "expanded_back_color": <%= Floki::SECTION_BACK_COLOR.to_json %>
+  },
+  {
+    "id": 20, "sort_id": 1900,
+    "interactive": false, "visible": true,
+    "name": "<%= I18n.t('iphone.contenidos') %>",
+    "expanded_text_color": <%= Floki::SECTION_COLOR.to_json %>,
+    "expanded_back_color": <%= Floki::SECTION_BACK_COLOR.to_json %>
+  },
+  {
+    "id": 30, "sort_id": 1800,
+    "interactive": false, "visible": true,
+    "name": "<%= I18n.t('iphone.misc') %>",
+    "expanded_text_color": <%= Floki::SECTION_COLOR.to_json %>,
+    "expanded_back_color": <%= Floki::SECTION_BACK_COLOR.to_json %>
+  }
+],
+<% if logged_in? %>
+"to_delete": [1]
+<% else %>
+"to_delete": [2, 9, 10, 11]
+<% end %>
+}
+

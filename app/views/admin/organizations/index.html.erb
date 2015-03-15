@@ -1,0 +1,16 @@
+<h1>Organismos</h1>
+
+<% if Department.terms.length > 0 %>
+  <% Department.terms.each do |term| %>
+  <h2><%= t('admin.organizations.legislatura', :term => term) %></h2>
+  <ul class="categories">
+    <%= render :partial => "organization", :collection => Department.for_term(term) %>
+  </ul>
+  <% end %>
+<% else %>
+  <ul class="categories">
+    <%= render :partial => "organization", :collection => Department.order(:position).all %>
+  </ul>
+<% end %>
+
+<%= link_to 'Nuevo departamento', new_admin_organization_path(:d => 1) %>

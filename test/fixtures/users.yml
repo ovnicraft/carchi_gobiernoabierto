@@ -1,0 +1,350 @@
+#
+# If you add another users type, be sure to add the corresponding test to events_controller_test.rb
+#
+
+superadmin:
+    email: superadmin@efaber.net
+    name: "SuperAdministrador"
+    type: Admin
+    status: 'aprobado'
+    salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+    crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+admin:
+    email: admin@efaber.net
+    name: "Administrador"
+    type: Admin
+    status: 'aprobado'
+    salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+    crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+periodista:
+    email: periodista@efaber.net
+    name: "Un periodista"
+    type: Journalist
+    status: 'aprobado'
+    salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+    crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+periodista_con_alertas:
+    email: periodista2@efaber.net
+    name: "Un periodista con alertas"
+    last_names: "Apellido"
+    type: Journalist
+    status: 'aprobado'
+    salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+    crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+    alerts_locale: 'es'
+    media: "Mi periodico"
+periodista_con_alertas_en_euskera:
+    email: periodista_eu@efaber.net
+    name: "Un periodista con alertas en euskera"
+    last_names: "Apellido"
+    type: Journalist
+    status: 'aprobado'
+    salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+    crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+    alerts_locale: 'eu'
+    media: "Mi periodico"
+periodista_educacion:
+    email: periodista_edu@efaber.net
+    name: "Un periodista que sigue sólo el Dpto. de Educación"
+    type: Journalist
+    status: 'aprobado'
+    salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+    crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+periodista_sin_aprobar:
+    email: periodista_sin_aprobar@efaber.net
+    name: "Un periodista sin aprobar"
+    last_names: "Apellido"
+    type: Journalist
+    status: 'pendiente'
+    salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+    crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+    media: "Mi periodico"
+periodista_sin_suscripciones:
+    email: periodistasinalertas@efaber.net
+    name: "Un periodista sin alertas"
+    last_names: "Apellido"
+    type: Journalist
+    status: 'aprobado'
+    salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+    crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+    alerts_locale: 'es'
+    media: "Mi periodico"
+  
+visitante:
+    email: visitante@efaber.net
+    name: "Un visitante"
+    type: Person
+    status: 'aprobado'
+    salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+    crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+    
+visitante_sin_activar:
+    email: visitante_sin_activar@efaber.net
+    name: "Un visitante"
+    type: Person
+    status: 'pendiente'
+    salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+    crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+
+colaborador:
+    email: colaborador@efaber.net
+    name: "Un colaborador"
+    type: Colaborator
+    status: 'aprobado'
+    salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+    crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+jefe_de_prensa:
+    email: prensa@efaber.net
+    name: "Jefe de prensa"
+    type: DepartmentEditor
+    status: 'aprobado'
+    salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+    crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+    department: lehendakaritza
+jefe_de_gabinete:
+    email: gabinete@efaber.net
+    name: "Jefe de gabinete"
+    type: StaffChief
+    status: 'aprobado'
+    salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+    crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+    department: interior
+
+<% if Settings.optional_modules.streaming %>
+operador_de_streaming:
+    email: operador@efaber.net
+    name: "Operador de Streaming"
+    type: StreamingOperator
+    status: 'aprobado'
+    salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+    crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+<% end %>
+
+# Secretaria del Lehendakari: puede ver y crear eventos de la agenda compartida 
+# y las agendas especiales Lehendakari y agenda2. Tiene acceso de Jefe de gabinete
+secretaria:
+    email: secretaria@efaber.net
+    name: "Secretaria"
+    type: StaffChief
+    status: 'aprobado'
+    salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+    crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+# Secretaria del Dpto. de Interior: puede ver los eventos de la agenda compartida 
+# y crear eventos en la agenda privada del Dpto. y en la agenda especial
+# Tiene acceso como 'Miembro de Dpto.' y por esto no puede crear eventos en la agenda compartida.
+secretaria_interior:
+    email: secretaria_interior@efaber.net
+    name: "Otra Secretaria"
+    type: DepartmentMember
+    department_id: <%= ActiveRecord::FixtureSet.identify(:interior) %>
+    status: 'aprobado'
+    salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+    crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+# Igual que secretaria_interior pero con permiso para ver la agenda especial
+secretaria_interior_y_agenda_especial:
+    email: secretaria_interior_especial@efaber.net
+    name: "Otra Secretaria"
+    type: DepartmentMember
+    department_id: <%= ActiveRecord::FixtureSet.identify(:interior) %>
+    status: 'aprobado'
+    salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+    crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+
+jefe_de_prensa_de_interior:
+    email: prensa_interior@efaber.net
+    name: "Jefe de prensa de Interior"
+    type: DepartmentEditor
+    status: 'aprobado'
+    salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+    crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+    department: interior
+jefe_de_gabinete_de_interior:
+    email: gabinete_interior@efaber.net
+    name: "Jefe de gabinete de Interior"
+    type: StaffChief
+    status: 'aprobado'
+    salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+    crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+    department: interior
+miembro_que_modifica_noticias:
+    email: depnoticias@efaber.net
+    name: "Persona que modifica noticias"
+    type: DepartmentMember
+    status: 'aprobado'
+    salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+    crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+    department: interior
+miembro_que_crea_noticias:
+  email: createnews@efaber.net
+  name: "Persona que crea noticias"
+  type: DepartmentMember
+  status: 'aprobado'
+  salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+  crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+  department: interior
+comentador_oficial:
+    email: oficial@efaber.net
+    name: "Comentarios oficiales"
+    type: DepartmentMember
+    status: 'aprobado'
+    salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+    crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+    department: interior
+creador_eventos_privadas:
+  email: events_private@efaber.net
+  name: "Creador de eventos privados"
+  type: DepartmentMember
+  status: 'aprobado'
+  salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+  crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+  department: interior
+creador_eventos_irekia:
+  email: events_irekia@efaber.net
+  name: "Creador de eventos para irekia"
+  type: DepartmentMember
+  status: 'aprobado'
+  salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+  crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+  department: interior
+miembro_con_permisos_de_todo_tipo:
+  email: miembropermisos@efaber.net
+  name: "Miembro de departamento con muchos permisos"
+  type: DepartmentMember
+  status: 'aprobado'
+  salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+  crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+  department: interior
+  
+  
+room_manager:
+  name: Manager
+  type: RoomManager
+  email: manager@efaber.net
+  telephone: 12345678
+  status: 'aprobado'
+  salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+  crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+
+room_manager2:
+  name: Manager2
+  type: RoomManager
+  email: manager2@efaber.net
+  telephone: 12345678
+  status: 'aprobado'
+  salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+  crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+  
+
+twitter_user:
+  name: Ireki
+  type: Person
+  screen_name: ireki
+  status: 'aprobado'
+  raw_location: Bilbao, spain
+  atoken: dummy
+  asecret: dummy
+  url: http://www.twitter.com/ireki
+  
+facebook_user:
+  fb_id: 123
+  name: FB Ireki
+  type: Person
+  status: 'aprobado'
+  atoken: dummy
+  asecret: dummy
+  url: http://www.facebook.com/profile.php?id=xxx
+  
+facebook_user_with_email:
+  fb_id: 123
+  name: FB Ireki
+  type: Person
+  status: 'aprobado'
+  atoken: dummy
+  asecret: dummy
+  url: http://www.facebook.com/profile.php?id=xxx  
+  email: facebookuser@example.com
+  
+googleplus_user:
+  googleplus_id: 123
+  name: "G+ Ireki"
+  type: Person
+  status: 'aprobado'  
+
+  
+exportador_de_noticias:
+    email: exportador@efaber.net
+    name: "Exportador de noticias"
+    type: DepartmentMember
+    status: 'aprobado'
+    salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+    crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+    department: interior
+    
+person_follows:
+  email: person@email.com
+  name: "Usuario Person"
+  type: Person
+  status: 'aprobado'
+  salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+  crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test  
+  
+politician_one:
+  email: politician@email.com
+  name: "Politico"
+  type: Politician
+  status: 'aprobado'
+  salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+  crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test  
+  politician_has_agenda: true
+  
+politician_lehendakaritza:
+  email: politician_lehendakaritza@test.com
+  name: Político Lehendakaritza
+  type: Politician
+  status: aprobado
+  salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+  crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test  
+  public_role_es: Cargo público del político
+  public_role_eu: Cargo público del político (euskera)
+  gc_id: '0'
+  politician_has_agenda: false
+  
+politician_interior:
+  email: politician_interior@test.com
+  name: Político Interior
+  type: Politician
+  status: aprobado
+  salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+  crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test  
+  public_role_es: Cargo público del político
+  gc_id: '0'
+  politician_has_agenda: false
+
+politician_interior_vetado:
+  email: politician_interior_vetado@test.com
+  name: Político Interior (vetado)
+  type: Politician
+  status: vetado
+  salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+  crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test  
+  public_role_es: Cargo público del político vetado
+  gc_id: '0'
+  politician_has_agenda: false
+
+
+deleted_person:
+  email: deleted_person@efaber.net
+  name: deleted
+  type: Person
+  status: 'eliminado'
+  salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+  crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+  
+
+colaborador_externo:
+  email: colaboradorexterno@efaber.net
+  name: "Un colaborador externo"
+  type: ExternalColaborator
+  status: 'aprobado'
+  salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+  crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test

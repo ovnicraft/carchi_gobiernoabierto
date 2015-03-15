@@ -1,0 +1,22 @@
+<%- AvailableLocales::AVAILABLE_LANGUAGES.keys.sort.reverse.each do |locale| -%>
+  <p>
+    <%= I18n.t('notifier.hola_user', :name => @participant.public_name, :locale => locale) %>, 
+  </p>
+
+  <p>
+    <%= I18n.t('notifier.proposal_answer.respondida', :site_name => Settings.site_name, 
+               :title => @proposal.title, 
+               :publisher_name => Settings.publisher[:name],
+               :url => url_for(:controller => "proposals", :action => "show", :id => @proposal.to_param, :locale => locale, :only_path => false), 
+               :locale => locale) %>
+  </p>
+
+  <%= render :partial => '/notifier/footer', :locals => {:locale => locale} %>
+  
+  <p>
+    <br />
+    ---------------------------------------------
+    <br />
+  </p>
+
+<%- end -%>

@@ -1,0 +1,22 @@
+<% icon_class ||= 'icon' %>
+<%- audios_to_be_shown = document.audios[I18n.locale.to_sym] -%>
+<% audio_template_url = Document::MULTIMEDIA_URL %>
+
+<div class="docs">
+  <h3><%= t('documents.audio') %></h3>
+
+
+  <% if audios_to_be_shown.present? -%>
+    <ul class="playlist">
+      <% audios_to_be_shown.map {|a| MultimediaFile.new(a)}.each do |mfile| -%>
+        <li class="clearfix">
+          <div class="icon"></div>
+          <a href="<%= mfile.url %>" alt="<%= mfile.name %>"><%= truncate(mfile.name, :length => 30) %></a>
+          <span class="footer">(<%= number_to_human_size(mfile.size) %>)</span>
+        </li>
+      <% end -%>
+    </ul>
+  <% end %>
+
+  <%= render :partial => '/admin/documents/multimedia/attached_audio_list', :locals => {:document => document, :icon_class => icon_class} %>
+</div>

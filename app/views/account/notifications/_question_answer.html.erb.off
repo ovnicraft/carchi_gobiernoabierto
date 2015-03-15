@@ -1,0 +1,19 @@
+<% question = Question.find(notification.item_id) %>
+
+
+<li class="clearfix question">
+<%= avatar question.answer.author %>
+<div class="content">
+  <p><%= t('notifications.answer', :text => link_to(question.title, question_path(question, :n_id => notification.id))) %></p>
+
+  <p class="excerpt">
+    <%= link_to %Q{"#{truncate(question.answer.body, :length => 160)}"}, question_path(question, :n_id => notification.id) %>
+  </p>
+  
+  <div class="footer">
+    <%= link_to_user_profile_unless_deleted(question.user, {:class => :author}) %>
+    <%= t('shared.list_item.time_ago', :time => distance_of_time_in_words_to_now(question.published_at)) %>
+  </div>
+  
+</div>
+</li>

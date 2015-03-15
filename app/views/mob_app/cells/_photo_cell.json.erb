@@ -1,0 +1,13 @@
+<%- 
+  h = {
+    "id" => photo.id , 
+    "title" => photo.title, 
+    "image" => "#{photo.version(:square)}",
+    "url" => url,
+    "share_url" => url_for(:controller => "albums", :action => "show", :id => photo.albums.first, :only_path => false),
+    "width" => width, 
+    "height" => height,
+    "max_zoom" => 2
+  } 
+-%>
+<%=raw h.to_json %>

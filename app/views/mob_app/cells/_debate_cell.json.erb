@@ -1,0 +1,25 @@
+<%- 
+  target ||= 'list'
+  
+  h = {
+    "id" => target.eql?(:activity) ? debate.floki_id : debate.id , 
+    "title" => debate.title, 
+    "body" => debate.participation == 0 ? t('votes.count.nobody_voted') : "#{t('votes.count.a_favor', :count => debate.n_in_favor)}, #{t('votes.count.contra', :count => debate.n_against)}",
+    "url" => url_for(:controller => "debates", :action => "show", :id => debate, :format => :floki, :locale => I18n.locale, :only_path => false),
+    "image" => request.protocol + request.host_with_port + asset_path('floki/irekia_77_propuestas.png'),
+    "share_url" => url_for(:controller => "debates", :action => "show", :id => debate, :only_path => false),
+    "sort_id" => sort_id,
+    "accepts_votes" => debate.participation_open?,
+    "accepts_comments" => debate.has_comments && !debate.comments_closed?,
+    "accepts_arguments" => debate.participation_open?,
+    "online" => true
+   }
+   
+   if debate.cover_image.present?
+     h["image"] = "#{absolutize_url(debate.cover_image.thumb_70.url)}"
+   end
+   
+   h["footer"] = I18n.localize(debate.published_at.to_date, :format => :long).strip  if debate.published_at
+-%>
+
+<%=raw h.to_json.gsub('&amp;size', '&size') %>

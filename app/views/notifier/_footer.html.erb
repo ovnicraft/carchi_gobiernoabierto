@@ -1,0 +1,14 @@
+<% locale ||= I18n.locale %>
+
+<p>
+  <%= I18n.t('notifier.un_saludo', locale: locale) %><br/>
+  <%= I18n.t('notifier.firma', locale: locale) %>
+</p>
+
+<p>
+  <%= I18n.t('notifier.no_reply', locale: locale) %>
+</p>
+
+<p>
+  <%= root_with_locale_url(locale: locale) %>
+</p>

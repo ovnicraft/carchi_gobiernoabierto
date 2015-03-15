@@ -1,0 +1,61 @@
+<div class='section container login'>
+  <div class='section_main row-fluid'>
+    <div class='section_container span8'>
+      <div class='login_form'>
+        <%= content_tag(:span, t('login.access_irekia', :site_name => Settings.site_name).html_safe, :class => 'mod_title') unless request.xhr? %>
+
+        <%= content_tag :div, t('login.info_for_embed', :publisher_name => Settings.publisher[:name], 
+                                :link => link_to(root_with_locale_url, root_with_locale_url(:target => "_blank"))).html_safe, 
+                        :class => 'login_info' unless @irekia %>
+        <div class='form_block'>
+          <%= form_tag embed_session_path, {:class => "login"} do %>
+            <div class='error-messages' style='display:none'><%= t('session.Email_incorrecto') %></div>
+            <div class='control-group'>
+              <label for="user_email"><%= User.human_attribute_name(:email) %></label>
+              <%= text_field_tag 'email', nil, :class => 'mInput', :id => 'user_email', :type => 'email' %>
+            </div>
+            <div class='control-group'>
+              <label for="user_password"><%= User.human_attribute_name(:password) %></label>
+              <%= password_field_tag 'password', nil, :class => 'mInput', :id => 'user_password' %>
+            </div>
+            <label class="remember_me">
+              <%= check_box_tag 'remember_me', "1", false %>
+              <%= t('session.remember_me') %>
+            </label>
+            <div class='btn_with_spinner'>
+              <%= submit_tag t('entrar'), :name => '', :class => 'irekia_btn login_btn' %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class='register_block'>
+          <%= link_to t('people.crea_tu_cuenta', :site_name => Settings.site_name), new_person_path, :class => "irekia_signin #{@irekia ? 'return_to_irekia' : ''}" %>
+        </div>
+
+        <%= render :partial => '/sessions/social_signin' %>
+
+        <div class='remember_block'>
+          <%= t('login.forgotten_password') %> <%= link_to t('login.get_it_here'), password_reset_embed_session_path, :class => "password_reset #{@irekia ? 'return_to_irekia' : ''}" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type='text/javascript'>
+$(document).ready(function(){
+  loginForm.init();
+  <% if @irekia %>
+    $('.return_to_irekia').on('click', function(){
+var message = $(this).hasClass('irekia_signin') ? "__irekia_register__" : "__irekia_pswd_reset__";
+      try {
+        window.opener.postMessage(message, window.opener.location); //no funciona con IE8
+        window.close();
+      } catch(e) {
+        window.opener.windowLoginAction.logIn(message, window.opener.location);
+        window.close();
+      }
+    });
+  <% end %>
+});
+</script>

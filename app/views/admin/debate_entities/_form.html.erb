@@ -1,0 +1,22 @@
+<table class="admin">
+  <tr>
+    <th><%= f.label :organization_name, DebateEntity.human_attribute_name("organization") %></th>
+    <td><%= text_field_with_auto_complete :debate_entity, :organization_name, {:size => "60"}, {:indicator => "spinner"} %>
+        <span id="spinner" style = 'display:none'><%= image_tag 'admin/spinner.gif' %></span>
+       <div class="hint">Elegir de la lista que sale al empezar a escribir el nombre de la entidad.</div>
+    </td>
+   </tr>        
+   <% ([:es]+(locales.keys - [:es])).each do |code| %>
+   <% lang = locales[code] %>
+   <tr>
+     <th><%= f.label "url_#{code}".to_sym, "URL #{lang}" %></th>
+     <td><%= f.text_field "url_#{code}".to_sym, {:size => "60"} %>
+        <div class="hint">Tiene que empezar por http:// o https://</div>
+     </td>
+   </tr>
+   <% end %>
+   <tr>
+     <th>&nbsp;</th>
+     <td><%= f.submit "Guardar", :disable_with => 'Guardando ...' %></td>
+   </tr>
+</table>

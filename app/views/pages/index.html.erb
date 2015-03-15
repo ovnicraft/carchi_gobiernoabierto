@@ -1,0 +1,8 @@
+<!-- Not used -->
+<div class="article activity with_footer with_form">
+  <div class="inner">
+    <%= render :partial => 'list_item', :collection => @pages, :as => :page %>
+    <%= will_paginate @pages, :previous_label => "&laquo; #{t('anterior')}", :next_label => "#{t('siguiente')} &raquo;" %>
+  </div>
+</div>  
+

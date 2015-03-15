@@ -1,0 +1,9 @@
+<h1>Nueva área</h1>
+
+<%= form_for @area, as: :area, :url => admin_areas_path do |f| %>
+  <%= render :partial => "form", :locals => {:f => f} %>
+  
+  <p>
+    <%= f.submit "Guardar" %>
+  </p>
+<% end %>

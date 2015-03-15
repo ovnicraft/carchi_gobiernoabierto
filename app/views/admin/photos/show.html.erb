@@ -1,0 +1,89 @@
+<h1><%= @photo.title %></h1>
+
+<ul class="edit_links">
+  <% if @album %>
+    <li><%= link_to "Ver en irekia", album_photo_path(@album, @photo), :class => "public_link" %></li>
+    <li><%= link_to "Modificar", edit_admin_album_photo_path(@album, @photo), :class => "edit" %></li>
+  <% else %>
+    <li><%= link_to "Modificar", edit_admin_photo_path(@photo), :class => "edit" %></li>
+  <% end %>
+</ul>
+
+<div class="pagination" style="margin-bottom:10px">
+  <%= link_to "&laquo; Anterior".html_safe, admin_album_photo_path(@album, @prev_photo) if @prev_photo %>
+  <%= link_to "Siguiente &raquo;".html_safe, admin_album_photo_path(@album, @next_photo) if @next_photo %>
+</div>
+
+
+<div class="large_photo">
+  <div class="photo_c">
+    <div class="photo_container">
+      <%= image_tag @photo.version(:n320) %><br/>
+    </div>
+  </div>
+
+  <p>
+    <%= show_tags_with_classes(@photo)%>
+  </p>
+  
+  <h2>Direcciones para usar en el editor de noticias/eventos/páginas</h2>
+  <table class="admin">
+    <tr>
+      <th>Cuadrada (<%= Tools::Multimedia::PHOTOS_SIZES[:square].match(/(\d+)x/)[1] %>px)</th>
+      <td><%= text_field_tag 'square', @photo.version(:square), :size => 50, :onfocus => "this.select()" %></td>
+    </tr>
+    <tr>
+      <th>Pequeña (<%= Tools::Multimedia::PHOTOS_SIZES[:n70].match(/(\d+)/)[1] %>px)</th>
+      <td><%= text_field_tag 'small', @photo.version(:n70), :size => 50, :onfocus => "this.select()" %></td>
+    </tr>
+    <tr>
+      <th>Mediana (<%= Tools::Multimedia::PHOTOS_SIZES[:n320].match(/(\d+)x/)[1] %>px)</th>
+      <td><%= text_field_tag 'medium', @photo.version(:n320), :size => 50, :onfocus => "this.select()" %></td>
+    </tr>
+    <tr>
+      <th>Grande (<%= Tools::Multimedia::PHOTOS_SIZES[:n770].match(/(\d+)x/)[1] %>px)</th>
+      <td><%= text_field_tag 'large', @photo.version(:n770), :size => 50, :onfocus => "this.select()" %></td>
+    </tr>
+    
+    
+  </table>
+</div>
+
+<div class="large_info">
+<table class="admin">
+<tr>
+  <th>Fecha:</th>
+  <td><%= I18n.localize(@photo.date_time_original, :format => :short)  if @photo.date_time_original %></td>
+</tr>
+
+<tr>
+  <th>Ciudad:</th>
+  <td><%= @photo.city %></td>
+</tr>
+
+<tr>
+  <th>Provincia:</th>
+  <td><%= @photo.province_state %></td>
+</tr>
+
+<tr>
+  <th>País:</th>
+  <td><%= @photo.country %></td>
+</tr>
+
+
+<tr>
+  <th colspan="2">Álbums en los que está:</th>
+</tr>
+<tr>
+  <td colspan="2">
+  <ul>
+    <% @photo.albums.each do |album| %>
+    <li><%= link_to album.title, admin_album_path(album) %></li>
+    <% end %>
+  </ul>
+  </td>
+</tr>
+
+</table>
+</div>

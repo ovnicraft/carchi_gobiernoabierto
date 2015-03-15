@@ -1,0 +1,121 @@
+<h1>Producción de contenidos</h1>
+
+<%= render :partial => "submenu" %>
+
+<table class="stats_container">
+  <tr>
+    <td>
+<%= form_tag contents_admin_stats_path, :method => :get do %>
+  <p>
+    <div id="custom_container" >
+      Desde: 
+      <%= select_date(@start_date, :prefix => "start", :start_year => 2009, :end_year => Date.today.year, :allow_blank => true) %>
+      <br/>
+      Hasta:
+      <%= select_date(@end_date, :prefix => "end", :start_year => 2009, :end_year => Date.today.year) %>
+    </div>
+    <%= submit_tag "Cambiar" %>
+  </p>
+<% end %>
+<table class="stats" cellspacing="0" cellpadding="0">
+  <tr class="title">
+    <th colspan="2">
+      Otros
+    </th>
+  </tr>
+  <tr>
+    <td class="item">Páginas</td>
+    <td class="number"><%= @pages_counter %></td>
+  </tr>
+  <tr>
+    <td class="item">Comentarios</td>
+    <td class="number"><%= @comments_counter %></td>
+  </tr>
+  <tr>
+    <td class="item">Fotos (fototeca/fotos de portada en noticias)</td>
+    <td class="number"><%= @photos_counter %>/<%= @cover_photos_counter %></td>
+  </tr>
+  <tr>
+    <td class="item">Documentos adjuntos</td>
+    <td class="number"><%= @attachment_counter %></td>
+  </tr>        
+  <tr>
+    <td class="item">Escucha activa (importados)</td>
+    <td class="number"><%= @escucha_counter[:total]  %></td>
+  </tr>        
+  
+</table>
+
+    </td>
+    <td style="vertical-align:top">
+      <table class="stats" cellspacing="0" cellpadding="0">
+        <tr class="title">
+          <th>Usuarios</th>
+          <th>Ult. 24h</th>
+          <th>Ult. 7días</th>
+          <th>Total</th>
+        </tr>
+        <tr>
+          <td class="item">Periodistas</td>
+          <td class="number"><%= Journalist.approved.where("(now()-created_at) <= '1day'::interval").count %></td>
+          <td class="number"><%= Journalist.approved.where("(now()-created_at) <= '7day'::interval").count %></td>
+          <td class="number"><%= Journalist.approved.count %></td>
+        </tr>
+        <tr>
+          <td class="item">Usuarios registrados</td>
+          <td class="number"><%= Person.approved.where("(now()-created_at) <= '1day'::interval").count %></td>
+          <td class="number"><%= Person.approved.where("(now()-created_at) <= '7day'::interval").count %></td>
+          <td class="number"><%= Person.approved.count %></td>
+        </tr>
+        <tr>
+          <td class="item">Miembros de departamento</td>
+          <td class="number"><%= DepartmentMember.approved.where("(now()-created_at) <= '1day'::interval").count %></td>
+          <td class="number"><%= DepartmentMember.approved.where("(now()-created_at) <= '7day'::interval").count %></td>
+          <td class="number"><%= DepartmentMember.approved.count %></td>
+        </tr>
+        <tr>
+          <td class="item">Jefes de prensa</td>
+          <td class="number"><%= DepartmentEditor.approved.where("(now()-created_at) <= '1day'::interval").count %></td>
+          <td class="number"><%= DepartmentEditor.approved.where("(now()-created_at) <= '7day'::interval").count %></td>
+          <td class="number"><%= DepartmentEditor.approved.count %></td>
+        </tr>
+        <tr>
+          <td class="item">Jefes de gabinete</td>
+          <td class="number"><%= StaffChief.approved.approved.where("(now()-created_at) <= '1day'::interval").count %></td>
+          <td class="number"><%= StaffChief.approved.approved.where("(now()-created_at) <= '7day'::interval").count %></td>
+          <td class="number"><%= StaffChief.approved.count %></td>
+        </tr>
+        <tr>
+          <td class="item">Resto de usuarios</td>
+          <% other_users = User.approved.where("type NOT IN ('Person', 'Journalist', 'DepartmentEditor', 'StaffChief','DepartmentMember')") %>
+          <td class="number"><%= other_users.where("(now()-created_at) <= '1day'::interval").count %></td>
+          <td class="number"><%= other_users.where("(now()-created_at) <= '7day'::interval").count %></td>
+          <td class="number"><%= other_users.count %></td>
+        </tr>
+      </table>
+      <br/>
+
+      <table class="stats" cellspacing="0" cellpadding="0">
+        <tr class="title">
+          <th colspan="2">
+            Valoración de relacionados
+          </th>
+        </tr>
+        <tr>
+          <td class="item">Numero de valoraciones</td>
+          <td class="number"><%= RecommendationRating.count %></td>
+        </tr>
+        <tr>
+          <th class="item" colspan="2">Top valoradores</th>
+        </tr>
+        <% @top_voters.each do |tv| %>
+        <tr>
+          <td class="item"><%= tv.user.internal_name %></td>
+          <td class="number"><%= tv.counter %></td>
+        </tr>
+        <% end %>
+      </table>      
+    </td>
+  </tr>
+</table>
+

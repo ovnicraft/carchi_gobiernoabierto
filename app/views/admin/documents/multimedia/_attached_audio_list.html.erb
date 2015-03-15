@@ -1,0 +1,47 @@
+<%- icon_class ||= 'icon' -%>
+<%- audios_to_be_shown = document.attached_audios[I18n.locale.to_sym] -%>
+<%- audio_template_url = "http://#{request.host_with_port}" -%>
+
+<% if audios_to_be_shown.length > 0 %>
+  <a name="attached_audio"></a>
+  <div class="list audio_list">
+      <%- audios_to_be_shown.each_with_index do |f, i| -%>
+        <div class="mp3">
+          <a name="audio"></a>
+          <object type="application/x-shockwave-flash" data="/video/player_mp3_maxi.swf" width="200" height="20">
+             <param name="movie" value="/video/player_mp3_maxi.swf" />
+             <param name="FlashVars" value="mp3=<%= audio_template_url %><%= f.file.url %>&amp;showvolume=1&amp;bgcolor1=C5EAFF&amp;bgcolor2=1180B8" />
+             Audio
+          </object>
+          <ul class="download">
+            <li class="noborder">
+              <span class="file_name"><%= f.file_file_name %></span>
+              <span>
+                <%= link_to "<span class='icon download'></span>#{t(:descargar)}", f.file.url, :class => "download" %>
+              </span>
+              <span class="file_size">(<%= number_to_human_size(f.file_file_size) %>)</span>
+              <span class="print">Audio: <%= f.file.url %></span>
+              
+            </li>
+            
+            <li>
+              <%= link_to "<span class='icon embed'></span>#{t('audios.embed')}".html_safe, "#", :onclick => "showEmbedCode('embed_attachment_container_#{i}', 'embed_attachment_#{i}');return false;" %>
+            </li>
+            
+          </ul>
+
+        <div id="embed_attachment_container_<%= i %>" style="display:none;">
+          <p class="embed_video_expl"><%= t('audios.embed_explain') %></p>
+          <textarea class="embed" id="embed_attachment_<%= i %>" cols="40" rows="8"><%= h %(
+<object type="application/x-shockwave-flash" data="http://#{request.host_with_port}/video/player_mp3_maxi.swf" width="200" height="20">
+   <param name="movie" value="http://#{request.host_with_port}/video/player_mp3_maxi.swf" />
+   <param name="FlashVars" value="mp3=#{audio_template_url}#{f.file.url}&amp;showvolume=1&amp;bgcolor1=C5EAFF&amp;bgcolor2=1180B8" />
+   Audio
+</object>
+<p style="color:#BBB">#{t("site.cite_irekia", :site_name => Settings.site_name, :publisher_name => Settings.publisher[:name])}</p>
+) %></textarea>
+        </div>
+        </div>
+      <%- end -%>
+  </div>
+<% end %>

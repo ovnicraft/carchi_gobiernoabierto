@@ -1,0 +1,45 @@
+<% if controller_name.eql?('tags') && action_name.eql?('show') -%>
+  <% content_for :css_data do %>
+    <%= stylesheet_link_tag 'public/search' %>
+  <% end %>
+  <% content_for :js_data do %>
+    <%= javascript_include_tag 'public/search' %>
+  <% end %>
+<% end -%>
+
+<% @title_for_head = show_criterio_title(@criterio, true) %>
+
+<%= init_bootstrap_select %>
+
+<div class='section container'>
+  <%= render :partial => '/shared/context', :locals => {:type => 'search', :title => t('search.title')} %>
+  <div class='section_main row-fluid'>
+    <div class='section_aside span4 search_aside'>
+      <div class='criterio_results' id='criterios_box'>
+        <%= render :partial => '/search/criterios_box' %>
+      </div>
+      <div class='faceted_search' id='facets_box'>
+        <%= render :partial => '/search/facets' unless @search_results.present? && @search_results.length == 1 && (@page && @page==1)%>
+      </div>
+    </div>
+    <div class='section_content span8'>
+      <% if @tag.present? && @tag.name.match(/^#/).present? -%>
+        <div class='twitter_link'>
+          <%= link_to t('search.ver_twitter', :name => "<strong>#{@tag.name}</strong>").html_safe, "https://twitter.com/search?q=#{CGI.escape(@tag.name)}", :rel => :external %>
+        </div>
+      <% end -%>
+      <% if @search_results.present? && @search_results.length > 1 %>
+        <% form_url = @criterio.new_record? ? new_search_path : search_path(:id => @criterio.id) %>
+        <div class='sort_order'>
+          <%= form_tag form_url, :method => :get do %>
+            <span class="t_itle"><%= I18n.t('search.sort_order') %></span>
+            <%= select_tag :sort, options_for_select(Criterio::SORT_ORDER.map{|e| [I18n.t("search.sort.#{e}"), e]}, @sort), "data-remote" => true, :onchange => "submit()", :class => 'selectpicker' %>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="elasticsearch_results" id='search_results'>
+        <%= render :partial => '/search/search_results' %>
+      </div>     
+    </div>
+  </div>
+</div>

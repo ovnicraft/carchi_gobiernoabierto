@@ -1,0 +1,16 @@
+<% video_info = flv_video_info(@featured_video) %>
+<% video_info[:captions_url] = @featured_video.captions_url %>
+
+<div class='section_heading'><%= t('videos.destacado') %></div>
+<div class='featured_media featured_video row-fluid'>
+  <div class='featured_image span8'>
+    <div class="player webtv_video image_wrap">
+      <%= render :partial => '/videos/player', :locals => {:video_info => video_info, :show_embed => :false} %>
+    </div>
+  </div>
+  <div class='featured_content span4'>
+    <div class="title"><%= link_to h(@featured_video.title), [@category, @featured_video] %></div>
+    <%= render_date(@featured_video.published_at) %>
+    <%= link_to_item_comments(@featured_video.comments.count, @featured_video) %>
+  </div>
+</div>

@@ -1,0 +1,105 @@
+<%= content_tag(:div, @user.errors.to_h.to_a.to_json, :id => 'has-errors', :"data-class" => 'user', :style => 'display:none') if @user.errors.present? %>
+
+<% if (@user.is_twitter_user? || @user.is_facebook_user? || @user.is_googleplus_user?) %>
+<div class='alert alert-info'>
+  <%= raw t('users.signin_with', :type => @user.is_twitter_user? ? 'Twitter' : (@user.is_facebook_user? ? 'Facebook' : 'Google +') ) %>
+</div>
+<% end -%>
+
+<div class='control-group'>
+  <%= f.label :email, '', :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :email, :class => 'input-xlarge' %>
+  </div>
+</div>  
+
+<% unless (@user.is_twitter_user? || @user.is_facebook_user? || @user.is_googleplus_user?) %>
+<div class='control-group'>
+  <%= f.label :password, '', :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.password_field :password %>
+  </div>
+</div>      
+
+<div class='control-group'>
+  <%= f.label :password_confirmation, '', :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.password_field :password_confirmation %>
+  </div>
+</div>
+<% end %>
+
+<div class='control-group'>
+  <%= f.label :name, '', :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :name, :class => 'input-xlarge' %>
+  </div>
+</div>  
+
+<div class='control-group'>
+  <%= f.label :last_names, '', :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :last_names, :class => 'input-xlarge' %>
+  </div>
+</div>
+
+<div class='control-group'>
+  <%= f.label :avatar, '', :class => 'control-label' %>
+  <div class='controls'>
+    <%= avatar @user, {:size => :thumb_70} %>
+    <% if f.object.photo.present? %>
+      <div class="edit_attach" id='edit_avatar'>
+        <div class='buttons'>
+          <span class='edit_attach' id='toggle_avatar_form_link'>
+            <%= link_to(t('users.edit_avatar'), "#", :onclick => "$('#avatar_form_container').toggle(); $('#edit_avatar').toggle();return false;") %></span>
+          <div class="delete_attach">
+            <%= f.check_box :remove_photo %>
+            <%= f.label :remove_photo, t('users.destroy_avatar'), :class => 'checkbox inline' %>
+          </div>
+        </div>
+      </div>
+      <div class="edit_form" id='avatar_form_container' style="display: none">
+        <div class='change_attach'>
+          <%= f.file_field :photo %>
+        </div>
+        <div class="buttons"><%= link_to t('cancelar'), "#", :onclick => "$('#avatar_form_container').toggle(); $('#edit_avatar').toggle();return false;" , :class => 'cancel' %></div>
+      </div>  
+    <% else %>
+      <%= f.file_field :photo %>
+    <% end %>
+  </div>
+</div>
+
+<% if @user.is_a?(Journalist) %>
+  <%= render :partial => "/journalists/form", :locals => {:f => f} %>
+<% elsif @user.is_a?(Politician) %>
+  <div class="section_heading"><%= t('politicians.curriculum') %></div>
+  <%= f.fields_for :attachments do |g| %>
+    <%= render :partial => "/attachments/form", :locals => {:f => g} %>
+  <% end %>
+  <%= link_to_add_fields t('politicians.new_cv'), f, :attachments %>
+<% elsif @user.is_a?(Person) %>
+  <div class='control-group'>
+    <%= f.label :zip, '', :class => 'control-label' %>
+    <div class='controls'>
+      <%= f.text_field :zip %>
+    </div>
+  </div>
+<% end %>
+
+<% if @user.new_record? || @user.email.present? %>
+  <%= render :partial => "/users/bulletin_form", :locals => {:f => f} %>
+  <!--Moved to users/bulletin_form -->
+  <!--<%= render :partial => '/users/alerts_locale', :locals => {:f => f} %>-->
+<% end %>
+
+<% if @user.new_record? %>
+  <div class='control-group'>
+    <div class='controls'>
+      <label for="user_normas_de_uso" class='checkbox inline'>
+        <%= f.check_box :normas_de_uso, :checked_value => 1 %>
+        <span class='help-inline'><%= raw t('people.terms_of_service', :link => link_to(t('people.terms_of_service_link'), page_site_path(:label => "tos"), :rel => "external")) %></span>
+      </label>
+    </div>
+  </div>
+<% end %>

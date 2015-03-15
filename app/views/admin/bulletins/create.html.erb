@@ -1,0 +1,23 @@
+<%= render :partial => "submenu" %>
+
+<h1>Preview de boletín <%= @bulletin.id %></h1>
+
+<p>
+  Así es como quedará el boletín a falta de rellenar las noticias personalizadas para cada usuario.<br/>
+  Si te gusta, pincha en "Programar envío" y el boletín comenzará a enviarse en breve.<br/>
+  Si no te gusta, pincha en "modificar el contenido común" y ajústalo convenientemente.
+</p>
+
+<%= render 'preview', :locals => {:bulletin => @bulletin} %>
+
+<p>
+  El boletín se enviará a <%= Bulletin.subscribers.count %> suscriptores.
+</p>
+
+<%= form_tag program_admin_bulletin_path(@bulletin) do %>
+  <%= submit_tag 'Programar envío' %>
+<% end %>
+
+<p>
+o <%= link_to "volver a modificar el contenido común", new_admin_bulletin_path %>
+</p>

@@ -1,0 +1,17 @@
+<% criterio ||= @criterio %>
+
+<div class="criterio_result" id="criterio_<%= criterio.id %>">
+  <div class="criterio_title"><%= show_criterio_title(criterio) %></div>
+  <div class="delete <%="hidden" if delete_hidden %>" id="criterio_delete_<%= criterio.id %>">
+    <%= link_to "<span>X</span>".html_safe, search_path(:id => criterio.id), :method => :delete, :title => t('search.eliminar_criterio') %>
+  </div>
+  <div class='nb_registers'>
+    <%= link_to_unless_current t('search.criterio.results_count', :value => criterio.results_count.to_i, :count => criterio.results_count.to_i).html_safe, search_url(:id => criterio.id) %>
+  </div>
+  <%- if criterio.misspell.present? && criterio.results_count > 0 -%>
+    <div class='suggestions_container'>
+      <%=raw t('search.nothing_found_for', :term => criterio.misspell) %><br/>
+      <%=raw t('search.but_found_for', :term => show_criterio_title(criterio)) %>
+    </div>
+  <%- end -%>  
+ </div>

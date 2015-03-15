@@ -1,0 +1,64 @@
+<div>
+<br/>
+<%= link_to 'Ayuda', '#', :class => 'help_link' %>
+<div class="help" style="display:none;">
+  <% object_type = object.class.model_name.human %>
+  <% department = Department.active.first || Department.new(:name => "Departamento 1", :tag_name => "_departamento1") %>
+  <% area = Area.ordered.first || Area.new(:name_es => "Area 1", :tag_list => "_a_area")%>
+  <% debate = Debate.published.last || Debate.last || Debate.new(:title => "Debate 1", :hashtag => "#debate1")%>
+  
+  <% if object.is_a?(Page) %>
+    En las páginas, hay unos tags que identifican páginas importantes de la web, a saber:
+    <ul>
+      <% Page.about_pages.each do |page| %>
+      <li>Para definir la página que se mostrará en "<%= page[:title] %>" debes usar el tag "_<%= page[:label] %>"</li>
+      <% end %>
+      <% Page.predefined_pages.each do |page| %>
+      <li>Para definir la página que se mostrará en "<%= page[:title] %>" debes usar el tag "_<%= page[:label] %>"</li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <p>
+    Los tags que comienzan por _ son tags "invisibles" ya que no se muestran a los ciudadanos en las páginas
+    correspondientes. Sirven para relacionar contenidos entre sí, como por ejemplo, asignar un departamento a 
+    una noticia, o un área a un evento. A continuación se describen más en detalle estos tags especiales.
+  </p>
+  
+  Además de los tags normales, hay algunos tags que le permiten "categorizar" este <%= object_type %>:
+  <ul>
+    <li>
+      <b>Tag de departamento:</b>
+      Para asignar departamento al <%= object_type %>. Empieza por "_" y sigue con el nombre del departamento. 
+      Por ejemplo, para <%= department.name %> debe usar el tag "<b><%= department.tag_name %></b>".
+      (Ver <%= link_to "departamentos", admin_organizations_path %>)
+    </li>
+    <li>
+      <b>Tag de área:</b>
+      Para asignar área al <%= object_type %>. Empieza por "_a_" y sigue con el nombre del área. 
+      Por ejemplo, para <%= area.name %> debe usar el tag "<b><%= area.tag_name_es %></b>".
+      (Ver <%= link_to "áreas", admin_areas_path %>)
+    </li>
+    <li>
+      <b>Destacado en área:</b>
+      Para definir la noticia destacada en un área. Empieza por "_destacado_a_" y sigue con el nombre del área. 
+      Por ejemplo, para el área de <%= area.name %> debe usar el tag "<b><%= area.featured_tag_name_es %></b>".
+      Si existen varias noticias con este tag, se selecciona el más reciente.
+    </li>
+    <li>
+      <b>Destacado en propuestas de gobierno:</b>
+      Para definir la noticia destacada en una propuesta de gobierno. Empieza por "_destacado_" y sigue con el hashtag de la propuesta. 
+      Por ejemplo, para la propuesta de gobierno de <%= debate.title %> debe usar el tag "<b>_destacado_<%= debate.hashtag %></b>".
+      Si existen varias noticias con este tag, se selecciona el más reciente.
+      (Ver <%= link_to "propuestas de gobierno", admin_areas_path %>)
+    </li>
+    <li>
+      <b>Hashtag:</b>
+      Para relacionar contenidos con la propuesta de gobierno que tenga este mismo tag. Empieza por "#".
+      Por ejemplo, para la propuesta de gobierno de "<%= debate.title %>" debe usar el tag "<b><%= debate.hashtag %></b>"
+    </li>
+  </ul>
+  Recuerde, además, que a medida que escriba se le irán sugiriendo los tags que coinciden con lo que ha escrito
+  para que pueda elegir de entre ellos.
+</div>
+</div>

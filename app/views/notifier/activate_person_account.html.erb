@@ -1,0 +1,19 @@
+<%- @f = @user.proposals.present? ? 'p' : nil -%>
+<p>
+  <%= t('notifier.hola_user', :name => @user.name) %>,
+</p>
+
+<p>
+  <%= t('notifier.welcome', :name => Settings.site_name) %>
+</p>
+
+<p>
+  <%= t('notifier.activate_person_account.asegurar_eres_tu', name: Settings.site_name) %><br />
+  <%= t('notifier.activate_person_account.pinchar_siguiente_enlace') %><br />
+
+  <%= url_for(:controller => "account", :action => "activate", :locale => I18n.locale, :u => @user.id, :p => @user.crypted_password, :f => @f, :only_path => false).gsub("&amp;", "&") %><br/>
+</p>
+
+<p><%= t('notifier.activate_person_account.ignore_if_not_requested') %></p>
+
+<%= render partial: '/notifier/footer' %>

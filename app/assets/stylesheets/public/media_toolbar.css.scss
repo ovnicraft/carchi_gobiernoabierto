@@ -1,0 +1,99 @@
+@import "helpers";
+
+.toolbar{
+
+	clear: both;
+	float: left;
+	width: 100%;
+	margin: 20px 0;
+
+	& > div{ 
+		margin-left: 2.12766%;
+		float: left;
+		margin-top:5px;
+		&:first-child{
+			margin-left: 0;
+		}
+
+		& > a{
+			padding: 5px 30px;
+			background-color: $greyButtons;
+			height: 20px;
+			text-align: left;
+			text-transform: uppercase;
+			font-weight: bold;
+			display: block;
+			float: left;
+			@include opensans(11px,bold);
+			color: $colorIrekia;
+			background-repeat: no-repeat;
+			background-position: 5px center;
+			&:hover{
+				text-decoration: underline; 
+			}
+		}
+	}
+
+	div.share_button{
+
+		width: 20%;
+
+		& > a{
+			padding: 5px 0 5px 15%;
+			width: 85%;
+
+			background-image: url(image-path('icons/sharev4.png'));
+			background-position: left center;
+			background-size: contain;
+			color: $blueShare;
+			text-align: center;
+
+			&:hover{
+				background-color: $blueShare;
+				color: white;
+				text-decoration: none;
+			}
+
+		}
+		.popover{
+			border: 1px solid rgba(100, 0, 0, 0.2);
+			max-width: inherit;
+		}
+	}
+
+	div.download{
+		a{
+			background-image: url(image-path('icons/visor_download.png'));
+		}
+	}
+	div.embed{
+		a{
+			background-image: url(image-path('icons/visor_embed.png'));
+		}
+	}
+	div.zip_download{
+		a{
+			background-image: url(image-path('icons/visor_download.png'));
+		}
+	}
+	div.video_transcription_link{
+		a{
+			background-image: url(image-path('icons/visor_transcript.png'));
+		}
+	}
+
+	div.embed_container{
+		clear:both;
+		float:left;
+		width:100%;
+		margin-top:20px;
+		textarea{
+			width:95%;
+			font-size:12px;
+			border:none;
+			border:1px solid $colorLines;
+
+			padding:2%;
+		}
+	}            
+}

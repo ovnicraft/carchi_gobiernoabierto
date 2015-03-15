@@ -1,0 +1,5 @@
+<div class='social_signin_block'>
+  <%= link_to t('session.facebook_signin'), fb_session_path(:return_to => params[:return_to]), :method => :post, :id => :facebook_signin, :class => 'signin_via facebook' if Rails.application.secrets["facebook"] %>
+  <%= link_to t('session.twitter_signin'), twitter_session_path(:return_to => params[:return_to]), :method => :post, :id => :twitter_signin, :class => 'signin_via twitter'  if Rails.application.secrets["twitter"] %>
+  <%= link_to t('session.googleplus_signin'), googleplus_session_path(:return_to => params[:return_to]), :method => :post, :id => :googleplus_sigin, :class => 'signin_via googleplus' if Rails.application.secrets["googleplus"] %>
+</div>

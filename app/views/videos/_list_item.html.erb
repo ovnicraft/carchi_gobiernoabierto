@@ -1,0 +1,23 @@
+<% rank ||= nil %>
+<% 
+  options = {}
+  options[:criterio_id] = @criterio.id if @criterio.present?
+  options[:track] = 1 if target.eql?(:related)
+%>
+
+
+<li class='item video'>
+  <div class='item_thumbnail'>
+    <%= image_tag(document_img_tag(video_preview_img(video), 'n70'), :width => "70") %>
+    <span class="video_overlay_list"></span>
+  </div>
+  <div class='item_content'>
+    <%= render_date(video.published_at) %>
+    <div class='title'><%= link_to h(video.title), video_path(video, options) %></div>
+
+    <div class='area'><%= video.area_name %></div>
+    <%= content_tag(:span, "#{image_tag('cc-icon.png')} #{t('videos.subtitulado')}".html_safe, :class => 'with_closed_captions') if video.captions_available? %>
+    <%= "<span class='search_rank'>(#{rank})</span>" if logged_in? && !rank.nil? %>
+    <%= show_search_explanation(video) %>                                         
+  </div>
+</li>

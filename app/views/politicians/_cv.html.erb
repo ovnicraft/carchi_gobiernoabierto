@@ -1,0 +1,15 @@
+<% cvs = @politician.attachments.where(["show_in_#{I18n.locale.to_s} = ?", true]) %>
+<% if cvs.length > 0 %>
+  <div class="politician_cv">
+    <span>Curriculum Vitae:</span>
+    <ul id="politician_cvs">
+      <% cvs.map {|a| MultimediaFile.new(a)}.each do |cv| -%>
+        <li>
+          <div class="icon pdf"></div>
+          <a href="<%= cv.url %>" alt="<%= cv.name %>"  class="download"><%= truncate(cv.name, :length => 30) %></a>
+          <span class="footer"><%= number_to_human_size(cv.size) %> (<%= cv.file_type %>)</span>
+        </li>
+      <% end -%>
+    </ul>
+  </div>
+<% end %>

@@ -1,0 +1,32 @@
+<!-- jquery -->
+
+<% player_id ||= nil %>
+<% show_scrubber ||= :true %>
+<% auto_play ||= :true %>                         
+<% timeline_bg ||= nil %>
+
+<% videos_info = video_info.is_a?(Array) ? video_info : [video_info] %>
+
+<% content_for :js_data do %>
+  <%= javascript_include_tag('flowplayer.min') if player_id.blank? %>
+  <%= javascript_include_tag('public/irekia_flowplayer') %>
+  <%= javascript_tag do %>
+    $(document).ready(function(){
+      Irekia.hostWithPort = "http://<%= request.host_with_port %>";
+      Irekia.fp_key = "<%=  flowplayer_info[:key] %>";
+      Irekia.fp_path = "<%= flowplayer_info[:path] %>";
+      Irekia.fp_rtmp = "<%= flowplayer_info[:rtmp_plugin] %>";
+      Irekia.fp_lighttpd = "<%= flowplayer_info[:streaming_plugin] %>";
+      Irekia.fp_gatracker = "<%= flowplayer_info[:gatracker_plugin] %>";      
+      Irekia.fp_captions = "<%= flowplayer_info[:captions_plugin] %>";            
+      Irekia.fp_content = "<%= flowplayer_info[:content_plugin] %>";                  
+      Irekia.pageTracker = null;
+      
+      <% fvideo_info = videos_info.shift %>     
+      <%- if fvideo_info.present? -%>
+        <% captions_url = fvideo_info[:captions_url] %>        
+        Irekia.player = initPlayer("<%= fvideo_info[:player_id] %>", "<%= fvideo_info[:video] %>", <%= show_scrubber.eql?(:true) ? true : false %>, <%= auto_play.eql?(:true) ? true : false %>,  "<%= captions_url %>",  "<%= timeline_bg %>");    
+      <%- end -%>
+    });
+  <% end %>
+<% end %>

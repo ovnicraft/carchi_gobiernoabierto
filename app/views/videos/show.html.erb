@@ -1,0 +1,111 @@
+<% content_for :facebook_meta do -%>
+  <meta property="og:title" content="<%= @video.title %> - <%= Settings.site_name %>" />
+<% end -%> 
+
+<% video_info = flv_video_info(@video) %>
+<% video_info[:captions_url] = @video.captions_url %>
+
+<div class="section container videos show">
+  <%= render :partial => '/shared/context', :locals => {:type => 'videos', :area => @video.area} %>
+  <div class='section_main row-fluid'>
+    <div class="section_content span8">
+      <div class='article videos'>
+        <%= render :partial => 'shared/edit_links', :locals => {:item => @video} %>
+
+        <%= translation_missing_info unless @video.translated_to?(I18n.locale.to_s) %>
+
+        <div class='top'>
+          <%= link_to_item_comments(@comments.total_entries) %>
+        </div> 
+        
+        <div class="player webtv_video image_wrap">
+          <%= render :partial => '/videos/player', :locals => {:video_info => video_info, :show_embed => :false} %>
+          <% if @criterio.present? -%>
+            <div class='video_cuepoint'>
+              <% timeline_bg, timeline_bg_footer = build_video_cuepoint_overlay(@video, @criterio) %>
+              <%= image_tag(timeline_bg_footer) if timeline_bg_footer.present? %>
+            </div>
+          <% end -%>  
+        </div>
+
+        <h1 class='title'><%= @video.title %></h1>
+
+        <%= render_date(@video.published_at) %>
+        
+        <%= render :partial => '/shared/tags', :locals => {:tags => @video.public_tags_without_politicians} %>
+
+        <div class='toolbar'>     
+          <%= render :partial => '/shared/share', :locals => {:item => @video} %>
+          <div class='embed'>    
+            <%= link_to t('videos.embed'), "#", :onclick => "showEmbedCodePhotoVideoViewer(this); return false;" %> 
+          </div>   
+
+          <%- if @video.featured_mpg_video.present? -%>
+          <div class="download">
+            <%= link_to t('videos.descargar'), File.join(Document::MULTIMEDIA_URL, @video.featured_mpg_video), :class => "download" %>
+          </div>
+          <%- elsif @video.document_id && @video.document.published? -%>
+          <div class="download">
+            <%= link_to t('descargas'), news_path(@video.document), :class => "download" %>
+          </div>
+          <%- end -%>
+          
+          <% if @video.transcription_available? %>
+            <div class='video_transcription_link'>
+              <%= link_to t('videos.transcripcion'), "#", :onclick => "$('div.transcription').toggle();return false;" %>
+            </div>
+          <% end %>
+          
+          <div style="display:none;" class="embed_container">
+            <textarea readonly="readonly" cols="45" rows="3"><%= render(:partial => "/shared/code_to_embed_video.html", :locals => {:video_info => video_info}).gsub(/\n/, '') %></textarea>                       
+          </div>       
+        </div>
+
+        <% if @video.transcription_available? %>     
+          <% highlight_regexp = @criterio.present? ? get_highlight_regexp(@criterio.get_keywords) : nil %>
+          <div class="transcription" style="<%= 'display: none' unless use_flowplayer? %>">
+            <div class='section_heading'><%= t('videos.transcripcion') %></div>
+            <div id="transcriptText">
+            <% @video.transcription.keys.sort {|a,b| a.to_i <=> b.to_i}.each do |time| %>  
+              <div id="<%= "text#{time}" %>" class="video_transcription_cuepoint">
+                <%= highlight_according_to_regexp(@video.transcription[time], highlight_regexp) %>
+              </div> 
+            <% end %>
+            </div>
+          </div>
+        <% end %>
+
+        <%= render :partial => '/shared/more_info', :locals => {:news => @video.document} if @video.document_id && @video.document.is_public? && (can_edit?("videos") || @video.document.published?) %>
+
+        <%= render :partial => "/comments/list", :locals => {:parent => @video, :comments => @comments} %>  
+      </div>
+    </div>
+
+    <% if @related_videos.present? -%>
+      <div class='section_aside span4'>
+        <%= render :partial => "shared/politicians", :object => @video.politicians %>
+        <% if @related_videos.present? %>
+          <div class='aside_module related_videos'>
+            <div class='title'>
+              <span><%= t('videos.videos_relacionados') %></span>
+            </div>
+            <div class='content'>
+              <ul class='std_list related videos'>
+                <%= render :partial => '/videos/list_item', :collection => @related_videos, :as => :video, :locals => {:target => :related} %>
+              </ul>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end -%>
+  </div>
+</div>  
+
+<% if use_flowplayer? && @video.transcription_available? %>  
+  <% content_for :js_data do %>
+    <%= javascript_include_tag 'public/video_transcription.js' %>
+  <% end %>
+<% elsif @video.captions_available? %>
+  <%= init_jquery_videosub %>
+<% end %>
+

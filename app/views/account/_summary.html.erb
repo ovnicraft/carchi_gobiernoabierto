@@ -1,0 +1,70 @@
+<div class='section container slide' id='welcome_slide' style="display: <%= (current_user.is_a?(User) && current_user.session_logs.length < 5) ? 'block' : 'none'%>">
+  <div class='section_main row-fluid'>
+    <div class='section_content span12'>
+      <%= link_to content_tag(:span, 'CERRAR', :class => 'close'), "#", :onclick => "toggleWelcomeSlide();return false;" %>
+      <div class='carousel slide' id='welcome_carousel'>
+        <div class='carousel-inner'>
+          <div class='active item follow'>
+            <div class='title'><%= t('account.welcome.sigue_te_interesa') %></div>
+            <div class='description'>
+              <%= simple_format t('account.welcome.sigue_te_interesa_text', :publisher_name => Settings.publisher[:name]) %>
+              <%= link_to (content_tag :span, t('account.welcome.ir_areas', :publisher_name => Settings.publisher[:name])), areas_path, :class => 'a_btn' %>
+            </div>
+          </div>
+          <div class='item collaborate'>
+            <div class='title'><%= t('account.welcome.participa') %></div>
+            <div class='description'><%= t('account.welcome.participa_text', :publisher_name => Settings.publisher[:name]) %></div>
+          </div>
+          <div class='item configure'>
+            <div class='title'><%= t('account.welcome.configura') %></div>
+            <div class='description'>
+              <%= simple_format t('account.welcome.configura_text') %>
+              <%= link_to (content_tag :span, t('account.welcome.configura')), edit_account_path, :class => 'a_btn' %>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control right" href="#welcome_carousel" data-slide="next">&rsaquo;</a>  
+      </div>  
+    </div>
+  </div>
+</div>
+
+<div class='section container intro account show' id='intro' style="display: <%= (current_user.is_a?(User) && current_user.session_logs.length < 5) ? 'none' : 'block'%>">
+  <%= render :partial => '/shared/context', :locals => {:title => t('account.your_profile'), :type => 'users'} %>
+  <div class='section_main row-fluid'>
+    <div class='section_content span12'>
+      <div class='account summary'>
+        <div class='profile_menu'>
+          <ul>
+            <%= content_tag(:li, link_to(t('account.see_public_profile'), user_path(current_user), :class => "public_profile pull-right"))unless current_user.is_admin? %>
+            <li><%= link_to t('account.edit_profile'), edit_account_path, :class => "config pull-right" %></li>
+            <li><%= link_to t('account.welcome.user_slide'), "#", :onclick => "toggleWelcomeSlide();return false;", :class => "help pull-right" %></li>
+          </ul>
+        </div>
+
+       <div class='avatar_and_name row-fluid'>
+          <div class='avatar span1'>
+            <%= avatar current_user %>
+          </div>
+          <div class='user_name span7'>
+            <h1 class='title'><%= t('site.hola', :name => current_user.name) %></h1>
+          </div>
+        </div>
+        <div class='info following_info row-fluid'>
+          <span class='span7 offset1'>
+          <% if @following_politicians.blank? && @following_areas.blank? -%>
+            <%= t('account.no_sigues_a_nadie') %>
+          <% else -%>
+            <%=raw t('account.actualmente_sigues', :politicians => link_to(t('account.politicians_following', :count => @following_politicians.count), followings_account_path(:anchor => 'middle')) , :areas => link_to(t('account.areas_following', :count => @following_areas.count), followings_account_path(:anchor => 'middle'))) %>
+          <% end -%>
+          </span>
+        </div>
+        <% if current_user.is_a?(Journalist) %>
+          <div class="info department_alerts">
+            <%= t('account.department_alerts', :departments => link_to(t('account.n_departments', :count => current_user.departments.count), edit_account_path)) %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

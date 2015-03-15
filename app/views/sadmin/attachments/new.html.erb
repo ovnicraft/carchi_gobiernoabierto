@@ -1,0 +1,10 @@
+<%= form_for @attachment, :url => sadmin_attachments_path, :html => {:multipart => true} do |f| %>
+  <%= error_messages(f.object) %>
+  <%= hidden_field_tag :t, params[:t] %>
+  <%= hidden_field_tag :attachable_id, params[:attachable_id] %>
+  <%= hidden_field_tag :attachable_type, params[:attachable_type] %>
+
+  <%= render :partial => "form", :locals => {:f => f} %>
+
+<% end %>
+

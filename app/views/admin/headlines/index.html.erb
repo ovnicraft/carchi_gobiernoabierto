@@ -1,0 +1,103 @@
+<div style="clear:both; margin:1em 0px;">
+  <%= form_tag admin_headlines_path, :method => :get do  %>
+  Búsqueda por título:
+    <%= text_field_tag :q %>
+    <%= submit_tag "Buscar", :name => '' %>
+  <% end %>
+</div>
+
+<%= will_paginate @headlines %>
+
+<table class="comments headlines" cellspacing="0">
+  <tr>
+    <th><%= link_to_unless @sort_order.eql?("title"), "Título", admin_headlines_path(params.merge(:sort => "title")) %></th>
+    <th><%= link_to_unless @sort_order.eql?("media"), "Medio", admin_headlines_path(params.merge(:sort => "media")) %></th>
+    <th><%= link_to_unless @sort_order.eql?("published_at"), "Fecha de publicación", admin_headlines_path(params.merge(:sort => "published_at")) %></th>
+    <th>Área/Tags</th>
+    <th>Idioma</th>
+    <th>Estado</th>
+  </tr>
+
+  <%= render :partial => "headline", :collection => @headlines %>
+</table>
+
+<%= will_paginate @headlines %>
+
+<% content_for :head do %>
+  <script type='text/javascript'>
+    Event.observe(window, 'load', function(){
+      if($$('table.headlines').length > 0){
+        $$('.area_name').each(function(element) {
+          element.observe('change', function(){
+            updateArea(element);
+          });
+        });
+        $$('div.tags input[type=submit]').each(function(element) {
+          element.observe('click', function(){
+            updateTags(element);
+          });
+        });
+        $$('.locale').each(function(element) {
+          element.observe('change', function(){
+            updateLocale(element);
+          });
+        });
+      }
+    });
+
+    function updateArea(element) {
+      if (element.up('tr').id.match(/headline_(.*)/)){
+        id = element.up('tr').id.match(/headline_(.*)/)[1]
+      }
+      area_tags = element.value;
+      spinner= element.next();
+      spinner.show();
+      new Ajax.Request('/es/admin/headlines/' + id,
+        {
+          method:'put',
+          parameters: {build_params: true, area_tags: area_tags},
+          onSuccess: function(transport){
+            spinner.hide();
+            element.up('tr').highlight({startcolor: '#66FF33'});
+          },
+          onFailure: function(){ alert('No se ha podido cambiar el área.') }
+        });
+    }
+
+    function updateLocale(element) {
+      if (element.up('tr').id.match(/headline_(.*)/)){
+        id = element.up('tr').id.match(/headline_(.*)/)[1]
+      }
+      locale = element.value;
+      spinner= element.next();
+      spinner.show();
+      new Ajax.Request('/es/admin/headlines/' + id,
+        {
+          method:'put',
+          parameters: {build_params: true, hl_locale: locale},
+          onSuccess: function(transport){
+            spinner.hide();
+          },
+          onFailure: function(){ alert('No se ha podido cambiar el idioma.') }
+        });
+    }
+
+    function updateTags(element) {
+      if (element.up('tr').id.match(/headline_(.*)/)){
+        id = element.up('tr').id.match(/headline_(.*)/)[1]
+      }
+      tag_list = element.previous('textarea').value;
+      spinner= element.up('div').next('span');
+      spinner.show();
+      new Ajax.Request('/es/admin/headlines/' + id,
+        {
+          method:'put',
+          parameters: {build_params: true, tag_list: tag_list},
+          onSuccess: function(transport){
+            spinner.hide();
+          },
+          onFailure: function(){ alert('No se ha podido guardar los tags.') }
+        });
+    }
+  </script>
+<% end %>

@@ -1,0 +1,4 @@
+<div class="agenda_nav_opts">
+  <%= link_to t('sadmin.events.agenda_mes'), sadmin_events_path(:year => @selected_date[:year], :month => @selected_date[:month])  %>
+  <%= link_to t('sadmin.events.agenda_semana'), week_sadmin_events_path(:year => @selected_date[:year], :month => @selected_date[:month], :day => @selected_date[:day]) unless %(week week2).include?(controller.action_name)%>
+</div>

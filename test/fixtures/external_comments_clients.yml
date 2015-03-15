@@ -1,0 +1,25 @@
+euskadinet:
+  name: "euskadi.net"
+  url: "www.euskadi.net"
+  code: "r33"
+  organization: lehendakaritza
+cliente_lehendakaritza:
+  name: "Lehendakaritza"
+  url: "www.lehendakaritza.ejgv.euskadi.net"
+  code: "r48"
+  organization: lehendakaritza  
+cliente_sin_paginas:
+  name: "Cliente sin páginas"
+  url: "cliente_sin_paginas.net"  
+  code: "xxx"
+  organization: lehendakaritza
+cliente_emakunde:
+  name: "Emakunde"
+  url: "emakunde.euskadi.net"
+  code: "emakunde"
+  organization: emakunde
+cliente_programa:
+  name: "Programa"
+  url: "programa.irekia.euskadi.net"
+  code: "programa"
+  

@@ -1,0 +1,46 @@
+<tr id="headline_<%= headline.id %>"class="<%= headline.draft ? 'pendiente' : 'aprobado' %>">
+  <td>
+    <%= link_to headline.title, headline.url, :rel => 'external' %><br />
+    <%= truncate(headline.body, :length => 250) %><br />
+    <%= link_to_headline_tweets(headline) if headline.tweets.present? && headline.tweets > 0 %>
+  </td>
+  <td><%= headline.media_name %></td>
+  <td><%= I18n.l(headline.published_at.to_date, :format => :list) %></td>
+  <td>
+    <%= select_tag 'area_name', options_from_collection_for_select(Area.all, :area_tag, :name, headline.area_tag), :class => 'area_name', :id => "area_hl_#{headline.id}", :include_blank => true %>
+    <br/>
+    <!-- tofix: only saves new tags, old tag_list is lost -->
+    <%= link_to "Tags: #{headline.tag_list_without_areas}", "#", :onclick => "$(this).toggle();$(this).next('div').toggle();return false;" %>
+    <div class='tags' style='display:none'>
+      <%= text_area_with_auto_complete_inline :headline, :tag_list_without_areas, {:size => "40x4", :id => "headline_#{headline.id}_tag_list_without_areas", :value => headline.tag_list_without_areas}, {:tokens => ',', :indicator => "spinner_#{headline.id}"} %>
+      <div class='hint'>Separados por coma</div>
+      <%= submit_tag t('guardar'), :name => '' %>
+      <%= link_to t('cancelar'), "#", :onclick => "$(this).up('div').toggle(); $(this).up('div.tags').previous().toggle();return false;"%>
+      <span id='<%= "spinner_#{headline.id}" %>' style = 'display:none'><%= image_tag 'admin/spinner.gif' %></span>
+    </div>  
+    <span style='display:none'>Guardando...</span>
+  </td> 
+  <td>
+    <%= select_tag 'locale', options_for_select(AvailableLocales::AVAILABLE_LANGUAGES.keys.map(&:to_s), headline.locale), :class => 'locale', :id => "locale_hl_#{headline.id}"  %>   
+    <span style='display:none'>G...</span> 
+  </td>
+  <td style="white-space:nowrap;" class="status">
+    <span id="status_<%= headline.id %>"><%= headline.draft ? 'Borrador' : 'Aprobado' %></span>
+    <div id="status_links_<%= headline.id %>" class="status_links">
+      <% if can?("approve", "headlines") %>
+        <% if headline.draft %>  
+          <%= link_to "Aprobar", 
+                admin_headline_path(:id => headline.id, :headline => {:draft => false}), 
+                method: :put, data: {remote: true} %>
+        <% else %>
+          <%= link_to "Borrador", 
+                admin_headline_path(:id => headline.id, :headline => {:draft => true}), 
+                method: :put, data: {remote: true} %>
+        <% end %>
+        <br/><%= link_to "<span>Eliminar</span>".html_safe, 
+              admin_headline_path(headline), method: :delete, data: {confirm: '¿Estás seguro?', remote: true}, 
+              title: "Eliminar" %>
+      <% end %>
+    </div>
+  </td>
+</tr>  

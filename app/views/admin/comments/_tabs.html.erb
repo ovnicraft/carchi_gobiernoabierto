@@ -1,0 +1,11 @@
+  <div class="one_news_submenu">
+    <ul>
+      <li class="<%= 'active' if params[:controller].eql?('admin/comments') %>"><%= link_to Settings.site_name, admin_comments_path() %></li>
+      <li class="<%= 'active' if params[:controller].eql?('admin/external/comments') %>"><%= link_to  t("admin.external.comment_items.title"), admin_external_comments_path() %></li>    
+    <% if current_user.is_admin? %>  
+      <li class="<%= 'active' if ['admin/external/clients', 'admin/external/items'].include?(params[:controller]) %>"><%= link_to  t("admin.external.clients.title"), admin_external_clients_path() %></li>    
+    <% end %>
+    </ul>
+  </div>
+
+<h2><%= @subtab_title %></h2>

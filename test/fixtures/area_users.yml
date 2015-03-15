@@ -1,0 +1,16 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+politician_one_lehendakaritza:
+  user: politician_one
+  area: a_lehendakaritza
+  position: 1
+
+politician_interior_vetado:
+  user: politician_interior_vetado
+  area: a_interior
+  position: 10
+
+politician_interior:
+  user: politician_interior
+  area: a_interior
+  position: 2

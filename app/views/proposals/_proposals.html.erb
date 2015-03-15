@@ -1,0 +1,44 @@
+<% if @area 
+    additional_params = {:area_id => @area.id}
+    prefix = 'area_'
+    new_proposal_link = new_proposal_url(:area_id => @area.id)
+  elsif @politician
+    additional_params =  {:politician_id => @politician.id}
+    prefix = 'politician_'
+    new_proposal_link = new_proposal_url
+  else
+    additional_params =  {}
+    prefix = ''
+    new_proposal_link = new_proposal_url
+end %>
+
+<% content_for :head do %>
+  <%= auto_discovery_link_tag :rss, {:controller => "proposals", :action => "index", :locale => I18n.locale, :format => 'rss'}, :title => t('documents.feeds_rss') %>
+<% end %>
+
+<div class='section container' id='middle'>
+  <%= render :partial => '/shared/context', :locals => {:type => 'proposals', :area => @area} if show_context %>
+  <div class='section_main row-fluid'>
+    <div class="section_content span8">
+      <div class="proposals index" id="proposals-<%= params[:id] %>">
+        <% if @context %>
+          <div class='section_heading'><%= @title %></div>
+        <% else %>
+          <%= render :partial => "/shared/#{context_partial(@context, 'filters')}" %>
+        <% end %>
+
+        <%= render :partial => '/shared/list_items', :locals => {:items => @proposals, :type => 'proposals'} %>
+      </div>
+    </div>
+    <div class="section_content span4">
+      <div class='banner_aside create_proposal'>
+        <div class='advice'><%= t('proposals.advice_proposals') %></div>
+        <div class='banner_image'>
+          <%= link_to content_tag(:span, t('proposals.create_proposal')), new_proposal_link, :id => "proposal-popover", :class => "#{class_for_window_login}" unless params[:from_politicians] %>
+        </div>
+      </div>
+      
+      <%= render_zuzenean_banner_advice %>
+    </div>
+  </div>  
+</div>

@@ -1,0 +1,17 @@
+<div class='section container politicians index'>
+  <%= render :partial => '/shared/context', :locals => {:type => 'politicians', :title => t('politicians.en_irekia2', :site_name => Settings.site_name)} if show_context %>
+  <div class='section_main row-fluid'>
+    <div class='section_content span12'>
+      <%= content_tag(:div, t('areas.politicians', :count => @politicians.size, :name => @area.name), :class => 'section_heading') if @area.present? %>
+      <div class='politicians index'>
+        <div class='col_list politicians_list'>
+          <% @politicians.in_groups_of(3).each do |politicians| %>
+            <ul class='row-fluid'>
+              <%= render :partial => '/politicians/list_item', :collection => politicians.compact, :as => :politician, :locals => {:additional_class => 'span4'} %>
+            </ul>
+          <% end %>  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,5 @@
+<% if Settings.optional_modules.debates %>
+debate_completo_lehendakaritza:
+  debate: debate_completo
+  organization_id: <%= ActiveRecord::FixtureSet.identify(:organization_for_debate) %>
+<% end %>

@@ -1,0 +1,13 @@
+<% additional_class ||= '' %>
+<% if debate_entity.organization.present? -%>
+<li class='item organization <%= additional_class %>'>
+  <% if debate_entity.organization.logo? -%>
+    <div class='item_thumbnail'>
+      <%= image_tag(debate_entity.organization.logo.url) %>
+    </div>
+  <% end -%>  
+  <div class='item_content <%= debate_entity.organization.logo? ? '' : 'fullwidth' %>'>    
+    <span class="organization_name"><%= link_to debate_entity.organization.name, debate_entity.url, :rel => 'external' %></span>
+  </div>
+</li>
+<% end -%>

@@ -1,0 +1,53 @@
+<div class='section container'>
+  <%= render :partial => '/shared/context', :locals => {:title => t('account.your_profile'), :type => 'user'} %>
+  <div class='section_main row-fluid'>
+    <div class='section_content span12'>
+      <div class='signup_form'>
+        <div class='section_heading'><%= t("people.remember_this_information_is_public", :site_name => Settings.site_name) %></div>
+        <div class='row-fluid'>
+          <div class='span8'>
+            <%= form_for @user, as: :user, url: account_path, html: {method: :put, multipart: true, class: 'form form-horizontal'} do |f| %>
+              <%- if @subscription -%>
+                <%= hidden_field_tag :subscription, '1' %>
+                <div class='control-group'>
+                  <%= f.label :bulletin_email, '', :class => 'control-label' %>
+                  <div class='controls'>
+                    <%= f.text_field :bulletin_email, :class => 'input-xlarge' %>
+                  </div>
+                </div>
+                <%= render :partial => "/users/bulletin_form", :locals => {:f => f} %>
+              <%- else -%>
+                <%= render :partial => "/users/form", :locals => {:f => f} %>
+              <%- end -%>
+              <div class="form-actions">
+                <%= f.submit t('guardar'), :class => 'submit irekia_btn' %>
+              </div>
+            <% end %>
+          </div>
+
+          <div class='span4'>
+            <div class="delete_profile">
+              <p><%= t("people.remove_your_profile_text", :link => link_to(t('people.remove_your_profile'), "#delete_profile", :"data-toggle" => 'modal')).html_safe %></p>
+              <p class="last"><%= t("people.we_hope_you_dont_go") %></p>
+
+              <div id='delete_profile' class='modal hide fade'>
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h2><%= t('people.remove_profile') %></h2>
+                </div>
+                <div class='modal-body'>
+                  <div><%= t("people.sure_destroy_profile", :site_name => Settings.site_name) %></div>
+                </div>
+                <div class='modal-footer'>
+                  <%= link_to t("people.remove_profile"), account_path, :method => :delete, :class => "remove irekia_btn" %>
+                  <button class="irekia_btn" data-dismiss="modal" aria-hidden="true"><%= t('cancelar') %></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

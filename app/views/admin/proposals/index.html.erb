@@ -1,0 +1,29 @@
+<div style="clear:both; margin:1em 0px;">
+  <%= form_tag admin_proposals_path, :method => :get do  %>
+  <%= t('sadmin.news.busqueda_titulo') %> :
+    <%= text_field_tag :q, params[:q] %>
+    <%= submit_tag "Buscar", name: '' %>
+  <% end %>
+</div>
+
+<%= render :partial => "/admin/proposals/menu" %>
+
+<%= will_paginate @proposals %>
+
+<table class="comments" cellspacing="0">
+  <tr>
+    <th><%= link_to_unless @sort_order.eql?("title"), t('sadmin.news.titulo'), admin_proposals_path(params.merge(:sort => "title")) %></th>
+    <th><%= link_to_unless @sort_order.eql?("publish"), t('sadmin.news.fecha_publicacion'), admin_proposals_path(params.merge(:sort => "publish")) %></th>
+    <th><%= link_to_unless @sort_order.eql?("update"), t('sadmin.news.ultima_actualizacion'), admin_proposals_path(params.merge(:sort => "update")) %></th>
+    <th><%= t('sadmin.news.area') %></th>
+    <th><%= t('admin.proposals.departamento') %></th>
+    <th><%= t('admin.proposals.paginas_publicas') %></th>
+    <th><%= t('admin.proposals.estado') %></th>
+    <th><%= t('sadmin.news.comentarios') %></th>
+  </tr>
+  
+  <%= render :partial => "proposal", :collection => @proposals %>
+
+</table>
+
+<%= will_paginate @proposals %>

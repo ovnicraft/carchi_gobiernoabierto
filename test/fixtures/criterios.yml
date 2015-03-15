@@ -1,0 +1,19 @@
+criterio_one:
+  title: 'keyword: noticia'
+  results_count: 13
+  ip: '127.0.0.1'
+  
+criterio_two:
+  title: 'keyword: noticia AND organization:interior'
+  results_count: 2  
+  parent_id: <%= ActiveRecord::FixtureSet.identify(:criterio_one) %>
+  ip: '127.0.0.1' 
+  
+criterio_for_subtitles:
+  title: 'keyword: tal'
+  results_count: 1  
+  ip: '127.0.0.1' 
+
+criterio_for_tag:
+  title: 'tags: Prueba|Froga|Test'
+  ip: '127.0.0.1' 

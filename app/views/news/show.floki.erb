@@ -1,0 +1,42 @@
+<div class="<%= 'ipad_container' if ipad_app_request? %>">
+    <h1><%= @document.title %></h1>
+    <span class="date"><%= I18n.localize(@document.published_at, :format => :long) if @document.published_at %></span>
+
+    <%- size = retina_display_request? ? 'n770' : 'n320' -%>
+    <% if news_url = news_img_and_alt(@document, size)[:img] %>
+      <div class="video">
+        <%= image_tag(news_url.strip_version, :width => "300px") %>
+      </div>
+    <% end %>
+
+    <%=raw @document.pretty_body %>
+
+    <% if current_version_supports_links %>
+      <ul class="links_gv">  
+        <% if @document.album.present? && @document.album.photos.present? %>
+          <li class='gallery'>
+            <%= link_to t('mob_app.gallery'), url_for(:controller => "mob_app", :action => "photos", :locale => I18n.locale, :only_path => false, :news_id => @document.id) %>
+          </li>  
+        <% end %>
+      
+        <% if @document.webtv_videos.present? %>
+          <li class='videos'>
+            <%= link_to t('mob_app.ver_video', :count => @document.webtv_videos.size), url_for(:controller => "mob_app", :action => "videos", :locale => I18n.locale, :only_path => false, :news_id => @document.id) %>
+          </li>  
+        <% end %>
+      </ul>
+    
+      <% if @document.tags.all_public.size > 0 %>
+        <div class='tags'>
+          <span class='tags_title'><%= t('tags.title') %></span>
+          <ul>
+      <% @document.tags.all_public.each do |tag| %>
+        <li class='tag'><%= link_to(tag.name, url_for(:controller => "mob_app", :action => "tags", :locale => I18n.locale, :only_path => false, :type  => 'News', :q => tag.sanitized_name)) %></li>
+      <% end %>
+    </ul>
+        </div>  
+      <% end %>
+    <% end %>  
+    
+    <%= render :partial => "/comments/comments.floki" %>
+</div>

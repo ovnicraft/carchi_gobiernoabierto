@@ -1,0 +1,14 @@
+<h1><%= @politician.public_name %></h1>
+
+<h2><%= User.human_attribute_name(@what) %></h2>
+
+<p>
+  <%= @what_content %>
+</p>  
+
+<% if @politician.gc_link.present? -%>
+  <h2><%= I18n.t('site.Contacto') %></h2>
+  <div class="gc_link">
+    <%= link_to t('politicians.enlace_guia'), @politician.gc_link, :rel => 'external' %>
+  </div>
+<% end -%>

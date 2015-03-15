@@ -1,0 +1,18 @@
+<h1>Usuarios</h1>
+
+<table class="list" cellspacing="0" cellpadding="0">
+  <tr>
+    <th>Nombre</th>
+    <th>Email</th>
+    <th>Login</th>
+    <th>&nbsp;</th>
+  </tr>
+  
+<% for user in @users %>
+  <tr>
+    <td class="user_icon"><%=h user.name %></td>
+    <td><%= h user.email %></td>
+    <td><%=h user.login %></td>
+  </tr>
+<% end %>
+</table>

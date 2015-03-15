@@ -1,0 +1,12 @@
+
+<% index = snet.new_record? ? '9999999' : snet.id %> 
+<% new_or_existing = snet.new_record? ? 'new' : 'existing' %> 
+<% prefix = "sorganization[#{new_or_existing}_snetworks_attributes][#{index}]" %>
+<%= fields_for prefix, snet do |snet_form| %>
+  <tr class='snetwork_data'>
+    <th><%= snet_form.label :url %></th>
+    <td><%= snet_form.text_field :url %></td>
+    <%= snet_form.hidden_field :position, :value => position, :class => 'position' %>
+    <td class='remove'><%= remove_snetwork(snet_form) %></td>
+  </tr>
+<% end %>

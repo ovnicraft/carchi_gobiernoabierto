@@ -1,0 +1,78 @@
+<% if can_create?("news") %>
+<div style="clear:both; margin:1em 0px;">
+  <ul class="edit_links">
+    <li><%= link_to t('sadmin.news.crear_noticia'), new_sadmin_news_path, :class => "new" %></li>
+    <% if can?("export", "news") %>
+      <li><%= link_to t('sadmin.news.export_noticias_in_epub'), choose_criterio_sadmin_news_index_path, :class => "export" %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div style="clear:both; margin:1em 0px;">
+  <%= form_tag sadmin_news_index_path, :method => :get do  %>
+    <%= t('sadmin.news.busqueda_titulo') %>:
+    <%= text_field_tag :q, params[:q] %>
+    <%= submit_tag t('site.buscar') %>
+  <% end %>
+</div>
+
+<%= will_paginate @news, :previous_label => "&laquo; #{t('anterior')}", :next_label => "#{t('siguiente')} &raquo;" %>
+
+<table class="comments" cellspacing="0">
+  <tr>
+    <th class="<%= 'order' if @sort_order.eql?("title") %>">
+      <%= link_to_unless @sort_order.eql?("title"), t('sadmin.news.titulo'), sadmin_news_index_path(params.merge(:sort => "title")) %>
+    </th>
+    <th class="<%= 'order' if @sort_order.eql?("publish") %>">
+      <%= link_to_unless @sort_order.eql?("publish"), t('sadmin.news.fecha_publicacion'), sadmin_news_index_path(params.merge(:sort => "publish")) %>
+    </th>
+    <th class="<%= 'order' if @sort_order.eql?("update") %>">
+      <%= link_to_unless @sort_order.eql?("update"), t('sadmin.news.ultima_actualizacion'), sadmin_news_index_path(params.merge(:sort => "update")) %>
+    </th>
+    <!-- <th>Páginas públicas</th> -->
+    <th><%= t('sadmin.news.comentarios') %></th>
+  </tr>
+  
+  <%- @news.each do |news| -%>
+  <tr>
+    <td class="<%= 'enet' if news.consejo_news_id %> ">
+      <%= link_to news.title, sadmin_news_path(news.id) %><br/>
+      <% if news.published? %>
+        <span class="published_notice"><%= t('sadmin.news.publicado') %>.</span>
+      <% elsif news.is_private? %>
+        <span class='draft_notice'><%= t('sadmin.news.borrador') %>.</span>
+      <% else %>
+          <span class="unpublished_notice">
+            <%= t('sadmin.news.se_publicara_en', :fecha => I18n.localize(news.published_at, :format => :short)) %>
+          </span>
+      <% end %>
+      
+      <span class="date">
+        <%= news.department.name %>.
+        <%= news.last_editor.internal_name if news.last_editor %>.
+      </span>
+      
+      <%= content_tag :span, "#{t('sadmin.news.destacado')} #{news.featured}.", :class => "destacado" if news.featured %> 
+      <%= content_tag :span, t('sadmin.news.destacado_boletin'), :class => "destacado" if news.featured_bulletin %> 
+    </td>
+    <td>
+      <%= I18n.localize(news.published_at, :format => :list) if news.published_at %>
+    </td>
+    <td>
+      <%= I18n.localize(news.updated_at, :format => :list) %><br/>
+      <%- News::LANGUAGES.each do |l| -%>
+        <span class="translated_<%= news.translated_to?(l.to_s) %>" title="<%= pretty_translated(news, l) %>">
+          <%= l %>
+        </span>
+      <%- end -%>
+    </td>
+      <td style="white-space:nowrap;">
+        <%= link_to "#{t('sadmin.news.comentarios')} (#{news.comments_count})", comments_on_item_admin_comment_path(:id => news.id, :type => "Document") %>
+      </td>
+  </tr>
+  <%- end -%>
+</table>
+
+
+<%= will_paginate @news, :previous_label => "&laquo; #{t('anterior')}", :next_label => "#{t('siguiente')} &raquo;" %>

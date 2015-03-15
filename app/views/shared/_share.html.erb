@@ -1,0 +1,59 @@
+<% content_for :css_data do %>
+  <%= stylesheet_link_tag 'public/share' %>
+<% end %>
+
+<% item_url = request.url %>
+<% escaped_item_url = CGI::escape(item_url) %>
+<% message = CGI::escape(truncate(item.title, :length => 139 - item_url.length)) %>
+<% message_for_twitter = CGI::escape(truncate(item.title, :length => 140 - 25)) %>
+
+<div class='share_button donotprint'>
+  <%= link_to t('site.compartir'), '#', :class => 'share_popover' %>
+  
+  <div class='share_links' style='display:none'>
+    <%= link_to "<span class='share_logo share_email'></span><span class='share_text'>Email</span>".html_safe, '#send_email', :class => 'share_link email' %>
+    <%= link_to "<span class='share_logo share_facebook'></span><span class='share_text'>Facebook</span>".html_safe, "https://www.facebook.com/sharer/sharer.php?u=#{escaped_item_url}", :class => 'share_link facebook', :rel => 'external' %>
+    <%= link_to "<span class='share_logo share_twitter'></span><span class='share_text'>Twitter</span>".html_safe, "https://twitter.com/share?text=#{message_for_twitter}", :class => 'share_link witter', :rel => 'external' %>
+    <%= link_to "<span class='share_logo share_googleplus'></span><span class='share_text'>GooglePlus</span>".html_safe,  "https://plus.google.com/share?url=#{escaped_item_url}", :class => 'share_link googleplus', :rel => 'external' %>
+    <%= link_to "<span class='share_logo share_pinterest'></span><span class='share_text'>Pinterest</span>".html_safe,  "http://pinterest.com/pin/create/button?url=#{escaped_item_url}&description=#{message}", :class => 'share_link pinterest', :rel => 'external' %>
+  </div>
+
+  <div id="send_email" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalLabel"><%= t('share.send_email') %></h3>
+    </div>
+    <div class="modal-body">
+      <%= form_tag send_email_site_path, :method => :post, :class => 'form-horizontal' do %>
+        <%= hidden_field_tag :id, item.id %>
+        <%= hidden_field_tag :t, item.class %>
+        <div class='control-group'>
+          <%= label_tag :sender_name, t('share.tu_nombre_completo'), :class => 'control-label' %>
+          <div class='controls'>
+            <%= text_field_tag :sender_name, '', :class => 'input-xlarge validate', :required => true %>
+          </div>
+        </div>
+        <div class='control-group'>
+          <%= label_tag :recipient_name, t('share.nombre_destinatario'), :class => 'control-label' %>
+          <div class='controls'>
+            <%= text_field_tag :recipient_name, '', :class => 'input-xlarge validate', :required => true %>
+          </div>
+        </div>  
+        <div class='control-group'>
+          <%= label_tag :recipient_email, t('share.email_destinatario'),:class => 'control-label' %>
+          <div class='controls'>
+            <%= text_field_tag :recipient_email, '', :class => 'input-xlarge validate', :type => 'email', :required => true %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href='#' class="irekia_btn" data-dismiss="modal" aria-hidden="true"><%= t('cancelar') %></a>
+          <%= submit_tag t('enviar'), :class => 'irekia_btn', :disabled_with => t('enviando') %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% content_for :js_data do %>
+  <%= javascript_include_tag 'public/share' %>
+<% end %>

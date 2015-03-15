@@ -1,0 +1,21 @@
+<% additional_class ||= '' %>
+<% show_ex_alert ||= false %>
+<li class='item politician <%= additional_class %>'>
+  <div class='item_thumbnail'>
+    <%= avatar politician %>
+  </div>
+  <div class='item_content'>
+    <% if politician.approved_or_ex? %>
+      <%= link_to_user_profile_unless_deleted(politician, {:class => :name}) %>
+    <% else %>
+      <span class="politician_with_gc_link">
+        <%= politician.public_name %><%= show_gc_link_if_present(politician) %>
+      </span>
+    <% end %>    
+    <div class='position'>
+      <%= politician.public_role %>
+      <%= " (*)" if show_ex_alert && politician.former? %>
+    </div>
+    <%= show_search_explanation(politician) %>                                           
+  </div>
+</li>

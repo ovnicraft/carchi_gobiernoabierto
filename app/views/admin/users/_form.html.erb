@@ -1,0 +1,176 @@
+<table class="admin">  
+  
+  <tr>
+    <th><label for="name"><span class="<%= 'twit' if @user.is_twitter_user? %>">Nombre</span></label> (se muestra en la web)</th>
+    <td><%= f.text_field :name %></td>
+  </tr>
+  
+  <tr>
+    <th><label for="last_names">Apellidos (se muestra en la web)</label></th>
+    <td><%= f.text_field :last_names %></td>
+  </tr>
+
+  <tr>
+    <th><label for="telephone">Nombre interno y teléfono (NO se muestra en la web)</label></th>
+    <td><%= f.text_field :telephone %></td>
+  </tr>
+
+  
+  <tr>
+    <th><label for="email">Email(NO se muestra en la web)</label></th>
+    <td><%= f.text_field :email %></td>
+  </tr>
+
+  <% if ['Person', 'Journalist'].include?(@user.type) %>
+  <tr>
+    <th><label for="url">URL de su página o blog personal</label></th>
+    <td><%= f.text_field :url %></td>
+  </tr>
+  <% else %>
+  <tr>
+    <th><label for="type">Tipo</label></th>
+    <td><%= f.select :type, user_types_for_select.delete_if {|u| ['Person', 'Journalist'].include?(u[1])}, {:id => 'user_type'}, {:onchange => "ToggleRoleSpecificFields();return false;"} %></td>
+  </tr>
+  <% end %>
+
+  <tr>
+    <th><%= f.label :photo, User.human_attribute_name('photo') %></th>
+    <td><%= image_tag @user.photo.url(:thumb_70) if @user.photo.present? %><br/>
+        cambiar por: <%= f.file_field :photo %>
+    </td>
+  </tr>
+
+  <tr id="department_container" style="display:<%=  @user.has_department? ? 'table-row' : 'none' %>">
+    <th>
+      <%= f.label :department_id, "Departamento" %>
+    </th>
+    <td>
+      <%= f.select :department_id, Department.order("position").collect{|d| [d.name, d.id]} %>
+    </td>
+  </tr>
+
+  <tr id="streamflows_container" style="display:<%=  @user.is_a?(RoomManager) ? 'table-row' : 'none' %>">
+    <th>
+      <%= f.label :stream_flow_id, "Salas de streaming" %>
+    </th>
+    <td>
+      <% StreamFlow.not_empty_streaming.each do |sf| %>
+        <%= check_box_tag "user[stream_flow_ids][]", sf.id, @user.is_a?(RoomManager) ? @user.stream_flow_ids.include?(sf.id) : false, :id => "sf_#{sf.id}", :class => "stream_flow_checkbox" %>
+        <label for="sf_<%= sf.id %>"><%= sf.title %></label><br/>
+      <% end %>
+    </td>
+  </tr>
+
+    <tr class="politician_data_container">  
+      <th>Área</th>
+      <td>
+        <%= @user.areas.map {|a| a.name}.join(",") if @user.is_a?(Politician) %><br/>
+        <span class="hint">Se asigna desde la página del área.</span>
+      </td>
+    </tr>
+    <tr class="politician_data_container">
+      <th><%= f.label :public_role,  User.human_attribute_name('public_role') %> (en Castellano)</th>
+      <td><%= f.text_field :public_role_es  %></td>
+    </tr>
+
+    <tr class="politician_data_container">
+      <th><%= f.label :public_role,  User.human_attribute_name('public_role') %> (en Euskara)</th>
+      <td><%= f.text_field :public_role_eu  %></td>
+    </tr>
+
+    <tr class="politician_data_container">
+      <th><%= f.label :public_role,  User.human_attribute_name('public_role') %> (en English)</th>
+      <td><%= f.text_field :public_role_en  %></td>
+    </tr>
+
+    <% if Rails.configuration.external_urls[:guia_uri] %>
+    <tr class="politician_data_container">
+      <th><%= f.label :gc_id,  User.human_attribute_name('gc_id') %></th>
+      <td><%= f.text_field :gc_id  %></td>
+    </tr>
+    <% end %>
+  
+    <tr class="politician_data_container">
+      <th><%= f.label :description,  User.human_attribute_name('description') %> (en Castellano)</th>
+      <td><%= f.text_area :description_es, :size => '60x6'  %></td>
+    </tr>
+
+    <tr class="politician_data_container">
+      <th><%= f.label :description,  User.human_attribute_name('description') %> (en Euskara)</th>
+      <td><%= f.text_area :description_eu, :size => '60x6'  %></td>
+    </tr>
+
+    <tr class="politician_data_container">
+      <th><%= f.label :description,  User.human_attribute_name('description') %> (en English)</th>
+      <td><%= f.text_area :description_en, :size => '60x6'  %></td>
+    </tr>
+
+    <tr class="politician_data_container">
+      <th><%= f.label :politician_has_agenda %></th>
+      <td><%= f.check_box :politician_has_agenda  %></td>
+    </tr>
+  
+  
+
+  <% if @user.new_record? %> 
+  <tr>
+    <th><label for="password">Contraseña</label></th>
+    <td><%= f.password_field :password %></td>
+  </tr>
+
+  <tr>
+    <th><label for="password_confirmation">Confirmar contraseña</label></th>
+    <td><%= f.password_field :password_confirmation %></td>
+  </tr>
+
+  <% else %>
+  <tr>
+    <th><label for="status">Estado</label></th>
+    <td><%= select 'user', 'status', User::STATUS %></td>
+  </tr>
+
+  <% end %>
+
+</table>
+
+<div class="warning">
+  Importante: Si cambias el Tipo o departamento del usuario, se restablecen los permisos por defecto, 
+  por lo que tendrás que revisar los permisos del usuario.
+</div>
+
+<div class="form_button" style="margin-top:1em">
+  <%= submit_tag 'Guardar' %>
+</div>
+
+<% content_for :js_data do %>
+<script type="text/javascript">
+  function ToggleRoleSpecificFields() {
+    //user_types = [<%= User.with_department.collect {|u| "\'#{u}\'"}.join(', ') %>];
+    user_types = <%=raw User.with_department.to_json %>;
+    if (user_types.include($('user_type').value)) {
+      $('department_container').style.display='table-row';
+      $('streamflows_container').style.display='none';
+      $$('tr.politician_data_container').each(function (tr) {tr.style.display='none'});
+      $$('input.stream_flow_checkbox').each(function (opt) {opt.checked=false});
+      if ($('user_type').value == 'Politician') {
+        $$('tr.politician_data_container').each(function (tr) {tr.style.display='table-row'});
+      }
+    } else if ($('user_type').value == 'RoomManager') {
+      $('streamflows_container').style.display='table-row';
+      $('department_container').style.display='none';
+      $$('tr.politician_data_container').each(function (tr) {tr.style.display='none'});
+    } else {
+      $('department_container').style.display='none';      
+      $('streamflows_container').style.display='none';
+      $$('input.stream_flow_checkbox').each(function (opt) {opt.checked=false});
+      $$('tr.politician_data_container').each(function (tr) {tr.style.display='none'});
+    }
+  }
+  
+  <% if !@user.is_a?(Politician) %>
+    document.observe("dom:loaded", function() {
+      $$('tr.politician_data_container').each(function (tr) {tr.style.display='none'});
+    });
+  <% end %>
+</script>
+<% end %>

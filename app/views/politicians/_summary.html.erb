@@ -1,0 +1,38 @@
+<% @following = get_followings %>
+
+<div class='section container politicians summary intro'>
+  <%= render :partial => '/shared/context', :locals => {:type => 'politicians', :area => @politician.areas.first} %>
+  <div class='section_main row-fluid'>
+    <div class='section_content span8'>
+      <div class='politicians summary'>
+        <h1 class='title'><%= @politician.public_name %></h1>
+        <div class='position'>
+          <%= ([@politician.public_role] + @politician.areas.map{|area| link_to(area.name, area_path(area))}).join(', ').html_safe %>
+        </div>
+        <div class='text'>
+          <%= simple_format(@politician.description) %>
+        </div>
+        <% if @politician.gc_link.present? -%>
+          <div class="gc_link">
+            <%= link_to t('politicians.enlace_guia'), @politician.gc_link, :rel => 'external' %>
+          </div>
+        <% end -%>
+        <%= render :partial => "/politicians/cv" %>
+      </div>
+    </div>
+    <div class='section_aside span4'>
+      <div class='aside_module politician_avatar'>
+        <%= avatar @politician, {:size => :big_280} %>
+      </div>
+      <% if (@politician.approved? && (!logged_in? || current_user != @politician) || (@politician.former? && !@following.new_record?) ) -%>
+        <div class='following_form'>
+          <%- if @following.new_record?  -%>
+             <%= render :partial => 'followings/create', :locals => {:item => @politician} %>
+          <%- else -%>
+             <%= render :partial => 'followings/destroy', :locals => {:item => @politician} %>
+          <%- end -%>
+        </div>
+      <% end -%>
+    </div>
+  </div>
+</div>

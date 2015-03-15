@@ -1,0 +1,51 @@
+<%= render :partial => '/admin/comments/tabs' %>
+
+<div class="actions">
+  <ul class="edit_links delete_link">
+    <li><%= link_to t('admin.external.clients.paginas'), admin_external_client_items_path(@client), :class => 'pages_link'  %></li>
+    <li><%= link_to t('sadmin.modificar'), edit_admin_external_client_path(@client), :class => 'edit' %></li>
+    <li><%= link_to t('admin.external.clients.eliminar'), admin_external_client_path(@client), method: "delete", 
+      data: {confirm: "¿Estás seguro? Se eliminará por completo y no se puede deshacer."}, :class => "delete" %>
+    </li>
+  </ul>
+</div>
+
+<h2><%= t('admin.external.clients.datos') %></h2>
+
+<table class="comments" cellpadding="0" cellspacing="0" border="0">
+  <tr>
+    <th width="10%"><%= ExternalComments::Client.human_attribute_name("name") %></th><td><%= @client.name %></td>
+  </tr>
+  <tr>
+    <th><%= ExternalComments::Client.human_attribute_name("url") %></th><td><%= @client.url %></td>
+  </tr>
+  <tr>
+    <th><%= ExternalComments::Client.human_attribute_name("code") %></th><td><%= @client.code %></td>
+  </tr>
+  <tr>
+    <th><%= ExternalComments::Client.human_attribute_name("organization_id") %></th><td><%= @client.organization_name %></td>
+  </tr>
+  <tr>
+    <th><%= ExternalComments::Client.human_attribute_name("notes") %></th><td><%= @client.notes %></td>
+  </tr>
+</table>
+
+<div>
+  <h3><%= t('admin.external.clients.codigo') %></h3>
+    <pre>
+       &lt;div id="irekia_comments"&gt;&lt;/div&gt;           
+       &lt;script&gt;
+         (function (window, document) {
+           irekiaClientCode = "<%= @client.code %>";
+           var sNew = document.createElement("script");
+           var hostProtocol = window.location.protocol;
+           sNew.type = "text/javascript";
+           sNew.async = true;
+           sNew.src = hostProtocol+"//<%= request.host %>/javascripts/public/embed_comments.js";
+           var s0 = document.getElementsByTagName('script')[0];
+           s0.parentNode.insertBefore(sNew, s0);
+         })(window, document, undefined);
+       &lt;/script&gt;
+    </pre>
+</div>
+

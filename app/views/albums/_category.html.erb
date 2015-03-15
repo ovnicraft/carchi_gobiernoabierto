@@ -1,0 +1,23 @@
+<% album = category.albums.order('created_at DESC').first %>
+
+<div class='category span4'>
+  <div class='category_header'>
+    <div class="title"><%= category.name %></div>
+    <div class="count_info"><%= link_to_category_of_type('albums', category) %></div>
+  </div>
+  <% if album -%>
+    <% cover_photo = album.cover_photo || album.photos.ordered_by_title.first %>
+    <% img = cover_photo ? cover_photo.version(:n136) : asset_path("album_cover.png") %>
+    <div class='category_main category_album'>
+      <div class='row-fluid'>      
+        <div class='category_image span6'>
+          <%= link_to image_tag(img), album %> 
+        </div>
+        <div class='category_content span6'>
+          <div class="title"><%= link_to h(album.title), album %></div>
+          <div class="date"><%= I18n.localize(album.published_at.to_date, :format => :long) %></div>
+        </div>
+      </div>
+    </div>
+  <% end -%>
+</div>

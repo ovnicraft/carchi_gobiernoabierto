@@ -1,0 +1,40 @@
+<h1><%= @album.title %></h1>
+
+<ul class="edit_links">
+  <li><%= link_to "Modificar álbum", edit_admin_album_path(@album), :class => "edit" %></li>
+  <% view_or_preview = @album.published? ? t('sadmin.news.ver') : t('sadmin.news.preview') %>
+  <li>
+    <%= link_to "#{view_or_preview} #{t('sadmin.news.en_irekia', :site_name => Settings.site_name)}", album_path(@album), :class => "public_link" %>
+  </li>
+</ul>
+
+<%= render :partial => "show_submenu" %>
+
+<% if @album.draft? %>
+  <span class="draft_notice">Este álbum es aún un borrador</span>
+<% end %>
+
+<% if @album.featured %>
+  <span class='destacado'><%= t('sadmin.news.destacado') %></span>
+<% end %>  
+
+<% prev_locale = I18n.locale %>
+<% for_every_locale do |code, lang| %>
+  <% I18n.locale = code %>
+      <h2><%= @album.send("title_#{code}") %></h2>
+      <%= @album.send("body_#{code}") %><br/>
+      <%= link_to "Ver en #{lang}", album_path(@album, :locale => code), :class => "public_link" %>
+  
+<% end %>            
+<% I18n.locale = prev_locale %>
+
+<p>
+  <%= show_tags_with_classes(@album) %>
+</p>
+
+<% if @album.document_id %>
+<p>
+  <b>Proviniente de la noticia:</b>
+  <%= link_to @album.document.title, sadmin_news_path(@album.document) %>
+</p>
+<% end %>

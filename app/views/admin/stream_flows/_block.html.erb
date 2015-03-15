@@ -1,0 +1,64 @@
+<% if sf.nil? %>
+  <% if show_new %>
+    <div class="video" style="background-color:#000;">
+      <a name="video"></a>
+      <a class="new_player">
+        <img src="" width="330" height="240" alt='Streaming' />            
+      </a>
+    </div>
+  <% end %>
+<% else %>
+  <div class="video format169" style="background-color:#000;">
+    <a name="video"></a>
+    <a class="player" id="player_<%= sf.id %>" href="#" data-streaming_code="<%= "#{sf.code}" %>" >
+      <%= image_tag(sf.photo_path, :alt => t("admin.stream_flows.foto_sala")) if sf.has_photo? %>
+    </a>
+  </div>
+<% end %>
+
+
+<div class="stream_data" style="clear: both; width: 350px">
+  <% if sf.nil? %>
+    <% if show_new %>
+      <%= link_to(t("admin.stream_flows.nuevo_flujo"), new_admin_stream_flow_path) if is_admin? %><br/>
+      &nbsp;<br/>
+      &nbsp;
+    <% end %>
+  <% else %>        
+    <b><%=t("sadmin.news.titulo")%>:</b> <%= h sf.title %> 
+    <%- if is_admin? %>
+      <span class='edit_link'><%= link_to(t("sadmin.modificar"), edit_admin_stream_flow_path(:id => sf)) %></span>
+    <%- end -%>
+    <br/>
+    <b><%=t("admin.stream_flows.stream")%>:</b> <%= h sf.code %> <%= t("admin.stream_flows.soporte_streaming_movil") if sf.mobile_support? %><br/> 
+
+    <div class="streaming_status" id="status_<%= sf.id %>">
+      <%= render :partial => "streaming_status", :locals => {:sf => sf} %>
+    </div>
+
+    <% if is_admin? %>
+    <div class="embed_block" style="clear: both;">
+      <p class="embed_link screen streaming_embed_link">
+        <%= link_to t("admin.stream_flows.incrustar"), "#", :onclick => "showEmbedCode('embed_#{sf.id}', 'textarea_player_#{sf.id}');return false;" %>
+      </p>
+
+      <div id="<%= "embed_#{sf.id}" %>" style="display:none;">
+        <textarea class="embed" id="textarea_player_<%= sf.id %>" rows="3" cols="40"><object width="320" height="180" id="_player_<%= sf.id %>" name="_player_3" data="http://<%= request.host_with_port %><%= flowplayer_info[:path] %>"  type="application/x-shockwave-flash"><param name="movie" value="http://<%= request.host_with_port %><%= flowplayer_info[:path] %>" /><param name="bgcolor" value="#000000" /><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="flashvars" value='config={"key":"<%= flowplayer_info[:key] %>","clip":{"provider":"rtmp","live":true,"autoPlay":false,"url":"<%= sf.code %>"},"plugins":{"controls":{"timeFontSize":9},"rtmp":{"url":"http://<%= request.host_with_port %><%= flowplayer_info[:rtmp_plugin] %>","netConnectionUrl":"<%= Rails.application.config.rtmp_server %>"}, "gatracker":{"url":"http://<%= request.host_with_port %><%= flowplayer_info[:gatracker_plugin] %>","accountId": "UA-10951282-1"}}}' /></object></textarea> 
+        <br clear="all" />
+      </div>
+    </div>
+    <% end %>
+    
+    <div class="room_managers">
+      <%= link_to t("admin.stream_flows.problemas"), '#' %>
+      <div class="managers" style="display:none;">
+        <% if sf.room_managers.length > 0 %>
+          <%= sf.room_managers.collect {|rm| "#{rm.name}: #{rm.email}, #{rm.telephone}"}.join('<br/>').html_safe %>
+        <% else %>
+		      <%= t("admin.stream_flows.sala_sin_responsable") %>
+        <% end %>
+      </div>
+    </div>
+    
+  <% end %>
+</div>

@@ -1,0 +1,15 @@
+<%= render :partial => 'shared/edit_links', :locals => {:item => @page, :needed_privilege => 'can_access?'} if @page.present? %>
+
+<div class='section_main row-fluid'>
+  <div class='section_content span12'>
+    <div class='article debate contribution'>
+      <% if @page.present? -%>
+        <div class='text'>
+          <%=raw @page.pretty_body %>
+        </div>
+      <% else -%>
+        <div class='currently_working well'><%= t('debates.currently_working') %></div>
+      <% end -%>
+    </div>
+  </div>
+</div>

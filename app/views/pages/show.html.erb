@@ -1,0 +1,24 @@
+<% content_for('head') do %>
+  <%= stylesheet_link_tag 'public/flash' if @flash_page %>
+<% end %>
+
+<p class="only_for_print"><%= page_url(:id => @page.id) %></p>
+
+<div class='section container pages show'>
+  <%= render :partial => '/shared/context', :locals => {:type => 'pages', :title => Settings.site_name} %>
+  <div class='section_main row-fluid'>
+    <div class='section_content span8'>
+      <div class='article pages'>
+        <%= render :partial => "/shared/edit_links", :locals => {:item => @page} %>
+
+        <h1 class='title'><%= highlight_according_to_criterio(@page.title, @criterio) %></h1>
+        <div class='share_rss_listen row-fluid'>
+          <%= render :partial => "/shared/share", :locals => {:item => @page} %>
+        </div>  
+        <div class="text <%= 'flash' if @flash_page %>"> 
+          <%= highlight_according_to_criterio(@page.pretty_body, @criterio) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

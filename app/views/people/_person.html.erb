@@ -1,0 +1,9 @@
+<div class="one_person">
+  <%= link_to(image_tag(person.public_photo), person_path(person)) %>
+
+  <div class="person_name">
+    <span class="name"><%= link_to_user_profile_unless_deleted(person) %></span>
+    <%= t('people.de', :city => h(person.public_city)) if person.public_city %>
+  </div>
+
+</div>

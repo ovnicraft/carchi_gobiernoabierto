@@ -1,0 +1,35 @@
+
+<%= render :partial => "submenu" %>
+
+<div style="clear:both; margin:1em 0px;">
+  <% if can_create?("videos") %>
+  <ul class="edit_links">
+    <li><%= link_to("Nuevo video", new_admin_video_path, :class => "new") %></li>
+  </ul>
+  <% end %>
+</div>
+
+<div style="clear:both; margin:1em 0px;">
+  <%= form_tag admin_videos_path, :method => :get do  %>
+  Búsqueda por título:
+    <%= text_field_tag :q %>
+    <%= submit_tag "Buscar" %>
+  <% end %>
+</div>
+
+<%= will_paginate @videos %>
+
+<table class="comments" cellspacing="0">
+  <tr>
+    <th><%= link_to_unless @sort_order.eql?("title"), "Título", admin_videos_path(params.merge(:sort => "title")) %></th>
+    <th><%= link_to_unless @sort_order.eql?("publish"), "Fecha de publicación", admin_videos_path(params.merge(:sort => "publish")) %></th>
+    <th><%= link_to_unless @sort_order.eql?("update"), "Última actualización", admin_videos_path(params.merge(:sort => "update")) %></th>
+    <th>Páginas públicas</th>
+    <th>Comentarios</th>
+  </tr>
+  
+  <%= render :partial => "video", :collection => @videos %>
+</table>
+
+
+<%= will_paginate @videos %>

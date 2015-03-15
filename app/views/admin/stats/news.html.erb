@@ -1,0 +1,80 @@
+<%= render 'submenu'%>
+
+<h2>Noticias</h2>
+
+
+<%= form_tag news_admin_stats_path, :method => :get do %>
+<table class="stats_container">
+  <tr>
+    <td>
+      <h2>Creación de contenidos</h2>
+      <%= render 'date_select' %>
+      <table class="stats" cellspacing="0" cellpadding="0">
+        <thead>
+          <tr class="title">
+            <th>Departamento</th>
+            <th>Nº noticias</th>
+            <th>Respuestas oficiales</th>
+            <th>Tiempo medio de respuesta</th>
+            <th>Sin contestar</th>
+            <th>Comentarios<br/>(Original/Twitter)</th>
+          </tr>
+        </thead>
+        <% Department.active.each do |department| %>
+          <% department_finder = @counters_finder.where(["department_id=:department_id", {department_id: department.id}])%>
+          <tr>
+            <td><%= department.name %></td>
+            <td class="number"><%= number_with_delimiter department_finder.count %></td>
+            <td class="number"><%= number_with_delimiter department_finder.where("official_comments > 0").sum(:official_comments) %></td>
+            <td class="number"><%= humanize_seconds(department_finder.where("official_comments > 0").average(:answer_time_in_seconds)) %></td>
+            <td class="number"><%= number_with_delimiter department_finder.where("user_comments > 0 AND official_comments = 0").count %></td>
+            <td class="number">
+              <%= number_with_delimiter department_finder.sum(:user_comments)%><br/>
+              (<%= number_with_delimiter department_finder.sum(:not_twitter_comments)%>/<%= number_with_delimiter department_finder.sum(:twitter_comments)%>)
+            </td>
+          </tr>
+        <% end%>
+        <tr class="title">
+          <th>Totales</th>
+          <th class="number"><%= number_with_delimiter @counters_finder.count %></th>
+          <th class="number"><%= number_with_delimiter @counters_finder.where("official_comments > 0").sum(:official_comments) %></th>
+          <th class="number"><%= humanize_seconds(@counters_finder.where("official_comments > 0").average(:answer_time_in_seconds)) %></th>
+          <th class="number"><%= number_with_delimiter @counters_finder.where("user_comments > 0 AND official_comments = 0").count %></th>
+          <th class="number">
+            <%= number_with_delimiter @counters_finder.sum(:user_comments)%><br/>
+            (<%= number_with_delimiter @counters_finder.sum(:not_twitter_comments)%>/<%= number_with_delimiter @counters_finder.sum(:twitter_comments)%>)
+          </th>
+        </tr>
+      </table>
+
+    </td>
+
+    <td>
+      <h2>Descargas de RSS</h2>
+      <%= render "couchdb_date_select" %>
+
+      <table class="stats" cellspacing="0" cellpadding="0">
+        <tr class="title">
+          <th colspan="2">RSS más visitados</th>
+        </tr>
+        <% @top_rsss.each do |rss| %>
+        <tr>
+          <td class="item">
+            <%= link_to_rss(rss[0]) %>
+          </td>
+          <td class="number"><%= number_with_delimiter rss[1] %></td>
+        </tr>
+        <% end %>
+        <tr>
+          <td class="total">
+            Nº total de descargas para todos los RSS en este periodo
+          </td>
+          <td class="number total">
+            <%= number_with_delimiter @rsss_sum %>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<% end %>

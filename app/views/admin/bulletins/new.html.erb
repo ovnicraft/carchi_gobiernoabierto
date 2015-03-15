@@ -1,0 +1,73 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'prototype/dragdrop' %>
+<% end %>
+
+<%= render :partial => "submenu" %>
+
+<h1>Nuevo boletín</h1>
+
+<% if @bulletin.programmed? %>
+  <div class="flash_notice">Este boletín está siendo enviado. En este momento no puedes modificarlo ni confeccionar uno nuevo.</div>
+
+  <%= render :partial => "preview", :locals => {:bulletin => @bulletin} %>
+<% else %>
+ <p>Elige los contenidos comunes que se incluirán en el próximo boletín.</p>
+
+  <h2>Propuesta de gobierno destacada</h2>
+
+  <p>
+    Éstas son las propuestas de Gobierno que puedes elegir para incluir en el próximo boletín
+  </p>
+
+  <%= form_for @bulletin, :url => admin_bulletins_path, :method => :post do |f| %>
+  <ul>
+    <li>
+      <%= radio_button_tag "bulletin[featured_debate_ids][]", '', @bulletin.featured_debate_ids.blank?, :id => "fd_0" %>
+      <label for="fdx_0">
+        Ninguno
+      </label>
+    </li>
+    <% @debate_candidates.each do |dc| %>
+    <li>
+      <%= radio_button_tag "bulletin[featured_debate_ids][]", dc.id, @bulletin.featured_debate_ids.include?(dc.id), :id => "fd_#{dc.id}" %>
+      <label for="fdx_<%= dc.id %>">
+        <%= dc.title %>
+        <span class="date">(<%= I18n.l dc.published_at.to_date %>)</span>
+      </label>
+    </li>
+    <% end %>
+  </ul>
+
+  <h2>Noticias destacadas</h2>
+
+  <p>
+  Éstas son las noticias que tienes preseleccionadas para el próximo boletín. 
+  Por favor, elige un máximo de 3, colócalas en el orden correcto (arrastrar y soltar) 
+  y pincha el botón de "Guardar y previsualizar boletín". 
+  Entonces podrás previsualizarlo y finalmente enviarlo.
+  </p>
+
+  <% if @candidates.length == 0 %>
+    <ul>
+      <li>No hay ninguna noticia seleccionado</li>
+    </ul>
+  <% else %>
+
+    <%= error_messages(f.object) %>
+    <ul id="news_list" class="sortable_bulletin_news">
+      <% @candidates.each do |news| %>
+      <li>
+        <%= check_box_tag "bulletin[featured_news_ids][]", news.id, @bulletin.featured_news_ids.include?(news.id), :id => "fn_#{news.id}" %>
+        <label for="fnx_<%= news.id %>">
+          <%= news.title %>
+          <span class="date">(<%= I18n.l news.published_at.to_date %>)</span>
+        </label>
+      </li>
+    <% end %>
+    </ul>
+    <%= f.submit 'Guardar y previsualizar boletín' %>
+  <% end %>
+<% end %>
+
+<%= sortable_element "news_list" %>
+<% end %>

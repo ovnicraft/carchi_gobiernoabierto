@@ -1,0 +1,69 @@
+<% event ||= nil %>
+
+<% if streaming %>
+  <% streaming_status ||= event_or_streaming_current_status(event, streaming)  %>
+
+  <% if ['live', 'announced', 'programmed'].include?(streaming_status) %>
+    <div class='image_wrap streaming_video player streaming_<%= streaming_status %>'>
+      <div class="format169 video">   
+        <% if streaming_status.eql?('live')  %>
+          <%= render :partial => '/streamings/live_streaming', :locals => {:event => event, :streaming => streaming} %>
+        <% end %>
+    
+        <% if streaming_status.eql?('announced') %>
+          <div class="announcement">
+            <img src="<%= streaming.photo_path %>" alt="<%= t('events.announced_streaming') %>" />
+          </div>
+        <% end %>
+    
+        <% if streaming_status.eql?('programmed') %>
+          <div class="empty_player">
+            <%= image_tag ("/video/streamings_anuncio_base_previa.jpg") %> 
+            <div class="empty_player_info">
+              <% if event.starts_at.to_date.eql?(Time.zone.now.to_date) %>
+                <%= t('events.live_starts_at', :hour => l(event.starts_at, :format => :hour)) %>.
+              <% else %>
+                <%= t('events.live_starts_at', :hour => l(event.starts_at, :format => :long)) %>.
+              <% end %>
+            </div>
+          </div>
+        <% end %>  
+      </div>      
+    </div>
+  <% end %>    
+
+  <% if ['announced', 'live'].include?(streaming_status) %>
+    <% content_for :css_data do %>
+      <%= stylesheet_link_tag 'public/video_formats' %>
+    <% end %>
+    
+    <% content_for :js_data do %>
+      <%= render :partial => '/shared/player_js_vars' %>  
+
+      <% (['flowplayer.min', 'public/irekia_flowplayer', 'public/irekia_streaming']).each do |file_name|  %>
+        <%= javascript_include_tag("#{file_name}")  %>   
+      <% end %>
+    
+      <%= javascript_tag do %>
+        $(document).ready(function(){
+          streaming = irekiaStreaming()
+                        .currentStatus("<%= streaming_status %>")
+                        .statusURL("<%= streaming.status_file_url %>")
+                        .streamingURL("<%= streaming_url(streaming) %>")
+                        .container("div.format169.video");
+        
+          <% if event.present? %>
+            <% if streaming_status.eql?('announced') %>
+              streaming.interval("<%= event.starts_at - Time.zone.now() %>");
+            <% else %>
+              streaming.interval("<%= event.ends_at - Time.zone.now() %>");
+            <% end %>
+          <% end %>
+          streaming.init();
+        });
+      <% end %>
+    <% end %>
+
+  <% end %>
+  
+<% end %>  

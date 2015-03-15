@@ -1,0 +1,4 @@
+{"accepted": <%= !@comment.errors.present? %>,
+"requires_moderation": <%= !@comment.status.eql?('aprobado') %>,
+"error_message": "<%= @comment.errors.full_messages.to_sentence %>"
+}

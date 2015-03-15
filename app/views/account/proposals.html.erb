@@ -1,0 +1,17 @@
+<%= render :partial => "account/summary" %>
+
+<%= render :partial => 'account/navigation_menu' %>
+
+<div class='section container proposals account'>
+  <div class='section_main row-fluid'>
+    <div class='section_content span8'>      
+      <div class='section_heading'><%= t("account.proposals.title", :count => @proposals.count) %></div>
+      <%= render :partial =>'shared/list_items', :locals => {:items => @proposals, :ul_class => 'proposals', :type => 'proposals'} %>
+    </div>
+    <div class='section_aside span4'>
+      <div class='banner_aside create_proposal'>
+        <%= link_to content_tag(:span, t('proposals.create_proposal')), new_proposal_url, :id => "proposal-popover", :class => "#{class_for_window_login}" unless params[:from_politicians] %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<!--
+<p style="text-align: right;">
+  Ir a 
+  <% for_every_locale do |code, lang| %>
+    <%= link_to lang, "#l_#{code}" %>
+  <% end %>
+</p>
+-->
+
+<% for_every_locale do |code, lang| %>
+  <a name="l_<%= code %>"></a>
+  <div class="document_show2">
+    <ul class="edit_links">
+      <li>
+        <%= link_to t('admin.news.ver_en_web'), eval("#{@t.singularize}_path(document, :locale => code)"), :class => "public_link" %>
+      </li>
+      <% if document.is_a?(Event) ? can_edit_event?(document) : can_edit?(document.class.to_s.pluralize.downcase) %>
+        <li>
+          <%= link_to t('admin.news.traducir_a', :lang => lang), self.send("edit_admin_#{document.class_name.downcase}_path", {:document => document, :lang => code, :w => "traducciones"}), :class => "edit" %>
+        </li>
+      <% end %>
+    </ul>
+  
+    <h2><%= lang %></h2>
+      
+    <% if document.send("title_#{code}").present? || document.send("body_#{code}").present? %>
+      <h3><%= document.send("title_#{code}") %></h3>
+
+      <% if document.is_a?(Debate) %>
+        <h4><%= Debate.human_attribute_name(:body) %></h4>
+        <div class="document_body">
+          <%=raw document.send("body_#{code}") %>
+        </div>
+        <h4><%= Debate.human_attribute_name(:description) %></h4>
+        <div class="document_body">
+          <%=raw document.send("description_#{code}") %>
+        </div>
+
+      <% else %>
+        <div class="document_body">
+          <%=raw document.send("body_#{code}") %>
+        </div>
+      <% end %>
+    <% else %>
+      <p><%= t('admin.news.no_hay_traduccion') %></p>
+    <% end %>
+          
+  </div>
+<% end %>

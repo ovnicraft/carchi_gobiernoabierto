@@ -1,0 +1,178 @@
+/* estilos para documents/show */
+
+div.read_more, div#related_articles_block {
+  color: #005B8C;
+  padding-bottom: 1em; 
+  padding-left: 4px;
+}
+
+div.read_more a {
+  background: url(image-path("css/abierto.gif")) no-repeat scroll 100% 55% transparent;
+  padding-right:12px;
+}
+
+div.cerrado a {
+  background: url(image-path("css/cerrado.gif")) no-repeat scroll 100% 55% transparent;
+  padding-right:12px;
+}
+
+div#body_part2 {
+  margin-bottom: 1em;
+}
+
+div.hidden_on_web {
+  display: none;
+}
+
+div.news_cover_or_video {
+  clear: both;
+  overflow: hidden;
+}
+
+div.news_cover_or_video div.video_small {
+  margin-left: 108px;
+}
+
+
+span.icon {
+  float: left;
+  margin: 3px 4px 0px 0px;
+  display: block;
+  width: 12px;
+  height: 12px;
+  font-size: 1px;
+}
+
+/* Video widget */
+
+div.video {
+  float: left;
+}
+
+p.embed_link, span.irekia_cite {
+  margin: 4px 0px 6px;
+  padding: 0px;
+  font-size: 11px;
+  color: #666;
+}
+
+p.embed_link {
+  padding: 0px 14px;
+  overflow: hidden;
+  height: 100%;
+}
+
+p.embed_link a {
+  text-decoration: none;
+}
+
+span.irekia_cite {
+  display: block;
+}
+
+div.embed_link span.irekia_cite {
+  padding: 0px 20px;
+}
+
+p.embed_video_expl {
+  font-size:0.9em;
+  color:#BBB;
+  text-align:left;
+  margin: 0px;
+}
+
+span.embed_video {
+  background: url(image-path("admin/iconbox3.gif")) no-repeat -36px 0px;
+}
+
+textarea.embed {
+  font-size: 0.8em;
+  margin-bottom: 1em;
+  height: 2em;
+}
+
+div.emb_vid_title {
+  color: #fff;
+  font-size: 10px;
+  padding: 0px 0px 8px 14px;
+  margin: 0px;
+  border-bottom: solid 1px #e4e4e4;
+  background: #a1a1a1;
+  line-height: 110%;
+  width: 310px;
+}
+
+div.emb_vid_title p {
+  margin: 0px;
+  padding: 0.5em 0px;
+}
+
+div.emb_vid_title p.video_duration {
+  margin: 0px;
+  float:right; 
+  padding:0.5em; 
+  font-style: italic; 
+}
+
+/* /Video widget */
+
+
+div.docs, div.photos {
+  clear: both;
+  padding-bottom: 11px;
+  margin-top: 11px;
+  overflow: hidden;
+  height: 100%;
+}
+
+div.list a img {
+  border: none;
+  padding: 2px;
+}
+
+
+ul.download, div.list ul {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+ul.download li, div.list ul li {
+  padding-bottom: 11px;
+}
+
+ul.download li.noborder {
+  border-width: 0px;
+}
+
+
+span.file_name {
+  display: block;
+  color: #676767;
+}
+
+span.download {
+  background: url(image-path("admin/iconbox3.gif")) no-repeat -48px 0px;
+}
+
+span.embed {
+  background: url(image-path("admin/iconbox3.gif")) no-repeat -36px 0px;
+}
+
+/* Pictures in documents and photos*/
+
+div.thumbnail {
+  float: left;
+  margin: 0px 15px 20px 15px;
+  padding: 4px 0px 0px 0px;
+  text-align: center;
+  width: 150px;
+  font-size: 11px;
+  border: solid 1px #DDD;
+}
+
+
+div.thumbnail img {
+  border: none;
+}
+

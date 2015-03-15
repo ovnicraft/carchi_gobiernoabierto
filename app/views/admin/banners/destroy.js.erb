@@ -1,0 +1,5 @@
+<%- if @banner.destroyed? -%>
+  $("banner_<%= @banner.id %>").fade();
+<%- else -%>
+  alert("El banner NO se ha eliminado correctamente");
+<%- end -%>

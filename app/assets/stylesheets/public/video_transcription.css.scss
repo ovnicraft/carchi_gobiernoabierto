@@ -1,0 +1,20 @@
+div.transcription {
+  clear: both;
+  display: block;
+  height: 240px;
+  overflow-y: scroll;
+  padding-bottom: 6px;
+  padding-top: 6px;
+  font-size: 80%;
+  
+  div.video_transcription_cuepoint {
+    display: inline;
+    &:hover {
+         color: #005B8C; 
+    }
+  }
+  
+  div.current_cuepoint {
+    background: #bddcf3;
+  }
+}

@@ -1,0 +1,32 @@
+<%
+  items = []
+  @search_results.each do |item| 
+    item_url = item.is_a?(Initiative) ? initiative_programa_uri(item.id) : send("#{item.class.name.downcase}_url", item, host: request.protocol + request.host_with_port)
+    media_url = if item.respond_to?(:cover_photo) && item.has_cover_photo?
+      photo_url = if item.is_a?(News)
+        item.cover_photo.url('n770')
+      else
+        item.cover_photo.version(:n770)
+      end
+      File.join(base_url, photo_url)
+    else
+      item_url
+    end
+    h = {
+      :startDate => item.starts_at_for_json,
+      :endDate => item.ends_at_for_json,
+      :headline => item.title,
+      :text => item.body,
+      :classname => item.class.name.downcase,
+      :asset => {
+        :media => media_url,
+        :caption => item_url
+      }
+    }
+    items << h.to_json
+  end
+%>
+
+[
+  <%=raw items.join(", \n") %>
+]

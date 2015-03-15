@@ -1,0 +1,13 @@
+<% rank ||= nil %>
+
+<li class='item page'>
+  <div class='item_thumbnail'>
+    <!--<%= icon_for_document(page) %>-->
+    <%= image_tag 'default/page_img_default.jpg', :alt => Settings.site_name %>
+  </div>
+  <div class='item_content'>
+    <div class='title'><%= link_to h(page.title), page_url(page, :criterio_id => @criterio) %></div>
+    <%= "<span class='search_rank'>(#{rank})</span>" if logged_in? && !rank.nil? %>
+    <%= show_search_explanation(page) %>                                         
+  </div>
+</li>

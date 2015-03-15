@@ -1,0 +1,5 @@
+<%- if @debate_entity.destroyed? -%>
+  $("entity_<%= @debate_entity.id %>").fade();
+<%- else -%>
+  alert("La entidad no se ha eliminado de la lista.");
+<%- end -%>

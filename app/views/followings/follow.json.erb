@@ -1,0 +1,5 @@
+{ 
+  "following": <%= (current_user.present? && current_user.follows?(@item)) ? true : false %>,
+  "needs_auth": <%= !current_user.present? %>,
+  "broadcast": "update_users"
+}

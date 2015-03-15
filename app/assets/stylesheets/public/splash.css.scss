@@ -1,0 +1,86 @@
+body {
+  font-family: verdana,sans-serif;
+  background: #f2f5f8 url(image-path("splash/gr.png")) repeat-x;
+  margin: 0px;
+  padding: 0px;
+}
+
+div.width {
+  width: 960px;
+  margin: 0px auto 60px;
+}
+
+div.nav {
+  background: #b40000 url(image-path("nav_bkg.png")) repeat-x;
+  overflow: hidden;
+}
+
+div.nav_well_be_back_soon {
+  background: #438AC1 repeat-x;
+  overflow: hidden;
+}
+
+div.locales {
+  width: 700px;
+  margin: 0px auto;
+  ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    li {
+      float: left;
+      margin: 8px 13px; 
+      a, div {
+        display: block;
+        border: solid 1px #13587f;
+        border-radius: 4px;
+        -moz-border-radius: 4px;
+        -o-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        font-family: 'Droid Serif',serif;
+        color: #fff;
+        text-decoration: none;
+        font-size: 17px;
+        padding: 8px 3px 8px 40px;
+        width: 160px;
+        background: url(image-path("splash/bulet.png")) no-repeat 10px 6px;        
+      }
+      a:hover {
+        text-decoration: underline;  
+      }
+    }
+  }
+}
+
+div.head {
+  width: 640px;
+  margin: 40px auto 0px;
+  a span {
+    display: none;
+  }
+  h1 {
+    float: left;
+    margin: 0;
+    padding: 0 0 0 20px;
+    padding-left: 0px;
+    font-size: 0.1em;
+    a {
+      display: block;
+      width: 146px;
+      height: 46px;
+      background: url(image-path("splash/r57-logo_gobierno_prehomes_splash.gif")) no-repeat;
+    }
+  }
+  h2 {
+    float: right;
+    font-size: 0.1em;
+    margin: 0;
+    padding: 18px 0 0;
+    a {
+      display: block;
+      width: 142px;
+      height: 18px;
+      background: url(image-path("splash/r57-logo_euskadi_net.gif")) no-repeat;
+    }  
+  }
+}

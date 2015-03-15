@@ -1,0 +1,56 @@
+<%= render :partial => "account/summary" %>
+
+<%= render :partial => 'account/navigation_menu' %>
+
+<% if @questions.count <= 0 -%>
+  <% @question = Question.new %>
+  <div class="article help">
+    <div class="inner">
+      <div class="content centered clearfix">
+        <div class="info icon"></div>
+        <h2><%= t('account.questions.no_questions.title') %></h2>
+        <div class="message">
+          <p><%= t('account.questions.no_questions.description') %></p>
+          <%= link_to(content_tag :span, t('account.questions.no_questions.create_question')), '#', :id => "question-popover", :class => "white_button pink ask_question user_publish #{class_for_window_login}" %>
+        </div>
+      </div>
+    </div>
+    <div class="t"></div><div class="f"></div>
+  </div>
+<% else -%>
+
+  <div id="questions" class="article questions with_filters">
+    <div class="inner">
+      <header class="clearfix">
+      <div class="left">
+        <h2><%= t("account.questions.title", :count => @answered_questions_count) %></h2>
+      </div>
+      <div class="right">
+
+        <ul class="switch">
+          <li class="selected"><%= link_to t('filters.more_recent'), questions_account_path(:more_polemic => false), :class => 'filter more_recent' %></li>
+          <li><%= link_to t('content.main_filters.more_polemic'), questions_account_path(:more_polemic => true), :class => 'filter more_polemic' %></li>
+        </ul>
+
+      </div>
+      </header>
+      <div class="left">
+        <div class="listing">
+          <ul>
+            <%= render :partial => '/questions/list_item', :collection => @questions %>
+          </ul>
+        </div>
+      </div>
+      <div class="right">
+        <ul class="selector">
+          <li class="selected"><%= link_to t('questions.questions.content_type_filters.all'), questions_account_path, :class => 'filter' %></li>
+          <li><%= link_to t('questions.questions.content_type_filters.answered'), questions_account_path(:answered => true), :class => 'filter' %></li>
+        </ul>
+        <%= link_to(content_tag :span, t('questions.questions.create_question')), '#', :id => "question-popover", :class => "white_button pink after_ask_question #{class_for_window_login}" %>
+
+      </div>
+    </div>
+    <div class="t"></div><div class="f"></div>
+  </div>
+
+<% end -%>

@@ -1,0 +1,23 @@
+<h1>Importar photos</h1>
+
+<p>Se han encontrado <span id="found_files_counter"><%= @found_files.length %></span> fotos</p>
+
+<p>Se han importado <span id="imported_files_counter"><%= @n_imported_files %></span> fotos</p>
+
+<% if @errored_files.length >0 %>
+  <p>NO Se han importado <span id="errored_files_counter"><%= @errored_files.length %></span> fotos porque dieron error:<br/></p>
+  <ul>
+    <% @errored_files.each do |k, v| %>
+    <li><%= k %>: <%= v %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<p>Se han descartado <%= @found_files.length - @n_imported_files - @errored_files.length %> fotos porque ya estaban importadas anteriormente</p>
+
+<% if @created_photos.length > 0 %>
+  <p>
+    Si quieres, puedes 
+    <%= link_to "Modificar los títulos o tags de las fotos", batch_edit_admin_photos_path(:ids => @created_photos.collect(&:id)) %> que acabas de subir
+  </p>
+<% end %>

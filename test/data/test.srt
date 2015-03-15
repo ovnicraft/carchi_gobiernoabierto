@@ -1,0 +1,7 @@
+1
+00:00:01,988 --> 00:00:03,405 
+¿Qué tal? 
+
+2
+00:00:11,580 --> 00:00:16,576
+... Las habitaciones, los quirófanos, las urgencias, (lo más gordo asistencial), al nuevo edificio...

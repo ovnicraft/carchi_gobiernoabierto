@@ -1,0 +1,27 @@
+<%= calendar_for(@year, @month, :current_month => "%B, %Y",
+     :previous_month =>  lambda { |date| link_to("<span>&laquo;</span>".html_safe, sadmin_events_path(:year => date.year, :month => date.month)) },
+     :next_month => lambda { |date| link_to("<span>&raquo;</span>".html_safe, sadmin_events_path(:year => date.year, :month => date.month)) }) do |d|
+        render_calendar_cell(d, @events[d.month].nil? ? {} : @events[d.month][d.mday], @today.day)
+      end
+%>
+<div class="calendar_legend">
+  <ul>
+    <li class="legend_title"><%= t('sadmin.events.leyenda') %>:</li>
+    <li class="private_event"><%= t('sadmin.events.uso_interno') %></li>
+    <li class="irekia_event"><%= t('sadmin.publicado_irekia')%></li>
+    <li class="irekia_event irekia_coverage_true"><%= t('sadmin.events.cubre_irekia', :site_name => Settings.site_name) %></li>
+  </ul>
+</div>
+<div class="events_info" style="display: none">
+  <% @events.keys.each do |month| %>
+    <% @events[month].each do |day, evts|  %>
+      <% evts[0..(num_events_in_cell-1)].each_with_index do |e, pos| %>
+        <div id="event_<%= day %>_<%= month %>_<%= pos %>" class="one_event" >
+          <% cache(action: 'calendar', action_suffix: "#{e.class.to_s.downcase}_#{e.id}", only_path: true) do %> 
+            <%= render :partial => 'one_event_data', :object => e %>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

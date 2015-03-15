@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+for_visitante:
+  bulletin: one_hour_ago
+  user: visitante
+  sent_at: <%= 1.hour.ago %>
+  opened_at: <%= 30.minutes.ago %>
+  news_ids: |
+    --- 
+    - <%= ActiveRecord::FixtureSet.identify(:one_news) %>
+    - <%= ActiveRecord::FixtureSet.identify(:featured_news) %>
+    - <%= ActiveRecord::FixtureSet.identify(:secondary_news) %>
+
+for_visitante_with_news_with_external_comments:
+  bulletin: one_hour_ago
+  user: visitante
+  sent_at: <%= 1.hour.ago %>
+  opened_at: <%= 30.minutes.ago %>
+  news_ids: |
+    --- 
+    - <%= ActiveRecord::FixtureSet.identify(:commentable_news) %>
+    - <%= ActiveRecord::FixtureSet.identify(:featured_news) %>
+    - <%= ActiveRecord::FixtureSet.identify(:secondary_news) %>

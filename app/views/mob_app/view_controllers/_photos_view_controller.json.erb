@@ -1,0 +1,26 @@
+{"id": <%= id %>, 
+"class_type": "Gallery_view_controller",
+"sort_id": <%= sort_id %>, 
+"new_window": false, 
+"section_ids": [<%= section %>],
+"title": "<%= title %>", 
+"body": "<%= body %>",
+"url": "<%= url %>",
+"image": "<%= request.protocol + request.host_with_port + asset_path('floki/irekia_77_fotos.png') %>",
+"data": {
+  "unique_id": <%= unique_id %>,
+  "row_height": 102,
+  "cells_per_row": 3,
+  "padding": 6,
+  "cell_normal_color": [0, 0, 0],
+  "cell_highlight_color": [12, 12, 12],
+  "cache_size": 50,
+  "ttl": 600,
+  "download_if_virgin": true,
+  "allow_manual_reload": true,
+  "cache_size": 144,
+  "stretch_images": true,
+  "gallery_regex": ["<%= (url_for(:controller => "mob_app", :action => "photos", :only_path => false).gsub(/&amp;/, '&') + '?news_id=([0-9]*)').gsub("photos?", "photos[a-z]*[?]") %>"],
+  "gallery_url": "<%= url_for(:controller => "mob_app", :action => "photos", :locale => '_LNG_', :only_path => false, :news_id => '_WORDS_').gsub(/&amp;/, '&') %>"
+   }
+}

@@ -1,0 +1,41 @@
+<%= content_tag(:div, f.object.errors.to_h.to_a.to_json, :id => 'has-errors', :"data-class" => f.object.class.to_s.downcase, :style => 'display:none') if f.object.errors.present? %>
+
+<div class="attachment nested" style="border: solid 1px #DDD">
+  <% if f.object.new_record? %>
+    <div class="section_heading">Nuevo Curriculum Vitae</div>
+  <% else %>
+    <div class="section_heading"><%= link_to f.object.file_file_name, f.object.file.url %></div>
+  <% end %>
+
+  <%= error_messages(f.object) %>
+  
+  <div class='control-group'>
+    <%= f.label :file, t('politicians.attachment_file'), :class => 'control-label' %>
+    <div class='controls'>
+      <%= f.file_field :file %>
+    </div>
+  </div>
+
+  <div class='control-group'>
+    <label for='idiomas' class="control-label"><%= t('attachments.choose_languages') %></label>
+    <div class='controls'>
+      <label for="attachment_show_in_es" class='checkbox inline'>
+        <%= f.check_box :show_in_es %>
+        <span class='help-inline'><%= t('castellano') %></span>
+      </label>
+      <label for="attachment_show_in_eu" class='checkbox inline'>
+        <%= f.check_box :show_in_eu %>
+        <span class='help-inline'><%= t('euskera') %></span>
+      </label>
+      <label for="attachment_show_in_en" class='checkbox inline'>
+        <%= f.check_box :show_in_en %>
+        <span class='help-inline'><%= t('ingles') %></span>
+      </label>
+    </div>
+  </div>
+
+  <div class='control-group'>
+    <%= f.hidden_field '_destroy' %>
+    <%= link_to(t('eliminar'), "#", :onclick => "remove_fields(this);return false;", :title => 'delete', :class => "eliminar") %>
+  </div>
+</div>

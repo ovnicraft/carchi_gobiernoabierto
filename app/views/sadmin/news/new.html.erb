@@ -1,0 +1,11 @@
+<% if @news.debate  %>
+<div class="admin_info"><%= debate_info(@news) %></div>
+<% end %>
+
+<%= form_for @news, as: :news, url: sadmin_news_index_path, html: {multipart: true} do |f| %>
+  <% @news.event_ids.each_with_index do |event_id, i| %>
+    <%= hidden_field_tag('news[event_ids][]', event_id, {:id => "news_event_ids_#{i}"}) %>
+  <% end %>
+  <%= f.hidden_field :debate_id  if @news.debate.present? %>
+  <%= render :partial => "form", :locals => {:f => f} %>
+<% end %>

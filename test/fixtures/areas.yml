@@ -1,0 +1,32 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+a_lehendakaritza:
+  name_es: Lehendakaritza
+  name_eu: Lehendakaritza
+  description_es: Descripción del área
+  description_eu: Describapena
+  position: 1
+a_interior:
+  name_es: Interior
+  name_eu: Interior
+  description_es: Descripción del área
+  description_eu: Describapena
+  position: 2
+a_ogov:
+  name_es: Gobierno Abierto
+  position: 12
+a_4:
+  name_es: Área 4
+  position: 4
+a_5:
+  name_es: Área 5
+  position: 5
+a_6:
+  name_es: Área 6
+  position: 6
+a_7:
+  name_es: Área 7
+  position: 7
+a_8:
+  name_es: Área 8
+  position: 8  

@@ -1,0 +1,24 @@
+<%- if response.status.eql?(200) -%>
+  $("headline_<%= @headline.id %>").replace("<%= escape_javascript(render partial: '/admin/headlines/headline', locals: {headline: @headline}) %>");
+  $("headline_<%= @headline.id %>").className = <%= @headline.draft ? 'pendiente' : 'aprobado' %>
+
+  $$('.area_name').each(function(element) {  
+    element.observe('change', function(){    
+      updateArea(element);
+    });             
+  });
+
+  $$('.locale').each(function(element) {         
+    element.observe('change', function(){    
+      updateLocale(element);
+    });
+  });
+
+  $$('div.tags input[type=submit]').each(function(element) {         
+    element.observe('click', function(){    
+      updateTags(element);
+    });
+  });
+<%- else -%>
+  $("headline_<%= @headline.id %>").highlight();  
+<%- end -%>

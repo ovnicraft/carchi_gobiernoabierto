@@ -1,0 +1,13 @@
+<%- if @debate_entity.new_record? -%>
+  alert("Error al guardar los datos de la entidad: <%= debate_entity.errors.full_messages.join() %>");
+<%- else -%>
+  $("entities_list").insert({
+    bottom: "<%= escape_javascript(render partial: '/admin/debate_entities/entity_row', locals: {debate_entity: @debate_entity}) %>"
+  });
+  $("add_entity_form").hide();
+  $("debate_entity_organization_name").value = ""
+  <% locales.keys.each do |code| %>
+    $("debate_entity_url_<%= code %>").value = ""
+  <% end %>
+  $("entity_#{debate_entity.id}").effect("highlight");
+<%- end -%>

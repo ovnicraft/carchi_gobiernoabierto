@@ -1,0 +1,54 @@
+<div style="clear:both;margin:10px 0px;">
+  <%- if @news.featured -%>
+    <p class='destacado'><%= t('sadmin.news.destacado_inicio') %></p>
+  <%- end -%>
+  <% if @news.published? %>
+    <span class="published_notice">
+      <%= t('sadmin.news.ya_publicada') %>
+    </span>
+  <% elsif @news.is_public? %>
+    <span class="unpublished_notice">
+      <%= t('sadmin.news.sin_publicar') %>.<br/>
+      <%= t('sadmin.news.fecha_publication') %>: <%= @news.published_at ? I18n.localize(@news.published_at.to_date, :format => :short) : t('sadmin.news.sin_fecha') %>
+    </span>  
+  <% elsif @news.is_private? %>
+    <span class="draft_notice">
+      <%= t('sadmin.news.es_borrador') %>
+    </span>
+  <% end %>
+
+  <% if @news.debate.present? %>
+    <br /><%= debate_info(@news) %>
+  <% end %>
+
+  <ul class="edit_links">
+    <% view_or_preview = @news.published? ? t('sadmin.news.ver') : t('sadmin.news.preview') %>
+    <li>
+      <%= link_to "#{view_or_preview} #{t('sadmin.news.en_irekia', :site_name => Settings.site_name)}", news_path(@news), :class => "public_link" %>
+    </li>
+  </ul>
+  <% if can_create?("news") %>
+    <ul class="edit_links" style="text-align: right;">
+      <li><%= link_to t('sadmin.news.eliminar_noticia'), admin_document_path(@news), :data => {:confirm => t('seguro')}, :method => :delete, :class => "delete" %></li>
+    </ul>
+  <% end %>
+</div>
+
+<div class="one_news_submenu">
+  <ul>
+    <li class="<%= 'active' if current_page?(sadmin_news_path(@news.id)) %>">
+      <%= link_to_unless_current t('sadmin.news.contenido_principal'), sadmin_news_path(@news.id) %>
+    </li>
+    <% if can?("complete", "news") %>
+    <li class="<%= 'active' if current_page?(admin_document_path(@news.id, :w => "multimedia")) %>">
+      <%= link_to_unless_current t('sadmin.news.contenido_adicional'), admin_document_path(@news.id, :w => "multimedia") %>
+    </li>
+    <% end %>
+    <li class="<%= 'active' if current_page?(admin_document_path(@news.id, :w => "traducciones")) %>">
+      <%= link_to_unless_current t('sadmin.news.traducciones'), admin_document_path(@news.id, :w => "traducciones")  %>
+    </li>
+    <% if can?("manage_subtitles", "news") %>
+      <li class="<%= 'active' if current_page?(sadmin_news_subtitles_path(:news_id => @news.id)) %>"><%= link_to_unless_current t('sadmin.subtitles.title'), sadmin_news_subtitles_path(:news_id => @news.id) %></li>
+    <% end %>
+  </ul>
+</div>

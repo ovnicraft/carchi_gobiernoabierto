@@ -1,0 +1,62 @@
+<% content_for :facebook_meta do -%>
+  <meta property="og:title" content="<%= Settings.site_name %> - <%= @document.title.gsub('"', '\'').gsub('"', '\'') %>" />
+  <meta property="og:description" content="<%= pretty_n_characters_wo_html(@document.body, 200).gsub('"', '\'') if @document.body %>" />
+  <meta property="og:image" content="<%= base_url + @document.cover_photo.url if @document.cover_photo_file_name.present? %>" />
+<% end -%>
+
+<p class="only_for_print page_link"><%= news_url(:id => @document.id) %></p>
+
+<%= render :partial => '/shared/context', :locals => {:type => 'news', :area => @document.area} if show_context %>
+<div class='section_main row-fluid'>
+  <div class="section_content <%= @full_width.present? ? 'span12' : 'span8' %>">
+    <div class='article news'>
+      <%= render :partial => 'shared/edit_links', :locals => {:item => @document, :needed_privilege => 'can_access?'} %>
+
+      <%= translation_missing_info unless @document.translated_to?(I18n.locale) %>
+
+      <div class="only_for_print qr_code rs_skip"><%= item_qr_code(@document) %></div>
+
+      <div class='top rs_skip'>
+        <%= link_to_item_comments(@comments.total_entries) %>
+      </div>
+
+      <h1 class='title'><%= highlight_according_to_criterio(@document.title, @criterio) %></h1>
+
+      <%= render_date(@document.published_at) %>
+
+      <%= render :partial => '/shared/tags', :locals => {:tags => @document.public_tags_without_politicians} %>
+
+      <div class='share_rss_listen row-fluid donotprint rs_skip'>
+        <%= render :partial => '/shared/share', :locals => {:item => @document} %>
+        <%= render :partial => '/shared/rss_link', :locals => {:item => @document} %>
+      </div>
+
+      <%= render(:partial => '/news/photo_video_viewer', :locals => {:document => @document, :videos => @videos, :photos => @photos}) if (@videos.size + @photos.size) > 0 %>
+
+      <div class='text'>
+        <%= highlight_according_to_criterio(@document.pretty_body, @criterio) %>
+      </div>
+
+      <%= render :partial => "/comments/list", :locals => {:parent => @document, :comments => @comments} %>
+    </div>
+  </div>
+  <%- unless @full_width -%>
+    <div class="section_aside span4 donotprint">
+      <%= render :partial => "shared/download_tabs", :locals => {:item => @document, :audios => @document.all_audios, :mpg_videos => @videos_mpg, :files => @document.attached_files, :photos => @photos } %>
+
+      <%= render :partial => "shared/politicians", locals: {politicians: @document.politicians} %>
+
+      <%= render :partial => "shared/other_speakers", locals: {other_speakers: @document.speaker} %>
+
+      <%= render :partial => "shared/related_content", locals: {current: @document, limit: 10 }  %>
+    </div>
+  <%- end -%>
+</div>
+
+<% content_for :js_data do %>
+  <% if @document.all_audios(:all).present? %>
+    <%= javascript_include_tag 'soundmanager2.min' %>
+    <%= javascript_include_tag 'inlineplayer.min' %>
+    <script type="text/javascript">soundManager.url = '/soundmanager/'; soundManager.debugMode = false; </script>
+  <% end %>
+<% end %>

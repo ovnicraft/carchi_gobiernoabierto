@@ -1,0 +1,36 @@
+<% @area ||= @politician ? @politician.areas.first : Area.first %>
+<% @proposal ||= Proposal.new %>
+
+  <%= content_tag(:div, @proposal.errors.to_h.to_a.to_json, :id => 'has-errors', :"data-class" => "proposal", :style => 'display:none') if @proposal.errors.present? %>
+  <div class='control-group'>
+    <%= f.label :name, t("proposals.form.title"), :class => 'control-label' %>
+    <div class='controls'>
+      <%= f.text_field "title_#{I18n.locale}".to_sym, :class => "input-xxlarge", :maxlength => "255" %>
+      <span class="help-inline"><%= t('proposals.title_max_length') %></span>
+    </div>
+  </div>
+
+  <div class='control-group'>
+    <%= f.label :name, t("proposals.form.do_you_want_to_explain_the_proposal"), :class => 'control-label' %>
+    <div class='controls'>
+      <%= f.text_area "body_#{I18n.locale}", :rows => 10, :class => "span12" %>
+    </div>
+  </div>
+
+  <div class='control-group'>
+    <%= f.label :image, t("proposals.form.upload_a_photo"), :class => 'control-label' %>
+    <div class='controls'>
+      <%= f.file_field :image %>
+    </div>
+  </div>
+
+  <div class='control-group'>
+    <%= f.label :area_tags, t("proposals.form.who_is_the_target"), :class => 'control-label' %>
+    <div class='controls'>
+      <%= select_tag "proposal[area_tags][]", area_select(@proposal.area_tag, :include_blank => true), :id => 'proposal_area_tags' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit t('enviar'), :class => 'submit irekia_btn' %>
+  </div>

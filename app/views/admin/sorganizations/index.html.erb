@@ -1,0 +1,33 @@
+
+<h1>Redes Sociales: <%= @department.name %></h1>
+
+<ul class="edit_links">
+  <li class="add_user"><%= link_to "Añadir red social", new_admin_sorganization_path(:dept_id => @department.id), :class => "new" %></li>
+</ul>
+
+<div class='sorganizations'>
+  <% @sorganizations.each do |sorg| %>
+<div class="sorganization">
+
+      <ul class='edit_links' style="text-align: right;">
+
+        <li class='edit'>
+          <%= link_to 'Modificar', edit_admin_sorganization_path(:id => sorg.id), :class => 'edit', :title => 'Modificar' %>
+        </li>
+        <li class='delete'>
+          <%= link_to 'Eliminar', admin_sorganization_url(:id => sorg.id), data: {confirm: '¿Está seguro?'}, method: :delete, class: 'delete' %>
+        </li>
+      </ul>
+      
+      <%= image_tag sorg.icon? ? sorg.icon(:tiny) : "/default/sorganization_img_default.png" %>
+      <%= sorg.name %>
+
+      <ul class='snetworks'>  
+        <% sorg.snetworks.sort.each do |snet| %>
+          <li class='<%= snet.label %>'><%= snet.url %></li>        
+        <% end %>
+      </ul>
+
+</div>
+  <% end %>
+</div>  

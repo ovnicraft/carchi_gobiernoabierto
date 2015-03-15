@@ -1,0 +1,9 @@
+<%= form_for @debate, :url => admin_debate_path(@debate), :html => {:method => :put, :multipart => true} do |f| %>
+  <% if @show_only_translatable %>
+    <%= hidden_field_tag :w, params[:w] %>
+    <%= hidden_field_tag :lang, params[:lang] %>    
+    <%= hidden_field_tag :redirect_to, translations_admin_debate_path(@debate)  %>  
+  <% end %>
+
+  <%= render :partial => "form", :locals => {:f => f} %>
+<% end %>

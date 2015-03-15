@@ -1,0 +1,17 @@
+<% active_debates = controller.controller_name.eql?('debates') ? !params[:action].eql?('arguments') : false %>
+<% active_arguments = params[:action].eql?('arguments') %>
+<% active_organizations = controller.controller_name.eql?('outside_organizations') %>
+
+<div class="submenu">
+  <ul>
+    <li class="<%= 'active' if active_debates %>">
+      <%= link_to_unless active_debates, t("admin.debates.propuestas"), admin_debates_path() %>
+    </li>
+    <li class="<%= 'active' if active_arguments %>">
+      <%= link_to_unless active_arguments, t("admin.debates.argumentos"), arguments_admin_debates_path() %>
+    </li>
+    <li class="<%= 'active' if active_organizations %>">
+      <%= link_to_unless active_organizations, t("admin.debates.entidades"), admin_outside_organizations_path() %>
+    </li>
+  </ul>
+</div>

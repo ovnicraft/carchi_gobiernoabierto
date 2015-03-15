@@ -1,0 +1,12 @@
+<% proposals = Proposal.published.approved.order("published_at DESC").limit(16) - [@proposal] %>
+
+<% if proposals and proposals.size > 0 %>
+  <div class='aside_module related_proposals'>
+    <div class='title'><span><%= t('proposals.otros_relacionados') %></span></div>
+    <div class='content'>
+      <ul class="std_list related">
+        <%= render :partial => '/proposals/list_item', :collection => proposals, :as => :proposal, :locals => {:target => :related} %>
+      </ul>
+    </div>
+  </div>
+<% end %>

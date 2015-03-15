@@ -1,0 +1,37 @@
+
+<li class="category" id="cat_<%= category.id %>">
+    <span class="main_category"><%=h category.name %></span>
+
+   <%= link_to "<span>Añadir subcategoría</span>".html_safe, new_admin_tree_category_path(:tree_id => @tree.id, :parent_id => category.id), 
+        :method => :get, :class => 'add_child', :title => "Añadir subcategoría", :data => {:remote => true} %>
+
+   <%= link_to "<span>Eliminar</span>".html_safe, admin_tree_category_path(@tree,category), :method => :delete, :data => {:confirm => "Seguro?", :remote => true}, :class => 'remove', :title => "Eliminar" %>
+
+    <span class="cat_mod"><span>Modificar</span></span>
+    <span class="mod_links">
+    (<%= link_to "Castellano", edit_admin_tree_category_path(@tree, category, :lang => "es"), :title => "Modificar castellano" %>,
+    
+    <%= link_to "Euskera", edit_admin_tree_category_path(@tree, category, :lang => "eu"),  :title => "Modificar euskera" %>,
+    
+    <%= link_to "Inglés", edit_admin_tree_category_path(@tree, category, :lang => "en"), :title => "Modificar inglés" %>)
+    </span>
+    
+    <!-- <span class="cat_view">link_to "Ver en la web", category_path(category), :class => "public_link" %></span> -->
+    <br/>
+
+    <% unless category.is_a_link? %>
+        <%= render :partial => '/admin/categories/tags', :locals => {:category => category} %>
+    <% end %>
+     
+    <span id="new_container<%= category.id %>"></span>
+    
+    <% if category.children.length > 0 %>
+      <ul id="categories_<%= category.id %>">
+      <%= render :partial => "/admin/categories/category", :collection => category.children %>
+      </ul>
+    
+      <%= sortable_element "categories_#{category.id}", 
+            :url => sort_admin_tree_categories_path(:tree_id => @tree, :parent_id => category.id), 
+            :method =>:post, :complete => visual_effect(:highlight, "categories_#{category.id}") %>
+    <% end %>
+</li>

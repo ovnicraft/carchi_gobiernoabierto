@@ -1,0 +1,5 @@
+<%- if @argument.destroyed? -%>
+  $("argument_<%= @argument.id %>").fade();
+<%- else -%>
+  alert("El argumento no se ha borrado");
+<%- end -%>

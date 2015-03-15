@@ -1,0 +1,22 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+web_tv:
+  name_es: Canales WebTV
+  name_eu: WebTV
+  name_en: WebTV
+  label: videos
+albums:      
+  name_es: Fototeca
+  name_eu: Fototeca
+  name_en: Fototeca
+  label: albums
+navbar_left:  
+  name_es: Inicio
+  name_eu: Hasiera
+  name_en: Start
+  label: navbar_left
+navbar_right:
+  name_es: Qué es Irekia
+  name_eu: Zer da Irekia
+  name_en: About Irekia  
+  label: navbar_right

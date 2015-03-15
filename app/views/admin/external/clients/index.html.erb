@@ -1,0 +1,43 @@
+<%= render :partial => '/admin/comments/tabs' %>
+
+<table class="comments" id="clients_list" cellpadding="0" cellspacing="0" border="0">
+  <thead>
+  <tr>
+    <th class="<%= 'order' if @sort_order.eql?("code") %>" >
+      <%= link_to ExternalComments::Client.human_attribute_name("code"), admin_external_clients_path(:sort => "code") %>
+    </th>    
+    <th class="<%= 'order' if @sort_order.eql?("name") %>" >
+      <%= link_to ExternalComments::Client.human_attribute_name("name"), admin_external_clients_path() %>
+    </th>
+    <th class="<%= 'order' if @sort_order.eql?("url") %>" >
+      <%= link_to "URL",  admin_external_clients_path(:sort => "url") %>
+    </th>    
+    <th class="<%= 'order' if @sort_order.eql?("organization_id") %>">
+      <%= link_to ExternalComments::Client.human_attribute_name("organization_id"), admin_external_clients_path(:sort => "organization_id") %>
+    </th>
+    <th><%= ExternalComments::Client.human_attribute_name("notes") %></th>
+  </tr>
+  </thead>
+  <tbody>
+  
+<% if @clients.present? %>
+  <%= render :partial => "client_row", :collection => @clients %>
+<% end %>
+
+  </tbody>
+</table>
+
+<div class="bottom_links">
+  <ul class="edit_links">
+    <li class="add_client"><%= link_to t('admin.external.clients.nuevo'), "#", :onclick => "$('add_client_form').show(); $('client_name').focus();return false;", :class => "new" %></li>
+  </ul>
+</div>
+
+<div id="add_client_form" style="display: none">
+  <%= form_for ExternalComments::Client.new, as: :client, 
+                     url: admin_external_clients_path(), 
+                     loading: "$('spinner').show()",
+                     loaded: "$('spinner').hide()", data: {remote: true} do |f| %>
+    <%= render :partial => 'form', :locals => {:f => f} %>
+  <% end %>    
+</div>

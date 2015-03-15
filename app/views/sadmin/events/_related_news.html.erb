@@ -1,0 +1,36 @@
+<% content_for(:head) do %>
+  <%= javascript_include_tag "prototype/in_place_editor" %>
+  <%= auto_complete_stylesheet %>
+<% end %>
+
+<% @document = document %>
+ <div class="related_news"  id="related_news_info">
+   <h2><%= t('sadmin.events.related_news') %></h2>
+   
+   
+   <div class="news_title">
+     <% if document.related_news_title.nil? %>
+       <p><%= t('sadmin.events.no_hay_noticia') %>.</p>
+     <% else %>
+       <span class='marked'><%= link_to_if can_access?('news'), document.related_news_title, sadmin_news_path(document.related_news_id)  %></span>
+       <% if can_edit?('events') %>
+         [<%= link_to t("sadmin.events.desvincular"), unrelate_sadmin_event_path(:id => document.id, :related_item_id => document.related_news_id), method: :post, data: {confirm: t('sadmin.events.confirmar_desvincular')} %>]
+       <% end %>
+     <% end %>     
+   </div>
+   
+   
+   <% if document.related_news_title.nil? && can_edit_event?(document) && can_create?("news") %>
+     <ul class="edit_links">
+       <li>
+         <%= link_to t('sadmin.news.crear_borrador_noticia'), new_sadmin_news_path(:related_event_id => document.id), :class=> "new" %>
+       </li>
+       <li class="search_news">
+         <%= in_place_editor_field_with_auto_complete :event, :related_news_title, {:nil_content_replacement => t('sadmin.news.buscar_noticia')}, {:size => 50}, {:indicator => 'spinner', :evalScripts => true} %>
+         <span id="spinner" style = 'display:none'>
+         <%= image_tag 'admin/spinner.gif' %>
+         </span>
+       </li>
+     </ul>
+   <% end %>
+</div>  
