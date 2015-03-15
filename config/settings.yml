@@ -1,13 +1,13 @@
 ---
-site_name: Open Irekia
+site_name: Carchi
 publisher:
-  name: Open Irekia Org.
-  address: C/ Open Irekia
+  name: Prefectura del Carchi
+  address: Embajadores, 35
 email_addresses:
-  from: openirekia@example.com, info@example.com
-  contact: openirekia@example.com, info@example.com
-  proposal_moderators: openirekia@example.com, info@example.com
-  orphan_videos_responsibles: openirekia@example.com, info@example.com
+  from: apardo@alabs.org
+  contact: apardo@alabs.org
+  proposal_moderators: apardo@alabs.org
+  orphan_videos_responsibles: apardo@alabs.org
 social_networks:
   twitter: https://twitter.com/irekia
   facebook: http://www.facebook.com/pages/Irekia/416723460540
@@ -18,4 +18,4 @@ optional_modules:
   debates: true
   streaming: false
   headlines: false
-customized: false
+customized: true
