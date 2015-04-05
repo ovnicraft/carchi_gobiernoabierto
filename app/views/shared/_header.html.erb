@@ -1,16 +1,18 @@
 <div id='header_logos' class="container">
   <div class='row-fluid'>
-    <%= link_to image_tag(asset_path('logo.png'), :alt => "#{Settings.site_name} logo"), root_path, :class => "logo pull-left" %>         
-  </div>  
+    <%= link_to image_tag(asset_path('logo.png'), :alt => "#{Settings.site_name} logo"), root_path, :class => "logo pull-left" %>
+  </div>
 </div>
 <div id='header_tools_container' class='fullcontainer'>
   <div id='header_tools' class="container">
-    <ul class="languages pull-left">                    
+    <!--
+    <ul class="languages pull-left">
       <li><%= link_to h('<<'), lang_path, :class => 'passive' %></li>
       <li><%= change_locale_link('es') %></li>
       <li class='last'><%= change_locale_link('eu') %></li>
       <li class='last'><%= change_locale_link('en') %></li>
     </ul>
+    -->
     <ul class="user_options pull-right">
       <% header_links[locale_es_or_eu].each_with_index do |hl, i| %>
         <li <%='class=last' if i == header_links[locale_es_or_eu].length - 1 %>>
