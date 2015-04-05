@@ -90,11 +90,13 @@ class SiteController < ApplicationController
     if Settings.customized
       respond_to do |format|
         format.html {
-          if cookies['locale'].blank? || request.url.eql?(lang_path)
-            render :layout => false
-          else
-            redirect_to "/#{cookies['locale']}" 
-          end
+          # desactivado el multi idioma y forzado el uso de español
+          #if cookies['locale'].blank? || request.url.eql?(lang_path)
+          #  render :layout => false
+          #else
+          #  redirect_to "/#{cookies['locale']}"
+          #end
+          redirect_to "/es"
         }
       end
     else
