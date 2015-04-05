@@ -70,5 +70,11 @@ group :test do
   gem 'factory_girl_rails'
 end
 
+group :development do
+  gem 'capistrano', '~> 3.1'
+  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano-passenger'
+end
+
 ruby '2.1.2'
 #ruby-gemset=openirekia
