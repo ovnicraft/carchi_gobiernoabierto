@@ -4,7 +4,7 @@
 
 #header_logos {
 	padding: 20px 0 5px 0;
-	
+
 	.net_logo {
 		padding-top: 20px;
 	}
@@ -57,13 +57,13 @@ nav#nav_top{
 			filter: none;
 			border: none;
 			@include border-radius(0);
-			@include box-shadow(0 0px 0px rgba(0,0,0,.065));		
+			@include box-shadow(0 0px 0px rgba(0,0,0,.065));
 		}
 	}
 	.navbar .nav .dropdown-toggle .caret {
 		margin-top: 8px;
 		border-bottom-color: #FFFFFF;
-		border-top-color: #FFFFFF;	  
+		border-top-color: #FFFFFF;
 	}
 
 	.navbar .nav > li {
@@ -133,7 +133,7 @@ nav#nav_top{
 						text-align: center;
 					}
 
-				}			
+				}
 			}
 		}
 	}
@@ -142,19 +142,19 @@ nav#nav_top{
 		display: inline-block;
 		float: left;
 		border-right: 1px solid $borderItemMenu;
-		
+
 		& > a{
 
 			background-image: url(image-path('icons/ic_nav_settings.png'));
 			background-repeat: no-repeat;
 			background-position: left center;
-			height: 20px;			
+			height: 20px;
 
 			.ico_settings{
-				
+
 			}
 			.link_text{
-				display: none; 
+				display: none;
 			}
 		}
 		ul.dropdown-menu{
@@ -174,15 +174,15 @@ nav#nav_top{
 						background-color: white;
 					}
 
-					&.admin {						
+					&.admin {
 						background-position: 0 -60px
 					}
-					&.settings {						
+					&.settings {
 						background-position: 0 -30px;
 					}
 
-					&.logout {						
-						background-position: 0 0;	
+					&.logout {
+						background-position: 0 0;
 					}
 				}
 			}
@@ -196,8 +196,8 @@ nav#nav_top{
 			background-image: url(image-path('icons/ic_nav_register.png'));
 			background-repeat: no-repeat;
 			background-position: right center;
-			padding-right: 30px;		
-		}		
+			padding-right: 30px;
+		}
 
 		.dropdown-menu {
 
@@ -250,8 +250,8 @@ nav#nav_top{
 					background-position: 0 -90px;
 					&:hover{
 						background-color: $colorTwitter;
-						text-decoration: none;					
-					} 							
+						text-decoration: none;
+					}
 				}
 				&.facebook {
 					background-position: 0 -120px;
@@ -265,44 +265,44 @@ nav#nav_top{
 					background-position: 0 -30px;
 					&:hover{
 						background-color: $colorGoogle;
-						text-decoration: none;						
-					}					
+						text-decoration: none;
+					}
 				}
 
 				&.flickr {
 					background-position: 0 -150px;
 					&:hover{
 						background-color: #0062DC;
-						text-decoration: none;					
-					} 							
+						text-decoration: none;
+					}
 				}
 				&.youtube {
 					background-position: 0 -180px;
 					&:hover{
 						background-color: #4D4D4D;
-						text-decoration: none;					
-					} 							
+						text-decoration: none;
+					}
 				}
 				&.issu {
 					background-position: 0 -210px;
 					&:hover{
 						background-color: #F97D15;
-						text-decoration: none;					
-					} 							
+						text-decoration: none;
+					}
 				}
 				&.slideshare {
 					background-position: 0 -240px;
 					&:hover{
 						background-color: #0099FF;
-						text-decoration: none;					
-					} 							
+						text-decoration: none;
+					}
 				}
 				&.pinterest {
 					background-position: 0 -270px;
 					&:hover{
 						background-color: $colorPinterest;
-						text-decoration: none;					
-					} 							
+						text-decoration: none;
+					}
 				}
 			}
 		}
@@ -367,7 +367,7 @@ nav#nav_top{
 }
 
 nav#nav_bottom{
-	@include opensans(16px); 
+	@include opensans(16px);
 	background-color: $blueNav;
 	.navbar{
 		margin-bottom: 0;
@@ -378,13 +378,13 @@ nav#nav_bottom{
 			filter: none;
 			border: none;
 			@include border-radius(0);
-			@include box-shadow(0 0px 0px rgba(0,0,0,.065));		
+			@include box-shadow(0 0px 0px rgba(0,0,0,.065));
 		}
 	}
 	.navbar .nav .dropdown-toggle .caret {
 		margin-top: 8px;
 		border-bottom-color: #FFFFFF;
-		border-top-color: #FFFFFF;	  
+		border-top-color: #FFFFFF;
 	}
 
 	.navbar .nav > li > a {
@@ -406,7 +406,7 @@ nav#nav_bottom{
 	.navbar .nav > .active > a:focus {
 	  color: white;
 	  background-color: $blueNavHover;
-	}	
+	}
 	#menu_panel_participation{
 		width: 300%;
 	}
@@ -420,7 +420,7 @@ nav#nav_bottom{
 			.menu_heading {
 				font-size: 13px;
 			}
-			
+
 			ul.nav-list{
 				padding: 20px 0;
 
@@ -522,7 +522,7 @@ nav#nav_bottom{
 					.meta_article{
 						@include arial(11px,normal);
 					}
-				}			
+				}
 			}
 
 			&.snetworks{
@@ -579,7 +579,7 @@ footer {
 	padding: 30px 0 0 0;
 
 	#site_links{
-		margin-bottom: 20px; 
+		margin-bottom: 20px;
 		.nav-list{
 			padding: 20px 0;
 
@@ -647,7 +647,7 @@ footer {
 	#copyright{
 		text-align: center;
 		padding: 10px 0;
-		border-top: 1px solid $colorLines;	
+		border-top: 1px solid $colorLines;
 		.copyright{
 			float:left;
 			font-size: 12px;
@@ -667,4 +667,3 @@ footer {
 		}
 	}
 }
-
