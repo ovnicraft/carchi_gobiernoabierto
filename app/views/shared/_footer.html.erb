@@ -60,13 +60,14 @@
 
   <div id='copyright' class='container'>
     <div class='copyright'>
-      2014 <%= Settings.publisher[:name] %>
+     <%= Time.now.year %> <%= Settings.publisher[:name] %>
     </div>  
-    <div class='powered_by'>
-      <%= raw I18n.t('shared.powered_by')%>
+    <div class='powered_by' style="text-align:right;">
+	    <%= raw I18n.t('shared.powered_by')%><br />
+	    Desarrollado y mantenido por <a href="https://alabs.org/">aLabs</a>.
     </div>  
     <div class='logo'>
-      <%= image_tag(asset_path("footer_#{locale_es_or_eu}.jpg"), :alt => t('shared.footer_alt')) %>
+      <%= image_tag(asset_path("logo-footer.png"), :alt => t('shared.footer_alt')) %>
     </div>  
   </div>  
 </footer>  
