@@ -67,7 +67,7 @@ OpenIrekia::Application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {:address => "localhost", :port => 25, :domain => "localhost",
                                           :enable_starttls_auto => false }
-  config.action_mailer.default_url_options = { :host => "localhost", :only_path => false }
+  config.action_mailer.default_url_options = { :host => "ogov.alabs.org", :only_path => false }
   config.action_mailer.asset_host = "http://ogov.alabs.org"
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
