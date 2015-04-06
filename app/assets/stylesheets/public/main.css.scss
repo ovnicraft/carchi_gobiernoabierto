@@ -1591,8 +1591,8 @@ div.flash_notice{
 					background-image:none;
 					color: white;
 					&:hover{
-						color: $greenTab;
-						background-color: white;
+						color: #000;
+						background-color: #fff;
 					}
 				}
 				&.active{
