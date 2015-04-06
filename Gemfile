@@ -76,5 +76,7 @@ group :development do
   gem 'capistrano-passenger'
 end
 
+gem 'airbrake'
+
 ruby '2.1.2'
 #ruby-gemset=openirekia
