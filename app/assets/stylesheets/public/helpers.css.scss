@@ -142,16 +142,16 @@ $player_window_height: 320px;
 /* Version 4 */
 
 
-/*end bootstrap variables*/ 
+/*end bootstrap variables*/
 
 $textColor: #465866;
 
 /* Open Irekia */
-$colorIrekia: #888;
+$colorIrekia: #000;
 $blueNav: $colorIrekia;
 $blueNavHover: #777;
 
-$blueDarkNav: #666;
+$blueDarkNav: #f6801e;
 $blueDarkNavHover: #555;
 /* / Open Irekia */
 
@@ -187,7 +187,7 @@ $eventLive: #009900;
 $eventAnnounced: $colorIrekia;
 $titleLiveBg: #007a00;
 $titleFutureBg : #23709e;
-$eventEmpty : #dfe4ea; 
+$eventEmpty : #dfe4ea;
 
 $colorRss: #ff9901;
 $colorMedios: #ff6600;
@@ -225,17 +225,17 @@ $inputHeight:                   $baseLineHeight + 10px; // base line-height + 8p
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
 @import url(http://fonts.googleapis.com/css?family=Oswald);
 
-@mixin opensans($size:14px ,$bold:normal){ 
+@mixin opensans($size:14px ,$bold:normal){
   font-family: 'Open Sans', sans-serif;
   font-size: $size;
-  font-weight: $bold; 
+  font-weight: $bold;
 }
-@mixin arial($size:14px ,$bold:normal){ 
+@mixin arial($size:14px ,$bold:normal){
   font-family: Arial, Helvetica, sans-serif;
   font-size: $size;
-  font-weight: $bold; 
+  font-weight: $bold;
 }
-@mixin oswald($size:14px ,$bold:normal){ 
+@mixin oswald($size:14px ,$bold:normal){
   font-family: 'Oswald', sans-serif;
   font-size: $size;
   font-weight: $bold;

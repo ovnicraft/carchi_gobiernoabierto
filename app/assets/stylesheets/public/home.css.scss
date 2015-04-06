@@ -40,7 +40,7 @@
 			background-color: $greyCollapsableHeader;
 			border-radius: 0 0 5px 5px;
 			padding: 5px 15px;
-			text-decoration: none;	
+			text-decoration: none;
 			@include opensans(14px, bold);
 		}
 	}
@@ -52,7 +52,7 @@
 	float: left;
 	width: 100%;
 	text-align: center;
-	
+
 }*/
 
 .carousel-inner{
@@ -89,7 +89,7 @@
 							//width: 86%;
 							//height: auto;
 							//padding: 7%;
-							//background-color: white; 
+							//background-color: white;
 						}
 					}
 				}
@@ -117,7 +117,7 @@
 	}
 
 	.carousel-indicators .active{
-		background-color:  $blueLinks; 
+		background-color:  $blueLinks;
 	}
 }
 
@@ -159,23 +159,23 @@
 		width: 80%;
 		background: none;
 		color: white;
-		@include opensans(30px,bold); 
+		@include opensans(30px,bold);
 		line-height: 45px;
 		&.bottom_small{
 			bottom: 51%;
 		}
 		&.bottom_medium{
-			bottom: 40%;			
+			bottom: 40%;
 		}
 		&.bottom_large{
 			bottom: 30%;
 		}
-		
+
 		a{
 			color: white;
 			/*background: none repeat scroll 0 0 rgba(0, 0, 0, 0.75);*/
 			background-image: url(image-path('bg_caption.png'));
-			background-repeat: repeat;			
+			background-repeat: repeat;
 			@include opensans(30px,bold);
 			 box-shadow: 10px 0 0 rgba(0, 0, 0, 0.75), -10px 0 0 rgba(0, 0, 0, 0.75);
 			 line-height: 55px;
@@ -183,12 +183,12 @@
 			 display: inline;
 		}
 	}
-	
+
 	.carousel-indicators{
 
 		/*background: none repeat scroll 0 0 rgba(0, 0, 0, 0.75); */
 		background-image: url(image-path('bg_caption.png'));
-		background-repeat: repeat;	
+		background-repeat: repeat;
 		width: 100%;
 		padding: 0;
 		right: 0;
@@ -202,7 +202,7 @@
 			color: white;
 			@include opensans(14px,normal);
 		}
-	}	
+	}
 
 	.carousel-indicators li{
 		&:first-child{
@@ -215,7 +215,7 @@
 		display: block;
 		float: left;
 		height: 80px;
-		text-indent: 0;	
+		text-indent: 0;
 		border-left: 1px solid #999;
 		margin-left: 0;
 		a{
@@ -228,7 +228,7 @@
 				color:white;
 				text-decoration: none;
 			}
-		}	    
+		}
 		&.active{
 			&:first-child{
 			 	border-left: none;
@@ -255,7 +255,7 @@
 }
 .stage{
 	text-align: center;
-	
+
 	div.stage_title{
 		padding:0 30px 0 0;
 		text-align: center;
@@ -266,7 +266,7 @@
 	}
 	div.stage_description{
 		text-align: center;
-		padding:0 30px 0 0; 
+		padding:0 30px 0 0;
 	}
 
 }
@@ -276,10 +276,10 @@
 	margin-top: 40px;
 
 	#mediaNavTabs{
-		margin-bottom: 0;	
-	}	
+		margin-bottom: 0;
+	}
 	#mediaTabContent{
 		padding: 20px;
-		background-color: white;	
+		background-color: white;
 	}
 }
