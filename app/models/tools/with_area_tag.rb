@@ -86,6 +86,8 @@ module Tools::WithAreaTag
     # logger.info "respond_to? :comments: #{self.respond_to?(:comments)}"
     if self.respond_to?(:comments)
       # logger.info "Added: #{self.added_tags.inspect}. Removed: #{self.removed_tags.inspect}"
+      # Revisar en producción este log
+      logger.info "LOGGER: #{Area.tags}"
       every_area_tag_names = Area.tags.collect {|a| a.name_es}
       to_add = (self.added_tags & every_area_tag_names)
       to_remove = (self.removed_tags & every_area_tag_names)
