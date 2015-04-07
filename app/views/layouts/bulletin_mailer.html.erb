@@ -7,7 +7,7 @@
   <title><%= boletin_de_irekia %>: <%= @bulletin_copy.bulletin.title if @bulletin_copy %></title>
   <meta name="language" content="<%= I18n.locale %>" />
 </head>
-  <body style="margin:0; background-color:#dde4ec;">
+  <body style="margin:0; background-color:#ededed;">
     <table id="background-table" border="0" cellpadding="0" cellspacing="0" width="100%">
       <tbody>
         <tr>
@@ -21,7 +21,7 @@
                 </tr>
                 <%- if @bulletin_copy && !@web_version -%>
                 <tr>
-                  <td id="top-bar" bgcolor="#005A8C" class="header-content w600" width="600" height="40" align="center" style="color:#ffffff; font-size:12px;">
+                  <td id="top-bar" bgcolor="#cf6e1f" class="header-content w600" width="600" height="40" align="center" style="color:#ffffff; font-size:12px;">
                     <span class="link_to_web"><%=raw t('bulletin_mailer.si_no_ves_bien', :link => link_to(t('pincha_aqui'), clickthrough_url(:id => encode_clickthrough(@bulletin_copy, @bulletin_copy), :locale => I18n.locale), :style => "color:#fff")) %></span>
                   </td>
                 </tr>
@@ -44,7 +44,6 @@
                             <%- else -%>
                               <% logo_image = image_tag(Bulletin::TRACKING_IMAGE, :style => "display: inline;", :border => 0, :align => 'top', :alt => 'logo', :width => "142", :height => "18") %>
                             <%- end -%>
-                            <%= link_to logo_image, "http://open.irekia.net/", :class => "net_logo pull-right", :rel => 'external' %>                            
                           </td>
                           <td class="w20" width="20" height="1"><%= image_tag("bulletin/spacer.gif", {:style => "display:block;", :height => "1", :alt => '&nbsp;'}) %></td>
                         </tr>                                 
