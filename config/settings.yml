@@ -19,3 +19,8 @@ optional_modules:
   streaming: false
   headlines: false
 customized: true
+twitter:
+  token: V33TNlbU7FOuDPGeykeQPjy0L
+  secret: 5wElptuh3doT5RFun2WqyfZnJ44rkGAnau5hHlniP44R3wvkSK
+  atoken: 2592168038-DGx1NlS52VRsGVROiatKsTsYZAdtP2vAm2fLRdy
+  asecret: UqowgB29GqC6QlO5cBtExIb4D3L3YnfcituugrptU29jJ
