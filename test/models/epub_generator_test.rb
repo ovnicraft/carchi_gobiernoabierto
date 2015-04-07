@@ -27,6 +27,7 @@ class EpubGeneratorTest < ActiveSupport::TestCase
       FileUtils.rm_r(@export_dir)
     end
 
+    # TODO Este test no pasa
     should "generate files necessary files" do
       assert File.exists?("#{@export_dir}/irekia-epub.zip")
       EpubGenerator::LOCALES.each do |l|

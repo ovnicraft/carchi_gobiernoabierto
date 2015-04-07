@@ -170,6 +170,7 @@ class DebateTest < ActiveSupport::TestCase
         assert_equal @stage_presentation.starts_on, @debate.published_at.to_date
       end
 
+      # TODO Corregir este test
       should "assign conclusions stage ends_on as finished_at for published debate" do
         assert @debate.draft = 0
 

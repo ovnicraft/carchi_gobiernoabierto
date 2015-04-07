@@ -77,6 +77,8 @@ group :development do
 end
 
 gem 'airbrake'
+gem 'mailcatcher', group: :development
+gem 'pry-rails'
 
 ruby '2.1.2'
 #ruby-gemset=openirekia

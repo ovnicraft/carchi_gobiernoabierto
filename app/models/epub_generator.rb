@@ -1,7 +1,8 @@
 class EpubGenerator
 
   EpubGenerator::PATH = News::EPUB_PATH
-  EpubGenerator::LOCALES = %w(es eu)
+  # Solo queremos en español
+  EpubGenerator::LOCALES = %w(es)
   attr_accessor :identifier
 
   def initialize
