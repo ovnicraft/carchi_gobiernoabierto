@@ -24,7 +24,7 @@
   <meta name="viewport" content="width=1210">
   <title><%= "#{I18n.t('site.title', :site_name => Settings.site_name, :publisher_name => Settings.publisher[:name])} :: #{(@title || @title_for_head || Settings.site_name).strip_html}" %></title>
   
-  <link rel="shortcut icon" href="<%= asset_path('favicon.ico') %>"/>  
+  <link rel="shortcut icon" href="<%= asset_path('favicon.png') %>"/>  
   <%= stylesheet_link_tag "application" %>
   <%= stylesheet_link_tag("public/#{controller.controller_name}") if Rails.application.assets["public/#{controller.controller_name}.css"] %>
   <%= stylesheet_link_tag 'public/print', :media => 'print' %>
