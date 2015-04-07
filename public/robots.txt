@@ -1,12 +1,2 @@
 User-agent: *
-Disallow: /es/site/search
-Disallow: /eu/site/search
-Disallow: /en/site/search
-Disallow: /*compress?
-Disallow: /es/news/image*
-Disallow: /eu/news/image*
-Disallow: /en/news/image*
-Disallow: *SDP
-Disallow: /es/embed*
-Disallow: /eu/embed*
-Disallow: /en/embed*
+Disallow: /
