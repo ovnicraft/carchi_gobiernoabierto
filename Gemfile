@@ -15,7 +15,7 @@ gem 'uglifier', '>= 1.0.3'
 gem 'spring', group: :development
 
 ## Web server and debugging tools
-gem 'passenger', '4.0.40'
+gem 'passenger'
 gem 'byebug'
 gem 'ruby-debug-passenger'
 
@@ -80,5 +80,5 @@ gem 'airbrake'
 gem 'mailcatcher', group: :development
 gem 'pry-rails'
 
-ruby '2.1.2'
+ruby '2.2.2'
 #ruby-gemset=openirekia
