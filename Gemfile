@@ -80,5 +80,4 @@ gem 'airbrake'
 gem 'mailcatcher', group: :development
 gem 'pry-rails'
 
-ruby '2.2.2'
 #ruby-gemset=openirekia
