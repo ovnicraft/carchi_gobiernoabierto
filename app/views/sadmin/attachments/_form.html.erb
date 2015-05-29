@@ -3,6 +3,7 @@
     <th><%= t('sadmin.attachments.fichero_pdf') %></th>
     <td><%= f.file_field :file %></td>
   </tr>
+  <!--
   <tr>
     <th><%= t('sadmin.attachments.idiomas') %></th>
     <td>
@@ -11,6 +12,7 @@
       <%= f.check_box :show_in_en %><%=  f.label :show_in_en, t('sadmin.mostrar_en', :where => t('ingles')) %>
     </td>
   </tr>
+  -->
 </table>
 
 <%= f.submit t("sadmin.guardar"), :disable_with => t("sadmin.guardando") %>
