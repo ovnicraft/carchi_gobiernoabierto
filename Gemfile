@@ -65,7 +65,7 @@ group :test do
   #gem 'turn' -> depends on minitest ~> 4 and rails 4.1 on minitest ~>5 aug!
   gem 'capybara'
   gem 'fakeweb'
-  gem 'selenium-webdriver', '~> 2.43.0'
+  gem 'selenium-webdriver', '~> 2.45.0'
   gem 'faker'
   gem 'factory_girl_rails'
 end
