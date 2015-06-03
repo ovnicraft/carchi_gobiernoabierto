@@ -61,11 +61,6 @@
     </td>
     <td>
       <%= I18n.localize(news.updated_at, :format => :list) %><br/>
-      <%- News::LANGUAGES.each do |l| -%>
-        <span class="translated_<%= news.translated_to?(l.to_s) %>" title="<%= pretty_translated(news, l) %>">
-          <%= l %>
-        </span>
-      <%- end -%>
     </td>
       <td style="white-space:nowrap;">
         <%= link_to "#{t('sadmin.news.comentarios')} (#{news.comments_count})", comments_on_item_admin_comment_path(:id => news.id, :type => "Document") %>

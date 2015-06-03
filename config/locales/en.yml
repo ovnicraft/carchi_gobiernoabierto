@@ -1,0 +1,1540 @@
+en:
+  aqui: aquí
+  anterior: "Anterior"
+  borrar: Borrar
+  campos_obligatorios: "Campos obligatorios"
+  cancelar: "Cancelar"
+  castellano: castellano
+  cerrar: "Cerrar"
+  continuar: Continuar
+  contrasena: 'Contraseña'
+  descargar: "Descargar"
+  descargar_what: "Descargar %{what}"
+  descargas: "Descargas"
+  elige: "Elige"
+  eliminar: Eliminar
+  email: 'Email'
+  en: ""
+  enviar: "Enviar"
+  enviando: "Enviando..."
+  entrar: "Entrar"
+  esconder: "Esconder"
+  euskera: euskera
+  guardar: "Guardar"
+  hola: Hola
+  imprimir: "Imprimir"
+  ingles: inglés
+  mas: más
+  menos: menos
+  modificar: Modificar
+  mostrar: "Mostrar"
+  ninguno: Ninguno
+  no_tienes_permiso: "No tienes permiso para acceder a estas páginas"
+  not: "No"
+  ocultar: Ocultar
+  pincha_aqui: "pincha aqui"
+  programar: Programar
+  publicar: Publicar
+  repetir_contrasena: "Repite contraseña"
+  salir: Salir
+  seguro: "Seguro?"
+  si: "Sí"
+  siguiente: "Siguiente"
+  siguientes: "Siguientes"
+  todas: "Todas"
+  todos: "Todos"
+  tu_email: "Tu email"
+  unknown_user: usuario
+  y: "y"
+
+  number:
+    # Used in number_with_delimiter()
+    # These are also the defaults for 'currency', 'percentage', 'precision', and 'human'
+    format:
+      # Sets the separator between the units, for more precision (e.g. 1.0 / 2.0 == 0.5)
+      separator: ","
+      # Delimets thousands (e.g. 1,000,000 is a million) (always in groups of three)
+      delimiter: "."
+      # Number of decimals, behind the separator (the number 1 with a precision of 2 gives: 1.00)
+      precision: 3
+
+    # Used in number_to_currency()
+    currency:
+      format:
+        # Where is the currency sign? %u is the currency unit, %n the number (default: $5.00)
+        format: "%u%n"
+        unit: "€"
+        # These three are to override number.format and are optional
+        separator: "."
+        delimiter: ","
+        precision: 2
+
+    # Used in number_to_percentage()
+    percentage:
+      format:
+        # These three are to override number.format and are optional
+        # separator:
+        delimiter: ""
+        # precision:
+
+    # Used in number_to_precision()
+    precision:
+      format:
+        # These three are to override number.format and are optional
+        # separator:
+        delimiter: ""
+        # precision:
+
+    # Used in number_to_human_size()
+    human:
+      format:
+        # These three are to override number.format and are optional
+        # separator:
+        delimiter: ""
+        precision: 1
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one:   "Byte"
+            other: "Bytes"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"
+
+  # Used in distance_of_time_in_words(), distance_of_time_in_words_to_now(), time_ago_in_words()
+  datetime:
+    distance_in_words:
+      half_a_minute: "medio minuto"
+      less_than_x_seconds:
+        one:   "menos de un segundo"
+        other: "menos de %{count} segundos"
+      x_seconds:
+        one:   "1 segundo"
+        other: "%{count} segundo"
+      less_than_x_minutes:
+        one:   "menos de un minuto"
+        other: "menos de %{count} minutos"
+      x_minutes:
+        one:   "1 minuto"
+        other: "%{count} minutos"
+      about_x_hours:
+        one:   "1 hora"
+        other: "%{count} horas"
+      x_days:
+        one:   "1 día"
+        other: "%{count} días"
+      about_x_months:
+        one:   "1 mes"
+        other: "%{count} meses"
+      x_months:
+        one:   "1 mes"
+        other: "%{count} meses"
+      about_x_years:
+        one:   "1 año"
+        other: "%{count} años"
+      over_x_years:
+        one:   "más de 1 año"
+        other: "más de %{count} años"
+
+  activerecord:
+    errors:
+      template:
+        header:
+          one:    "1 error no permite guardar este %{model}"
+          other:  "%{count} errores no permiten guardar este %{model}"
+        # The variable :count is also available
+        body: "Hubo problemas con los siguientes campos:"
+
+      # The values :model, :attribute and :value are always available for interpolation
+      # The value :count is available when applicable. Can be used for pluralization.
+      messages:
+        inclusion: "no está incluido en la lista"
+        exclusion: "está reservado"
+        invalid: "no es válido"
+        confirmation: "no coincide con la confirmación"
+        accepted: "debe ser aceptado"
+        empty: "no puede estar vacío"
+        blank: "no puede estar vacío"
+        too_long: "es demasiado largo (el máximo es %{count} caracteres)"
+        too_short: "es demasiado corto (el mínimo es %{count} caracteres)"
+        wrong_length: "tiene una longitud incorrecta (debe tener %{count} caracteres)"
+        taken: "ya está cogido"
+        not_a_number: "no es un número"
+        greater_than: "debe ser mayor que %{count}"
+        greater_than_or_equal_to: "debe ser mayor o igual que %{count}"
+        equal_to: "debe ser igual a %{count}"
+        less_than: "debe ser menor que %{count}"
+        less_than_or_equal_to: "debe ser menor o igual que %{count}"
+        odd: "debe ser impar"
+        even: "debe ser par"
+        solo_letras_y_numeros: "solo puede tener letras sin tildes y números"
+        must_have_translation: "no puede estar vacío"
+        record_invalid: "no es válido"
+        # Append your own errors here or at the model/attributes scope.
+
+      models:
+        tag:
+          attributes:
+            name_eu: "Izena"
+        user:
+          attributes:
+            email:
+              invalid: "no tiene formato válido"
+              taken: "ya existe un usuario con este email"
+
+    # Translate model names. Used in Model.human_name().
+    models:
+      album:
+        one: álbum
+        other: álbumes
+        zero: álbumes
+      answer:
+        one: respuesta
+        other: respuestas
+        zero: respuestas
+      area:
+        one: área
+        other: áreas
+        zero: áreas
+      argument:
+        one: argumento
+        other: argumentos
+        zero: argumentos
+      attachment:
+        one: "documento adjunto"
+        other: documentos adjuntos
+        zero: documentos adjuntos
+      bulletin:
+        one: Boletín de novedades
+        other: Boletines de novedades
+        zero: Boletines de novedades
+      category:
+        one: "categoría"
+        other: categorías
+        zero: categorías
+      comment:
+        one: "comentario"
+        other: "comentarios"
+        zero: comentarios
+      criterio:
+        one: criterio
+        other: criterios
+        zero: criterios
+      debate:
+        one: "propuesta del gobierno"
+        other: "propuestas del gobierno"
+        zero: "propuestas del gobierno"
+      department:
+        one: departamento
+        other: departamentos
+        zero: departamentos
+      document:
+        one: "noticia"
+        other: noticias
+        zero: noticias
+      event:
+        one: "evento"
+        other: "eventos"
+        zero: eventos
+      "external_comments/client":
+        one: Web cliente
+        other: Webs clientes
+        zero: Webs clientes
+      "external_comments/item":
+        one: comentario externo
+        other: comentarios externos
+        zero: comentarios externos
+      icon:
+        one: "departamento"
+        other: departamentos
+        zero: departamentos
+      initiative:
+        one: "iniciativa"
+        other: "iniciativas"
+        zero: "iniciativas"
+      news:
+        one: "noticia"
+        other: noticias
+        zero: noticias
+      notification:
+        one: notificación
+        other: notificaciones
+        zero: notificaciones
+      order:
+        one: Disposición BOPV
+        other: Disposiciones BOPV
+      organization:
+        one: organismo
+        other: organismos
+        zero: organismos
+      outside_organization:
+        one: entidad relacionada
+        other: entidades relacionadas
+        zero: entidades relacionadas
+      page:
+        one: "página"
+        other: "páginas"
+        zero: páginas
+      person:
+        one: ciudadano
+        other: ciudadanos
+        zero: ciudadanos
+      photo:
+        one: foto
+        other: fotos
+        zero: fotos
+      politician:
+        one: político
+        other: políticos
+        zero: políticos
+      proposal:
+        one: "petición ciudadana"
+        other: peticiones ciudadanas
+        zero: peticiones ciudadanas
+      question:
+        one: pregunta
+        other: preguntas
+        zero: preguntas
+      snetwork:
+        one: Red Social
+        other: Redes Sociales
+        zero: Redes Sociales
+      user:
+        one: "usuario"
+        other: usuarios
+        zero: usuarios
+      video:
+        one: "vídeo"
+        other: vídeos
+        zero: vídeos
+      vote:
+        one: voto
+        other: votos
+        zero: votos
+
+    # Translate model attribute names. Used in Model.human_attribute_name(attribute).
+    attributes:
+      area:
+        description: Qué hacemos
+        name: Nombre
+      area_user:
+        name_and_email: Nombre y email
+      attachment:
+        file: Fichero
+      banner:
+        alt_en: Texto descriptivo inglés
+        alt_es: Texto descriptivo castellano
+        alt_eu: Texto descriptivo euskara
+        logo_en: Logo inglés
+        logo_es: Logo castellano
+        logo_eu: Logo euskara
+        url_en: URL inglés
+        url_es: URL castellano
+        url_eu: URL euskara
+      bulletin:
+        featured_news_ids: Noticias destacadas
+      comment:
+        body: "Texto"
+        name: "Nombre"
+      debate:
+        body: "Introducción fase Presentación"
+        body_en: "Introducción fase Presentación"
+        body_es: "Introducción fase Presentación"
+        body_eu: "Introducción fase Presentación"
+        cover_image: "Imagen de portada"
+        description: "Descripción fase Debate"
+        description_en: "Descripción fase Debate"
+        description_es: "Descripción fase Debate"
+        description_eu: "Descripción fase Debate"
+        entities: "Entidades relacionadas"
+        hashtag: Hashtag
+        header_image: "Imagen de cabecera"
+        multimedia_dir: "Directorio para el contenido multimedia"
+        page: Página prinicipal para la fase Aportaciones
+        news: Noticia para la fase Conclusiones
+        stages: Fases
+        title_en: "Título"
+        title_es: "Título"
+        title_eu: "Título"
+      debate_entity:
+        organization: Entidad
+        organization_id: Entidad
+        url_es: URL castellano
+        url_eu: URL euskera
+        url_en: URL english
+      document:
+        streaming_for: Ventana de streaming
+        streaming_room: Sala de streaming
+        politicians_tag_list: Políticos
+      "external_comments/client":
+        name: Nombre
+        url: URL
+        code: Código
+        organization_id: Departamento u organismo
+        notes: Observaciones
+      "external_comments/item":
+        title: Título
+        url: URL
+        irekia_news_id: Noticia original
+      event:
+        alert_this_change: Alertar periodistas sobre este cambio
+        alertable: Enviar alertas a periodistas sobre este evento
+        city: Ciudad
+        location_for_gmaps: "Dirección del evento para Google Maps"
+        organization_id: "Departamento u organismo"
+        streaming_live: "Streaming en directo"
+        title_es: "Tema"
+      news:
+        organization_id: Departamento u organismo
+        title_es: Título
+      order:
+        dept: Órgano emisor
+        fecha_bol: Fecha boletín
+        fecha_disp: Fecha disposición
+        materias: Materias
+        no_bol: "Nº boletín"
+        no_disp: "Nº disposición"
+        no_orden: "Nº orden"
+        pretty_materias: Materias
+        rango: Rango
+        ref_ant: Referencia anterior
+        ref_pos: Referencia posterior
+        seccion: Sección
+        vigencia: Vigencia
+      organization:
+        name_es: Nombre
+        tag_name: Tag
+        active: Actual
+      outside_organization:
+        logo: Logo
+        name: Nombre
+        name_es: Nombre en castellano
+        name_eu: Nombre en euskera
+        name_en: Nombre en inglés
+      person:
+        last_names: Apellidos
+        name: Nombre
+        screen_name: "Nick en Twitter"
+        telephone: Teléfono
+        url: "URL de tu blog o página personal"
+        zip: Código postal
+      proposal:
+        body_en: "Descripción"
+        body_es: "Descripción"
+        body_eu: "Descripción"
+        name: "Nombre"
+        title_en: "Título"
+        title_es: "Título"
+        title_eu: "Título"
+        image: "Imagen para ilustrarla (JPG, PNG o GIF)"
+      politician:
+        politician_has_agenda: ¿Tiene agenda pública?
+      sorganization:
+        name: Nombre
+        snetworks: Redes sociales
+      user:
+        bulletin_email: Email
+        description: Quién es y qué hace
+        email: Email
+        gc_id: ID en la Guía
+        last_names: Apellidos
+        name: "Nombre"
+        password: "Contraseña"
+        password_confirmation: "Confirmación de contraseña"
+        photo: Foto
+        public_role: Cargo
+        title_es: Izenburua
+        wants_bulletin: ¿Quieres recibir el boletín semanal de novedades?
+        zip: Código postal
+
+  date:
+    formats:
+      # Use the strftime parameters for formats.
+      default: "%d-%m-%Y"
+      short: "%e de %b "
+      long: "%e de %B de %Y"
+      year_month: "%B de %Y"
+      month_year: "%B %Y"
+      abbr_month: "%b"
+      abbr_day: "%a"
+      list: "%d %b %y"
+
+    day_names: [Domingo, Lunes, Martes, Miércoles, Jueves, Viernes, Sábado]
+    abbr_day_names: [Dom, Lun, Mar, Mier, Jue, Vie, Sab]
+
+    # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    month_names: [~, Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre]
+    abbr_month_names: [~, Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic]
+    # Used in date_select and datime_select.
+    order:
+      - day
+      - month
+      - year
+    first_day_of_week: 1
+
+  time:
+    formats:
+      db: "%Y-%m-%d %H:%M:%S"
+      default: "%a, %d de %b %Y %H:%M:%S %z"
+      hour: "%H:%M"
+      list: "%d %b %y, %H:%M"
+      long: "%e de %B de %Y, %H:%M"
+      microformats: "%Y-%m-%dT%H:%M:%S%z"
+      search: "%Y-%m-%dT%H:%M:%S"
+      short: "%e %b %H:%M"
+    am: "am"
+    pm: "pm"
+
+  # Used in array.to_sentence.
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " y "
+      last_word_connector: " y "
+
+# #################################################################### #
+  bulletin_subscriptions:
+    advice: En primer lugar tendrás que registrarte o loguearte en %{site_name}
+    already_subscribed: "Gracias. Ya estás suscrito al Boletín de novedades."
+    alta_en_el_boletin: Alta en el boletín de novedades
+    baja_del_boletin: Baja del boletín de novedades
+    email_needed: "Por favor, introduce tu email para poder enviarte el boletín de novedades."
+    info_button_alta: 'Darme de alta en el boletín novedades'
+    info_text: "Éste es el nuevo boletín semanal de %{site_name}. Con él recibirás en tu correo un resumen de las principales noticias publicadas, además de las principales propuestas abiertas a la participación ciudadana. Esperamos que lo encuentres útil y te permita seguir la actualidad de %{site_name}, también desde tu correo electrónico."
+    invalid_subscription: "Lo sentimos. La información para la suscripción no es correcta. "
+    popup_button_no: 'No me interesa, gracias'
+    popup_button_ok: 'Explícame que es esto'
+    popup_text1: "<strong>¡ATENCIÓN!</strong> %{site_name} ha puesto en marcha un boletín semanal para poder informarte de las actividades del %{publisher_name} más te interesan. ¿Deseas suscribirte al boletín?"
+    subscription_done: "Gracias. Te has dado de alta en el boletín de novedades. Si cambias de opinión, puedes darte de baja en cualquier momento modificando los datos de tu perfil."
+    subscription_failed: "Lo sentimos, la suscripción al boletín no se ha completado. Por favor, pincha de nuevo en el enlace o ve a modificar tu perfil para intentarlo de nuevo."
+    unsubscribe: "Si quieres darte de baja del boletín de novedades, pincha %{link} para editar tus datos de perfil e indica que no deseas seguir suscrito al boletín."
+    unsubscribe_confirmation: "¿Estás seguro de que quieres darte de baja del Boletín de novedades?"
+    unsubscription_canceled: "Sigues suscrito al boletín de novedades. Si cambias de opinión en cualquier momento puedes desactivarlo modificando los datos de tu perfil."
+    unsubscription_done: "Te has dado de baja del boletín de novedades. Si quieres volver a recibirlo algún día puedes reactivarlo modificando los datos de tu perfil."
+    unsubscription_failed: "Lo sentimos, la baja del boletín no se ha completado. Por favor, pincha de nuevo en el enlace o ve a modificar tu perfil para intentarlo de nuevo."
+    you_are_not_subscribed: "No estás suscrito al Boletín de novedades."
+
+  account:
+    activity_title: Última actividad
+    activity_description_citizen: "Ésta es la actividad relacionada con tus contenidos, o con los perfiles o áreas que sigues."
+    activity_description_politician: "Estas son las preguntas que tienes pendientes de responder"
+    actualmente_sigues: "Actualmente %{politicians} y %{areas}"
+    areas_following:
+      one: "1 área"
+      other: "%{count} áreas"
+      zero: "no sigues a ningún área"
+    borrar_foto: "Borrar %{foto}"
+    cambiando_contrasena: "Cambiando mi contraseña"
+    campos_facebook: "Esta información no se puede modificar, es la que utilizas en Facebook"
+    campos_twitter: "Esta información no se puede modificar, es la que utilizas en Twitter"
+    confirm_delete_account: "Si eliminas tu cuenta se borrarán todos tus datos salvo los comentarios que hayas podido hacer. ¿Estás seguro de que eso es lo que quieres?"
+    confirm_delete_account_title: "Eliminar mi cuenta de la web"
+    confirma_contrasena: "Confirma la nueva contraseña"
+    conoce_areas: "Te sugerimos que consultes las %{link} de %{publisher_name}"
+    contrasena_erronea: "La contraseña actual no es correcta"
+    contrasena_modificada: "Contraseña modificada"
+    cuenta_activada: "La cuenta se ha activado correctamente."
+    cuenta_eliminada: 'Tu cuenta ha sido eliminada.'
+    cuenta_no_eliminada: 'Tu cuenta no ha sido eliminada'
+    cuenta_no_eliminada_razon: 'Ha habido un error al eliminar tu cuenta. Por favor, envianos un email a %{email} para que podamos investigar la razón.'
+    datos_guardados: Tus cambios han sido guardados
+    department_alerts: "Tienes alertas sobre los eventos de %{departments}"
+    edit_profile: "Modificar mis datos"
+    followings: A quién sigues
+    informacion_incorrecta: "La información no es correcta"
+    mi_cuenta: "Mis datos"
+    n_departments: "%{count} departamentos"
+    no_sigues_a_nadie: "No estás siguiendo a nadie todavía."
+    politicians_following:
+      one: "sigues a 1 político"
+      other: "sigues a %{count} políticos"
+      zero: "no sigues a ningún político"
+    proposals:
+      more_commented: "Más comentadas"
+      no_proposals:
+        create_proposal: "Crea una petición"
+        description: "Puedes proponer cualquier cosa que creas que mejore el País Vasco. Desde ideas para agilizar la administración hasta propuestas de cambio o mejora de leyes y normativas."
+        title: "No has hecho ninguna petición aún."
+      title:
+        one: "Has hecho 1 petición"
+        other: "Has hecho %{count} peticiones"
+        zero: "No has hecho ninguna petición"
+    propuesta_se_activara: "Tu petición será publicada en breve."
+    public_profile: Este es tu perfil público en %{site_name}
+    see_public_profile: Consulta tu perfil público
+    tu_irekia: Tu %{site_name}
+    welcome:
+      configura: "Configura tu cuenta"
+      configura_text: "Sube tu ávatar o modifica tus datos."
+      crear_pregunta: "Crear una pregunta"
+      ir_areas: "Áreas de %{publisher_name}"
+      lanza_propuestas: "lanza tus propuestas"
+      participa: "Participa y aprende"
+      participa_text: "Haz preguntas a las áreas de %{publisher_name}, crea tus propias propuestas o participa en las propuestas de otros."
+      sigue_te_interesa: "Sigue lo que te interese"
+      sigue_te_interesa_text: "Busca los políticos o áreas que más te interesan del %{publisher_name} y síguelos.<br/> De esta manera, estarás informado de todo lo que pase con el mínimo esfuerzo: toda la actividad de los políticos y áreas que sigas aparecerá en tu resumen."
+      user_slide: Ayuda
+    ya_puedes_participar: "Ya puedes empezar a participar en %{link}"
+    your_profile: "Tu perfil"
+    your_proposals: "Tus peticiones"
+    your_questions: "Tus preguntas"
+
+  albums:
+    count:
+      one: 1 álbum
+      other: "%{count} álbumes"
+      zero: No hay álbumes
+    destacado: "Destacado"
+    destacados: "reportajes destacados"
+    fototeca: "Fototeca"
+    more: Más álbumes
+    no_content: No hay álbumes
+    other_albums: "Otros reportajes"
+    other_albums_dept: "Otros reportajes de %{name}"
+    see_all: "Ver todos los álbumes"
+    title: 'Álbums'
+
+  answers:
+    no_content: No hay respuestas del gobierno
+    title: Respuestas del Gobierno
+
+  areas:
+    actions:
+      no_content: "No hay contenido."
+      mantente_informado: "Mantente informado de toda la actividad de este área"
+    agenda: "Agenda de %{name}"
+    miembros: Miembros de este área
+    no_activity: "Sin actividad"
+    photos: fotos
+    proposals:
+      one: 1 petición
+      other: "%{count} peticiones"
+      zero: Ninguna petición
+    politicians:
+      one: "1 persona en %{name}"
+      other: "%{count} personas en %{name} y en entidades adscritas"
+    team: Equipo
+    title: Áreas
+
+  arguments:
+    add: Añadir
+    against: "Argumentos en contra"
+    i_am_in_favor: Estoy a favor
+    i_am_against: Estoy en contra
+    in_favor: "Argumentos a favor"
+    is_in_favor: está a favor
+    is_against: está en contra
+    list_item:
+      title:
+        you: "Has argumentado la propuesta %{proposal}"
+        other: "%{author} ha argumentado la propuesta %{proposal}"
+    moderation_pending: "Gracias por participar. Tu argumento será publicado en breve"
+    no_content: No hay argumentos
+    not_saved: "El argumento no se ha guardado"
+    title: Argumentos
+
+  attachments:
+    choose_languages: Elija los idiomas en los que quiere que se muestre este documento
+    must_be_pdf: debe ser un fichero PDF
+
+  audios:
+    embed: "Incrustar audio"
+    embed_explain: "Para incrustar este audio en tu web, copia y pega este código:"
+
+  bulletin_mailer:
+    announcement_subject: "Éste es el nuevo boletín semanal de novedades de %{site_name}. Con él recibirás en tu correo un resumen de las principales noticias publicadas, además de las principales propuestas abiertas a la participación ciudadana. Esperamos que lo encuentres útil y te permita seguir la actualidad de %{site_name}, también, desde tu correo electrónico.  Gracias por tu confianza"
+    baja: Darse de baja
+    crear_peticion: "Crea una petición"
+    crear_peticion_text: "Si deseas hacer una propuesta o petición de información a algún área del Gobierno, puedes hacerlo desde este enlace."
+    darte_baja: "darte de baja"
+    debates_section_title: "Tal vez te interese esta propuesta de Gobierno"
+    hola: "Hola %{name}"
+    lopd: "Este email está dirigido a %{email}.
+    En cumplimiento de lo dispuesto en el artículo 5 de la Ley Orgánica 15/1999 de Protección de Datos de Carácter Personal, le informamos que sus datos de carácter personal serán incorporados al fichero \"%{site_name}-Gobierno Abierto\", cuyo responsable es la Dirección de Gobierno Abierto. Asimismo, se le informa que la recogida y tratamiento de dichos datos tienen como finalidad: \"Establecer un canal de comunicación y difusión a través de %{site_name}-Gobierno Abierto de Euskadi, que pretende el acercamiento de la ciudadanía a la Administración Vasca para que pueda participar mediante propuestas, sugerencias y opiniones en la acción del Gobierno, para lo cual es necesario que la persona usuaria se dé de alta\", siendo los destinatarios de la información los ciudadanos.
+Si lo desea, puede ejercitar los derechos de acceso, rectificación, cancelación y oposición ante la Dirección de Gobierno Abierto, en %{publisher_address}. Incluir responsable del fichero y dirección correspondiente). Si no deseas seguir recibiendo este boletín puedes %{link}."
+    news_section_title: "Noticias de interés"
+    more_news_section_title: "Más noticias que te pueden interesar"
+    porque_envio: 'Te enviamos este email porque estás suscrito al boletín de %{site_name} y creemos que te puede interesar esta información. '
+    si_no_ves_bien: "Si no ves bien este email %{link}"
+    siguenos: '¡Síguenos!'
+    ver_web: "Ver en navegador"
+
+  citizens:
+    title: Ciudadanos
+
+  comments:
+    abuse_thank_you2: "Gracias por avisarnos"
+    abuse_thank_you: "Gracias, lo revisaremos."
+    abuse_unsaved: "Tu aviso no se ha guardado, por favor inténtalo más tarde"
+    all: "Todos los comentarios"
+    answer_this:
+      debate: "¿Algo que decir?&hellip; comenta esta propuesta de gobierno"
+      event: "¿Algo que decir?&hellip; comenta este evento"
+      news: "¿Algo que decir?&hellip; comenta esta noticia"
+      photo: "¿Algo que decir?&hellip; comenta esta foto"
+      proposal: "¿Algo que decir?&hellip; comenta esta petición"
+      video: "¿Algo que decir?&hellip; comenta este vídeo"
+      "externalcomments::item": "Haz tu comentario"
+    blog_url_incorrect: "La URL del blog no es correcta."
+    comentar: "Comentar"
+    comentario_guardado: 'Tu comentario se ha publicado correctamente.'
+    comentarios_cerrados: 'Los comentarios en este documento están cerrados'
+    comment_pending: "¡Gracias por tu comentario! La persona moderadora lo publicará en breve."
+    comment_sent: "Tu comentario ha sido enviado."
+    escribe_comentario: 'Escribe tu comentario'
+    estamos_enviando_tu_comentario: "Estamos enviando tu comentario ..."
+    feed_item_body: "%{author} dijo: %{body}"
+    feed_item_title: "Comentario de %{author} sobre: %{doc}"
+    feed_sobre: "sobre %{link}"
+    feed_title: "Comentarios de %{name}"
+    inadecuado: "Comentario inadecuado"
+    list_item:
+      title:
+        you: "Has comentado \"%{item}\""
+        other: "%{author} ha comentado \"%{item}\""
+    no_enviado: "Tu comentario NO se ha enviado."
+    no_mostrar: "no lo mostraremos"
+    no_tienes_permiso: "No tienes permiso para hacer comentarios."
+    not_moderated:
+      author: Tú
+      moderation_pending: "Pendiente de moderar"
+      rest_of_users: "el resto de usuarios no lo puede ver aún."
+    rss_comentarios: "RSS de comentarios"
+    seguro_inadecuado: "¿Estás seguro de que este comentario no es adecuado?"
+    sobre_documento: "Sobre %{link}"
+    sorry_marked_as_spam: "Lo sentimos, pero nuestro filtro anti-spam ha clasificado tu comentario como spam.<br/> Lo mostraremos tan pronto como lo revisemos."
+    this_feed_title: "Comentarios de esta noticia"
+    title: Comentarios
+    title_with_count:
+      one: "Un comentario"
+      other: "%{count} comentarios"
+      zero: "Todavía no hay comentarios"
+    tu_blog: "Tu blog o página personal, si tienes"
+    tu_comentario: "Tu comentario"
+    tu_nombre: "Tu nombre"
+
+  debates:
+    active: Propuestas activas
+    all: Todas las propuestas de gobierno
+    body_title: "Introducción"
+    count:
+      one: "<span class='number'>1</span> propuesta de gobierno"
+      other: "<span class='number'>%{count}</span> propuestas de gobierno"
+      zero: "No hay propuestas de gobierno"
+    currently_working: Estamos preparando los contenidos para esta fase. Estarán disponibles proximamente.
+    debates_a: "Propuestas de gobierno de %{name}"
+    description_title: "Más información"
+    feed_title: "Propuestas de gobierno de %{name}"
+    finished: Propuestas debatidas
+    gob_count:
+      one: propuesta de Gobierno
+      other: propuestas de Gobierno
+    is_future: "La fase de %{stage} comenzará el %{date}. A partir de esta fecha podrás participar en la propuesta."
+    is_passed: "La fase de %{stage} ha sido cerrada. Lo sentimos, pero ya no puedes participar."
+    last: "Últimas propuestas del gobierno"
+    legal_advice1: "Este sistema de propuestas online no reemplaza ningún sistema de peticiones o audiencias públicas recogidas en el sistema jurídico vigente."
+    legal_advice2: "Las respuestas que facilite el Gobierno a las propuestas, consultas y comentarios de la ciudadanía tendrán sólo carácter informativo y en ningún caso serán vinculantes ni supondrán una interpretación normativa."
+    legal_advice3: "Las preguntas, quejas y sugerencias sobre temas particulares no tendrán la calificación de recurso administrativo, ni su interposición paralizará los plazos establecidos para ello en la normativa vigente. Tampoco condicionan, en modo alguno, el ejercicio de las restantes acciones o derechos previstos en la normativa reguladora de cada procedimiento."
+    no_content: "No hay propuestas de gobierno activas"
+    participation:
+      one: "1 participación"
+      other: "%{count} participaciones"
+      zero: Todavía nadie ha participado
+    related_entities: Entidades relacionadas
+    see_all: Ver todas las propuestas del gobierno
+    stage_presentation: Presentación
+    stage_presentation_title: Forma tu opinión acerca de la propuesta
+    stage_presentation_description: "Infórmate acerca de las propuestas del gobierno. Noticias acerca del tema, vídeos, entrevistas y datos estadísticos de diversas fuentes. "
+    stage_discussion: Debate
+    stage_discussion_title: "Participa en el debate, opina y vota a favor o en contra"
+    stage_discussion_description: "Participa en el debate con tu opinión ya formada. Comenta, vota a favor o en contra de la propuesta y expón tus argumentos al respecto. "
+    stage_contribution: Aportaciones
+    stage_contribution_title: Haz tus aportaciones al documento
+    stage_contribution_description: Si lo deseas puedes modificar el archivo que se generará en conjunto a través de la herramienta Comt.
+    stage_conclusions: Conclusiones
+    stage_conclusions_title: Obtén las conclusiones que se tramitarán.
+    stage_conclusions_description: El documento final se enviará al órgano competente para ser estudiado y valorado.
+    title: Propuestas de Gobierno
+
+  documents:
+    add_to: "Añadir a %{name}"
+    audio: "Audio"
+    consejo_de: "Resumen del acuerdo del Consejo de Gobierno del %{date}"
+    consulta_departamentos: Consulta las noticias por áreas
+    cronica: "Crónica"
+    descargar_audios_zip: Descargar audios (zip)
+    descargar_documentos_zip: Descargar pdfs (zip)
+    descargar_foto: Descargar foto
+    descargar_fotos_zip: Descargar set de fotos (zip)
+    descargar_video: Descargar vídeo
+    descargar_videos_mpg_zip: Descargar set de mp4 (zip)
+    descargar_videos_zip: Descargar set de flv (zip)
+    document: "Documento"
+    email_to_friend: "Enviar a un amigo"
+    enviar_cosa_a_amigo: "Enviar %{what} a un amigo"
+    error_zip: 'Se ha producido un error en la compresión de archivos. Inténtelo más tarde.'
+    esconder_photos: Esconder galería de fotos
+    esconder_videos: Esconder galería de vídeos
+    feed_title: "Noticias de %{name}"
+    feeds_rss: "Feeds RSS"
+    ficheros_adjuntos: "Ficheros adjuntos"
+    intro_info_friend: "Por favor, rellena tus datos y los de tu amigo para que podamos enviarle la información."
+    not_available: "%{what} no disponible"
+    presenta: "Asistencia de"
+    rss_news: Rss noticias
+    streaming: "Streaming"
+    ver_photos: Ver galería de fotos
+    ver_videos: Ver galería de vídeos
+    video_profesional: "Vídeo profesional"
+
+  epub:
+    title: Noticias de %{site_name}
+    creator: "Dirección de Gobierno Abierto de %{publisher_name}. %{publisher_address}"
+    rights: "Se permite la reproducción, distribución, comunicación pública y transformación para generar una obra derivada, sin ninguna restricción siempre y cuando se cite al titular de los derechos: %{publisher_name}."
+    cover: Portada
+    toc: Índice
+
+  events:
+    agenda: Agenda
+    agenda_date: "Agenda %{date}"
+    announced_streaming: "En breve comenzará la emisión ..."
+    comming_events: "Próximos eventos"
+    count:
+      one: 1 evento
+      other: "%{count} eventos"
+    current: "Eventos actuales"
+    current_events: "Eventos programados"
+    en_curso: "Eventos en curso"
+    en_diferido: En diferido
+    en_directo: "En directo"
+    en_directo_desde_sala: "En directo desde %{room}"
+    fecha: "Fecha"
+    feed_title: "Eventos de %{name}"
+    formato_ical: "Añadir a tu agenda (iCal)"
+    future_streaming: "Próximas emisiones de hoy"
+    futuros: "Eventos futuros"
+    hora: "Hora"
+    irekia: Irekia
+    irekia_coverage: "%{site_name} cubrirá este evento con %{cov_types}"
+    irekia_coverage_alert: "(*) AVISO LEGAL"
+    irekia_coverage_article: crónica
+    irekia_coverage_audio: audio
+    irekia_coverage_footnote: "Se informa a las personas asistentes y participantes que el evento será grabado y se tomarán fotografías en el transcurso del mismo; pudiendo ser almacenadas, publicadas y difundidas tanto las grabaciones como las fotografías en los canales y plataformas oficiales online con las que cuenta %{publisher_name}. Así mismo, quien asista podrá ejercer los derechos de acceso, rectificación, cancelación y oposición así como aquellos otros que le correspondan en materia de derecho al honor, imagen e intimidad personal y familiar en la siguiente dirección: %{publisher_address}."
+    irekia_coverage_photo: fotos
+    irekia_coverage_video: vídeo
+    irekia_covered: "%{site_name} cubrió este evento con %{cov_types}"
+    live_starts_at: "Inicio previsto: %{hour}h"
+    live_streaming: "Emitiendo ..."
+    loading: "Cargando próximos eventos..."
+    lugar: "Lugar"
+    mes_anterior: Mes anterior
+    mes_siguiente: Mes siguiente
+    next4streaming_alert: "TV on-line"
+    next_stream_at: "Próxima emisión el %{at}. <br/>%{event_link}"
+    no_content: No hay eventos
+    no_streaming_programmed: "No hay emisiones programadas<br/> en las próximas 24 horas"
+    programmed_streaming: "Próximas emisiones"
+    rss_agenda: "Suscripción a la agenda"
+    see_all: Ver todos los eventos
+    seleccione_mes_año: "Seleccione mes y año"
+    solo_medios_graficos: "es sólo para medios gráficos."
+    speaker: "Asiste(n)"
+    streaming_for_irekia: "conexión en directo"
+    streaming_for_subsites: "conexión en directo"
+    streaming_live: "conexión en directo"
+    streaming_live_now: "Retransmitiendo en directo..."
+    streaming_off: "La emisión ha terminado."
+    streaming_status:
+      announced: "En breve comenzará la emisión ..."
+      empty: "No hay emisión en directo"
+      finished: La emisión ha terminado
+      future: "Próxima emisión"
+      live: Conexión en directo
+      programmed: "Próxima emisión"
+    suscripcion: Suscripción
+    title: Eventos
+    title_for_tag__irekia_acciones: "Difusión de actuaciones llevadas a cabo por el Gobierno."
+    title_for_tag__irekia_actos: "Circunstancia de tipo presencial organizada por el Gobierno."
+    title_for_tag__irekia_eventos: "Actividades organizados por terceros en los que el Gobierno tendrá una presencia."
+    todos_los_medios: está abierto a todos los medios
+    ver_mapa: Ver mapa
+    ver_otros_meses: 'Ver agenda de otros meses'
+    ver_streaming: "ver streaming"
+    ver_video: "ver vídeo"
+
+  fb_sessions:
+    login_not_completed: El login con Facebook no se ha completado
+  flash:
+    que_es_irekia: qué es irekia
+
+  floki:
+    login: Accede a tu cuenta
+    login_required: Debes identificarte
+    activity:
+      answer_request_for: "Petición de respuesta a tu pregunta \"%{question}\""
+      answer_to_your_question: "Respuesta a tu pregunta \"%{question}\""
+      argument_in: "Argumento en tu propuesta \"%{proposal}\""
+      comment_in: "Comentario en tu %{content_type} \"%{title}\""
+      pending_answer: "Pregunta pendiente de responder \"%{question}\""
+      vote_for: "Voto %{value} en tu propuesta \"%{title}\""
+    events:
+      body: "Consulta los eventos de los próximos días"
+    news:
+      body: "Accede a la información del gobierno"
+    politician:
+      who_is: Quién es y qué hace
+
+  followings:
+    create:
+      area: "Seguir a este área"
+      follow: "Seguir"
+      politician: "Seguir a %{name}"
+    destroy: "Dejar de seguir"
+    ya_existe: Ya estás siguiendo a este área.
+    followings: A quién sigue en %{site_name}
+
+  headlines:
+    actividad_twitter: "Actividad: %{count} tweets"
+    title: Actividad en las redes
+
+  iphone:
+    acceso_personalizado: Acceso personalizado
+    acerca: "Acerca de..."
+    agenda: Agenda
+    atras: Atrás
+    contenidos: Contenidos
+    mapa: Mapa
+    misc: Miscelánea
+    noticias: Noticias
+
+  journalists:
+    Choose_departments: "¿Quieres recibir alertas por email sobre eventos de algún departamento?"
+    idioma_alertas: "Idioma de las alertas"
+    media: "Medio de comunicación o blog"
+    title: Periodistas
+
+  login:
+    access_irekia: "Accede a %{site_name}"
+    facebook_signin: Facebook
+    forgotten_password: "¿Olvidaste tu contraseña?"
+    get_it_here: "Recupérala aquí"
+    info_for_embed: "Para comentar, puedes usar tu cuenta en %{link}, el portal de Gobierno Abierto y Participación de %{publisher_name}."
+    login: Entra
+    remember_me: "Recordar mis datos"
+    success: Login realizado con éxito
+    twitter_signin: Twitter
+
+  mobile:
+    available_in_android_market: "DISPONIBLE EN <span>Google play</span>"
+    available_in_app_store: "DISPONIBLE EN <span>App Store</span>"
+    subtitle: "Accede a IREKIA a través de la aplicación Android o iPhone"
+    title: "¿Tienes un smartphone?"
+
+  mob_app:
+    accede_argazki: 'Accede al archivo fotográfico de %{publisher_name}'
+    gallery: Galería de fotos
+    ver_video:
+      one: Ver vídeo
+      other: Ver vídeos
+
+  news:
+    all: "Todas las noticias"
+    count:
+      one: "%{count} noticia"
+      other: "%{count} noticias"
+    feed_title: "Noticias de %{name}"
+    leading_news: Noticias destacadas
+    loading: "Cargando últimas noticias..."
+    more: "Más noticias"
+    no_content: No hay noticias
+    related: Noticias relacionadas
+    see_all: Ver todas las noticias
+    title: Noticias
+
+  notifications:
+    answer: "Nueva respuesta a la pregunta “%{text}”"
+    answer_request: "Nueva solicitud de respuesta"
+    argument: "Nuevo argumento para la propuesta “%{text}”"
+    comment: "Nuevo comentario en “%{text}”"
+    empty: No tiene nuevas notificaciones
+    event: "Nuevo evento"
+    new_argument:
+      one: "Nuevo argumento en \"%{commentable}\""
+      other: "%{count} nuevos argumento en \"%{commentable}\""
+    new_comment:
+      one: "Nuevo comentario en \"%{commentable}\""
+      other: "%{count} nuevos comentarios en \"%{commentable}\""
+    new_vote:
+      one: "Nuevo voto en \"%{commentable}\""
+      other: "%{count} nuevos votos en \"%{commentable}\""
+    news: "Nueva noticia en el área de %{text}"
+    proposal: "Nueva petición"
+    question: "Nueva pregunta"
+    question_to_answer: Pregunta pendiente de responder
+    title: Notificaciones
+    vote: "Nuevo voto en la propuesta “%{text}”"
+
+  notifier:
+    activate_person_account:
+      asegurar_eres_tu: "Para asegurarnos de que realmente has solicitado el alta en %{name}, necesitamos que actives tu cuenta."
+      ignore_if_not_requested: "Si en ningún momento solicitaste el alta, disculpa las molestias e ignora este email."
+      pinchar_siguiente_enlace: "Para ello, sólo tienes que pinchar en el siguiente enlace:"
+    alguien_ha_dado: "Alguien ha querido dar su opinión sobre %{name}"
+    cambios_en: Cambios en
+    comment_answer:
+      gracias: "En este sentido, te invitamos a que expreses tu grado de satisfacción en la misma página para ayudarnos a ofrecerte cada vez un mejor servicio desde %{site_name}."
+      answered: "En relación con el comentario sobre %{title} en %{url}, remitido a %{site_name}, te comunicamos que ha sido respondido por %{publisher_name}."
+      subject: "Comentario respondido en %{site_name}"
+    comment_rejected:
+      gracias: "En este sentido y en concordancia con lo allí establecido,  este comentario queda retirado sin publicación."
+      rechazado: "El comentario sobre %{title} en %{url} remitido a %{name} no se ajusta a las condiciones generales establecidas en las Normas de uso que rigen el funcionamiento de este portal publicadas en el mismo y que están accesibles a través del siguiente enlace:"
+      subject: "Comentario rechazado en %{site_name}."
+    contact_subject: "Mejora %{site_name}: sugerencia ciudadana"
+    event_confirmado: "Este evento está confirmado."
+    event_deleted: "El evento ha sido eliminado."
+    event_has_changed: "Ha cambiado desde la última alerta que te enviamos. Por favor, lee los detalles incluidos más abajo"
+    event_no_confirmado: "Este evento está sin confirmar."
+    event_streaming_live_false: "Este evento no tendrá streaming en directo."
+    event_streaming_live_true: "se emitirá en directo"
+    event_streaming_live_in: "desde %{room} y se emitirá en %{where}."
+    firma: "Fdo.: Dirección de Gobierno Abierto"
+    hola: Hola
+    hola_user: "Hola %{name}"
+    informamos_sobre_evento: "Por la presente desde Lehendakaritza te informamos que el evento en %{site_name} abajo indicado,"
+    new_event_calendar: "Alerta sobre evento en %{name}"
+    new_proposal: Hay una nueva petición en %{site_name}
+    new_proposal_organization: "Hay una nueva propuesta en %{site_name} para vuestro departamento:"
+    no_reply: "AVISO: Éste es un SERVICIO ROBOTIZADO de envío de mensajes puesto a disposición de los usuarios. Por favor, no conteste a este remitente de correo."
+    nota_baja_alertas: "Si quieres cambiar el idioma de las alertas o dejar de recibirlas, ve a %{link} "
+    notificacion_sobre_streaming: "Streaming para %{para}"
+    password_reset:
+      click_to_reset: "Para cambiar tu contraseña, pincha en el siguiente enlace"
+      ignore_if_not_requested: "Si no solicitaste el cambio de contraseña, por favor ignora este email y tu contraseña seguirá siendo la misma."
+      subject: Cambio de contraseña de %{site_name}
+    por_favor_revisala: "Por favor, revísala en %{url} ."
+    proposal_approval:
+      gracias: "¡Gracias por tu participación!"
+      publicada: 'Tu petición "%{title}" (%{url}) ha sido publicada.'
+      subject: "Tu petición ha sido publicada en %{site_name}"
+    proposal_answer:
+      respondida: "En relación con la petición sobre %{title} en %{url} remitida a %{site_name}, te comunicamos que ha sido respondida por %{publisher_name}. En este sentido, te invitamos a que expreses tu grado de satisfacción en la misma página para ayudarnos a ofrecerte cada vez un mejor servicio desde %{site_name}."
+      subject: "Petición respondida en %{site_name}"
+    proposal_rejection:
+      gracias: "En este sentido y en concordancia con lo allí establecido, esta petición queda retirada sin publicación."
+      rechazada: "La petición %{title} en %{url} remitido a %{site_name} no se ajusta a las condiciones generales establecidas en los Términos de participación en %{site_name} que rigen el funcionamiento de este portal publicadas en el mismo y que están accesibles a través del siguiente enlace:"
+      subject: "Petición rechazada en %{site_name}"
+    respond_asap: "Por favor, respondedla lo antes posible."
+    tu_info_acceso: "Ésta es tu información de acceso a %{name} en %{url}."
+    un_saludo: 'Un saludo.'
+    welcome: "Bienvenido/a a %{name}"
+    welcome_journalist:
+      registro_activado: "Tu registro ha sido activado."
+      ya_puedes_acceder: "Ya puedes acceder a %{site_name} a través de %{link} con tu email y contraseña."
+    welcome_person_from_proposal: "Activación de cuenta y petición"
+
+  orders:
+    bopv: BOPV
+    orden_numero: "Disposición %{no}"
+    publicado_en_boletin: "Publicado en el Boletín nº %{no_bol}"
+    solo_bopv: "(resultados solo del BOPV)"
+    title: 'Órdenes BOPV'
+    ver_en_enet: Ver en el BOPV
+    volver_busqueda: "Volver a la búsqueda"
+
+  organizations:
+    department: Departamento
+    organism: Organismo
+    term: "%{term} legislatura"
+    title: Departamentos
+
+  pages:
+    title: Páginas
+
+  password_resets:
+    edit:
+      update_password: Actualizar contraseña
+      type_new_password: Por favor, escriba nuevo password
+      wrong_token: El enlace que has seguido no es correcto
+    create:
+      email_sent: Te hemos enviado un email con instrucciones sobre cómo generar una nueva contraseña
+    new:
+      send_token: Enviar instrucciones·
+      title: Generar nueva contraseña
+      type_your_email: Por favor, escribe tu email y te enviaremos instrucciones sobre cómo generar una nueva contraseña
+    update:
+      reset_expired: El cambio de contraseña ha expirado
+      reset_done: Has cambiado la contraseña correctamente
+  people:
+    conectate_con: "O conéctate a través de:"
+    crea_tu_cuenta: Crea tu cuenta %{site_name}
+    create:
+      gracias: "¡Gracias por registrarte!"
+      recibiras_email: "En unos minutos recibirás un email con instrucciones para activar tu cuenta y después podrás participar en esta web.<br/><b>Importante:</b> No olvides comprobar también tu carpeta de spam."
+      volver_navegar: Volver a navegar
+      volver_al_login: Volver a la página de acceso a %{site_name}
+    de: "de %{city}"
+    explain_localidad: "Necesitamos saber dónde vives para poder localizarte en un mapa. Ejemplos: Azpeitia ó 48920"
+    fill_in_your_data: Rellena tus datos y comienza a participar
+    last_bulletin_sent: El último boletín se le envió el %{date}
+    localidad: "Localidad o código postal"
+    not_found: "La persona que buscas no existe"
+    que_me_aporta: "¿Qué me aporta registrarme?"
+    register: Regístrate
+    registro_motivo1: "Estarás a un golpe de \"click\" de compartir lo que quieras con tus amigos"
+    registro_motivo2: "Podrás seguir la actividad de las áreas y/o políticos que te interesen"
+    registro_motivo3: "Te permitirá enviar tus comentarios y peticiones"
+    registro_motivo4: "Te avisaremos de las novedades en su actividad (incluida la emisión en directo de sus notas de prensa)"
+    registro_nuevo: "Registro en %{name}"
+    remember_this_information_is_public: "Recuerda que son datos públicos y visibles en %{site_name}."
+    remove_profile: Eliminar perfil
+    remove_your_profile: "eliminar tu perfil"
+    remove_your_profile_text: "Por supuesto, si lo deseas puedes %{link} en cualquier momento."
+    sign_up: "Crear mi cuenta"
+    sure_destroy_profile: "¿Estás seguro de que quieres eliminar tu perfil de %{site_name}?"
+    terms_of_service: "Acepto las %{link}"
+    terms_of_service_link: "condiciones de uso"
+    wants_bulletin: Es un resumen semanal de las noticias y propuestas más interesantes publicadas en %{site_name}.
+    we_hope_you_dont_go: "Esperamos que no sea así"
+
+  photos:
+    albumes_relacionados: Reportajes relacionados
+    ciudad: Ciudad
+    datos_de_la_foto: "Datos de la foto"
+    descargar: Descargar
+    embed: "Incrustar foto"
+    embed_explain: "Para incrustar esta foto en tu web, copia y pega este código:"
+    fecha: "Fecha"
+    fototeca: "Fototeca"
+    irekia: Fotos
+    pais: País
+    provincia: Provincia
+    title: Fotos
+
+  politicians:
+    agenda: "Agenda de %{name}"
+    asistentes: Políticos asistentes al acto
+    attachment_file: Fichero PDF
+    curriculum: Curriculum en PDF
+    en_irekia2: Políticos del sector público que participan en %{site_name} (orden alfabético)
+    enlace_guia: Ver datos de contacto en la Guía de Comunicación
+    mantente_informado: "Mantente informado de toda la actividad de este político"
+    new_cv: Nuevo Curriculum Vitae
+    no_tiene_agenda_publica: No tiene agenda pública
+    no_update: "(*) Sin actualización de contenidos"
+    title: Políticos
+    title2: Políticos del sector público
+
+  proposals:
+    addressed_to: "Dirigida a: "
+    advice_proposals: "Si lo que deseas es realizar una propuesta o petición de información a algún área del Gobierno, utiliza esta opción:"
+    advice_zuzenean: "Si lo que desea es realizar una pregunta particular sobre un trámite o servicio ofrecido por los distintos departamentos del Gobierno o una queja (o sugerencia), utiliza esta opción:"
+    against: en contra
+    all: Todas las peticiones ciudadanas
+    answered: "Contestada tras %{time}"
+    citizens_count:
+        one: petición ciudadana
+        other: peticiones ciudadanas
+    count:
+      one: "<span class='number'>1</span> petición ciudadana"
+      other: "<span class='number'>%{count}</span> peticiones ciudadanas"
+      zero: "No hay peticiones ciudadanas"
+    create:
+      description: "En cuanto nuestros moderadores la aprueben, te notificaremos su publicación mediante email."
+      moderation_pending: "Petición pendiente de moderación"
+      title: "Tu petición ha sido enviada"
+    create_proposal: "Crea una petición"
+    feed_title: "Peticiones ciudadanas de %{name}"
+    form:
+      do_you_want_to_explain_the_proposal: "Descripción"
+      title: "Título de la petición"
+      upload_a_photo: "Imagen para ilustrar la petición (JPG, PNG o GIF)"
+      who_is_the_target: "¿A qué área le quieres dirigir la petición?"
+    gov_count:
+        one: propuesta del Gobierno
+        other: propuestas del Gobierno
+    gracias: "Gracias por tu propuesta"
+    gracias_revisaremos: "Gracias por tu petición. La publicaremos en breve."
+    haz_propuesta: "¡Participa! Haz tu petición"
+    in_favor: a favor
+    last: "Últimas peticiones ciudadanas"
+    loading: "Cargando últimas peticiones y propuestas..."
+    neutral: a favor
+    no_content: "No hay peticiones"
+    not_answered: "Aún no contestada"
+    nueva_propuesta: "Nueva petición"
+    other: "%{name} ha creado una nueva petición: "
+    otros_relacionados: "Otras peticiones"
+    otros_relacionados_gobierno: "Otras propuestas del Gobierno"
+    participation_disabled: "Lo sentimos, pero ya no puedes participar."
+    politician:
+      others: "Sus propuestas"
+      yours: Tus peticiones
+    por: "<span class='tags_label'>Propuesto por:</span> <span class='author'>%{author}</span>"
+    por2: "Por %{author}"
+    propuestas_a: "Peticiones a %{name}"
+    see_all: "Ver todas las peticiones ciudadanas"
+    subtitle: "Propón, plantea tus dudas... Intentaremos responderte"
+    title: Peticiones ciudadanas
+    title_max_length: "Máximo 255 caracteres"
+
+  search:
+    anterior: "Anterior"
+    but_found_for: "Pero sí hemos encontrado resultados para <em>%{term}</em>"
+    criterio:
+      results_count:
+        one: "%{value} resultado"
+        other: "%{value} resultados"
+    date1m: "Último mes"
+    date1w: "Última semana"
+    date1y: "Último año"
+    date24h: "Últimas 24h"
+    date2y: "Últimos dos años"
+    eliminar_criterio: Eliminar criterio
+    facets:
+      areas: 'Área'
+      date: 'Fecha'
+      keyword: 'Keyword'
+      location: 'Ubicación'
+      materias: Materias
+      month: 'Mes'
+      organization: 'Departamento'
+      organo: Órgano emisor
+      politicianst: 'Políticos'
+      rango: 'Rango'
+      seccion: 'Sección'
+      tags: 'Tags'
+      term: 'Legislatura'
+      type: 'Contenidos'
+      year: 'Año'
+    mas_categorias: Mostrar más categorías
+    mas_departamentos: Mostrar más departamentos
+    menos_categorias: Esconder categorías
+    menos_departamentos: Esconder departamentos
+    nada: No se han encontrado resultados
+    nothing_found_for: "No hemos encontrado nada para <em>%{term}</em>"
+    nueva: 'Nueva búsqueda'
+    resultados: Resultados de la búsqueda Elasticsearch
+    servidor_no_disponible: 'Servidor de búsquedas no disponible. Inténtelo de nuevo.'
+    sigue_buscando: 'Sigue buscando...'
+    siguiente: "Siguiente"
+    sort_order: 'Ordenar por'
+    sort:
+      score: Relevancia
+      date: Fecha
+    title: Búsqueda
+    todos_los_contenidos: Todas las áreas
+    ver_mas: 'Ver más'
+    ver_twitter: "Ver %{name} en Twitter"
+
+  session:
+    Contrasena: 'Contraseña'
+    Email: 'Email'
+    Email_incorrecto: "Email o password incorrecto"
+    Error_servidor_correo: 'Ha habido algún problema al enviar la información. Por favor, inténtalo más tarde.'
+    Has_entrado: "!Hola de nuevo, %{name}!"
+    Has_olvidado: '¿Has olvidado tu contraseña?'
+    Has_salido: "¡Hasta pronto, %{name}!"
+    Introduce_email: "Por favor, introduce tu dirección de email"
+    No_has_activado_cuenta: "Tu cuenta no ha sido activada aún. Si quieres que volvamos a enviarte el email de activación, %{link}"
+    No_hay_usuario: 'No hay ningún usuario con este email'
+    Password_enviado: 'Te hemos enviado tu información de acceso por email'
+    Por_favor_email: 'Por favor, introduce tu email'
+    Recordatorio: 'Recordatorio de contraseña'
+    Si_aun_no_estas_registrado: "Si aún no estás<br />registrado..."
+    activacion_enviada: "Te hemos reenviado el email de activación. <b>No olvides mirar también en la carpeta de spam</b>"
+    date_de_alta: "date de alta"
+    error_googleplus: "Se ha producido un error al conectar con Google+. Por favor, inténtalo más tarde. "
+    facebook_signin: Conectar via Facebook
+    googleplus_signin: "Conectar via Google +"
+    journalist_pendiente_aprobacion: "Tu cuenta está pendiente de activación. En breve te enviaremos la contraseña con la que podrás entrar"
+    login_in: "Acceso a %{name}"
+    no_hemos_podido_confirmar_el_fb_login: "No se ha realizado el login a través de Facebook. Por favor, inténtalo más tarde"
+    o_conectate_con: "<br/>O ..."
+    o_si_lo_prefieres: "<br/>O si lo prefieres..."
+    pendiente_aprobacion: "Este usuario está pendiente de activación"
+    prefieres_twitter: "O si lo prefieres %{twitter_singin_link}"
+    remember_me: "Recuérdame durante 2 semanas"
+    sesion_caducada: "Tu sesión ha caducado. Por favor, entra de nuevo."
+    si_no_eres: "Si no eres %{name}, %{link} antes de comentar"
+    tienes_que_registrarte2: "Debes conectarte para poder hacer %{what}."
+    twitter_signin: Conectar via Twitter
+    usuario_facebook_sin_password: "Te diste de alta con Facebook por lo que no podemos enviarte la contraseña. Para entrar en %{site_name}, debes usar el botón \"Conéctate con Facebook\"."
+    usuario_googleplus_sin_password: "Te diste de alta con Google + por lo que no podemos enviarte la contraseña. Para entrar en %{site_name}, debes usar el botón \"Conéctate con Google +\"."
+    usuario_twitter_sin_password: "Te diste de alta con Twitter por lo que no podemos enviarte la contraseña. Para entrar en %{site_name}, debes usar el botón \"Conéctate con Twitter\"."
+    y_te_enviaremos: "y te enviaremos tu información de acceso"
+
+  share:
+    copy_to_clipboard: Copiar al portapapeles para compartir
+    copied: Copiado
+    email_destinatario: "Email del destinatario"
+    email_incorrecto: "El email no es correcto"
+    esconder_tags: "esconder tags"
+    mostrar_tags: "mostrar tags"
+    nombre_destinatario: "Nombre del destinatario"
+    pagina_enviada: "La página ha sido enviada."
+    send_email: Compartir esta página
+    te_gustara: "%{sender_name} ha pensado que te interesará leer esta página."
+    te_recomienda: "%{sender_name} te recomienda esta página desde %{site_name}"
+    todos_campos: "Debes rellenar todos los campos"
+    tu_nombre_completo: "Tu nombre completo"
+
+  shared:
+    area: Área
+    activity: Actividad
+    escuchar_la_pagina: Escuchar la página
+    filters:
+      more_recent: Más recientes
+      por_cargo: Todos los cargos
+      por_departamentos: Todas las áreas
+    footer_alt: Gobierno Vasco compromiso con las personas
+    from_context: "de %{name}"
+    hace_time: "Hace %{time}"
+    inicio: "Inicio"
+    list_item:
+      author_time: "%{author} hace %{time}"
+      time_ago: "hace %{time}"
+    moderation_pending: "Pendiente de moderar. Otros usuarios no pueden verlo aun."
+    powered_by: 'Basado en <a href="http://open.irekia.net">Open Irekia</a>, Gobierno Vasco.'
+    sidebar:
+      añadir_document_relacionada: "+ Añadir noticia relacionada"
+      añadir_order_relacionada: "+ Añadir orden BOPV relacionada"
+      error_añadir_relacionado: No existe el documento. No se ha podido crear el relacionado.
+      id_document: ID de la noticia
+      id_order: Orden BOPV
+      location: Localización del evento
+      otros_asistentes: Otros invitados
+      otros_relacionados: Noticias relacionadas
+      otros_similares_bopv: Disposiciones BOPV similares
+      otros_relacionados_bopv: Relacionados en BOPV
+    source: Fuente
+    tabs:
+      audio: Audio
+      descargas: Descargas medios de comunicación
+      documents: PDF
+      no_audios: No hay ficheros de audio.
+      no_documents: No hay documentos adjuntos.
+      no_photos: No hay fotos.
+      no_videos: No hay vídeos.
+      photos: Fotos
+      video: Vídeo
+    traslation_missing: "Este contenido no está disponible en castellano."
+
+  site:
+    Accesibilidad: "Accesibilidad"
+    Ayuda: "Ayuda"
+    Contacto: "Contacto"
+    Mapa: "Mapa"
+    Sede_electronica: "sede electrónica"
+    Title_sede_electronica: "Trámites de %{publisher_name} en un entorno seguro"
+    about: Qué es %{site_name}
+    administracion: "Administración"
+    aplicaciones_interes: "Aplicaciones de interés"
+    ayuda: Ayuda
+    ayudanos_mejorar: Ayúdanos a mejorar
+    bien: Bien
+    blog: Blog de %{site_name}
+    body_contacto_enviado: "Tu mensaje se ha enviado correctamente y lo leeremos en breve"
+    body_contacto_no_enviado: "Lo sentimos, pero ha habido un error al enviar tu mensaje. Por favor, inténtalo más tarde."
+    buscar: "Buscar"
+    buscar_lo_que_interese: Busca lo que te interese
+    cite_irekia: "Fuente: %{site_name} - %{publisher_name}"
+    como_participar: Cómo participar
+    comparte: "compartir"
+    compartir: "compartir"
+    condiciones_uso: Condiciones de uso
+    conectate_con_facebook: "conéctate con facebook"
+    conectate_con_twitter: "conéctate con twitter"
+    contactar: Danos tu opinión sobre este sitio
+    contacto_enviado: "¡Gracias por tu opinión!"
+    contenido_borrador: Este contenido es borrador
+    debates_explanation: "Participa en las propuestas de gobierno en cuatro fases, así de fácil: "
+    en_la_red: "en la red"
+    faq: "FAQ: preguntas frecuentes"
+    gobierno_en_las_redes: El Gobierno en las redes
+    graficos_irekia: Gráficos Irekia
+    guia_buenas_practicas: Guía de Buenas prácticas
+    gure_bloga: Gure bloga
+    hola: "Hola, %{name}"
+    info_legal: "Información legal"
+    la_busqueda: "la búsqueda"
+    legal_advice: "Aviso legal"
+    ley_vasca_vivienda: "Ley Vasca de la Vivienda"
+    mal: Mal
+    mas_informacion: "Más información"
+    mensaje: "Mensaje"
+    meta_description: "Transparencia y participación ciudadana en %{publisher_name}"
+    newsletter: Suscripción Boletín de noticias
+    no_encontrada_text: "Lo sentimos pero no hemos encontrado la página que buscas.<br /> Puedes intentarlo en %{inicio_link} o utilizando %{busqueda_link}."
+    no_upcoming_streaming: "En estos momentos, no está programada ninguna emisión."
+    open_irekia: "Open Irekia: Software Libre"
+    pagina_de_inicio: "la página de inicio"
+    pagina_no_encontrada: "Página no encontrada"
+    participation: Participación
+    politica_privacidad: "Política de privacidad"
+    publicar_ahora: Publicar ahora
+    rss: RSS
+    rss_y_registro: "RSS y Registro"
+    se_publicara: "Este contenido se publicará el %{date}"
+    search_empty: 'Debes introducir alguna palabra'
+    search_nada: "No hemos encontrado nada con <em>%{q}</em>"
+    setup:
+      site_name: "¿Cuál es el nombre del sitio?"
+      publisher_name: "Organismo que lo publica"
+      publisher_name_hint: "Aparece en el título del sitio y las firmas de los emails"
+      publisher_address: "Dirección postal del editor"
+      publisher_address_hint: "Aparece en el pie de página del sitio y en las firmas de los emails"
+      corporative_email: "Una dirección de email pública"
+      corporative_email_hint: "Aparecerá como remitente de los emails que envía la aplicación y como receptor de las sugerencias y peticiones de los ciudadanos"
+      optional_modules: Módulos opcionales
+      optional_modules_proposals: "¿Quieres que los visitantes de la web puedan hacer peticiones ciudadanas?"
+      optional_modules_proposals_hint: "Son preguntas o propuestas que los ciudadanos hacen y otros ciudadanos pueden votar, argumentar y comentar."
+      optional_modules_debates: "¿Quieres que los administradores puedan hacer propuestas?"
+      optional_modules_debates_hint: "Son temas para debatir propuestos por los administradores y en los que los ciudadanos pueden participar con votos, argumentos y comentarios."
+      optional_modules_headlines: "¿Quieres activar la escucha activa?"
+      optional_modules_headlines_hint: "Son titulares de otros medios de comunicación relacionados con tus noticias. Requiere configuración adicional que se detalla en la documentación."
+      optional_modules_streaming: "¿Vas a ofrecer streaming en directo de los eventos?"
+      optional_modules_streaming_hint: "Requiere configuración adicional de las salas de streaming."
+      redes_sociales: Redes sociales
+      social_networks_twitter: Cuenta de Twitter del sitio
+      social_networks_twitter_hint: URL completa de la cuenta de Twitter complementaria a este sitio (si tienes)
+      social_networks_facebook: Página de Facebook del sitio
+      social_networks_facebook_hint: URL completa de la página de Facebook complementaria a este sitio (si tienes)
+      social_networks_flickr: Página de Flickr del sitio
+      social_networks_flickr_hint: URL completa de la página de Flickr complementaria a este sitio (si tienes)
+      social_networks_youtube: Página de Flickr del sitio
+      social_networks_youtube_hint: URL completa de la página de Youtube complementaria a este sitio (si tienes)
+      images:
+        logo: Logo principal del sitio
+        logo_hint: Se redimensionará a 167x34px
+        footer: Imagen para el pie de página
+        footer_hint: Se redimensionará a 267x63px
+    snetworks_nav_text: "Conscientes del uso y la importancia de las redes sociales para la ciudadanía, recogemos aquí lo que se publica en Euskadi agrupado en los apartados referenciados aquí. "
+    stats: Estadística
+    siguenos: Síguenos
+    source_code: 'Código fuente'
+    title: "%{site_name} %{publisher_name}"
+    usas_device: "¿Usas %{device}? Consulta %{link}"
+    valid_css: "Este site tiene CSS válido"
+    valid_wai: "Este site cumple con las pautas de accesibilidad doble-A de W3C-WAI"
+    valid_xhtml: "Este site es XHTML 1.0 Transitional válido"
+    ver_en_gc: "Guía de comunicación"
+    version_optimizada: "la versión optimizada"
+    videos_y_fotos: Vídeos y fotos
+
+  snet:
+    acoop: Agencia Vasca de Cooperación
+    biblioteca: Biblioteca General
+    irekia_en_la_red: "%{site_name} en la red"
+    guias: Guía Redes Sociales
+    guia_esquema: Guía esquema respuestas
+    guia_estilo: Guía de usos y estilo en las redes sociales de %{publisher_name}
+    guia_facebook: Guía rápida Facebook
+    guia_gplus: Guía Googleplus
+    guia_resumen: Guía resumen
+    guia_respuestas: Guía respuestas
+    guia_seguridad: Guía uso seguro
+    guia_twitter: Guía rápida Twitter
+    red_lectura: "Red de Lectura Pública de Euskadi"
+    sale: Oficina técnica del software libre
+
+  snetworks:
+    irekia_facebook: "%{site_name} en Facebook"
+    irekia_flickr: "%{site_name} en Flickr"
+    irekia_googleplus: "%{site_name} en Google+"
+    irekia_issu: "%{site_name} en Issuu"
+    irekia_slideshare: "%{site_name} en Slideshare"
+    irekia_twitter: "%{site_name} en Twitter"
+    irekia_youtube: "%{site_name} en YouTube"
+    title: El Gobierno en las redes
+
+  tags:
+    nada: 'No hay nada con este tag'
+    title: Tags
+
+  twitter_sessions:
+    not_authorized: "No has autorizado la aplicación para hacer login con Twitter"
+  users:
+    Activaremos_cuenta: "En breve activaremos tu cuenta y te enviaremos un email con tus datos de acceso."
+    Gracias_por_alta: "Gracias por registrarte como periodista"
+    Mientras: "Mientras tanto, puedes consultar la información de %{url}."
+    registro_periodistas: "Registro de periodistas"
+    accederas_a_tu_info: "Una vez recibidos, podrás acceder a tu información %{url}"
+    activity: "Su actividad"
+    destroy_avatar: Eliminar imagen
+    edit_avatar: Cambiar imagen
+    eliminado: Usuario eliminado
+    following: Siguiendo
+    followings: A quién sigue
+    last_actions: Últimas acciones
+    no_activity_title: "Aún no hay actividad de %{user}"
+    no_activity_description: "%{user} podrá participar en el debate sobre las propuestas de otros usuarios de %{site_name}, conversar con los cargos políticos del País Vasco, opinar sobre las noticias, etc. Toda su actividad aparecerá aquí."
+    proposals:
+      title: "Todas las peticiones hechas por %{public_name}"
+    signin_with: "Te diste de alta con <strong>%{type}</strong>"
+    title: Usuarios
+    tras_loggearte: "tras entrar identificarte"
+    ya_existe_email: "ya existe un usuario con este email"
+
+  videos:
+    canales_web_tv: "Canales WebTV"
+    closed_captions: Vídeos subtitulados
+    closed_captions_no_encontrado: "No se han encontrado vídeos subtitulados en este idioma"
+    count:
+      one: "1 vídeo"
+      other: "%{count} vídeos"
+      zero: No hay vídeos
+    destacado: "Destacado"
+    descargar: Descargar vídeo MP4
+    duracion: Duración
+    embed: "Incrustar vídeo"
+    embed_explain: "Para incrustar este vídeo en tu web, copia y pega este código:"
+    embed_label: "Copiar el texto para incrustar"
+    irekia: Videos
+    irekia_subtitulados: Videos subtitulados
+    loading: "Cargando reportajes destacados..."
+    more: Más vídeos
+    no_content: No hay vídeos
+    otros_canales: "Otros canales web"
+    podcast_copyright: "%{publisher_name} - Creative Commons Reconocimiento 3.0 España"
+    podcast_summary: "Vídeos %{site_name}, la iniciativa de transparencia, participación y colaboración del %{publisher_name}.  Aquí encontrarás información sobre todas las iniciativas y actividades realizadas por la Administración."
+    relacionados: "Relacionados"
+    see_all: Ver todos los vídeos
+    subtitulado: "Subtitulado (Closed Captions)"
+    title: Vídeos
+    transcripcion: Transcripción
+    video_destacado: Vídeo destacado
+    videos_relacionados: "Vídeos relacionados"
+    videoteca: Videoteca
+    web_tv: Vídeos
+
+  votes:
+    already_voted: "Ya has votado"
+    count:
+      nobody_voted: "No votada aún"
+      one: "%{count} voto"
+      other: "%{count} votos"
+      a_favor:
+        one: "%{count} voto a favor"
+        other: "%{count} votos a favor"
+      contra:
+        one: "%{count} voto en contra"
+        other: "%{count} votos en contra"
+    debate_already_voted: Ya has votado en esta propuesta del gobierno
+    invalid: El voto no es válido
+    not_saved: "Tu voto no se ha guardado. Por favor, inténtalo más tarde"
+    proposal_already_voted: Ya has votado en esta petición
+    thank_you: "Gracias por tu voto"
+    title: Votos
+    vote:
+      title:
+        you: "Has votado la propuesta %{proposal}"
+        other: "%{author} ha votado la propuesta %{proposal}"
+
+  will_paginate:
+      first: "&laquo; Primero"
+      last: "Último &raquo;"
+      previous_label: "&lsaquo; Anterior"
+      next_label: "Siguiente &rsaquo;"
+      page_gap: "&hellip;"

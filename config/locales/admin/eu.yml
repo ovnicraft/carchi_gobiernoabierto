@@ -1,0 +1,307 @@
+eu:
+  sadmin:
+    do_not_copy_paste: "Es recomendable no pegar textos copiados directamente desde procesadores de texto ya que incluyen código que puede entorpecer su visualización en la web.<br/><b>Si vas a copiar y pegar, que sea desde ficheros de texto sin formato (.txt).</b>"
+    attachments:
+      doc_adjuntos: Documentos adjuntos
+      fichero_pdf: Fichero PDF
+      idiomas: Idiomas
+      no_hay_doc: "No hay documentos para este/a %{type}"
+    create_what: "Crear %{what}"
+    documents:
+      politicians_hint: "Nombres separados por coma. Al empezar a escribir el nombre, el sistema mostrará una lista con los políticos disponibles.<br/><b>Sólo se pueden elegir nombres de la lista.</b>"
+      speaker_hint: "Nombres de invitados que no son políticos."
+    eliminado_correctamente: "%{article} %{what} se ha eliminado correctamente."
+    eliminar: Eliminar
+    eliminar_what: "Eliminar %{what}"
+    estas_seguro: "¿Estás seguro? Esto es irreversible."
+    events:
+      Asiste_el_lehendakari: 'Sólo eventos a las que asiste el Lehendakari'
+      Solo_asiste_el_lehendakari: 'Ver sólo los eventos a las que asiste el Lehendakari'
+      Ultimos_datos: Últimos datos disponibles del evento
+      Politicos: Cargos del gobierno
+      Otros_invitados: Otros asistentes
+      acciones: acciones
+      actos: actos
+      agenda_actual: 'Agenda actual'
+      agenda_compartida: 'Agenda Gobierno compartida'
+      agenda_mes: "Agenda del mes"
+      agenda_semana: "Agenda de la semana"
+      all_journalists: "¿Abierto a todos los periodistas ..."
+      bajar: "Copiar en Outlook"
+      body_es: "Información complementaria"
+      cambiar: cambiar
+      cambiar_agenda: 'Cambiar de agenda'
+      cambiar_agenda_a: 'cambiar a'
+      change_event_warning: "Cuando cambias la información de un evento, se envían alertas por email a los medios de comunicación 3 días antes de su comienzo. Asegúrate de que los cambios que haces son definitivos para no avisar de eventos inciertos."
+      change_streaming_info_warning: "Cuando cambias la informacion de streaming en directo de un evento, se envían alertas por email a los operadores de streaming y responsables de salas 1 día antes de su comienzo. Asegúrate de que los cambios que haces son definitivos para no avisar de eventos inciertos."
+      city: Ciudad
+      city_explain: "Tal y como se mostrará en la página pública del evento. Ej: Vitoria-Gasteiz"
+      confirmado: "¿Evento confirmado?"
+      confirmar_desvincular: ¿Eliminar la relación entre el evento y la noticia?
+      conveniente_alertar: "Conveniente para cualquier cambio en fechas, lugar, streaming o estado de confirmación del evento"
+      creado: Creada
+      cubre_irekia: "Cubre %{site_name}"
+      desvincular: Desvincular
+      dia_y_hora: "Día y hora"
+      el_dia_por_user: 'el %{dia} por %{user}'
+      evento_no_confirmado: "Este evento no está confirmado"
+      evento_no_eliminable: 'Este evento no se puede eliminar por completo porque antes tenemos que avisar de su  cancelación a las personas que fueron avisadas de su existencia.<br/>De momento lo marcaremos como eliminado para que ya no aparezca en la web, y cuando se envíen las alertas sobre su desaparición se borrará automáticamente.'
+      evento_publicado_en: "Este evento ya está publicado en %{en}"
+      eventos: eventos
+      fecha_fin: "Fecha de finalización del evento"
+      fecha_inicio: "Fecha de inicio del evento"
+      guardado_correctamente: "El evento se ha guardado correctamente."
+      has_journalists: "¿Periodistas?"
+      has_photographers: "¿Periodistas gráficos?"
+      hora_fin: "Hora fin"
+      hora_inicio: "Hora inicio"
+      la_agenda_ha_sido_cambiada: 'La agenda ha sido cambiada.'
+      leyenda: Leyenda
+      location_gmaps: "Dirección del evento para Google Maps"
+      location_gmaps_explain: "Sólo se usará para localizarlo en Google Maps. Ej: Nafarroa kalea, 2"
+      lugar: Lugar
+      marcado_eliminado: "El evento ha sido marcada como eliminada"
+      marcar_como_eliminado: "Marcar como borrada"
+      new_event_warning: "Vas a enviar alertas por email a los medios de comunicación anunciando este evento.<br/>Si prefieres no hacerlo, desmarca \"%{checkbox_text}\"."
+      no_confirmado: "no confirmado"
+      notify_journalists: Enviar alertas a los periodistas acerca de este evento
+      no_guardado_correctamente: "El evento no se ha guardado correctamente."
+      no_ha_indicado_la_agenda: 'No ha indicado la agenda'
+      no_hay_eventos: 'No hay eventos'
+      no_hay_noticia: No hay noticia relacionada
+      no_marcado_eliminado: "El evento NO ha sido marcado como eliminado"
+      no_tiene_permiso_para_cambiar_la_agenda: 'No tiene permiso para cambiar la agenda'
+      only_photographers: "... o sólo a periodistas gráficos?"
+      only_photographers_hint: "El texto 'Sólo periodistas gráficos' se incluirá en la página del evento y en el email de aviso"
+      pendiente_confirmar: "pendiente confirmar"
+      place: "Nombre del sitio"
+      place_explain: "Tal y como se mostrará en la página pública del evento. Ej: Lehendakaritza"
+      publicara_en: "Este evento se publicará el %{en}"
+      related_news: "Noticia relacionada"
+      related_news_at: "Noticia relacionada disponible en"
+      related_news_draft_at: "BORRADOR inicial de noticia disponible en"
+      se_publica: "En la web"
+      seguro_guardar: "Si guardas el evento, se enviarán alertas a los medios de comunicación 3 días antes de su comienzo. ¿Estás seguro de que quieres guardarla?"
+      seguro_guardar_streaming: "Si guardas el evento, se enviarán alertas a los operadores de streaming y responsables de sala 1 día antes de su comienzo. ¿Estás seguro de que quieres guardarla?"
+      si_confirmado: confirmado
+      suscripcion: "Suscripción"
+      tema: "Tema"
+      titulo_eventos_largos: 'Eventos en curso que abarcan más de una semana'
+      ultima_actualizacion: "Última actualización"
+      uso_interno: "Uso interno del Gobierno"
+      uso_interno_dept: "Uso interno del Dpto. de %{dept}"
+      ver: "Ver"
+      visible_en: "Visible %{en}"
+      publico: "Visible en %{site_name}"
+      aceptar: "Aceptar"
+    guardado_correctamente: "%{article} %{what} se ha guardado correctamente."
+    guardando: "Guardando..."
+    guardar: "Guardar"
+    modificar: "Modificar"
+    modificar_what: "Modificar %{what}"
+    mostrar_en: "mostrar en %{where}"
+    news:
+      Presenta_en: '"Asistencia de" en %{lang}'
+      Politicos: Cargos del gobierno
+      Otros_invitados_en: '"Otros asistentes" en %{lang}'
+      alt_foto_portada_en: '"Alt" (texto descriptivo) para la foto de portada en %{lang}'
+      area: Área
+      borrador: "Borrador"
+      buscar_noticia: Buscar noticia
+      busqueda_titulo: "Búsqueda por título"
+      comentarios: "Comentarios"
+      contenido_adicional: "Contenido adicional"
+      contenido_principal: "Contenido principal"
+      creada: "Creada"
+      creado: "Creado"
+      crear_borrador_noticia: "Crear borrador de noticia"
+      crear_noticia: "Crear noticia"
+      departamento_u_organismo: "Departamento u organismo"
+      destacado: "Destacado"
+      destacado_boletin: Destacado en el boletín
+      destacado_inicio: "Destacado en la página de inicio"
+      dir_multimedia: "Directorio para el contenido multimedia"
+      directorio_multimedia: "Directorio multimedia"
+      el_dia_por_user: 'el %{dia} por %{user}'
+      eliminar_noticia: "Eliminar noticia"
+      en_irekia: "en %{site_name}"
+      es_borrador: "Esta noticia es aún un borrador"
+      esconder_en_el_home: "Esconder en los listados de actividad como en el home o en la actividad de las áreas"
+      evento_relacionado: Evento relacionado
+      export_noticias_in_epub: "Exportar noticias en epub y mobi"
+      fecha_creacion: "Fecha de creación"
+      fecha_publicacion: "Fecha de publicación"
+      foto_actual: "la foto actual"
+      foto_portada: "Foto de portada"
+      foto_portada_size: "El tamaño ideal es de 320x180px"
+      multimedia_dir_explain: "Formato: aaaa/mm/dd/nombre, donde 'aaaa/mm/dd' es la fecha y 'nombre' es el distintivo"
+      no_hay_evento_relacionado: No hay evento relacionado
+      preview: "Previsualizar"
+      publicado: "Publicado"
+      se_publicara_en: "Se publicará el %{fecha}"
+      sin_fecha: "Sin fecha"
+      sin_icono: "Sin icono"
+      sin_publicar: "Esta noticia está aún sin publicar"
+      solo_letras: 'Sólo letras, números y "_"'
+      texto_en: "Texto en %{lang}"
+      titulo: "Título"
+      titulo_en: "Título en %{lang}"
+      traducciones: "Traducciones"
+      ultima_actualizacion: "Última actualización"
+      ver: "Ver"
+      visibilidad: "Visibilidad"
+      ya_publicada: "Esta noticia ya está publicada"
+    no_eliminado_correctamente: '%{article} %{what} no se ha podido eliminar.'
+    no_guardado_correctamente: "%{article} %{what} no se ha guardado correctamente."
+    pages:
+      paginas_publicas: "Páginas públicas"
+    se_muestra: "se muestra en %{where}"
+    se_muestra_en_actividad: "se muestra en listados de actividad"
+    se_muestra_false: "no se muestra en %{where}"
+    se_muestra_true: "se muestra en %{where}"
+    publicado_irekia: "Publicado en irekia"
+    subtitles:
+      fichero_eliminado: "El fichero con los subtítulos ha sido eliminado"
+      fichero_guardado: "El fichero se ha guradado"
+      fichero_no_eliminado: "El fichero con los subtítulos NO ha sido eliminado"
+      fichero_no_guardado:  "El fichero NO se ha guardado"
+      no_hay_traduccion: No hay vídeos para este idioma
+      no_hemos_encontrado_el_documento: "No hemos encontrado el documento"
+      se_usan_los_subtitulos_por_defecto: "NOTA: Se usan los subtítulos por defecto"
+      solo_se_pueden_gestionar_videos_con_documento: "Desde este formulario sólo se pueden gestionar los subtítulos de vídeos que pertenecen a alguna noticia"
+      solo_se_pueden_subir_subtitulos_para_documento: "Desde este formulario sólo se pueden subir los subtítulos de vídeos que pertenecen a alguna noticia"
+      subir: Subir fichero
+      subir_srt: Subir fichero .srt
+      sustituir: Sustituir
+      title: Subtítulos
+      video_con_subtitulos_creado: El vídeo se ha importado a la videoteca y se ha guardado el fichero con los subtítulos.
+      video_con_subtitulos_no_creado: "El fichero NO se ha guardado"
+
+  admin:
+    areas:
+      datos_del_area: datos del área
+      equipo: equipo
+    events:
+      cobertura_irekia: "¿Cobertura %{site_name}?"
+      cobertura_what: "Cobertura %{what}"
+      streaming_directo: "¿Streaming en directo?"
+    debates:
+      actualizar_propuesta_gubernamental: Actualizar propuesta gubernamental
+      aviso_fecha_final: "NOTA: La fecha final de la propuesta es la fecha final de la última fase."
+      aviso_fecha_publicacion: "NOTA: La fecha de publicación de la propuesta es la fecha de inicio de la primera fase."
+      argumento: Argumento
+      argumentos: Argumentos
+      contenido_adicional: Contenido adicional
+      crear_propuesta: Crear propuesta
+      crear_propuesta_gubernamental: Crear propuesta gubernamental
+      descripcion_en: "Más información en %{lang}"
+      destacado: Destacar en la home
+      eliminar: Eliminar propuesta
+      eliminar_propuesta_gubernamental: Eliminar propuesta gubernamental
+      entidades: Entidades
+      es_borrador: "Esta propuesta es aún un borrador"
+      fase: Fase
+      fases: Fases
+      fecha: Fecha
+      fecha_publicacion: "Fecha de publicación"
+      id: Id 
+      intro_en: "Introducción en %{lang}"
+      modificar_propuesta_gubernamental: Modificar propuesta gubernamental
+      muestran_debates_destacados: "Sólo se muestran en el home los %{max_featured} debates destacados más recientes, según fecha de publicación."
+      multimedia_dir_explain: "Formato: sólo letras y _, sin espacios ni tildes."
+      nombre: Nombre
+      news_info: "Esta es la noticia con las conclusiones del debate <b>%{debate}</b>."
+      nueva_entidad_relacionada: Añadir entidad relacionada
+      page_info: "Esta es la página de inicio para la fase de aportaciones del debate <b>%{debate}</b>."
+      propuesta: Propuesta
+      propuestas: Propuestas
+      propuestas_del_gobierno: Propuestas del Gobierno
+      sin_publicar: "Esta propuesta está aún sin publicar"
+      ya_finalizado: Esta propuesta ha finalizado.
+      ya_publicado: Esta propuesta está publicada.
+    la_web: "La Web"
+    menu:
+      agenda: Agenda
+      areas: Áreas
+      banners: Banners
+      bulletins: Boletines
+      canales_albums: "Canales Fototeca"
+      canales_webtv: "Canales WebTV"
+      categories: Categorías
+      comments: Comentarios
+      debates: "Prop. gobierno"
+      departamentos: Departamentos
+      enlaces: Enlaces
+      escucha_activa: 'Escucha activa'
+      estadisticas: Estadísticas
+      "externalcomments::items": Páginas externas
+      fototeca: Fototeca
+      headlines: Escucha activa
+      iconos: Iconos
+      noticias: Noticias
+      paginas: Páginas
+      preguntas: Preguntas
+      propuestas: Peticiones
+      questions: Peticiones
+      redes_sociales: Redes sociales
+      snetworks: Redes sociales
+      streaming: Streaming
+      tags: Tags
+      usuarios: Usuarios
+      web_tv: Videoteca
+    news:
+      admite_nuevos_comentarios: "¿Admite nuevos comentarios?"
+      destacar_en: "Destacar en..."
+      destacar_en_boletin: "¿Destacar en el boletín de novedades?"
+      destacar_en_inicio: "¿Destacar en la página de inicio?"
+      no_hay_traduccion: "No hay traducción para este idioma"
+      noticia_abierta_am: "¿Noticia abierta AM?"
+      traducir_a: "Modificar %{lang}"
+      ver_en_web: "Ver en la web"
+    organizations:
+      legislatura: Legislatura %{term}
+    proposals:
+      argumentos: Argumentos
+      departamento: Departamento
+      estado: Estado
+      paginas_publicas: Páginas públicas
+      peticiones: Peticiones
+    room_managers:
+      email: Email
+      telefono: Teléfono
+      salas: Salas
+    stream_flows:
+      anunciado: ¡Anunciado!
+      anunciar_streaming: Anunciar próximo streaming
+      dejar_emitir: Dejar de emitir
+      elija_opcion_para_evento: "Por favor, elija una de las opciones para el evento asigando."
+      empezar_emitir_ahora: Empezar a emitir ahora
+      evento: Evento
+      foto_sala: Foto de la sala
+      flujos: Flujos
+      flujos_stream: Flujos de stream
+      incrustar: Incrustar
+      mostrar_botones: mostrar botones
+      nuevo_flujo: Nuevo flujo
+      no_evento_asignado: No hay evento asignado
+      ordenar_flujos: Ordenar los flujos
+      ocultar_anuncio_streaming: Ocultar anuncio del próximo streaming
+      problemas: ¿Problemas?
+      responsables_sala: Responsables de sala
+      sala_sin_responsable:  Esta sala no tiene ningún responsable
+      soporte_streaming_movil: (soporte streaming móvil)
+      stream: Stream
+    external:
+      comment_items:
+        title: Páginas externas
+        lista_cliente: "Páginas externas de %{cliente}"
+        cliente: Cliente
+      clients:
+        title: Webs clientes
+        nuevo: Añadir cliente
+        datos: Datos del cliente
+        codigo: Código para incrustar
+        eliminar: Eliminar cliente
+        eliminado: El cliente ha sido eliminado
+        no_eliminado: El cliente NO ha sido eliminado
+        paginas: Páginas
