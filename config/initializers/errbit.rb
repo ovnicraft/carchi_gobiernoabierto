@@ -4,6 +4,3 @@ Airbrake.configure do |config|
   config.port    = 443
   config.secure  = config.port == 443
 end
-
-# Desactiva globalmente la verficación del certificado SSL
-OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE

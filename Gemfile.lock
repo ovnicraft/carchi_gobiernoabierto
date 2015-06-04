@@ -366,3 +366,6 @@ DEPENDENCIES
   white_list!
   will_paginate (= 3.0.5)
   zeroclipboard-rails
+
+BUNDLED WITH
+   1.10.2
