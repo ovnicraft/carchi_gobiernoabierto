@@ -8,8 +8,8 @@ en:
       no_hay_doc: "No hay documentos para este/a %{type}"
     create_what: "Crear %{what}"
     documents:
-      politicians_hint: "Nombres separados por coma. Al empezar a escribir el nombre, el sistema mostrará una lista con los políticos disponibles.<br/><b>Sólo se pueden elegir nombres de la lista.</b>"
-      speaker_hint: "Nombres de invitados que no son políticos."
+      politicians_hint: "Nombres separados por coma. Al empezar a escribir el nombre, el sistema mostrará una lista con los servidors públicos disponibles.<br/><b>Sólo se pueden elegir nombres de la lista.</b>"
+      speaker_hint: "Nombres de invitados que no son servidores públicos."
     eliminado_correctamente: "%{article} %{what} se ha eliminado correctamente."
     eliminar: Eliminar
     eliminar_what: "Eliminar %{what}"

@@ -286,9 +286,9 @@ en:
         other: fotos
         zero: fotos
       politician:
-        one: político
-        other: políticos
-        zero: políticos
+        one: servidor público
+        other: servidores públicos
+        zero: servidores públicos
       proposal:
         one: "petición ciudadana"
         other: peticiones ciudadanas
@@ -367,7 +367,7 @@ en:
       document:
         streaming_for: Ventana de streaming
         streaming_room: Sala de streaming
-        politicians_tag_list: Políticos
+        politicians_tag_list: Servidores públicos
       "external_comments/client":
         name: Nombre
         url: URL
@@ -548,9 +548,9 @@ en:
     n_departments: "%{count} departamentos"
     no_sigues_a_nadie: "No estás siguiendo a nadie todavía."
     politicians_following:
-      one: "sigues a 1 político"
-      other: "sigues a %{count} políticos"
-      zero: "no sigues a ningún político"
+      one: "sigues a 1 servidor públicos"
+      other: "sigues a %{count} servidores públicos"
+      zero: "no sigues a ningún servidor público"
     proposals:
       more_commented: "Más comentadas"
       no_proposals:
@@ -574,7 +574,7 @@ en:
       participa: "Participa y aprende"
       participa_text: "Haz preguntas a las áreas de %{publisher_name}, crea tus propias propuestas o participa en las propuestas de otros."
       sigue_te_interesa: "Sigue lo que te interese"
-      sigue_te_interesa_text: "Busca los políticos o áreas que más te interesan del %{publisher_name} y síguelos.<br/> De esta manera, estarás informado de todo lo que pase con el mínimo esfuerzo: toda la actividad de los políticos y áreas que sigas aparecerá en tu resumen."
+      sigue_te_interesa_text: "Busca los servidores públicos o áreas que más te interesan del %{publisher_name} y síguelos.<br/> De esta manera, estarás informado de todo lo que pase con el mínimo esfuerzo: toda la actividad de los servidores públicos y áreas que sigas aparecerá en tu resumen."
       user_slide: Ayuda
     ya_puedes_participar: "Ya puedes empezar a participar en %{link}"
     your_profile: "Tu perfil"
@@ -1083,7 +1083,7 @@ Si lo desea, puede ejercitar los derechos de acceso, rectificación, cancelació
     que_me_aporta: "¿Qué me aporta registrarme?"
     register: Regístrate
     registro_motivo1: "Estarás a un golpe de \"click\" de compartir lo que quieras con tus amigos"
-    registro_motivo2: "Podrás seguir la actividad de las áreas y/o políticos que te interesen"
+    registro_motivo2: "Podrás seguir la actividad de las áreas y/o servidores públicos que te interesen"
     registro_motivo3: "Te permitirá enviar tus comentarios y peticiones"
     registro_motivo4: "Te avisaremos de las novedades en su actividad (incluida la emisión en directo de sus notas de prensa)"
     registro_nuevo: "Registro en %{name}"
@@ -1114,17 +1114,17 @@ Si lo desea, puede ejercitar los derechos de acceso, rectificación, cancelació
 
   politicians:
     agenda: "Agenda de %{name}"
-    asistentes: Políticos asistentes al acto
+    asistentes: Servidores públicos asistentes al acto
     attachment_file: Fichero PDF
     curriculum: Curriculum en PDF
-    en_irekia2: Políticos del sector público que participan en %{site_name} (orden alfabético)
+    en_irekia2: Servidores públicos del sector público que participan en %{site_name} (orden alfabético)
     enlace_guia: Ver datos de contacto en la Guía de Comunicación
-    mantente_informado: "Mantente informado de toda la actividad de este político"
+    mantente_informado: "Mantente informado de toda la actividad de este servidor público"
     new_cv: Nuevo Curriculum Vitae
     no_tiene_agenda_publica: No tiene agenda pública
     no_update: "(*) Sin actualización de contenidos"
-    title: Políticos
-    title2: Políticos del sector público
+    title: Servidores públicos
+    title2: Servidores públicos del sector público
 
   proposals:
     addressed_to: "Dirigida a: "
@@ -1201,7 +1201,7 @@ Si lo desea, puede ejercitar los derechos de acceso, rectificación, cancelació
       month: 'Mes'
       organization: 'Departamento'
       organo: Órgano emisor
-      politicianst: 'Políticos'
+      politicianst: 'Servidores públicos'
       rango: 'Rango'
       seccion: 'Sección'
       tags: 'Tags'
@@ -1469,7 +1469,7 @@ Si lo desea, puede ejercitar los derechos de acceso, rectificación, cancelació
     followings: A quién sigue
     last_actions: Últimas acciones
     no_activity_title: "Aún no hay actividad de %{user}"
-    no_activity_description: "%{user} podrá participar en el debate sobre las propuestas de otros usuarios de %{site_name}, conversar con los cargos políticos del País Vasco, opinar sobre las noticias, etc. Toda su actividad aparecerá aquí."
+    no_activity_description: "%{user} podrá participar en el debate sobre las propuestas de otros usuarios de %{site_name}, conversar con los servidores públicos de la Prefectura del Carchi, opinar sobre las noticias, etc. Toda su actividad aparecerá aquí."
     proposals:
       title: "Todas las peticiones hechas por %{public_name}"
     signin_with: "Te diste de alta con <strong>%{type}</strong>"
