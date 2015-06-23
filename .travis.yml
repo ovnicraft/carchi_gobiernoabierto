@@ -3,6 +3,8 @@ language: ruby
 cache: 
   bundler: true
   apt: true
+services: 
+  - elasticsearch
 addons:
   - postgresql: "9.3"
 rvm:
