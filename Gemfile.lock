@@ -359,6 +359,7 @@ DEPENDENCIES
   rails-observers
   rails_autolink
   rails_config
+  rake
   ri_cal (= 0.8.8)
   ruby-debug-passenger
   sass-rails (= 4.0.2)
