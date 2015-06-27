@@ -7,6 +7,10 @@
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 
+server 'ogov', user: 'irekia', roles: %w{web app db}
+set :ssh_options, user: 'irekia', forward_agent: true
+set :branch, "master"
+
 
 
 # role-based syntax
