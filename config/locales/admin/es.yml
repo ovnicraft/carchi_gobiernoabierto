@@ -1,4 +1,4 @@
-en:
+es:
   sadmin:
     do_not_copy_paste: "Es recomendable no pegar textos copiados directamente desde procesadores de texto ya que incluyen código que puede entorpecer su visualización en la web.<br/><b>Si vas a copiar y pegar, que sea desde ficheros de texto sin formato (.txt).</b>"
     attachments:
@@ -204,7 +204,7 @@ en:
       fases: Fases
       fecha: Fecha
       fecha_publicacion: "Fecha de publicación"
-      id: Id 
+      id: Id
       intro_en: "Introducción en %{lang}"
       modificar_propuesta_gubernamental: Modificar propuesta gubernamental
       muestran_debates_destacados: "Sólo se muestran en el home los %{max_featured} debates destacados más recientes, según fecha de publicación."

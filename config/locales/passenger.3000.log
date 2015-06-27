@@ -1,0 +1,53 @@
+[ 2015-06-26 15:19:42.3583 3394/0x7fff7298b300 age/Wat/Main.cpp:1264 ]: Starting PassengerAgent watchdog...
+[ 2015-06-26 15:19:42.3739 3396/0x7fff7298b300 age/Hel/Main.cpp:891 ]: Starting PassengerAgent server...
+[ 2015-06-26 15:19:42.3746 3396/0x7fff7298b300 age/Hel/Main.cpp:234 ]: PassengerAgent server running in multi-application mode.
+[ 2015-06-26 15:19:42.3808 3396/0x7fff7298b300 age/Hel/Main.cpp:645 ]: PassengerAgent server online, PID 3396
+[ 2015-06-26 15:19:42.3867 3398/0x7fff7298b300 age/Log/Main.cpp:442 ]: Starting PassengerAgent logger...
+[ 2015-06-26 15:19:42.3871 3398/0x7fff7298b300 age/Log/Main.cpp:323 ]: PassengerAgent logger online, PID 3398
+2015/06/26 15:19:44 [error] 3401#0: *4 "/Users/apardo/alabs/repos/openirekia/config/locales/public/index.html" is not found (2: No such file or directory), client: 127.0.0.1, server: _, request: "HEAD / HTTP/1.1", host: "0.0.0.0"
+2015/06/26 15:19:55 [error] 3401#0: *5 open() "/Users/apardo/alabs/repos/openirekia/config/locales/public/es" failed (2: No such file or directory), client: 127.0.0.1, server: _, request: "GET /es HTTP/1.1", host: "localhost:3000"
+2015/06/26 15:19:55 [error] 3401#0: *6 open() "/Users/apardo/alabs/repos/openirekia/config/locales/public/es" failed (2: No such file or directory), client: 127.0.0.1, server: _, request: "GET /es HTTP/1.1", host: "localhost:3000"
+2015/06/26 15:19:56 [error] 3401#0: *7 open() "/Users/apardo/alabs/repos/openirekia/config/locales/public/es" failed (2: No such file or directory), client: 127.0.0.1, server: _, request: "GET /es HTTP/1.1", host: "localhost:3000"
+
+
+[ 2015-06-26 15:20:01.6867 3398/0x10fc2f000 age/Log/Main.cpp:349 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2015-06-26 15:20:01.6867 3396/0x101519000 age/Hel/Main.cpp:455 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2015-06-26 15:20:01.6867 3398/0x7fff7298b300 age/Log/Main.cpp:411 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2015-06-26 15:20:01.6867 3396/0x7fff7298b300 age/Hel/Main.cpp:814 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2015-06-26 15:20:01.6868 3398/0x10fc2f000 Ser/Server.h:455 ]: [LoggerAdminServer] Shutdown finished
+[ 2015-06-26 15:20:01.6868 3396/0x101519000 Ser/Server.h:455 ]: [ServerThr.1] Shutdown finished
+[ 2015-06-26 15:20:01.6868 3396/0x10159c000 Ser/Server.h:455 ]: [ServerThr.2] Shutdown finished
+[ 2015-06-26 15:20:01.6868 3396/0x1016a2000 Ser/Server.h:455 ]: [ServerThr.4] Shutdown finished
+[ 2015-06-26 15:20:01.6869 3396/0x1017a8000 Ser/Server.h:455 ]: [ServerThr.6] Shutdown finished
+[ 2015-06-26 15:20:01.6869 3396/0x10182b000 Ser/Server.h:455 ]: [ServerThr.7] Shutdown finished
+[ 2015-06-26 15:20:01.6868 3396/0x10161f000 Ser/Server.h:455 ]: [ServerThr.3] Shutdown finished
+[ 2015-06-26 15:20:01.6869 3396/0x101725000 Ser/Server.h:455 ]: [ServerThr.5] Shutdown finished
+[ 2015-06-26 15:20:01.6869 3396/0x1018ae000 Ser/Server.h:455 ]: [ServerThr.8] Shutdown finished
+[ 2015-06-26 15:20:01.6869 3398/0x7fff7298b300 age/Log/Main.cpp:436 ]: PassengerAgent logger shutdown finished
+[ 2015-06-26 15:20:01.6870 3396/0x101931000 Ser/Server.h:455 ]: [AdminServer] Shutdown finished
+[ 2015-06-26 15:20:01.6993 3396/0x7fff7298b300 age/Hel/Main.cpp:876 ]: PassengerAgent server shutdown finished
+[ 2015-06-26 15:20:03.5637 3459/0x7fff7298b300 age/Wat/Main.cpp:1264 ]: Starting PassengerAgent watchdog...
+[ 2015-06-26 15:20:03.5806 3461/0x7fff7298b300 age/Hel/Main.cpp:891 ]: Starting PassengerAgent server...
+[ 2015-06-26 15:20:03.5812 3461/0x7fff7298b300 age/Hel/Main.cpp:234 ]: PassengerAgent server running in multi-application mode.
+[ 2015-06-26 15:20:03.5875 3461/0x7fff7298b300 age/Hel/Main.cpp:645 ]: PassengerAgent server online, PID 3461
+[ 2015-06-26 15:20:03.5933 3463/0x7fff7298b300 age/Log/Main.cpp:442 ]: Starting PassengerAgent logger...
+[ 2015-06-26 15:20:03.5938 3463/0x7fff7298b300 age/Log/Main.cpp:323 ]: PassengerAgent logger online, PID 3463
+2015/06/26 15:20:05 [error] 3466#0: *4 "/Users/apardo/alabs/repos/openirekia/config/locales/public/index.html" is not found (2: No such file or directory), client: 127.0.0.1, server: _, request: "HEAD / HTTP/1.1", host: "0.0.0.0"
+
+[ 2015-06-26 15:20:10.4940 3463/0x10ba68000 age/Log/Main.cpp:349 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2015-06-26 15:20:10.4940 3463/0x7fff7298b300 age/Log/Main.cpp:411 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+
+[ 2015-06-26 15:20:10.4941 3463/0x10ba68000 Ser/Server.h:455 ]: [LoggerAdminServer] Shutdown finished
+[ 2015-06-26 15:20:10.4941 3461/0x10b1e5000 age/Hel/Main.cpp:455 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2015-06-26 15:20:10.4941 3461/0x7fff7298b300 age/Hel/Main.cpp:814 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2015-06-26 15:20:10.4942 3463/0x7fff7298b300 age/Log/Main.cpp:436 ]: PassengerAgent logger shutdown finished
+[ 2015-06-26 15:20:10.4942 3461/0x10b1e5000 Ser/Server.h:455 ]: [ServerThr.1] Shutdown finished
+[ 2015-06-26 15:20:10.4942 3461/0x10b36e000 Ser/Server.h:455 ]: [ServerThr.4] Shutdown finished
+[ 2015-06-26 15:20:10.4942 3461/0x10b474000 Ser/Server.h:455 ]: [ServerThr.6] Shutdown finished
+[ 2015-06-26 15:20:10.4942 3461/0x10b268000 Ser/Server.h:455 ]: [ServerThr.2] Shutdown finished
+[ 2015-06-26 15:20:10.4942 3461/0x10b2eb000 Ser/Server.h:455 ]: [ServerThr.3] Shutdown finished
+[ 2015-06-26 15:20:10.4943 3461/0x10b4f7000 Ser/Server.h:455 ]: [ServerThr.7] Shutdown finished
+[ 2015-06-26 15:20:10.4943 3461/0x10b57a000 Ser/Server.h:455 ]: [ServerThr.8] Shutdown finished
+[ 2015-06-26 15:20:10.4942 3461/0x10b3f1000 Ser/Server.h:455 ]: [ServerThr.5] Shutdown finished
+[ 2015-06-26 15:20:10.4944 3461/0x10b5fd000 Ser/Server.h:455 ]: [AdminServer] Shutdown finished
+[ 2015-06-26 15:20:10.5065 3461/0x7fff7298b300 age/Hel/Main.cpp:876 ]: PassengerAgent server shutdown finished
