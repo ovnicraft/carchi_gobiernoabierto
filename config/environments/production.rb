@@ -65,7 +65,8 @@ OpenIrekia::Application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {:address => "localhost", :port => 25, :domain => "localhost"}
+  config.action_mailer.smtp_settings = {:address => "localhost", :port => 25, :domain => "localhost",
+                                          :enable_starttls_auto => false }
   config.action_mailer.default_url_options = { :host => "localhost", :only_path => false }
   config.action_mailer.asset_host = "http://localhost:3000"
 
