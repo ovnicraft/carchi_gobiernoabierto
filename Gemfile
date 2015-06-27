@@ -15,9 +15,10 @@ gem 'uglifier', '>= 1.0.3'
 gem 'spring', group: :development
 
 ## Web server and debugging tools
-gem 'passenger'
-gem 'byebug'
-gem 'ruby-debug-passenger'
+#gem 'passenger'
+#gem 'byebug'
+#gem 'ruby-debug-passenger'
+gem 'thin'
 
 ## Recover deprecated features in rails4
 gem 'actionpack-page_caching'
@@ -74,7 +75,7 @@ end
 group :development do
   gem 'capistrano', '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'
-  gem 'capistrano-passenger'
+  #gem 'capistrano-passenger'
   gem 'rails-erd'
 end
 
