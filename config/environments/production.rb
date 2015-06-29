@@ -36,11 +36,11 @@ OpenIrekia::Application.configure do
   config.assets.version = '1.0'
 
   # Specifies the header that your server uses for sending files.
-  # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
+  config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  config.force_ssl = true
 
   # Set to :debug to see everything in the log.
   config.log_level = :info
@@ -67,8 +67,8 @@ OpenIrekia::Application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {:address => "localhost", :port => 25, :domain => "localhost",
                                           :enable_starttls_auto => false }
-  config.action_mailer.default_url_options = { :host => "localhost", :only_path => false }
-  config.action_mailer.asset_host = "http://localhost:3000"
+  config.action_mailer.default_url_options = { :host => "ogov.alabs.org", :only_path => false }
+  config.action_mailer.asset_host = "https://ogov.alabs.org"
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).
@@ -78,7 +78,7 @@ OpenIrekia::Application.configure do
   config.active_support.deprecation = :notify
 
   # Disable automatic flushing of the log to improve performance.
-  # config.autoflush_log = false
+  config.autoflush_log = false
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
