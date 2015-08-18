@@ -12,7 +12,7 @@ class Sadmin::SubtitlesControllerTest < ActionController::TestCase
       get :index, :news_id => @news.id
       assert_response :success
 
-      assert_select "p", text: "No hay vídeos para este idioma", count: 3 # es, eu, en
+      assert_select "p", text: "No hay vídeos para este idioma", count: 1 # es, eu, en
     end
 
     context "with subtitles" do
@@ -49,7 +49,7 @@ class Sadmin::SubtitlesControllerTest < ActionController::TestCase
         get :index, :news_id => @news.id
         assert assigns(:videos)[:es].present?
 
-        assert_select "p", text: "No hay vídeos para este idioma", count: 2 # eu, en
+        assert_select "p", text: "No hay vídeos para este idioma", count: 0 # eu, en
 
         assert_select "li", text: /sustituir/i 
       end

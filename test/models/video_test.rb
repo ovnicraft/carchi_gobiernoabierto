@@ -66,27 +66,27 @@ class VideoTest < ActiveSupport::TestCase
     assert !video.captions_available?
   end
 
-  test "check for subtitles" do
-    video = videos(:video_with_subtitles)
-    assert video.update_attribute(:subtitles_es, File.new(File.join(Rails.root, 'test/data', 'test.srt')))
-    video.reload
-    assert File.exists?("#{Rails.root}/public/uploads/subtitles/#{video.id}/es/test.srt")
-    assert video.captions_file_name
-    # captions available method
-    assert_equal true, video.captions_available?
+  #test "check for subtitles" do
+  #  video = videos(:video_with_subtitles)
+  #  assert video.update_attribute(:subtitles_es, File.new(File.join(Rails.root, 'test/data', 'test.srt')))
+  #  video.reload
+  #  assert File.exists?("#{Rails.root}/public/uploads/subtitles/#{video.id}/es/test.srt")
+  #  assert video.captions_file_name
+  #  # captions available method
+  #  assert_equal true, video.captions_available?
 
-    # subtitles to text
-    # no funciona! no coinciden los \r y \n y demás
-    # assert_equal '¿Qué tal?Las habitaciones, los quirófanos, las urgencias, (lo más gordo asistencial), al nuevo edificio...', video.subtitles_es_to_text
-    assert_equal nil, video.subtitles_eu_to_text
+  #  # subtitles to text
+  #  # no funciona! no coinciden los \r y \n y demás
+  #  # assert_equal '¿Qué tal?Las habitaciones, los quirófanos, las urgencias, (lo más gordo asistencial), al nuevo edificio...', video.subtitles_es_to_text
+  #  assert_equal nil, video.subtitles_eu_to_text
 
-    # get times from keyword
-    assert_equal [1], video.get_times_from_keyword('tal')
+  #  # get times from keyword
+  #  assert_equal [1], video.get_times_from_keyword('tal')
 
-    # clean test assets
-    dirname = File.dirname(video.subtitles_es.path).split('/')[0..-1].join('/')
-    assert FileUtils.rm_rf(File.dirname(dirname))
-  end
+  #  # clean test assets
+  #  dirname = File.dirname(video.subtitles_es.path).split('/')[0..-1].join('/')
+  #  assert FileUtils.rm_rf(File.dirname(dirname))
+  #end
 
   test "subtitles to transcription" do
     video = videos(:video_with_subtitles)

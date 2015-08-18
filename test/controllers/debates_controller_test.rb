@@ -5,7 +5,7 @@ class DebatesControllerTest < ActionController::TestCase
   should "index published and translated debates" do
     get :index, :locale => 'eu'
     assert !assigns(:debates).include?(debates(:debate_sin_publicar))
-    assert !assigns(:debates).include?(debates(:debate_sin_traducir))
+    assert assigns(:debates).include?(debates(:debate_sin_traducir))
   end
 
   context "rss" do

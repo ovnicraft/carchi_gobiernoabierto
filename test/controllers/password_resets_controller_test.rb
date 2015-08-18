@@ -22,18 +22,18 @@ class PasswordResetsControllerTest < ActionController::TestCase
 
   test "should not email forgotten password to pending user" do
     assert_no_difference 'ActionMailer::Base.deliveries.size' do
-      post :create, :email => 'visitante_sin_activar@efaber.net', :locale => "eu"
+      post :create, :email => 'visitante_sin_activar@efaber.net', :locale => "es"
     end
     assert_redirected_to new_password_reset_path
-    assert_equal "Erabiltzaile hau aktibazioaren zai dago", flash[:error]
+    assert_equal "Este usuario está pendiente de activación", flash[:error]
   end
 
   test "should not email forgotten password to unexistent user" do
     assert_no_difference 'ActionMailer::Base.deliveries.size' do
-      post :create, :email => 'noexiste@efaber.net', :locale => "eu"
+      post :create, :email => 'noexiste@efaber.net', :locale => "es"
     end
     assert_redirected_to new_password_reset_path
-    assert_equal "Ez dago email hau duen erabiltzailerik", flash[:error]
+    assert_equal "No hay ningún usuario con este email", flash[:error]
   end
 
   test "should not email forgotten password to facebook user" do

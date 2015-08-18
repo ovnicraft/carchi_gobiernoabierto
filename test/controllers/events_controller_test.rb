@@ -132,12 +132,12 @@ class EventsControllerTest < ActionController::TestCase
     assert_equal true, assigns(:events).detect {|e| e.id.eql?(event2check.id)}.present?
   end
   
-  test "should show translation missing message" do
-    get :show, :id => documents(:untranslated_event).id, :locale => "eu"
-    assert_response :success
-    assert !assigns(:event).translated_to?('eu')
-    assert_select 'div.traslation_missing', I18n.t('shared.traslation_missing')
-  end
+  #test "should show translation missing message" do
+  #  get :show, :id => documents(:untranslated_event).id, :locale => "es"
+  #  assert_response :success
+  #  assert !assigns(:event).translated_to?('es')
+  #  assert_select 'div.traslation_missing', I18n.t('shared.traslation_missing')
+  #end
 
   test "should show passed events of the day with class passed" do    
     # Preparamos dos eventos del mismo día, uno que ya ha pasado y otro que todavía no ha pasado.

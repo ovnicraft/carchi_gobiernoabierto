@@ -16,7 +16,6 @@ gem 'spring', group: :development
 
 ## Web server and debugging tools
 gem 'passenger'
-gem 'byebug'
 gem 'ruby-debug-passenger'
 #gem 'thin'
 
@@ -70,13 +69,15 @@ group :test do
   gem 'faker'
   gem 'factory_girl_rails'
   gem 'rake'
+  gem 'byebug'
+  gem 'pry-byebug'
 end
 
 group :development do
   gem 'capistrano', '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano-passenger'
-  gem 'rails-erd'
+  gem 'railroady'
 end
 
 gem 'airbrake'

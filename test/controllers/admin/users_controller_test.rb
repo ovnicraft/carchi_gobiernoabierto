@@ -65,13 +65,13 @@ class Admin::UsersControllerTest < ActionController::TestCase
     user = users(:periodista_sin_aprobar)
     assert_difference 'ActionMailer::Base.deliveries.size', + 1 do
       put :update, :id => user.id, :locale => "eu",
-          :user => {:type => "Journalist", :status => "aprobado", :alerts_locale => "eu" }
+          :user => {:type => "Journalist", :status => "aprobado", :alerts_locale => "es" }
     end
 
     m = ActionMailer::Base.deliveries.last
     assert_equal I18n.t('notifier.welcome', :name => Settings.site_name), m.subject
     assert_equal m.to[0], 'periodista_sin_aprobar@efaber.net'
-    assert_match 'Zure erregistroa aktibatuta dago', m.body.to_s
+    assert_match 'Hola Un periodista sin aprobar', m.body.to_s
   end
 
   # Deprecated porque ahora los permisos de editar usuario y editar permiso van juntos

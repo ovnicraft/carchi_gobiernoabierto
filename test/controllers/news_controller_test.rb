@@ -66,19 +66,19 @@ class NewsControllerTest < ActionController::TestCase
     assert assigns(:news).detect {|e| e.id.eql?(documents(:translated_news).id)}, "Translated news should be listed"
   end
 
-  test "untranslated news should not be listed" do
-    get :index, :locale => "eu"
-    assert_response :success
-    assert !assigns(:news).detect {|e| e.id.eql?(documents(:untranslated_news).id)}, "Untranslated news should not be listed"
-  end
+  #test "untranslated news should not be listed" do
+  #  get :index, :locale => "es"
+  #  assert_response :success
+  #  assert !assigns(:news).detect {|e| e.id.eql?(documents(:untranslated_news).id)}, "Untranslated news should not be listed"
+  #end
 
-  test "should show translation missing message" do
-    get :show, :id => documents(:untranslated_news).id, :locale => "eu"
-    assert_response :success
+  #test "should show translation missing message" do
+  #  get :show, :id => documents(:untranslated_news).id, :locale => "es"
+  #  assert_response :success
 
-    assert !assigns(:document).translated_to?('eu')
-    assert_select 'div.traslation_missing'
-  end
+  #  assert !assigns(:document).translated_to?('es')
+  #  assert_select 'div.traslation_missing'
+  #end
 
   test "untranslated_to_es_news should not be listed" do
     get :index
@@ -212,19 +212,19 @@ class NewsControllerTest < ActionController::TestCase
     assert_content_is_tracked(tags(:viajes_oficiales), documents(:one_news))
   end
 
-  test "miembro_que_modifica_noticias sees related documents rating links" do
-    login_as("miembro_que_modifica_noticias")
-    get :show, :id => documents(:featured_news).id
-    assert_response :success
-    assert_select 'ul.related' do
-      assert_select 'li' do
-        assert_select 'span' do
-          assert_select 'a.good'
-          assert_select 'a.bad'
-        end
-      end
-    end
-  end
+  #test "miembro_que_modifica_noticias sees related documents rating links" do
+  #  login_as("miembro_que_modifica_noticias")
+  #  get :show, :id => documents(:featured_news).id
+  #  assert_response :success
+  #  assert_select 'ul.related' do
+  #    assert_select 'li' do
+  #      assert_select 'span' do
+  #        assert_select 'a.good'
+  #        assert_select 'a.bad'
+  #      end
+  #    end
+  #  end
+  #end
 
   # Para poder hacer rating de los relacionados se require un permiso especial que no se hereda
   # del role de miembro_que_crea_noticias.

@@ -3,10 +3,10 @@ require 'test_helper'
 class VideosControllerTest < ActionController::TestCase
 
   test "should show video in spanish when accessed_directly" do
-    get :show, :id => videos(:only_es).id, :locale => 'eu'
+    get :show, :id => videos(:only_es).id, :locale => 'es'
     assert_response :success
     assert_select 'div.videos' do 
-      assert_select 'h1.title', "Solo castellano eu"
+      assert_select 'h1.title', "Solo castellano"
     end
   end
   
