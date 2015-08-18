@@ -17,33 +17,34 @@
         <span id="find_photos"></span>
       </td>
     </tr>
-    
+
     <%= fields_for :photo do |f| %>
     <tr>
       <th>Título común para todas las fotos</th>
       <td colspan="2"><%= f.text_field "title_es" %></td>
     </tr>
-    
+    <!--
     <tr>
       <th>Izenburua  común para todas las fotos</th>
       <td colspan="2"><%= f.text_field "title_eu" %></td>
     </tr>
-    
+
     <tr>
       <th>Title  común para todas las fotos</th>
       <td colspan="2"><%= f.text_field "title_en" %></td>
     </tr>
-    
+    -->
+
     <tr>
-      <th>Album</th>      
+      <th>Album</th>
       <td colspan="2"><%= select_tag :album_id, album_options %></td>
     </tr>
     <% end %>
-    
+
     <tr>
       <td colspan="3"><%= submit_tag "Importar", :disable_with => "Importando y generando tamaños..." %></td>
     </tr>
-    
+
   </table>
 <% end %>
 
