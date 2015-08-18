@@ -1,16 +1,16 @@
 <table class="admin">
   <tr>
-    <th>Título:</th> 
+    <th>Título:</th>
     <td><%= f.text_field :title_es, :size => 92 %></td>
   </tr>
-  
+
   <tr>
     <th>Descripción</th>
     <td><%= f.text_area :body_es, :size => "80x5" %></td>
   </tr>
-
+  <!--
   <tr>
-    <th>Izenburua:</th> 
+    <th>Izenburua:</th>
     <td><%= f.text_field :title_eu, :size => 92 %></td>
   </tr>
 
@@ -20,20 +20,20 @@
   </tr>
 
   <tr>
-    <th>Title</th> 
+    <th>Title</th>
     <td><%= f.text_field :title_en, :size => 92 %></td>
   </tr>
-  
+
   <tr>
     <th>Description</th>
     <td><%= f.text_area :body_en, :size => "80x5" %></td>
   </tr>
-  
+  -->
   <tr>
     <th>Borrador?</th>
     <td><%= f.check_box :draft %></td>
   </tr>
-  
+
   <tr>
     <th>Destacar?</th>
     <td><%= f.check_box :featured %><label for="album_featured">Sí</label></td>
@@ -48,5 +48,5 @@
       <%= render :partial => "/admin/tags/help", :locals => {:object => @album} %>
     </td>
   </tr>
-  
+
 </table>
