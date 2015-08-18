@@ -7,7 +7,8 @@ class Photo < ActiveRecord::Base
   has_many :albums, :through => :album_photos
   belongs_to :document
 
-  validates_presence_of :title_es, :title_eu, :title_en, :file_path, :on => :create
+  #validates_presence_of :title_es, :title_eu, :title_en, :file_path, :on => :create
+  validates_presence_of :title_es, :file_path, :on => :create
   validates_uniqueness_of :file_path
   validates_length_of :title_es, :title_eu, :title_en, :city, :province_state, :country, :maximum => 255, :allow_blank => true
   validates_format_of :dir_path, :with => /\A[a-z0-9_\/]+\Z/i, :message => 'El directorio sólo puede tener letras sin tildes, números, "_" y "/".<br/> Ni espacios, ni tildes, ni ñ.', :on => :create
