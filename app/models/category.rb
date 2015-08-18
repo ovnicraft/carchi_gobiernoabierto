@@ -14,6 +14,8 @@ class Category < ActiveRecord::Base
   acts_as_list :scope => :parent
   acts_as_ordered_taggable
 
+  before_save :normalize_names
+
   #Category::LANGUAGES = [:es, :eu, :en]
   Category::LANGUAGES = [:es]
 
@@ -72,4 +74,9 @@ class Category < ActiveRecord::Base
   #   all_albums = (private_tags.length > 0) ? Album.published.count_tagged_with(private_tags) : nil
   # end
 
+  private
+  def normalize_names
+    self.name_eu = ""
+    self.name_en = ""
+  end
 end
