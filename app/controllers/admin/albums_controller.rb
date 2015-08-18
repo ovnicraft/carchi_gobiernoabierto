@@ -2,7 +2,7 @@
 class Admin::AlbumsController < Sadmin::BaseController
   before_filter :access_to_photos_required
   skip_before_filter :verify_authenticity_token, :only => [:auto_complete_for_album_tag_list]
-  
+
   # Listado de álbums
   def index
 
@@ -21,23 +21,23 @@ class Admin::AlbumsController < Sadmin::BaseController
     end
 
     @albums = Album.where(conditions.join(' AND ')).paginate(page: params[:page]).reorder(order)
-    
+
     # @orphane_photos_counter = Photo.count(:conditions => "NOT EXISTS (SELECT 1 FROM album_photos WHERE album_photos.photo_id=photos.id)")
-    # @first_orphane_photo = Photo.find(:first, 
-    #   :conditions => "NOT EXISTS (SELECT 1 FROM album_photos WHERE album_photos.photo_id=photos.id)", 
+    # @first_orphane_photo = Photo.find(:first,
+    #   :conditions => "NOT EXISTS (SELECT 1 FROM album_photos WHERE album_photos.photo_id=photos.id)",
     #   :order => "created_at DESC")
   end
-  
+
   # Vista de un álbum
   def show
     @album = Album.find(params[:id])
   end
-  
+
   # Formulario de creación de álbum
   def new
     @album = Album.new
   end
-  
+
   # Creación de un álbum
   def create
     @album = Album.new(album_params)
@@ -48,12 +48,12 @@ class Admin::AlbumsController < Sadmin::BaseController
       render :action => "new"
     end
   end
-  
+
   # Modificación de un álbum
   def edit
     @album = Album.find(params[:id])
   end
-  
+
   # Actualización de un álbum
   def update
     @album = Album.find(params[:id])
@@ -63,7 +63,7 @@ class Admin::AlbumsController < Sadmin::BaseController
       render :action => "new"
     end
   end
-  
+
   # Eliminación de un álbum
   def destroy
     @album = Album.find(params[:id])
@@ -75,7 +75,7 @@ class Admin::AlbumsController < Sadmin::BaseController
       redirect_to admin_album_path(@album)
     end
   end
-  
+
   # Marca la foto elegida como portada para este álbum
   def choose_cover
     @album = Album.find(params[:id])
@@ -91,7 +91,7 @@ class Admin::AlbumsController < Sadmin::BaseController
     @album.update_attributes(:draft => false)
     redirect_to :back
   end
-  
+
   # Auto complete para los tags
   def auto_complete_for_album_tag_list
     auto_complete_for_tag_list_first_beginning_then_the_rest(params[:album][:tag_list])
@@ -99,13 +99,13 @@ class Admin::AlbumsController < Sadmin::BaseController
       render :inline => "<%= content_tag(:ul, @tags.map {|t| content_tag(:li, t.name)}.join.html_safe) %>"
     else
       render :nothing => true
-    end    
+    end
   end
-  
+
   # Canales de la fototeca
   def channels
     @tree = Tree.find_albums_tree
-    @title = "#{@tree.name_es} / #{@tree.name_eu}"
+    @title = "#{@tree.name_es}"
   end
 
   private
@@ -117,7 +117,7 @@ class Admin::AlbumsController < Sadmin::BaseController
     end
     @breadcrumbs_info
   end
-  
+
   def set_current_tab
     @current_tab = :photos
   end
