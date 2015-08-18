@@ -5,16 +5,18 @@
     <th>Nombre</th>
     <td><%= f.text_field :name_es %></td>
   </tr>
-  
+
+  <!--
   <tr>
     <th>Izena</th>
     <td><%= f.text_field :name_eu %></td>
   </tr>
-  
+
   <tr>
     <th>Name</th>
     <td><%= f.text_field :name_en %></td>
   </tr>
+  -->
 
   <tr>
     <th><%= f.label :active %></th>
@@ -24,7 +26,7 @@
     </td>
   </tr>
 
-  <% if @organization.is_a?(Department) %>  
+  <% if @organization.is_a?(Department) %>
   <tr>
     <th>
       Tag de departamento:
@@ -38,7 +40,7 @@
         El tag de departamento es un tag invisible que sirve para asignar contenidos a este departamento. Todos los
         contenidos que compartan este tag de departamento aparecerán en las páginas del departamento correspondiente.
       </div>
-      
+
     </td>
   </tr>
   <% if Department.terms.length > 0%>
@@ -53,7 +55,7 @@
     <td><%= f.select :parent_id, Organization.active.where("parent_id IS NULL").order("position").collect {|o| [o.name, o.id]}%></td>
   </tr>
   <% end %>
-  
+
   <% if Rails.configuration.external_urls[:guia_uri] %>
   <tr>
     <th>Id Guía de comunicación</th>
@@ -64,5 +66,5 @@
     </td>
   </tr>
   <% end %>
-  
+
 </table>
