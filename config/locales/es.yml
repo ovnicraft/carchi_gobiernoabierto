@@ -290,9 +290,9 @@ es:
         other: servidores públicos
         zero: servidores públicos
       proposal:
-        one: "petición ciudadana"
-        other: peticiones ciudadanas
-        zero: peticiones ciudadanas
+        one: "propuesta ciudadana"
+        other: propuestas ciudadanas
+        zero: propuestas ciudadanas
       question:
         one: pregunta
         other: preguntas
@@ -554,14 +554,14 @@ es:
     proposals:
       more_commented: "Más comentadas"
       no_proposals:
-        create_proposal: "Crea una petición"
+        create_proposal: "Crea una propuesta"
         description: "Puedes proponer cualquier cosa que creas que mejore el País Vasco. Desde ideas para agilizar la administración hasta propuestas de cambio o mejora de leyes y normativas."
-        title: "No has hecho ninguna petición aún."
+        title: "No has hecho ninguna propuesta aún."
       title:
-        one: "Has hecho 1 petición"
-        other: "Has hecho %{count} peticiones"
-        zero: "No has hecho ninguna petición"
-    propuesta_se_activara: "Tu petición será publicada en breve."
+        one: "Has hecho 1 propuesta"
+        other: "Has hecho %{count} propuestas"
+        zero: "No has hecho ninguna propuesta"
+    propuesta_se_activara: "Tu propuesta será publicada en breve."
     public_profile: Este es tu perfil público en %{site_name}
     see_public_profile: Consulta tu perfil público
     tu_irekia: Tu %{site_name}
@@ -578,7 +578,7 @@ es:
       user_slide: Ayuda
     ya_puedes_participar: "Ya puedes empezar a participar en %{link}"
     your_profile: "Tu perfil"
-    your_proposals: "Tus peticiones"
+    your_proposals: "Tus propuestas"
     your_questions: "Tus preguntas"
 
   albums:
@@ -609,9 +609,9 @@ es:
     no_activity: "Sin actividad"
     photos: fotos
     proposals:
-      one: 1 petición
-      other: "%{count} peticiones"
-      zero: Ninguna petición
+      one: 1 propuesta
+      other: "%{count} propuestas"
+      zero: Ninguna propuesta
     politicians:
       one: "1 persona en %{name}"
       other: "%{count} personas en %{name} y en entidades adscritas"
@@ -646,8 +646,8 @@ es:
   bulletin_mailer:
     announcement_subject: "Éste es el nuevo boletín semanal de novedades de %{site_name}. Con él recibirás en tu correo un resumen de las principales noticias publicadas, además de las principales propuestas abiertas a la participación ciudadana. Esperamos que lo encuentres útil y te permita seguir la actualidad de %{site_name}, también, desde tu correo electrónico.  Gracias por tu confianza"
     baja: Darse de baja
-    crear_peticion: "Crea una petición"
-    crear_peticion_text: "Si deseas hacer una propuesta o petición de información a algún área del Gobierno, puedes hacerlo desde este enlace."
+    crear_peticion: "Crea una propuesta"
+    crear_peticion_text: "Si deseas hacer una propuesta o propuesta de información a algún área del Gobierno, puedes hacerlo desde este enlace."
     darte_baja: "darte de baja"
     debates_section_title: "Tal vez te interese esta propuesta de Gobierno"
     hola: "Hola %{name}"
@@ -674,7 +674,7 @@ Si lo desea, puede ejercitar los derechos de acceso, rectificación, cancelació
       event: "¿Algo que decir?&hellip; comenta este evento"
       news: "¿Algo que decir?&hellip; comenta esta noticia"
       photo: "¿Algo que decir?&hellip; comenta esta foto"
-      proposal: "¿Algo que decir?&hellip; comenta esta petición"
+      proposal: "¿Algo que decir?&hellip; comenta esta propuesta"
       video: "¿Algo que decir?&hellip; comenta este vídeo"
       "externalcomments::item": "Haz tu comentario"
     blog_url_incorrect: "La URL del blog no es correcta."
@@ -734,7 +734,7 @@ Si lo desea, puede ejercitar los derechos de acceso, rectificación, cancelació
     is_future: "La fase de %{stage} comenzará el %{date}. A partir de esta fecha podrás participar en la propuesta."
     is_passed: "La fase de %{stage} ha sido cerrada. Lo sentimos, pero ya no puedes participar."
     last: "Últimas propuestas del gobierno"
-    legal_advice1: "Este sistema de propuestas online no reemplaza ningún sistema de peticiones o audiencias públicas recogidas en el sistema jurídico vigente."
+    legal_advice1: "Este sistema de propuestas online no reemplaza ningún sistema de propuestas o audiencias públicas recogidas en el sistema jurídico vigente."
     legal_advice2: "Las respuestas que facilite el Gobierno a las propuestas, consultas y comentarios de la ciudadanía tendrán sólo carácter informativo y en ningún caso serán vinculantes ni supondrán una interpretación normativa."
     legal_advice3: "Las preguntas, quejas y sugerencias sobre temas particulares no tendrán la calificación de recurso administrativo, ni su interposición paralizará los plazos establecidos para ello en la normativa vigente. Tampoco condicionan, en modo alguno, el ejercicio de las restantes acciones o derechos previstos en la normativa reguladora de cada procedimiento."
     no_content: "No hay propuestas de gobierno activas"
@@ -873,7 +873,7 @@ Si lo desea, puede ejercitar los derechos de acceso, rectificación, cancelació
     login: Accede a tu cuenta
     login_required: Debes identificarte
     activity:
-      answer_request_for: "Petición de respuesta a tu pregunta \"%{question}\""
+      answer_request_for: "Propuesta de respuesta a tu pregunta \"%{question}\""
       answer_to_your_question: "Respuesta a tu pregunta \"%{question}\""
       argument_in: "Argumento en tu propuesta \"%{proposal}\""
       comment_in: "Comentario en tu %{content_type} \"%{title}\""
@@ -970,7 +970,7 @@ Si lo desea, puede ejercitar los derechos de acceso, rectificación, cancelació
       one: "Nuevo voto en \"%{commentable}\""
       other: "%{count} nuevos votos en \"%{commentable}\""
     news: "Nueva noticia en el área de %{text}"
-    proposal: "Nueva petición"
+    proposal: "Nueva propuesta"
     question: "Nueva pregunta"
     question_to_answer: Pregunta pendiente de responder
     title: Notificaciones
@@ -1004,7 +1004,7 @@ Si lo desea, puede ejercitar los derechos de acceso, rectificación, cancelació
     hola_user: "Hola %{name}"
     informamos_sobre_evento: "Por la presente desde Lehendakaritza te informamos que el evento en %{site_name} abajo indicado,"
     new_event_calendar: "Alerta sobre evento en %{name}"
-    new_proposal: Hay una nueva petición en %{site_name}
+    new_proposal: Hay una nueva propuesta en %{site_name}
     new_proposal_organization: "Hay una nueva propuesta en %{site_name} para vuestro departamento:"
     no_reply: "AVISO: Éste es un SERVICIO ROBOTIZADO de envío de mensajes puesto a disposición de los usuarios. Por favor, no conteste a este remitente de correo."
     nota_baja_alertas: "Si quieres cambiar el idioma de las alertas o dejar de recibirlas, ve a %{link} "
@@ -1016,15 +1016,15 @@ Si lo desea, puede ejercitar los derechos de acceso, rectificación, cancelació
     por_favor_revisala: "Por favor, revísala en %{url} ."
     proposal_approval:
       gracias: "¡Gracias por tu participación!"
-      publicada: 'Tu petición "%{title}" (%{url}) ha sido publicada.'
-      subject: "Tu petición ha sido publicada en %{site_name}"
+      publicada: 'Tu propuesta "%{title}" (%{url}) ha sido publicada.'
+      subject: "Tu propuesta ha sido publicada en %{site_name}"
     proposal_answer:
-      respondida: "En relación con la petición sobre %{title} en %{url} remitida a %{site_name}, te comunicamos que ha sido respondida por %{publisher_name}. En este sentido, te invitamos a que expreses tu grado de satisfacción en la misma página para ayudarnos a ofrecerte cada vez un mejor servicio desde %{site_name}."
-      subject: "Petición respondida en %{site_name}"
+      respondida: "En relación con la propuesta sobre %{title} en %{url} remitida a %{site_name}, te comunicamos que ha sido respondida por %{publisher_name}. En este sentido, te invitamos a que expreses tu grado de satisfacción en la misma página para ayudarnos a ofrecerte cada vez un mejor servicio desde %{site_name}."
+      subject: "Propuesta respondida en %{site_name}"
     proposal_rejection:
-      gracias: "En este sentido y en concordancia con lo allí establecido, esta petición queda retirada sin publicación."
-      rechazada: "La petición %{title} en %{url} remitido a %{site_name} no se ajusta a las condiciones generales establecidas en los Términos de participación en %{site_name} que rigen el funcionamiento de este portal publicadas en el mismo y que están accesibles a través del siguiente enlace:"
-      subject: "Petición rechazada en %{site_name}"
+      gracias: "En este sentido y en concordancia con lo allí establecido, esta propuesta queda retirada sin publicación."
+      rechazada: "La propuesta %{title} en %{url} remitido a %{site_name} no se ajusta a las condiciones generales establecidas en los Términos de participación en %{site_name} que rigen el funcionamiento de este portal publicadas en el mismo y que están accesibles a través del siguiente enlace:"
+      subject: "Propuesta rechazada en %{site_name}"
     respond_asap: "Por favor, respondedla lo antes posible."
     tu_info_acceso: "Ésta es tu información de acceso a %{name} en %{url}."
     un_saludo: 'Un saludo.'
@@ -1032,7 +1032,7 @@ Si lo desea, puede ejercitar los derechos de acceso, rectificación, cancelació
     welcome_journalist:
       registro_activado: "Tu registro ha sido activado."
       ya_puedes_acceder: "Ya puedes acceder a %{site_name} a través de %{link} con tu email y contraseña."
-    welcome_person_from_proposal: "Activación de cuenta y petición"
+    welcome_person_from_proposal: "Activación de cuenta y propuesta"
 
   orders:
     bopv: BOPV
@@ -1084,7 +1084,7 @@ Si lo desea, puede ejercitar los derechos de acceso, rectificación, cancelació
     register: Regístrate
     registro_motivo1: "Estarás a un golpe de \"click\" de compartir lo que quieras con tus amigos"
     registro_motivo2: "Podrás seguir la actividad de las áreas y/o servidores públicos que te interesen"
-    registro_motivo3: "Te permitirá enviar tus comentarios y peticiones"
+    registro_motivo3: "Te permitirá enviar tus comentarios y propuestas"
     registro_motivo4: "Te avisaremos de las novedades en su actividad (incluida la emisión en directo de sus notas de prensa)"
     registro_nuevo: "Registro en %{name}"
     remember_this_information_is_public: "Recuerda que son datos públicos y visibles en %{site_name}."
@@ -1128,55 +1128,55 @@ Si lo desea, puede ejercitar los derechos de acceso, rectificación, cancelació
 
   proposals:
     addressed_to: "Dirigida a: "
-    advice_proposals: "Si lo que deseas es realizar una propuesta o petición de información a algún área del Gobierno, utiliza esta opción:"
+    advice_proposals: "Si lo que deseas es realizar una propuesta o propuesta de información a algún área del Gobierno, utiliza esta opción:"
     advice_zuzenean: "Si lo que desea es realizar una pregunta particular sobre un trámite o servicio ofrecido por los distintos departamentos del Gobierno o una queja (o sugerencia), utiliza esta opción:"
     against: en contra
-    all: Todas las peticiones ciudadanas
+    all: Todas las propuestas ciudadanas
     answered: "Contestada tras %{time}"
     citizens_count:
-        one: petición ciudadana
-        other: peticiones ciudadanas
+        one: propuesta ciudadana
+        other: propuestas ciudadanas
     count:
-      one: "<span class='number'>1</span> petición ciudadana"
-      other: "<span class='number'>%{count}</span> peticiones ciudadanas"
-      zero: "No hay peticiones ciudadanas"
+      one: "<span class='number'>1</span> propuesta ciudadana"
+      other: "<span class='number'>%{count}</span> propuestas ciudadanas"
+      zero: "No hay propuestas ciudadanas"
     create:
       description: "En cuanto nuestros moderadores la aprueben, te notificaremos su publicación mediante email."
-      moderation_pending: "Petición pendiente de moderación"
-      title: "Tu petición ha sido enviada"
-    create_proposal: "Crea una petición"
-    feed_title: "Peticiones ciudadanas de %{name}"
+      moderation_pending: "Propuesta pendiente de moderación"
+      title: "Tu propuesta ha sido enviada"
+    create_proposal: "Crea una propuesta"
+    feed_title: "Propuestas ciudadanas de %{name}"
     form:
       do_you_want_to_explain_the_proposal: "Descripción"
-      title: "Título de la petición"
-      upload_a_photo: "Imagen para ilustrar la petición (JPG, PNG o GIF)"
-      who_is_the_target: "¿A qué área le quieres dirigir la petición?"
+      title: "Título de la propuesta"
+      upload_a_photo: "Imagen para ilustrar la propuesta (JPG, PNG o GIF)"
+      who_is_the_target: "¿A qué área le quieres dirigir la propuesta?"
     gov_count:
         one: propuesta del Gobierno
         other: propuestas del Gobierno
     gracias: "Gracias por tu propuesta"
-    gracias_revisaremos: "Gracias por tu petición. La publicaremos en breve."
-    haz_propuesta: "¡Participa! Haz tu petición"
+    gracias_revisaremos: "Gracias por tu propuesta. La publicaremos en breve."
+    haz_propuesta: "¡Participa! Haz tu propuesta"
     in_favor: a favor
-    last: "Últimas peticiones ciudadanas"
-    loading: "Cargando últimas peticiones y propuestas..."
+    last: "Últimas propuestas ciudadanas"
+    loading: "Cargando últimas propuestas y propuestas..."
     neutral: a favor
-    no_content: "No hay peticiones"
+    no_content: "No hay propuestas"
     not_answered: "Aún no contestada"
-    nueva_propuesta: "Nueva petición"
-    other: "%{name} ha creado una nueva petición: "
-    otros_relacionados: "Otras peticiones"
+    nueva_propuesta: "Nueva propuesta"
+    other: "%{name} ha creado una nueva propuesta: "
+    otros_relacionados: "Otras propuestas"
     otros_relacionados_gobierno: "Otras propuestas del Gobierno"
     participation_disabled: "Lo sentimos, pero ya no puedes participar."
     politician:
       others: "Sus propuestas"
-      yours: Tus peticiones
+      yours: Tus propuestas
     por: "<span class='tags_label'>Propuesto por:</span> <span class='author'>%{author}</span>"
     por2: "Por %{author}"
-    propuestas_a: "Peticiones a %{name}"
-    see_all: "Ver todas las peticiones ciudadanas"
+    propuestas_a: "Propuestas a %{name}"
+    see_all: "Ver todas las propuestas ciudadanas"
     subtitle: "Propón, plantea tus dudas... Intentaremos responderte"
-    title: Peticiones ciudadanas
+    title: Propuestas ciudadanas
     title_max_length: "Máximo 255 caracteres"
 
   search:
@@ -1386,9 +1386,9 @@ Si lo desea, puede ejercitar los derechos de acceso, rectificación, cancelació
       publisher_address: "Dirección postal del editor"
       publisher_address_hint: "Aparece en el pie de página del sitio y en las firmas de los emails"
       corporative_email: "Una dirección de email pública"
-      corporative_email_hint: "Aparecerá como remitente de los emails que envía la aplicación y como receptor de las sugerencias y peticiones de los ciudadanos"
+      corporative_email_hint: "Aparecerá como remitente de los emails que envía la aplicación y como receptor de las sugerencias y propuestas de los ciudadanos"
       optional_modules: Módulos opcionales
-      optional_modules_proposals: "¿Quieres que los visitantes de la web puedan hacer peticiones ciudadanas?"
+      optional_modules_proposals: "¿Quieres que los visitantes de la web puedan hacer propuestas ciudadanas?"
       optional_modules_proposals_hint: "Son preguntas o propuestas que los ciudadanos hacen y otros ciudadanos pueden votar, argumentar y comentar."
       optional_modules_debates: "¿Quieres que los administradores puedan hacer propuestas?"
       optional_modules_debates_hint: "Son temas para debatir propuestos por los administradores y en los que los ciudadanos pueden participar con votos, argumentos y comentarios."
@@ -1471,7 +1471,7 @@ Si lo desea, puede ejercitar los derechos de acceso, rectificación, cancelació
     no_activity_title: "Aún no hay actividad de %{user}"
     no_activity_description: "%{user} podrá participar en el debate sobre las propuestas de otros usuarios de %{site_name}, conversar con los servidores públicos de la Prefectura del Carchi, opinar sobre las noticias, etc. Toda su actividad aparecerá aquí."
     proposals:
-      title: "Todas las peticiones hechas por %{public_name}"
+      title: "Todas las propuestas hechas por %{public_name}"
     signin_with: "Te diste de alta con <strong>%{type}</strong>"
     title: Usuarios
     tras_loggearte: "tras entrar identificarte"
@@ -1524,7 +1524,7 @@ Si lo desea, puede ejercitar los derechos de acceso, rectificación, cancelació
     debate_already_voted: Ya has votado en esta propuesta del gobierno
     invalid: El voto no es válido
     not_saved: "Tu voto no se ha guardado. Por favor, inténtalo más tarde"
-    proposal_already_voted: Ya has votado en esta petición
+    proposal_already_voted: Ya has votado en esta propuesta
     thank_you: "Gracias por tu voto"
     title: Votos
     vote:
