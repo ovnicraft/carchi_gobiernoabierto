@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: openirekia_development
+
+test:
+  <<: *default
+  database: openirekia_test
+
+production:
+  <<: *default
+  database: openirekia_production
+
+staging:
+  <<: *default
+  database: openirekia_staging
