@@ -67,8 +67,8 @@ OpenIrekia::Application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {:address => "localhost", :port => 25, :domain => "localhost",
                                           :enable_starttls_auto => false }
-  config.action_mailer.default_url_options = { :host => "ogov.alabs.org", :only_path => false }
-  config.action_mailer.asset_host = "https://ogov.alabs.org"
+  config.action_mailer.default_url_options = { :host => "gobiernoabierto.carchi.gob.ec", :only_path => false }
+  config.action_mailer.asset_host = "https://gobiernoabierto.carchi.gob.ec"
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).

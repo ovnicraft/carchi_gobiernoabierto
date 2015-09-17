@@ -30,7 +30,7 @@ module OpenIrekia
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
-    config.time_zone = 'Europe/Madrid'
+    config.time_zone = 'America/Quito'
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     config.i18n.enforce_available_locales = false
@@ -78,11 +78,12 @@ module OpenIrekia
     config.middleware.use ExceptionNotification::Rack, 
       :email => {
         :email_prefix => "[OpenIrekia #{Rails.env} Error] ",
-        :sender_address => '"OpenIrekia Error" <openirekia@example.com>',
-        :exception_recipients => %w(youremail@example.com)
+        :sender_address => '"OpenIrekia Error" <openirekia@gobiernoabierto.carchi.gob.ec>',
+        :exception_recipients => %w(debug@alabs.org)
       }
     # Email errors raised in rake tasks
     ExceptionNotifier::Rake.configure
+
   end
 
 end
