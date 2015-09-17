@@ -20,12 +20,9 @@
           <ul class='nav nav-list span6'>
             <li class='nav-header'><%= t('site.videos_y_fotos') %></li>
             <li><%= link_to t('videos.irekia'), videos_url %></li>
-            <li class='indented'><%= link_to t('videos.irekia_subtitulados'), closed_captions_videos_path %></li>
             <li><%= link_to t('photos.irekia'), gallery_url %></li>
-            <li><%= link_to 'Open Argazki', "http://argazki.irekia.euskadi.net", :rel => 'external' %></li>
             <li class='nav-header'><%= Snetwork.model_name.human(:count => 2) %></li>
             <li><%= link_to t('site.gobierno_en_las_redes'), snetworking_site_path %></li>
-            <li><%= link_to t('headlines.title'), "http://entzumena.irekia.euskadi.net", :rel => 'external' %></li>
             <!-- <li><%= link_to t('site.gure_bloga'), '#', :rel => 'external' %></li> -->
           </ul>
         </div>
