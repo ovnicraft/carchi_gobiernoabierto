@@ -28,6 +28,9 @@ default: &default
 
 development:
   <<: *default
+  multimedia:
+    <<: *default_multimedia
+    url: http://localhost:3000/data
 
 test:
   <<: *default
@@ -39,6 +42,10 @@ production:
   <<: *default
   multimedia:
     <<: *default_multimedia
+    url: https://gobiernoabierto.carchi.gob.ec/data
 
 staging:
   <<: *default
+  multimedia:
+    <<: *default_multimedia
+    url: https://beta.gobiernoabierto.carchi.gob.ec/data

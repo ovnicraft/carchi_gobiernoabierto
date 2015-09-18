@@ -10,12 +10,12 @@ email_addresses:
   orphan_videos_responsibles: hola@alabs.org
 social_networks:
   twitter: https://twitter.com/GADCarchi
-  facebook: http://www.facebook.com/pages/Irekia/416723460540
-  flickr: http://www.flickr.com/photos/irekia
-  youtube: http://www.youtube.com/irekia
+  facebook: https://www.facebook.com/carchiprefectura
+  flickr: https://www.facebook.com/carchiprefectura
+  youtube: https://www.youtube.com/channel/UCtXoKjyUKo8leh_R227zLQQ
 optional_modules:
   proposals: true
   debates: true
-  streaming: false
-  headlines: false
+  streaming: true
+  headlines: true
 customized: true
