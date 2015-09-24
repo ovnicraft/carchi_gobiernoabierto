@@ -1,5 +1,5 @@
 ---
-site_name: El Carchi
+site_name: Gobierno Abierto del Carchi
 publisher:
   name: Prefectura del Carchi
   address: 
@@ -17,5 +17,5 @@ optional_modules:
   proposals: true
   debates: true
   streaming: true
-  headlines: true
+  headlines: false
 customized: true
