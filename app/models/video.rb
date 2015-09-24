@@ -48,7 +48,7 @@ class Video < ActiveRecord::Base
   validates_attachment_file_name :subtitles_en, :matches => /srt\Z/
 
   translates :title
-  validates_presence_of :title_es, :title_eu, :title_en, :video_path
+  validates_presence_of :title_es, :video_path
   validates_length_of :title_es, :title_eu, :title_en, :maximum => 400, :allow_blank => true
   validates_format_of :video_path, :with => /\A[a-z0-9_\-\/]+\Z/i, :message => 'El directorio sólo puede tener letras sin tildes, números, "_", "-" y "/".<br/> Ni espacios, ni tildes, ni ñ.'
 
