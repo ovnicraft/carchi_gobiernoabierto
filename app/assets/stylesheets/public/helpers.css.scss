@@ -62,7 +62,8 @@ $player_window_height: 320px;
 }
 
 @mixin textShadow($h,$v,$c) {
-  text-shadow:$h $v $c;
+  /*text-shadow:$h $v $c;*/
+  text-shadow:none;
 }
 
 @mixin text-overflow() {
@@ -177,7 +178,7 @@ $colorLines: $greyMainHome;
 $borderItemMenu:#1a5c7f;
 
 $dottedLine: #AEB9C5;
-$greyButtons: #eef1f5;
+$greyButtons: #b8c6cc;
 $greyButtons: $greyMainHome;
 $blueShare: #888; /* OpenIrekia */
 $bgNotes: #ececdd;

@@ -827,6 +827,7 @@ div.flash_notice{
 */
 
 .dropdown-menu {
+	background-color: #b8c6cc;
 	padding: 15px;
 	border-radius: 0;
 
@@ -850,7 +851,7 @@ div.flash_notice{
 			&:hover{
 				text-decoration: underline;
 				color: $colorIrekia;
-				background-color: $greyButtons;
+				/*background-color: #b8c6cc;*/background-color: #b8c6cc;
 				background-image: none;
 			}
 		}
@@ -2356,7 +2357,8 @@ div.add_related{
 						background-color: #6c7d39;
 						text-align: left;
 						font-size: 16px;
-						text-shadow: 1px 1px 2px #333;
+						text-shadow:none;
+						
 						width: auto;
 						vertical-align: top;
 						border-left: 10px solid #fff;
