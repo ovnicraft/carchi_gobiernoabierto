@@ -62,7 +62,8 @@ $player_window_height: 320px;
 }
 
 @mixin textShadow($h,$v,$c) {
-  text-shadow:$h $v $c;
+  /*text-shadow:$h $v $c;*/
+  text-shadow:none;
 }
 
 @mixin text-overflow() {
@@ -125,7 +126,7 @@ $player_window_height: 320px;
   color: $dark_blue;
   line-height: 31px;
   font-weight: 300;
-  font-family: "ClarendonLTMedium", Georgia, serif;
+  font-family: "Century Gothic", Georgia, serif;
 }
 
 @mixin input-text {
@@ -147,28 +148,28 @@ $player_window_height: 320px;
 $textColor: #465866;
 
 /* Open Irekia */
-$colorIrekia: #b13f00;
-$blueNav: #5a5a5a;
-$blueNavHover: #777;
+$colorIrekia: #e8561f;
+$blueNav: #f6a21f;/*a*/
+$blueNavHover: #e8561f; /*Over*/
 
 $blueDarkNav: #EB6F1F;
 $blueDarkNavHover: #555;
 /* / Open Irekia */
 
-$greyButtonDark: #cfcfcf; 
-$blueTab: #CFCFCF;
+$greyButtonDark: #f6a21f; 
+$blueTab: #f6a21f;
 $greenTab: $colorIrekia;
 $greenParticipation: $colorIrekia;
 $blueGovern: #47bfea;
 
-$blueMenuLinks: #b13f00;
+$blueMenuLinks: #ffffff;
 $blueLinks: $colorIrekia;
 $blueLinksHover: #ff3105;
-$bgHover: #F1F4F5;
+$bgHover: #e8561f;  /*Cambio menú*/
 $bgNotModerated: #F7EAEE;
 
 $greyCollapsableHeader: #f2f5f9;
-$greyMainHome: #ededed;
+$greyMainHome: #f7f4f0;
 $greyBgLeading : #e7ecf2;
 $menuLinksHover: #EEEEEE;
 $greenFollowing : $greenParticipation;
@@ -177,7 +178,7 @@ $colorLines: $greyMainHome;
 $borderItemMenu:#1a5c7f;
 
 $dottedLine: #AEB9C5;
-$greyButtons: #eef1f5;
+$greyButtons: #b8c6cc;
 $greyButtons: $greyMainHome;
 $blueShare: #888; /* OpenIrekia */
 $bgNotes: #ececdd;
@@ -226,17 +227,17 @@ $inputHeight:                   $baseLineHeight + 10px; // base line-height + 8p
 @import url(http://fonts.googleapis.com/css?family=Oswald);
 
 @mixin opensans($size:14px ,$bold:normal){
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Century Gothic', sans-serif;
   font-size: $size;
   font-weight: $bold;
 }
 @mixin arial($size:14px ,$bold:normal){
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Century Gothic, Helvetica, sans-serif;
   font-size: $size;
   font-weight: $bold;
 }
 @mixin oswald($size:14px ,$bold:normal){
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Century Gothic', sans-serif;
   font-size: $size;
   font-weight: $bold;
 }

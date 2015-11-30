@@ -259,9 +259,9 @@
 	div.stage_title{
 		padding:0 30px 0 0;
 		text-align: center;
-		color: $colorIrekia;
+		color: #5d5d5d;
 		display: block;
-		@include opensans(1.2em,normal);
+		@include opensans(1.2em,bold);
 		margin-bottom: 20px;
 	}
 	div.stage_description{

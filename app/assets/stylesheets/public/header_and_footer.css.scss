@@ -3,11 +3,11 @@
 /******** HEADER ********/
 
 #header_logos {
-	padding: 20px 0 5px 0;
+	padding: 50px 100px;
 
 	background-image: url(image-path("header-background.jpg"));
 	background-position: right;
-	background-repeat: no-repeat;
+	background-repeat: repeat;
 
 	.net_logo {
 		padding-top: 20px;
@@ -15,7 +15,7 @@
 }
 
 #header_tools_container{
-	border-top: 1px solid $colorLines;
+	border-top: 0px solid $colorLines;
 }
 
 #header_tools {
@@ -50,6 +50,7 @@
 }
 
 nav#nav_top{
+	display:none; /*Se oculto la barra de menú superior*/
 	@include opensans();
 	background-color: $blueDarkNav;
 	.navbar{
@@ -204,6 +205,7 @@ nav#nav_top{
 		}
 
 		.dropdown-menu {
+			
 
 			width: 550px;
 			max-width: inherit !important;
@@ -216,7 +218,7 @@ nav#nav_top{
 				background-image: url(image-path('register_bg.png'));
 				background-repeat: no-repeat;
 				background-position: left top;
-				@include arial();
+				@include opensans();
 			}
 		}
 
@@ -431,8 +433,8 @@ nav#nav_bottom{
 				li {
 
 					a{
-						@include arial(13px,normal);
-						border-bottom: 1px solid #ddd;
+						@include opensans(13px,normal);
+						border-bottom: 1px solid #ffffff;
 						color: $blueMenuLinks;
 						display: block;
 						margin: 0;
@@ -501,7 +503,7 @@ nav#nav_bottom{
 						background-image: none;
 						line-height: 16px;
 						.date{
-							@include arial(12px,normal);
+							@include opensans(12px,normal);
 						}
 						.title{
 							a{
@@ -524,7 +526,7 @@ nav#nav_bottom{
 						@include opensans(12px,bold);
 					}
 					.meta_article{
-						@include arial(11px,normal);
+						@include opensans(11px,normal);
 					}
 				}
 			}
@@ -532,7 +534,7 @@ nav#nav_bottom{
 			&.snetworks{
 				width: 550px;
 				.description{
-					@include arial(12px,normal);
+					@include opensans(12px,normal);
 					padding:20px 3%;
 					width: 94%;
 					line-height: 16px;
@@ -576,10 +578,10 @@ nav#nav_bottom{
 
 /******* FOOTER *******/
 footer {
-	background-image: url(image-path("ej-gv-logo-footer.jpg"));
+	background-image: url(image-path("#"));
 	background-position: 50% 25%;
 	background-repeat: no-repeat;
-	background-color: white;
+	background-color: #f6a21f;
 	padding: 30px 0 0 0;
 
 	#site_links{
@@ -590,7 +592,7 @@ footer {
 			li {
 
 				a{
-					border-bottom: 1px solid #ddd;
+					border-bottom: 1px solid #ffffff;
 					//@include opensans(.9em,normal);
 					font-size: .9em;
 					color: $blueMenuLinks;
@@ -623,9 +625,9 @@ footer {
 	}
 
 	.footer_title{
-			border-bottom: 1px solid #ccc;
+			border-bottom: 1px solid #ffffff;
 			padding-bottom: 5px;
-			@include arial(14px,bold);
+			@include opensans(14px,bold);
 			line-height: inherit;
 		}
 
